@@ -241,6 +241,10 @@
          <lastmod>2024-11-20</lastmod>
     </url>
     <url>
+         <loc>https://kbase.github.io/cdm-schema/event/</loc>
+         <lastmod>2024-11-20</lastmod>
+    </url>
+    <url>
          <loc>https://kbase.github.io/cdm-schema/evidence_for_existence/</loc>
          <lastmod>2024-11-20</lastmod>
     </url>
@@ -273,6 +277,10 @@
          <lastmod>2024-11-20</lastmod>
     </url>
     <url>
+         <loc>https://kbase.github.io/cdm-schema/identifier/</loc>
+         <lastmod>2024-11-20</lastmod>
+    </url>
+    <url>
          <loc>https://kbase.github.io/cdm-schema/identifiers/</loc>
          <lastmod>2024-11-20</lastmod>
     </url>
@@ -298,6 +306,10 @@
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/n_scaffolds/</loc>
+         <lastmod>2024-11-20</lastmod>
+    </url>
+    <url>
+         <loc>https://kbase.github.io/cdm-schema/name/</loc>
          <lastmod>2024-11-20</lastmod>
     </url>
     <url>
