@@ -18,7 +18,9 @@ KBase CDM schema in linkml format.
 Use the `make` command to generate project artefacts:
 
 * `make all`: make everything
+
 * `make deploy`: deploys site
+
 </details>
 
 ## Credits
