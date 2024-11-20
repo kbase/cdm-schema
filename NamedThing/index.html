@@ -201,13 +201,32 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
 <h1 id="class-namedthing">Class: NamedThing</h1>
-<p><em>A generic grouping for any identifiable entity</em></p>
-<p>URI: <a href="http://schema.org/Thing">schema:Thing</a></p>
+<ul>
+<li><strong>NOTE</strong>: this is an abstract class and should not be instantiated directly</li>
+</ul>
+<p>URI: <a href="http://example.com/kb_cdmNamedThing">kb_cdm:NamedThing</a></p>
 <div class="mermaid"> classDiagram
     class NamedThing
     click NamedThing href "../NamedThing"
-      NamedThing &lt;|-- Root
-        click Root href "../Root"
+      NamedThing &lt;|-- NamedThingWithId
+        click NamedThingWithId href "../NamedThingWithId"
+      NamedThing &lt;|-- Experiment
+        click Experiment href "../Experiment"
+      NamedThing &lt;|-- Event
+        click Event href "../Event"
+      NamedThing &lt;|-- Measurement
+        click Measurement href "../Measurement"
+      NamedThing &lt;|-- ProcessedMeasurement
+        click ProcessedMeasurement href "../ProcessedMeasurement"
+
+      NamedThing : alternative_names
+
+
+
+
+    NamedThing --&gt; "*" Name : alternative_names
+    click Name href "../Name"
+
 
       NamedThing : description
 
@@ -216,11 +235,22 @@
       NamedThing : name
 
 
+
+
+    NamedThing --&gt; "0..1" Name : name
+    click Name href "../Name"
+
+
+
 </div>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><strong>NamedThing</strong><ul>
-<li><a href="../Root/">Root</a></li>
+<li><a href="../NamedThingWithId/">NamedThingWithId</a></li>
+<li><a href="../Experiment/">Experiment</a></li>
+<li><a href="../Event/">Event</a></li>
+<li><a href="../Measurement/">Measurement</a></li>
+<li><a href="../ProcessedMeasurement/">ProcessedMeasurement</a></li>
 </ul>
 </li>
 </ul>
@@ -237,20 +267,26 @@
 <tbody>
 <tr>
 <td><a href="../id/">id</a></td>
-<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>A unique identifier for a thing</td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td></td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../name/">name</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>A human-readable name for a thing</td>
+<td><a href="name.md">name</a></td>
+<td>0..1 <br/> <a href="../Name/">Name</a></td>
+<td></td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../alternative_names/">alternative_names</a></td>
+<td>* <br/> <a href="../Name/">Name</a></td>
+<td></td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../description/">description</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>A human-readable description for a thing</td>
+<td>Definition or description of the entity</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -258,7 +294,7 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/kbase/cdm-schema</li>
+<li>from schema: https://github.com/kbase/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -271,11 +307,11 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>schema:Thing</td>
+<td>kb_cdm:NamedThing</td>
 </tr>
 <tr>
 <td>native</td>
-<td>cdm_schema:NamedThing</td>
+<td>kb_cdm:NamedThing</td>
 </tr>
 </tbody>
 </table>
@@ -284,57 +320,86 @@
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: NamedThing
-description: A generic grouping for any identifiable entity
-from_schema: https://w3id.org/kbase/cdm-schema
-slots:
-- id
-- name
-- description
-class_uri: schema:Thing
+from_schema: https://github.com/kbase/cdm_schema
+abstract: true
+attributes:
+  id:
+    name: id
+    from_schema: https://github.com/kbase/cdm_schema
+    domain_of:
+    - NamedThing
+  name:
+    name: name
+    from_schema: https://github.com/kbase/cdm_schema
+    domain_of:
+    - Name
+    - NamedThing
+    range: Name
+  alternative_names:
+    name: alternative_names
+    from_schema: https://github.com/kbase/cdm_schema
+    rank: 1000
+    domain_of:
+    - NamedThing
+    range: Name
+    multivalued: true
+  description:
+    name: description
+    description: Definition or description of the entity.
+    from_schema: https://github.com/kbase/cdm_schema
+    domain_of:
+    - Name
+    - Identifier
+    - NamedThing
+    - Protein
 
 </code></pre>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: NamedThing
-description: A generic grouping for any identifiable entity
-from_schema: https://w3id.org/kbase/cdm-schema
+from_schema: https://github.com/kbase/cdm_schema
+abstract: true
 attributes:
   id:
     name: id
-    description: A unique identifier for a thing
-    from_schema: https://w3id.org/kbase/cdm-schema
-    rank: 1000
-    slot_uri: schema:identifier
-    identifier: true
+    from_schema: https://github.com/kbase/cdm_schema
     alias: id
     owner: NamedThing
     domain_of:
     - NamedThing
-    range: uriorcurie
+    range: string
   name:
     name: name
-    description: A human-readable name for a thing
-    from_schema: https://w3id.org/kbase/cdm-schema
-    rank: 1000
-    slot_uri: schema:name
+    from_schema: https://github.com/kbase/cdm_schema
     alias: name
     owner: NamedThing
     domain_of:
+    - Name
     - NamedThing
-    range: string
-  description:
-    name: description
-    description: A human-readable description for a thing
-    from_schema: https://w3id.org/kbase/cdm-schema
+    range: Name
+  alternative_names:
+    name: alternative_names
+    from_schema: https://github.com/kbase/cdm_schema
     rank: 1000
-    slot_uri: schema:description
-    alias: description
+    alias: alternative_names
     owner: NamedThing
     domain_of:
     - NamedThing
+    range: Name
+    multivalued: true
+  description:
+    name: description
+    description: Definition or description of the entity.
+    from_schema: https://github.com/kbase/cdm_schema
+    alias: description
+    owner: NamedThing
+    domain_of:
+    - Name
+    - Identifier
+    - NamedThing
+    - Protein
     range: string
-class_uri: schema:Thing
 
 </code></pre>
 </details>

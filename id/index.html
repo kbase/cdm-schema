@@ -328,8 +328,8 @@
 
 
 <h1 id="slot-id">Slot: id</h1>
-<p><em>A unique identifier for a thing</em></p>
-<p>URI: <a href="http://schema.org/identifier">schema:identifier</a></p>
+<p><em>Unique internal identifier for an entity.</em></p>
+<p>URI: <a href="http://example.com/kb_cdmid">kb_cdm:id</a></p>
 <!-- no inheritance hierarchy -->
 
 <h2 id="applicable-classes">Applicable Classes</h2>
@@ -343,30 +343,90 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../NamedThing/">NamedThing</a></td>
-<td>A generic grouping for any identifiable entity</td>
+<td><a href="../Contig/">Contig</a></td>
+<td></td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Root/">Root</a></td>
-<td>Represents a Root</td>
+<td><a href="../Protocol/">Protocol</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Feature/">Feature</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Protein/">Protein</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Sample/">Sample</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../TranscribedFeature/">TranscribedFeature</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Event/">Event</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Contigset/">Contigset</a></td>
+<td>A set of contigs; may also be called a genome</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ProcessedMeasurement/">ProcessedMeasurement</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../NamedThing/">NamedThing</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Project/">Project</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Measurement/">Measurement</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../UniqueNamedThing/">UniqueNamedThing</a></td>
+<td>Represents an entity with a hash value generated from combining its unique at...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../NamedThingWithId/">NamedThingWithId</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Experiment/">Experiment</a></td>
+<td></td>
 <td>no</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>
-<p>Range: <a href="../Uriorcurie/">Uriorcurie</a></p>
-</li>
-<li>
-<p>Required: True</p>
-</li>
+<li>Range: <a href="../Integer/">Integer</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/kbase/cdm-schema</li>
+<li>from schema: https://github.com/kbase/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -379,11 +439,11 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>schema:identifier</td>
+<td>kb_cdm:id</td>
 </tr>
 <tr>
 <td>native</td>
-<td>cdm_schema:id</td>
+<td>kb_cdm:id</td>
 </tr>
 </tbody>
 </table>
@@ -391,16 +451,14 @@
 <details>
 
 <pre><code class="language-yaml">name: id
-description: A unique identifier for a thing
-from_schema: https://w3id.org/kbase/cdm-schema
+description: Unique internal identifier for an entity.
+from_schema: https://github.com/kbase/cdm_schema
 rank: 1000
-slot_uri: schema:identifier
 identifier: true
 alias: id
 domain_of:
 - NamedThing
-range: uriorcurie
-required: true
+range: integer
 
 </code></pre>
 

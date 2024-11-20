@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#cdm-schema" class="md-skip">
+        <a href="#kbase_cdm" class="md-skip">
           Skip to content
         </a>
       
@@ -383,10 +383,10 @@
   </a>
 
 
-<h1 id="cdm-schema">cdm-schema</h1>
-<p>KBase CDM schema in linkml format.</p>
-<p>URI: https://w3id.org/kbase/cdm-schema</p>
-<p>Name: cdm-schema</p>
+<h1 id="kbase_cdm">kbase_cdm</h1>
+<p>Schema for KBase CDM</p>
+<p>URI: https://github.com/kbase/cdm_schema</p>
+<p>Name: kbase_cdm</p>
 <h2 id="classes">Classes</h2>
 <table>
 <thead>
@@ -397,16 +397,80 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="Identifier/">Identifier</a></td>
+<td>An external identifier for an entity. This should be a URI or CURIE.</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="Name/">Name</a></td>
+<td>The name or label for an entity. This may be a primary name, alternative name, synonym, acronym, or any other label used to refer to an entity.</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
 <td><a href="NamedThing/">NamedThing</a></td>
-<td>A generic grouping for any identifiable entity</td>
+<td>None</td>
 </tr>
 <tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Root/">Root</a></td>
-<td>Represents a Root</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Event/">Event</a></td>
+<td>None</td>
 </tr>
 <tr>
-<td><a href="RootCollection/">RootCollection</a></td>
-<td>A holder for Root objects</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Experiment/">Experiment</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Measurement/">Measurement</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="NamedThingWithId/">NamedThingWithId</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Project/">Project</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Protocol/">Protocol</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Sample/">Sample</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="UniqueNamedThing/">UniqueNamedThing</a></td>
+<td>Represents an entity with a hash value generated from combining its unique attributes.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Contig/">Contig</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Contigset/">Contigset</a></td>
+<td>A set of contigs; may also be called a genome.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Feature/">Feature</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Protein/">Protein</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="TranscribedFeature/">TranscribedFeature</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ProcessedMeasurement/">ProcessedMeasurement</a></td>
+<td>None</td>
 </tr>
 </tbody>
 </table>
@@ -420,36 +484,236 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="age_in_years/">age_in_years</a></td>
-<td>Number of years since birth</td>
-</tr>
-<tr>
-<td><a href="birth_date/">birth_date</a></td>
-<td>Date on which a person is born</td>
-</tr>
-<tr>
-<td><a href="description/">description</a></td>
-<td>A human-readable description for a thing</td>
-</tr>
-<tr>
-<td><a href="entries/">entries</a></td>
+<td><a href="alternative_names/">alternative_names</a></td>
 <td></td>
 </tr>
 <tr>
+<td><a href="asm_score/">asm_score</a></td>
+<td>A composite score for comparing contigset quality</td>
+</tr>
+<tr>
+<td><a href="cds_phase/">cds_phase</a></td>
+<td>For features of type CDS, the phase indicates where the next codon begins rel...</td>
+</tr>
+<tr>
+<td><a href="checkm2_completeness/">checkm2_completeness</a></td>
+<td>Estimate of the completeness of a contigset (MAG or genome), estimated by Che...</td>
+</tr>
+<tr>
+<td><a href="checkm2_contamination/">checkm2_contamination</a></td>
+<td>Estimate of the contamination of a contigset (MAG or genome), estimated by Ch...</td>
+</tr>
+<tr>
+<td><a href="conditions/">conditions</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="contig_bp/">contig_bp</a></td>
+<td>Total size in bp of all contigs</td>
+</tr>
+<tr>
+<td><a href="created_at/">created_at</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="ctg_L50/">ctg_L50</a></td>
+<td>Given a set of contigs, the L50 is defined as the sequence length of the shor...</td>
+</tr>
+<tr>
+<td><a href="ctg_L90/">ctg_L90</a></td>
+<td>The L90 statistic is less than or equal to the L50 statistic; it is the lengt...</td>
+</tr>
+<tr>
+<td><a href="ctg_logsum/">ctg_logsum</a></td>
+<td>The sum of the (length*log(length)) of all contigs, times some constant</td>
+</tr>
+<tr>
+<td><a href="ctg_max/">ctg_max</a></td>
+<td>Maximum contig length</td>
+</tr>
+<tr>
+<td><a href="ctg_N50/">ctg_N50</a></td>
+<td>Given a set of contigs, each with its own length, the N50 count is defined as...</td>
+</tr>
+<tr>
+<td><a href="ctg_N90/">ctg_N90</a></td>
+<td>Given a set of contigs, each with its own length, the N90 count is defined as...</td>
+</tr>
+<tr>
+<td><a href="ctg_powsum/">ctg_powsum</a></td>
+<td>Powersum of all contigs is the same as logsum except that it uses the sum of ...</td>
+</tr>
+<tr>
+<td><a href="data_source/">data_source</a></td>
+<td>Data source from which this entity came</td>
+</tr>
+<tr>
+<td><a href="description/">description</a></td>
+<td>Brief description of the name and/or its relationship to the entity</td>
+</tr>
+<tr>
+<td><a href="e_value/">e_value</a></td>
+<td>The 'score' of the feature</td>
+</tr>
+<tr>
+<td><a href="end/">end</a></td>
+<td>The start and end coordinates of the feature are given in positive 1-based in...</td>
+</tr>
+<tr>
+<td><a href="event.md">event</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="evidence_for_existence/">evidence_for_existence</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="gap_pct/">gap_pct</a></td>
+<td>The gap size percentage of all scaffolds</td>
+</tr>
+<tr>
+<td><a href="gc_avg/">gc_avg</a></td>
+<td>The average GC content of the contigset, expressed as a percentage</td>
+</tr>
+<tr>
+<td><a href="gc_content/">gc_content</a></td>
+<td>GC content of the contig, expressed as a percentage</td>
+</tr>
+<tr>
+<td><a href="gc_std/">gc_std</a></td>
+<td>The standard deviation of GC content across the contigset</td>
+</tr>
+<tr>
+<td><a href="generated_by/">generated_by</a></td>
+<td>The algorithm or procedure that generated the feature</td>
+</tr>
+<tr>
+<td><a href="hash/">hash</a></td>
+<td>Unique string generated by combining the defining attributes of the class</td>
+</tr>
+<tr>
 <td><a href="id/">id</a></td>
-<td>A unique identifier for a thing</td>
+<td>Unique internal identifier for an entity</td>
 </tr>
 <tr>
-<td><a href="name/">name</a></td>
-<td>A human-readable name for a thing</td>
+<td><a href="identifier.md">identifier</a></td>
+<td>Fully-qualifier URL or CURIE used as an identifier for an entity</td>
 </tr>
 <tr>
-<td><a href="primary_email/">primary_email</a></td>
-<td>The main email address of a person</td>
+<td><a href="identifiers/">identifiers</a></td>
+<td>URIs or CURIEs used to refer to this entity</td>
 </tr>
 <tr>
-<td><a href="vital_status/">vital_status</a></td>
-<td>living or dead status</td>
+<td><a href="inputs/">inputs</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="length/">length</a></td>
+<td>Length of the contig in bp</td>
+</tr>
+<tr>
+<td><a href="location/">location</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="n_contigs/">n_contigs</a></td>
+<td>Total number of contigs</td>
+</tr>
+<tr>
+<td><a href="n_scaffolds/">n_scaffolds</a></td>
+<td>Total number of scaffolds</td>
+</tr>
+<tr>
+<td><a href="name.md">name</a></td>
+<td>The string used as a name</td>
+</tr>
+<tr>
+<td><a href="outputs/">outputs</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="p_value/">p_value</a></td>
+<td>The 'score' of the feature</td>
+</tr>
+<tr>
+<td><a href="part_of/">part_of</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="protocol_used/">protocol_used</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="scaf_bp/">scaf_bp</a></td>
+<td>Total size in bp of all scaffolds</td>
+</tr>
+<tr>
+<td><a href="scaf_L50/">scaf_L50</a></td>
+<td>Given a set of scaffolds, the L50 is defined as the sequence length of the sh...</td>
+</tr>
+<tr>
+<td><a href="scaf_L90/">scaf_L90</a></td>
+<td>The L90 statistic is less than or equal to the L50 statistic; it is the lengt...</td>
+</tr>
+<tr>
+<td><a href="scaf_l_gt50k/">scaf_l_gt50k</a></td>
+<td>The total length of scaffolds longer than 50,000 base pairs</td>
+</tr>
+<tr>
+<td><a href="scaf_logsum/">scaf_logsum</a></td>
+<td>The sum of the (length*log(length)) of all scaffolds, times some constant</td>
+</tr>
+<tr>
+<td><a href="scaf_max/">scaf_max</a></td>
+<td>Maximum scaffold length</td>
+</tr>
+<tr>
+<td><a href="scaf_N50/">scaf_N50</a></td>
+<td>Given a set of scaffolds, each with its own length, the N50 count is defined ...</td>
+</tr>
+<tr>
+<td><a href="scaf_N90/">scaf_N90</a></td>
+<td>Given a set of scaffolds, each with its own length, the N90 count is defined ...</td>
+</tr>
+<tr>
+<td><a href="scaf_n_gt50K/">scaf_n_gt50K</a></td>
+<td>The number of scaffolds longer than 50,000 base pairs</td>
+</tr>
+<tr>
+<td><a href="scaf_pct_gt50K/">scaf_pct_gt50K</a></td>
+<td>The percentage of the total assembly length represented by scaffolds longer t...</td>
+</tr>
+<tr>
+<td><a href="scaf_powsum/">scaf_powsum</a></td>
+<td>Powersum of all scaffolds is the same as logsum except that it uses the sum o...</td>
+</tr>
+<tr>
+<td><a href="sequence/">sequence</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="source/">source</a></td>
+<td>The source of the name</td>
+</tr>
+<tr>
+<td><a href="start/">start</a></td>
+<td>The start and end coordinates of the feature are given in positive 1-based in...</td>
+</tr>
+<tr>
+<td><a href="strand/">strand</a></td>
+<td>The strand of the feature</td>
+</tr>
+<tr>
+<td><a href="type/">type</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="uses/">uses</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="version/">version</a></td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -463,7 +727,15 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="PersonStatus/">PersonStatus</a></td>
+<td><a href="CdsPhaseType/">CdsPhaseType</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="EvidenceForExistence/">EvidenceForExistence</a></td>
+<td>The evidence for the existence of a biological entity</td>
+</tr>
+<tr>
+<td><a href="StrandType/">StrandType</a></td>
 <td></td>
 </tr>
 </tbody>
