@@ -24,14 +24,18 @@ default_curi_maps:
 
 imports:
   - linkml:types
-  - semsql
-  # - oak/association
+  - rdf
+  - owl
+  # - obo
+  - omo
+  - relation_graph
+  - oak_association
 
 slots:
-  id:
-    identifier: true
-    range: integer
-    description: Unique internal identifier for an entity.
+  # id:
+  #   identifier: true
+  #   range: integer
+  #   description: Unique internal identifier for an entity.
 
   hash:
     range: string
@@ -52,8 +56,7 @@ slots:
 
 classes:
   Name:
-    description: |
-      The name or label for an entity. This may be a primary name, alternative name, synonym, acronym, or any other label used to refer to an entity.
+    description: The name or label for an entity. This may be a primary name, alternative name, synonym, acronym, or any other label used to refer to an entity.
     attributes:
       name:
         slot_uri: schema:name
@@ -67,8 +70,7 @@ classes:
         description: Brief description of the name and/or its relationship to the entity.
 
   Identifier:
-    description: |
-      An external identifier for an entity. This should be a URI or CURIE.
+    description: An external identifier for an entity. This should be a URI or CURIE.
     attributes:
       identifier:
         slot_uri: schema:identifier
@@ -83,6 +85,7 @@ classes:
         description: Brief description of the identifier and/or its relationship to the entity.
 
   NamedThing:
+    description: Abstract class to represent things with names.
     abstract: true
     attributes:
       id:
@@ -94,6 +97,7 @@ classes:
         description: Definition or description of the entity.
 
   NamedThingWithId:
+    description: Abstract class to represent things with names and identifiers.
     abstract: true
     is_a: NamedThing
     attributes:
@@ -140,7 +144,6 @@ classes:
       part_of:
         range: Contigset
         multivalued: true
-
       features:
         range: Feature
         multivalued: true
@@ -260,7 +263,7 @@ classes:
 
       encodes:
         description: Known or predicted transcription products from this feature.
-        range: TranscribedFeature
+        range: EncodedFeature
         multivalued: true
 
       data_source:
@@ -340,6 +343,7 @@ classes:
     attributes:
       location:
       conditions:
+        multivalued: true
       created_at:
         range: datetime
 
