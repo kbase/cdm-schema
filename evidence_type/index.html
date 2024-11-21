@@ -352,7 +352,6 @@
 
 
 <h1 id="slot-evidence_type">Slot: evidence_type</h1>
-<p><em>The type of evidence supporting the association</em></p>
 <p>URI: <a href="http://kbase.github.io/cdm-schema/evidence_type">kb_cdm:evidence_type</a></p>
 <!-- no inheritance hierarchy -->
 
@@ -367,25 +366,15 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../NegatedAssociation/">NegatedAssociation</a></td>
-<td>A negated association between a thing (subject) and another thing (object)</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../PositiveOrNegativeAssociation/">PositiveOrNegativeAssociation</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Association/">Association</a></td>
-<td>A generic association between a thing (subject) and another thing (object)</td>
+<td><a href="../TermAssociation/">TermAssociation</a></td>
+<td>A minimal datamodel for relating a subject entity to an object term</td>
 <td>no</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
+<li>Range: <a href="../String/">String</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -415,13 +404,12 @@
 <details>
 
 <pre><code class="language-yaml">name: evidence_type
-description: The type of evidence supporting the association
 from_schema: https://github.com/kbase/cdm-schema
 rank: 1000
 alias: evidence_type
 domain_of:
-- PositiveOrNegativeAssociation
-range: uriorcurie
+- term_association
+range: string
 
 </code></pre>
 

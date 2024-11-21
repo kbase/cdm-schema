@@ -302,6 +302,19 @@
     Identifier and Mapping Information
   </a>
   
+    <nav class="md-nav" aria-label="Identifier and Mapping Information">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#schema-source" class="md-nav__link">
+    Schema Source
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -339,7 +352,7 @@
 
 
 <h1 id="slot-description">Slot: description</h1>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/description">kb_cdm:description</a></p>
+<p>URI: <a href="http://purl.org/dc/terms/description">dcterms:description</a></p>
 <!-- no inheritance hierarchy -->
 
 <h2 id="applicable-classes">Applicable Classes</h2>
@@ -353,8 +366,28 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../Protocol/">Protocol</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Measurement/">Measurement</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../Identifier/">Identifier</a></td>
 <td>An external identifier for an entity</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Contigset/">Contigset</a></td>
+<td>A set of contigs; may also be called a genome</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../UniqueNamedThing/">UniqueNamedThing</a></td>
+<td>Represents an entity with a hash value generated from combining its unique at...</td>
 <td>no</td>
 </tr>
 <tr>
@@ -363,7 +396,32 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Measurement/">Measurement</a></td>
+<td><a href="../NamedThing/">NamedThing</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Contig/">Contig</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../TranscribedFeature/">TranscribedFeature</a></td>
+<td>An entity generated when a feature is transcribed</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Feature/">Feature</a></td>
+<td>A feature localized to an interval along a contig</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Event/">Event</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../NamedThingWithId/">NamedThingWithId</a></td>
 <td></td>
 <td>no</td>
 </tr>
@@ -378,28 +436,13 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Event/">Event</a></td>
+<td><a href="../Experiment/">Experiment</a></td>
 <td></td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../NamedThing/">NamedThing</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../UniqueNamedThing/">UniqueNamedThing</a></td>
-<td>Represents an entity with a hash value generated from combining its unique at...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Protocol/">Protocol</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ProcessedMeasurement/">ProcessedMeasurement</a></td>
-<td></td>
+<td><a href="../RepairAction/">RepairAction</a></td>
+<td>Represents an action that needs to be taken to repair a problem</td>
 <td>no</td>
 </tr>
 <tr>
@@ -408,32 +451,7 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Contigset/">Contigset</a></td>
-<td>A set of contigs; may also be called a genome</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Feature/">Feature</a></td>
-<td>A feature localized to an interval along a contig</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Experiment/">Experiment</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../TranscribedFeature/">TranscribedFeature</a></td>
-<td>An entity generated when a feature is transcribed</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../NamedThingWithId/">NamedThingWithId</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Contig/">Contig</a></td>
+<td><a href="../ProcessedMeasurement/">ProcessedMeasurement</a></td>
 <td></td>
 <td>no</td>
 </tr>
@@ -444,6 +462,10 @@
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="schema-source">Schema Source</h3>
+<ul>
+<li>from schema: https://github.com/kbase/cdm-schema</li>
+</ul>
 <h2 id="mappings">Mappings</h2>
 <table>
 <thead>
@@ -455,7 +477,7 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>kb_cdm:description</td>
+<td>dcterms:description</td>
 </tr>
 <tr>
 <td>native</td>
@@ -467,12 +489,16 @@
 <details>
 
 <pre><code class="language-yaml">name: description
+from_schema: https://github.com/kbase/cdm-schema
+rank: 1000
+slot_uri: dcterms:description
 alias: description
 domain_of:
 - Name
 - Identifier
 - NamedThing
 - Protein
+- repair_action
 range: string
 
 </code></pre>

@@ -408,20 +408,20 @@ attributes:
     name: source
     description: The source of the name.
     from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
     domain_of:
     - Name
     - Identifier
+    - term_association
   description:
     name: description
     description: Brief description of the name and/or its relationship to the entity.
     from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
     domain_of:
     - Name
     - Identifier
     - NamedThing
     - Protein
+    - repair_action
 
 </code></pre>
 </details>
@@ -450,18 +450,17 @@ attributes:
     name: source
     description: The source of the name.
     from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
     alias: source
     owner: Name
     domain_of:
     - Name
     - Identifier
+    - term_association
     range: string
   description:
     name: description
     description: Brief description of the name and/or its relationship to the entity.
     from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
     alias: description
     owner: Name
     domain_of:
@@ -469,6 +468,7 @@ attributes:
     - Identifier
     - NamedThing
     - Protein
+    - repair_action
     range: string
 
 </code></pre>
