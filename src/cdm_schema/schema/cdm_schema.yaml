@@ -1,12 +1,12 @@
 # yaml-language-server: $schema=https://linkml.io/linkml-model/linkml_model/jsonschema/meta.schema.json
-id: https://github.com/kbase/cdm_schema
+id: https://github.com/kbase/cdm-schema
 name: kbase_cdm
 description: Schema for KBase CDM
 version: 0.0.1
 prefixes:
-  kb_cdm: http://kbase.github.io/cdm_schema/
+  kb_cdm: http://kbase.github.io/cdm-schema/
   schema: http://schema.org/
-  linkml: https://w3id.org/linkml/types
+  linkml: https://w3id.org/linkml/
   nmdc: https://w3id.org/nmdc/
   semsql: https://w3id.org/semsql/
   ontoassoc: https://w3id.org/oak/association/
