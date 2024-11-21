@@ -218,15 +218,6 @@
       UniqueNamedThing &lt;|-- Feature
         click UniqueNamedThing href "../UniqueNamedThing"
 
-      Feature : alternative_names
-
-
-
-
-    Feature --&gt; "*" Name : alternative_names
-    click Name href "../Name"
-
-
       Feature : cds_phase
 
 
@@ -266,12 +257,12 @@
     click Identifier href "../Identifier"
 
 
-      Feature : name
+      Feature : names
 
 
 
 
-    Feature --&gt; "0..1" Name : name
+    Feature --&gt; "*" Name : names
     click Name href "../Name"
 
 
@@ -389,13 +380,7 @@
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 <tr>
-<td><a href="../name/">name</a></td>
-<td>0..1 <br/> <a href="../Name/">Name</a></td>
-<td></td>
-<td><a href="../NamedThing/">NamedThing</a></td>
-</tr>
-<tr>
-<td><a href="../alternative_names/">alternative_names</a></td>
+<td><a href="../names/">names</a></td>
 <td>* <br/> <a href="../Name/">Name</a></td>
 <td></td>
 <td><a href="../NamedThing/">NamedThing</a></td>
@@ -679,20 +664,11 @@ attributes:
     domain_of:
     - NamedThing
     range: string
-  name:
-    name: name
-    from_schema: https://github.com/kbase/cdm-schema
-    alias: name
-    owner: Feature
-    domain_of:
-    - Name
-    - NamedThing
-    range: Name
-  alternative_names:
-    name: alternative_names
+  names:
+    name: names
     from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
-    alias: alternative_names
+    alias: names
     owner: Feature
     domain_of:
     - NamedThing

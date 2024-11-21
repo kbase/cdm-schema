@@ -165,10 +165,6 @@
          <lastmod>2024-11-21</lastmod>
     </url>
     <url>
-         <loc>https://kbase.github.io/cdm-schema/alternative_names/</loc>
-         <lastmod>2024-11-21</lastmod>
-    </url>
-    <url>
          <loc>https://kbase.github.io/cdm-schema/asm_score/</loc>
          <lastmod>2024-11-21</lastmod>
     </url>
@@ -313,6 +309,10 @@
          <lastmod>2024-11-21</lastmod>
     </url>
     <url>
+         <loc>https://kbase.github.io/cdm-schema/names/</loc>
+         <lastmod>2024-11-21</lastmod>
+    </url>
+    <url>
          <loc>https://kbase.github.io/cdm-schema/outputs/</loc>
          <lastmod>2024-11-21</lastmod>
     </url>
@@ -326,6 +326,10 @@
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/protocol_used/</loc>
+         <lastmod>2024-11-21</lastmod>
+    </url>
+    <url>
+         <loc>https://kbase.github.io/cdm-schema/quality/</loc>
          <lastmod>2024-11-21</lastmod>
     </url>
     <url>

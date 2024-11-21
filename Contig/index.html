@@ -218,15 +218,6 @@
       UniqueNamedThing &lt;|-- Contig
         click UniqueNamedThing href "../UniqueNamedThing"
 
-      Contig : alternative_names
-
-
-
-
-    Contig --&gt; "*" Name : alternative_names
-    click Name href "../Name"
-
-
       Contig : description
 
       Contig : gc_content
@@ -246,12 +237,12 @@
 
       Contig : length
 
-      Contig : name
+      Contig : names
 
 
 
 
-    Contig --&gt; "0..1" Name : name
+    Contig --&gt; "*" Name : names
     click Name href "../Name"
 
 
@@ -312,13 +303,7 @@
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 <tr>
-<td><a href="../name/">name</a></td>
-<td>0..1 <br/> <a href="../Name/">Name</a></td>
-<td></td>
-<td><a href="../NamedThing/">NamedThing</a></td>
-</tr>
-<tr>
-<td><a href="../alternative_names/">alternative_names</a></td>
+<td><a href="../names/">names</a></td>
 <td>* <br/> <a href="../Name/">Name</a></td>
 <td></td>
 <td><a href="../NamedThing/">NamedThing</a></td>
@@ -437,20 +422,11 @@ attributes:
     domain_of:
     - NamedThing
     range: string
-  name:
-    name: name
-    from_schema: https://github.com/kbase/cdm-schema
-    alias: name
-    owner: Contig
-    domain_of:
-    - Name
-    - NamedThing
-    range: Name
-  alternative_names:
-    name: alternative_names
+  names:
+    name: names
     from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
-    alias: alternative_names
+    alias: names
     owner: Contig
     domain_of:
     - NamedThing

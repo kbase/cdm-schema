@@ -226,28 +226,17 @@
         click Event href "../Event"
       NamedThing &lt;|-- Measurement
         click Measurement href "../Measurement"
-      NamedThing &lt;|-- ProcessedMeasurement
-        click ProcessedMeasurement href "../ProcessedMeasurement"
-
-      NamedThing : alternative_names
-
-
-
-
-    NamedThing --&gt; "*" Name : alternative_names
-    click Name href "../Name"
-
 
       NamedThing : description
 
       NamedThing : id
 
-      NamedThing : name
+      NamedThing : names
 
 
 
 
-    NamedThing --&gt; "0..1" Name : name
+    NamedThing --&gt; "*" Name : names
     click Name href "../Name"
 
 
@@ -260,7 +249,6 @@
 <li><a href="../Experiment/">Experiment</a></li>
 <li><a href="../Event/">Event</a></li>
 <li><a href="../Measurement/">Measurement</a></li>
-<li><a href="../ProcessedMeasurement/">ProcessedMeasurement</a></li>
 </ul>
 </li>
 </ul>
@@ -282,13 +270,7 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../name/">name</a></td>
-<td>0..1 <br/> <a href="../Name/">Name</a></td>
-<td></td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../alternative_names/">alternative_names</a></td>
+<td><a href="../names/">names</a></td>
 <td>* <br/> <a href="../Name/">Name</a></td>
 <td></td>
 <td>direct</td>
@@ -338,15 +320,8 @@ attributes:
     from_schema: https://github.com/kbase/cdm-schema
     domain_of:
     - NamedThing
-  name:
-    name: name
-    from_schema: https://github.com/kbase/cdm-schema
-    domain_of:
-    - Name
-    - NamedThing
-    range: Name
-  alternative_names:
-    name: alternative_names
+  names:
+    name: names
     from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     domain_of:
@@ -379,20 +354,11 @@ attributes:
     domain_of:
     - NamedThing
     range: string
-  name:
-    name: name
-    from_schema: https://github.com/kbase/cdm-schema
-    alias: name
-    owner: NamedThing
-    domain_of:
-    - Name
-    - NamedThing
-    range: Name
-  alternative_names:
-    name: alternative_names
+  names:
+    name: names
     from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
-    alias: alternative_names
+    alias: names
     owner: NamedThing
     domain_of:
     - NamedThing

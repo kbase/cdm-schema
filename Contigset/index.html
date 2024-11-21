@@ -219,15 +219,6 @@
       UniqueNamedThing &lt;|-- Contigset
         click UniqueNamedThing href "../UniqueNamedThing"
 
-      Contigset : alternative_names
-
-
-
-
-    Contigset --&gt; "*" Name : alternative_names
-    click Name href "../Name"
-
-
       Contigset : asm_score
 
       Contigset : checkm2_completeness
@@ -275,12 +266,12 @@
 
       Contigset : n_scaffolds
 
-      Contigset : name
+      Contigset : names
 
 
 
 
-    Contigset --&gt; "0..1" Name : name
+    Contigset --&gt; "*" Name : names
     click Name href "../Name"
 
 
@@ -513,13 +504,7 @@
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 <tr>
-<td><a href="../name/">name</a></td>
-<td>0..1 <br/> <a href="../Name/">Name</a></td>
-<td></td>
-<td><a href="../NamedThing/">NamedThing</a></td>
-</tr>
-<tr>
-<td><a href="../alternative_names/">alternative_names</a></td>
+<td><a href="../names/">names</a></td>
 <td>* <br/> <a href="../Name/">Name</a></td>
 <td></td>
 <td><a href="../NamedThing/">NamedThing</a></td>
@@ -1128,20 +1113,11 @@ attributes:
     domain_of:
     - NamedThing
     range: string
-  name:
-    name: name
-    from_schema: https://github.com/kbase/cdm-schema
-    alias: name
-    owner: Contigset
-    domain_of:
-    - Name
-    - NamedThing
-    range: Name
-  alternative_names:
-    name: alternative_names
+  names:
+    name: names
     from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
-    alias: alternative_names
+    alias: names
     owner: Contigset
     domain_of:
     - NamedThing

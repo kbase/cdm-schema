@@ -8,14 +8,14 @@
       
       
       
-        <link rel="canonical" href="https://kbase.github.io/cdm-schema/alternative_names/">
+        <link rel="canonical" href="https://kbase.github.io/cdm-schema/names/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-8.5.10">
     
     
       
-        <title>Slot: alternative_names - cdm-schema</title>
+        <title>Slot: names - cdm-schema</title>
       
     
     
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-alternative_names" class="md-skip">
+        <a href="#slot-names" class="md-skip">
           Skip to content
         </a>
       
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: alternative_names
+              Slot: names
             
           </span>
         </div>
@@ -345,14 +345,14 @@
                 
                   
 
-  <a href="https://github.com/kbase/cdm-schema/edit/master/docs/alternative_names.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/kbase/cdm-schema/edit/master/docs/names.md" title="Edit this page" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-<h1 id="slot-alternative_names">Slot: alternative_names</h1>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/alternative_names">kb_cdm:alternative_names</a></p>
+<h1 id="slot-names">Slot: names</h1>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/names">kb_cdm:names</a></p>
 <!-- no inheritance hierarchy -->
 
 <h2 id="applicable-classes">Applicable Classes</h2>
@@ -366,42 +366,7 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../UniqueNamedThing/">UniqueNamedThing</a></td>
-<td>Represents an entity with a hash value generated from combining its unique at...</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../Event/">Event</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Feature/">Feature</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Experiment/">Experiment</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ProcessedMeasurement/">ProcessedMeasurement</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Sample/">Sample</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Contigset/">Contigset</a></td>
-<td>A set of contigs; may also be called a genome</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Protocol/">Protocol</a></td>
 <td></td>
 <td>no</td>
 </tr>
@@ -411,12 +376,17 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../NamedThing/">NamedThing</a></td>
+<td><a href="../Measurement/">Measurement</a></td>
 <td></td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Measurement/">Measurement</a></td>
+<td><a href="../UniqueNamedThing/">UniqueNamedThing</a></td>
+<td>Represents an entity with a hash value generated from combining its unique at...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Protocol/">Protocol</a></td>
 <td></td>
 <td>no</td>
 </tr>
@@ -426,7 +396,37 @@
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../Contigset/">Contigset</a></td>
+<td>A set of contigs; may also be called a genome</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../TranscribedFeature/">TranscribedFeature</a></td>
+<td>An entity generated when a feature is transcribed</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Experiment/">Experiment</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Feature/">Feature</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Protein/">Protein</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ProcessedMeasurement/">ProcessedMeasurement</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../NamedThing/">NamedThing</a></td>
 <td></td>
 <td>no</td>
 </tr>
@@ -436,7 +436,7 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Protein/">Protein</a></td>
+<td><a href="../Sample/">Sample</a></td>
 <td></td>
 <td>no</td>
 </tr>
@@ -467,21 +467,21 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>kb_cdm:alternative_names</td>
+<td>kb_cdm:names</td>
 </tr>
 <tr>
 <td>native</td>
-<td>kb_cdm:alternative_names</td>
+<td>kb_cdm:names</td>
 </tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: alternative_names
+<pre><code class="language-yaml">name: names
 from_schema: https://github.com/kbase/cdm-schema
 rank: 1000
-alias: alternative_names
+alias: names
 owner: NamedThing
 domain_of:
 - NamedThing

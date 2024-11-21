@@ -223,15 +223,6 @@
       NamedThingWithId &lt;|-- Protocol
         click NamedThingWithId href "../NamedThingWithId"
 
-      Protocol : alternative_names
-
-
-
-
-    Protocol --&gt; "*" Name : alternative_names
-    click Name href "../Name"
-
-
       Protocol : description
 
       Protocol : id
@@ -247,12 +238,12 @@
 
       Protocol : inputs
 
-      Protocol : name
+      Protocol : names
 
 
 
 
-    Protocol --&gt; "0..1" Name : name
+    Protocol --&gt; "*" Name : names
     click Name href "../Name"
 
 
@@ -314,13 +305,7 @@
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 <tr>
-<td><a href="../name/">name</a></td>
-<td>0..1 <br/> <a href="../Name/">Name</a></td>
-<td></td>
-<td><a href="../NamedThing/">NamedThing</a></td>
-</tr>
-<tr>
-<td><a href="../alternative_names/">alternative_names</a></td>
+<td><a href="../names/">names</a></td>
 <td>* <br/> <a href="../Name/">Name</a></td>
 <td></td>
 <td><a href="../NamedThing/">NamedThing</a></td>
@@ -352,6 +337,12 @@
 </tr>
 <tr>
 <td><a href="../Measurement/">Measurement</a></td>
+<td><a href="../protocol_used/">protocol_used</a></td>
+<td>range</td>
+<td><a href="./">Protocol</a></td>
+</tr>
+<tr>
+<td><a href="../ProcessedMeasurement/">ProcessedMeasurement</a></td>
 <td><a href="../protocol_used/">protocol_used</a></td>
 <td>range</td>
 <td><a href="./">Protocol</a></td>
@@ -467,20 +458,11 @@ attributes:
     domain_of:
     - NamedThing
     range: string
-  name:
-    name: name
-    from_schema: https://github.com/kbase/cdm-schema
-    alias: name
-    owner: Protocol
-    domain_of:
-    - Name
-    - NamedThing
-    range: Name
-  alternative_names:
-    name: alternative_names
+  names:
+    name: names
     from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
-    alias: alternative_names
+    alias: names
     owner: Protocol
     domain_of:
     - NamedThing

@@ -218,13 +218,9 @@
       NamedThing &lt;|-- Measurement
         click NamedThing href "../NamedThing"
 
-      Measurement : alternative_names
 
-
-
-
-    Measurement --&gt; "*" Name : alternative_names
-    click Name href "../Name"
+      Measurement &lt;|-- ProcessedMeasurement
+        click ProcessedMeasurement href "../ProcessedMeasurement"
 
 
       Measurement : description
@@ -240,12 +236,12 @@
 
       Measurement : id
 
-      Measurement : name
+      Measurement : names
 
 
 
 
-    Measurement --&gt; "0..1" Name : name
+    Measurement --&gt; "*" Name : names
     click Name href "../Name"
 
 
@@ -263,7 +259,10 @@
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><a href="../NamedThing/">NamedThing</a><ul>
-<li><strong>Measurement</strong></li>
+<li><strong>Measurement</strong><ul>
+<li><a href="../ProcessedMeasurement/">ProcessedMeasurement</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -297,13 +296,7 @@
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 <tr>
-<td><a href="../name/">name</a></td>
-<td>0..1 <br/> <a href="../Name/">Name</a></td>
-<td></td>
-<td><a href="../NamedThing/">NamedThing</a></td>
-</tr>
-<tr>
-<td><a href="../alternative_names/">alternative_names</a></td>
+<td><a href="../names/">names</a></td>
 <td>* <br/> <a href="../Name/">Name</a></td>
 <td></td>
 <td><a href="../NamedThing/">NamedThing</a></td>
@@ -397,20 +390,11 @@ attributes:
     domain_of:
     - NamedThing
     range: string
-  name:
-    name: name
-    from_schema: https://github.com/kbase/cdm-schema
-    alias: name
-    owner: Measurement
-    domain_of:
-    - Name
-    - NamedThing
-    range: Name
-  alternative_names:
-    name: alternative_names
+  names:
+    name: names
     from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
-    alias: alternative_names
+    alias: names
     owner: Measurement
     domain_of:
     - NamedThing

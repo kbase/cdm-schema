@@ -223,15 +223,6 @@
       NamedThing &lt;|-- Event
         click NamedThing href "../NamedThing"
 
-      Event : alternative_names
-
-
-
-
-    Event --&gt; "*" Name : alternative_names
-    click Name href "../Name"
-
-
       Event : conditions
 
       Event : created_at
@@ -242,12 +233,12 @@
 
       Event : location
 
-      Event : name
+      Event : names
 
 
 
 
-    Event --&gt; "0..1" Name : name
+    Event --&gt; "*" Name : names
     click Name href "../Name"
 
 
@@ -296,13 +287,7 @@
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 <tr>
-<td><a href="../name/">name</a></td>
-<td>0..1 <br/> <a href="../Name/">Name</a></td>
-<td></td>
-<td><a href="../NamedThing/">NamedThing</a></td>
-</tr>
-<tr>
-<td><a href="../alternative_names/">alternative_names</a></td>
+<td><a href="../names/">names</a></td>
 <td>* <br/> <a href="../Name/">Name</a></td>
 <td></td>
 <td><a href="../NamedThing/">NamedThing</a></td>
@@ -328,6 +313,12 @@
 <tbody>
 <tr>
 <td><a href="../Measurement/">Measurement</a></td>
+<td><a href="../event/">event</a></td>
+<td>range</td>
+<td><a href="./">Event</a></td>
+</tr>
+<tr>
+<td><a href="../ProcessedMeasurement/">ProcessedMeasurement</a></td>
 <td><a href="../event/">event</a></td>
 <td>range</td>
 <td><a href="./">Event</a></td>
@@ -428,20 +419,11 @@ attributes:
     domain_of:
     - NamedThing
     range: string
-  name:
-    name: name
-    from_schema: https://github.com/kbase/cdm-schema
-    alias: name
-    owner: Event
-    domain_of:
-    - Name
-    - NamedThing
-    range: Name
-  alternative_names:
-    name: alternative_names
+  names:
+    name: names
     from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
-    alias: alternative_names
+    alias: names
     owner: Event
     domain_of:
     - NamedThing
