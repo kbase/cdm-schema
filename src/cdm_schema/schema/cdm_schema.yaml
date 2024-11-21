@@ -241,8 +241,8 @@ classes:
         description: Estimate of the contamination of a contigset (MAG or genome), estimated by CheckM2 tool
 
 # e.g. transcripts
-  TranscribedFeature:
-    description: An entity generated when a feature is transcribed.
+  EncodedFeature:
+    description: An entity generated from a feature.
     is_a: UniqueNamedThing
     attributes:
       type: # varchar [not null]
