@@ -3,10 +3,22 @@ site_name: "cdm-schema"
 theme:
   name: material
   palette:
-   scheme: slate
-   primary: indigo
+    # Palette toggle for light mode
+    - scheme: default
+      primary: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - scheme: slate
+      primary: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
   features:
     - content.tabs.link
+
 plugins:
   - search
   - mermaid2
