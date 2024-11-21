@@ -254,8 +254,8 @@
 
 
 
-    Feature --&gt; "*" TranscribedFeature : encodes
-    click TranscribedFeature href "../TranscribedFeature"
+    Feature --&gt; "*" EncodedFeature : encodes
+    click EncodedFeature href "../EncodedFeature"
 
 
       Feature : end
@@ -334,7 +334,7 @@
 <tbody>
 <tr>
 <td><a href="../encodes/">encodes</a></td>
-<td>* <br/> <a href="../TranscribedFeature/">TranscribedFeature</a></td>
+<td>* <br/> <a href="../EncodedFeature/">EncodedFeature</a></td>
 <td>Known or predicted transcription products from this feature</td>
 <td>direct</td>
 </tr>
@@ -442,7 +442,7 @@
 <td><a href="./">Feature</a></td>
 </tr>
 <tr>
-<td><a href="../TranscribedFeature/">TranscribedFeature</a></td>
+<td><a href="../EncodedFeature/">EncodedFeature</a></td>
 <td><a href="../encoded_by/">encoded_by</a></td>
 <td>range</td>
 <td><a href="./">Feature</a></td>
@@ -507,7 +507,7 @@ attributes:
     rank: 1000
     domain_of:
     - Feature
-    range: TranscribedFeature
+    range: EncodedFeature
     multivalued: true
   data_source:
     name: data_source
@@ -532,7 +532,7 @@ attributes:
     aliases:
     - feature type
     domain_of:
-    - TranscribedFeature
+    - EncodedFeature
     - Feature
     range: uriorcurie
     pattern: ^SO:\d+$
@@ -626,7 +626,7 @@ attributes:
     owner: Feature
     domain_of:
     - Feature
-    range: TranscribedFeature
+    range: EncodedFeature
     multivalued: true
   data_source:
     name: data_source
@@ -658,7 +658,7 @@ attributes:
     alias: type
     owner: Feature
     domain_of:
-    - TranscribedFeature
+    - EncodedFeature
     - Feature
     range: uriorcurie
     pattern: ^SO:\d+$
@@ -772,7 +772,6 @@ attributes:
     - owl_reified_axiom
     - owl_axiom
     - owl_axiom_annotation
-    - term_association
     range: string
   names:
     name: names
@@ -796,7 +795,6 @@ attributes:
     - Identifier
     - NamedThing
     - Protein
-    - repair_action
     range: string
 
 </code></pre>

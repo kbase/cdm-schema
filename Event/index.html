@@ -270,7 +270,7 @@
 </tr>
 <tr>
 <td><a href="../conditions/">conditions</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>* <br/> <a href="../String/">String</a></td>
 <td></td>
 <td>direct</td>
 </tr>
@@ -369,6 +369,7 @@ attributes:
     rank: 1000
     domain_of:
     - Event
+    multivalued: true
   created_at:
     name: created_at
     from_schema: https://github.com/kbase/cdm-schema
@@ -404,6 +405,7 @@ attributes:
     domain_of:
     - Event
     range: string
+    multivalued: true
   created_at:
     name: created_at
     from_schema: https://github.com/kbase/cdm-schema
@@ -426,7 +428,6 @@ attributes:
     - owl_reified_axiom
     - owl_axiom
     - owl_axiom_annotation
-    - term_association
     range: string
   names:
     name: names
@@ -450,7 +451,6 @@ attributes:
     - Identifier
     - NamedThing
     - Protein
-    - repair_action
     range: string
 
 </code></pre>

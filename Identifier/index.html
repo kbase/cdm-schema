@@ -212,7 +212,6 @@
 </a>
 <h1 id="class-identifier">Class: Identifier</h1>
 <p><em>An external identifier for an entity. This should be a URI or CURIE.</em></p>
-<p>__</p>
 <p>URI: <a href="http://kbase.github.io/cdm-schema/Identifier">kb_cdm:Identifier</a></p>
 <div class="mermaid"> classDiagram
     class Identifier
@@ -299,7 +298,7 @@
 <td><a href="./">Identifier</a></td>
 </tr>
 <tr>
-<td><a href="../TranscribedFeature/">TranscribedFeature</a></td>
+<td><a href="../EncodedFeature/">EncodedFeature</a></td>
 <td><a href="../identifiers/">identifiers</a></td>
 <td>range</td>
 <td><a href="./">Identifier</a></td>
@@ -359,9 +358,7 @@
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: Identifier
-description: 'An external identifier for an entity. This should be a URI or CURIE.
-
-  '
+description: An external identifier for an entity. This should be a URI or CURIE.
 from_schema: https://github.com/kbase/cdm-schema
 attributes:
   identifier:
@@ -381,7 +378,6 @@ attributes:
     domain_of:
     - Name
     - Identifier
-    - term_association
   description:
     name: description
     description: Brief description of the identifier and/or its relationship to the
@@ -392,16 +388,13 @@ attributes:
     - Identifier
     - NamedThing
     - Protein
-    - repair_action
 
 </code></pre>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: Identifier
-description: 'An external identifier for an entity. This should be a URI or CURIE.
-
-  '
+description: An external identifier for an entity. This should be a URI or CURIE.
 from_schema: https://github.com/kbase/cdm-schema
 attributes:
   identifier:
@@ -425,7 +418,6 @@ attributes:
     domain_of:
     - Name
     - Identifier
-    - term_association
     range: string
   description:
     name: description
@@ -439,7 +431,6 @@ attributes:
     - Identifier
     - NamedThing
     - Protein
-    - repair_action
     range: string
 
 </code></pre>

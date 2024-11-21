@@ -425,10 +425,6 @@
 <td>An external identifier for an entity. This should be a URI or CURIE.</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-</tr>
-<tr>
 <td><a href="IsReport/">IsReport</a></td>
 <td>Used to describe classes/views that have a reporting function</td>
 </tr>
@@ -437,12 +433,8 @@
 <td>The name or label for an entity. This may be a primary name, alternative name, synonym, acronym, or any other label used to refer to an entity.</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-</tr>
-<tr>
 <td><a href="NamedThing/">NamedThing</a></td>
-<td>None</td>
+<td>Abstract class to represent things with names.</td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Event/">Event</a></td>
@@ -462,7 +454,7 @@
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="NamedThingWithId/">NamedThingWithId</a></td>
-<td>None</td>
+<td>Abstract class to represent things with names and identifiers.</td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Project/">Project</a></td>
@@ -489,16 +481,16 @@
 <td>A set of contigs; may also be called a genome.</td>
 </tr>
 <tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="EncodedFeature/">EncodedFeature</a></td>
+<td>An entity generated from a feature.</td>
+</tr>
+<tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Feature/">Feature</a></td>
 <td>A feature localized to an interval along a contig.</td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Protein/">Protein</a></td>
 <td>None</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="TranscribedFeature/">TranscribedFeature</a></td>
-<td>An entity generated when a feature is transcribed.</td>
 </tr>
 <tr>
 <td><a href="Node/">Node</a></td>
@@ -645,32 +637,24 @@
 <td>Composition of subClassOf and SomeValuesFrom</td>
 </tr>
 <tr>
+<td><a href="PositiveOrNegativeAssociation/">PositiveOrNegativeAssociation</a></td>
+<td>None</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Association/">Association</a></td>
+<td>A generic association between a thing (subject) and another thing (object).</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="NegatedAssociation/">NegatedAssociation</a></td>
+<td>A negated association between a thing (subject) and another thing (object).</td>
+</tr>
+<tr>
 <td><a href="Prefix/">Prefix</a></td>
 <td>Maps CURIEs to URIs</td>
 </tr>
 <tr>
-<td><a href="Problem/">Problem</a></td>
-<td>Represents an instance of a problem pertaining to conformance to OBO guidelines</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="AllProblems/">AllProblems</a></td>
-<td>None</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="LexicalProblem/">LexicalProblem</a></td>
-<td>a problem with the textual value of an annotation property</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="NodeWithTwoLabelsProblem/">NodeWithTwoLabelsProblem</a></td>
-<td>None</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="PropertyUsedWithDatatypeValuesAndObjects/">PropertyUsedWithDatatypeValuesAndObjects</a></td>
-<td>A problem in which the same property is used two two different ways, one in which the range is a literal value, the other where it is an object.</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="TrailingWhitespaceProblem/">TrailingWhitespaceProblem</a></td>
-<td>None</td>
+<td><a href="PropertyValue/">PropertyValue</a></td>
+<td>A generic tag-value that can be associated with an association.</td>
 </tr>
 <tr>
 <td><a href="RdfLevelSummaryStatistic/">RdfLevelSummaryStatistic</a></td>
@@ -753,8 +737,8 @@
 <td>None</td>
 </tr>
 <tr>
-<td><a href="RepairAction/">RepairAction</a></td>
-<td>Represents an action that needs to be taken to repair a problem</td>
+<td><a href="RollupGroup/">RollupGroup</a></td>
+<td>None</td>
 </tr>
 <tr>
 <td><a href="Statements/">Statements</a></td>
@@ -881,10 +865,6 @@
 <td>None</td>
 </tr>
 <tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="OntologyStatusStatement/">OntologyStatusStatement</a></td>
-<td>None</td>
-</tr>
-<tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="RdfsLabelStatement/">RdfsLabelStatement</a></td>
 <td>A statement that connects a node to a human-readable label</td>
 </tr>
@@ -924,10 +904,6 @@
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="RdfRestTransitiveStatement/">RdfRestTransitiveStatement</a></td>
 <td>None</td>
 </tr>
-<tr>
-<td><a href="TermAssociation/">TermAssociation</a></td>
-<td>A minimal datamodel for relating a subject entity to an object term</td>
-</tr>
 </tbody>
 </table>
 <h2 id="slots">Slots</h2>
@@ -939,6 +915,10 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><a href="aggregator_knowledge_source/">aggregator_knowledge_source</a></td>
+<td>The knowledge source that aggregated the association</td>
+</tr>
 <tr>
 <td><a href="anchor_object/">anchor_object</a></td>
 <td></td>
@@ -974,6 +954,22 @@
 <tr>
 <td><a href="asm_score/">asm_score</a></td>
 <td>A composite score for comparing contigset quality</td>
+</tr>
+<tr>
+<td><a href="association_object/">association_object</a></td>
+<td>An ontology entity that is associated with the subject</td>
+</tr>
+<tr>
+<td><a href="association_predicate/">association_predicate</a></td>
+<td>The type of relationship between the subject and object</td>
+</tr>
+<tr>
+<td><a href="association_subject/">association_subject</a></td>
+<td>The thing which the association is about</td>
+</tr>
+<tr>
+<td><a href="associations/">associations</a></td>
+<td>A collection of associations</td>
 </tr>
 <tr>
 <td><a href="axiom_datatype/">axiom_datatype</a></td>
@@ -1012,6 +1008,22 @@
 <td>Estimate of the contamination of a contigset (MAG or genome), estimated by Ch...</td>
 </tr>
 <tr>
+<td><a href="closure_delta/">closure_delta</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="closure_information_content_delta/">closure_information_content_delta</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="closure_predicates/">closure_predicates</a></td>
+<td>The set of predicates used to determine if the new association object is a sp...</td>
+</tr>
+<tr>
+<td><a href="comments/">comments</a></td>
+<td>Comments about the association</td>
+</tr>
+<tr>
 <td><a href="conditions/">conditions</a></td>
 <td></td>
 </tr>
@@ -1024,12 +1036,20 @@
 <td>The contigs in this contigset</td>
 </tr>
 <tr>
+<td><a href="core_triple/">core_triple</a></td>
+<td>A grouping slot for the core subject-predicate-object triple</td>
+</tr>
+<tr>
 <td><a href="count_value/">count_value</a></td>
 <td></td>
 </tr>
 <tr>
 <td><a href="created_at/">created_at</a></td>
 <td></td>
+</tr>
+<tr>
+<td><a href="creation_date/">creation_date</a></td>
+<td>The date the association was created</td>
 </tr>
 <tr>
 <td><a href="ctg_L50/">ctg_L50</a></td>
@@ -1068,8 +1088,20 @@
 <td>the rdf datatype of the value, for example, xsd:string</td>
 </tr>
 <tr>
+<td><a href="date/">date</a></td>
+<td>The date the association was created or last updated</td>
+</tr>
+<tr>
+<td><a href="denormalized_slot/">denormalized_slot</a></td>
+<td>denormalized slots are for models that follow a denormalized data model</td>
+</tr>
+<tr>
 <td><a href="description/">description</a></td>
 <td></td>
+</tr>
+<tr>
+<td><a href="diff_slot/">diff_slot</a></td>
+<td>A mixin for any paired slot that pertains to an association diff</td>
 </tr>
 <tr>
 <td><a href="e_value/">e_value</a></td>
@@ -1136,6 +1168,10 @@
 <td></td>
 </tr>
 <tr>
+<td><a href="group_object/">group_object</a></td>
+<td>An ontology entity that is the ancestor of the objects in the group's</td>
+</tr>
+<tr>
 <td><a href="has_participant/">has_participant</a></td>
 <td>Participants in an experiment</td>
 </tr>
@@ -1145,7 +1181,7 @@
 </tr>
 <tr>
 <td><a href="id/">id</a></td>
-<td>Unique internal identifier for an entity</td>
+<td>An identifier for an element</td>
 </tr>
 <tr>
 <td><a href="identifier/">identifier</a></td>
@@ -1160,16 +1196,28 @@
 <td>The inputs for a protocol; may be software parameters, experimental reagents,...</td>
 </tr>
 <tr>
+<td><a href="is_creation/">is_creation</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="is_deletion/">is_deletion</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="is_generalization/">is_generalization</a></td>
+<td>True if the association was inferred to become more general (based on closure...</td>
+</tr>
+<tr>
+<td><a href="is_migration/">is_migration</a></td>
+<td>if the object (e</td>
+</tr>
+<tr>
+<td><a href="is_specialization/">is_specialization</a></td>
+<td>True if the association was inferred to become more specific (based on closur...</td>
+</tr>
+<tr>
 <td><a href="label/">label</a></td>
 <td>A label for an element</td>
-</tr>
-<tr>
-<td><a href="label1/">label1</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="label2/">label2</a></td>
-<td></td>
 </tr>
 <tr>
 <td><a href="language/">language</a></td>
@@ -1188,6 +1236,10 @@
 <td></td>
 </tr>
 <tr>
+<td><a href="modification_date/">modification_date</a></td>
+<td>The date the association was last modified</td>
+</tr>
+<tr>
 <td><a href="n_contigs/">n_contigs</a></td>
 <td>Total number of contigs</td>
 </tr>
@@ -1204,12 +1256,68 @@
 <td>Names, alternative names, and synonyms for an entity</td>
 </tr>
 <tr>
+<td><a href="negated/">negated</a></td>
+<td>True if the association is negated - i</td>
+</tr>
+<tr>
+<td><a href="new_date/">new_date</a></td>
+<td>The date of the new association</td>
+</tr>
+<tr>
+<td><a href="new_object/">new_object</a></td>
+<td>The object (e</td>
+</tr>
+<tr>
+<td><a href="new_predicate/">new_predicate</a></td>
+<td>If the association diff is a change in predicate, this is the predicate on th...</td>
+</tr>
+<tr>
 <td><a href="object/">object</a></td>
 <td></td>
 </tr>
 <tr>
+<td><a href="object_closure/">object_closure</a></td>
+<td>The set of objects that are related to the object of the association via the ...</td>
+</tr>
+<tr>
+<td><a href="object_closure_label/">object_closure_label</a></td>
+<td>The set of objects that are related to the object of the association via the ...</td>
+</tr>
+<tr>
+<td><a href="object_label/">object_label</a></td>
+<td>The label of the ontology entity that is associated with the subject</td>
+</tr>
+<tr>
+<td><a href="old_date/">old_date</a></td>
+<td>The date of the old association</td>
+</tr>
+<tr>
+<td><a href="old_object/">old_object</a></td>
+<td>The object (e</td>
+</tr>
+<tr>
+<td><a href="old_object_obsolete/">old_object_obsolete</a></td>
+<td>if the object (e</td>
+</tr>
+<tr>
+<td><a href="old_predicate/">old_predicate</a></td>
+<td>If the association diff is a change in predicate, this is the predicate on th...</td>
+</tr>
+<tr>
 <td><a href="on_property/">on_property</a></td>
 <td></td>
+</tr>
+<tr>
+<td><a href="original_object/">original_object</a></td>
+<td>The original object of the association prior to normalization</td>
+</tr>
+<tr>
+<td><a href="original_predicate/">original_predicate</a></td>
+<td>The original subject of the association prior to normalization</td>
+</tr>
+<tr>
+<td><a href="original_subject/">original_subject</a></td>
+<td>The original subject of the association prior to normalization</td>
 </tr>
 <tr>
 <td><a href="outputs/">outputs</a></td>
@@ -1228,8 +1336,20 @@
 <td></td>
 </tr>
 <tr>
+<td><a href="predicate_label/">predicate_label</a></td>
+<td>The label of the type of relationship between the subject and object</td>
+</tr>
+<tr>
 <td><a href="prefix/">prefix</a></td>
 <td>A standardized prefix such as 'GO' or 'rdf' or 'FlyBase'</td>
+</tr>
+<tr>
+<td><a href="primary_knowledge_source/">primary_knowledge_source</a></td>
+<td>The primary knowledge source for the association</td>
+</tr>
+<tr>
+<td><a href="property_values/">property_values</a></td>
+<td>Arbitrary key-value pairs with additional information about the association</td>
 </tr>
 <tr>
 <td><a href="protocol_used/">protocol_used</a></td>
@@ -1238,6 +1358,18 @@
 <tr>
 <td><a href="publication/">publication</a></td>
 <td></td>
+</tr>
+<tr>
+<td><a href="publication_is_added/">publication_is_added</a></td>
+<td>True if the publication was not present in the old association set (and prese...</td>
+</tr>
+<tr>
+<td><a href="publication_is_deleted/">publication_is_deleted</a></td>
+<td>True if the publication is not present in the new association set (and presen...</td>
+</tr>
+<tr>
+<td><a href="publications/">publications</a></td>
+<td>The publications that support the association</td>
 </tr>
 <tr>
 <td><a href="quality/">quality</a></td>
@@ -1316,8 +1448,32 @@
 <td>The strand of the feature</td>
 </tr>
 <tr>
+<td><a href="sub_groups/">sub_groups</a></td>
+<td>Container for groups within a rollup group</td>
+</tr>
+<tr>
 <td><a href="subject/">subject</a></td>
 <td></td>
+</tr>
+<tr>
+<td><a href="subject_closure/">subject_closure</a></td>
+<td>The set of subjects that are related to the subject of the association via th...</td>
+</tr>
+<tr>
+<td><a href="subject_closure_label/">subject_closure_label</a></td>
+<td>The set of subjects that are related to the subject of the association via th...</td>
+</tr>
+<tr>
+<td><a href="subject_label/">subject_label</a></td>
+<td>The label of the thing which the association is about</td>
+</tr>
+<tr>
+<td><a href="summary_group/">summary_group</a></td>
+<td>The field used to group an association diff summary</td>
+</tr>
+<tr>
+<td><a href="supporting_objects/">supporting_objects</a></td>
+<td>The objects that support the association</td>
 </tr>
 <tr>
 <td><a href="type/">type</a></td>

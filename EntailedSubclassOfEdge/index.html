@@ -265,19 +265,19 @@
 <td><a href="../subject/">subject</a></td>
 <td>0..1 <br/> <a href="../ClassNode/">ClassNode</a></td>
 <td>The subclass element of the triple</td>
-<td><a href="../RelationGraphConstruct/">RelationGraphConstruct</a>, <a href="../EntailedEdge/">EntailedEdge</a></td>
+<td><a href="../EntailedEdge/">EntailedEdge</a>, <a href="../RelationGraphConstruct/">RelationGraphConstruct</a></td>
 </tr>
 <tr>
 <td><a href="../predicate/">predicate</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td></td>
-<td><a href="../RelationGraphConstruct/">RelationGraphConstruct</a>, <a href="../EntailedEdge/">EntailedEdge</a></td>
+<td><a href="../EntailedEdge/">EntailedEdge</a>, <a href="../RelationGraphConstruct/">RelationGraphConstruct</a></td>
 </tr>
 <tr>
 <td><a href="../object/">object</a></td>
 <td>0..1 <br/> <a href="../ClassNode/">ClassNode</a></td>
 <td>The superclass element of the triple</td>
-<td><a href="../RelationGraphConstruct/">RelationGraphConstruct</a>, <a href="../EntailedEdge/">EntailedEdge</a></td>
+<td><a href="../EntailedEdge/">EntailedEdge</a>, <a href="../RelationGraphConstruct/">RelationGraphConstruct</a></td>
 </tr>
 </tbody>
 </table>
@@ -358,8 +358,6 @@ attributes:
     - owl_complex_axiom
     - owl_subclass_of_some_values_from
     - owl_equivalent_to_intersection_member
-    - repair_action
-    - problem
     - relation_graph_construct
     - edge
     - subgraph_query
@@ -371,7 +369,6 @@ attributes:
     - entailed_edge
     - entailed_edge_cycle
     - transitive_edge
-    - term_association
     relational_role: SUBJECT
     range: class_node
   predicate:
@@ -385,7 +382,6 @@ attributes:
     - statements
     - owl_complex_axiom
     - owl_subclass_of_some_values_from
-    - problem
     - relation_graph_construct
     - edge
     - subgraph_query
@@ -397,7 +393,6 @@ attributes:
     - entailed_edge
     - entailed_edge_cycle
     - transitive_edge
-    - term_association
     relational_role: PREDICATE
     range: string
   object:
@@ -424,7 +419,6 @@ attributes:
     - entailed_edge
     - entailed_edge_cycle
     - transitive_edge
-    - term_association
     relational_role: OBJECT
     range: class_node
 classification_rules:

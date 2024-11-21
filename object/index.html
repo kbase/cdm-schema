@@ -364,6 +364,8 @@
 <ul>
 <li><strong>object</strong><ul>
 <li><a href="../annotation_object/">annotation_object</a></li>
+<li><a href="../old_object/">old_object</a> [ <a href="../diff_slot/">diff_slot</a>]</li>
+<li><a href="../new_object/">new_object</a> [ <a href="../diff_slot/">diff_slot</a>]</li>
 </ul>
 </li>
 </ul>
@@ -378,88 +380,13 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../AxiomDbxrefAnnotation/">AxiomDbxrefAnnotation</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../NodeToNodeStatement/">NodeToNodeStatement</a></td>
-<td>A statement where object is non-null and value is not populated</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../HasExactMatchStatement/">HasExactMatchStatement</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../OwlEquivalentClassStatement/">OwlEquivalentClassStatement</a></td>
-<td>A statement that connects two class_nodes where both classes are equivalent</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../OwlReifiedAxiom/">OwlReifiedAxiom</a></td>
-<td>An OWL axiom that has been reified - i</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../HasTextDefinitionStatement/">HasTextDefinitionStatement</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../OntologyStatusStatement/">OntologyStatusStatement</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../RdfsDomainStatement/">RdfsDomainStatement</a></td>
-<td>A statement that connects a property to its domain class</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../SubgraphEdgeByAncestorOrDescendant/">SubgraphEdgeByAncestorOrDescendant</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../SubgraphEdgeByAncestor/">SubgraphEdgeByAncestor</a></td>
-<td>An edge within a subgraph anchored around a set of ancestor terms</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../EntailedEdgeCycle/">EntailedEdgeCycle</a></td>
-<td>An edge that composes with another edge to make a cycle</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Relationship/">Relationship</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../HasNarrowMatchStatement/">HasNarrowMatchStatement</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Contributor/">Contributor</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../EntailedTypeEdge/">EntailedTypeEdge</a></td>
+<td><a href="../RdfsSubpropertyOfStatement/">RdfsSubpropertyOfStatement</a></td>
 <td></td>
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../HasExactSynonymStatement/">HasExactSynonymStatement</a></td>
+<td><a href="../RdfListMemberStatement/">RdfListMemberStatement</a></td>
 <td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../RdfFirstStatement/">RdfFirstStatement</a></td>
-<td>A statement that connects a list to its first element</td>
 <td>no</td>
 </tr>
 <tr>
@@ -468,77 +395,22 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../OwlComplexAxiom/">OwlComplexAxiom</a></td>
-<td>An axiom that is composed of two or more statements</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../EntailedEdge/">EntailedEdge</a></td>
-<td>A relation graph edge that is inferred</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../OwlInverseOfStatement/">OwlInverseOfStatement</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../OwlComplementOfStatement/">OwlComplementOfStatement</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../SubgraphEdgeByChild/">SubgraphEdgeByChild</a></td>
-<td>An edge within a subgraph anchored around a set of child terms</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../OwlImportsStatement/">OwlImportsStatement</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../RdfListMemberStatement/">RdfListMemberStatement</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../RdfTypeStatement/">RdfTypeStatement</a></td>
-<td>A statement that indicates the asserted type of the subject entity</td>
+<td><a href="../OwlSameAsStatement/">OwlSameAsStatement</a></td>
+<td>A statement that connects two individual nodes where both individual are equi...</td>
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../OwlDisjointClassStatement/">OwlDisjointClassStatement</a></td>
+<td><a href="../NodeToNodeStatement/">NodeToNodeStatement</a></td>
+<td>A statement where object is non-null and value is not populated</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../EntailedSubclassOfEdge/">EntailedSubclassOfEdge</a></td>
 <td></td>
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../HasMappingStatement/">HasMappingStatement</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../OwlAxiomAnnotation/">OwlAxiomAnnotation</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../EntailedEdgeSamePredicateCycle/">EntailedEdgeSamePredicateCycle</a></td>
-<td>An entailed_edge_cycle over a single predicate</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../TransitiveEdge/">TransitiveEdge</a></td>
-<td>A relation graph edge that is formed from a chain of one or more edges</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../HasMatchStatement/">HasMatchStatement</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../HasOioSynonymStatement/">HasOioSynonymStatement</a></td>
+<td><a href="../HasSynonymStatement/">HasSynonymStatement</a></td>
 <td></td>
 <td>no</td>
 </tr>
@@ -548,8 +420,28 @@
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../SubgraphEdgeByParent/">SubgraphEdgeByParent</a></td>
+<td>An edge within a subgraph anchored around a set of parent terms</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Creator/">Creator</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../RdfsLabelStatement/">RdfsLabelStatement</a></td>
 <td>A statement that connects a node to a human-readable label</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../NodeToValueStatement/">NodeToValueStatement</a></td>
+<td>A statement where value is non-null and object is not populated</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../SubgraphEdgeByAncestorOrDescendant/">SubgraphEdgeByAncestorOrDescendant</a></td>
+<td></td>
 <td>no</td>
 </tr>
 <tr>
@@ -558,42 +450,52 @@
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../RdfsDomainStatement/">RdfsDomainStatement</a></td>
+<td>A statement that connects a property to its domain class</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../OwlComplementOfStatement/">OwlComplementOfStatement</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../Edge/">Edge</a></td>
 <td>A relation graph edge that connects two entities by a predicate</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../RdfsSubclassOfStatement/">RdfsSubclassOfStatement</a></td>
-<td></td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../NodeToValueStatement/">NodeToValueStatement</a></td>
-<td>A statement where value is non-null and object is not populated</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../RdfListStatement/">RdfListStatement</a></td>
-<td>A statement that is used to represent aspects of RDF lists</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../RdfRestStatement/">RdfRestStatement</a></td>
-<td>A statement that connects a list to its remaining elements</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../HasRelatedSynonymStatement/">HasRelatedSynonymStatement</a></td>
+<td><a href="../AxiomDbxrefAnnotation/">AxiomDbxrefAnnotation</a></td>
 <td></td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../RelationGraphConstruct/">RelationGraphConstruct</a></td>
-<td>A construct used as part of a Relation Graph</td>
+<td><a href="../RdfRestTransitiveStatement/">RdfRestTransitiveStatement</a></td>
+<td></td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../HasRelatedMatchStatement/">HasRelatedMatchStatement</a></td>
+<td><a href="../OwlImportsStatement/">OwlImportsStatement</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../RdfFirstStatement/">RdfFirstStatement</a></td>
+<td>A statement that connects a list to its first element</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HasMappingStatement/">HasMappingStatement</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../SubgraphEdgeByAncestor/">SubgraphEdgeByAncestor</a></td>
+<td>An edge within a subgraph anchored around a set of ancestor terms</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HasOioSynonymStatement/">HasOioSynonymStatement</a></td>
 <td></td>
 <td>no</td>
 </tr>
@@ -603,19 +505,39 @@
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../EntailedSubclassOfEdge/">EntailedSubclassOfEdge</a></td>
+<td><a href="../HasBroadMatchStatement/">HasBroadMatchStatement</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../OwlAxiom/">OwlAxiom</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HasRelatedSynonymStatement/">HasRelatedSynonymStatement</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../RdfRestStatement/">RdfRestStatement</a></td>
+<td>A statement that connects a list to its remaining elements</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../RdfsSubclassOfStatement/">RdfsSubclassOfStatement</a></td>
 <td></td>
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../RdfsSubclassOfNamedStatement/">RdfsSubclassOfNamedStatement</a></td>
-<td></td>
+<td><a href="../SubgraphEdgeByChild/">SubgraphEdgeByChild</a></td>
+<td>An edge within a subgraph anchored around a set of child terms</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../SubgraphEdgeByParent/">SubgraphEdgeByParent</a></td>
-<td>An edge within a subgraph anchored around a set of parent terms</td>
-<td>no</td>
+<td><a href="../OwlDisjointClassStatement/">OwlDisjointClassStatement</a></td>
+<td></td>
+<td>yes</td>
 </tr>
 <tr>
 <td><a href="../HasNarrowSynonymStatement/">HasNarrowSynonymStatement</a></td>
@@ -623,27 +545,12 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../SubgraphEdgeByDescendant/">SubgraphEdgeByDescendant</a></td>
-<td>An edge within a subgraph anchored around a set of descendant terms</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../HasSynonymStatement/">HasSynonymStatement</a></td>
+<td><a href="../OwlInverseOfStatement/">OwlInverseOfStatement</a></td>
 <td></td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../TermAssociation/">TermAssociation</a></td>
-<td>A minimal datamodel for relating a subject entity to an object term</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../RdfsRangeStatement/">RdfsRangeStatement</a></td>
-<td>A statement that connects a property to its range class or literal type</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../RdfRestTransitiveStatement/">RdfRestTransitiveStatement</a></td>
+<td><a href="../Contributor/">Contributor</a></td>
 <td></td>
 <td>no</td>
 </tr>
@@ -653,18 +560,48 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../RdfsSubpropertyOfStatement/">RdfsSubpropertyOfStatement</a></td>
-<td></td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../OwlAxiom/">OwlAxiom</a></td>
+<td><a href="../HasRelatedMatchStatement/">HasRelatedMatchStatement</a></td>
 <td></td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../HasBroadMatchStatement/">HasBroadMatchStatement</a></td>
+<td><a href="../HasNarrowMatchStatement/">HasNarrowMatchStatement</a></td>
 <td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../EntailedEdge/">EntailedEdge</a></td>
+<td>A relation graph edge that is inferred</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../RdfListStatement/">RdfListStatement</a></td>
+<td>A statement that is used to represent aspects of RDF lists</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../SubgraphQuery/">SubgraphQuery</a></td>
+<td>A subgraph query encompasses as subgraph edge and a seed/anchor object and se...</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../HasExactMatchStatement/">HasExactMatchStatement</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../HasTextDefinitionStatement/">HasTextDefinitionStatement</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../RdfTypeStatement/">RdfTypeStatement</a></td>
+<td>A statement that indicates the asserted type of the subject entity</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../EntailedEdgeCycle/">EntailedEdgeCycle</a></td>
+<td>An edge that composes with another edge to make a cycle</td>
 <td>no</td>
 </tr>
 <tr>
@@ -673,19 +610,74 @@
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../OwlSameAsStatement/">OwlSameAsStatement</a></td>
-<td>A statement that connects two individual nodes where both individual are equi...</td>
-<td>yes</td>
+<td><a href="../EntailedEdgeSamePredicateCycle/">EntailedEdgeSamePredicateCycle</a></td>
+<td>An entailed_edge_cycle over a single predicate</td>
+<td>no</td>
 </tr>
 <tr>
-<td><a href="../Creator/">Creator</a></td>
+<td><a href="../RdfsSubclassOfNamedStatement/">RdfsSubclassOfNamedStatement</a></td>
 <td></td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../SubgraphQuery/">SubgraphQuery</a></td>
-<td>A subgraph query encompasses as subgraph edge and a seed/anchor object and se...</td>
+<td><a href="../OwlReifiedAxiom/">OwlReifiedAxiom</a></td>
+<td>An OWL axiom that has been reified - i</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Relationship/">Relationship</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../OwlAxiomAnnotation/">OwlAxiomAnnotation</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../EntailedTypeEdge/">EntailedTypeEdge</a></td>
+<td></td>
 <td>yes</td>
+</tr>
+<tr>
+<td><a href="../SubgraphEdgeByDescendant/">SubgraphEdgeByDescendant</a></td>
+<td>An edge within a subgraph anchored around a set of descendant terms</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../OwlComplexAxiom/">OwlComplexAxiom</a></td>
+<td>An axiom that is composed of two or more statements</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../TransitiveEdge/">TransitiveEdge</a></td>
+<td>A relation graph edge that is formed from a chain of one or more edges</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../RdfsRangeStatement/">RdfsRangeStatement</a></td>
+<td>A statement that connects a property to its range class or literal type</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../HasMatchStatement/">HasMatchStatement</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../RelationGraphConstruct/">RelationGraphConstruct</a></td>
+<td>A construct used as part of a Relation Graph</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../OwlEquivalentClassStatement/">OwlEquivalentClassStatement</a></td>
+<td>A statement that connects two class_nodes where both classes are equivalent</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../HasExactSynonymStatement/">HasExactSynonymStatement</a></td>
+<td></td>
+<td>no</td>
 </tr>
 </tbody>
 </table>
@@ -741,7 +733,6 @@ domain_of:
 - entailed_edge
 - entailed_edge_cycle
 - transitive_edge
-- term_association
 relational_role: OBJECT
 range: string
 

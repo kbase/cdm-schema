@@ -352,7 +352,7 @@
 
 
 <h1 id="slot-id">Slot: id</h1>
-<p><em>Unique internal identifier for an entity.</em></p>
+<p><em>An identifier for an element. Note blank node ids are not unique across databases</em></p>
 <p>URI: <a href="http://kbase.github.io/cdm-schema/id">kb_cdm:id</a></p>
 <!-- no inheritance hierarchy -->
 
@@ -367,48 +367,28 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../AxiomDbxrefAnnotation/">AxiomDbxrefAnnotation</a></td>
+<td><a href="../NamedThing/">NamedThing</a></td>
+<td>Abstract class to represent things with names</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../NamedThingWithId/">NamedThingWithId</a></td>
+<td>Abstract class to represent things with names and identifiers</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ProcessedMeasurement/">ProcessedMeasurement</a></td>
 <td></td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../DeprecatedNode/">DeprecatedNode</a></td>
+<td><a href="../TypedPropertyNode/">TypedPropertyNode</a></td>
 <td></td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Node/">Node</a></td>
-<td>The basic unit of representation in an RDF or OWL graph</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../BlankNode/">BlankNode</a></td>
-<td>A node with an ID that is not preserved between databases</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../AnonymousExpression/">AnonymousExpression</a></td>
-<td>An OWL expression, such as a class expression</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../SymmetricPropertyNode/">SymmetricPropertyNode</a></td>
-<td>A node representing an OWL symmetric object property</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../TransitivePropertyNode/">TransitivePropertyNode</a></td>
-<td>A node representing an OWL transitive object property</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ReflexivePropertyNode/">ReflexivePropertyNode</a></td>
-<td>A node representing an OWL reflexive object property</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../NamedIndividualNode/">NamedIndividualNode</a></td>
-<td>A node that represents an OWL Named Individual</td>
+<td><a href="../AnonymousIndividualExpression/">AnonymousIndividualExpression</a></td>
+<td></td>
 <td>no</td>
 </tr>
 <tr>
@@ -417,28 +397,28 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../RdfListNode/">RdfListNode</a></td>
-<td>A node representing an RDF list</td>
+<td><a href="../AnonymousExpression/">AnonymousExpression</a></td>
+<td>An OWL expression, such as a class expression</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../OwlReifiedAxiom/">OwlReifiedAxiom</a></td>
-<td>An OWL axiom that has been reified - i</td>
+<td><a href="../EncodedFeature/">EncodedFeature</a></td>
+<td>An entity generated from a feature</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Sample/">Sample</a></td>
+<td><a href="../IriNode/">IriNode</a></td>
 <td></td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../Project/">Project</a></td>
+<td>Administrative unit for collecting data related to a certain topic, location,...</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../OwlHasValue/">OwlHasValue</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../IrreflexivePropertyNode/">IrreflexivePropertyNode</a></td>
-<td>A node representing an OWL irreflexive object property</td>
+<td><a href="../ObjectPropertyNode/">ObjectPropertyNode</a></td>
+<td>A node representing an OWL object property</td>
 <td>no</td>
 </tr>
 <tr>
@@ -447,17 +427,7 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../NamedThingWithId/">NamedThingWithId</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../TypedNode/">TypedNode</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Protocol/">Protocol</a></td>
+<td><a href="../NodeIdentifier/">NodeIdentifier</a></td>
 <td></td>
 <td>no</td>
 </tr>
@@ -467,88 +437,28 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Contigset/">Contigset</a></td>
-<td>A set of contigs; may also be called a genome</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../AnonymousIndividualExpression/">AnonymousIndividualExpression</a></td>
+<td><a href="../Protocol/">Protocol</a></td>
 <td></td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../OwlHasSelf/">OwlHasSelf</a></td>
+<td><a href="../AnonymousPropertyExpression/">AnonymousPropertyExpression</a></td>
 <td></td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Project/">Project</a></td>
-<td>Administrative unit for collecting data related to a certain topic, location,...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../NamedThing/">NamedThing</a></td>
+<td><a href="../Sample/">Sample</a></td>
 <td></td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Feature/">Feature</a></td>
-<td>A feature localized to an interval along a contig</td>
+<td><a href="../AnnotationPropertyNode/">AnnotationPropertyNode</a></td>
+<td>A node representing an OWL annotation property</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../PropertyNode/">PropertyNode</a></td>
-<td>Note this only directly classifies nodes asserted to be rdf:Properties</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../OwlRestriction/">OwlRestriction</a></td>
-<td>An OWL restriction, such as <code>SomeValuesFrom(partOf Hand)</code></td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../Protein/">Protein</a></td>
+<td><a href="../AxiomDbxrefAnnotation/">AxiomDbxrefAnnotation</a></td>
 <td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../OwlAllValuesFrom/">OwlAllValuesFrom</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../AnonymousClassExpression/">AnonymousClassExpression</a></td>
-<td>An OWL anonymous class expression, such as for example `SomeValuesFrom(partOf...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../OntologyNode/">OntologyNode</a></td>
-<td>A node representing an ontology</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../OwlSomeValuesFrom/">OwlSomeValuesFrom</a></td>
-<td>An OWL SomeValuesFrom restriction</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../OwlAxiomAnnotation/">OwlAxiomAnnotation</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../UniqueNamedThing/">UniqueNamedThing</a></td>
-<td>Represents an entity with a hash value generated from combining its unique at...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../NodeIdentifier/">NodeIdentifier</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../TranscribedFeature/">TranscribedFeature</a></td>
-<td>An entity generated when a feature is transcribed</td>
 <td>no</td>
 </tr>
 <tr>
@@ -557,23 +467,13 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../IriNode/">IriNode</a></td>
-<td></td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../AnonymousPropertyExpression/">AnonymousPropertyExpression</a></td>
-<td></td>
+<td><a href="../Contigset/">Contigset</a></td>
+<td>A set of contigs; may also be called a genome</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../ObjectPropertyNode/">ObjectPropertyNode</a></td>
-<td>A node representing an OWL object property</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ClassNode/">ClassNode</a></td>
-<td>A node that represents an RDFS/OWL class</td>
+<td><a href="../RdfListNode/">RdfListNode</a></td>
+<td>A node representing an RDF list</td>
 <td>no</td>
 </tr>
 <tr>
@@ -582,8 +482,13 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../TermAssociation/">TermAssociation</a></td>
-<td>A minimal datamodel for relating a subject entity to an object term</td>
+<td><a href="../PropertyNode/">PropertyNode</a></td>
+<td>Note this only directly classifies nodes asserted to be rdf:Properties</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../BlankNode/">BlankNode</a></td>
+<td>A node with an ID that is not preserved between databases</td>
 <td>no</td>
 </tr>
 <tr>
@@ -597,18 +502,108 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../AnnotationPropertyNode/">AnnotationPropertyNode</a></td>
-<td>A node representing an OWL annotation property</td>
+<td><a href="../OntologyNode/">OntologyNode</a></td>
+<td>A node representing an ontology</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../TypedPropertyNode/">TypedPropertyNode</a></td>
+<td><a href="../TransitivePropertyNode/">TransitivePropertyNode</a></td>
+<td>A node representing an OWL transitive object property</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../DeprecatedNode/">DeprecatedNode</a></td>
 <td></td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../ProcessedMeasurement/">ProcessedMeasurement</a></td>
+<td><a href="../UniqueNamedThing/">UniqueNamedThing</a></td>
+<td>Represents an entity with a hash value generated from combining its unique at...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../IrreflexivePropertyNode/">IrreflexivePropertyNode</a></td>
+<td>A node representing an OWL irreflexive object property</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../TypedNode/">TypedNode</a></td>
 <td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ReflexivePropertyNode/">ReflexivePropertyNode</a></td>
+<td>A node representing an OWL reflexive object property</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../OwlRestriction/">OwlRestriction</a></td>
+<td>An OWL restriction, such as <code>SomeValuesFrom(partOf Hand)</code></td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../OwlHasSelf/">OwlHasSelf</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../OwlReifiedAxiom/">OwlReifiedAxiom</a></td>
+<td>An OWL axiom that has been reified - i</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../OwlSomeValuesFrom/">OwlSomeValuesFrom</a></td>
+<td>An OWL SomeValuesFrom restriction</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Protein/">Protein</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../OwlAxiomAnnotation/">OwlAxiomAnnotation</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ClassNode/">ClassNode</a></td>
+<td>A node that represents an RDFS/OWL class</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../OwlAllValuesFrom/">OwlAllValuesFrom</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../AnonymousClassExpression/">AnonymousClassExpression</a></td>
+<td>An OWL anonymous class expression, such as for example `SomeValuesFrom(partOf...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../OwlHasValue/">OwlHasValue</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../NamedIndividualNode/">NamedIndividualNode</a></td>
+<td>A node that represents an OWL Named Individual</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../SymmetricPropertyNode/">SymmetricPropertyNode</a></td>
+<td>A node representing an OWL symmetric object property</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Feature/">Feature</a></td>
+<td>A feature localized to an interval along a contig</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Node/">Node</a></td>
+<td>The basic unit of representation in an RDF or OWL graph</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -616,7 +611,7 @@
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../Integer/">Integer</a></p>
+<p>Range: <a href="../NodeIdType/">NodeIdType</a></p>
 </li>
 <li>
 <p>Required: True</p>
@@ -650,7 +645,8 @@
 <details>
 
 <pre><code class="language-yaml">name: id
-description: Unique internal identifier for an entity.
+description: An identifier for an element. Note blank node ids are not unique across
+  databases
 from_schema: https://github.com/kbase/cdm-schema
 rank: 1000
 identifier: true
@@ -662,8 +658,7 @@ domain_of:
 - owl_reified_axiom
 - owl_axiom
 - owl_axiom_annotation
-- term_association
-range: integer
+range: node_id_type
 required: true
 
 </code></pre>

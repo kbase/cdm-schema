@@ -353,13 +353,13 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../TranscribedFeature/">TranscribedFeature</a></td>
-<td>An entity generated when a feature is transcribed</td>
+<td><a href="../Feature/">Feature</a></td>
+<td>A feature localized to an interval along a contig</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Feature/">Feature</a></td>
-<td>A feature localized to an interval along a contig</td>
+<td><a href="../EncodedFeature/">EncodedFeature</a></td>
+<td>An entity generated from a feature</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -394,7 +394,7 @@
 <pre><code class="language-yaml">name: type
 alias: type
 domain_of:
-- TranscribedFeature
+- EncodedFeature
 - Feature
 range: string
 

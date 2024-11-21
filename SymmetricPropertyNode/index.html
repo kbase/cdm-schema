@@ -252,8 +252,8 @@
 <tbody>
 <tr>
 <td><a href="../id/">id</a></td>
-<td>1 <br/> <a href="../Integer/">Integer</a></td>
-<td>Unique internal identifier for an entity</td>
+<td>1 <br/> <a href="../NodeIdType/">NodeIdType</a></td>
+<td>An identifier for an element</td>
 <td><a href="../Node/">Node</a></td>
 </tr>
 </tbody>
@@ -308,7 +308,8 @@ is_a: object_property_node
 attributes:
   id:
     name: id
-    description: Unique internal identifier for an entity.
+    description: An identifier for an element. Note blank node ids are not unique
+      across databases
     from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     identifier: true
@@ -321,8 +322,7 @@ attributes:
     - owl_reified_axiom
     - owl_axiom
     - owl_axiom_annotation
-    - term_association
-    range: integer
+    range: node_id_type
     required: true
 classification_rules:
 - is_a: typed_node

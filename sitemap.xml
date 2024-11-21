@@ -5,10 +5,6 @@
          <lastmod>2024-11-21</lastmod>
     </url>
     <url>
-         <loc>https://kbase.github.io/cdm-schema/AllProblems/</loc>
-         <lastmod>2024-11-21</lastmod>
-    </url>
-    <url>
          <loc>https://kbase.github.io/cdm-schema/AnnotationPropertyNode/</loc>
          <lastmod>2024-11-21</lastmod>
     </url>
@@ -26,6 +22,10 @@
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/AnonymousPropertyExpression/</loc>
+         <lastmod>2024-11-21</lastmod>
+    </url>
+    <url>
+         <loc>https://kbase.github.io/cdm-schema/Association/</loc>
          <lastmod>2024-11-21</lastmod>
     </url>
     <url>
@@ -118,6 +118,10 @@
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Edge/</loc>
+         <lastmod>2024-11-21</lastmod>
+    </url>
+    <url>
+         <loc>https://kbase.github.io/cdm-schema/EncodedFeature/</loc>
          <lastmod>2024-11-21</lastmod>
     </url>
     <url>
@@ -253,10 +257,6 @@
          <lastmod>2024-11-21</lastmod>
     </url>
     <url>
-         <loc>https://kbase.github.io/cdm-schema/LexicalProblem/</loc>
-         <lastmod>2024-11-21</lastmod>
-    </url>
-    <url>
          <loc>https://kbase.github.io/cdm-schema/LiteralAsStringType/</loc>
          <lastmod>2024-11-21</lastmod>
     </url>
@@ -285,6 +285,10 @@
          <lastmod>2024-11-21</lastmod>
     </url>
     <url>
+         <loc>https://kbase.github.io/cdm-schema/NegatedAssociation/</loc>
+         <lastmod>2024-11-21</lastmod>
+    </url>
+    <url>
          <loc>https://kbase.github.io/cdm-schema/Node/</loc>
          <lastmod>2024-11-21</lastmod>
     </url>
@@ -309,10 +313,6 @@
          <lastmod>2024-11-21</lastmod>
     </url>
     <url>
-         <loc>https://kbase.github.io/cdm-schema/NodeWithTwoLabelsProblem/</loc>
-         <lastmod>2024-11-21</lastmod>
-    </url>
-    <url>
          <loc>https://kbase.github.io/cdm-schema/Nodeidentifier/</loc>
          <lastmod>2024-11-21</lastmod>
     </url>
@@ -326,10 +326,6 @@
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/OntologyNode/</loc>
-         <lastmod>2024-11-21</lastmod>
-    </url>
-    <url>
-         <loc>https://kbase.github.io/cdm-schema/OntologyStatusStatement/</loc>
          <lastmod>2024-11-21</lastmod>
     </url>
     <url>
@@ -405,11 +401,11 @@
          <lastmod>2024-11-21</lastmod>
     </url>
     <url>
-         <loc>https://kbase.github.io/cdm-schema/Prefix/</loc>
+         <loc>https://kbase.github.io/cdm-schema/PositiveOrNegativeAssociation/</loc>
          <lastmod>2024-11-21</lastmod>
     </url>
     <url>
-         <loc>https://kbase.github.io/cdm-schema/Problem/</loc>
+         <loc>https://kbase.github.io/cdm-schema/Prefix/</loc>
          <lastmod>2024-11-21</lastmod>
     </url>
     <url>
@@ -429,7 +425,7 @@
          <lastmod>2024-11-21</lastmod>
     </url>
     <url>
-         <loc>https://kbase.github.io/cdm-schema/PropertyUsedWithDatatypeValuesAndObjects/</loc>
+         <loc>https://kbase.github.io/cdm-schema/PropertyValue/</loc>
          <lastmod>2024-11-21</lastmod>
     </url>
     <url>
@@ -509,7 +505,7 @@
          <lastmod>2024-11-21</lastmod>
     </url>
     <url>
-         <loc>https://kbase.github.io/cdm-schema/RepairAction/</loc>
+         <loc>https://kbase.github.io/cdm-schema/RollupGroup/</loc>
          <lastmod>2024-11-21</lastmod>
     </url>
     <url>
@@ -565,19 +561,7 @@
          <lastmod>2024-11-21</lastmod>
     </url>
     <url>
-         <loc>https://kbase.github.io/cdm-schema/TermAssociation/</loc>
-         <lastmod>2024-11-21</lastmod>
-    </url>
-    <url>
          <loc>https://kbase.github.io/cdm-schema/Time/</loc>
-         <lastmod>2024-11-21</lastmod>
-    </url>
-    <url>
-         <loc>https://kbase.github.io/cdm-schema/TrailingWhitespaceProblem/</loc>
-         <lastmod>2024-11-21</lastmod>
-    </url>
-    <url>
-         <loc>https://kbase.github.io/cdm-schema/TranscribedFeature/</loc>
          <lastmod>2024-11-21</lastmod>
     </url>
     <url>
@@ -610,6 +594,10 @@
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/about/</loc>
+         <lastmod>2024-11-21</lastmod>
+    </url>
+    <url>
+         <loc>https://kbase.github.io/cdm-schema/aggregator_knowledge_source/</loc>
          <lastmod>2024-11-21</lastmod>
     </url>
     <url>
@@ -649,6 +637,22 @@
          <lastmod>2024-11-21</lastmod>
     </url>
     <url>
+         <loc>https://kbase.github.io/cdm-schema/association_object/</loc>
+         <lastmod>2024-11-21</lastmod>
+    </url>
+    <url>
+         <loc>https://kbase.github.io/cdm-schema/association_predicate/</loc>
+         <lastmod>2024-11-21</lastmod>
+    </url>
+    <url>
+         <loc>https://kbase.github.io/cdm-schema/association_subject/</loc>
+         <lastmod>2024-11-21</lastmod>
+    </url>
+    <url>
+         <loc>https://kbase.github.io/cdm-schema/associations/</loc>
+         <lastmod>2024-11-21</lastmod>
+    </url>
+    <url>
          <loc>https://kbase.github.io/cdm-schema/axiom_datatype/</loc>
          <lastmod>2024-11-21</lastmod>
     </url>
@@ -685,6 +689,22 @@
          <lastmod>2024-11-21</lastmod>
     </url>
     <url>
+         <loc>https://kbase.github.io/cdm-schema/closure_delta/</loc>
+         <lastmod>2024-11-21</lastmod>
+    </url>
+    <url>
+         <loc>https://kbase.github.io/cdm-schema/closure_information_content_delta/</loc>
+         <lastmod>2024-11-21</lastmod>
+    </url>
+    <url>
+         <loc>https://kbase.github.io/cdm-schema/closure_predicates/</loc>
+         <lastmod>2024-11-21</lastmod>
+    </url>
+    <url>
+         <loc>https://kbase.github.io/cdm-schema/comments/</loc>
+         <lastmod>2024-11-21</lastmod>
+    </url>
+    <url>
          <loc>https://kbase.github.io/cdm-schema/conditions/</loc>
          <lastmod>2024-11-21</lastmod>
     </url>
@@ -697,11 +717,19 @@
          <lastmod>2024-11-21</lastmod>
     </url>
     <url>
+         <loc>https://kbase.github.io/cdm-schema/core_triple/</loc>
+         <lastmod>2024-11-21</lastmod>
+    </url>
+    <url>
          <loc>https://kbase.github.io/cdm-schema/count_value/</loc>
          <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/created_at/</loc>
+         <lastmod>2024-11-21</lastmod>
+    </url>
+    <url>
+         <loc>https://kbase.github.io/cdm-schema/creation_date/</loc>
          <lastmod>2024-11-21</lastmod>
     </url>
     <url>
@@ -741,7 +769,19 @@
          <lastmod>2024-11-21</lastmod>
     </url>
     <url>
+         <loc>https://kbase.github.io/cdm-schema/date/</loc>
+         <lastmod>2024-11-21</lastmod>
+    </url>
+    <url>
+         <loc>https://kbase.github.io/cdm-schema/denormalized_slot/</loc>
+         <lastmod>2024-11-21</lastmod>
+    </url>
+    <url>
          <loc>https://kbase.github.io/cdm-schema/description/</loc>
+         <lastmod>2024-11-21</lastmod>
+    </url>
+    <url>
+         <loc>https://kbase.github.io/cdm-schema/diff_slot/</loc>
          <lastmod>2024-11-21</lastmod>
     </url>
     <url>
@@ -809,6 +849,10 @@
          <lastmod>2024-11-21</lastmod>
     </url>
     <url>
+         <loc>https://kbase.github.io/cdm-schema/group_object/</loc>
+         <lastmod>2024-11-21</lastmod>
+    </url>
+    <url>
          <loc>https://kbase.github.io/cdm-schema/has_participant/</loc>
          <lastmod>2024-11-21</lastmod>
     </url>
@@ -833,19 +877,31 @@
          <lastmod>2024-11-21</lastmod>
     </url>
     <url>
+         <loc>https://kbase.github.io/cdm-schema/is_creation/</loc>
+         <lastmod>2024-11-21</lastmod>
+    </url>
+    <url>
+         <loc>https://kbase.github.io/cdm-schema/is_deletion/</loc>
+         <lastmod>2024-11-21</lastmod>
+    </url>
+    <url>
+         <loc>https://kbase.github.io/cdm-schema/is_generalization/</loc>
+         <lastmod>2024-11-21</lastmod>
+    </url>
+    <url>
+         <loc>https://kbase.github.io/cdm-schema/is_migration/</loc>
+         <lastmod>2024-11-21</lastmod>
+    </url>
+    <url>
+         <loc>https://kbase.github.io/cdm-schema/is_specialization/</loc>
+         <lastmod>2024-11-21</lastmod>
+    </url>
+    <url>
          <loc>https://kbase.github.io/cdm-schema/kbase_cdm/</loc>
          <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/label/</loc>
-         <lastmod>2024-11-21</lastmod>
-    </url>
-    <url>
-         <loc>https://kbase.github.io/cdm-schema/label1/</loc>
-         <lastmod>2024-11-21</lastmod>
-    </url>
-    <url>
-         <loc>https://kbase.github.io/cdm-schema/label2/</loc>
          <lastmod>2024-11-21</lastmod>
     </url>
     <url>
@@ -865,6 +921,10 @@
          <lastmod>2024-11-21</lastmod>
     </url>
     <url>
+         <loc>https://kbase.github.io/cdm-schema/modification_date/</loc>
+         <lastmod>2024-11-21</lastmod>
+    </url>
+    <url>
          <loc>https://kbase.github.io/cdm-schema/n_contigs/</loc>
          <lastmod>2024-11-21</lastmod>
     </url>
@@ -881,11 +941,67 @@
          <lastmod>2024-11-21</lastmod>
     </url>
     <url>
+         <loc>https://kbase.github.io/cdm-schema/negated/</loc>
+         <lastmod>2024-11-21</lastmod>
+    </url>
+    <url>
+         <loc>https://kbase.github.io/cdm-schema/new_date/</loc>
+         <lastmod>2024-11-21</lastmod>
+    </url>
+    <url>
+         <loc>https://kbase.github.io/cdm-schema/new_object/</loc>
+         <lastmod>2024-11-21</lastmod>
+    </url>
+    <url>
+         <loc>https://kbase.github.io/cdm-schema/new_predicate/</loc>
+         <lastmod>2024-11-21</lastmod>
+    </url>
+    <url>
          <loc>https://kbase.github.io/cdm-schema/object/</loc>
          <lastmod>2024-11-21</lastmod>
     </url>
     <url>
+         <loc>https://kbase.github.io/cdm-schema/object_closure/</loc>
+         <lastmod>2024-11-21</lastmod>
+    </url>
+    <url>
+         <loc>https://kbase.github.io/cdm-schema/object_closure_label/</loc>
+         <lastmod>2024-11-21</lastmod>
+    </url>
+    <url>
+         <loc>https://kbase.github.io/cdm-schema/object_label/</loc>
+         <lastmod>2024-11-21</lastmod>
+    </url>
+    <url>
+         <loc>https://kbase.github.io/cdm-schema/old_date/</loc>
+         <lastmod>2024-11-21</lastmod>
+    </url>
+    <url>
+         <loc>https://kbase.github.io/cdm-schema/old_object/</loc>
+         <lastmod>2024-11-21</lastmod>
+    </url>
+    <url>
+         <loc>https://kbase.github.io/cdm-schema/old_object_obsolete/</loc>
+         <lastmod>2024-11-21</lastmod>
+    </url>
+    <url>
+         <loc>https://kbase.github.io/cdm-schema/old_predicate/</loc>
+         <lastmod>2024-11-21</lastmod>
+    </url>
+    <url>
          <loc>https://kbase.github.io/cdm-schema/on_property/</loc>
+         <lastmod>2024-11-21</lastmod>
+    </url>
+    <url>
+         <loc>https://kbase.github.io/cdm-schema/original_object/</loc>
+         <lastmod>2024-11-21</lastmod>
+    </url>
+    <url>
+         <loc>https://kbase.github.io/cdm-schema/original_predicate/</loc>
+         <lastmod>2024-11-21</lastmod>
+    </url>
+    <url>
+         <loc>https://kbase.github.io/cdm-schema/original_subject/</loc>
          <lastmod>2024-11-21</lastmod>
     </url>
     <url>
@@ -905,7 +1021,19 @@
          <lastmod>2024-11-21</lastmod>
     </url>
     <url>
+         <loc>https://kbase.github.io/cdm-schema/predicate_label/</loc>
+         <lastmod>2024-11-21</lastmod>
+    </url>
+    <url>
          <loc>https://kbase.github.io/cdm-schema/prefix/</loc>
+         <lastmod>2024-11-21</lastmod>
+    </url>
+    <url>
+         <loc>https://kbase.github.io/cdm-schema/primary_knowledge_source/</loc>
+         <lastmod>2024-11-21</lastmod>
+    </url>
+    <url>
+         <loc>https://kbase.github.io/cdm-schema/property_values/</loc>
          <lastmod>2024-11-21</lastmod>
     </url>
     <url>
@@ -914,6 +1042,18 @@
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/publication/</loc>
+         <lastmod>2024-11-21</lastmod>
+    </url>
+    <url>
+         <loc>https://kbase.github.io/cdm-schema/publication_is_added/</loc>
+         <lastmod>2024-11-21</lastmod>
+    </url>
+    <url>
+         <loc>https://kbase.github.io/cdm-schema/publication_is_deleted/</loc>
+         <lastmod>2024-11-21</lastmod>
+    </url>
+    <url>
+         <loc>https://kbase.github.io/cdm-schema/publications/</loc>
          <lastmod>2024-11-21</lastmod>
     </url>
     <url>
@@ -993,7 +1133,31 @@
          <lastmod>2024-11-21</lastmod>
     </url>
     <url>
+         <loc>https://kbase.github.io/cdm-schema/sub_groups/</loc>
+         <lastmod>2024-11-21</lastmod>
+    </url>
+    <url>
          <loc>https://kbase.github.io/cdm-schema/subject/</loc>
+         <lastmod>2024-11-21</lastmod>
+    </url>
+    <url>
+         <loc>https://kbase.github.io/cdm-schema/subject_closure/</loc>
+         <lastmod>2024-11-21</lastmod>
+    </url>
+    <url>
+         <loc>https://kbase.github.io/cdm-schema/subject_closure_label/</loc>
+         <lastmod>2024-11-21</lastmod>
+    </url>
+    <url>
+         <loc>https://kbase.github.io/cdm-schema/subject_label/</loc>
+         <lastmod>2024-11-21</lastmod>
+    </url>
+    <url>
+         <loc>https://kbase.github.io/cdm-schema/summary_group/</loc>
+         <lastmod>2024-11-21</lastmod>
+    </url>
+    <url>
+         <loc>https://kbase.github.io/cdm-schema/supporting_objects/</loc>
          <lastmod>2024-11-21</lastmod>
     </url>
     <url>

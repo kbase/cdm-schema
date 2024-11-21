@@ -259,8 +259,8 @@
 <tbody>
 <tr>
 <td><a href="../id/">id</a></td>
-<td>1 <br/> <a href="../Integer/">Integer</a></td>
-<td>Unique internal identifier for an entity</td>
+<td>1 <br/> <a href="../NodeIdType/">NodeIdType</a></td>
+<td>An identifier for an element</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -353,7 +353,8 @@ is_a: statements
 attributes:
   id:
     name: id
-    description: Unique internal identifier for an entity.
+    description: An identifier for an element. Note blank node ids are not unique
+      across databases
     from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     identifier: true
@@ -366,8 +367,7 @@ attributes:
     - owl_reified_axiom
     - owl_axiom
     - owl_axiom_annotation
-    - term_association
-    range: integer
+    range: node_id_type
     required: true
   subject:
     name: subject
@@ -381,8 +381,6 @@ attributes:
     - owl_complex_axiom
     - owl_subclass_of_some_values_from
     - owl_equivalent_to_intersection_member
-    - repair_action
-    - problem
     - relation_graph_construct
     - edge
     - subgraph_query
@@ -394,7 +392,6 @@ attributes:
     - entailed_edge
     - entailed_edge_cycle
     - transitive_edge
-    - term_association
     relational_role: SUBJECT
     range: string
   predicate:
@@ -408,7 +405,6 @@ attributes:
     - statements
     - owl_complex_axiom
     - owl_subclass_of_some_values_from
-    - problem
     - relation_graph_construct
     - edge
     - subgraph_query
@@ -420,7 +416,6 @@ attributes:
     - entailed_edge
     - entailed_edge_cycle
     - transitive_edge
-    - term_association
     relational_role: PREDICATE
     range: string
   object:
@@ -446,7 +441,6 @@ attributes:
     - entailed_edge
     - entailed_edge_cycle
     - transitive_edge
-    - term_association
     relational_role: OBJECT
     range: string
   value:
@@ -462,7 +456,6 @@ attributes:
     owner: owl_axiom
     domain_of:
     - statements
-    - problem
     range: literal_as_string_type
   datatype:
     name: datatype

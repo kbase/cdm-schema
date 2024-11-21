@@ -212,7 +212,6 @@
 </a>
 <h1 id="class-name">Class: Name</h1>
 <p><em>The name or label for an entity. This may be a primary name, alternative name, synonym, acronym, or any other label used to refer to an entity.</em></p>
-<p>__</p>
 <p>URI: <a href="http://kbase.github.io/cdm-schema/Name">kb_cdm:Name</a></p>
 <div class="mermaid"> classDiagram
     class Name
@@ -305,7 +304,7 @@
 <td><a href="./">Name</a></td>
 </tr>
 <tr>
-<td><a href="../TranscribedFeature/">TranscribedFeature</a></td>
+<td><a href="../EncodedFeature/">EncodedFeature</a></td>
 <td><a href="../names/">names</a></td>
 <td>range</td>
 <td><a href="./">Name</a></td>
@@ -389,10 +388,8 @@
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: Name
-description: 'The name or label for an entity. This may be a primary name, alternative
+description: The name or label for an entity. This may be a primary name, alternative
   name, synonym, acronym, or any other label used to refer to an entity.
-
-  '
 from_schema: https://github.com/kbase/cdm-schema
 attributes:
   name:
@@ -411,7 +408,6 @@ attributes:
     domain_of:
     - Name
     - Identifier
-    - term_association
   description:
     name: description
     description: Brief description of the name and/or its relationship to the entity.
@@ -421,17 +417,14 @@ attributes:
     - Identifier
     - NamedThing
     - Protein
-    - repair_action
 
 </code></pre>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: Name
-description: 'The name or label for an entity. This may be a primary name, alternative
+description: The name or label for an entity. This may be a primary name, alternative
   name, synonym, acronym, or any other label used to refer to an entity.
-
-  '
 from_schema: https://github.com/kbase/cdm-schema
 attributes:
   name:
@@ -455,7 +448,6 @@ attributes:
     domain_of:
     - Name
     - Identifier
-    - term_association
     range: string
   description:
     name: description
@@ -468,7 +460,6 @@ attributes:
     - Identifier
     - NamedThing
     - Protein
-    - repair_action
     range: string
 
 </code></pre>

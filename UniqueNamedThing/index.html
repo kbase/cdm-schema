@@ -227,8 +227,8 @@
         click Contig href "../Contig"
       UniqueNamedThing &lt;|-- Contigset
         click Contigset href "../Contigset"
-      UniqueNamedThing &lt;|-- TranscribedFeature
-        click TranscribedFeature href "../TranscribedFeature"
+      UniqueNamedThing &lt;|-- EncodedFeature
+        click EncodedFeature href "../EncodedFeature"
       UniqueNamedThing &lt;|-- Feature
         click Feature href "../Feature"
       UniqueNamedThing &lt;|-- Protein
@@ -268,7 +268,7 @@
 <li><strong>UniqueNamedThing</strong><ul>
 <li><a href="../Contig/">Contig</a></li>
 <li><a href="../Contigset/">Contigset</a></li>
-<li><a href="../TranscribedFeature/">TranscribedFeature</a></li>
+<li><a href="../EncodedFeature/">EncodedFeature</a></li>
 <li><a href="../Feature/">Feature</a></li>
 <li><a href="../Protein/">Protein</a></li>
 </ul>
@@ -404,7 +404,6 @@ attributes:
     - owl_reified_axiom
     - owl_axiom
     - owl_axiom_annotation
-    - term_association
     range: string
   names:
     name: names
@@ -428,7 +427,6 @@ attributes:
     - Identifier
     - NamedThing
     - Protein
-    - repair_action
     range: string
 
 </code></pre>

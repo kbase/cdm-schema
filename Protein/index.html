@@ -386,7 +386,6 @@ attributes:
     - Identifier
     - NamedThing
     - Protein
-    - repair_action
   length:
     name: length
     from_schema: https://github.com/kbase/cdm-schema
@@ -412,7 +411,7 @@ attributes:
     description: The feature(s) that encode this protein.
     from_schema: https://github.com/kbase/cdm-schema
     domain_of:
-    - TranscribedFeature
+    - EncodedFeature
     - Protein
     range: Feature
 
@@ -434,7 +433,6 @@ attributes:
     - Identifier
     - NamedThing
     - Protein
-    - repair_action
     range: string
   length:
     name: length
@@ -470,7 +468,7 @@ attributes:
     alias: encoded_by
     owner: Protein
     domain_of:
-    - TranscribedFeature
+    - EncodedFeature
     - Protein
     range: Feature
   hash:
@@ -504,7 +502,6 @@ attributes:
     - owl_reified_axiom
     - owl_axiom
     - owl_axiom_annotation
-    - term_association
     range: string
   names:
     name: names
