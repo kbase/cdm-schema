@@ -1,0 +1,389 @@
+name: semsql_owl
+description: OWL Module
+title: Semantic SQL OWL module
+id: https://w3id.org/semsql/owl
+imports:
+- rdf
+license: https://creativecommons.org/publicdomain/zero/1.0/
+prefixes:
+  semsql: https://w3id.org/semsql/
+  linkml: https://w3id.org/linkml/
+default_curi_maps:
+- semweb_context
+default_prefix: semsql
+default_range: string
+slots:
+  restriction:
+    range: blank_node
+  on_property:
+    range: node
+  filler:
+    range: class_node
+  annotation_subject:
+    is_a: subject
+  annotation_predicate:
+    is_a: predicate
+  annotation_object:
+    is_a: object
+  annotation_value:
+    is_a: value
+  annotation_language:
+    is_a: language
+  annotation_datatype:
+    is_a: datatype
+  axiom_predicate:
+    deprecated: use annotation_* instead
+  axiom_object:
+    deprecated: use annotation_* instead
+  axiom_value:
+    deprecated: use annotation_* instead
+  axiom_language:
+    deprecated: use annotation_* instead
+  axiom_datatype:
+    deprecated: use annotation_* instead
+classes:
+  typed_node:
+    is_a: node
+    comments:
+    - sqlview>> SELECT subject AS id, object AS node_type FROM rdf_type_statement
+  ontology_node:
+    description: A node representing an ontology
+    see_also:
+    - https://www.w3.org/TR/owl2-syntax/#Ontologies
+    is_a: typed_node
+    classification_rules:
+      is_a: typed_node
+      slot_conditions:
+        node_type:
+          equals_string: "owl:Ontology"
+  typed_property_node:
+    is_a: property_node
+  object_property_node:
+    description: A node representing an OWL object property
+    see_also:
+    - https://www.w3.org/TR/owl2-syntax/#Object_Properties
+    is_a: typed_property_node
+    classification_rules:
+      is_a: typed_node
+      slot_conditions:
+        node_type:
+          equals_string: "owl:ObjectProperty"
+  transitive_property_node:
+    description: A node representing an OWL transitive object property
+    is_a: object_property_node
+    classification_rules:
+      is_a: typed_node
+      slot_conditions:
+        node_type:
+          equals_string: "owl:TransitiveProperty"
+  symmetric_property_node:
+    description: A node representing an OWL symmetric object property
+    is_a: object_property_node
+    classification_rules:
+      is_a: typed_node
+      slot_conditions:
+        node_type:
+          equals_string: "owl:SymmetricProperty"
+  reflexive_property_node:
+    description: A node representing an OWL reflexive object property
+    is_a: object_property_node
+    classification_rules:
+      is_a: typed_node
+      slot_conditions:
+        node_type:
+          equals_string: "owl:ReflexiveProperty"
+  irreflexive_property_node:
+    description: A node representing an OWL irreflexive object property
+    is_a: object_property_node
+    classification_rules:
+      is_a: typed_node
+      slot_conditions:
+        node_type:
+          equals_string: "owl:IrreflexiveProperty"
+  asymmetric_property_node:
+    is_a: object_property_node
+    classification_rules:
+      is_a: typed_node
+      slot_conditions:
+        node_type:
+          equals_string: "owl:AsymmetricProperty"
+  annotation_property_node:
+    description: A node representing an OWL annotation property
+    is_a: typed_property_node
+    classification_rules:
+      is_a: typed_node
+      slot_conditions:
+        node_type:
+          equals_string: "owl:AnnotationProperty"
+  deprecated_node:
+    aliases:
+    - deprecated IRI
+    comments:
+    - sqlview>> SELECT DISTINCT subject AS id FROM statements WHERE predicate='owl:deprecated'
+      AND value='true'
+    is_a: node
+  owl_imports_statement:
+    comments:
+    - sqlview>> SELECT * FROM statements WHERE predicate='owl:imports'
+    is_a: node_to_node_statement
+    classification_rules:
+      is_a: statements
+      slot_conditions:
+        predicate:
+          equals_string: "owl:imports"
+  owl_inverse_of_statement:
+    comments:
+    - sqlview>> SELECT * FROM statements WHERE predicate='owl:inverseOf'
+    is_a: node_to_node_statement
+    classification_rules:
+      is_a: statements
+      slot_conditions:
+        predicate:
+          equals_string: "owl:inverseOf"
+  owl_complement_of_statement:
+    comments:
+    - sqlview>> SELECT * FROM statements WHERE predicate='owl:complementOf'
+    is_a: node_to_node_statement
+    classification_rules:
+      is_a: statements
+      slot_conditions:
+        predicate:
+          equals_string: "owl:complementOf"
+  owl_equivalent_class_statement:
+    description: A statement that connects two class_nodes where both classes are
+      equivalent
+    comments:
+    - sqlview>> SELECT * FROM statements WHERE predicate='owl:equivalentClass'
+    is_a: node_to_node_statement
+    slot_usage:
+      subject:
+        description: One of the two classes that are equivalent. No significance to
+          subject vs object
+        range: class_node
+      object:
+        description: One of the two classes that are equivalent. No significance to
+          subject vs object
+        range: class_node
+    classification_rules:
+      is_a: statements
+      slot_conditions:
+        predicate:
+          equals_string: "owl:equivalentClass"
+  owl_same_as_statement:
+    description: A statement that connects two individual nodes where both individual
+      are equivalent
+    is_a: node_to_node_statement
+    slot_usage:
+      subject:
+        description: One of the two classes that are equivalent. No significance to
+          subject vs object
+        range: named_individual_node
+      object:
+        description: One of the two classes that are equivalent. No significance to
+          subject vs object
+        range: named_individual_node
+    classification_rules:
+      is_a: statements
+      slot_conditions:
+        predicate:
+          equals_string: "owl:sameAs"
+  owl_disjoint_class_statement:
+    is_a: node_to_node_statement
+    slot_usage:
+      subject:
+        description: One of the two classes that are disjoint. No significance to
+          subject vs object
+        range: class_node
+      object:
+        description: One of the two classes that are disjoint. No significance to
+          subject vs object
+        range: class_node
+    classification_rules:
+      is_a: statements
+      slot_conditions:
+        predicate:
+          equals_string: "owl:disjointWith"
+  owl_reified_axiom:
+    description: An OWL axiom that has been reified - i.e. it includes an [id](id)
+      field that uniquely identifies that axiom and which can be the subject of additional
+      statements
+    comments:
+    - sqlview>> SELECT axs.subject AS id, axs.stanza AS stanza, axs.object AS subject,
+      axp.object AS predicate, axo.object AS object, axo.value AS value, axo.datatype
+      AS datatype, axo.language AS language FROM statements AS axs, statements AS
+      axp, statements AS axo WHERE axs.predicate = 'owl:annotatedSource' AND axp.predicate
+      = 'owl:annotatedProperty' AND axo.predicate = 'owl:annotatedTarget' AND axs.subject
+      = axp.subject AND axs.subject = axo.subject
+    is_a: statements
+    slots:
+    - id
+  owl_axiom:
+    comments:
+    - sqlview>> SELECT * FROM owl_reified_axiom UNION SELECT NULL AS id, * FROM statements
+    is_a: statements
+    slots:
+    - id
+  owl_axiom_annotation:
+    comments:
+    - |-
+      sqlview>>
+        SELECT
+         axpv.stanza AS stanza,
+         axs.object AS subject,
+         axp.object AS predicate,
+         axo.object AS object,
+         axo.value AS value,
+         axo.datatype AS datatype,
+         axo.language AS language,
+         axpv.subject AS id,
+         axpv.subject AS annotation_subject,
+         axpv.predicate AS annotation_predicate,
+         axpv.object AS annotation_object,
+         axpv.value AS annotation_value,
+         axpv.language AS annotation_language,
+         axpv.datatype AS annotation_datatype
+        FROM
+         statements AS axs,
+         statements AS axp,
+         statements AS axo,
+         statements AS axpv
+        WHERE
+         axs.predicate = 'owl:annotatedSource' AND
+         axp.predicate = 'owl:annotatedProperty' AND
+         axo.predicate = 'owl:annotatedTarget' AND
+         axs.subject = axpv.subject AND
+         axp.subject = axpv.subject AND axo.subject = axpv.subject AND
+         axpv.predicate NOT IN ('owl:annotatedSource', 'owl:annotatedProperty', 'owl:annotatedTarget', 'rdf:type');
+    is_a: statements
+    slots:
+    - annotation_subject
+    - annotation_predicate
+    - annotation_object
+    - annotation_value
+    - annotation_language
+    - annotation_datatype
+    ## deprecated
+    - id
+  anonymous_expression:
+    description: An OWL expression, such as a class expression. Expressions are "anonymous"
+      as they are a composition of named elements rather than a named element themselves
+    is_a: blank_node
+    abstract: true
+  anonymous_class_expression:
+    description: An OWL anonymous class expression, such as for example `SomeValuesFrom(partOf
+      Hand)`
+    is_a: anonymous_expression
+    abstract: true
+    mixins:
+    - class_trait
+  anonymous_property_expression:
+    is_a: anonymous_expression
+    abstract: true
+    mixins:
+    - property_trait
+  anonymous_individual_expression:
+    is_a: anonymous_expression
+    abstract: true
+    mixins:
+    - individual_trait
+  owl_restriction:
+    description: An OWL restriction, such as `SomeValuesFrom(partOf Hand)`
+    is_a: anonymous_class_expression
+    abstract: true
+    slots:
+    - on_property
+    - filler
+    slot_usage:
+      id:
+        description: the id of the restriction
+    class_uri: owl:Restriction
+  owl_some_values_from:
+    aliases:
+    - existential restriction
+    description: An OWL SomeValuesFrom restriction
+    comments:
+    - "sqlview>>\n  SELECT onProperty.subject AS id,\n            onProperty.object\
+      \ AS on_property,\n            f.object AS filler\n            FROM\n      \
+      \ statements AS onProperty,\n       statements AS f\n     WHERE\n       onProperty.predicate\
+      \ = 'owl:onProperty' AND\n       onProperty.subject=f.subject AND\n       f.predicate='owl:someValuesFrom'"
+    is_a: owl_restriction
+  owl_all_values_from:
+    aliases:
+    - universal restriction
+    comments:
+    - "sqlview>>\n  SELECT onProperty.subject AS id,\n            onProperty.object\
+      \ AS on_property,\n            f.object AS filler\n            FROM\n      \
+      \ statements AS onProperty,\n       statements AS f\n     WHERE\n       onProperty.predicate\
+      \ = 'owl:onProperty' AND\n       onProperty.subject=f.subject AND\n       f.predicate='owl:allValuesFrom'"
+    is_a: owl_restriction
+  owl_has_value:
+    aliases:
+    - value restriction
+    comments:
+    - "sqlview>>\n  SELECT onProperty.subject AS id,\n            onProperty.object\
+      \ AS on_property,\n            f.object AS filler\n            FROM\n      \
+      \ statements AS onProperty,\n       statements AS f\n     WHERE\n       onProperty.predicate\
+      \ = 'owl:onProperty' AND\n       onProperty.subject=f.subject AND\n       f.predicate='owl:hasValue'"
+    is_a: owl_restriction
+  owl_has_self:
+    aliases:
+    - self restriction
+    comments:
+    - "sqlview>>\n  SELECT onProperty.subject AS id,\n            onProperty.object\
+      \ AS on_property,\n            f.object AS filler\n            FROM\n      \
+      \ statements AS onProperty,\n       statements AS f\n     WHERE\n       onProperty.predicate\
+      \ = 'owl:onProperty' AND\n       onProperty.subject=f.subject AND\n       f.predicate='owl:hasSelf'\
+      \ AND\n       f.value='true'"
+    is_a: owl_restriction
+    slot_usage:
+      filler:
+        description: This is Null for a self-restriction
+  owl_complex_axiom:
+    description: An axiom that is composed of two or more statements
+    abstract: true
+    slots:
+      - subject
+      - predicate
+      - object
+  owl_subclass_of_some_values_from:
+    description: Composition of subClassOf and SomeValuesFrom
+    comments:
+    - "sqlview>>\n  SELECT subClassOf.stanza,\n         subClassOf.subject,\n    \
+      \     svf.on_property AS predicate,\n         svf.filler AS object\n       \
+      \  FROM\n    statements AS subClassOf, \n    owl_some_values_from AS svf\n \
+      \ WHERE\n    subClassOf.predicate = 'rdfs:subClassOf' AND\n    svf.id=subClassOf.object"
+    is_a: owl_complex_axiom
+    slots:
+    - subject
+    - predicate
+    - object
+    slot_usage:
+      subject:
+        description: the class C in the axiom C subClassOf P some D
+        role: subclass
+      predicate:
+        description: the predicate P in the axiom C subClassOf P some D
+        role: on property
+      object:
+        description: the class D in the axiom C subClassOf P some D
+        role: filler
+  owl_equivalent_to_intersection_member:
+    description: Composition of `OwlEquivalentClass`, `OwlIntersectionOf`, and `RdfListMember`;
+      `C = X1 and ... and Xn`
+    comments:
+    - "sqlview>>\n    SELECT e.stanza,\n           e.subject,\n           m.object\n\
+      \           FROM\n      owl_equivalent_class_statement AS e JOIN\n      statements\
+      \ AS i ON (e.object=i.subject) JOIN\n      rdf_list_member_statement AS m ON\
+      \ (i.object=m.subject)\n    WHERE\n      i.predicate = 'owl:intersectionOf'"
+    is_a: owl_complex_axiom
+    slots:
+    - subject
+    - object
+    slot_usage:
+      subject:
+        description: the defined class
+        role: subclass
+      object:
+        description: a class expression that forms the defining expression
+        role: filler
+source_file: ../semantic-sql/src/linkml/owl.yaml

@@ -24,8 +24,8 @@ default_curi_maps:
 
 imports:
   - linkml:types
-  # - semsql/semsql
-  - oak/association
+  - semsql
+  # - oak/association
 
 slots:
   id:
