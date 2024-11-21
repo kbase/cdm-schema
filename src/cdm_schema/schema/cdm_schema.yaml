@@ -24,7 +24,8 @@ default_curi_maps:
 
 imports:
   - linkml:types
-  # - semsql
+  # - semsql/semsql
+  - oak/association
 
 slots:
   id:
@@ -116,6 +117,9 @@ classes:
   Contigset:
     is_a: UniqueNamedThing
     description: A set of contigs; may also be called a genome.
+    aliases:
+    - genome
+    - biological subject
     attributes:
       n_scaffolds:
         range: integer
@@ -208,6 +212,11 @@ classes:
 
   Feature:
     is_a: UniqueNamedThing
+    description: A feature localized to an interval along a contig.
+    comments:
+      - corresponds to an entry in GFF3
+    see_also:
+      - https://github.com/The-Sequence-Ontology/Specifications/blob/master/gff3.md
     attributes:
 
       data_source:
@@ -218,6 +227,8 @@ classes:
         range: Protocol
 
       type:
+        aliases:
+          - feature type
         description: The type of the feature; constrained to be either a term from the Sequence Ontology or an SO accession number.
         range: uriorcurie
         pattern: ^SO:\d+$
