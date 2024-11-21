@@ -276,7 +276,7 @@
 </tr>
 <tr>
 <td><a href="../created_at/">created_at</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>0..1 <br/> <a href="../Datetime/">Datetime</a></td>
 <td></td>
 <td>direct</td>
 </tr>
@@ -373,8 +373,10 @@ attributes:
     name: created_at
     from_schema: https://github.com/kbase/cdm-schema
     domain_of:
+    - Project
     - Experiment
     - Event
+    range: datetime
 
 </code></pre>
 </details>
@@ -408,9 +410,10 @@ attributes:
     alias: created_at
     owner: Event
     domain_of:
+    - Project
     - Experiment
     - Event
-    range: string
+    range: datetime
   id:
     name: id
     from_schema: https://github.com/kbase/cdm-schema

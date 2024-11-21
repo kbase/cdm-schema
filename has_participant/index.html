@@ -8,14 +8,14 @@
       
       
       
-        <link rel="canonical" href="https://kbase.github.io/cdm-schema/publications/">
+        <link rel="canonical" href="https://kbase.github.io/cdm-schema/has_participant/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-8.5.10">
     
     
       
-        <title>Slot: publications - cdm-schema</title>
+        <title>Slot: has_participant - cdm-schema</title>
       
     
     
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-publications" class="md-skip">
+        <a href="#slot-has_participant" class="md-skip">
           Skip to content
         </a>
       
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: publications
+              Slot: has_participant
             
           </span>
         </div>
@@ -345,15 +345,14 @@
                 
                   
 
-  <a href="https://github.com/kbase/cdm-schema/edit/master/docs/publications.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/kbase/cdm-schema/edit/master/docs/has_participant.md" title="Edit this page" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-<h1 id="slot-publications">Slot: publications</h1>
-<p><em>The publications that support the association</em></p>
-<p>URI: <a href="https://w3id.org/biolink/vocab/publications">biolink:publications</a></p>
+<h1 id="slot-has_participant">Slot: has_participant</h1>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/has_participant">kb_cdm:has_participant</a></p>
 <!-- no inheritance hierarchy -->
 
 <h2 id="applicable-classes">Applicable Classes</h2>
@@ -367,22 +366,7 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../NegatedAssociation/">NegatedAssociation</a></td>
-<td>A negated association between a thing (subject) and another thing (object)</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../AssociationChange/">AssociationChange</a></td>
-<td>A change object describing a change between two associations</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Association/">Association</a></td>
-<td>A generic association between a thing (subject) and another thing (object)</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../PositiveOrNegativeAssociation/">PositiveOrNegativeAssociation</a></td>
+<td><a href="../Experiment/">Experiment</a></td>
 <td></td>
 <td>no</td>
 </tr>
@@ -390,12 +374,7 @@
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>
-<p>Range: <a href="../Uriorcurie/">Uriorcurie</a></p>
-</li>
-<li>
-<p>Multivalued: True</p>
-</li>
+<li>Range: <a href="../Sample/">Sample</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -413,28 +392,25 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>biolink:publications</td>
+<td>kb_cdm:has_participant</td>
 </tr>
 <tr>
 <td>native</td>
-<td>kb_cdm:publications</td>
+<td>kb_cdm:has_participant</td>
 </tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: publications
-description: The publications that support the association
+<pre><code class="language-yaml">name: has_participant
 from_schema: https://github.com/kbase/cdm-schema
 rank: 1000
-slot_uri: biolink:publications
-alias: publications
+alias: has_participant
+owner: Experiment
 domain_of:
-- PositiveOrNegativeAssociation
-- AssociationChange
-range: uriorcurie
-multivalued: true
+- Experiment
+range: Sample
 
 </code></pre>
 

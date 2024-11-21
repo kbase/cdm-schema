@@ -223,6 +223,8 @@
       NamedThingWithId &lt;|-- Project
         click NamedThingWithId href "../NamedThingWithId"
 
+      Project : created_at
+
       Project : description
 
       Project : id
@@ -268,6 +270,12 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><a href="../created_at/">created_at</a></td>
+<td>0..1 <br/> <a href="../Datetime/">Datetime</a></td>
+<td></td>
+<td>direct</td>
+</tr>
 <tr>
 <td><a href="../identifiers/">identifiers</a></td>
 <td>* <br/> <a href="../Identifier/">Identifier</a></td>
@@ -344,6 +352,16 @@
 <pre><code class="language-yaml">name: Project
 from_schema: https://github.com/kbase/cdm-schema
 is_a: NamedThingWithId
+attributes:
+  created_at:
+    name: created_at
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    domain_of:
+    - Project
+    - Experiment
+    - Event
+    range: datetime
 
 </code></pre>
 </details>
@@ -353,6 +371,17 @@ is_a: NamedThingWithId
 from_schema: https://github.com/kbase/cdm-schema
 is_a: NamedThingWithId
 attributes:
+  created_at:
+    name: created_at
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    alias: created_at
+    owner: Project
+    domain_of:
+    - Project
+    - Experiment
+    - Event
+    range: datetime
   identifiers:
     name: identifiers
     description: URIs or CURIEs used to refer to this entity.

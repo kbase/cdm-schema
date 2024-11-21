@@ -289,20 +289,20 @@
 <tbody>
 <tr>
 <td><a href="../subject/">subject</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>The thing which the association is about</td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td></td>
 <td><a href="../PositiveOrNegativeAssociation/">PositiveOrNegativeAssociation</a></td>
 </tr>
 <tr>
 <td><a href="../predicate/">predicate</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>The type of relationship between the subject and object</td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td></td>
 <td><a href="../PositiveOrNegativeAssociation/">PositiveOrNegativeAssociation</a></td>
 </tr>
 <tr>
 <td><a href="../object/">object</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>An ontology entity that is associated with the subject</td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td></td>
 <td><a href="../PositiveOrNegativeAssociation/">PositiveOrNegativeAssociation</a></td>
 </tr>
 <tr>
@@ -475,53 +475,40 @@ slot_usage:
 attributes:
   subject:
     name: subject
-    description: The thing which the association is about.
-    comments:
-    - it is conventional for the subject to be the "entity" and the object to be the
-      ontological descriptor
     from_schema: https://github.com/kbase/cdm-schema
-    exact_mappings:
-    - oa:hasBody
     rank: 1000
-    slot_uri: rdf:subject
     alias: subject
     owner: Association
     domain_of:
+    - Relationship
     - PositiveOrNegativeAssociation
     - AssociationChange
-    slot_group: core_triple
-    range: uriorcurie
+    relational_role: SUBJECT
+    range: string
   predicate:
     name: predicate
-    description: The type of relationship between the subject and object.
     from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
-    slot_uri: rdf:predicate
     alias: predicate
     owner: Association
     domain_of:
+    - Relationship
     - PositiveOrNegativeAssociation
     - PropertyValue
-    slot_group: core_triple
-    range: uriorcurie
+    relational_role: PREDICATE
+    range: string
   object:
     name: object
-    description: An ontology entity that is associated with the subject.
-    comments:
-    - it is conventional for the subject to be the "entity" and the object to be the
-      ontological descriptor
     from_schema: https://github.com/kbase/cdm-schema
-    exact_mappings:
-    - oa:hasTarget
     rank: 1000
-    slot_uri: rdf:object
     alias: object
     owner: Association
     domain_of:
+    - Relationship
     - PositiveOrNegativeAssociation
     - PropertyValue
-    slot_group: core_triple
-    range: uriorcurie
+    relational_role: OBJECT
+    range: string
   property_values:
     name: property_values
     description: Arbitrary key-value pairs with additional information about the association

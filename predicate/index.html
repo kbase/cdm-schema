@@ -359,8 +359,7 @@
 
 
 <h1 id="slot-predicate">Slot: predicate</h1>
-<p><em>The type of relationship between the subject and object.</em></p>
-<p>URI: <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate">rdf:predicate</a></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/predicate">kb_cdm:predicate</a></p>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><strong>predicate</strong><ul>
@@ -380,13 +379,13 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../NegatedAssociation/">NegatedAssociation</a></td>
-<td>A negated association between a thing (subject) and another thing (object)</td>
+<td><a href="../PositiveOrNegativeAssociation/">PositiveOrNegativeAssociation</a></td>
+<td></td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../PositiveOrNegativeAssociation/">PositiveOrNegativeAssociation</a></td>
-<td></td>
+<td><a href="../PropertyValue/">PropertyValue</a></td>
+<td>A generic tag-value that can be associated with an association</td>
 <td>no</td>
 </tr>
 <tr>
@@ -395,15 +394,20 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../PropertyValue/">PropertyValue</a></td>
-<td>A generic tag-value that can be associated with an association</td>
+<td><a href="../NegatedAssociation/">NegatedAssociation</a></td>
+<td>A negated association between a thing (subject) and another thing (object)</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Relationship/">Relationship</a></td>
+<td></td>
 <td>no</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
+<li>Range: <a href="../String/">String</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -421,7 +425,7 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>rdf:predicate</td>
+<td>kb_cdm:predicate</td>
 </tr>
 <tr>
 <td>native</td>
@@ -433,16 +437,15 @@
 <details>
 
 <pre><code class="language-yaml">name: predicate
-description: The type of relationship between the subject and object.
 from_schema: https://github.com/kbase/cdm-schema
 rank: 1000
-slot_uri: rdf:predicate
 alias: predicate
 domain_of:
+- Relationship
 - PositiveOrNegativeAssociation
 - PropertyValue
-slot_group: core_triple
-range: uriorcurie
+relational_role: PREDICATE
+range: string
 
 </code></pre>
 

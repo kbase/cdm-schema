@@ -298,13 +298,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#comments" class="md-nav__link">
-    Comments
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     Identifier and Mapping Information
   </a>
@@ -359,8 +352,7 @@
 
 
 <h1 id="slot-subject">Slot: subject</h1>
-<p><em>The thing which the association is about.</em></p>
-<p>URI: <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#subject">rdf:subject</a></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/subject">kb_cdm:subject</a></p>
 <!-- no inheritance hierarchy -->
 
 <h2 id="applicable-classes">Applicable Classes</h2>
@@ -374,6 +366,16 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../PositiveOrNegativeAssociation/">PositiveOrNegativeAssociation</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Association/">Association</a></td>
+<td>A generic association between a thing (subject) and another thing (object)</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../NegatedAssociation/">NegatedAssociation</a></td>
 <td>A negated association between a thing (subject) and another thing (object)</td>
 <td>no</td>
@@ -384,24 +386,15 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../PositiveOrNegativeAssociation/">PositiveOrNegativeAssociation</a></td>
+<td><a href="../Relationship/">Relationship</a></td>
 <td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Association/">Association</a></td>
-<td>A generic association between a thing (subject) and another thing (object)</td>
 <td>no</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
-</ul>
-<h2 id="comments">Comments</h2>
-<ul>
-<li>it is conventional for the subject to be the "entity" and the object to be the ontological descriptor</li>
+<li>Range: <a href="../String/">String</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -419,15 +412,11 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>rdf:subject</td>
+<td>kb_cdm:subject</td>
 </tr>
 <tr>
 <td>native</td>
 <td>kb_cdm:subject</td>
-</tr>
-<tr>
-<td>exact</td>
-<td>oa:hasBody</td>
 </tr>
 </tbody>
 </table>
@@ -435,21 +424,15 @@
 <details>
 
 <pre><code class="language-yaml">name: subject
-description: The thing which the association is about.
-comments:
-- it is conventional for the subject to be the &quot;entity&quot; and the object to be the ontological
-  descriptor
 from_schema: https://github.com/kbase/cdm-schema
-exact_mappings:
-- oa:hasBody
 rank: 1000
-slot_uri: rdf:subject
 alias: subject
 domain_of:
+- Relationship
 - PositiveOrNegativeAssociation
 - AssociationChange
-slot_group: core_triple
-range: uriorcurie
+relational_role: SUBJECT
+range: string
 
 </code></pre>
 

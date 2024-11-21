@@ -322,31 +322,31 @@
 </tr>
 <tr>
 <td><a href="../subject/">subject</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>The thing which the association is about</td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td></td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../old_predicate/">old_predicate</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
 <td>If the association diff is a change in predicate, this is the predicate on th...</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../new_predicate/">new_predicate</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
 <td>If the association diff is a change in predicate, this is the predicate on th...</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../old_object/">old_object</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
 <td>The object (e</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../new_object/">new_object</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
 <td>The object (e</td>
 <td>direct</td>
 </tr>
@@ -575,22 +575,16 @@ attributes:
     range: boolean
   subject:
     name: subject
-    description: The thing which the association is about.
-    comments:
-    - it is conventional for the subject to be the "entity" and the object to be the
-      ontological descriptor
     from_schema: https://github.com/kbase/cdm-schema
-    exact_mappings:
-    - oa:hasBody
     rank: 1000
-    slot_uri: rdf:subject
     alias: subject
     owner: AssociationChange
     domain_of:
+    - Relationship
     - PositiveOrNegativeAssociation
     - AssociationChange
-    slot_group: core_triple
-    range: uriorcurie
+    relational_role: SUBJECT
+    range: string
   old_predicate:
     name: old_predicate
     description: If the association diff is a change in predicate, this is the predicate
@@ -604,7 +598,8 @@ attributes:
     owner: AssociationChange
     domain_of:
     - AssociationChange
-    range: uriorcurie
+    relational_role: PREDICATE
+    range: string
   new_predicate:
     name: new_predicate
     description: If the association diff is a change in predicate, this is the predicate
@@ -618,7 +613,8 @@ attributes:
     owner: AssociationChange
     domain_of:
     - AssociationChange
-    range: uriorcurie
+    relational_role: PREDICATE
+    range: string
   old_object:
     name: old_object
     description: The object (e.g. term) on the old association
@@ -631,7 +627,8 @@ attributes:
     owner: AssociationChange
     domain_of:
     - AssociationChange
-    range: uriorcurie
+    relational_role: OBJECT
+    range: string
   new_object:
     name: new_object
     description: The object (e.g. term) on the new association
@@ -644,7 +641,8 @@ attributes:
     owner: AssociationChange
     domain_of:
     - AssociationChange
-    range: uriorcurie
+    relational_role: OBJECT
+    range: string
   old_object_obsolete:
     name: old_object_obsolete
     description: if the object (e.g. term) of the old object has been obsoleted, this

@@ -153,6 +153,10 @@
          <lastmod>2024-11-21</lastmod>
     </url>
     <url>
+         <loc>https://kbase.github.io/cdm-schema/Relationship/</loc>
+         <lastmod>2024-11-21</lastmod>
+    </url>
+    <url>
          <loc>https://kbase.github.io/cdm-schema/RollupGroup/</loc>
          <lastmod>2024-11-21</lastmod>
     </url>
@@ -249,6 +253,10 @@
          <lastmod>2024-11-21</lastmod>
     </url>
     <url>
+         <loc>https://kbase.github.io/cdm-schema/contigs/</loc>
+         <lastmod>2024-11-21</lastmod>
+    </url>
+    <url>
          <loc>https://kbase.github.io/cdm-schema/core_triple/</loc>
          <lastmod>2024-11-21</lastmod>
     </url>
@@ -313,6 +321,14 @@
          <lastmod>2024-11-21</lastmod>
     </url>
     <url>
+         <loc>https://kbase.github.io/cdm-schema/encoded_by/</loc>
+         <lastmod>2024-11-21</lastmod>
+    </url>
+    <url>
+         <loc>https://kbase.github.io/cdm-schema/encodes/</loc>
+         <lastmod>2024-11-21</lastmod>
+    </url>
+    <url>
          <loc>https://kbase.github.io/cdm-schema/end/</loc>
          <lastmod>2024-11-21</lastmod>
     </url>
@@ -326,6 +342,10 @@
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/evidence_type/</loc>
+         <lastmod>2024-11-21</lastmod>
+    </url>
+    <url>
+         <loc>https://kbase.github.io/cdm-schema/features/</loc>
          <lastmod>2024-11-21</lastmod>
     </url>
     <url>
@@ -350,6 +370,10 @@
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/group_object/</loc>
+         <lastmod>2024-11-21</lastmod>
+    </url>
+    <url>
+         <loc>https://kbase.github.io/cdm-schema/has_participant/</loc>
          <lastmod>2024-11-21</lastmod>
     </url>
     <url>
@@ -678,10 +702,6 @@
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/type/</loc>
-         <lastmod>2024-11-21</lastmod>
-    </url>
-    <url>
-         <loc>https://kbase.github.io/cdm-schema/uses/</loc>
          <lastmod>2024-11-21</lastmod>
     </url>
     <url>

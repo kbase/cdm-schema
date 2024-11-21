@@ -305,13 +305,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#comments" class="md-nav__link">
-    Comments
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     Identifier and Mapping Information
   </a>
@@ -366,8 +359,7 @@
 
 
 <h1 id="slot-object">Slot: object</h1>
-<p><em>An ontology entity that is associated with the subject.</em></p>
-<p>URI: <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#object">rdf:object</a></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/object">kb_cdm:object</a></p>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><strong>object</strong><ul>
@@ -389,13 +381,13 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../NegatedAssociation/">NegatedAssociation</a></td>
-<td>A negated association between a thing (subject) and another thing (object)</td>
+<td><a href="../PositiveOrNegativeAssociation/">PositiveOrNegativeAssociation</a></td>
+<td></td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../PositiveOrNegativeAssociation/">PositiveOrNegativeAssociation</a></td>
-<td></td>
+<td><a href="../PropertyValue/">PropertyValue</a></td>
+<td>A generic tag-value that can be associated with an association</td>
 <td>no</td>
 </tr>
 <tr>
@@ -404,19 +396,20 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../PropertyValue/">PropertyValue</a></td>
-<td>A generic tag-value that can be associated with an association</td>
+<td><a href="../NegatedAssociation/">NegatedAssociation</a></td>
+<td>A negated association between a thing (subject) and another thing (object)</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Relationship/">Relationship</a></td>
+<td></td>
 <td>no</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
-</ul>
-<h2 id="comments">Comments</h2>
-<ul>
-<li>it is conventional for the subject to be the "entity" and the object to be the ontological descriptor</li>
+<li>Range: <a href="../String/">String</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -434,15 +427,11 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>rdf:object</td>
+<td>kb_cdm:object</td>
 </tr>
 <tr>
 <td>native</td>
 <td>kb_cdm:object</td>
-</tr>
-<tr>
-<td>exact</td>
-<td>oa:hasTarget</td>
 </tr>
 </tbody>
 </table>
@@ -450,21 +439,15 @@
 <details>
 
 <pre><code class="language-yaml">name: object
-description: An ontology entity that is associated with the subject.
-comments:
-- it is conventional for the subject to be the &quot;entity&quot; and the object to be the ontological
-  descriptor
 from_schema: https://github.com/kbase/cdm-schema
-exact_mappings:
-- oa:hasTarget
 rank: 1000
-slot_uri: rdf:object
 alias: object
 domain_of:
+- Relationship
 - PositiveOrNegativeAssociation
 - PropertyValue
-slot_group: core_triple
-range: uriorcurie
+relational_role: OBJECT
+range: string
 
 </code></pre>
 

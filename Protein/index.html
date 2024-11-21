@@ -220,6 +220,15 @@
 
       Protein : description
 
+      Protein : encoded_by
+
+
+
+
+    Protein --&gt; "0..1" Feature : encoded_by
+    click Feature href "../Feature"
+
+
       Protein : evidence_for_existence
 
 
@@ -302,6 +311,12 @@
 <tr>
 <td><a href="../evidence_for_existence/">evidence_for_existence</a></td>
 <td>0..1 <br/> <a href="../EvidenceForExistence/">EvidenceForExistence</a></td>
+<td></td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../encoded_by/">encoded_by</a></td>
+<td>0..1 <br/> <a href="../Feature/">Feature</a></td>
 <td></td>
 <td>direct</td>
 </tr>
@@ -391,6 +406,13 @@ attributes:
     domain_of:
     - Protein
     range: EvidenceForExistence
+  encoded_by:
+    name: encoded_by
+    from_schema: https://github.com/kbase/cdm-schema
+    domain_of:
+    - TranscribedFeature
+    - Protein
+    range: Feature
 
 </code></pre>
 </details>
@@ -438,6 +460,15 @@ attributes:
     domain_of:
     - Protein
     range: EvidenceForExistence
+  encoded_by:
+    name: encoded_by
+    from_schema: https://github.com/kbase/cdm-schema
+    alias: encoded_by
+    owner: Protein
+    domain_of:
+    - TranscribedFeature
+    - Protein
+    range: Feature
   hash:
     name: hash
     from_schema: https://github.com/kbase/cdm-schema

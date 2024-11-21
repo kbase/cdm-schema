@@ -222,6 +222,15 @@
 
       Experiment : description
 
+      Experiment : has_participant
+
+
+
+
+    Experiment --&gt; "0..1" Sample : has_participant
+    click Sample href "../Sample"
+
+
       Experiment : id
 
       Experiment : names
@@ -240,15 +249,6 @@
 
     Experiment --&gt; "0..1" Project : part_of
     click Project href "../Project"
-
-
-      Experiment : uses
-
-
-
-
-    Experiment --&gt; "0..1" Sample : uses
-    click Sample href "../Sample"
 
 
 
@@ -273,7 +273,7 @@
 <tbody>
 <tr>
 <td><a href="../created_at/">created_at</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>0..1 <br/> <a href="../Datetime/">Datetime</a></td>
 <td></td>
 <td>direct</td>
 </tr>
@@ -284,7 +284,7 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../uses/">uses</a></td>
+<td><a href="../has_participant/">has_participant</a></td>
 <td>0..1 <br/> <a href="../Sample/">Sample</a></td>
 <td></td>
 <td>direct</td>
@@ -344,19 +344,20 @@ attributes:
   created_at:
     name: created_at
     from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
     domain_of:
+    - Project
     - Experiment
     - Event
+    range: datetime
   part_of:
     name: part_of
     from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
     domain_of:
+    - Contig
     - Experiment
     range: Project
-  uses:
-    name: uses
+  has_participant:
+    name: has_participant
     from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     domain_of:
@@ -374,27 +375,27 @@ attributes:
   created_at:
     name: created_at
     from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
     alias: created_at
     owner: Experiment
     domain_of:
+    - Project
     - Experiment
     - Event
-    range: string
+    range: datetime
   part_of:
     name: part_of
     from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
     alias: part_of
     owner: Experiment
     domain_of:
+    - Contig
     - Experiment
     range: Project
-  uses:
-    name: uses
+  has_participant:
+    name: has_participant
     from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
-    alias: uses
+    alias: has_participant
     owner: Experiment
     domain_of:
     - Experiment

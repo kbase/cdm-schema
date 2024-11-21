@@ -236,14 +236,14 @@
 <tbody>
 <tr>
 <td><a href="../predicate/">predicate</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>The type of relationship between the subject and object</td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td></td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../object/">object</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>An ontology entity that is associated with the subject</td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td></td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -324,35 +324,28 @@ from_schema: https://github.com/kbase/cdm-schema
 attributes:
   predicate:
     name: predicate
-    description: The type of relationship between the subject and object.
     from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
-    slot_uri: rdf:predicate
     alias: predicate
     owner: PropertyValue
     domain_of:
+    - Relationship
     - PositiveOrNegativeAssociation
     - PropertyValue
-    slot_group: core_triple
-    range: uriorcurie
+    relational_role: PREDICATE
+    range: string
   object:
     name: object
-    description: An ontology entity that is associated with the subject.
-    comments:
-    - it is conventional for the subject to be the "entity" and the object to be the
-      ontological descriptor
     from_schema: https://github.com/kbase/cdm-schema
-    exact_mappings:
-    - oa:hasTarget
     rank: 1000
-    slot_uri: rdf:object
     alias: object
     owner: PropertyValue
     domain_of:
+    - Relationship
     - PositiveOrNegativeAssociation
     - PropertyValue
-    slot_group: core_triple
-    range: uriorcurie
+    relational_role: OBJECT
+    range: string
 
 </code></pre>
 </details>
