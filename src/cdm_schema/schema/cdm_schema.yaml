@@ -87,6 +87,7 @@ classes:
     attributes:
       id:
       names:
+        description: Names, alternative names, and synonyms for an entity.
         range: Name
         multivalued: true
       description:
@@ -119,9 +120,12 @@ classes:
     is_a: NamedThingWithId
     attributes:
       version:
+        description: The version of the protocol that has been used.
       inputs:
+        description: The inputs for a protocol; may be software parameters, experimental reagents, etc.
         multivalued: true
       outputs:
+        description: The outputs of a protocol; may be physical entities, files, etc.
         multivalued: true
 
   Contig:
@@ -150,6 +154,7 @@ classes:
     attributes:
 
       contigs:
+        description: The contigs in this contigset.
         range: Contig
         multivalued: true
 
@@ -254,6 +259,7 @@ classes:
     attributes:
 
       encodes:
+        description: Known or predicted transcription products from this feature.
         range: TranscribedFeature
         multivalued: true
 
@@ -304,6 +310,7 @@ classes:
       evidence_for_existence:
         range: EvidenceForExistence
       encoded_by:
+        description: The feature(s) that encode this protein.
         range: Feature
 
   Sample:
@@ -311,6 +318,7 @@ classes:
 
   Project:
     is_a: NamedThingWithId
+    description: Administrative unit for collecting data related to a certain topic, location, data type, grant funding, and so on.
     attributes:
       created_at:
         range: datetime
@@ -323,7 +331,9 @@ classes:
       part_of:
         range: Project
       has_participant:
+        description: Participants in an experiment.
         range: Sample
+        multivalued: true
 
   Event:
     is_a: NamedThing
