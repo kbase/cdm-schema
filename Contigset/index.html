@@ -202,7 +202,7 @@
 </a>
 <h1 id="class-contigset">Class: Contigset</h1>
 <p><em>A set of contigs; may also be called a genome.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm_schema/Contigset">kb_cdm:Contigset</a></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/Contigset">kb_cdm:Contigset</a></p>
 <div class="mermaid"> classDiagram
     class Contigset
     click Contigset href "../Contigset"
@@ -525,7 +525,7 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://github.com/kbase/cdm_schema</li>
+<li>from schema: https://github.com/kbase/cdm-schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -552,13 +552,13 @@
 <details>
 <pre><code class="language-yaml">name: Contigset
 description: A set of contigs; may also be called a genome.
-from_schema: https://github.com/kbase/cdm_schema
+from_schema: https://github.com/kbase/cdm-schema
 is_a: UniqueNamedThing
 attributes:
   n_scaffolds:
     name: n_scaffolds
     description: Total number of scaffolds
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     domain_of:
     - Contigset
@@ -566,7 +566,7 @@ attributes:
   n_contigs:
     name: n_contigs
     description: Total number of contigs
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     domain_of:
     - Contigset
@@ -574,7 +574,7 @@ attributes:
   scaf_bp:
     name: scaf_bp
     description: Total size in bp of all scaffolds
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     domain_of:
     - Contigset
@@ -582,7 +582,7 @@ attributes:
   contig_bp:
     name: contig_bp
     description: Total size in bp of all contigs
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     domain_of:
     - Contigset
@@ -590,7 +590,7 @@ attributes:
   gap_pct:
     name: gap_pct
     description: The gap size percentage of all scaffolds
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     domain_of:
     - Contigset
@@ -600,7 +600,7 @@ attributes:
     description: Given a set of scaffolds, each with its own length, the N50 count
       is defined as the smallest number of scaffolds whose length sum makes up half
       of contigset size
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     domain_of:
     - Contigset
@@ -609,7 +609,7 @@ attributes:
     name: scaf_L50
     description: Given a set of scaffolds, the L50 is defined as the sequence length
       of the shortest scaffold at 50% of the total contigset length
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     domain_of:
     - Contigset
@@ -619,7 +619,7 @@ attributes:
     description: Given a set of contigs, each with its own length, the N50 count is
       defined as the smallest number_of_contigs whose length sum makes up half of
       contigset size
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     domain_of:
     - Contigset
@@ -628,7 +628,7 @@ attributes:
     name: ctg_L50
     description: Given a set of contigs, the L50 is defined as the sequence length
       of the shortest contig at 50% of the total contigset length
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     domain_of:
     - Contigset
@@ -638,7 +638,7 @@ attributes:
     description: Given a set of scaffolds, each with its own length, the N90 count
       is defined as the smallest number of scaffolds whose length sum makes up 90%
       of contigset size
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     domain_of:
     - Contigset
@@ -648,7 +648,7 @@ attributes:
     description: The L90 statistic is less than or equal to the L50 statistic; it
       is the length for which the collection of all scaffolds of that length or longer
       contains at least 90% of the sum of the lengths of all scaffolds.
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     domain_of:
     - Contigset
@@ -658,7 +658,7 @@ attributes:
     description: Given a set of contigs, each with its own length, the N90 count is
       defined as the smallest number of contigs whose length sum makes up 90% of contigset
       size
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     domain_of:
     - Contigset
@@ -668,7 +668,7 @@ attributes:
     description: The L90 statistic is less than or equal to the L50 statistic; it
       is the length for which the collection of all contigs of that length or longer
       contains at least 90% of the sum of the lengths of all contigs
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     domain_of:
     - Contigset
@@ -677,7 +677,7 @@ attributes:
     name: scaf_logsum
     description: The sum of the (length*log(length)) of all scaffolds, times some
       constant. Increase the contiguity, the score will increase
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     domain_of:
     - Contigset
@@ -686,7 +686,7 @@ attributes:
     name: scaf_powsum
     description: Powersum of all scaffolds is the same as logsum except that it uses
       the sum of (length*(length^P)) for some power P (default P=0.25).
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     domain_of:
     - Contigset
@@ -694,7 +694,7 @@ attributes:
   ctg_logsum:
     name: ctg_logsum
     description: The sum of the (length*log(length)) of all contigs, times some constant.
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     domain_of:
     - Contigset
@@ -703,7 +703,7 @@ attributes:
     name: ctg_powsum
     description: Powersum of all contigs is the same as logsum except that it uses
       the sum of (length*(length^P)) for some power P (default P=0.25)
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     domain_of:
     - Contigset
@@ -711,7 +711,7 @@ attributes:
   asm_score:
     name: asm_score
     description: A composite score for comparing contigset quality
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     domain_of:
     - Contigset
@@ -719,7 +719,7 @@ attributes:
   scaf_max:
     name: scaf_max
     description: Maximum scaffold length
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     domain_of:
     - Contigset
@@ -727,7 +727,7 @@ attributes:
   ctg_max:
     name: ctg_max
     description: Maximum contig length
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     domain_of:
     - Contigset
@@ -735,7 +735,7 @@ attributes:
   scaf_n_gt50K:
     name: scaf_n_gt50K
     description: The number of scaffolds longer than 50,000 base pairs.
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     domain_of:
     - Contigset
@@ -743,7 +743,7 @@ attributes:
   scaf_l_gt50k:
     name: scaf_l_gt50k
     description: The total length of scaffolds longer than 50,000 base pairs
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     domain_of:
     - Contigset
@@ -752,7 +752,7 @@ attributes:
     name: scaf_pct_gt50K
     description: The percentage of the total assembly length represented by scaffolds
       longer than 50,000 base pairs
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     domain_of:
     - Contigset
@@ -760,7 +760,7 @@ attributes:
   gc_avg:
     name: gc_avg
     description: The average GC content of the contigset, expressed as a percentage
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     domain_of:
     - Contigset
@@ -768,7 +768,7 @@ attributes:
   gc_std:
     name: gc_std
     description: The standard deviation of GC content across the contigset
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     domain_of:
     - Contigset
@@ -777,7 +777,7 @@ attributes:
     name: checkm2_completeness
     description: Estimate of the completeness of a contigset (MAG or genome), estimated
       by CheckM2 tool
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     domain_of:
     - Contigset
@@ -786,7 +786,7 @@ attributes:
     name: checkm2_contamination
     description: Estimate of the contamination of a contigset (MAG or genome), estimated
       by CheckM2 tool
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     domain_of:
     - Contigset
@@ -798,13 +798,13 @@ attributes:
 <details>
 <pre><code class="language-yaml">name: Contigset
 description: A set of contigs; may also be called a genome.
-from_schema: https://github.com/kbase/cdm_schema
+from_schema: https://github.com/kbase/cdm-schema
 is_a: UniqueNamedThing
 attributes:
   n_scaffolds:
     name: n_scaffolds
     description: Total number of scaffolds
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     alias: n_scaffolds
     owner: Contigset
@@ -814,7 +814,7 @@ attributes:
   n_contigs:
     name: n_contigs
     description: Total number of contigs
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     alias: n_contigs
     owner: Contigset
@@ -824,7 +824,7 @@ attributes:
   scaf_bp:
     name: scaf_bp
     description: Total size in bp of all scaffolds
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     alias: scaf_bp
     owner: Contigset
@@ -834,7 +834,7 @@ attributes:
   contig_bp:
     name: contig_bp
     description: Total size in bp of all contigs
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     alias: contig_bp
     owner: Contigset
@@ -844,7 +844,7 @@ attributes:
   gap_pct:
     name: gap_pct
     description: The gap size percentage of all scaffolds
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     alias: gap_pct
     owner: Contigset
@@ -856,7 +856,7 @@ attributes:
     description: Given a set of scaffolds, each with its own length, the N50 count
       is defined as the smallest number of scaffolds whose length sum makes up half
       of contigset size
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     alias: scaf_N50
     owner: Contigset
@@ -867,7 +867,7 @@ attributes:
     name: scaf_L50
     description: Given a set of scaffolds, the L50 is defined as the sequence length
       of the shortest scaffold at 50% of the total contigset length
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     alias: scaf_L50
     owner: Contigset
@@ -879,7 +879,7 @@ attributes:
     description: Given a set of contigs, each with its own length, the N50 count is
       defined as the smallest number_of_contigs whose length sum makes up half of
       contigset size
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     alias: ctg_N50
     owner: Contigset
@@ -890,7 +890,7 @@ attributes:
     name: ctg_L50
     description: Given a set of contigs, the L50 is defined as the sequence length
       of the shortest contig at 50% of the total contigset length
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     alias: ctg_L50
     owner: Contigset
@@ -902,7 +902,7 @@ attributes:
     description: Given a set of scaffolds, each with its own length, the N90 count
       is defined as the smallest number of scaffolds whose length sum makes up 90%
       of contigset size
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     alias: scaf_N90
     owner: Contigset
@@ -914,7 +914,7 @@ attributes:
     description: The L90 statistic is less than or equal to the L50 statistic; it
       is the length for which the collection of all scaffolds of that length or longer
       contains at least 90% of the sum of the lengths of all scaffolds.
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     alias: scaf_L90
     owner: Contigset
@@ -926,7 +926,7 @@ attributes:
     description: Given a set of contigs, each with its own length, the N90 count is
       defined as the smallest number of contigs whose length sum makes up 90% of contigset
       size
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     alias: ctg_N90
     owner: Contigset
@@ -938,7 +938,7 @@ attributes:
     description: The L90 statistic is less than or equal to the L50 statistic; it
       is the length for which the collection of all contigs of that length or longer
       contains at least 90% of the sum of the lengths of all contigs
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     alias: ctg_L90
     owner: Contigset
@@ -949,7 +949,7 @@ attributes:
     name: scaf_logsum
     description: The sum of the (length*log(length)) of all scaffolds, times some
       constant. Increase the contiguity, the score will increase
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     alias: scaf_logsum
     owner: Contigset
@@ -960,7 +960,7 @@ attributes:
     name: scaf_powsum
     description: Powersum of all scaffolds is the same as logsum except that it uses
       the sum of (length*(length^P)) for some power P (default P=0.25).
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     alias: scaf_powsum
     owner: Contigset
@@ -970,7 +970,7 @@ attributes:
   ctg_logsum:
     name: ctg_logsum
     description: The sum of the (length*log(length)) of all contigs, times some constant.
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     alias: ctg_logsum
     owner: Contigset
@@ -981,7 +981,7 @@ attributes:
     name: ctg_powsum
     description: Powersum of all contigs is the same as logsum except that it uses
       the sum of (length*(length^P)) for some power P (default P=0.25)
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     alias: ctg_powsum
     owner: Contigset
@@ -991,7 +991,7 @@ attributes:
   asm_score:
     name: asm_score
     description: A composite score for comparing contigset quality
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     alias: asm_score
     owner: Contigset
@@ -1001,7 +1001,7 @@ attributes:
   scaf_max:
     name: scaf_max
     description: Maximum scaffold length
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     alias: scaf_max
     owner: Contigset
@@ -1011,7 +1011,7 @@ attributes:
   ctg_max:
     name: ctg_max
     description: Maximum contig length
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     alias: ctg_max
     owner: Contigset
@@ -1021,7 +1021,7 @@ attributes:
   scaf_n_gt50K:
     name: scaf_n_gt50K
     description: The number of scaffolds longer than 50,000 base pairs.
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     alias: scaf_n_gt50K
     owner: Contigset
@@ -1031,7 +1031,7 @@ attributes:
   scaf_l_gt50k:
     name: scaf_l_gt50k
     description: The total length of scaffolds longer than 50,000 base pairs
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     alias: scaf_l_gt50k
     owner: Contigset
@@ -1042,7 +1042,7 @@ attributes:
     name: scaf_pct_gt50K
     description: The percentage of the total assembly length represented by scaffolds
       longer than 50,000 base pairs
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     alias: scaf_pct_gt50K
     owner: Contigset
@@ -1052,7 +1052,7 @@ attributes:
   gc_avg:
     name: gc_avg
     description: The average GC content of the contigset, expressed as a percentage
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     alias: gc_avg
     owner: Contigset
@@ -1062,7 +1062,7 @@ attributes:
   gc_std:
     name: gc_std
     description: The standard deviation of GC content across the contigset
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     alias: gc_std
     owner: Contigset
@@ -1073,7 +1073,7 @@ attributes:
     name: checkm2_completeness
     description: Estimate of the completeness of a contigset (MAG or genome), estimated
       by CheckM2 tool
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     alias: checkm2_completeness
     owner: Contigset
@@ -1084,7 +1084,7 @@ attributes:
     name: checkm2_contamination
     description: Estimate of the contamination of a contigset (MAG or genome), estimated
       by CheckM2 tool
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     alias: checkm2_contamination
     owner: Contigset
@@ -1093,7 +1093,7 @@ attributes:
     range: float
   hash:
     name: hash
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     alias: hash
     owner: Contigset
     domain_of:
@@ -1102,7 +1102,7 @@ attributes:
   identifiers:
     name: identifiers
     description: URIs or CURIEs used to refer to this entity.
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     alias: identifiers
     owner: Contigset
@@ -1112,7 +1112,7 @@ attributes:
     multivalued: true
   id:
     name: id
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     alias: id
     owner: Contigset
     domain_of:
@@ -1120,7 +1120,7 @@ attributes:
     range: string
   name:
     name: name
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     alias: name
     owner: Contigset
     domain_of:
@@ -1129,7 +1129,7 @@ attributes:
     range: Name
   alternative_names:
     name: alternative_names
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     alias: alternative_names
     owner: Contigset
@@ -1140,7 +1140,7 @@ attributes:
   description:
     name: description
     description: Definition or description of the entity.
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     alias: description
     owner: Contigset
     domain_of:

@@ -2,402 +2,402 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://kbase.github.io/cdm-schema/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Boolean/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/CdsPhaseType/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Contig/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Contigset/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Curie/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Date/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/DateOrDatetime/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Datetime/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Decimal/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Double/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Event/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/EvidenceForExistence/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Experiment/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Feature/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Float/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Identifier/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Integer/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Jsonpath/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Jsonpointer/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Measurement/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Name/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/NamedThing/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/NamedThingWithId/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Ncname/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Nodeidentifier/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Objectidentifier/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/ProcessedMeasurement/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Project/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Protein/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Protocol/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Sample/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Sparqlpath/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/StrandType/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/String/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Time/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/TranscribedFeature/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/UniqueNamedThing/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Uri/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Uriorcurie/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/about/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/alternative_names/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/asm_score/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/cds_phase/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/checkm2_completeness/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/checkm2_contamination/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/conditions/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/contig_bp/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/created_at/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/ctg_L50/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/ctg_L90/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/ctg_N50/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/ctg_N90/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/ctg_logsum/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/ctg_max/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/ctg_powsum/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/data_source/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/description/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/e_value/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/end/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/event/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/evidence_for_existence/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/gap_pct/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/gc_avg/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/gc_content/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/gc_std/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/generated_by/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/hash/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/id/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/identifier/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/identifiers/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/inputs/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/kbase_cdm/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/length/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/location/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/n_contigs/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/n_scaffolds/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/name/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/outputs/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/p_value/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/part_of/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/protocol_used/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/scaf_L50/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/scaf_L90/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/scaf_N50/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/scaf_N90/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/scaf_bp/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/scaf_l_gt50k/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/scaf_logsum/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/scaf_max/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/scaf_n_gt50K/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/scaf_pct_gt50K/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/scaf_powsum/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/sequence/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/source/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/start/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/strand/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/type/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/uses/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/version/</loc>
-         <lastmod>2024-11-20</lastmod>
+         <lastmod>2024-11-21</lastmod>
     </url>
 </urlset>

@@ -201,7 +201,7 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
 <h1 id="class-experiment">Class: Experiment</h1>
-<p>URI: <a href="http://kbase.github.io/cdm_schema/Experiment">kb_cdm:Experiment</a></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/Experiment">kb_cdm:Experiment</a></p>
 <div class="mermaid"> classDiagram
     class Experiment
     click Experiment href "../Experiment"
@@ -317,7 +317,7 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://github.com/kbase/cdm_schema</li>
+<li>from schema: https://github.com/kbase/cdm-schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -343,26 +343,26 @@
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: Experiment
-from_schema: https://github.com/kbase/cdm_schema
+from_schema: https://github.com/kbase/cdm-schema
 is_a: NamedThing
 attributes:
   created_at:
     name: created_at
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     domain_of:
     - Experiment
     - Event
   part_of:
     name: part_of
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     domain_of:
     - Experiment
     range: Project
   uses:
     name: uses
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     domain_of:
     - Experiment
@@ -373,12 +373,12 @@ attributes:
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: Experiment
-from_schema: https://github.com/kbase/cdm_schema
+from_schema: https://github.com/kbase/cdm-schema
 is_a: NamedThing
 attributes:
   created_at:
     name: created_at
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     alias: created_at
     owner: Experiment
@@ -388,7 +388,7 @@ attributes:
     range: string
   part_of:
     name: part_of
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     alias: part_of
     owner: Experiment
@@ -397,7 +397,7 @@ attributes:
     range: Project
   uses:
     name: uses
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     alias: uses
     owner: Experiment
@@ -406,7 +406,7 @@ attributes:
     range: Sample
   id:
     name: id
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     alias: id
     owner: Experiment
     domain_of:
@@ -414,7 +414,7 @@ attributes:
     range: string
   name:
     name: name
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     alias: name
     owner: Experiment
     domain_of:
@@ -423,7 +423,7 @@ attributes:
     range: Name
   alternative_names:
     name: alternative_names
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     alias: alternative_names
     owner: Experiment
@@ -434,7 +434,7 @@ attributes:
   description:
     name: description
     description: Definition or description of the entity.
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     alias: description
     owner: Experiment
     domain_of:

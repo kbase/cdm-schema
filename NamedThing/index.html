@@ -204,7 +204,7 @@
 <ul>
 <li><strong>NOTE</strong>: this is an abstract class and should not be instantiated directly</li>
 </ul>
-<p>URI: <a href="http://kbase.github.io/cdm_schema/NamedThing">kb_cdm:NamedThing</a></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/NamedThing">kb_cdm:NamedThing</a></p>
 <div class="mermaid"> classDiagram
     class NamedThing
     click NamedThing href "../NamedThing"
@@ -294,7 +294,7 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://github.com/kbase/cdm_schema</li>
+<li>from schema: https://github.com/kbase/cdm-schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -320,24 +320,24 @@
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: NamedThing
-from_schema: https://github.com/kbase/cdm_schema
+from_schema: https://github.com/kbase/cdm-schema
 abstract: true
 attributes:
   id:
     name: id
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     domain_of:
     - NamedThing
   name:
     name: name
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     domain_of:
     - Name
     - NamedThing
     range: Name
   alternative_names:
     name: alternative_names
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     domain_of:
     - NamedThing
@@ -346,7 +346,7 @@ attributes:
   description:
     name: description
     description: Definition or description of the entity.
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     domain_of:
     - Name
     - Identifier
@@ -358,12 +358,12 @@ attributes:
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: NamedThing
-from_schema: https://github.com/kbase/cdm_schema
+from_schema: https://github.com/kbase/cdm-schema
 abstract: true
 attributes:
   id:
     name: id
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     alias: id
     owner: NamedThing
     domain_of:
@@ -371,7 +371,7 @@ attributes:
     range: string
   name:
     name: name
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     alias: name
     owner: NamedThing
     domain_of:
@@ -380,7 +380,7 @@ attributes:
     range: Name
   alternative_names:
     name: alternative_names
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     alias: alternative_names
     owner: NamedThing
@@ -391,7 +391,7 @@ attributes:
   description:
     name: description
     description: Definition or description of the entity.
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     alias: description
     owner: NamedThing
     domain_of:

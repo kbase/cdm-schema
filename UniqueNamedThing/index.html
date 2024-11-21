@@ -205,7 +205,7 @@
 <ul>
 <li><strong>NOTE</strong>: this is an abstract class and should not be instantiated directly</li>
 </ul>
-<p>URI: <a href="http://kbase.github.io/cdm_schema/UniqueNamedThing">kb_cdm:UniqueNamedThing</a></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/UniqueNamedThing">kb_cdm:UniqueNamedThing</a></p>
 <div class="mermaid"> classDiagram
     class UniqueNamedThing
     click UniqueNamedThing href "../UniqueNamedThing"
@@ -329,7 +329,7 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://github.com/kbase/cdm_schema</li>
+<li>from schema: https://github.com/kbase/cdm-schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -357,13 +357,13 @@
 <pre><code class="language-yaml">name: UniqueNamedThing
 description: Represents an entity with a hash value generated from combining its unique
   attributes.
-from_schema: https://github.com/kbase/cdm_schema
+from_schema: https://github.com/kbase/cdm-schema
 is_a: NamedThingWithId
 abstract: true
 attributes:
   hash:
     name: hash
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     domain_of:
     - UniqueNamedThing
 
@@ -374,13 +374,13 @@ attributes:
 <pre><code class="language-yaml">name: UniqueNamedThing
 description: Represents an entity with a hash value generated from combining its unique
   attributes.
-from_schema: https://github.com/kbase/cdm_schema
+from_schema: https://github.com/kbase/cdm-schema
 is_a: NamedThingWithId
 abstract: true
 attributes:
   hash:
     name: hash
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     alias: hash
     owner: UniqueNamedThing
     domain_of:
@@ -389,7 +389,7 @@ attributes:
   identifiers:
     name: identifiers
     description: URIs or CURIEs used to refer to this entity.
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     alias: identifiers
     owner: UniqueNamedThing
@@ -399,7 +399,7 @@ attributes:
     multivalued: true
   id:
     name: id
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     alias: id
     owner: UniqueNamedThing
     domain_of:
@@ -407,7 +407,7 @@ attributes:
     range: string
   name:
     name: name
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     alias: name
     owner: UniqueNamedThing
     domain_of:
@@ -416,7 +416,7 @@ attributes:
     range: Name
   alternative_names:
     name: alternative_names
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     alias: alternative_names
     owner: UniqueNamedThing
@@ -427,7 +427,7 @@ attributes:
   description:
     name: description
     description: Definition or description of the entity.
-    from_schema: https://github.com/kbase/cdm_schema
+    from_schema: https://github.com/kbase/cdm-schema
     alias: description
     owner: UniqueNamedThing
     domain_of:
