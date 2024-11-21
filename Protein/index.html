@@ -317,7 +317,7 @@
 <tr>
 <td><a href="../encoded_by/">encoded_by</a></td>
 <td>0..1 <br/> <a href="../Feature/">Feature</a></td>
-<td></td>
+<td>The feature(s) that encode this protein</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -341,7 +341,7 @@
 <tr>
 <td><a href="../names/">names</a></td>
 <td>* <br/> <a href="../Name/">Name</a></td>
-<td></td>
+<td>Names, alternative names, and synonyms for an entity</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 </tbody>
@@ -408,6 +408,7 @@ attributes:
     range: EvidenceForExistence
   encoded_by:
     name: encoded_by
+    description: The feature(s) that encode this protein.
     from_schema: https://github.com/kbase/cdm-schema
     domain_of:
     - TranscribedFeature
@@ -462,6 +463,7 @@ attributes:
     range: EvidenceForExistence
   encoded_by:
     name: encoded_by
+    description: The feature(s) that encode this protein.
     from_schema: https://github.com/kbase/cdm-schema
     alias: encoded_by
     owner: Protein
@@ -498,6 +500,7 @@ attributes:
     range: string
   names:
     name: names
+    description: Names, alternative names, and synonyms for an entity.
     from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     alias: names

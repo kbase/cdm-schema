@@ -277,19 +277,19 @@
 <tr>
 <td><a href="../version/">version</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td>The version of the protocol that has been used</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../inputs/">inputs</a></td>
 <td>* <br/> <a href="../String/">String</a></td>
-<td></td>
+<td>The inputs for a protocol; may be software parameters, experimental reagents,...</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../outputs/">outputs</a></td>
 <td>* <br/> <a href="../String/">String</a></td>
-<td></td>
+<td>The outputs of a protocol; may be physical entities, files, etc</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -307,7 +307,7 @@
 <tr>
 <td><a href="../names/">names</a></td>
 <td>* <br/> <a href="../Name/">Name</a></td>
-<td></td>
+<td>Names, alternative names, and synonyms for an entity</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 <tr>
@@ -383,12 +383,15 @@ is_a: NamedThingWithId
 attributes:
   version:
     name: version
+    description: The version of the protocol that has been used.
     from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     domain_of:
     - Protocol
   inputs:
     name: inputs
+    description: The inputs for a protocol; may be software parameters, experimental
+      reagents, etc.
     from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     domain_of:
@@ -396,6 +399,7 @@ attributes:
     multivalued: true
   outputs:
     name: outputs
+    description: The outputs of a protocol; may be physical entities, files, etc.
     from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     domain_of:
@@ -412,6 +416,7 @@ is_a: NamedThingWithId
 attributes:
   version:
     name: version
+    description: The version of the protocol that has been used.
     from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     alias: version
@@ -421,6 +426,8 @@ attributes:
     range: string
   inputs:
     name: inputs
+    description: The inputs for a protocol; may be software parameters, experimental
+      reagents, etc.
     from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     alias: inputs
@@ -431,6 +438,7 @@ attributes:
     multivalued: true
   outputs:
     name: outputs
+    description: The outputs of a protocol; may be physical entities, files, etc.
     from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     alias: outputs
@@ -460,6 +468,7 @@ attributes:
     range: string
   names:
     name: names
+    description: Names, alternative names, and synonyms for an entity.
     from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     alias: names

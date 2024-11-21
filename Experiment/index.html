@@ -227,7 +227,7 @@
 
 
 
-    Experiment --&gt; "0..1" Sample : has_participant
+    Experiment --&gt; "*" Sample : has_participant
     click Sample href "../Sample"
 
 
@@ -285,8 +285,8 @@
 </tr>
 <tr>
 <td><a href="../has_participant/">has_participant</a></td>
-<td>0..1 <br/> <a href="../Sample/">Sample</a></td>
-<td></td>
+<td>* <br/> <a href="../Sample/">Sample</a></td>
+<td>Participants in an experiment</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -298,7 +298,7 @@
 <tr>
 <td><a href="../names/">names</a></td>
 <td>* <br/> <a href="../Name/">Name</a></td>
-<td></td>
+<td>Names, alternative names, and synonyms for an entity</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 <tr>
@@ -358,11 +358,13 @@ attributes:
     range: Project
   has_participant:
     name: has_participant
+    description: Participants in an experiment.
     from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     domain_of:
     - Experiment
     range: Sample
+    multivalued: true
 
 </code></pre>
 </details>
@@ -393,6 +395,7 @@ attributes:
     range: Project
   has_participant:
     name: has_participant
+    description: Participants in an experiment.
     from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     alias: has_participant
@@ -400,6 +403,7 @@ attributes:
     domain_of:
     - Experiment
     range: Sample
+    multivalued: true
   id:
     name: id
     from_schema: https://github.com/kbase/cdm-schema
@@ -410,6 +414,7 @@ attributes:
     range: string
   names:
     name: names
+    description: Names, alternative names, and synonyms for an entity.
     from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     alias: names

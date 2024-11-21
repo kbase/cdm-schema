@@ -216,6 +216,7 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
 <h1 id="class-project">Class: Project</h1>
+<p><em>Administrative unit for collecting data related to a certain topic, location, data type, grant funding, and so on.</em></p>
 <p>URI: <a href="http://kbase.github.io/cdm-schema/Project">kb_cdm:Project</a></p>
 <div class="mermaid"> classDiagram
     class Project
@@ -291,7 +292,7 @@
 <tr>
 <td><a href="../names/">names</a></td>
 <td>* <br/> <a href="../Name/">Name</a></td>
-<td></td>
+<td>Names, alternative names, and synonyms for an entity</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 <tr>
@@ -350,6 +351,8 @@
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: Project
+description: Administrative unit for collecting data related to a certain topic, location,
+  data type, grant funding, and so on.
 from_schema: https://github.com/kbase/cdm-schema
 is_a: NamedThingWithId
 attributes:
@@ -368,6 +371,8 @@ attributes:
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: Project
+description: Administrative unit for collecting data related to a certain topic, location,
+  data type, grant funding, and so on.
 from_schema: https://github.com/kbase/cdm-schema
 is_a: NamedThingWithId
 attributes:
@@ -403,6 +408,7 @@ attributes:
     range: string
   names:
     name: names
+    description: Names, alternative names, and synonyms for an entity.
     from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     alias: names

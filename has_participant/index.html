@@ -352,6 +352,7 @@
 
 
 <h1 id="slot-has_participant">Slot: has_participant</h1>
+<p><em>Participants in an experiment.</em></p>
 <p>URI: <a href="http://kbase.github.io/cdm-schema/has_participant">kb_cdm:has_participant</a></p>
 <!-- no inheritance hierarchy -->
 
@@ -374,7 +375,12 @@
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Sample/">Sample</a></li>
+<li>
+<p>Range: <a href="../Sample/">Sample</a></p>
+</li>
+<li>
+<p>Multivalued: True</p>
+</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -404,6 +410,7 @@
 <details>
 
 <pre><code class="language-yaml">name: has_participant
+description: Participants in an experiment.
 from_schema: https://github.com/kbase/cdm-schema
 rank: 1000
 alias: has_participant
@@ -411,6 +418,7 @@ owner: Experiment
 domain_of:
 - Experiment
 range: Sample
+multivalued: true
 
 </code></pre>
 
