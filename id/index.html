@@ -372,12 +372,142 @@
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../OwlHasValue/">OwlHasValue</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../BlankNode/">BlankNode</a></td>
+<td>A node with an ID that is not preserved between databases</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../OwlAxiomAnnotation/">OwlAxiomAnnotation</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Assembly/">Assembly</a></td>
+<td>A set of chromosomes, unlocalized and unplaced (random) sequences and alterna...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../NamedThingWithId/">NamedThingWithId</a></td>
+<td>Abstract class to represent things with names and identifiers</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../AnnotationPropertyNode/">AnnotationPropertyNode</a></td>
+<td>A node representing an OWL annotation property</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../OwlHasSelf/">OwlHasSelf</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../NamedThing/">NamedThing</a></td>
+<td>Abstract class to represent things with names</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../AnonymousClassExpression/">AnonymousClassExpression</a></td>
+<td>An OWL anonymous class expression, such as for example `SomeValuesFrom(partOf...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../TransitivePropertyNode/">TransitivePropertyNode</a></td>
+<td>A node representing an OWL transitive object property</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../OwlReifiedAxiom/">OwlReifiedAxiom</a></td>
+<td>An OWL axiom that has been reified - i</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../UniqueNamedThing/">UniqueNamedThing</a></td>
+<td>Represents an entity with a hash value generated from combining its unique at...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ProcessedMeasurement/">ProcessedMeasurement</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Event/">Event</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../IriNode/">IriNode</a></td>
+<td></td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../NodeIdentifier/">NodeIdentifier</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ObjectPropertyNode/">ObjectPropertyNode</a></td>
+<td>A node representing an OWL object property</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Protocol/">Protocol</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Node/">Node</a></td>
+<td>The basic unit of representation in an RDF or OWL graph</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Measurement/">Measurement</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Contig/">Contig</a></td>
+<td>A contig (derived from the word "contiguous") is a set of DNA segments or seq...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../NamedIndividualNode/">NamedIndividualNode</a></td>
+<td>A node that represents an OWL Named Individual</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../TypedPropertyNode/">TypedPropertyNode</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../EncodedFeature/">EncodedFeature</a></td>
 <td>An entity generated from a feature</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../OwlAxiomAnnotation/">OwlAxiomAnnotation</a></td>
+<td><a href="../SymmetricPropertyNode/">SymmetricPropertyNode</a></td>
+<td>A node representing an OWL symmetric object property</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../AnonymousPropertyExpression/">AnonymousPropertyExpression</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Protein/">Protein</a></td>
+<td>Proteins are large, complex molecules made up of one or more long, folded cha...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../DeprecatedNode/">DeprecatedNode</a></td>
 <td></td>
 <td>no</td>
 </tr>
@@ -387,12 +517,22 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../OwlAxiom/">OwlAxiom</a></td>
-<td></td>
+<td><a href="../Feature/">Feature</a></td>
+<td>A feature localized to an interval along a contig</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../OwlHasValue/">OwlHasValue</a></td>
+<td><a href="../OwlRestriction/">OwlRestriction</a></td>
+<td>An OWL restriction, such as <code>SomeValuesFrom(partOf Hand)</code></td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../Genome/">Genome</a></td>
+<td>A contigset with a completeness score of greater than 90% and a contamination...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Experiment/">Experiment</a></td>
 <td></td>
 <td>no</td>
 </tr>
@@ -402,8 +542,28 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../ObjectPropertyNode/">ObjectPropertyNode</a></td>
-<td>A node representing an OWL object property</td>
+<td><a href="../OwlAxiom/">OwlAxiom</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Project/">Project</a></td>
+<td>Administrative unit for collecting data related to a certain topic, location,...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ReflexivePropertyNode/">ReflexivePropertyNode</a></td>
+<td>A node representing an OWL reflexive object property</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../OwlAllValuesFrom/">OwlAllValuesFrom</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../AnonymousExpression/">AnonymousExpression</a></td>
+<td>An OWL expression, such as a class expression</td>
 <td>no</td>
 </tr>
 <tr>
@@ -412,22 +572,12 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../AnonymousClassExpression/">AnonymousClassExpression</a></td>
-<td>An OWL anonymous class expression, such as for example `SomeValuesFrom(partOf...</td>
+<td><a href="../Contigset/">Contigset</a></td>
+<td>A set of individual, overlapping contigs that represent the complete sequence...</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Event/">Event</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../AnonymousPropertyExpression/">AnonymousPropertyExpression</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Orcid/">Orcid</a></td>
+<td><a href="../Sample/">Sample</a></td>
 <td></td>
 <td>no</td>
 </tr>
@@ -442,58 +592,13 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../RdfListNode/">RdfListNode</a></td>
-<td>A node representing an RDF list</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Measurement/">Measurement</a></td>
+<td><a href="../AsymmetricPropertyNode/">AsymmetricPropertyNode</a></td>
 <td></td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../ProcessedMeasurement/">ProcessedMeasurement</a></td>
+<td><a href="../Orcid/">Orcid</a></td>
 <td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ClassNode/">ClassNode</a></td>
-<td>A node that represents an RDFS/OWL class</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../TypedPropertyNode/">TypedPropertyNode</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../DeprecatedNode/">DeprecatedNode</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../OwlHasSelf/">OwlHasSelf</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../AnnotationPropertyNode/">AnnotationPropertyNode</a></td>
-<td>A node representing an OWL annotation property</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../NodeIdentifier/">NodeIdentifier</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../NamedThingWithId/">NamedThingWithId</a></td>
-<td>Abstract class to represent things with names and identifiers</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../OwlReifiedAxiom/">OwlReifiedAxiom</a></td>
-<td>An OWL axiom that has been reified - i</td>
 <td>no</td>
 </tr>
 <tr>
@@ -502,113 +607,13 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Protein/">Protein</a></td>
-<td>Proteins are large, complex molecules made up of one or more long, folded cha...</td>
+<td><a href="../RdfListNode/">RdfListNode</a></td>
+<td>A node representing an RDF list</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../OwlAllValuesFrom/">OwlAllValuesFrom</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../OwlRestriction/">OwlRestriction</a></td>
-<td>An OWL restriction, such as <code>SomeValuesFrom(partOf Hand)</code></td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../BlankNode/">BlankNode</a></td>
-<td>A node with an ID that is not preserved between databases</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Project/">Project</a></td>
-<td>Administrative unit for collecting data related to a certain topic, location,...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../UniqueNamedThing/">UniqueNamedThing</a></td>
-<td>Represents an entity with a hash value generated from combining its unique at...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../IriNode/">IriNode</a></td>
-<td></td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../Protocol/">Protocol</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../TransitivePropertyNode/">TransitivePropertyNode</a></td>
-<td>A node representing an OWL transitive object property</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Feature/">Feature</a></td>
-<td>A feature localized to an interval along a contig</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Contig/">Contig</a></td>
-<td>A contig (derived from the word "contiguous") is a set of DNA segments or seq...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Experiment/">Experiment</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Contigset/">Contigset</a></td>
-<td>A set of individual, overlapping contigs that represent the complete sequence...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Assembly/">Assembly</a></td>
-<td>A set of chromosomes, unlocalized and unplaced (random) sequences and alterna...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../SymmetricPropertyNode/">SymmetricPropertyNode</a></td>
-<td>A node representing an OWL symmetric object property</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../AsymmetricPropertyNode/">AsymmetricPropertyNode</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../NamedThing/">NamedThing</a></td>
-<td>Abstract class to represent things with names</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Sample/">Sample</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../NamedIndividualNode/">NamedIndividualNode</a></td>
-<td>A node that represents an OWL Named Individual</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Node/">Node</a></td>
-<td>The basic unit of representation in an RDF or OWL graph</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../AnonymousExpression/">AnonymousExpression</a></td>
-<td>An OWL expression, such as a class expression</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ReflexivePropertyNode/">ReflexivePropertyNode</a></td>
-<td>A node representing an OWL reflexive object property</td>
+<td><a href="../ClassNode/">ClassNode</a></td>
+<td>A node that represents an RDFS/OWL class</td>
 <td>no</td>
 </tr>
 </tbody>
