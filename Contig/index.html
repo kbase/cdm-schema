@@ -216,6 +216,7 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
 <h1 id="class-contig">Class: Contig</h1>
+<p><em>A contig (derived from the word "contiguous") is a set of DNA segments or sequences that overlap in a way that provides a contiguous representation of a genomic region. A contig should not contain any gaps.</em></p>
 <p>URI: <a href="http://kbase.github.io/cdm-schema/Contig">kb_cdm:Contig</a></p>
 <div class="mermaid"> classDiagram
     class Contig
@@ -363,7 +364,7 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../Contigset/">Contigset</a></td>
+<td><a href="../Assembly/">Assembly</a></td>
 <td><a href="../contigs/">contigs</a></td>
 <td>range</td>
 <td><a href="./">Contig</a></td>
@@ -399,6 +400,9 @@
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: Contig
+description: A contig (derived from the word "contiguous") is a set of DNA segments
+  or sequences that overlap in a way that provides a contiguous representation of
+  a genomic region. A contig should not contain any gaps.
 from_schema: https://github.com/kbase/cdm-schema
 is_a: UniqueNamedThing
 attributes:
@@ -442,6 +446,9 @@ attributes:
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: Contig
+description: A contig (derived from the word "contiguous") is a set of DNA segments
+  or sequences that overlap in a way that provides a contiguous representation of
+  a genomic region. A contig should not contain any gaps.
 from_schema: https://github.com/kbase/cdm-schema
 is_a: UniqueNamedThing
 attributes:

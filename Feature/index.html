@@ -527,7 +527,8 @@ attributes:
   type:
     name: type
     description: The type of the feature; constrained to be either a term from the
-      Sequence Ontology or an SO accession number.
+      Sequence Ontology or an SO accession number. Must be sequence_feature (SO:0000110)
+      or an is_a child of it.
     from_schema: https://github.com/kbase/cdm-schema
     aliases:
     - feature type
@@ -651,7 +652,8 @@ attributes:
   type:
     name: type
     description: The type of the feature; constrained to be either a term from the
-      Sequence Ontology or an SO accession number.
+      Sequence Ontology or an SO accession number. Must be sequence_feature (SO:0000110)
+      or an is_a child of it.
     from_schema: https://github.com/kbase/cdm-schema
     aliases:
     - feature type
