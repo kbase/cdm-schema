@@ -24,12 +24,13 @@ default_curi_maps:
 
 imports:
   - linkml:types
+  # - nmdc/nmdc
   - rdf
   - owl
   # - obo
   - omo
   - relation_graph
-  - oak_association
+  # - oak_association
 
 slots:
   # id:
@@ -133,6 +134,7 @@ classes:
         multivalued: true
 
   Contig:
+    description: A contig (derived from the word "contiguous") is a set of DNA segments or sequences that overlap in a way that provides a contiguous representation of a genomic region. A contig should not contain any gaps.
     is_a: UniqueNamedThing
     attributes:
       length:
@@ -148,19 +150,15 @@ classes:
         range: Feature
         multivalued: true
 
-  Contigset:
+  Assembly:
+    description: A set of chromosomes, unlocalized and unplaced (random) sequences and alternate loci used to represent an organism's genome or the genomes of a community of organism. Most current assemblies are a haploid representation of an organism's genome, although some loci may be represented more than once. This representation may be obtained from one or more individuals.
     is_a: UniqueNamedThing
-    description: A set of contigs; may also be called a genome.
-    aliases:
-    - genome
-    - biological subject
     attributes:
 
       contigs:
         description: The contigs in this contigset.
         range: Contig
         multivalued: true
-
       n_scaffolds:
         range: integer
         description: Total number of scaffolds
@@ -236,6 +234,22 @@ classes:
       gc_std:
         range: float
         description: The standard deviation of GC content across the contigset
+
+
+    # 90+ % complete
+    # less than 5% contamination
+
+# e.g. transcripts
+
+  Contigset:
+    is_a: UniqueNamedThing
+    description: A set of individual, overlapping contigs that represent the complete sequenced genome of an organism.
+    aliases:
+    - genome
+    - biological subject
+    attributes:
+      # something to do with binning
+      # output of maxbin
       checkm2_completeness:
         range: float
         description: Estimate of the completeness of a contigset (MAG or genome), estimated by CheckM2 tool
@@ -243,7 +257,6 @@ classes:
         range: float
         description: Estimate of the contamination of a contigset (MAG or genome), estimated by CheckM2 tool
 
-# e.g. transcripts
   EncodedFeature:
     description: An entity generated from a feature.
     is_a: UniqueNamedThing
@@ -276,7 +289,7 @@ classes:
       type:
         aliases:
           - feature type
-        description: The type of the feature; constrained to be either a term from the Sequence Ontology or an SO accession number.
+        description: The type of the feature; constrained to be either a term from the Sequence Ontology or an SO accession number. Must be sequence_feature (SO:0000110) or an is_a child of it.
         range: uriorcurie
         pattern: ^SO:\d+$
 
@@ -304,6 +317,7 @@ classes:
         range: float
 
   Protein:
+    description: Proteins are large, complex molecules made up of one or more long, folded chains of amino acids, whose sequences are determined by the DNA sequence of the protein-encoding gene.
     is_a: UniqueNamedThing
     attributes:
       description:
@@ -407,6 +421,23 @@ enums:
   # VALIDATED	The RefSeq record has undergone an initial review to provide the preferred sequence standard. The record has not yet been subject to final review at which time additional functional information may be provided.
   # WGS	The RefSeq record is provided to represent a collection of whole genome shotgun sequences. These records are not subject to individual review or revisions between genome updates.
 
+
+  # gene product => go term relationships:
+  # https://github.com/geneontology/go-annotation/blob/master/specs/gpad-gpi-2-0.md#allowed-gene-product-to-go-term-relations
+  # GO Aspect	Relations Ontology Label	Relations Ontology ID	Usage Guidelines
+  # Molecular Function	enables	RO:0002327	Default for MF
+  # Molecular Function	contributes to	RO:0002326
+  # Biological Process	involved in	RO:0002331
+  # Biological Process	acts upstream of	RO:0002263
+  # Biological Process	acts upstream of positive effect	RO:0004034
+  # Biological Process	acts upstream of negative effect	RO:0004035
+  # Biological Process	acts upstream of or within	RO:0002264	Default for BP (GO:0008150) and child terms
+  # Biological Process	acts upstream of or within positive effect	RO:0004032
+  # Biological Process	acts upstream of or within negative effect	RO:0004033
+  # Cellular Component	part of	BFO:0000050	Default for protein-containing complex (GO:0032991) and child terms
+  # Cellular Component	located in	RO:0001025	Default for non-protein-containing complex CC terms
+  # Cellular Component	is active in	RO:0002432	Used to indicate where a gene product enables its MF
+  # Cellular Component  colocalizes with	RO:0002325
 
   # predicate_enum:
   #   permissible_values:
