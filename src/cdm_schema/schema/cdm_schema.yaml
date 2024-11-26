@@ -24,13 +24,10 @@ default_curi_maps:
 
 imports:
   - linkml:types
-  # - nmdc/nmdc
   - rdf
   - owl
-  # - obo
   - omo
   - relation_graph
-  # - oak_association
 
 slots:
   # id:
@@ -235,12 +232,6 @@ classes:
         range: float
         description: The standard deviation of GC content across the contigset
 
-
-    # 90+ % complete
-    # less than 5% contamination
-
-# e.g. transcripts
-
   Contigset:
     is_a: UniqueNamedThing
     description: A set of individual, overlapping contigs that represent the complete sequenced genome of an organism.
@@ -257,6 +248,11 @@ classes:
         range: float
         description: Estimate of the contamination of a contigset (MAG or genome), estimated by CheckM2 tool
 
+  Genome:
+    is_a: Contigset
+    description: A contigset with a completeness score of greater than 90% and a contamination score of less than 5%.
+
+# e.g. transcripts
   EncodedFeature:
     description: An entity generated from a feature.
     is_a: UniqueNamedThing
