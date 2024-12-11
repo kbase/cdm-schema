@@ -19,8 +19,8 @@ LINKML_SCHEMA_GOOGLE_SHEET_TABS=
 ## gen-project configuration file
 LINKML_GENERATORS_CONFIG_YAML= --config-file config.yaml
 
-## pass args if gendoc ignores config.yaml (i.e. --no-mergeimports)
-LINKML_GENERATORS_DOC_ARGS= --include-top-level-diagram
+## pass args if gendoc ignores config.yaml (e.g. --include-top-level-diagram)
+LINKML_GENERATORS_DOC_ARGS=
 
 ## pass args to workaround genowl rdfs config bug (linkml#1453)
 ##   (i.e. --no-type-objects --no-metaclasses --metadata-profile rdfs)
