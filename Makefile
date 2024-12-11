@@ -24,10 +24,6 @@ PYMODEL = $(SRC)/$(SCHEMA_NAME)/datamodel
 DOCDIR = docs
 DOCTEMPLATES = $(SRC)/docs/templates
 EXAMPLEDIR = examples
-SHEET_MODULE = personinfo_enums
-SHEET_ID = $(LINKML_SCHEMA_GOOGLE_SHEET_ID)
-SHEET_TABS = $(LINKML_SCHEMA_GOOGLE_SHEET_TABS)
-SHEET_MODULE_PATH = $(SOURCE_SCHEMA_DIR)/$(SHEET_MODULE).yaml
 
 # Use += to append variables from the variables file
 CONFIG_YAML =
@@ -112,7 +108,9 @@ create-data-harmonizer:
 all: site
 site: gen-project gendoc
 %.yaml: gen-project
-deploy: all mkd-gh-deploy
+
+# was deploy: all mkd-gh-deploy
+deploy: gendoc mkd-gh-deploy
 
 compile-sheets:
 	$(RUN) sheets2linkml --gsheet-id $(SHEET_ID) $(SHEET_TABS) > $(SHEET_MODULE_PATH).tmp && mv $(SHEET_MODULE_PATH).tmp $(SHEET_MODULE_PATH)
@@ -196,6 +194,8 @@ $(DOCDIR):
 gendoc: $(DOCDIR)
 	cp -rf $(SRC)/docs/files/* $(DOCDIR) ; \
 	$(RUN) gen-doc ${GEN_DOC_ARGS} -d $(DOCDIR) $(SOURCE_SCHEMA_PATH)
+	mkdir -p $(DOCDIR)/javascripts
+	$(RUN) cp $(SRC)/docs/js/*.js $(DOCDIR)/javascripts/
 
 testdoc: gendoc serve
 

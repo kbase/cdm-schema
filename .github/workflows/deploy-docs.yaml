@@ -31,7 +31,7 @@ jobs:
       - name: Install dependencies.
         run: poetry install -E docs
 
-      - name: Build documentation.
+      - name: Build documentation and deploy to Github Pages
         run: |
           mkdir -p docs
           touch docs/.nojekyll
