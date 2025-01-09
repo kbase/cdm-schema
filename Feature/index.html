@@ -243,8 +243,6 @@
     click CdsPhaseType href "../CdsPhaseType"
 
 
-      Feature : data_source
-
       Feature : description
 
       Feature : e_value
@@ -260,6 +258,8 @@
 
       Feature : end
 
+      Feature : feature_id
+
       Feature : generated_by
 
 
@@ -270,8 +270,6 @@
 
 
       Feature : hash
-
-      Feature : id
 
       Feature : identifiers
 
@@ -292,6 +290,17 @@
 
 
       Feature : p_value
+
+      Feature : source_database
+
+      Feature : source_protocol
+
+
+
+
+    Feature --&gt; "0..1" Protocol : source_protocol
+    click Protocol href "../Protocol"
+
 
       Feature : start
 
@@ -333,15 +342,33 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../cds_phase/">cds_phase</a></td>
+<td>0..1 <br/> <a href="../CdsPhaseType/">CdsPhaseType</a></td>
+<td>For features of type CDS, the phase indicates where the next codon begins rel...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../e_value/">e_value</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>The 'score' of the feature</td>
+<td>direct</td>
+</tr>
+<tr>
 <td><a href="../encodes/">encodes</a></td>
 <td>* <br/> <a href="../EncodedFeature/">EncodedFeature</a></td>
 <td>Known or predicted transcription products from this feature</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../data_source/">data_source</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Data source from which this entity came</td>
+<td><a href="../end/">end</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>The start and end coordinates of the feature are given in positive 1-based in...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../feature_id/">feature_id</a></td>
+<td>1 <br/> <a href="../UUID/">UUID</a></td>
+<td>Internal (CDM) unique identifier</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -351,19 +378,13 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../type/">type</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>The type of the feature; constrained to be either a term from the Sequence On...</td>
+<td><a href="../p_value/">p_value</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>The 'score' of the feature</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../start/">start</a></td>
-<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>The start and end coordinates of the feature are given in positive 1-based in...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../end/">end</a></td>
 <td>0..1 <br/> <a href="../Integer/">Integer</a></td>
 <td>The start and end coordinates of the feature are given in positive 1-based in...</td>
 <td>direct</td>
@@ -375,27 +396,27 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../cds_phase/">cds_phase</a></td>
-<td>0..1 <br/> <a href="../CdsPhaseType/">CdsPhaseType</a></td>
-<td>For features of type CDS, the phase indicates where the next codon begins rel...</td>
+<td><a href="../source_database/">source_database</a></td>
+<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>ID of the data source from which this entity came</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../p_value/">p_value</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>The 'score' of the feature</td>
+<td><a href="../source_protocol/">source_protocol</a></td>
+<td>0..1 <br/> <a href="../Protocol/">Protocol</a></td>
+<td>ID of the protocol used to generate the feature</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../e_value/">e_value</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>The 'score' of the feature</td>
+<td><a href="../type/">type</a></td>
+<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>The type of the feature; constrained to be either a term from the Sequence On...</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../hash/">hash</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td>A hash value generated from one or more object attributes that serves to ensu...</td>
 <td><a href="../UniqueNamedThing/">UniqueNamedThing</a></td>
 </tr>
 <tr>
@@ -405,21 +426,15 @@
 <td><a href="../NamedThingWithId/">NamedThingWithId</a></td>
 </tr>
 <tr>
-<td><a href="../id/">id</a></td>
+<td><a href="../description/">description</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td>Definition or description of the entity</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 <tr>
 <td><a href="../names/">names</a></td>
 <td>* <br/> <a href="../Name/">Name</a></td>
 <td>Names, alternative names, and synonyms for an entity</td>
-<td><a href="../NamedThing/">NamedThing</a></td>
-</tr>
-<tr>
-<td><a href="../description/">description</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Definition or description of the entity</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 </tbody>
@@ -435,18 +450,6 @@
 </tr>
 </thead>
 <tbody>
-<tr>
-<td><a href="../Contig/">Contig</a></td>
-<td><a href="../features/">features</a></td>
-<td>range</td>
-<td><a href="./">Feature</a></td>
-</tr>
-<tr>
-<td><a href="../EncodedFeature/">EncodedFeature</a></td>
-<td><a href="../encoded_by/">encoded_by</a></td>
-<td>range</td>
-<td><a href="./">Feature</a></td>
-</tr>
 <tr>
 <td><a href="../Protein/">Protein</a></td>
 <td><a href="../encoded_by/">encoded_by</a></td>
@@ -500,6 +503,26 @@ see_also:
 - https://github.com/The-Sequence-Ontology/Specifications/blob/master/gff3.md
 is_a: UniqueNamedThing
 attributes:
+  cds_phase:
+    name: cds_phase
+    description: For features of type CDS, the phase indicates where the next codon
+      begins relative to the 5' end (where the 5' end of the CDS is relative to the
+      strand of the CDS feature) of the current CDS feature. cds_phase is required
+      if the feature type is CDS.
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    domain_of:
+    - Feature
+    range: CdsPhaseType
+  e_value:
+    name: e_value
+    description: The 'score' of the feature. The semantics of this field are ill-defined.
+      E-values should be used for sequence similarity features.
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    domain_of:
+    - Feature
+    range: float
   encodes:
     name: encodes
     description: Known or predicted transcription products from this feature.
@@ -509,36 +532,8 @@ attributes:
     - Feature
     range: EncodedFeature
     multivalued: true
-  data_source:
-    name: data_source
-    description: Data source from which this entity came.
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    domain_of:
-    - Feature
-  generated_by:
-    name: generated_by
-    description: The algorithm or procedure that generated the feature.
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    domain_of:
-    - Feature
-    range: Protocol
-  type:
-    name: type
-    description: The type of the feature; constrained to be either a term from the
-      Sequence Ontology or an SO accession number. Must be sequence_feature (SO:0000110)
-      or an is_a child of it.
-    from_schema: https://github.com/kbase/cdm-schema
-    aliases:
-    - feature type
-    domain_of:
-    - EncodedFeature
-    - Feature
-    range: uriorcurie
-    pattern: ^SO:\d+$
-  start:
-    name: start
+  end:
+    name: end
     description: The start and end coordinates of the feature are given in positive
       1-based int coordinates, relative to the landmark given in column one. Start
       is always less than or equal to end. For features that cross the origin of a
@@ -552,8 +547,36 @@ attributes:
     domain_of:
     - Feature
     range: integer
-  end:
-    name: end
+  feature_id:
+    name: feature_id
+    description: Internal (CDM) unique identifier.
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    identifier: true
+    domain_of:
+    - Feature
+    - FeatureAttributes
+    range: UUID
+    required: true
+  generated_by:
+    name: generated_by
+    description: The algorithm or procedure that generated the feature.
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    domain_of:
+    - Feature
+    range: Protocol
+  p_value:
+    name: p_value
+    description: The 'score' of the feature. The semantics of this field are ill-defined.
+      P-values should be used for ab initio gene prediction features.
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    domain_of:
+    - Feature
+    range: float
+  start:
+    name: start
     description: The start and end coordinates of the feature are given in positive
       1-based int coordinates, relative to the landmark given in column one. Start
       is always less than or equal to end. For features that cross the origin of a
@@ -575,35 +598,37 @@ attributes:
     domain_of:
     - Feature
     range: StrandType
-  cds_phase:
-    name: cds_phase
-    description: For features of type CDS, the phase indicates where the next codon
-      begins relative to the 5' end (where the 5' end of the CDS is relative to the
-      strand of the CDS feature) of the current CDS feature. cds_phase is required
-      if the feature type is CDS.
+  source_database:
+    name: source_database
+    description: ID of the data source from which this entity came.
     from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     domain_of:
     - Feature
-    range: CdsPhaseType
-  p_value:
-    name: p_value
-    description: The 'score' of the feature. The semantics of this field are ill-defined.
-      P-values should be used for ab initio gene prediction features.
+    range: uriorcurie
+  source_protocol:
+    name: source_protocol
+    description: ID of the protocol used to generate the feature.
     from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     domain_of:
     - Feature
-    range: float
-  e_value:
-    name: e_value
-    description: The 'score' of the feature. The semantics of this field are ill-defined.
-      E-values should be used for sequence similarity features.
+    range: Protocol
+  type:
+    name: type
+    description: The type of the feature; constrained to be either a term from the
+      Sequence Ontology or an SO accession number. Must be sequence_feature (SO:0000110)
+      or an is_a child of it.
     from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
+    aliases:
+    - feature type
     domain_of:
+    - EncodedFeature
     - Feature
-    range: float
+    - Measurement
+    - Sample
+    range: uriorcurie
+    pattern: ^SO:\d+$
 
 </code></pre>
 </details>
@@ -618,6 +643,30 @@ see_also:
 - https://github.com/The-Sequence-Ontology/Specifications/blob/master/gff3.md
 is_a: UniqueNamedThing
 attributes:
+  cds_phase:
+    name: cds_phase
+    description: For features of type CDS, the phase indicates where the next codon
+      begins relative to the 5' end (where the 5' end of the CDS is relative to the
+      strand of the CDS feature) of the current CDS feature. cds_phase is required
+      if the feature type is CDS.
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    alias: cds_phase
+    owner: Feature
+    domain_of:
+    - Feature
+    range: CdsPhaseType
+  e_value:
+    name: e_value
+    description: The 'score' of the feature. The semantics of this field are ill-defined.
+      E-values should be used for sequence similarity features.
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    alias: e_value
+    owner: Feature
+    domain_of:
+    - Feature
+    range: float
   encodes:
     name: encodes
     description: Known or predicted transcription products from this feature.
@@ -629,58 +678,6 @@ attributes:
     - Feature
     range: EncodedFeature
     multivalued: true
-  data_source:
-    name: data_source
-    description: Data source from which this entity came.
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    alias: data_source
-    owner: Feature
-    domain_of:
-    - Feature
-    range: string
-  generated_by:
-    name: generated_by
-    description: The algorithm or procedure that generated the feature.
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    alias: generated_by
-    owner: Feature
-    domain_of:
-    - Feature
-    range: Protocol
-  type:
-    name: type
-    description: The type of the feature; constrained to be either a term from the
-      Sequence Ontology or an SO accession number. Must be sequence_feature (SO:0000110)
-      or an is_a child of it.
-    from_schema: https://github.com/kbase/cdm-schema
-    aliases:
-    - feature type
-    alias: type
-    owner: Feature
-    domain_of:
-    - EncodedFeature
-    - Feature
-    range: uriorcurie
-    pattern: ^SO:\d+$
-  start:
-    name: start
-    description: The start and end coordinates of the feature are given in positive
-      1-based int coordinates, relative to the landmark given in column one. Start
-      is always less than or equal to end. For features that cross the origin of a
-      circular feature (e.g. most bacterial genomes, plasmids, and some viral genomes),
-      the requirement for start to be less than or equal to end is satisfied by making
-      end = the position of the end + the length of the landmark feature. For zero-length
-      features, such as insertion sites, start equals end and the implied site is
-      to the right of the indicated base in the direction of the landmark.
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    alias: start
-    owner: Feature
-    domain_of:
-    - Feature
-    range: integer
   end:
     name: end
     description: The start and end coordinates of the feature are given in positive
@@ -698,29 +695,29 @@ attributes:
     domain_of:
     - Feature
     range: integer
-  strand:
-    name: strand
-    description: The strand of the feature.
+  feature_id:
+    name: feature_id
+    description: Internal (CDM) unique identifier.
     from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
-    alias: strand
+    identifier: true
+    alias: feature_id
     owner: Feature
     domain_of:
     - Feature
-    range: StrandType
-  cds_phase:
-    name: cds_phase
-    description: For features of type CDS, the phase indicates where the next codon
-      begins relative to the 5' end (where the 5' end of the CDS is relative to the
-      strand of the CDS feature) of the current CDS feature. cds_phase is required
-      if the feature type is CDS.
+    - FeatureAttributes
+    range: UUID
+    required: true
+  generated_by:
+    name: generated_by
+    description: The algorithm or procedure that generated the feature.
     from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
-    alias: cds_phase
+    alias: generated_by
     owner: Feature
     domain_of:
     - Feature
-    range: CdsPhaseType
+    range: Protocol
   p_value:
     name: p_value
     description: The 'score' of the feature. The semantics of this field are ill-defined.
@@ -732,19 +729,74 @@ attributes:
     domain_of:
     - Feature
     range: float
-  e_value:
-    name: e_value
-    description: The 'score' of the feature. The semantics of this field are ill-defined.
-      E-values should be used for sequence similarity features.
+  start:
+    name: start
+    description: The start and end coordinates of the feature are given in positive
+      1-based int coordinates, relative to the landmark given in column one. Start
+      is always less than or equal to end. For features that cross the origin of a
+      circular feature (e.g. most bacterial genomes, plasmids, and some viral genomes),
+      the requirement for start to be less than or equal to end is satisfied by making
+      end = the position of the end + the length of the landmark feature. For zero-length
+      features, such as insertion sites, start equals end and the implied site is
+      to the right of the indicated base in the direction of the landmark.
     from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
-    alias: e_value
+    alias: start
     owner: Feature
     domain_of:
     - Feature
-    range: float
+    range: integer
+  strand:
+    name: strand
+    description: The strand of the feature.
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    alias: strand
+    owner: Feature
+    domain_of:
+    - Feature
+    range: StrandType
+  source_database:
+    name: source_database
+    description: ID of the data source from which this entity came.
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    alias: source_database
+    owner: Feature
+    domain_of:
+    - Feature
+    range: uriorcurie
+  source_protocol:
+    name: source_protocol
+    description: ID of the protocol used to generate the feature.
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    alias: source_protocol
+    owner: Feature
+    domain_of:
+    - Feature
+    range: Protocol
+  type:
+    name: type
+    description: The type of the feature; constrained to be either a term from the
+      Sequence Ontology or an SO accession number. Must be sequence_feature (SO:0000110)
+      or an is_a child of it.
+    from_schema: https://github.com/kbase/cdm-schema
+    aliases:
+    - feature type
+    alias: type
+    owner: Feature
+    domain_of:
+    - EncodedFeature
+    - Feature
+    - Measurement
+    - Sample
+    range: uriorcurie
+    pattern: ^SO:\d+$
   hash:
     name: hash
+    description: A hash value generated from one or more object attributes that serves
+      to ensure the entity is unique.
     from_schema: https://github.com/kbase/cdm-schema
     alias: hash
     owner: Feature
@@ -762,18 +814,22 @@ attributes:
     - NamedThingWithId
     range: Identifier
     multivalued: true
-  id:
-    name: id
+  description:
+    name: description
+    description: Definition or description of the entity.
     from_schema: https://github.com/kbase/cdm-schema
-    alias: id
+    rank: 1000
+    alias: description
     owner: Feature
     domain_of:
     - NamedThing
-    - node
-    - node_identifier
-    - owl_reified_axiom
-    - owl_axiom
-    - owl_axiom_annotation
+    - Event
+    - Experiment
+    - Identifier
+    - Name
+    - Project
+    - Protein
+    - Sample
     range: string
   names:
     name: names
@@ -786,18 +842,6 @@ attributes:
     - NamedThing
     range: Name
     multivalued: true
-  description:
-    name: description
-    description: Definition or description of the entity.
-    from_schema: https://github.com/kbase/cdm-schema
-    alias: description
-    owner: Feature
-    domain_of:
-    - Name
-    - Identifier
-    - NamedThing
-    - Protein
-    range: string
 
 </code></pre>
 </details>
@@ -826,7 +870,8 @@ attributes:
 </div>
 <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
 <script src="../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
-<script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
-mermaid.initialize({});</script><script type="module">import mermaid from "https://unpkg.com/mermaid@10.9.0/dist/mermaid.esm.min.mjs";
+<script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+<script src="../javascripts/tablesort.js"></script>
+<script type="module">import mermaid from "https://unpkg.com/mermaid@10.9.0/dist/mermaid.esm.min.mjs";
 mermaid.initialize({});</script></body>
 </html>

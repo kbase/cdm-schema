@@ -284,13 +284,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#inheritance" class="md-nav__link">
-    Inheritance
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#applicable-classes" class="md-nav__link">
     Applicable Classes
   </a>
@@ -308,19 +301,6 @@
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     Identifier and Mapping Information
   </a>
-  
-    <nav class="md-nav" aria-label="Identifier and Mapping Information">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#schema-source" class="md-nav__link">
-    Schema Source
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -359,15 +339,9 @@
 
 
 <h1 id="slot-value">Slot: value</h1>
-<p><em>Note the range of this slot is always a string. Only used the triple represents a literal assertion</em></p>
-<p>URI: <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#object">rdf:object</a></p>
-<h2 id="inheritance">Inheritance</h2>
-<ul>
-<li><strong>value</strong><ul>
-<li><a href="../annotation_value/">annotation_value</a></li>
-</ul>
-</li>
-</ul>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/value">kb_cdm:value</a></p>
+<!-- no inheritance hierarchy -->
+
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
 <thead>
@@ -379,221 +353,27 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../RdfsLabelStatement/">RdfsLabelStatement</a></td>
-<td>A statement that connects a node to a human-readable label</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../Statements/">Statements</a></td>
-<td>Represents an RDF triple</td>
+<td><a href="../ProcessedMeasurement/">ProcessedMeasurement</a></td>
+<td>A measurement that requires additional processing to generate a result</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Creator/">Creator</a></td>
-<td></td>
+<td><a href="../Measurement/">Measurement</a></td>
+<td>A qualitative or quantitative observation of an attribute of an object or eve...</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../HasMappingStatement/">HasMappingStatement</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../OwlDisjointClassStatement/">OwlDisjointClassStatement</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../OwlAxiomAnnotation/">OwlAxiomAnnotation</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../OwlImportsStatement/">OwlImportsStatement</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../RdfsDomainStatement/">RdfsDomainStatement</a></td>
-<td>A statement that connects a property to its domain class</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../HasExactMatchStatement/">HasExactMatchStatement</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../RdfListMemberStatement/">RdfListMemberStatement</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../HasNarrowSynonymStatement/">HasNarrowSynonymStatement</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../RdfsSubclassOfNamedStatement/">RdfsSubclassOfNamedStatement</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../NodeToNodeStatement/">NodeToNodeStatement</a></td>
-<td>A statement where object is non-null and value is not populated</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../RdfFirstStatement/">RdfFirstStatement</a></td>
-<td>A statement that connects a list to its first element</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../OwlReifiedAxiom/">OwlReifiedAxiom</a></td>
-<td>An OWL axiom that has been reified - i</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../HasBroadMatchStatement/">HasBroadMatchStatement</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../RdfsSubpropertyOfStatement/">RdfsSubpropertyOfStatement</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../RdfTypeStatement/">RdfTypeStatement</a></td>
-<td>A statement that indicates the asserted type of the subject entity</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../RdfRestTransitiveStatement/">RdfRestTransitiveStatement</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../RdfRestStatement/">RdfRestStatement</a></td>
-<td>A statement that connects a list to its remaining elements</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Contributor/">Contributor</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../RdfsSubclassOfStatement/">RdfsSubclassOfStatement</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../HasSynonymStatement/">HasSynonymStatement</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../HasNarrowMatchStatement/">HasNarrowMatchStatement</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../OwlInverseOfStatement/">OwlInverseOfStatement</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../RdfListStatement/">RdfListStatement</a></td>
-<td>A statement that is used to represent aspects of RDF lists</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../HasDbxrefStatement/">HasDbxrefStatement</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../HasRelatedSynonymStatement/">HasRelatedSynonymStatement</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../OwlSameAsStatement/">OwlSameAsStatement</a></td>
-<td>A statement that connects two individual nodes where both individual are equi...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../OwlAxiom/">OwlAxiom</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../HasRelatedMatchStatement/">HasRelatedMatchStatement</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../HasBroadSynonymStatement/">HasBroadSynonymStatement</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../HasMatchStatement/">HasMatchStatement</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../RdfsRangeStatement/">RdfsRangeStatement</a></td>
-<td>A statement that connects a property to its range class or literal type</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../NodeToValueStatement/">NodeToValueStatement</a></td>
-<td>A statement where value is non-null and object is not populated</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../OwlEquivalentClassStatement/">OwlEquivalentClassStatement</a></td>
-<td>A statement that connects two class_nodes where both classes are equivalent</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../HasTextDefinitionStatement/">HasTextDefinitionStatement</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../HasOioSynonymStatement/">HasOioSynonymStatement</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../HasExactSynonymStatement/">HasExactSynonymStatement</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../AxiomDbxrefAnnotation/">AxiomDbxrefAnnotation</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../OwlComplementOfStatement/">OwlComplementOfStatement</a></td>
-<td></td>
+<td><a href="../MeasurementSet/">MeasurementSet</a></td>
+<td>A series of qualitative or quantitative measurements</td>
 <td>no</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../LiteralAsStringType/">LiteralAsStringType</a></li>
+<li>Range: <a href="../String/">String</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="schema-source">Schema Source</h3>
-<ul>
-<li>from schema: https://github.com/kbase/cdm-schema</li>
-</ul>
 <h2 id="mappings">Mappings</h2>
 <table>
 <thead>
@@ -605,15 +385,11 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>rdf:object</td>
+<td>kb_cdm:value</td>
 </tr>
 <tr>
 <td>native</td>
 <td>kb_cdm:value</td>
-</tr>
-<tr>
-<td>close</td>
-<td>rdf:object</td>
 </tr>
 </tbody>
 </table>
@@ -621,17 +397,11 @@
 <details>
 
 <pre><code class="language-yaml">name: value
-description: Note the range of this slot is always a string. Only used the triple
-  represents a literal assertion
-from_schema: https://github.com/kbase/cdm-schema
-close_mappings:
-- rdf:object
-rank: 1000
-slot_uri: rdf:object
 alias: value
 domain_of:
-- statements
-range: literal_as_string_type
+- Measurement
+- MeasurementSet
+range: string
 
 </code></pre>
 
@@ -679,6 +449,10 @@ range: literal_as_string_type
     
     
       <script src="../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+      
+        <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="../javascripts/tablesort.js"></script>
       
     
     

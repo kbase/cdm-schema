@@ -218,6 +218,8 @@
     click Name href "../Name"
       Name : description
 
+      Name : entity_id
+
       Name : name
 
       Name : source
@@ -237,6 +239,18 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../description/">description</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Brief description of the name and/or its relationship to the entity</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../entity_id/">entity_id</a></td>
+<td>1 <br/> <a href="../String/">String</a></td>
+<td>The entity to which the name refers</td>
+<td>direct</td>
+</tr>
+<tr>
 <td><a href="../name/">name</a></td>
 <td>1 <br/> <a href="../String/">String</a></td>
 <td>The string used as a name</td>
@@ -245,13 +259,7 @@
 <tr>
 <td><a href="../source/">source</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>The source of the name</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../description/">description</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Brief description of the name and/or its relationship to the entity</td>
+<td>The data source for the name</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -286,7 +294,7 @@
 <td><a href="./">Name</a></td>
 </tr>
 <tr>
-<td><a href="../Protocol/">Protocol</a></td>
+<td><a href="../Assembly/">Assembly</a></td>
 <td><a href="../names/">names</a></td>
 <td>range</td>
 <td><a href="./">Name</a></td>
@@ -298,19 +306,7 @@
 <td><a href="./">Name</a></td>
 </tr>
 <tr>
-<td><a href="../Assembly/">Assembly</a></td>
-<td><a href="../names/">names</a></td>
-<td>range</td>
-<td><a href="./">Name</a></td>
-</tr>
-<tr>
 <td><a href="../Contigset/">Contigset</a></td>
-<td><a href="../names/">names</a></td>
-<td>range</td>
-<td><a href="./">Name</a></td>
-</tr>
-<tr>
-<td><a href="../Genome/">Genome</a></td>
 <td><a href="../names/">names</a></td>
 <td>range</td>
 <td><a href="./">Name</a></td>
@@ -322,25 +318,25 @@
 <td><a href="./">Name</a></td>
 </tr>
 <tr>
-<td><a href="../Feature/">Feature</a></td>
+<td><a href="../EnvironmentalContext/">EnvironmentalContext</a></td>
 <td><a href="../names/">names</a></td>
 <td>range</td>
 <td><a href="./">Name</a></td>
 </tr>
 <tr>
-<td><a href="../Protein/">Protein</a></td>
+<td><a href="../GoldEnvironmentalContext/">GoldEnvironmentalContext</a></td>
 <td><a href="../names/">names</a></td>
 <td>range</td>
 <td><a href="./">Name</a></td>
 </tr>
 <tr>
-<td><a href="../Sample/">Sample</a></td>
+<td><a href="../MixsEnvironmentalContext/">MixsEnvironmentalContext</a></td>
 <td><a href="../names/">names</a></td>
 <td>range</td>
 <td><a href="./">Name</a></td>
 </tr>
 <tr>
-<td><a href="../Project/">Project</a></td>
+<td><a href="../Event/">Event</a></td>
 <td><a href="../names/">names</a></td>
 <td>range</td>
 <td><a href="./">Name</a></td>
@@ -352,7 +348,13 @@
 <td><a href="./">Name</a></td>
 </tr>
 <tr>
-<td><a href="../Event/">Event</a></td>
+<td><a href="../Feature/">Feature</a></td>
+<td><a href="../names/">names</a></td>
+<td>range</td>
+<td><a href="./">Name</a></td>
+</tr>
+<tr>
+<td><a href="../Genome/">Genome</a></td>
 <td><a href="../names/">names</a></td>
 <td>range</td>
 <td><a href="./">Name</a></td>
@@ -365,6 +367,36 @@
 </tr>
 <tr>
 <td><a href="../ProcessedMeasurement/">ProcessedMeasurement</a></td>
+<td><a href="../names/">names</a></td>
+<td>range</td>
+<td><a href="./">Name</a></td>
+</tr>
+<tr>
+<td><a href="../Project/">Project</a></td>
+<td><a href="../names/">names</a></td>
+<td>range</td>
+<td><a href="./">Name</a></td>
+</tr>
+<tr>
+<td><a href="../Protein/">Protein</a></td>
+<td><a href="../names/">names</a></td>
+<td>range</td>
+<td><a href="./">Name</a></td>
+</tr>
+<tr>
+<td><a href="../Protocol/">Protocol</a></td>
+<td><a href="../names/">names</a></td>
+<td>range</td>
+<td><a href="./">Name</a></td>
+</tr>
+<tr>
+<td><a href="../ProtocolParticipant/">ProtocolParticipant</a></td>
+<td><a href="../names/">names</a></td>
+<td>range</td>
+<td><a href="./">Name</a></td>
+</tr>
+<tr>
+<td><a href="../Sample/">Sample</a></td>
 <td><a href="../names/">names</a></td>
 <td>range</td>
 <td><a href="./">Name</a></td>
@@ -404,9 +436,35 @@ description: The name or label for an entity. This may be a primary name, altern
   name, synonym, acronym, or any other label used to refer to an entity.
 from_schema: https://github.com/kbase/cdm-schema
 attributes:
+  description:
+    name: description
+    description: Brief description of the name and/or its relationship to the entity.
+    examples:
+    - value: 'UniProt: Full name'
+    from_schema: https://github.com/kbase/cdm-schema
+    domain_of:
+    - NamedThing
+    - Event
+    - Experiment
+    - Identifier
+    - Name
+    - Project
+    - Protein
+    - Sample
+  entity_id:
+    name: entity_id
+    description: The entity to which the name refers.
+    from_schema: https://github.com/kbase/cdm-schema
+    domain_of:
+    - Identifier
+    - Name
+    required: true
   name:
     name: name
     description: The string used as a name.
+    examples:
+    - value: Heat-inducible transcription repressor HrcA
+    - value: Uncharacterized protein 002R
     from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     slot_uri: schema:name
@@ -415,20 +473,15 @@ attributes:
     required: true
   source:
     name: source
-    description: The source of the name.
+    description: The data source for the name.
+    examples:
+    - value: NCBI
+    - value: KE-Pangenomes
+    - value: TrEMBL
     from_schema: https://github.com/kbase/cdm-schema
     domain_of:
-    - Name
     - Identifier
-  description:
-    name: description
-    description: Brief description of the name and/or its relationship to the entity.
-    from_schema: https://github.com/kbase/cdm-schema
-    domain_of:
     - Name
-    - Identifier
-    - NamedThing
-    - Protein
 
 </code></pre>
 </details>
@@ -439,9 +492,41 @@ description: The name or label for an entity. This may be a primary name, altern
   name, synonym, acronym, or any other label used to refer to an entity.
 from_schema: https://github.com/kbase/cdm-schema
 attributes:
+  description:
+    name: description
+    description: Brief description of the name and/or its relationship to the entity.
+    examples:
+    - value: 'UniProt: Full name'
+    from_schema: https://github.com/kbase/cdm-schema
+    alias: description
+    owner: Name
+    domain_of:
+    - NamedThing
+    - Event
+    - Experiment
+    - Identifier
+    - Name
+    - Project
+    - Protein
+    - Sample
+    range: string
+  entity_id:
+    name: entity_id
+    description: The entity to which the name refers.
+    from_schema: https://github.com/kbase/cdm-schema
+    alias: entity_id
+    owner: Name
+    domain_of:
+    - Identifier
+    - Name
+    range: string
+    required: true
   name:
     name: name
     description: The string used as a name.
+    examples:
+    - value: Heat-inducible transcription repressor HrcA
+    - value: Uncharacterized protein 002R
     from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     slot_uri: schema:name
@@ -453,25 +538,17 @@ attributes:
     required: true
   source:
     name: source
-    description: The source of the name.
+    description: The data source for the name.
+    examples:
+    - value: NCBI
+    - value: KE-Pangenomes
+    - value: TrEMBL
     from_schema: https://github.com/kbase/cdm-schema
     alias: source
     owner: Name
     domain_of:
-    - Name
     - Identifier
-    range: string
-  description:
-    name: description
-    description: Brief description of the name and/or its relationship to the entity.
-    from_schema: https://github.com/kbase/cdm-schema
-    alias: description
-    owner: Name
-    domain_of:
     - Name
-    - Identifier
-    - NamedThing
-    - Protein
     range: string
 
 </code></pre>
@@ -501,7 +578,8 @@ attributes:
 </div>
 <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
 <script src="../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
-<script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
-mermaid.initialize({});</script><script type="module">import mermaid from "https://unpkg.com/mermaid@10.9.0/dist/mermaid.esm.min.mjs";
+<script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+<script src="../javascripts/tablesort.js"></script>
+<script type="module">import mermaid from "https://unpkg.com/mermaid@10.9.0/dist/mermaid.esm.min.mjs";
 mermaid.initialize({});</script></body>
 </html>

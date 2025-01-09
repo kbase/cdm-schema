@@ -221,6 +221,8 @@
 
       Assembly : asm_score
 
+      Assembly : assembly_id
+
       Assembly : contig_bp
 
       Assembly : contigs
@@ -255,8 +257,6 @@
       Assembly : gc_std
 
       Assembly : hash
-
-      Assembly : id
 
       Assembly : identifiers
 
@@ -329,27 +329,15 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../contigs/">contigs</a></td>
-<td>* <br/> <a href="../Contig/">Contig</a></td>
-<td>The contigs in this contigset</td>
+<td><a href="../asm_score/">asm_score</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>A composite score for comparing contigset quality</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../n_scaffolds/">n_scaffolds</a></td>
-<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>Total number of scaffolds</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../n_contigs/">n_contigs</a></td>
-<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>Total number of contigs</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../scaf_bp/">scaf_bp</a></td>
-<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>Total size in bp of all scaffolds</td>
+<td><a href="../assembly_id/">assembly_id</a></td>
+<td>1 <br/> <a href="../UUID/">UUID</a></td>
+<td>Internal (CDM) unique identifier</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -359,27 +347,9 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../gap_pct/">gap_pct</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>The gap size percentage of all scaffolds</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../scaf_N50/">scaf_N50</a></td>
-<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>Given a set of scaffolds, each with its own length, the N50 count is defined ...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../scaf_L50/">scaf_L50</a></td>
-<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>Given a set of scaffolds, the L50 is defined as the sequence length of the sh...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../ctg_N50/">ctg_N50</a></td>
-<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>Given a set of contigs, each with its own length, the N50 count is defined as...</td>
+<td><a href="../contigs/">contigs</a></td>
+<td>* <br/> <a href="../Contig/">Contig</a></td>
+<td>The contigs in this contigset</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -389,15 +359,15 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../scaf_N90/">scaf_N90</a></td>
+<td><a href="../ctg_L90/">ctg_L90</a></td>
 <td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>Given a set of scaffolds, each with its own length, the N90 count is defined ...</td>
+<td>The L90 statistic is less than or equal to the L50 statistic; it is the lengt...</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../scaf_L90/">scaf_L90</a></td>
+<td><a href="../ctg_N50/">ctg_N50</a></td>
 <td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>The L90 statistic is less than or equal to the L50 statistic; it is the lengt...</td>
+<td>Given a set of contigs, each with its own length, the N50 count is defined as...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -407,45 +377,9 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../ctg_L90/">ctg_L90</a></td>
-<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>The L90 statistic is less than or equal to the L50 statistic; it is the lengt...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../scaf_logsum/">scaf_logsum</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>The sum of the (length*log(length)) of all scaffolds, times some constant</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../scaf_powsum/">scaf_powsum</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Powersum of all scaffolds is the same as logsum except that it uses the sum o...</td>
-<td>direct</td>
-</tr>
-<tr>
 <td><a href="../ctg_logsum/">ctg_logsum</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
 <td>The sum of the (length*log(length)) of all contigs, times some constant</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../ctg_powsum/">ctg_powsum</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Powersum of all contigs is the same as logsum except that it uses the sum of ...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../asm_score/">asm_score</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>A composite score for comparing contigset quality</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../scaf_max/">scaf_max</a></td>
-<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>Maximum scaffold length</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -455,21 +389,15 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../scaf_n_gt50K/">scaf_n_gt50K</a></td>
-<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>The number of scaffolds longer than 50,000 base pairs</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../scaf_l_gt50k/">scaf_l_gt50k</a></td>
-<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>The total length of scaffolds longer than 50,000 base pairs</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../scaf_pct_gt50K/">scaf_pct_gt50K</a></td>
+<td><a href="../ctg_powsum/">ctg_powsum</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>The percentage of the total assembly length represented by scaffolds longer t...</td>
+<td>Powersum of all contigs is the same as logsum except that it uses the sum of ...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../gap_pct/">gap_pct</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>The gap size percentage of all scaffolds</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -485,9 +413,87 @@
 <td>direct</td>
 </tr>
 <tr>
+<td><a href="../n_contigs/">n_contigs</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>Total number of contigs</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../n_scaffolds/">n_scaffolds</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>Total number of scaffolds</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../scaf_L50/">scaf_L50</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>Given a set of scaffolds, the L50 is defined as the sequence length of the sh...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../scaf_L90/">scaf_L90</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>The L90 statistic is less than or equal to the L50 statistic; it is the lengt...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../scaf_N50/">scaf_N50</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>Given a set of scaffolds, each with its own length, the N50 count is defined ...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../scaf_N90/">scaf_N90</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>Given a set of scaffolds, each with its own length, the N90 count is defined ...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../scaf_bp/">scaf_bp</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>Total size in bp of all scaffolds</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../scaf_l_gt50k/">scaf_l_gt50k</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>The total length of scaffolds longer than 50,000 base pairs</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../scaf_logsum/">scaf_logsum</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>The sum of the (length*log(length)) of all scaffolds, times some constant</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../scaf_max/">scaf_max</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>Maximum scaffold length</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../scaf_n_gt50K/">scaf_n_gt50K</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>The number of scaffolds longer than 50,000 base pairs</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../scaf_pct_gt50K/">scaf_pct_gt50K</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>The percentage of the total assembly length represented by scaffolds longer t...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../scaf_powsum/">scaf_powsum</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Powersum of all scaffolds is the same as logsum except that it uses the sum o...</td>
+<td>direct</td>
+</tr>
+<tr>
 <td><a href="../hash/">hash</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td>A hash value generated from one or more object attributes that serves to ensu...</td>
 <td><a href="../UniqueNamedThing/">UniqueNamedThing</a></td>
 </tr>
 <tr>
@@ -497,21 +503,15 @@
 <td><a href="../NamedThingWithId/">NamedThingWithId</a></td>
 </tr>
 <tr>
-<td><a href="../id/">id</a></td>
+<td><a href="../description/">description</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td>Definition or description of the entity</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 <tr>
 <td><a href="../names/">names</a></td>
 <td>* <br/> <a href="../Name/">Name</a></td>
 <td>Names, alternative names, and synonyms for an entity</td>
-<td><a href="../NamedThing/">NamedThing</a></td>
-</tr>
-<tr>
-<td><a href="../description/">description</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Definition or description of the entity</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 </tbody>
@@ -553,6 +553,32 @@ description: A set of chromosomes, unlocalized and unplaced (random) sequences a
 from_schema: https://github.com/kbase/cdm-schema
 is_a: UniqueNamedThing
 attributes:
+  asm_score:
+    name: asm_score
+    description: A composite score for comparing contigset quality
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    domain_of:
+    - Assembly
+    range: float
+  assembly_id:
+    name: assembly_id
+    description: Internal (CDM) unique identifier.
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    identifier: true
+    domain_of:
+    - Assembly
+    range: UUID
+    required: true
+  contig_bp:
+    name: contig_bp
+    description: Total size in bp of all contigs
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    domain_of:
+    - Assembly
+    range: integer
   contigs:
     name: contigs
     description: The contigs in this contigset.
@@ -562,109 +588,10 @@ attributes:
     - Assembly
     range: Contig
     multivalued: true
-  n_scaffolds:
-    name: n_scaffolds
-    description: Total number of scaffolds
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    domain_of:
-    - Assembly
-    range: integer
-  n_contigs:
-    name: n_contigs
-    description: Total number of contigs
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    domain_of:
-    - Assembly
-    range: integer
-  scaf_bp:
-    name: scaf_bp
-    description: Total size in bp of all scaffolds
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    domain_of:
-    - Assembly
-    range: integer
-  contig_bp:
-    name: contig_bp
-    description: Total size in bp of all contigs
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    domain_of:
-    - Assembly
-    range: integer
-  gap_pct:
-    name: gap_pct
-    description: The gap size percentage of all scaffolds
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    domain_of:
-    - Assembly
-    range: float
-  scaf_N50:
-    name: scaf_N50
-    description: Given a set of scaffolds, each with its own length, the N50 count
-      is defined as the smallest number of scaffolds whose length sum makes up half
-      of contigset size
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    domain_of:
-    - Assembly
-    range: integer
-  scaf_L50:
-    name: scaf_L50
-    description: Given a set of scaffolds, the L50 is defined as the sequence length
-      of the shortest scaffold at 50% of the total contigset length
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    domain_of:
-    - Assembly
-    range: integer
-  ctg_N50:
-    name: ctg_N50
-    description: Given a set of contigs, each with its own length, the N50 count is
-      defined as the smallest number_of_contigs whose length sum makes up half of
-      contigset size
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    domain_of:
-    - Assembly
-    range: integer
   ctg_L50:
     name: ctg_L50
     description: Given a set of contigs, the L50 is defined as the sequence length
       of the shortest contig at 50% of the total contigset length
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    domain_of:
-    - Assembly
-    range: integer
-  scaf_N90:
-    name: scaf_N90
-    description: Given a set of scaffolds, each with its own length, the N90 count
-      is defined as the smallest number of scaffolds whose length sum makes up 90%
-      of contigset size
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    domain_of:
-    - Assembly
-    range: integer
-  scaf_L90:
-    name: scaf_L90
-    description: The L90 statistic is less than or equal to the L50 statistic; it
-      is the length for which the collection of all scaffolds of that length or longer
-      contains at least 90% of the sum of the lengths of all scaffolds.
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    domain_of:
-    - Assembly
-    range: integer
-  ctg_N90:
-    name: ctg_N90
-    description: Given a set of contigs, each with its own length, the N90 count is
-      defined as the smallest number of contigs whose length sum makes up 90% of contigset
-      size
     from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     domain_of:
@@ -680,24 +607,26 @@ attributes:
     domain_of:
     - Assembly
     range: integer
-  scaf_logsum:
-    name: scaf_logsum
-    description: The sum of the (length*log(length)) of all scaffolds, times some
-      constant. Increase the contiguity, the score will increase
+  ctg_N50:
+    name: ctg_N50
+    description: Given a set of contigs, each with its own length, the N50 count is
+      defined as the smallest number_of_contigs whose length sum makes up half of
+      contigset size
     from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     domain_of:
     - Assembly
-    range: float
-  scaf_powsum:
-    name: scaf_powsum
-    description: Powersum of all scaffolds is the same as logsum except that it uses
-      the sum of (length*(length^P)) for some power P (default P=0.25).
+    range: integer
+  ctg_N90:
+    name: ctg_N90
+    description: Given a set of contigs, each with its own length, the N90 count is
+      defined as the smallest number of contigs whose length sum makes up 90% of contigset
+      size
     from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     domain_of:
     - Assembly
-    range: float
+    range: integer
   ctg_logsum:
     name: ctg_logsum
     description: The sum of the (length*log(length)) of all contigs, times some constant.
@@ -706,6 +635,14 @@ attributes:
     domain_of:
     - Assembly
     range: float
+  ctg_max:
+    name: ctg_max
+    description: Maximum contig length
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    domain_of:
+    - Assembly
+    range: integer
   ctg_powsum:
     name: ctg_powsum
     description: Powersum of all contigs is the same as logsum except that it uses
@@ -715,50 +652,9 @@ attributes:
     domain_of:
     - Assembly
     range: float
-  asm_score:
-    name: asm_score
-    description: A composite score for comparing contigset quality
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    domain_of:
-    - Assembly
-    range: float
-  scaf_max:
-    name: scaf_max
-    description: Maximum scaffold length
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    domain_of:
-    - Assembly
-    range: integer
-  ctg_max:
-    name: ctg_max
-    description: Maximum contig length
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    domain_of:
-    - Assembly
-    range: integer
-  scaf_n_gt50K:
-    name: scaf_n_gt50K
-    description: The number of scaffolds longer than 50,000 base pairs.
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    domain_of:
-    - Assembly
-    range: integer
-  scaf_l_gt50k:
-    name: scaf_l_gt50k
-    description: The total length of scaffolds longer than 50,000 base pairs
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    domain_of:
-    - Assembly
-    range: integer
-  scaf_pct_gt50K:
-    name: scaf_pct_gt50K
-    description: The percentage of the total assembly length represented by scaffolds
-      longer than 50,000 base pairs
+  gap_pct:
+    name: gap_pct
+    description: The gap size percentage of all scaffolds
     from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     domain_of:
@@ -780,6 +676,120 @@ attributes:
     domain_of:
     - Assembly
     range: float
+  n_contigs:
+    name: n_contigs
+    description: Total number of contigs
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    domain_of:
+    - Assembly
+    range: integer
+  n_scaffolds:
+    name: n_scaffolds
+    description: Total number of scaffolds
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    domain_of:
+    - Assembly
+    range: integer
+  scaf_L50:
+    name: scaf_L50
+    description: Given a set of scaffolds, the L50 is defined as the sequence length
+      of the shortest scaffold at 50% of the total contigset length
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    domain_of:
+    - Assembly
+    range: integer
+  scaf_L90:
+    name: scaf_L90
+    description: The L90 statistic is less than or equal to the L50 statistic; it
+      is the length for which the collection of all scaffolds of that length or longer
+      contains at least 90% of the sum of the lengths of all scaffolds.
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    domain_of:
+    - Assembly
+    range: integer
+  scaf_N50:
+    name: scaf_N50
+    description: Given a set of scaffolds, each with its own length, the N50 count
+      is defined as the smallest number of scaffolds whose length sum makes up half
+      of contigset size
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    domain_of:
+    - Assembly
+    range: integer
+  scaf_N90:
+    name: scaf_N90
+    description: Given a set of scaffolds, each with its own length, the N90 count
+      is defined as the smallest number of scaffolds whose length sum makes up 90%
+      of contigset size
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    domain_of:
+    - Assembly
+    range: integer
+  scaf_bp:
+    name: scaf_bp
+    description: Total size in bp of all scaffolds
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    domain_of:
+    - Assembly
+    range: integer
+  scaf_l_gt50k:
+    name: scaf_l_gt50k
+    description: The total length of scaffolds longer than 50,000 base pairs
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    domain_of:
+    - Assembly
+    range: integer
+  scaf_logsum:
+    name: scaf_logsum
+    description: The sum of the (length*log(length)) of all scaffolds, times some
+      constant. Increase the contiguity, the score will increase
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    domain_of:
+    - Assembly
+    range: float
+  scaf_max:
+    name: scaf_max
+    description: Maximum scaffold length
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    domain_of:
+    - Assembly
+    range: integer
+  scaf_n_gt50K:
+    name: scaf_n_gt50K
+    description: The number of scaffolds longer than 50,000 base pairs.
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    domain_of:
+    - Assembly
+    range: integer
+  scaf_pct_gt50K:
+    name: scaf_pct_gt50K
+    description: The percentage of the total assembly length represented by scaffolds
+      longer than 50,000 base pairs
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    domain_of:
+    - Assembly
+    range: float
+  scaf_powsum:
+    name: scaf_powsum
+    description: Powersum of all scaffolds is the same as logsum except that it uses
+      the sum of (length*(length^P)) for some power P (default P=0.25).
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    domain_of:
+    - Assembly
+    range: float
 
 </code></pre>
 </details>
@@ -794,6 +804,38 @@ description: A set of chromosomes, unlocalized and unplaced (random) sequences a
 from_schema: https://github.com/kbase/cdm-schema
 is_a: UniqueNamedThing
 attributes:
+  asm_score:
+    name: asm_score
+    description: A composite score for comparing contigset quality
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    alias: asm_score
+    owner: Assembly
+    domain_of:
+    - Assembly
+    range: float
+  assembly_id:
+    name: assembly_id
+    description: Internal (CDM) unique identifier.
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    identifier: true
+    alias: assembly_id
+    owner: Assembly
+    domain_of:
+    - Assembly
+    range: UUID
+    required: true
+  contig_bp:
+    name: contig_bp
+    description: Total size in bp of all contigs
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    alias: contig_bp
+    owner: Assembly
+    domain_of:
+    - Assembly
+    range: integer
   contigs:
     name: contigs
     description: The contigs in this contigset.
@@ -805,91 +847,6 @@ attributes:
     - Assembly
     range: Contig
     multivalued: true
-  n_scaffolds:
-    name: n_scaffolds
-    description: Total number of scaffolds
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    alias: n_scaffolds
-    owner: Assembly
-    domain_of:
-    - Assembly
-    range: integer
-  n_contigs:
-    name: n_contigs
-    description: Total number of contigs
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    alias: n_contigs
-    owner: Assembly
-    domain_of:
-    - Assembly
-    range: integer
-  scaf_bp:
-    name: scaf_bp
-    description: Total size in bp of all scaffolds
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    alias: scaf_bp
-    owner: Assembly
-    domain_of:
-    - Assembly
-    range: integer
-  contig_bp:
-    name: contig_bp
-    description: Total size in bp of all contigs
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    alias: contig_bp
-    owner: Assembly
-    domain_of:
-    - Assembly
-    range: integer
-  gap_pct:
-    name: gap_pct
-    description: The gap size percentage of all scaffolds
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    alias: gap_pct
-    owner: Assembly
-    domain_of:
-    - Assembly
-    range: float
-  scaf_N50:
-    name: scaf_N50
-    description: Given a set of scaffolds, each with its own length, the N50 count
-      is defined as the smallest number of scaffolds whose length sum makes up half
-      of contigset size
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    alias: scaf_N50
-    owner: Assembly
-    domain_of:
-    - Assembly
-    range: integer
-  scaf_L50:
-    name: scaf_L50
-    description: Given a set of scaffolds, the L50 is defined as the sequence length
-      of the shortest scaffold at 50% of the total contigset length
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    alias: scaf_L50
-    owner: Assembly
-    domain_of:
-    - Assembly
-    range: integer
-  ctg_N50:
-    name: ctg_N50
-    description: Given a set of contigs, each with its own length, the N50 count is
-      defined as the smallest number_of_contigs whose length sum makes up half of
-      contigset size
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    alias: ctg_N50
-    owner: Assembly
-    domain_of:
-    - Assembly
-    range: integer
   ctg_L50:
     name: ctg_L50
     description: Given a set of contigs, the L50 is defined as the sequence length
@@ -897,42 +854,6 @@ attributes:
     from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     alias: ctg_L50
-    owner: Assembly
-    domain_of:
-    - Assembly
-    range: integer
-  scaf_N90:
-    name: scaf_N90
-    description: Given a set of scaffolds, each with its own length, the N90 count
-      is defined as the smallest number of scaffolds whose length sum makes up 90%
-      of contigset size
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    alias: scaf_N90
-    owner: Assembly
-    domain_of:
-    - Assembly
-    range: integer
-  scaf_L90:
-    name: scaf_L90
-    description: The L90 statistic is less than or equal to the L50 statistic; it
-      is the length for which the collection of all scaffolds of that length or longer
-      contains at least 90% of the sum of the lengths of all scaffolds.
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    alias: scaf_L90
-    owner: Assembly
-    domain_of:
-    - Assembly
-    range: integer
-  ctg_N90:
-    name: ctg_N90
-    description: Given a set of contigs, each with its own length, the N90 count is
-      defined as the smallest number of contigs whose length sum makes up 90% of contigset
-      size
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    alias: ctg_N90
     owner: Assembly
     domain_of:
     - Assembly
@@ -949,28 +870,30 @@ attributes:
     domain_of:
     - Assembly
     range: integer
-  scaf_logsum:
-    name: scaf_logsum
-    description: The sum of the (length*log(length)) of all scaffolds, times some
-      constant. Increase the contiguity, the score will increase
+  ctg_N50:
+    name: ctg_N50
+    description: Given a set of contigs, each with its own length, the N50 count is
+      defined as the smallest number_of_contigs whose length sum makes up half of
+      contigset size
     from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
-    alias: scaf_logsum
+    alias: ctg_N50
     owner: Assembly
     domain_of:
     - Assembly
-    range: float
-  scaf_powsum:
-    name: scaf_powsum
-    description: Powersum of all scaffolds is the same as logsum except that it uses
-      the sum of (length*(length^P)) for some power P (default P=0.25).
+    range: integer
+  ctg_N90:
+    name: ctg_N90
+    description: Given a set of contigs, each with its own length, the N90 count is
+      defined as the smallest number of contigs whose length sum makes up 90% of contigset
+      size
     from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
-    alias: scaf_powsum
+    alias: ctg_N90
     owner: Assembly
     domain_of:
     - Assembly
-    range: float
+    range: integer
   ctg_logsum:
     name: ctg_logsum
     description: The sum of the (length*log(length)) of all contigs, times some constant.
@@ -981,6 +904,16 @@ attributes:
     domain_of:
     - Assembly
     range: float
+  ctg_max:
+    name: ctg_max
+    description: Maximum contig length
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    alias: ctg_max
+    owner: Assembly
+    domain_of:
+    - Assembly
+    range: integer
   ctg_powsum:
     name: ctg_powsum
     description: Powersum of all contigs is the same as logsum except that it uses
@@ -992,63 +925,12 @@ attributes:
     domain_of:
     - Assembly
     range: float
-  asm_score:
-    name: asm_score
-    description: A composite score for comparing contigset quality
+  gap_pct:
+    name: gap_pct
+    description: The gap size percentage of all scaffolds
     from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
-    alias: asm_score
-    owner: Assembly
-    domain_of:
-    - Assembly
-    range: float
-  scaf_max:
-    name: scaf_max
-    description: Maximum scaffold length
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    alias: scaf_max
-    owner: Assembly
-    domain_of:
-    - Assembly
-    range: integer
-  ctg_max:
-    name: ctg_max
-    description: Maximum contig length
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    alias: ctg_max
-    owner: Assembly
-    domain_of:
-    - Assembly
-    range: integer
-  scaf_n_gt50K:
-    name: scaf_n_gt50K
-    description: The number of scaffolds longer than 50,000 base pairs.
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    alias: scaf_n_gt50K
-    owner: Assembly
-    domain_of:
-    - Assembly
-    range: integer
-  scaf_l_gt50k:
-    name: scaf_l_gt50k
-    description: The total length of scaffolds longer than 50,000 base pairs
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    alias: scaf_l_gt50k
-    owner: Assembly
-    domain_of:
-    - Assembly
-    range: integer
-  scaf_pct_gt50K:
-    name: scaf_pct_gt50K
-    description: The percentage of the total assembly length represented by scaffolds
-      longer than 50,000 base pairs
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    alias: scaf_pct_gt50K
+    alias: gap_pct
     owner: Assembly
     domain_of:
     - Assembly
@@ -1073,8 +955,150 @@ attributes:
     domain_of:
     - Assembly
     range: float
+  n_contigs:
+    name: n_contigs
+    description: Total number of contigs
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    alias: n_contigs
+    owner: Assembly
+    domain_of:
+    - Assembly
+    range: integer
+  n_scaffolds:
+    name: n_scaffolds
+    description: Total number of scaffolds
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    alias: n_scaffolds
+    owner: Assembly
+    domain_of:
+    - Assembly
+    range: integer
+  scaf_L50:
+    name: scaf_L50
+    description: Given a set of scaffolds, the L50 is defined as the sequence length
+      of the shortest scaffold at 50% of the total contigset length
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    alias: scaf_L50
+    owner: Assembly
+    domain_of:
+    - Assembly
+    range: integer
+  scaf_L90:
+    name: scaf_L90
+    description: The L90 statistic is less than or equal to the L50 statistic; it
+      is the length for which the collection of all scaffolds of that length or longer
+      contains at least 90% of the sum of the lengths of all scaffolds.
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    alias: scaf_L90
+    owner: Assembly
+    domain_of:
+    - Assembly
+    range: integer
+  scaf_N50:
+    name: scaf_N50
+    description: Given a set of scaffolds, each with its own length, the N50 count
+      is defined as the smallest number of scaffolds whose length sum makes up half
+      of contigset size
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    alias: scaf_N50
+    owner: Assembly
+    domain_of:
+    - Assembly
+    range: integer
+  scaf_N90:
+    name: scaf_N90
+    description: Given a set of scaffolds, each with its own length, the N90 count
+      is defined as the smallest number of scaffolds whose length sum makes up 90%
+      of contigset size
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    alias: scaf_N90
+    owner: Assembly
+    domain_of:
+    - Assembly
+    range: integer
+  scaf_bp:
+    name: scaf_bp
+    description: Total size in bp of all scaffolds
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    alias: scaf_bp
+    owner: Assembly
+    domain_of:
+    - Assembly
+    range: integer
+  scaf_l_gt50k:
+    name: scaf_l_gt50k
+    description: The total length of scaffolds longer than 50,000 base pairs
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    alias: scaf_l_gt50k
+    owner: Assembly
+    domain_of:
+    - Assembly
+    range: integer
+  scaf_logsum:
+    name: scaf_logsum
+    description: The sum of the (length*log(length)) of all scaffolds, times some
+      constant. Increase the contiguity, the score will increase
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    alias: scaf_logsum
+    owner: Assembly
+    domain_of:
+    - Assembly
+    range: float
+  scaf_max:
+    name: scaf_max
+    description: Maximum scaffold length
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    alias: scaf_max
+    owner: Assembly
+    domain_of:
+    - Assembly
+    range: integer
+  scaf_n_gt50K:
+    name: scaf_n_gt50K
+    description: The number of scaffolds longer than 50,000 base pairs.
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    alias: scaf_n_gt50K
+    owner: Assembly
+    domain_of:
+    - Assembly
+    range: integer
+  scaf_pct_gt50K:
+    name: scaf_pct_gt50K
+    description: The percentage of the total assembly length represented by scaffolds
+      longer than 50,000 base pairs
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    alias: scaf_pct_gt50K
+    owner: Assembly
+    domain_of:
+    - Assembly
+    range: float
+  scaf_powsum:
+    name: scaf_powsum
+    description: Powersum of all scaffolds is the same as logsum except that it uses
+      the sum of (length*(length^P)) for some power P (default P=0.25).
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    alias: scaf_powsum
+    owner: Assembly
+    domain_of:
+    - Assembly
+    range: float
   hash:
     name: hash
+    description: A hash value generated from one or more object attributes that serves
+      to ensure the entity is unique.
     from_schema: https://github.com/kbase/cdm-schema
     alias: hash
     owner: Assembly
@@ -1092,18 +1116,22 @@ attributes:
     - NamedThingWithId
     range: Identifier
     multivalued: true
-  id:
-    name: id
+  description:
+    name: description
+    description: Definition or description of the entity.
     from_schema: https://github.com/kbase/cdm-schema
-    alias: id
+    rank: 1000
+    alias: description
     owner: Assembly
     domain_of:
     - NamedThing
-    - node
-    - node_identifier
-    - owl_reified_axiom
-    - owl_axiom
-    - owl_axiom_annotation
+    - Event
+    - Experiment
+    - Identifier
+    - Name
+    - Project
+    - Protein
+    - Sample
     range: string
   names:
     name: names
@@ -1116,18 +1144,6 @@ attributes:
     - NamedThing
     range: Name
     multivalued: true
-  description:
-    name: description
-    description: Definition or description of the entity.
-    from_schema: https://github.com/kbase/cdm-schema
-    alias: description
-    owner: Assembly
-    domain_of:
-    - Name
-    - Identifier
-    - NamedThing
-    - Protein
-    range: string
 
 </code></pre>
 </details>
@@ -1156,7 +1172,8 @@ attributes:
 </div>
 <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
 <script src="../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
-<script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
-mermaid.initialize({});</script><script type="module">import mermaid from "https://unpkg.com/mermaid@10.9.0/dist/mermaid.esm.min.mjs";
+<script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+<script src="../javascripts/tablesort.js"></script>
+<script type="module">import mermaid from "https://unpkg.com/mermaid@10.9.0/dist/mermaid.esm.min.mjs";
 mermaid.initialize({});</script></body>
 </html>

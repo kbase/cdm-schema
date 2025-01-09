@@ -216,6 +216,7 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
 <h1 id="class-protocol">Class: Protocol</h1>
+<p><em>Defined method or set of methods .</em></p>
 <p>URI: <a href="http://kbase.github.io/cdm-schema/Protocol">kb_cdm:Protocol</a></p>
 <div class="mermaid"> classDiagram
     class Protocol
@@ -225,7 +226,7 @@
 
       Protocol : description
 
-      Protocol : id
+      Protocol : doi
 
       Protocol : identifiers
 
@@ -238,6 +239,13 @@
 
       Protocol : inputs
 
+
+
+
+    Protocol --&gt; "*" ProtocolParticipant : inputs
+    click ProtocolParticipant href "../ProtocolParticipant"
+
+
       Protocol : names
 
 
@@ -248,6 +256,17 @@
 
 
       Protocol : outputs
+
+
+
+
+    Protocol --&gt; "*" ProtocolParticipant : outputs
+    click ProtocolParticipant href "../ProtocolParticipant"
+
+
+      Protocol : protocol_id
+
+      Protocol : url
 
       Protocol : version
 
@@ -275,21 +294,39 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../doi/">doi</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>The DOI for a protocol</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../inputs/">inputs</a></td>
+<td>* <br/> <a href="../ProtocolParticipant/">ProtocolParticipant</a></td>
+<td>The inputs for a protocol; may be software parameters, experimental reagents,...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../outputs/">outputs</a></td>
+<td>* <br/> <a href="../ProtocolParticipant/">ProtocolParticipant</a></td>
+<td>The outputs of a protocol; may be physical entities, files, etc</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../protocol_id/">protocol_id</a></td>
+<td>1 <br/> <a href="../UUID/">UUID</a></td>
+<td>Internal (CDM) unique identifier</td>
+<td>direct</td>
+</tr>
+<tr>
 <td><a href="../version/">version</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>The version of the protocol that has been used</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../inputs/">inputs</a></td>
-<td>* <br/> <a href="../String/">String</a></td>
-<td>The inputs for a protocol; may be software parameters, experimental reagents,...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../outputs/">outputs</a></td>
-<td>* <br/> <a href="../String/">String</a></td>
-<td>The outputs of a protocol; may be physical entities, files, etc</td>
+<td><a href="../url/">url</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>The URL for a protocol</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -299,21 +336,15 @@
 <td><a href="../NamedThingWithId/">NamedThingWithId</a></td>
 </tr>
 <tr>
-<td><a href="../id/">id</a></td>
+<td><a href="../description/">description</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td>Definition or description of the entity</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 <tr>
 <td><a href="../names/">names</a></td>
 <td>* <br/> <a href="../Name/">Name</a></td>
 <td>Names, alternative names, and synonyms for an entity</td>
-<td><a href="../NamedThing/">NamedThing</a></td>
-</tr>
-<tr>
-<td><a href="../description/">description</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Definition or description of the entity</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 </tbody>
@@ -336,14 +367,20 @@
 <td><a href="./">Protocol</a></td>
 </tr>
 <tr>
+<td><a href="../Feature/">Feature</a></td>
+<td><a href="../source_protocol/">source_protocol</a></td>
+<td>range</td>
+<td><a href="./">Protocol</a></td>
+</tr>
+<tr>
 <td><a href="../Measurement/">Measurement</a></td>
-<td><a href="../protocol_used/">protocol_used</a></td>
+<td><a href="../protocol_id/">protocol_id</a></td>
 <td>range</td>
 <td><a href="./">Protocol</a></td>
 </tr>
 <tr>
 <td><a href="../ProcessedMeasurement/">ProcessedMeasurement</a></td>
-<td><a href="../protocol_used/">protocol_used</a></td>
+<td><a href="../protocol_id/">protocol_id</a></td>
 <td>range</td>
 <td><a href="./">Protocol</a></td>
 </tr>
@@ -378,12 +415,13 @@
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: Protocol
+description: Defined method or set of methods .
 from_schema: https://github.com/kbase/cdm-schema
 is_a: NamedThingWithId
 attributes:
-  version:
-    name: version
-    description: The version of the protocol that has been used.
+  doi:
+    name: doi
+    description: The DOI for a protocol.
     from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     domain_of:
@@ -396,6 +434,7 @@ attributes:
     rank: 1000
     domain_of:
     - Protocol
+    range: ProtocolParticipant
     multivalued: true
   outputs:
     name: outputs
@@ -404,22 +443,48 @@ attributes:
     rank: 1000
     domain_of:
     - Protocol
+    range: ProtocolParticipant
     multivalued: true
+  protocol_id:
+    name: protocol_id
+    description: Internal (CDM) unique identifier.
+    from_schema: https://github.com/kbase/cdm-schema
+    identifier: true
+    domain_of:
+    - Measurement
+    - Protocol
+    range: UUID
+    required: true
+  version:
+    name: version
+    description: The version of the protocol that has been used.
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    domain_of:
+    - Protocol
+  url:
+    name: url
+    description: The URL for a protocol.
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    domain_of:
+    - Protocol
 
 </code></pre>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: Protocol
+description: Defined method or set of methods .
 from_schema: https://github.com/kbase/cdm-schema
 is_a: NamedThingWithId
 attributes:
-  version:
-    name: version
-    description: The version of the protocol that has been used.
+  doi:
+    name: doi
+    description: The DOI for a protocol.
     from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
-    alias: version
+    alias: doi
     owner: Protocol
     domain_of:
     - Protocol
@@ -434,7 +499,7 @@ attributes:
     owner: Protocol
     domain_of:
     - Protocol
-    range: string
+    range: ProtocolParticipant
     multivalued: true
   outputs:
     name: outputs
@@ -445,8 +510,40 @@ attributes:
     owner: Protocol
     domain_of:
     - Protocol
-    range: string
+    range: ProtocolParticipant
     multivalued: true
+  protocol_id:
+    name: protocol_id
+    description: Internal (CDM) unique identifier.
+    from_schema: https://github.com/kbase/cdm-schema
+    identifier: true
+    alias: protocol_id
+    owner: Protocol
+    domain_of:
+    - Measurement
+    - Protocol
+    range: UUID
+    required: true
+  version:
+    name: version
+    description: The version of the protocol that has been used.
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    alias: version
+    owner: Protocol
+    domain_of:
+    - Protocol
+    range: string
+  url:
+    name: url
+    description: The URL for a protocol.
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    alias: url
+    owner: Protocol
+    domain_of:
+    - Protocol
+    range: string
   identifiers:
     name: identifiers
     description: URIs or CURIEs used to refer to this entity.
@@ -458,18 +555,22 @@ attributes:
     - NamedThingWithId
     range: Identifier
     multivalued: true
-  id:
-    name: id
+  description:
+    name: description
+    description: Definition or description of the entity.
     from_schema: https://github.com/kbase/cdm-schema
-    alias: id
+    rank: 1000
+    alias: description
     owner: Protocol
     domain_of:
     - NamedThing
-    - node
-    - node_identifier
-    - owl_reified_axiom
-    - owl_axiom
-    - owl_axiom_annotation
+    - Event
+    - Experiment
+    - Identifier
+    - Name
+    - Project
+    - Protein
+    - Sample
     range: string
   names:
     name: names
@@ -482,18 +583,6 @@ attributes:
     - NamedThing
     range: Name
     multivalued: true
-  description:
-    name: description
-    description: Definition or description of the entity.
-    from_schema: https://github.com/kbase/cdm-schema
-    alias: description
-    owner: Protocol
-    domain_of:
-    - Name
-    - Identifier
-    - NamedThing
-    - Protein
-    range: string
 
 </code></pre>
 </details>
@@ -522,7 +611,8 @@ attributes:
 </div>
 <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
 <script src="../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
-<script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
-mermaid.initialize({});</script><script type="module">import mermaid from "https://unpkg.com/mermaid@10.9.0/dist/mermaid.esm.min.mjs";
+<script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+<script src="../javascripts/tablesort.js"></script>
+<script type="module">import mermaid from "https://unpkg.com/mermaid@10.9.0/dist/mermaid.esm.min.mjs";
 mermaid.initialize({});</script></body>
 </html>

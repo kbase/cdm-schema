@@ -302,19 +302,6 @@
     Identifier and Mapping Information
   </a>
   
-    <nav class="md-nav" aria-label="Identifier and Mapping Information">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#schema-source" class="md-nav__link">
-    Schema Source
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -366,13 +353,13 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../Identifier/">Identifier</a></td>
-<td>An external identifier for an entity</td>
+<td><a href="../Name/">Name</a></td>
+<td>The name or label for an entity</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Name/">Name</a></td>
-<td>The name or label for an entity</td>
+<td><a href="../Identifier/">Identifier</a></td>
+<td>An external identifier for an entity</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -382,10 +369,6 @@
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="schema-source">Schema Source</h3>
-<ul>
-<li>from schema: https://github.com/kbase/cdm-schema</li>
-</ul>
 <h2 id="mappings">Mappings</h2>
 <table>
 <thead>
@@ -409,12 +392,10 @@
 <details>
 
 <pre><code class="language-yaml">name: source
-from_schema: https://github.com/kbase/cdm-schema
-rank: 1000
 alias: source
 domain_of:
-- Name
 - Identifier
+- Name
 range: string
 
 </code></pre>
@@ -463,6 +444,10 @@ range: string
     
     
       <script src="../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+      
+        <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="../javascripts/tablesort.js"></script>
       
     
     

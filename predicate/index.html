@@ -284,20 +284,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#inheritance" class="md-nav__link">
-    Inheritance
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#applicable-classes" class="md-nav__link">
-    Applicable Classes
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#properties" class="md-nav__link">
     Properties
   </a>
@@ -359,326 +345,10 @@
 
 
 <h1 id="slot-predicate">Slot: predicate</h1>
+<p><em>The predicate in a subject-predicate-object statement.</em></p>
 <p>URI: <a href="http://kbase.github.io/cdm-schema/predicate">kb_cdm:predicate</a></p>
-<h2 id="inheritance">Inheritance</h2>
-<ul>
-<li><strong>predicate</strong><ul>
-<li><a href="../annotation_predicate/">annotation_predicate</a></li>
-</ul>
-</li>
-</ul>
-<h2 id="applicable-classes">Applicable Classes</h2>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Modifies Slot</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../RdfsLabelStatement/">RdfsLabelStatement</a></td>
-<td>A statement that connects a node to a human-readable label</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Statements/">Statements</a></td>
-<td>Represents an RDF triple</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Creator/">Creator</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../EntailedEdgeSamePredicateCycle/">EntailedEdgeSamePredicateCycle</a></td>
-<td>An entailed_edge_cycle over a single predicate</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../SubgraphEdgeByAncestor/">SubgraphEdgeByAncestor</a></td>
-<td>An edge within a subgraph anchored around a set of ancestor terms</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Edge/">Edge</a></td>
-<td>A relation graph edge that connects two entities by a predicate</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../HasMappingStatement/">HasMappingStatement</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../OwlDisjointClassStatement/">OwlDisjointClassStatement</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../OwlAxiomAnnotation/">OwlAxiomAnnotation</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../OwlImportsStatement/">OwlImportsStatement</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../OwlSubclassOfSomeValuesFrom/">OwlSubclassOfSomeValuesFrom</a></td>
-<td>Composition of subClassOf and SomeValuesFrom</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../SubgraphEdgeByDescendant/">SubgraphEdgeByDescendant</a></td>
-<td>An edge within a subgraph anchored around a set of descendant terms</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../RdfsDomainStatement/">RdfsDomainStatement</a></td>
-<td>A statement that connects a property to its domain class</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../RdfListMemberStatement/">RdfListMemberStatement</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../HasNarrowSynonymStatement/">HasNarrowSynonymStatement</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../RdfsSubclassOfNamedStatement/">RdfsSubclassOfNamedStatement</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../HasExactMatchStatement/">HasExactMatchStatement</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../NodeToNodeStatement/">NodeToNodeStatement</a></td>
-<td>A statement where object is non-null and value is not populated</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../SubgraphEdgeByChild/">SubgraphEdgeByChild</a></td>
-<td>An edge within a subgraph anchored around a set of child terms</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../SubgraphQuery/">SubgraphQuery</a></td>
-<td>A subgraph query encompasses as subgraph edge and a seed/anchor object and se...</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../RdfFirstStatement/">RdfFirstStatement</a></td>
-<td>A statement that connects a list to its first element</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../OwlReifiedAxiom/">OwlReifiedAxiom</a></td>
-<td>An OWL axiom that has been reified - i</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../SubgraphEdgeByParent/">SubgraphEdgeByParent</a></td>
-<td>An edge within a subgraph anchored around a set of parent terms</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../HasBroadMatchStatement/">HasBroadMatchStatement</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../RdfsSubpropertyOfStatement/">RdfsSubpropertyOfStatement</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../RdfTypeStatement/">RdfTypeStatement</a></td>
-<td>A statement that indicates the asserted type of the subject entity</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../RdfRestTransitiveStatement/">RdfRestTransitiveStatement</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../RdfRestStatement/">RdfRestStatement</a></td>
-<td>A statement that connects a list to its remaining elements</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Contributor/">Contributor</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../RdfsSubclassOfStatement/">RdfsSubclassOfStatement</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Relationship/">Relationship</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../HasSynonymStatement/">HasSynonymStatement</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../HasNarrowMatchStatement/">HasNarrowMatchStatement</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../OwlInverseOfStatement/">OwlInverseOfStatement</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../RdfListStatement/">RdfListStatement</a></td>
-<td>A statement that is used to represent aspects of RDF lists</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../EntailedEdge/">EntailedEdge</a></td>
-<td>A relation graph edge that is inferred</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../TransitiveEdge/">TransitiveEdge</a></td>
-<td>A relation graph edge that is formed from a chain of one or more edges</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../HasDbxrefStatement/">HasDbxrefStatement</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../HasRelatedSynonymStatement/">HasRelatedSynonymStatement</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../OwlSameAsStatement/">OwlSameAsStatement</a></td>
-<td>A statement that connects two individual nodes where both individual are equi...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../OwlAxiom/">OwlAxiom</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../OwlEquivalentToIntersectionMember/">OwlEquivalentToIntersectionMember</a></td>
-<td>Composition of <code>OwlEquivalentClass</code>, <code>OwlIntersectionOf</code>, and <code>RdfListMember</code>...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../HasRelatedMatchStatement/">HasRelatedMatchStatement</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../HasBroadSynonymStatement/">HasBroadSynonymStatement</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../HasMatchStatement/">HasMatchStatement</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../RdfsRangeStatement/">RdfsRangeStatement</a></td>
-<td>A statement that connects a property to its range class or literal type</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../SubgraphEdgeByAncestorOrDescendant/">SubgraphEdgeByAncestorOrDescendant</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../NodeToValueStatement/">NodeToValueStatement</a></td>
-<td>A statement where value is non-null and object is not populated</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../OwlEquivalentClassStatement/">OwlEquivalentClassStatement</a></td>
-<td>A statement that connects two class_nodes where both classes are equivalent</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../EntailedSubclassOfEdge/">EntailedSubclassOfEdge</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../EntailedTypeEdge/">EntailedTypeEdge</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../RelationGraphConstruct/">RelationGraphConstruct</a></td>
-<td>A construct used as part of a Relation Graph</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../HasTextDefinitionStatement/">HasTextDefinitionStatement</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../HasOioSynonymStatement/">HasOioSynonymStatement</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../HasExactSynonymStatement/">HasExactSynonymStatement</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../OwlComplexAxiom/">OwlComplexAxiom</a></td>
-<td>An axiom that is composed of two or more statements</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../AxiomDbxrefAnnotation/">AxiomDbxrefAnnotation</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../EntailedEdgeCycle/">EntailedEdgeCycle</a></td>
-<td>An edge that composes with another edge to make a cycle</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../SubgraphEdgeBySelf/">SubgraphEdgeBySelf</a></td>
-<td>A special null form of a subgraph query where there is no expansion</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../OwlComplementOfStatement/">OwlComplementOfStatement</a></td>
-<td></td>
-<td>no</td>
-</tr>
-</tbody>
-</table>
+<!-- no inheritance hierarchy -->
+
 <h2 id="properties">Properties</h2>
 <ul>
 <li>Range: <a href="../String/">String</a></li>
@@ -711,25 +381,10 @@
 <details>
 
 <pre><code class="language-yaml">name: predicate
+description: The predicate in a subject-predicate-object statement.
 from_schema: https://github.com/kbase/cdm-schema
 rank: 1000
 alias: predicate
-domain_of:
-- Relationship
-- statements
-- owl_complex_axiom
-- owl_subclass_of_some_values_from
-- relation_graph_construct
-- edge
-- subgraph_query
-- subgraph_edge_by_ancestor
-- subgraph_edge_by_descendant
-- subgraph_edge_by_parent
-- subgraph_edge_by_child
-- subgraph_edge_by_self
-- entailed_edge
-- entailed_edge_cycle
-- transitive_edge
 relational_role: PREDICATE
 range: string
 
@@ -779,6 +434,10 @@ range: string
     
     
       <script src="../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+      
+        <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="../javascripts/tablesort.js"></script>
       
     
     

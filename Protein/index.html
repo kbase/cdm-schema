@@ -241,8 +241,6 @@
 
       Protein : hash
 
-      Protein : id
-
       Protein : identifiers
 
 
@@ -262,6 +260,8 @@
     Protein --&gt; "*" Name : names
     click Name href "../Name"
 
+
+      Protein : protein_id
 
       Protein : sequence
 
@@ -294,25 +294,7 @@
 <tr>
 <td><a href="../description/">description</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../length/">length</a></td>
-<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td></td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../sequence/">sequence</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../evidence_for_existence/">evidence_for_existence</a></td>
-<td>0..1 <br/> <a href="../EvidenceForExistence/">EvidenceForExistence</a></td>
-<td></td>
+<td>Brief text description of the entity</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -322,9 +304,33 @@
 <td>direct</td>
 </tr>
 <tr>
+<td><a href="../evidence_for_existence/">evidence_for_existence</a></td>
+<td>0..1 <br/> <a href="../EvidenceForExistence/">EvidenceForExistence</a></td>
+<td>The evidence that this protein exists</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../length/">length</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>The length of the protein</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../protein_id/">protein_id</a></td>
+<td>1 <br/> <a href="../UUID/">UUID</a></td>
+<td>Internal (CDM) unique identifier</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../sequence/">sequence</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>The protein amino acid sequence</td>
+<td>direct</td>
+</tr>
+<tr>
 <td><a href="../hash/">hash</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td>A hash value generated from one or more object attributes that serves to ensu...</td>
 <td><a href="../UniqueNamedThing/">UniqueNamedThing</a></td>
 </tr>
 <tr>
@@ -332,12 +338,6 @@
 <td>* <br/> <a href="../Identifier/">Identifier</a></td>
 <td>URIs or CURIEs used to refer to this entity</td>
 <td><a href="../NamedThingWithId/">NamedThingWithId</a></td>
-</tr>
-<tr>
-<td><a href="../id/">id</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
-<td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 <tr>
 <td><a href="../names/">names</a></td>
@@ -384,40 +384,59 @@ is_a: UniqueNamedThing
 attributes:
   description:
     name: description
+    description: Brief text description of the entity.
     from_schema: https://github.com/kbase/cdm-schema
     domain_of:
-    - Name
-    - Identifier
     - NamedThing
+    - Event
+    - Experiment
+    - Identifier
+    - Name
+    - Project
     - Protein
-  length:
-    name: length
-    from_schema: https://github.com/kbase/cdm-schema
-    domain_of:
-    - Contig
-    - Protein
-    range: integer
-  sequence:
-    name: sequence
+    - Sample
+  encoded_by:
+    name: encoded_by
+    description: The feature(s) that encode this protein.
     from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     domain_of:
     - Protein
+    range: Feature
   evidence_for_existence:
     name: evidence_for_existence
+    description: The evidence that this protein exists. For example, the protein may
+      have been isolated from a cell, or it may be predicted based on sequence features.
     from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     domain_of:
     - Protein
     range: EvidenceForExistence
-  encoded_by:
-    name: encoded_by
-    description: The feature(s) that encode this protein.
+  length:
+    name: length
+    description: The length of the protein.
     from_schema: https://github.com/kbase/cdm-schema
     domain_of:
-    - EncodedFeature
+    - Contig
     - Protein
-    range: Feature
+    range: integer
+  protein_id:
+    name: protein_id
+    description: Internal (CDM) unique identifier.
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    identifier: true
+    domain_of:
+    - Protein
+    range: UUID
+    required: true
+  sequence:
+    name: sequence
+    description: The protein amino acid sequence.
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    domain_of:
+    - Protein
 
 </code></pre>
 </details>
@@ -432,35 +451,34 @@ is_a: UniqueNamedThing
 attributes:
   description:
     name: description
+    description: Brief text description of the entity.
     from_schema: https://github.com/kbase/cdm-schema
     alias: description
     owner: Protein
     domain_of:
-    - Name
-    - Identifier
     - NamedThing
+    - Event
+    - Experiment
+    - Identifier
+    - Name
+    - Project
     - Protein
+    - Sample
     range: string
-  length:
-    name: length
-    from_schema: https://github.com/kbase/cdm-schema
-    alias: length
-    owner: Protein
-    domain_of:
-    - Contig
-    - Protein
-    range: integer
-  sequence:
-    name: sequence
+  encoded_by:
+    name: encoded_by
+    description: The feature(s) that encode this protein.
     from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
-    alias: sequence
+    alias: encoded_by
     owner: Protein
     domain_of:
     - Protein
-    range: string
+    range: Feature
   evidence_for_existence:
     name: evidence_for_existence
+    description: The evidence that this protein exists. For example, the protein may
+      have been isolated from a cell, or it may be predicted based on sequence features.
     from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     alias: evidence_for_existence
@@ -468,18 +486,42 @@ attributes:
     domain_of:
     - Protein
     range: EvidenceForExistence
-  encoded_by:
-    name: encoded_by
-    description: The feature(s) that encode this protein.
+  length:
+    name: length
+    description: The length of the protein.
     from_schema: https://github.com/kbase/cdm-schema
-    alias: encoded_by
+    alias: length
     owner: Protein
     domain_of:
-    - EncodedFeature
+    - Contig
     - Protein
-    range: Feature
+    range: integer
+  protein_id:
+    name: protein_id
+    description: Internal (CDM) unique identifier.
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    identifier: true
+    alias: protein_id
+    owner: Protein
+    domain_of:
+    - Protein
+    range: UUID
+    required: true
+  sequence:
+    name: sequence
+    description: The protein amino acid sequence.
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    alias: sequence
+    owner: Protein
+    domain_of:
+    - Protein
+    range: string
   hash:
     name: hash
+    description: A hash value generated from one or more object attributes that serves
+      to ensure the entity is unique.
     from_schema: https://github.com/kbase/cdm-schema
     alias: hash
     owner: Protein
@@ -497,19 +539,6 @@ attributes:
     - NamedThingWithId
     range: Identifier
     multivalued: true
-  id:
-    name: id
-    from_schema: https://github.com/kbase/cdm-schema
-    alias: id
-    owner: Protein
-    domain_of:
-    - NamedThing
-    - node
-    - node_identifier
-    - owl_reified_axiom
-    - owl_axiom
-    - owl_axiom_annotation
-    range: string
   names:
     name: names
     description: Names, alternative names, and synonyms for an entity.
@@ -549,7 +578,8 @@ attributes:
 </div>
 <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
 <script src="../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
-<script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
-mermaid.initialize({});</script><script type="module">import mermaid from "https://unpkg.com/mermaid@10.9.0/dist/mermaid.esm.min.mjs";
+<script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+<script src="../javascripts/tablesort.js"></script>
+<script type="module">import mermaid from "https://unpkg.com/mermaid@10.9.0/dist/mermaid.esm.min.mjs";
 mermaid.initialize({});</script></body>
 </html>

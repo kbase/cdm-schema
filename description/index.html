@@ -302,19 +302,6 @@
     Identifier and Mapping Information
   </a>
   
-    <nav class="md-nav" aria-label="Identifier and Mapping Information">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#schema-source" class="md-nav__link">
-    Schema Source
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -352,7 +339,7 @@
 
 
 <h1 id="slot-description">Slot: description</h1>
-<p>URI: <a href="http://purl.org/dc/terms/description">dcterms:description</a></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/description">kb_cdm:description</a></p>
 <!-- no inheritance hierarchy -->
 
 <h2 id="applicable-classes">Applicable Classes</h2>
@@ -366,13 +353,18 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../Name/">Name</a></td>
-<td>The name or label for an entity</td>
+<td><a href="../Assembly/">Assembly</a></td>
+<td>A set of chromosomes, unlocalized and unplaced (random) sequences and alterna...</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Assembly/">Assembly</a></td>
-<td>A set of chromosomes, unlocalized and unplaced (random) sequences and alterna...</td>
+<td><a href="../Event/">Event</a></td>
+<td>Something that happened</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ProtocolParticipant/">ProtocolParticipant</a></td>
+<td>Either an input or an output of a protocol</td>
 <td>no</td>
 </tr>
 <tr>
@@ -381,48 +373,13 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../NamedThing/">NamedThing</a></td>
-<td>Abstract class to represent things with names</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../UniqueNamedThing/">UniqueNamedThing</a></td>
-<td>Represents an entity with a hash value generated from combining its unique at...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ProcessedMeasurement/">ProcessedMeasurement</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Event/">Event</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Protocol/">Protocol</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Measurement/">Measurement</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../Contig/">Contig</a></td>
 <td>A contig (derived from the word "contiguous") is a set of DNA segments or seq...</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../EncodedFeature/">EncodedFeature</a></td>
-<td>An entity generated from a feature</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Protein/">Protein</a></td>
-<td>Proteins are large, complex molecules made up of one or more long, folded cha...</td>
+<td><a href="../Sample/">Sample</a></td>
+<td>A material entity that can be characterised by an experiment</td>
 <td>no</td>
 </tr>
 <tr>
@@ -431,13 +388,53 @@
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../Contigset/">Contigset</a></td>
+<td>A set of individual, overlapping contigs that represent the complete sequence...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Identifier/">Identifier</a></td>
+<td>An external identifier for an entity</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Experiment/">Experiment</a></td>
+<td>A discrete scientific procedure undertaken to make a discovery, test a hypoth...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Measurement/">Measurement</a></td>
+<td>A qualitative or quantitative observation of an attribute of an object or eve...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Protocol/">Protocol</a></td>
+<td>Defined method or set of methods</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../Genome/">Genome</a></td>
 <td>A contigset with a completeness score of greater than 90% and a contamination...</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Experiment/">Experiment</a></td>
-<td></td>
+<td><a href="../NamedThing/">NamedThing</a></td>
+<td>Abstract class to represent things with names</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../GoldEnvironmentalContext/">GoldEnvironmentalContext</a></td>
+<td>Environmental context, described using JGI's five level system</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ProcessedMeasurement/">ProcessedMeasurement</a></td>
+<td>A measurement that requires additional processing to generate a result</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../EncodedFeature/">EncodedFeature</a></td>
+<td>An entity generated from a feature, such as a transcript</td>
 <td>no</td>
 </tr>
 <tr>
@@ -446,18 +443,28 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Contigset/">Contigset</a></td>
-<td>A set of individual, overlapping contigs that represent the complete sequence...</td>
+<td><a href="../EnvironmentalContext/">EnvironmentalContext</a></td>
+<td>The environmental context for the event</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Sample/">Sample</a></td>
-<td></td>
+<td><a href="../MixsEnvironmentalContext/">MixsEnvironmentalContext</a></td>
+<td>Environmental context, described using the MiXS convention of broad and local...</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Identifier/">Identifier</a></td>
-<td>An external identifier for an entity</td>
+<td><a href="../Protein/">Protein</a></td>
+<td>Proteins are large, complex molecules made up of one or more long, folded cha...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Name/">Name</a></td>
+<td>The name or label for an entity</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../UniqueNamedThing/">UniqueNamedThing</a></td>
+<td>Represents an entity with a hash value generated from combining its unique at...</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -467,10 +474,6 @@
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="schema-source">Schema Source</h3>
-<ul>
-<li>from schema: https://github.com/kbase/cdm-schema</li>
-</ul>
 <h2 id="mappings">Mappings</h2>
 <table>
 <thead>
@@ -482,7 +485,7 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>dcterms:description</td>
+<td>kb_cdm:description</td>
 </tr>
 <tr>
 <td>native</td>
@@ -494,15 +497,16 @@
 <details>
 
 <pre><code class="language-yaml">name: description
-from_schema: https://github.com/kbase/cdm-schema
-rank: 1000
-slot_uri: dcterms:description
 alias: description
 domain_of:
-- Name
-- Identifier
 - NamedThing
+- Event
+- Experiment
+- Identifier
+- Name
+- Project
 - Protein
+- Sample
 range: string
 
 </code></pre>
@@ -551,6 +555,10 @@ range: string
     
     
       <script src="../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+      
+        <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="../javascripts/tablesort.js"></script>
       
     
     

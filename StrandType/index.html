@@ -345,6 +345,7 @@
 
 
 <h1 id="enum-strandtype">Enum: StrandType</h1>
+<p><em>The strand that a feature appears on relative to a landmark. Also encompasses unknown or irrelevant strandedness.</em></p>
 <p>URI: <a href="./">StrandType</a></p>
 <h2 id="permissible-values">Permissible Values</h2>
 <table>
@@ -357,24 +358,24 @@
 </thead>
 <tbody>
 <tr>
-<td>positive</td>
-<td>None</td>
-<td>Represented by "+" in a GFF file; the strand is positive with relation to the...</td>
-</tr>
-<tr>
 <td>negative</td>
 <td>None</td>
 <td>Represented by "-" in a GFF file; the strand is negative wrt the landmark</td>
 </tr>
 <tr>
-<td>unstranded</td>
+<td>positive</td>
 <td>None</td>
-<td>Represented by "</td>
+<td>Represented by "+" in a GFF file; the strand is positive with relation to the...</td>
 </tr>
 <tr>
 <td>unknown</td>
 <td>None</td>
 <td>Represented by "?" in a GFF file</td>
+</tr>
+<tr>
+<td>unstranded</td>
+<td>None</td>
+<td>Represented by "</td>
 </tr>
 </tbody>
 </table>
@@ -402,24 +403,26 @@
 <details>
 
 <pre><code class="language-yaml">name: StrandType
+description: The strand that a feature appears on relative to a landmark. Also encompasses
+  unknown or irrelevant strandedness.
 from_schema: https://github.com/kbase/cdm-schema
 rank: 1000
 permissible_values:
-  positive:
-    text: positive
-    description: Represented by &quot;+&quot; in a GFF file; the strand is positive with relation
-      to the landmark.
   negative:
     text: negative
     description: Represented by &quot;-&quot; in a GFF file; the strand is negative wrt the
       landmark.
-  unstranded:
-    text: unstranded
-    description: Represented by &quot;.&quot; in a GFF file; the feature is not stranded.
+  positive:
+    text: positive
+    description: Represented by &quot;+&quot; in a GFF file; the strand is positive with relation
+      to the landmark.
   unknown:
     text: unknown
     description: Represented by &quot;?&quot; in a GFF file. The strandedness is relevant but
       unknown.
+  unstranded:
+    text: unstranded
+    description: Represented by &quot;.&quot; in a GFF file; the feature is not stranded.
 
 </code></pre>
 
@@ -467,6 +470,10 @@ permissible_values:
     
     
       <script src="../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+      
+        <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="../javascripts/tablesort.js"></script>
       
     
     

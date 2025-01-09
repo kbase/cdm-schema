@@ -218,6 +218,8 @@
     click Identifier href "../Identifier"
       Identifier : description
 
+      Identifier : entity_id
+
       Identifier : identifier
 
       Identifier : source
@@ -237,6 +239,18 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../description/">description</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Brief description of the identifier and/or its relationship to the entity</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../entity_id/">entity_id</a></td>
+<td>1 <br/> <a href="../UUID/">UUID</a></td>
+<td>Internal (CDM) unique identifier for the entity that has the identifiers</td>
+<td>direct</td>
+</tr>
+<tr>
 <td><a href="../identifier/">identifier</a></td>
 <td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>Fully-qualifier URL or CURIE used as an identifier for an entity</td>
@@ -244,14 +258,8 @@
 </tr>
 <tr>
 <td><a href="../source/">source</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>The source of the identifier</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../description/">description</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Brief description of the identifier and/or its relationship to the entity</td>
+<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>The data source for the identifier</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -280,7 +288,7 @@
 <td><a href="./">Identifier</a></td>
 </tr>
 <tr>
-<td><a href="../Protocol/">Protocol</a></td>
+<td><a href="../Assembly/">Assembly</a></td>
 <td><a href="../identifiers/">identifiers</a></td>
 <td>range</td>
 <td><a href="./">Identifier</a></td>
@@ -292,19 +300,7 @@
 <td><a href="./">Identifier</a></td>
 </tr>
 <tr>
-<td><a href="../Assembly/">Assembly</a></td>
-<td><a href="../identifiers/">identifiers</a></td>
-<td>range</td>
-<td><a href="./">Identifier</a></td>
-</tr>
-<tr>
 <td><a href="../Contigset/">Contigset</a></td>
-<td><a href="../identifiers/">identifiers</a></td>
-<td>range</td>
-<td><a href="./">Identifier</a></td>
-</tr>
-<tr>
-<td><a href="../Genome/">Genome</a></td>
 <td><a href="../identifiers/">identifiers</a></td>
 <td>range</td>
 <td><a href="./">Identifier</a></td>
@@ -316,7 +312,37 @@
 <td><a href="./">Identifier</a></td>
 </tr>
 <tr>
+<td><a href="../EnvironmentalContext/">EnvironmentalContext</a></td>
+<td><a href="../identifiers/">identifiers</a></td>
+<td>range</td>
+<td><a href="./">Identifier</a></td>
+</tr>
+<tr>
+<td><a href="../GoldEnvironmentalContext/">GoldEnvironmentalContext</a></td>
+<td><a href="../identifiers/">identifiers</a></td>
+<td>range</td>
+<td><a href="./">Identifier</a></td>
+</tr>
+<tr>
+<td><a href="../MixsEnvironmentalContext/">MixsEnvironmentalContext</a></td>
+<td><a href="../identifiers/">identifiers</a></td>
+<td>range</td>
+<td><a href="./">Identifier</a></td>
+</tr>
+<tr>
 <td><a href="../Feature/">Feature</a></td>
+<td><a href="../identifiers/">identifiers</a></td>
+<td>range</td>
+<td><a href="./">Identifier</a></td>
+</tr>
+<tr>
+<td><a href="../Genome/">Genome</a></td>
+<td><a href="../identifiers/">identifiers</a></td>
+<td>range</td>
+<td><a href="./">Identifier</a></td>
+</tr>
+<tr>
+<td><a href="../Project/">Project</a></td>
 <td><a href="../identifiers/">identifiers</a></td>
 <td>range</td>
 <td><a href="./">Identifier</a></td>
@@ -328,13 +354,13 @@
 <td><a href="./">Identifier</a></td>
 </tr>
 <tr>
-<td><a href="../Sample/">Sample</a></td>
+<td><a href="../Protocol/">Protocol</a></td>
 <td><a href="../identifiers/">identifiers</a></td>
 <td>range</td>
 <td><a href="./">Identifier</a></td>
 </tr>
 <tr>
-<td><a href="../Project/">Project</a></td>
+<td><a href="../Sample/">Sample</a></td>
 <td><a href="../identifiers/">identifiers</a></td>
 <td>range</td>
 <td><a href="./">Identifier</a></td>
@@ -373,9 +399,36 @@
 description: An external identifier for an entity. This should be a URI or CURIE.
 from_schema: https://github.com/kbase/cdm-schema
 attributes:
+  description:
+    name: description
+    description: Brief description of the identifier and/or its relationship to the
+      entity.
+    from_schema: https://github.com/kbase/cdm-schema
+    domain_of:
+    - NamedThing
+    - Event
+    - Experiment
+    - Identifier
+    - Name
+    - Project
+    - Protein
+    - Sample
+  entity_id:
+    name: entity_id
+    description: Internal (CDM) unique identifier for the entity that has the identifiers.
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    domain_of:
+    - Identifier
+    - Name
+    range: UUID
+    required: true
   identifier:
     name: identifier
     description: Fully-qualifier URL or CURIE used as an identifier for an entity.
+    examples:
+    - value: UniProt:Q8KCD6
+    - value: EC:5.2.3.14
     from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     slot_uri: schema:identifier
@@ -385,21 +438,17 @@ attributes:
     required: true
   source:
     name: source
-    description: The source of the identifier.
+    description: The data source for the identifier. Should be a ROR ID.
+    examples:
+    - value: UniProt
+    - value: NCBI
+    - value: KE-Pangenomes
     from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
     domain_of:
-    - Name
     - Identifier
-  description:
-    name: description
-    description: Brief description of the identifier and/or its relationship to the
-      entity.
-    from_schema: https://github.com/kbase/cdm-schema
-    domain_of:
     - Name
-    - Identifier
-    - NamedThing
-    - Protein
+    range: uriorcurie
 
 </code></pre>
 </details>
@@ -409,9 +458,41 @@ attributes:
 description: An external identifier for an entity. This should be a URI or CURIE.
 from_schema: https://github.com/kbase/cdm-schema
 attributes:
+  description:
+    name: description
+    description: Brief description of the identifier and/or its relationship to the
+      entity.
+    from_schema: https://github.com/kbase/cdm-schema
+    alias: description
+    owner: Identifier
+    domain_of:
+    - NamedThing
+    - Event
+    - Experiment
+    - Identifier
+    - Name
+    - Project
+    - Protein
+    - Sample
+    range: string
+  entity_id:
+    name: entity_id
+    description: Internal (CDM) unique identifier for the entity that has the identifiers.
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    alias: entity_id
+    owner: Identifier
+    domain_of:
+    - Identifier
+    - Name
+    range: UUID
+    required: true
   identifier:
     name: identifier
     description: Fully-qualifier URL or CURIE used as an identifier for an entity.
+    examples:
+    - value: UniProt:Q8KCD6
+    - value: EC:5.2.3.14
     from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     slot_uri: schema:identifier
@@ -423,27 +504,19 @@ attributes:
     required: true
   source:
     name: source
-    description: The source of the identifier.
+    description: The data source for the identifier. Should be a ROR ID.
+    examples:
+    - value: UniProt
+    - value: NCBI
+    - value: KE-Pangenomes
     from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
     alias: source
     owner: Identifier
     domain_of:
-    - Name
     - Identifier
-    range: string
-  description:
-    name: description
-    description: Brief description of the identifier and/or its relationship to the
-      entity.
-    from_schema: https://github.com/kbase/cdm-schema
-    alias: description
-    owner: Identifier
-    domain_of:
     - Name
-    - Identifier
-    - NamedThing
-    - Protein
-    range: string
+    range: uriorcurie
 
 </code></pre>
 </details>
@@ -472,7 +545,8 @@ attributes:
 </div>
 <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
 <script src="../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
-<script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
-mermaid.initialize({});</script><script type="module">import mermaid from "https://unpkg.com/mermaid@10.9.0/dist/mermaid.esm.min.mjs";
+<script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+<script src="../javascripts/tablesort.js"></script>
+<script type="module">import mermaid from "https://unpkg.com/mermaid@10.9.0/dist/mermaid.esm.min.mjs";
 mermaid.initialize({});</script></body>
 </html>

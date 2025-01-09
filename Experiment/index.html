@@ -211,6 +211,7 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
 <h1 id="class-experiment">Class: Experiment</h1>
+<p><em>A discrete scientific procedure undertaken to make a discovery, test a hypothesis, or demonstrate a known fact.</em></p>
 <p>URI: <a href="http://kbase.github.io/cdm-schema/Experiment">kb_cdm:Experiment</a></p>
 <div class="mermaid"> classDiagram
     class Experiment
@@ -222,6 +223,8 @@
 
       Experiment : description
 
+      Experiment : experiment_id
+
       Experiment : has_participant
 
 
@@ -230,8 +233,6 @@
     Experiment --&gt; "*" Sample : has_participant
     click Sample href "../Sample"
 
-
-      Experiment : id
 
       Experiment : names
 
@@ -274,13 +275,19 @@
 <tr>
 <td><a href="../created_at/">created_at</a></td>
 <td>0..1 <br/> <a href="../Datetime/">Datetime</a></td>
-<td></td>
+<td>The start time of the exeperiment</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../part_of/">part_of</a></td>
-<td>0..1 <br/> <a href="../Project/">Project</a></td>
-<td></td>
+<td><a href="../description/">description</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Brief explanation of what was done</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../experiment_id/">experiment_id</a></td>
+<td>1 <br/> <a href="../UUID/">UUID</a></td>
+<td>Internal (CDM) unique identifier</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -290,21 +297,15 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../id/">id</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
-<td><a href="../NamedThing/">NamedThing</a></td>
+<td><a href="../part_of/">part_of</a></td>
+<td>0..1 <br/> <a href="../Project/">Project</a></td>
+<td>The project to which this experiment belongs</td>
+<td>direct</td>
 </tr>
 <tr>
 <td><a href="../names/">names</a></td>
 <td>* <br/> <a href="../Name/">Name</a></td>
 <td>Names, alternative names, and synonyms for an entity</td>
-<td><a href="../NamedThing/">NamedThing</a></td>
-</tr>
-<tr>
-<td><a href="../description/">description</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Definition or description of the entity</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 </tbody>
@@ -338,24 +339,44 @@
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: Experiment
+description: A discrete scientific procedure undertaken to make a discovery, test
+  a hypothesis, or demonstrate a known fact.
 from_schema: https://github.com/kbase/cdm-schema
 is_a: NamedThing
 attributes:
   created_at:
     name: created_at
+    description: The start time of the exeperiment.
     from_schema: https://github.com/kbase/cdm-schema
     domain_of:
-    - Project
-    - Experiment
     - Event
+    - Experiment
+    - Measurement
+    - MeasurementSet
     range: datetime
-  part_of:
-    name: part_of
+  description:
+    name: description
+    description: Brief explanation of what was done.
     from_schema: https://github.com/kbase/cdm-schema
     domain_of:
-    - Contig
+    - NamedThing
+    - Event
     - Experiment
-    range: Project
+    - Identifier
+    - Name
+    - Project
+    - Protein
+    - Sample
+  experiment_id:
+    name: experiment_id
+    description: Internal (CDM) unique identifier.
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    identifier: true
+    domain_of:
+    - Experiment
+    range: UUID
+    required: true
   has_participant:
     name: has_participant
     description: Participants in an experiment.
@@ -365,34 +386,65 @@ attributes:
     - Experiment
     range: Sample
     multivalued: true
+  part_of:
+    name: part_of
+    description: The project to which this experiment belongs.
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    domain_of:
+    - Experiment
+    range: Project
 
 </code></pre>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: Experiment
+description: A discrete scientific procedure undertaken to make a discovery, test
+  a hypothesis, or demonstrate a known fact.
 from_schema: https://github.com/kbase/cdm-schema
 is_a: NamedThing
 attributes:
   created_at:
     name: created_at
+    description: The start time of the exeperiment.
     from_schema: https://github.com/kbase/cdm-schema
     alias: created_at
     owner: Experiment
     domain_of:
-    - Project
-    - Experiment
     - Event
+    - Experiment
+    - Measurement
+    - MeasurementSet
     range: datetime
-  part_of:
-    name: part_of
+  description:
+    name: description
+    description: Brief explanation of what was done.
     from_schema: https://github.com/kbase/cdm-schema
-    alias: part_of
+    alias: description
     owner: Experiment
     domain_of:
-    - Contig
+    - NamedThing
+    - Event
     - Experiment
-    range: Project
+    - Identifier
+    - Name
+    - Project
+    - Protein
+    - Sample
+    range: string
+  experiment_id:
+    name: experiment_id
+    description: Internal (CDM) unique identifier.
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    identifier: true
+    alias: experiment_id
+    owner: Experiment
+    domain_of:
+    - Experiment
+    range: UUID
+    required: true
   has_participant:
     name: has_participant
     description: Participants in an experiment.
@@ -404,19 +456,16 @@ attributes:
     - Experiment
     range: Sample
     multivalued: true
-  id:
-    name: id
+  part_of:
+    name: part_of
+    description: The project to which this experiment belongs.
     from_schema: https://github.com/kbase/cdm-schema
-    alias: id
+    rank: 1000
+    alias: part_of
     owner: Experiment
     domain_of:
-    - NamedThing
-    - node
-    - node_identifier
-    - owl_reified_axiom
-    - owl_axiom
-    - owl_axiom_annotation
-    range: string
+    - Experiment
+    range: Project
   names:
     name: names
     description: Names, alternative names, and synonyms for an entity.
@@ -428,18 +477,6 @@ attributes:
     - NamedThing
     range: Name
     multivalued: true
-  description:
-    name: description
-    description: Definition or description of the entity.
-    from_schema: https://github.com/kbase/cdm-schema
-    alias: description
-    owner: Experiment
-    domain_of:
-    - Name
-    - Identifier
-    - NamedThing
-    - Protein
-    range: string
 
 </code></pre>
 </details>
@@ -468,7 +505,8 @@ attributes:
 </div>
 <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
 <script src="../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
-<script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
-mermaid.initialize({});</script><script type="module">import mermaid from "https://unpkg.com/mermaid@10.9.0/dist/mermaid.esm.min.mjs";
+<script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+<script src="../javascripts/tablesort.js"></script>
+<script type="module">import mermaid from "https://unpkg.com/mermaid@10.9.0/dist/mermaid.esm.min.mjs";
 mermaid.initialize({});</script></body>
 </html>

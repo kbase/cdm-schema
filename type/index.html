@@ -353,13 +353,28 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../Feature/">Feature</a></td>
-<td>A feature localized to an interval along a contig</td>
+<td><a href="../Measurement/">Measurement</a></td>
+<td>A qualitative or quantitative observation of an attribute of an object or eve...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ProcessedMeasurement/">ProcessedMeasurement</a></td>
+<td>A measurement that requires additional processing to generate a result</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Sample/">Sample</a></td>
+<td>A material entity that can be characterised by an experiment</td>
 <td>no</td>
 </tr>
 <tr>
 <td><a href="../EncodedFeature/">EncodedFeature</a></td>
-<td>An entity generated from a feature</td>
+<td>An entity generated from a feature, such as a transcript</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Feature/">Feature</a></td>
+<td>A feature localized to an interval along a contig</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -396,6 +411,8 @@ alias: type
 domain_of:
 - EncodedFeature
 - Feature
+- Measurement
+- Sample
 range: string
 
 </code></pre>
@@ -444,6 +461,10 @@ range: string
     
     
       <script src="../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+      
+        <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="../javascripts/tablesort.js"></script>
       
     
     

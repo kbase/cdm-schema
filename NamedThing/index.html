@@ -221,16 +221,16 @@
     click NamedThing href "../NamedThing"
       NamedThing &lt;|-- NamedThingWithId
         click NamedThingWithId href "../NamedThingWithId"
-      NamedThing &lt;|-- Experiment
-        click Experiment href "../Experiment"
       NamedThing &lt;|-- Event
         click Event href "../Event"
+      NamedThing &lt;|-- Experiment
+        click Experiment href "../Experiment"
       NamedThing &lt;|-- Measurement
         click Measurement href "../Measurement"
+      NamedThing &lt;|-- ProtocolParticipant
+        click ProtocolParticipant href "../ProtocolParticipant"
 
       NamedThing : description
-
-      NamedThing : id
 
       NamedThing : names
 
@@ -247,9 +247,10 @@
 <ul>
 <li><strong>NamedThing</strong><ul>
 <li><a href="../NamedThingWithId/">NamedThingWithId</a></li>
-<li><a href="../Experiment/">Experiment</a></li>
 <li><a href="../Event/">Event</a></li>
+<li><a href="../Experiment/">Experiment</a></li>
 <li><a href="../Measurement/">Measurement</a></li>
+<li><a href="../ProtocolParticipant/">ProtocolParticipant</a></li>
 </ul>
 </li>
 </ul>
@@ -265,21 +266,15 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../id/">id</a></td>
+<td><a href="../description/">description</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td>Definition or description of the entity</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../names/">names</a></td>
 <td>* <br/> <a href="../Name/">Name</a></td>
 <td>Names, alternative names, and synonyms for an entity</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../description/">description</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Definition or description of the entity</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -317,16 +312,20 @@ description: Abstract class to represent things with names.
 from_schema: https://github.com/kbase/cdm-schema
 abstract: true
 attributes:
-  id:
-    name: id
+  description:
+    name: description
+    description: Definition or description of the entity.
     from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
     domain_of:
     - NamedThing
-    - node
-    - node_identifier
-    - owl_reified_axiom
-    - owl_axiom
-    - owl_axiom_annotation
+    - Event
+    - Experiment
+    - Identifier
+    - Name
+    - Project
+    - Protein
+    - Sample
   names:
     name: names
     description: Names, alternative names, and synonyms for an entity.
@@ -336,15 +335,6 @@ attributes:
     - NamedThing
     range: Name
     multivalued: true
-  description:
-    name: description
-    description: Definition or description of the entity.
-    from_schema: https://github.com/kbase/cdm-schema
-    domain_of:
-    - Name
-    - Identifier
-    - NamedThing
-    - Protein
 
 </code></pre>
 </details>
@@ -355,18 +345,22 @@ description: Abstract class to represent things with names.
 from_schema: https://github.com/kbase/cdm-schema
 abstract: true
 attributes:
-  id:
-    name: id
+  description:
+    name: description
+    description: Definition or description of the entity.
     from_schema: https://github.com/kbase/cdm-schema
-    alias: id
+    rank: 1000
+    alias: description
     owner: NamedThing
     domain_of:
     - NamedThing
-    - node
-    - node_identifier
-    - owl_reified_axiom
-    - owl_axiom
-    - owl_axiom_annotation
+    - Event
+    - Experiment
+    - Identifier
+    - Name
+    - Project
+    - Protein
+    - Sample
     range: string
   names:
     name: names
@@ -379,18 +373,6 @@ attributes:
     - NamedThing
     range: Name
     multivalued: true
-  description:
-    name: description
-    description: Definition or description of the entity.
-    from_schema: https://github.com/kbase/cdm-schema
-    alias: description
-    owner: NamedThing
-    domain_of:
-    - Name
-    - Identifier
-    - NamedThing
-    - Protein
-    range: string
 
 </code></pre>
 </details>
@@ -419,7 +401,8 @@ attributes:
 </div>
 <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
 <script src="../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
-<script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
-mermaid.initialize({});</script><script type="module">import mermaid from "https://unpkg.com/mermaid@10.9.0/dist/mermaid.esm.min.mjs";
+<script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+<script src="../javascripts/tablesort.js"></script>
+<script type="module">import mermaid from "https://unpkg.com/mermaid@10.9.0/dist/mermaid.esm.min.mjs";
 mermaid.initialize({});</script></body>
 </html>

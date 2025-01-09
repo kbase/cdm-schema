@@ -367,18 +367,53 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../Assembly/">Assembly</a></td>
+<td>A set of chromosomes, unlocalized and unplaced (random) sequences and alterna...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../EnvironmentalContext/">EnvironmentalContext</a></td>
+<td>The environmental context for the event</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../MixsEnvironmentalContext/">MixsEnvironmentalContext</a></td>
+<td>Environmental context, described using the MiXS convention of broad and local...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Protocol/">Protocol</a></td>
+<td>Defined method or set of methods</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../NamedThingWithId/">NamedThingWithId</a></td>
+<td>Abstract class to represent things with names and identifiers</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../Protein/">Protein</a></td>
 <td>Proteins are large, complex molecules made up of one or more long, folded cha...</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../UniqueNamedThing/">UniqueNamedThing</a></td>
-<td>Represents an entity with a hash value generated from combining its unique at...</td>
+<td><a href="../GoldEnvironmentalContext/">GoldEnvironmentalContext</a></td>
+<td>Environmental context, described using JGI's five level system</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Contigset/">Contigset</a></td>
-<td>A set of individual, overlapping contigs that represent the complete sequence...</td>
+<td><a href="../Contig/">Contig</a></td>
+<td>A contig (derived from the word "contiguous") is a set of DNA segments or seq...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Sample/">Sample</a></td>
+<td>A material entity that can be characterised by an experiment</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../EncodedFeature/">EncodedFeature</a></td>
+<td>An entity generated from a feature, such as a transcript</td>
 <td>no</td>
 </tr>
 <tr>
@@ -392,23 +427,8 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Sample/">Sample</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Protocol/">Protocol</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Assembly/">Assembly</a></td>
-<td>A set of chromosomes, unlocalized and unplaced (random) sequences and alterna...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../NamedThingWithId/">NamedThingWithId</a></td>
-<td>Abstract class to represent things with names and identifiers</td>
+<td><a href="../Contigset/">Contigset</a></td>
+<td>A set of individual, overlapping contigs that represent the complete sequence...</td>
 <td>no</td>
 </tr>
 <tr>
@@ -417,13 +437,8 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Contig/">Contig</a></td>
-<td>A contig (derived from the word "contiguous") is a set of DNA segments or seq...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../EncodedFeature/">EncodedFeature</a></td>
-<td>An entity generated from a feature</td>
+<td><a href="../UniqueNamedThing/">UniqueNamedThing</a></td>
+<td>Represents an entity with a hash value generated from combining its unique at...</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -521,6 +536,10 @@ multivalued: true
     
     
       <script src="../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+      
+        <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="../javascripts/tablesort.js"></script>
       
     
     

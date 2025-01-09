@@ -421,12 +421,16 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="FeatureAttributes/">FeatureAttributes</a></td>
+<td>Additional attributes of a feature, parsed from column 9 of a GFF file.</td>
+</tr>
+<tr>
 <td><a href="Identifier/">Identifier</a></td>
 <td>An external identifier for an entity. This should be a URI or CURIE.</td>
 </tr>
 <tr>
-<td><a href="IsReport/">IsReport</a></td>
-<td>Used to describe classes/views that have a reporting function</td>
+<td><a href="MeasurementSet/">MeasurementSet</a></td>
+<td>A series of qualitative or quantitative measurements.</td>
 </tr>
 <tr>
 <td><a href="Name/">Name</a></td>
@@ -438,19 +442,19 @@
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Event/">Event</a></td>
-<td>None</td>
+<td>Something that happened.</td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Experiment/">Experiment</a></td>
-<td>None</td>
+<td>A discrete scientific procedure undertaken to make a discovery, test a hypothesis, or demonstrate a known fact.</td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Measurement/">Measurement</a></td>
-<td>None</td>
+<td>A qualitative or quantitative observation of an attribute of an object or event against a standardized scale, to enable it to be compared with other objects or events.</td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ProcessedMeasurement/">ProcessedMeasurement</a></td>
-<td>None</td>
+<td>A measurement that requires additional processing to generate a result.</td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="NamedThingWithId/">NamedThingWithId</a></td>
@@ -462,11 +466,11 @@
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Protocol/">Protocol</a></td>
-<td>None</td>
+<td>Defined method or set of methods .</td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Sample/">Sample</a></td>
-<td>None</td>
+<td>A material entity that can be characterised by an experiment.</td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="UniqueNamedThing/">UniqueNamedThing</a></td>
@@ -490,7 +494,19 @@
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="EncodedFeature/">EncodedFeature</a></td>
-<td>An entity generated from a feature.</td>
+<td>An entity generated from a feature, such as a transcript.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="EnvironmentalContext/">EnvironmentalContext</a></td>
+<td>The environmental context for the event.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="GoldEnvironmentalContext/">GoldEnvironmentalContext</a></td>
+<td>Environmental context, described using JGI's five level system.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="MixsEnvironmentalContext/">MixsEnvironmentalContext</a></td>
+<td>Environmental context, described using the MiXS convention of broad and local environment, plus the medium.</td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Feature/">Feature</a></td>
@@ -501,396 +517,8 @@
 <td>Proteins are large, complex molecules made up of one or more long, folded chains of amino acids, whose sequences are determined by the DNA sequence of the protein-encoding gene.</td>
 </tr>
 <tr>
-<td><a href="Node/">Node</a></td>
-<td>The basic unit of representation in an RDF or OWL graph</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="BlankNode/">BlankNode</a></td>
-<td>A node with an ID that is not preserved between databases</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="AnonymousExpression/">AnonymousExpression</a></td>
-<td>An OWL expression, such as a class expression. Expressions are "anonymous" as they are a composition of named elements rather than a named element themselves</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="AnonymousClassExpression/">AnonymousClassExpression</a></td>
-<td>An OWL anonymous class expression, such as for example <code>SomeValuesFrom(partOf Hand)</code></td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="OwlRestriction/">OwlRestriction</a></td>
-<td>An OWL restriction, such as <code>SomeValuesFrom(partOf Hand)</code></td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="OwlAllValuesFrom/">OwlAllValuesFrom</a></td>
-<td>None</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="OwlHasSelf/">OwlHasSelf</a></td>
-<td>None</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="OwlHasValue/">OwlHasValue</a></td>
-<td>None</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="OwlSomeValuesFrom/">OwlSomeValuesFrom</a></td>
-<td>An OWL SomeValuesFrom restriction</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="AnonymousIndividualExpression/">AnonymousIndividualExpression</a></td>
-<td>None</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="AnonymousPropertyExpression/">AnonymousPropertyExpression</a></td>
-<td>None</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="RdfListNode/">RdfListNode</a></td>
-<td>A node representing an RDF list. Note that you will not likely need to use this directly.</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ClassNode/">ClassNode</a></td>
-<td>A node that represents an RDFS/OWL class</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="DeprecatedNode/">DeprecatedNode</a></td>
-<td>None</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="IriNode/">IriNode</a></td>
-<td>None</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="NamedIndividualNode/">NamedIndividualNode</a></td>
-<td>A node that represents an OWL Named Individual</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Orcid/">Orcid</a></td>
-<td>None</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="PropertyNode/">PropertyNode</a></td>
-<td>Note this only directly classifies nodes asserted to be rdf:Properties</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="TypedPropertyNode/">TypedPropertyNode</a></td>
-<td>None</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="AnnotationPropertyNode/">AnnotationPropertyNode</a></td>
-<td>A node representing an OWL annotation property</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ObjectPropertyNode/">ObjectPropertyNode</a></td>
-<td>A node representing an OWL object property</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="AsymmetricPropertyNode/">AsymmetricPropertyNode</a></td>
-<td>None</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="IrreflexivePropertyNode/">IrreflexivePropertyNode</a></td>
-<td>A node representing an OWL irreflexive object property</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ReflexivePropertyNode/">ReflexivePropertyNode</a></td>
-<td>A node representing an OWL reflexive object property</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SymmetricPropertyNode/">SymmetricPropertyNode</a></td>
-<td>A node representing an OWL symmetric object property</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="TransitivePropertyNode/">TransitivePropertyNode</a></td>
-<td>A node representing an OWL transitive object property</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="TypedNode/">TypedNode</a></td>
-<td>None</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="OntologyNode/">OntologyNode</a></td>
-<td>A node representing an ontology</td>
-</tr>
-<tr>
-<td><a href="NodeIdentifier/">NodeIdentifier</a></td>
-<td>None</td>
-</tr>
-<tr>
-<td><a href="NodeTrait/">NodeTrait</a></td>
-<td>abstract groupings/properties for different aspects of the model</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ClassTrait/">ClassTrait</a></td>
-<td>None</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="IndividualTrait/">IndividualTrait</a></td>
-<td>None</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="PropertyTrait/">PropertyTrait</a></td>
-<td>None</td>
-</tr>
-<tr>
-<td><a href="OwlComplexAxiom/">OwlComplexAxiom</a></td>
-<td>An axiom that is composed of two or more statements</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="OwlEquivalentToIntersectionMember/">OwlEquivalentToIntersectionMember</a></td>
-<td>Composition of <code>OwlEquivalentClass</code>, <code>OwlIntersectionOf</code>, and <code>RdfListMember</code>; <code>C = X1 and ... and Xn</code></td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="OwlSubclassOfSomeValuesFrom/">OwlSubclassOfSomeValuesFrom</a></td>
-<td>Composition of subClassOf and SomeValuesFrom</td>
-</tr>
-<tr>
-<td><a href="Prefix/">Prefix</a></td>
-<td>Maps CURIEs to URIs</td>
-</tr>
-<tr>
-<td><a href="RdfLevelSummaryStatistic/">RdfLevelSummaryStatistic</a></td>
-<td>Abstract grouping for views/classes that provide some kind of count summary about an individual element</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="CountOfInstantiatedClasses/">CountOfInstantiatedClasses</a></td>
-<td>Number of distinct instantiations of a class. Note in many OBOs, classes are not directly instantiated</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="CountOfPredicates/">CountOfPredicates</a></td>
-<td>Number of distinct usages of a predicate. NOTE MAY CHANGE: does not currently count existential usage in OWL</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="CountOfSubclasses/">CountOfSubclasses</a></td>
-<td>Number of subclasses for a given class</td>
-</tr>
-<tr>
-<td><a href="RelationGraphConstruct/">RelationGraphConstruct</a></td>
-<td>A construct used as part of a Relation Graph</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Edge/">Edge</a></td>
-<td>A relation graph edge that connects two entities by a predicate. Note an edge is distinct from a statement, in that an axiom such as A SubClassOf R some B is represented as multiple statements, but is a single relation graph edge</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="EntailedEdge/">EntailedEdge</a></td>
-<td>A relation graph edge that is inferred</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="EntailedSubclassOfEdge/">EntailedSubclassOfEdge</a></td>
-<td>None</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="EntailedTypeEdge/">EntailedTypeEdge</a></td>
-<td>None</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="EntailedEdgeCycle/">EntailedEdgeCycle</a></td>
-<td>An edge that composes with another edge to make a cycle</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="EntailedEdgeSamePredicateCycle/">EntailedEdgeSamePredicateCycle</a></td>
-<td>An entailed_edge_cycle over a single predicate</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SubgraphQuery/">SubgraphQuery</a></td>
-<td>A subgraph query encompasses as subgraph edge and a seed/anchor object and seed/anchor predicate</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SubgraphEdgeByAncestor/">SubgraphEdgeByAncestor</a></td>
-<td>An edge within a subgraph anchored around a set of ancestor terms</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SubgraphEdgeByAncestorOrDescendant/">SubgraphEdgeByAncestorOrDescendant</a></td>
-<td>None</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SubgraphEdgeByChild/">SubgraphEdgeByChild</a></td>
-<td>An edge within a subgraph anchored around a set of child terms</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SubgraphEdgeByDescendant/">SubgraphEdgeByDescendant</a></td>
-<td>An edge within a subgraph anchored around a set of descendant terms</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SubgraphEdgeByParent/">SubgraphEdgeByParent</a></td>
-<td>An edge within a subgraph anchored around a set of parent terms</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SubgraphEdgeBySelf/">SubgraphEdgeBySelf</a></td>
-<td>A special null form of a subgraph query where there is no expansion</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="TransitiveEdge/">TransitiveEdge</a></td>
-<td>A relation graph edge that is formed from a chain of one or more edges</td>
-</tr>
-<tr>
-<td><a href="Relationship/">Relationship</a></td>
-<td>None</td>
-</tr>
-<tr>
-<td><a href="Statements/">Statements</a></td>
-<td>Represents an RDF triple</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="HasMappingStatement/">HasMappingStatement</a></td>
-<td>None</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="HasDbxrefStatement/">HasDbxrefStatement</a></td>
-<td>None</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="HasMatchStatement/">HasMatchStatement</a></td>
-<td>None</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="HasBroadMatchStatement/">HasBroadMatchStatement</a></td>
-<td>None</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="HasExactMatchStatement/">HasExactMatchStatement</a></td>
-<td>None</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="HasNarrowMatchStatement/">HasNarrowMatchStatement</a></td>
-<td>None</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="HasRelatedMatchStatement/">HasRelatedMatchStatement</a></td>
-<td>None</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="NodeToNodeStatement/">NodeToNodeStatement</a></td>
-<td>A statement where object is non-null and value is not populated</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Contributor/">Contributor</a></td>
-<td>None</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Creator/">Creator</a></td>
-<td>None</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="OwlComplementOfStatement/">OwlComplementOfStatement</a></td>
-<td>None</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="OwlDisjointClassStatement/">OwlDisjointClassStatement</a></td>
-<td>None</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="OwlEquivalentClassStatement/">OwlEquivalentClassStatement</a></td>
-<td>A statement that connects two class_nodes where both classes are equivalent</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="OwlImportsStatement/">OwlImportsStatement</a></td>
-<td>None</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="OwlInverseOfStatement/">OwlInverseOfStatement</a></td>
-<td>None</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="OwlSameAsStatement/">OwlSameAsStatement</a></td>
-<td>A statement that connects two individual nodes where both individual are equivalent</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="RdfTypeStatement/">RdfTypeStatement</a></td>
-<td>A statement that indicates the asserted type of the subject entity</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="RdfsDomainStatement/">RdfsDomainStatement</a></td>
-<td>A statement that connects a property to its domain class</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="RdfsRangeStatement/">RdfsRangeStatement</a></td>
-<td>A statement that connects a property to its range class or literal type</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="RdfsSubclassOfStatement/">RdfsSubclassOfStatement</a></td>
-<td>None</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="RdfsSubclassOfNamedStatement/">RdfsSubclassOfNamedStatement</a></td>
-<td>None</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="RdfsSubpropertyOfStatement/">RdfsSubpropertyOfStatement</a></td>
-<td>None</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="NodeToValueStatement/">NodeToValueStatement</a></td>
-<td>A statement where value is non-null and object is not populated</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="HasOioSynonymStatement/">HasOioSynonymStatement</a></td>
-<td>None</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="HasBroadSynonymStatement/">HasBroadSynonymStatement</a></td>
-<td>None</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="HasExactSynonymStatement/">HasExactSynonymStatement</a></td>
-<td>None</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="HasNarrowSynonymStatement/">HasNarrowSynonymStatement</a></td>
-<td>None</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="HasRelatedSynonymStatement/">HasRelatedSynonymStatement</a></td>
-<td>None</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="HasSynonymStatement/">HasSynonymStatement</a></td>
-<td>None</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="HasTextDefinitionStatement/">HasTextDefinitionStatement</a></td>
-<td>None</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="RdfsLabelStatement/">RdfsLabelStatement</a></td>
-<td>A statement that connects a node to a human-readable label</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="OwlAxiom/">OwlAxiom</a></td>
-<td>None</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="OwlAxiomAnnotation/">OwlAxiomAnnotation</a></td>
-<td>None</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="AxiomDbxrefAnnotation/">AxiomDbxrefAnnotation</a></td>
-<td>None</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="OwlReifiedAxiom/">OwlReifiedAxiom</a></td>
-<td>An OWL axiom that has been reified - i.e. it includes an <a href="id">id</a> field that uniquely identifies that axiom and which can be the subject of additional statements</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="RdfListStatement/">RdfListStatement</a></td>
-<td>A statement that is used to represent aspects of RDF lists</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="RdfFirstStatement/">RdfFirstStatement</a></td>
-<td>A statement that connects a list to its first element. This is a low-level triple, it is unlikely you need to use this directly. It is used to define rdf_list_member_statement, which is more useful</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="RdfListMemberStatement/">RdfListMemberStatement</a></td>
-<td>None</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="RdfRestStatement/">RdfRestStatement</a></td>
-<td>A statement that connects a list to its remaining elements. This is a low-level triple, it is unlikely you need to use this directly. It is used to define rdf_list_member_statement, which is more useful</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="RdfRestTransitiveStatement/">RdfRestTransitiveStatement</a></td>
-<td>None</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ProtocolParticipant/">ProtocolParticipant</a></td>
+<td>Either an input or an output of a protocol.</td>
 </tr>
 </tbody>
 </table>
@@ -904,64 +532,20 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="anchor_object/">anchor_object</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="anchor_predicate/">anchor_predicate</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="annotation_datatype/">annotation_datatype</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="annotation_language/">annotation_language</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="annotation_object/">annotation_object</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="annotation_predicate/">annotation_predicate</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="annotation_subject/">annotation_subject</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="annotation_value/">annotation_value</a></td>
-<td></td>
-</tr>
-<tr>
 <td><a href="asm_score/">asm_score</a></td>
 <td>A composite score for comparing contigset quality</td>
 </tr>
 <tr>
-<td><a href="axiom_datatype/">axiom_datatype</a></td>
-<td></td>
+<td><a href="assembly_id/">assembly_id</a></td>
+<td>Internal (CDM) unique identifier</td>
 </tr>
 <tr>
-<td><a href="axiom_language/">axiom_language</a></td>
-<td></td>
+<td><a href="attribute_name/">attribute_name</a></td>
+<td>The name of the attribute</td>
 </tr>
 <tr>
-<td><a href="axiom_object/">axiom_object</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="axiom_predicate/">axiom_predicate</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="axiom_value/">axiom_value</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="base/">base</a></td>
-<td>The base URI a prefix will expand to</td>
+<td><a href="attribute_value/">attribute_value</a></td>
+<td>The value of the attribute</td>
 </tr>
 <tr>
 <td><a href="cds_phase/">cds_phase</a></td>
@@ -977,23 +561,27 @@
 </tr>
 <tr>
 <td><a href="conditions/">conditions</a></td>
-<td></td>
+<td>TBD</td>
 </tr>
 <tr>
 <td><a href="contig_bp/">contig_bp</a></td>
 <td>Total size in bp of all contigs</td>
 </tr>
 <tr>
+<td><a href="contig_id/">contig_id</a></td>
+<td>Internal (CDM) unique identifier</td>
+</tr>
+<tr>
 <td><a href="contigs/">contigs</a></td>
 <td>The contigs in this contigset</td>
 </tr>
 <tr>
-<td><a href="count_value/">count_value</a></td>
-<td></td>
+<td><a href="contigset_id/">contigset_id</a></td>
+<td>Internal (CDM) unique identifier</td>
 </tr>
 <tr>
 <td><a href="created_at/">created_at</a></td>
-<td></td>
+<td>The time at which the event started or was created</td>
 </tr>
 <tr>
 <td><a href="ctg_L50/">ctg_L50</a></td>
@@ -1024,28 +612,40 @@
 <td>Powersum of all contigs is the same as logsum except that it uses the sum of ...</td>
 </tr>
 <tr>
-<td><a href="data_source/">data_source</a></td>
-<td>Data source from which this entity came</td>
-</tr>
-<tr>
-<td><a href="datatype/">datatype</a></td>
-<td>the rdf datatype of the value, for example, xsd:string</td>
-</tr>
-<tr>
 <td><a href="description/">description</a></td>
-<td></td>
+<td>Definition or description of the entity</td>
+</tr>
+<tr>
+<td><a href="doi/">doi</a></td>
+<td>The DOI for a protocol</td>
 </tr>
 <tr>
 <td><a href="e_value/">e_value</a></td>
 <td>The 'score' of the feature</td>
 </tr>
 <tr>
-<td><a href="element/">element</a></td>
-<td></td>
+<td><a href="ecosystem/">ecosystem</a></td>
+<td>JGI GOLD descriptor representing the top level ecosystem categorization</td>
+</tr>
+<tr>
+<td><a href="ecosystem_category/">ecosystem_category</a></td>
+<td>JGI GOLD descriptor representing the ecosystem category</td>
+</tr>
+<tr>
+<td><a href="ecosystem_subtype/">ecosystem_subtype</a></td>
+<td>JGI GOLD descriptor representing the subtype of ecosystem</td>
+</tr>
+<tr>
+<td><a href="ecosystem_type/">ecosystem_type</a></td>
+<td>JGI GOLD descriptor representing the ecosystem type</td>
 </tr>
 <tr>
 <td><a href="encoded_by/">encoded_by</a></td>
-<td></td>
+<td>The feature(s) that encode this protein</td>
+</tr>
+<tr>
+<td><a href="encoded_feature_id/">encoded_feature_id</a></td>
+<td>Internal (CDM) unique identifier</td>
 </tr>
 <tr>
 <td><a href="encodes/">encodes</a></td>
@@ -1056,24 +656,40 @@
 <td>The start and end coordinates of the feature are given in positive 1-based in...</td>
 </tr>
 <tr>
-<td><a href="event/">event</a></td>
-<td></td>
+<td><a href="entity_id/">entity_id</a></td>
+<td>Internal (CDM) unique identifier for the entity that has the identifiers</td>
+</tr>
+<tr>
+<td><a href="env_broad_scale/">env_broad_scale</a></td>
+<td>Report the major environmental system the sample or specimen came from</td>
+</tr>
+<tr>
+<td><a href="env_local_scale/">env_local_scale</a></td>
+<td>Report the entity or entities which are in the sample or specimen's local vic...</td>
+</tr>
+<tr>
+<td><a href="env_medium/">env_medium</a></td>
+<td>Report the environmental material(s) immediately surrounding the sample or sp...</td>
+</tr>
+<tr>
+<td><a href="environmental_context_id/">environmental_context_id</a></td>
+<td>The environmental context for this event</td>
+</tr>
+<tr>
+<td><a href="event_id/">event_id</a></td>
+<td>Internal (CDM) unique identifier</td>
 </tr>
 <tr>
 <td><a href="evidence_for_existence/">evidence_for_existence</a></td>
-<td></td>
+<td>The evidence that this protein exists</td>
 </tr>
 <tr>
-<td><a href="evidence_type/">evidence_type</a></td>
-<td></td>
+<td><a href="experiment_id/">experiment_id</a></td>
+<td>Internal (CDM) unique identifier</td>
 </tr>
 <tr>
-<td><a href="features/">features</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="filler/">filler</a></td>
-<td></td>
+<td><a href="feature_id/">feature_id</a></td>
+<td>Internal (CDM) unique identifier</td>
 </tr>
 <tr>
 <td><a href="gap_pct/">gap_pct</a></td>
@@ -1096,20 +712,20 @@
 <td>The algorithm or procedure that generated the feature</td>
 </tr>
 <tr>
-<td><a href="graph/">graph</a></td>
-<td></td>
+<td><a href="gold_environmental_context_id/">gold_environmental_context_id</a></td>
+<td>Internal (CDM) unique identifier</td>
 </tr>
 <tr>
 <td><a href="has_participant/">has_participant</a></td>
 <td>Participants in an experiment</td>
 </tr>
 <tr>
-<td><a href="hash/">hash</a></td>
-<td>Unique string generated by combining the defining attributes of the class</td>
+<td><a href="has_stop_codon/">has_stop_codon</a></td>
+<td>Captures whether or not the sequence includes a stop coordinates</td>
 </tr>
 <tr>
-<td><a href="id/">id</a></td>
-<td>An identifier for an element</td>
+<td><a href="hash/">hash</a></td>
+<td>Unique string generated by combining the defining attributes of the class</td>
 </tr>
 <tr>
 <td><a href="identifier/">identifier</a></td>
@@ -1124,24 +740,20 @@
 <td>The inputs for a protocol; may be software parameters, experimental reagents,...</td>
 </tr>
 <tr>
-<td><a href="label/">label</a></td>
-<td>A label for an element</td>
-</tr>
-<tr>
-<td><a href="language/">language</a></td>
-<td>the human language in which the value is encoded, e</td>
-</tr>
-<tr>
 <td><a href="length/">length</a></td>
 <td>Length of the contig in bp</td>
 </tr>
 <tr>
-<td><a href="local_identifier/">local_identifier</a></td>
-<td>The part of a CURIE after the colon</td>
+<td><a href="location/">location</a></td>
+<td>The location for this event</td>
 </tr>
 <tr>
-<td><a href="location/">location</a></td>
-<td></td>
+<td><a href="measurement_id/">measurement_id</a></td>
+<td>Internal (CDM) unique identifier</td>
+</tr>
+<tr>
+<td><a href="mixs_environmental_context_id/">mixs_environmental_context_id</a></td>
+<td>Internal (CDM) unique identifier</td>
 </tr>
 <tr>
 <td><a href="n_contigs/">n_contigs</a></td>
@@ -1161,11 +773,7 @@
 </tr>
 <tr>
 <td><a href="object/">object</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="on_property/">on_property</a></td>
-<td></td>
+<td>The object in a subject-predicate-object statement</td>
 </tr>
 <tr>
 <td><a href="outputs/">outputs</a></td>
@@ -1177,31 +785,35 @@
 </tr>
 <tr>
 <td><a href="part_of/">part_of</a></td>
-<td></td>
+<td>The project to which this experiment belongs</td>
 </tr>
 <tr>
 <td><a href="predicate/">predicate</a></td>
-<td></td>
+<td>The predicate in a subject-predicate-object statement</td>
 </tr>
 <tr>
-<td><a href="prefix/">prefix</a></td>
-<td>A standardized prefix such as 'GO' or 'rdf' or 'FlyBase'</td>
+<td><a href="processed_measurement_id/">processed_measurement_id</a></td>
+<td>Internal (CDM) unique identifier</td>
 </tr>
 <tr>
-<td><a href="protocol_used/">protocol_used</a></td>
-<td></td>
+<td><a href="project_id/">project_id</a></td>
+<td>Internal (CDM) unique identifier</td>
 </tr>
 <tr>
-<td><a href="publication/">publication</a></td>
-<td></td>
+<td><a href="protein_id/">protein_id</a></td>
+<td>Internal (CDM) unique identifier</td>
+</tr>
+<tr>
+<td><a href="protocol_id/">protocol_id</a></td>
+<td>The ID of the protocol used to generate the measurement</td>
 </tr>
 <tr>
 <td><a href="quality/">quality</a></td>
-<td></td>
+<td>The quality of the measurement, indicating the confidence that one can have i...</td>
 </tr>
 <tr>
-<td><a href="restriction/">restriction</a></td>
-<td></td>
+<td><a href="sample_id/">sample_id</a></td>
+<td>Internal (CDM) unique identifier</td>
 </tr>
 <tr>
 <td><a href="scaf_bp/">scaf_bp</a></td>
@@ -1248,20 +860,24 @@
 <td>Powersum of all scaffolds is the same as logsum except that it uses the sum o...</td>
 </tr>
 <tr>
-<td><a href="secondary_predicate/">secondary_predicate</a></td>
-<td></td>
-</tr>
-<tr>
 <td><a href="sequence/">sequence</a></td>
-<td></td>
+<td>The protein amino acid sequence</td>
 </tr>
 <tr>
 <td><a href="source/">source</a></td>
-<td></td>
+<td>The data source for the identifier</td>
 </tr>
 <tr>
-<td><a href="stanza/">stanza</a></td>
-<td>the term which this statement is about</td>
+<td><a href="source_database/">source_database</a></td>
+<td>ID of the data source from which this entity came</td>
+</tr>
+<tr>
+<td><a href="source_protocol/">source_protocol</a></td>
+<td>ID of the protocol used to generate the feature</td>
+</tr>
+<tr>
+<td><a href="specific_ecosystem/">specific_ecosystem</a></td>
+<td>JGI GOLD descriptor representing the most specific level of ecosystem categor...</td>
 </tr>
 <tr>
 <td><a href="start/">start</a></td>
@@ -1273,15 +889,23 @@
 </tr>
 <tr>
 <td><a href="subject/">subject</a></td>
-<td></td>
+<td>The subject in a subject-predicate-object statement</td>
 </tr>
 <tr>
 <td><a href="type/">type</a></td>
-<td></td>
+<td>The type of the entity</td>
+</tr>
+<tr>
+<td><a href="unit/">unit</a></td>
+<td>Units used in the measurement</td>
+</tr>
+<tr>
+<td><a href="url/">url</a></td>
+<td>The URL for a protocol</td>
 </tr>
 <tr>
 <td><a href="value/">value</a></td>
-<td>Note the range of this slot is always a string</td>
+<td>Value of the measurement</td>
 </tr>
 <tr>
 <td><a href="version/">version</a></td>
@@ -1300,7 +924,7 @@
 <tbody>
 <tr>
 <td><a href="CdsPhaseType/">CdsPhaseType</a></td>
-<td></td>
+<td>Descr</td>
 </tr>
 <tr>
 <td><a href="EvidenceForExistence/">EvidenceForExistence</a></td>
@@ -1308,7 +932,7 @@
 </tr>
 <tr>
 <td><a href="StrandType/">StrandType</a></td>
-<td></td>
+<td>The strand that a feature appears on relative to a landmark</td>
 </tr>
 </tbody>
 </table>
@@ -1366,16 +990,8 @@
 <td>A string encoding a JSON Pointer</td>
 </tr>
 <tr>
-<td><a href="LiteralAsStringType/">LiteralAsStringType</a></td>
-<td></td>
-</tr>
-<tr>
 <td><a href="Ncname/">Ncname</a></td>
 <td>Prefix part of CURIE</td>
-</tr>
-<tr>
-<td><a href="NodeIdType/">NodeIdType</a></td>
-<td>IDs are either CURIEs, IRI, or blank nodes</td>
 </tr>
 <tr>
 <td><a href="Nodeidentifier/">Nodeidentifier</a></td>
@@ -1405,6 +1021,10 @@
 <td><a href="Uriorcurie/">Uriorcurie</a></td>
 <td>a URI or a CURIE</td>
 </tr>
+<tr>
+<td><a href="UUID/">UUID</a></td>
+<td>A universally unique ID, generating using uuid4</td>
+</tr>
 </tbody>
 </table>
 <h2 id="subsets">Subsets</h2>
@@ -1417,12 +1037,8 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="BaseTable/">BaseTable</a></td>
-<td>Indicates the class/table is typically not constructed from a view</td>
-</tr>
-<tr>
-<td><a href="Export/">Export</a></td>
-<td>Used to indicate a table/class that should be dumped as part of the export of...</td>
+<td></td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -1490,6 +1106,10 @@
     
     
       <script src="assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+      
+        <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="javascripts/tablesort.js"></script>
       
     
     
