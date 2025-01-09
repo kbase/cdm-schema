@@ -620,6 +620,21 @@ classes:
         description: The value of the attribute.
     description: Additional attributes of a feature, parsed from column 9 of a GFF file.
 
+  FeatureXProtein:
+    attributes:
+      feature_id:
+        description: Internal (CDM) unique identifier for a feature.
+        range: UUID
+        required: true
+      protein_id:
+        description: Internal (CDM) unique identifier for a protein.
+        range: UUID
+        required: true
+      protocol_id:
+        description: Internal (CDM) unique identifier for a protocol.
+        range: UUID
+    description: Captures the relationship between a feature and a protein; equivalent to feature encodes protein. An additional protocol ID may be specified to annotate the protocol used to elucidate or predict the relationship.
+
   Genome:
     description: A contigset with a completeness score of greater than 90% and a
       contamination score of less than 5%.
