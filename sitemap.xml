@@ -5,10 +5,6 @@
          <lastmod>2025-01-09</lastmod>
     </url>
     <url>
-         <loc>https://kbase.github.io/cdm-schema/Assembly/</loc>
-         <lastmod>2025-01-09</lastmod>
-    </url>
-    <url>
          <loc>https://kbase.github.io/cdm-schema/Boolean/</loc>
          <lastmod>2025-01-09</lastmod>
     </url>
@@ -209,10 +205,6 @@
          <lastmod>2025-01-09</lastmod>
     </url>
     <url>
-         <loc>https://kbase.github.io/cdm-schema/assembly_id/</loc>
-         <lastmod>2025-01-09</lastmod>
-    </url>
-    <url>
          <loc>https://kbase.github.io/cdm-schema/attribute_name/</loc>
          <lastmod>2025-01-09</lastmod>
     </url>
@@ -242,10 +234,6 @@
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/contig_id/</loc>
-         <lastmod>2025-01-09</lastmod>
-    </url>
-    <url>
-         <loc>https://kbase.github.io/cdm-schema/contigs/</loc>
          <lastmod>2025-01-09</lastmod>
     </url>
     <url>

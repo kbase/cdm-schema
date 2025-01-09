@@ -367,8 +367,13 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../Assembly/">Assembly</a></td>
-<td>A set of chromosomes, unlocalized and unplaced (random) sequences and alterna...</td>
+<td><a href="../Genome/">Genome</a></td>
+<td>A contigset with a completeness score of greater than 90% and a contamination...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Contigset/">Contigset</a></td>
+<td>A set of individual, overlapping contigs that represent the complete sequence...</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -409,9 +414,9 @@ description: The total length of scaffolds longer than 50,000 base pairs
 from_schema: https://github.com/kbase/cdm-schema
 rank: 1000
 alias: scaf_l_gt50k
-owner: Assembly
+owner: Contigset
 domain_of:
-- Assembly
+- Contigset
 range: integer
 
 </code></pre>

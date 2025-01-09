@@ -219,13 +219,37 @@
       Contigset &lt;|-- Genome
         click Contigset href "../Contigset"
 
+      Genome : asm_score
+
       Genome : checkm2_completeness
 
       Genome : checkm2_contamination
 
+      Genome : contig_bp
+
       Genome : contigset_id
 
+      Genome : ctg_L50
+
+      Genome : ctg_L90
+
+      Genome : ctg_logsum
+
+      Genome : ctg_max
+
+      Genome : ctg_N50
+
+      Genome : ctg_N90
+
+      Genome : ctg_powsum
+
       Genome : description
+
+      Genome : gap_pct
+
+      Genome : gc_avg
+
+      Genome : gc_std
 
       Genome : hash
 
@@ -238,6 +262,10 @@
     click Identifier href "../Identifier"
 
 
+      Genome : n_contigs
+
+      Genome : n_scaffolds
+
       Genome : names
 
 
@@ -246,6 +274,28 @@
     Genome --&gt; "*" Name : names
     click Name href "../Name"
 
+
+      Genome : scaf_bp
+
+      Genome : scaf_L50
+
+      Genome : scaf_L90
+
+      Genome : scaf_l_gt50k
+
+      Genome : scaf_logsum
+
+      Genome : scaf_max
+
+      Genome : scaf_N50
+
+      Genome : scaf_N90
+
+      Genome : scaf_n_gt50K
+
+      Genome : scaf_pct_gt50K
+
+      Genome : scaf_powsum
 
 
 </div>
@@ -277,6 +327,12 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../asm_score/">asm_score</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>A composite score for comparing contigset quality</td>
+<td><a href="../Contigset/">Contigset</a></td>
+</tr>
+<tr>
 <td><a href="../checkm2_completeness/">checkm2_completeness</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
 <td>Estimate of the completeness of a contigset (MAG or genome), estimated by Che...</td>
@@ -292,6 +348,150 @@
 <td><a href="../contigset_id/">contigset_id</a></td>
 <td>1 <br/> <a href="../UUID/">UUID</a></td>
 <td>Internal (CDM) unique identifier</td>
+<td><a href="../Contigset/">Contigset</a></td>
+</tr>
+<tr>
+<td><a href="../contig_bp/">contig_bp</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>Total size in bp of all contigs</td>
+<td><a href="../Contigset/">Contigset</a></td>
+</tr>
+<tr>
+<td><a href="../ctg_L50/">ctg_L50</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>Given a set of contigs, the L50 is defined as the sequence length of the shor...</td>
+<td><a href="../Contigset/">Contigset</a></td>
+</tr>
+<tr>
+<td><a href="../ctg_L90/">ctg_L90</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>The L90 statistic is less than or equal to the L50 statistic; it is the lengt...</td>
+<td><a href="../Contigset/">Contigset</a></td>
+</tr>
+<tr>
+<td><a href="../ctg_N50/">ctg_N50</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>Given a set of contigs, each with its own length, the N50 count is defined as...</td>
+<td><a href="../Contigset/">Contigset</a></td>
+</tr>
+<tr>
+<td><a href="../ctg_N90/">ctg_N90</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>Given a set of contigs, each with its own length, the N90 count is defined as...</td>
+<td><a href="../Contigset/">Contigset</a></td>
+</tr>
+<tr>
+<td><a href="../ctg_logsum/">ctg_logsum</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>The sum of the (length*log(length)) of all contigs, times some constant</td>
+<td><a href="../Contigset/">Contigset</a></td>
+</tr>
+<tr>
+<td><a href="../ctg_max/">ctg_max</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>Maximum contig length</td>
+<td><a href="../Contigset/">Contigset</a></td>
+</tr>
+<tr>
+<td><a href="../ctg_powsum/">ctg_powsum</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Powersum of all contigs is the same as logsum except that it uses the sum of ...</td>
+<td><a href="../Contigset/">Contigset</a></td>
+</tr>
+<tr>
+<td><a href="../gap_pct/">gap_pct</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>The gap size percentage of all scaffolds</td>
+<td><a href="../Contigset/">Contigset</a></td>
+</tr>
+<tr>
+<td><a href="../gc_avg/">gc_avg</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>The average GC content of the contigset, expressed as a percentage</td>
+<td><a href="../Contigset/">Contigset</a></td>
+</tr>
+<tr>
+<td><a href="../gc_std/">gc_std</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>The standard deviation of GC content across the contigset</td>
+<td><a href="../Contigset/">Contigset</a></td>
+</tr>
+<tr>
+<td><a href="../n_contigs/">n_contigs</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>Total number of contigs</td>
+<td><a href="../Contigset/">Contigset</a></td>
+</tr>
+<tr>
+<td><a href="../n_scaffolds/">n_scaffolds</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>Total number of scaffolds</td>
+<td><a href="../Contigset/">Contigset</a></td>
+</tr>
+<tr>
+<td><a href="../scaf_L50/">scaf_L50</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>Given a set of scaffolds, the L50 is defined as the sequence length of the sh...</td>
+<td><a href="../Contigset/">Contigset</a></td>
+</tr>
+<tr>
+<td><a href="../scaf_L90/">scaf_L90</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>The L90 statistic is less than or equal to the L50 statistic; it is the lengt...</td>
+<td><a href="../Contigset/">Contigset</a></td>
+</tr>
+<tr>
+<td><a href="../scaf_N50/">scaf_N50</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>Given a set of scaffolds, each with its own length, the N50 count is defined ...</td>
+<td><a href="../Contigset/">Contigset</a></td>
+</tr>
+<tr>
+<td><a href="../scaf_N90/">scaf_N90</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>Given a set of scaffolds, each with its own length, the N90 count is defined ...</td>
+<td><a href="../Contigset/">Contigset</a></td>
+</tr>
+<tr>
+<td><a href="../scaf_bp/">scaf_bp</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>Total size in bp of all scaffolds</td>
+<td><a href="../Contigset/">Contigset</a></td>
+</tr>
+<tr>
+<td><a href="../scaf_l_gt50k/">scaf_l_gt50k</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>The total length of scaffolds longer than 50,000 base pairs</td>
+<td><a href="../Contigset/">Contigset</a></td>
+</tr>
+<tr>
+<td><a href="../scaf_logsum/">scaf_logsum</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>The sum of the (length*log(length)) of all scaffolds, times some constant</td>
+<td><a href="../Contigset/">Contigset</a></td>
+</tr>
+<tr>
+<td><a href="../scaf_max/">scaf_max</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>Maximum scaffold length</td>
+<td><a href="../Contigset/">Contigset</a></td>
+</tr>
+<tr>
+<td><a href="../scaf_n_gt50K/">scaf_n_gt50K</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>The number of scaffolds longer than 50,000 base pairs</td>
+<td><a href="../Contigset/">Contigset</a></td>
+</tr>
+<tr>
+<td><a href="../scaf_pct_gt50K/">scaf_pct_gt50K</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>The percentage of the total assembly length represented by scaffolds longer t...</td>
+<td><a href="../Contigset/">Contigset</a></td>
+</tr>
+<tr>
+<td><a href="../scaf_powsum/">scaf_powsum</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Powersum of all scaffolds is the same as logsum except that it uses the sum o...</td>
 <td><a href="../Contigset/">Contigset</a></td>
 </tr>
 <tr>
@@ -364,6 +564,16 @@ description: A contigset with a completeness score of greater than 90% and a con
 from_schema: https://github.com/kbase/cdm-schema
 is_a: Contigset
 attributes:
+  asm_score:
+    name: asm_score
+    description: A composite score for comparing contigset quality
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    alias: asm_score
+    owner: Genome
+    domain_of:
+    - Contigset
+    range: float
   checkm2_completeness:
     name: checkm2_completeness
     description: Estimate of the completeness of a contigset (MAG or genome), estimated
@@ -398,6 +608,264 @@ attributes:
     - Contigset
     range: UUID
     required: true
+  contig_bp:
+    name: contig_bp
+    description: Total size in bp of all contigs
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    alias: contig_bp
+    owner: Genome
+    domain_of:
+    - Contigset
+    range: integer
+  ctg_L50:
+    name: ctg_L50
+    description: Given a set of contigs, the L50 is defined as the sequence length
+      of the shortest contig at 50% of the total contigset length
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    alias: ctg_L50
+    owner: Genome
+    domain_of:
+    - Contigset
+    range: integer
+  ctg_L90:
+    name: ctg_L90
+    description: The L90 statistic is less than or equal to the L50 statistic; it
+      is the length for which the collection of all contigs of that length or longer
+      contains at least 90% of the sum of the lengths of all contigs
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    alias: ctg_L90
+    owner: Genome
+    domain_of:
+    - Contigset
+    range: integer
+  ctg_N50:
+    name: ctg_N50
+    description: Given a set of contigs, each with its own length, the N50 count is
+      defined as the smallest number_of_contigs whose length sum makes up half of
+      contigset size
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    alias: ctg_N50
+    owner: Genome
+    domain_of:
+    - Contigset
+    range: integer
+  ctg_N90:
+    name: ctg_N90
+    description: Given a set of contigs, each with its own length, the N90 count is
+      defined as the smallest number of contigs whose length sum makes up 90% of contigset
+      size
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    alias: ctg_N90
+    owner: Genome
+    domain_of:
+    - Contigset
+    range: integer
+  ctg_logsum:
+    name: ctg_logsum
+    description: The sum of the (length*log(length)) of all contigs, times some constant.
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    alias: ctg_logsum
+    owner: Genome
+    domain_of:
+    - Contigset
+    range: float
+  ctg_max:
+    name: ctg_max
+    description: Maximum contig length
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    alias: ctg_max
+    owner: Genome
+    domain_of:
+    - Contigset
+    range: integer
+  ctg_powsum:
+    name: ctg_powsum
+    description: Powersum of all contigs is the same as logsum except that it uses
+      the sum of (length*(length^P)) for some power P (default P=0.25)
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    alias: ctg_powsum
+    owner: Genome
+    domain_of:
+    - Contigset
+    range: float
+  gap_pct:
+    name: gap_pct
+    description: The gap size percentage of all scaffolds
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    alias: gap_pct
+    owner: Genome
+    domain_of:
+    - Contigset
+    range: float
+  gc_avg:
+    name: gc_avg
+    description: The average GC content of the contigset, expressed as a percentage
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    alias: gc_avg
+    owner: Genome
+    domain_of:
+    - Contigset
+    range: float
+  gc_std:
+    name: gc_std
+    description: The standard deviation of GC content across the contigset
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    alias: gc_std
+    owner: Genome
+    domain_of:
+    - Contigset
+    range: float
+  n_contigs:
+    name: n_contigs
+    description: Total number of contigs
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    alias: n_contigs
+    owner: Genome
+    domain_of:
+    - Contigset
+    range: integer
+  n_scaffolds:
+    name: n_scaffolds
+    description: Total number of scaffolds
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    alias: n_scaffolds
+    owner: Genome
+    domain_of:
+    - Contigset
+    range: integer
+  scaf_L50:
+    name: scaf_L50
+    description: Given a set of scaffolds, the L50 is defined as the sequence length
+      of the shortest scaffold at 50% of the total contigset length
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    alias: scaf_L50
+    owner: Genome
+    domain_of:
+    - Contigset
+    range: integer
+  scaf_L90:
+    name: scaf_L90
+    description: The L90 statistic is less than or equal to the L50 statistic; it
+      is the length for which the collection of all scaffolds of that length or longer
+      contains at least 90% of the sum of the lengths of all scaffolds.
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    alias: scaf_L90
+    owner: Genome
+    domain_of:
+    - Contigset
+    range: integer
+  scaf_N50:
+    name: scaf_N50
+    description: Given a set of scaffolds, each with its own length, the N50 count
+      is defined as the smallest number of scaffolds whose length sum makes up half
+      of contigset size
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    alias: scaf_N50
+    owner: Genome
+    domain_of:
+    - Contigset
+    range: integer
+  scaf_N90:
+    name: scaf_N90
+    description: Given a set of scaffolds, each with its own length, the N90 count
+      is defined as the smallest number of scaffolds whose length sum makes up 90%
+      of contigset size
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    alias: scaf_N90
+    owner: Genome
+    domain_of:
+    - Contigset
+    range: integer
+  scaf_bp:
+    name: scaf_bp
+    description: Total size in bp of all scaffolds
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    alias: scaf_bp
+    owner: Genome
+    domain_of:
+    - Contigset
+    range: integer
+  scaf_l_gt50k:
+    name: scaf_l_gt50k
+    description: The total length of scaffolds longer than 50,000 base pairs
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    alias: scaf_l_gt50k
+    owner: Genome
+    domain_of:
+    - Contigset
+    range: integer
+  scaf_logsum:
+    name: scaf_logsum
+    description: The sum of the (length*log(length)) of all scaffolds, times some
+      constant. Increase the contiguity, the score will increase
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    alias: scaf_logsum
+    owner: Genome
+    domain_of:
+    - Contigset
+    range: float
+  scaf_max:
+    name: scaf_max
+    description: Maximum scaffold length
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    alias: scaf_max
+    owner: Genome
+    domain_of:
+    - Contigset
+    range: integer
+  scaf_n_gt50K:
+    name: scaf_n_gt50K
+    description: The number of scaffolds longer than 50,000 base pairs.
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    alias: scaf_n_gt50K
+    owner: Genome
+    domain_of:
+    - Contigset
+    range: integer
+  scaf_pct_gt50K:
+    name: scaf_pct_gt50K
+    description: The percentage of the total assembly length represented by scaffolds
+      longer than 50,000 base pairs
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    alias: scaf_pct_gt50K
+    owner: Genome
+    domain_of:
+    - Contigset
+    range: float
+  scaf_powsum:
+    name: scaf_powsum
+    description: Powersum of all scaffolds is the same as logsum except that it uses
+      the sum of (length*(length^P)) for some power P (default P=0.25).
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    alias: scaf_powsum
+    owner: Genome
+    domain_of:
+    - Contigset
+    range: float
   hash:
     name: hash
     description: A hash value generated from one or more object attributes that serves
