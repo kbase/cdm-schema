@@ -235,146 +235,146 @@ classes:
       complete sequenced genome of an organism.
     is_a: UniqueNamedThing
 
-  Contributor:
-    description: |
-      Represents a contributor to the resource.
+  # Contributor:
+  #   description: |
+  #     Represents a contributor to the resource.
 
-      Contributors must have a 'contributor_type', either 'Person' or 'Organization', and
-      one of the 'name' fields: either 'given_name' and 'family_name' (for a person), or 'name' (for an organization or a person).
+  #     Contributors must have a 'contributor_type', either 'Person' or 'Organization', and
+  #     one of the 'name' fields: either 'given_name' and 'family_name' (for a person), or 'name' (for an organization or a person).
 
-      The 'contributor_role' field takes values from the DataCite and CRediT contributor
-      roles vocabularies. For more information on these resources and choosing
-      appropriate roles, please see the following links:
+  #     The 'contributor_role' field takes values from the DataCite and CRediT contributor
+  #     roles vocabularies. For more information on these resources and choosing
+  #     appropriate roles, please see the following links:
 
-      DataCite contributor roles: https://support.datacite.org/docs/datacite-metadata-schema-v44-recommended-and-optional-properties#7a-contributortype
+  #     DataCite contributor roles: https://support.datacite.org/docs/datacite-metadata-schema-v44-recommended-and-optional-properties#7a-contributortype
 
-      CRediT contributor role taxonomy: https://credit.niso.org
-    attributes:
-      contributor_id:
-        description: Internal (CDM) unique identifier.
-        identifier: true
-        range: UUID
-        required: true
-      contributor_type:
-        slot_uri: schema:@type
-        description: Must be either 'Person' or 'Organization'.
-        range: ContributorType
-        examples:
-        - value: Person
-        - value: Organization
-        exact_mappings:
-        - DataCite:attributes.contributors.name_type
-        - DataCite:attributes.creators.name_type
-      # TODO: use the identifier table instead
-      external_ids:
-        slot_uri: schema:identifier
-        description: Persistent unique identifier for the contributor; this might be an ORCID for an individual, or a ROR ID for an organization.
-        range: uriorcurie
-        pattern: "^[a-zA-Z0-9.-_]+:\\S"
-        examples:
-        - value: ORCID:0000-0001-9557-7715
-        - value: ROR:01znn6x10
-        exact_mappings:
-        - DataCite:attributes.contributors.name_identifiers.name_identifier
-        - DataCite:attributes.creators.name_identifiers.name_identifier
-          # from: DataCite:attributes.contributors[].name_identifiers[].name_identifier_scheme == 'ORCID'
-          # via: f"ORCID:{src.attributes.contributors[].name_identifiers[].name_identifier.replace('https://orcid.org/', '')}"
-        narrow_mappings:
-        - ORCID:contributor.orcidId
-        - OSTI.ARTICLE:author.orcid_id
-        - OSTI.ARTICLE:contributor.orcid_id
-        - Crossref:message.project.funding.funder.name
-      name:
-        slot_uri: schema:name
-        description: Contributor name. For organizations, this should be the full (unabbreviated) name; can also be used for a person if the given name/family name format is not applicable.
-        examples:
-          - value: National Institute of Mental Health
-          - value: Madonna
-          - value: Ransome the Clown
-        related_mappings:
-        # these have the names comma-separated and inverted
-        - DataCite:attributes.creators.name
-        - DataCite:attributes.contributors.name
-        exact_mappings:
-        - JGI:organisms.pi.name
-        - ORCID:name
-        close_mappings:
-          - OSTI.ARTICLE:author
-          # from OSTI.ARTICLE:author
-          # via: f"{src.author.first_name} {src.author.last_name}"
-          - OSTI.ARTICLE:contributor
-          # from OSTI.ARTICLE:contributor
-          # via: f"{src.contributor.first_name} {src.contributor.last_name}"
-      given_name:
-        description: The given name(s) of the contributor.
-        examples:
-          - value: Marionetta Cecille de la
-          - value: Helena
-          - value: Hubert George
-        related_mappings:
-          - DataCite:attributes.contributors.givenName
-          - DataCite:attributes.creators.givenName
-      family_name:
-        description: The family name(s) of the contributor.
-        examples:
-          - value: Carte-Postale
-          - value: Bonham Carter
-          - value: Wells
-        related_mappings:
-          - DataCite:attributes.contributors.familyName
-          - DataCite:attributes.creators.familyName
-      affiliations:
-        slot_uri: schema:affiliation
-        description: List of organizations with which the contributor is affiliated. For contributors that represent an organization, this may be a parent organization (e.g. KBase, US DOE; Arkin lab, LBNL).
-        multivalued: true
-        range: Organization
-        inlined_as_list: true
-        inlined: true
-        related_mappings:
-        - DataCite:attributes.contributors.affiliation
-          # from: DataCite:attributes.contributors[].affiliation[]
-          # via: {
-          #   organization_name: src.attributes.contributors[].affiliation[].name
-          # }
-        - DataCite:attributes.creators.affiliation
-          # from: DataCite:attributes.creators[].affiliation[]
-          # via: {
-          #   organization_name: src.attributes.creators[].affiliation[].name
-          # }
-        - JGI:organisms.pi.institution
-          # from: JGI:organisms[].pi.institution
-          # via: {
-          #   organization_name: src.organisms[].pi.institution
-          #}
-        narrow_mappings:
-          - OSTI.ARTICLE:contributor.affiliation_name
-          # via { organization_name: src.contributor.affiliation_name }
-      contributor_roles:
-        slot_uri: schema:Role
-        description: List of roles played by the contributor when working on the resource.
-        multivalued: true
-        range: ContributorRole
-        exact_mappings:
-        - DataCite:attributes.contributors.contributor_type
-        - DataCite:attributes.creators.contributor_type
-        related_mappings:
-        - JGI:organisms.pi
-        # from: JGI:organisms[].pi
-        # via: "DataCite:ProjectLeader"
-        close_mappings:
-          # TODO: mappings to CRediT/DataCite roles
-          - ORCID:contributor.role
-          - OSTI.ARTICLE:contributor.contributorType
-    any_of:
-      - slot_conditions:
-          given_name:
-            required: true
-          family_name:
-            required: true
+  #     CRediT contributor role taxonomy: https://credit.niso.org
+  #   attributes:
+  #     contributor_id:
+  #       description: Internal (CDM) unique identifier.
+  #       identifier: true
+  #       range: UUID
+  #       required: true
+  #     contributor_type:
+  #       slot_uri: schema:@type
+  #       description: Must be either 'Person' or 'Organization'.
+  #       range: ContributorType
+  #       examples:
+  #       - value: Person
+  #       - value: Organization
+  #       exact_mappings:
+  #       - DataCite:attributes.contributors.name_type
+  #       - DataCite:attributes.creators.name_type
+  #     # TODO: use the identifier table instead
+  #     external_ids:
+  #       slot_uri: schema:identifier
+  #       description: Persistent unique identifier for the contributor; this might be an ORCID for an individual, or a ROR ID for an organization.
+  #       range: uriorcurie
+  #       pattern: "^[a-zA-Z0-9.-_]+:\\S"
+  #       examples:
+  #       - value: ORCID:0000-0001-9557-7715
+  #       - value: ROR:01znn6x10
+  #       exact_mappings:
+  #       - DataCite:attributes.contributors.name_identifiers.name_identifier
+  #       - DataCite:attributes.creators.name_identifiers.name_identifier
+  #         # from: DataCite:attributes.contributors[].name_identifiers[].name_identifier_scheme == 'ORCID'
+  #         # via: f"ORCID:{src.attributes.contributors[].name_identifiers[].name_identifier.replace('https://orcid.org/', '')}"
+  #       narrow_mappings:
+  #       - ORCID:contributor.orcidId
+  #       - OSTI.ARTICLE:author.orcid_id
+  #       - OSTI.ARTICLE:contributor.orcid_id
+  #       - Crossref:message.project.funding.funder.name
+  #     name:
+  #       slot_uri: schema:name
+  #       description: Contributor name. For organizations, this should be the full (unabbreviated) name; can also be used for a person if the given name/family name format is not applicable.
+  #       examples:
+  #         - value: National Institute of Mental Health
+  #         - value: Madonna
+  #         - value: Ransome the Clown
+  #       related_mappings:
+  #       # these have the names comma-separated and inverted
+  #       - DataCite:attributes.creators.name
+  #       - DataCite:attributes.contributors.name
+  #       exact_mappings:
+  #       - JGI:organisms.pi.name
+  #       - ORCID:name
+  #       close_mappings:
+  #         - OSTI.ARTICLE:author
+  #         # from OSTI.ARTICLE:author
+  #         # via: f"{src.author.first_name} {src.author.last_name}"
+  #         - OSTI.ARTICLE:contributor
+  #         # from OSTI.ARTICLE:contributor
+  #         # via: f"{src.contributor.first_name} {src.contributor.last_name}"
+  #     given_name:
+  #       description: The given name(s) of the contributor.
+  #       examples:
+  #         - value: Marionetta Cecille de la
+  #         - value: Helena
+  #         - value: Hubert George
+  #       related_mappings:
+  #         - DataCite:attributes.contributors.givenName
+  #         - DataCite:attributes.creators.givenName
+  #     family_name:
+  #       description: The family name(s) of the contributor.
+  #       examples:
+  #         - value: Carte-Postale
+  #         - value: Bonham Carter
+  #         - value: Wells
+  #       related_mappings:
+  #         - DataCite:attributes.contributors.familyName
+  #         - DataCite:attributes.creators.familyName
+  #     affiliations:
+  #       slot_uri: schema:affiliation
+  #       description: List of organizations with which the contributor is affiliated. For contributors that represent an organization, this may be a parent organization (e.g. KBase, US DOE; Arkin lab, LBNL).
+  #       multivalued: true
+  #       range: Organization
+  #       inlined_as_list: true
+  #       inlined: true
+  #       related_mappings:
+  #       - DataCite:attributes.contributors.affiliation
+  #         # from: DataCite:attributes.contributors[].affiliation[]
+  #         # via: {
+  #         #   organization_name: src.attributes.contributors[].affiliation[].name
+  #         # }
+  #       - DataCite:attributes.creators.affiliation
+  #         # from: DataCite:attributes.creators[].affiliation[]
+  #         # via: {
+  #         #   organization_name: src.attributes.creators[].affiliation[].name
+  #         # }
+  #       - JGI:organisms.pi.institution
+  #         # from: JGI:organisms[].pi.institution
+  #         # via: {
+  #         #   organization_name: src.organisms[].pi.institution
+  #         #}
+  #       narrow_mappings:
+  #         - OSTI.ARTICLE:contributor.affiliation_name
+  #         # via { organization_name: src.contributor.affiliation_name }
+  #     contributor_roles:
+  #       slot_uri: schema:Role
+  #       description: List of roles played by the contributor when working on the resource.
+  #       multivalued: true
+  #       range: ContributorRole
+  #       exact_mappings:
+  #       - DataCite:attributes.contributors.contributor_type
+  #       - DataCite:attributes.creators.contributor_type
+  #       related_mappings:
+  #       - JGI:organisms.pi
+  #       # from: JGI:organisms[].pi
+  #       # via: "DataCite:ProjectLeader"
+  #       close_mappings:
+  #         # TODO: mappings to CRediT/DataCite roles
+  #         - ORCID:contributor.role
+  #         - OSTI.ARTICLE:contributor.contributorType
+  #   any_of:
+  #     - slot_conditions:
+  #         given_name:
+  #           required: true
+  #         family_name:
+  #           required: true
 
-      - slot_conditions:
-          name:
-            required: true
+  #     - slot_conditions:
+  #         name:
+  #           required: true
 
   EncodedFeature:
     attributes:
@@ -438,7 +438,8 @@ classes:
           - broad-scale environmental context
         string_serialization: '{termLabel} {[termID]}'
         slot_uri: MIXS:0000012
-        range: ControlledIdentifiedTermValue
+        # range: ControlledIdentifiedTermValue
+        range: uriorcurie
         multivalued: false
       env_local_scale:
         annotations:
@@ -455,7 +456,8 @@ classes:
           - local environmental context
         string_serialization: '{termLabel} {[termID]}'
         slot_uri: MIXS:0000013
-        range: ControlledIdentifiedTermValue
+        # range: ControlledIdentifiedTermValue
+        range: uriorcurie
         multivalued: false
       env_medium:
         annotations:
@@ -472,7 +474,8 @@ classes:
           - environmental medium
         string_serialization: '{termLabel} {[termID]}'
         slot_uri: MIXS:0000014
-        range: ControlledIdentifiedTermValue
+        # range: ControlledIdentifiedTermValue
+        range: uriorcurie
         multivalued: false
       mixs_environmental_context_id:
         description: Internal (CDM) unique identifier.
@@ -582,10 +585,12 @@ classes:
         description: The strand of the feature.
         range: StrandType
       source_database:
-        description: Data source from which this entity came.
-        range: Organization
+        description: ID of the data source from which this entity came.
+        # FIXME: should be an organisation from the ontology tables
+        # range: Organization
+        range: uriorcurie
       source_protocol:
-        description: protocol used to generate the feature
+        description: ID of the protocol used to generate the feature.
         range: Protocol
       type:
         aliases:
@@ -884,7 +889,7 @@ enums:
 
 
 types:
-  uuid:
+  UUID:
     base: str
     description: A universally unique ID, generating using uuid4.
     # 8-4-4-4-12, x = [0-9a-f]
