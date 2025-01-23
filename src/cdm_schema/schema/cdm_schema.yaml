@@ -16,6 +16,7 @@ prefixes:
   biolink: https://w3id.org/biolink/vocab/
   kb_cdm: http://kbase.github.io/cdm-schema/
   linkml: https://w3id.org/linkml/
+  mixs: https://genomicsstandardsconsortium.github.io/mixs/
   nmdc: https://w3id.org/nmdc/
   oa: http://www.w3.org/ns/oa#
   oio: http://www.geneontology.org/formats/oboInOwl#
@@ -101,6 +102,7 @@ classes:
       - genome
       - biological subject
       - assembly
+      - contig collection
     attributes:
       asm_score:
         description: A composite score for comparing contigset quality
@@ -121,6 +123,9 @@ classes:
       contig_bp:
         description: Total size in bp of all contigs
         range: integer
+      contigset_type:
+        description: The type of contig collection.
+        range: ContigsetType
       # contigs:
       #   description: The contigs in this contigset.
       #   multivalued: true
@@ -812,11 +817,56 @@ classes:
 
 enums:
   CdsPhaseType:
-    description: Descr
+    description: For features of type CDS (coding sequence), the phase indicates where the feature begins with reference to the reading frame. The phase is one of the integers 0, 1, or 2, indicating the number of bases that should be removed from the beginning of this feature to reach the first base of the next codon.
     permissible_values:
       0:
+        description: Zero bases from reading frame to feature start.
       1:
+        description: One base from reading frame to feature start.
       2:
+        description: Two bases from reading frame to feature start.
+
+  ContigsetType:
+    description: The type of the contig set; the type of the 'omics data set. Terms are taken from the Genomics Standards Consortium where possible. See the GSC checklists at  https://genomicsstandardsconsortium.github.io/mixs/ for the controlled vocabularies used.
+    permissible_values:
+      isolate:
+        description: |
+          Sequences assembled from DNA of isolated organism.
+          Bacteria/Archaea: https://genomicsstandardsconsortium.github.io/mixs/0010003/
+          Euk: https://genomicsstandardsconsortium.github.io/mixs/0010002/
+          Virus: https://genomicsstandardsconsortium.github.io/mixs/0010005/
+          Organelle: https://genomicsstandardsconsortium.github.io/mixs/0010006/
+          Plasmid: https://genomicsstandardsconsortium.github.io/mixs/0010004/
+      mag:
+        description: |
+          Sequences assembled from DNA of mixed community and binned. MAGs are likely to represent a single taxonomic origin. See checkm2 scores for quality assessment.
+          https://genomicsstandardsconsortium.github.io/mixs/0010011/
+        meaning: mixs:0010011
+        title: Metagenome-Assembled Genome
+      metagenome:
+        description: |
+          Sequences assembled from DNA of mixed community.
+          https://genomicsstandardsconsortium.github.io/mixs/0010007/
+        meaning: mixs:0010007
+      metatranscriptome:
+        description: |
+          Sequences assembled from RNA of mixed community. Currently not represented by GSC.
+      sag:
+        description: |
+          Sequences assembled from DNA of single cell.
+          https://genomicsstandardsconsortium.github.io/mixs/0010010/
+        meaning: mixs:0010010
+        title: Single Amplified Genome
+      virus:
+        description: |
+          Sequences assembled from uncultivated virus genome (DNA/RNA).
+          https://genomicsstandardsconsortium.github.io/mixs/0010012/
+        meaning: mixs:0010012
+      marker:
+        description: |
+          Sequences from targeted region of DNA; see protocol for information on targeted region.
+          specimen: https://genomicsstandardsconsortium.github.io/mixs/0010009/
+          survey: https://genomicsstandardsconsortium.github.io/mixs/0010008/
 
   EvidenceForExistence:
     description: The evidence for the existence of a biological entity. See
