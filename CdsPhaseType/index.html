@@ -345,7 +345,7 @@
 
 
 <h1 id="enum-cdsphasetype">Enum: CdsPhaseType</h1>
-<p><em>Descr</em></p>
+<p><em>For features of type CDS (coding sequence), the phase indicates where the feature begins with reference to the reading frame. The phase is one of the integers 0, 1, or 2, indicating the number of bases that should be removed from the beginning of this feature to reach the first base of the next codon.</em></p>
 <p>URI: <a href="./">CdsPhaseType</a></p>
 <h2 id="permissible-values">Permissible Values</h2>
 <table>
@@ -360,17 +360,17 @@
 <tr>
 <td>0</td>
 <td>None</td>
-<td></td>
+<td>Zero bases from reading frame to feature start</td>
 </tr>
 <tr>
 <td>1</td>
 <td>None</td>
-<td></td>
+<td>One base from reading frame to feature start</td>
 </tr>
 <tr>
 <td>2</td>
 <td>None</td>
-<td></td>
+<td>Two bases from reading frame to feature start</td>
 </tr>
 </tbody>
 </table>
@@ -398,16 +398,22 @@
 <details>
 
 <pre><code class="language-yaml">name: CdsPhaseType
-description: Descr
+description: For features of type CDS (coding sequence), the phase indicates where
+  the feature begins with reference to the reading frame. The phase is one of the
+  integers 0, 1, or 2, indicating the number of bases that should be removed from
+  the beginning of this feature to reach the first base of the next codon.
 from_schema: https://github.com/kbase/cdm-schema
 rank: 1000
 permissible_values:
   '0':
     text: '0'
+    description: Zero bases from reading frame to feature start.
   '1':
     text: '1'
+    description: One base from reading frame to feature start.
   '2':
     text: '2'
+    description: Two bases from reading frame to feature start.
 
 </code></pre>
 

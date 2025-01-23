@@ -239,6 +239,15 @@
 
       Contigset : contigset_id
 
+      Contigset : contigset_type
+
+
+
+
+    Contigset --&gt; "0..1" ContigsetType : contigset_type
+    click ContigsetType href "../ContigsetType"
+
+
       Contigset : ctg_L50
 
       Contigset : ctg_L90
@@ -364,6 +373,12 @@
 <td><a href="../contig_bp/">contig_bp</a></td>
 <td>0..1 <br/> <a href="../Integer/">Integer</a></td>
 <td>Total size in bp of all contigs</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../contigset_type/">contigset_type</a></td>
+<td>0..1 <br/> <a href="../ContigsetType/">ContigsetType</a></td>
+<td>The type of contig collection</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -535,6 +550,7 @@
 <li>genome</li>
 <li>biological subject</li>
 <li>assembly</li>
+<li>contig collection</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -572,6 +588,7 @@ aliases:
 - genome
 - biological subject
 - assembly
+- contig collection
 is_a: UniqueNamedThing
 attributes:
   asm_score:
@@ -618,6 +635,14 @@ attributes:
     domain_of:
     - Contigset
     range: integer
+  contigset_type:
+    name: contigset_type
+    description: The type of contig collection.
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    domain_of:
+    - Contigset
+    range: ContigsetType
   ctg_L50:
     name: ctg_L50
     description: Given a set of contigs, the L50 is defined as the sequence length
@@ -833,6 +858,7 @@ aliases:
 - genome
 - biological subject
 - assembly
+- contig collection
 is_a: UniqueNamedThing
 attributes:
   asm_score:
@@ -889,6 +915,16 @@ attributes:
     domain_of:
     - Contigset
     range: integer
+  contigset_type:
+    name: contigset_type
+    description: The type of contig collection.
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    alias: contigset_type
+    owner: Contigset
+    domain_of:
+    - Contigset
+    range: ContigsetType
   ctg_L50:
     name: ctg_L50
     description: Given a set of contigs, the L50 is defined as the sequence length

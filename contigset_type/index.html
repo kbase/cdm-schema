@@ -8,14 +8,14 @@
       
       
       
-        <link rel="canonical" href="https://kbase.github.io/cdm-schema/env_medium/">
+        <link rel="canonical" href="https://kbase.github.io/cdm-schema/contigset_type/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-8.5.10">
     
     
       
-        <title>Slot: environmental medium (env_medium) - cdm-schema</title>
+        <title>Slot: contigset_type - cdm-schema</title>
       
     
     
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-environmental-medium-env_medium" class="md-skip">
+        <a href="#slot-contigset_type" class="md-skip">
           Skip to content
         </a>
       
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: environmental medium (env_medium)
+              Slot: contigset_type
             
           </span>
         </div>
@@ -298,33 +298,12 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#aliases" class="md-nav__link">
-    Aliases
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#examples" class="md-nav__link">
-    Examples
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     Identifier and Mapping Information
   </a>
   
     <nav class="md-nav" aria-label="Identifier and Mapping Information">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#annotations" class="md-nav__link">
-    Annotations
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#schema-source" class="md-nav__link">
@@ -366,15 +345,15 @@
                 
                   
 
-  <a href="https://github.com/kbase/cdm-schema/edit/master/docs/env_medium.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/kbase/cdm-schema/edit/master/docs/contigset_type.md" title="Edit this page" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-<h1 id="slot-environmental-medium-env_medium">Slot: environmental medium (env_medium)</h1>
-<p><em>Report the environmental material(s) immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of 'environmental material' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS . Terms from other OBO ontologies are permissible as long as they reference mass/volume nouns (e.g. air, water, blood) and not discrete, countable entities (e.g. a tree, a leaf, a table top).</em></p>
-<p>URI: <a href="https://genomicsstandardsconsortium.github.io/mixs/0000014">MIXS:0000014</a></p>
+<h1 id="slot-contigset_type">Slot: contigset_type</h1>
+<p><em>The type of contig collection.</em></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/contigset_type">kb_cdm:contigset_type</a></p>
 <!-- no inheritance hierarchy -->
 
 <h2 id="applicable-classes">Applicable Classes</h2>
@@ -388,49 +367,22 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../MixsEnvironmentalContext/">MixsEnvironmentalContext</a></td>
-<td>Environmental context, described using the MiXS convention of broad and local...</td>
+<td><a href="../Genome/">Genome</a></td>
+<td>A contigset with a completeness score of greater than 90% and a contamination...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Contigset/">Contigset</a></td>
+<td>A set of individual, overlapping contigs that represent the complete sequence...</td>
 <td>no</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
+<li>Range: <a href="../ContigsetType/">ContigsetType</a></li>
 </ul>
-<h2 id="aliases">Aliases</h2>
-<ul>
-<li>environmental medium</li>
-</ul>
-<h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>soil [ENVO:00001998]; Annotating a fish swimming in the upper 100 m of the Atlantic Ocean, consider: ocean water [ENVO:00002151]. Example: Annotating a duck on a pond consider: pond water [ENVO:00002228]</td>
-</tr>
-</tbody>
-</table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="annotations">Annotations</h3>
-<table>
-<thead>
-<tr>
-<th>property</th>
-<th>value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>expected_value</td>
-<td>The material displaced by the entity at time of sampling. Recommend subclasses of environmental material [ENVO:00010483].</td>
-</tr>
-</tbody>
-</table>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
 <li>from schema: https://github.com/kbase/cdm-schema</li>
@@ -446,56 +398,26 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>MIXS:0000014</td>
+<td>kb_cdm:contigset_type</td>
 </tr>
 <tr>
 <td>native</td>
-<td>kb_cdm:env_medium</td>
+<td>kb_cdm:contigset_type</td>
 </tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: env_medium
-annotations:
-  expected_value:
-    tag: expected_value
-    value: The material displaced by the entity at time of sampling. Recommend subclasses
-      of environmental material [ENVO:00010483].
-  tooltip:
-    tag: tooltip
-    value: The predominant environmental material or substrate that directly surrounds
-      or hosts the sample or specimen at the time of sampling. Choose values from
-      subclasses of the 'environmental material' class [ENVO:00010483] in the Environment
-      Ontology (ENVO). Values for this field should be measurable or mass material
-      nouns, representing continuous environmental materials. For host-associated
-      or plant-associated samples, use terms from the UBERON or Plant Ontology to
-      indicate a tissue, organ, or plant structure
-description: 'Report the environmental material(s) immediately surrounding the sample
-  or specimen at the time of sampling. We recommend using subclasses of ''environmental
-  material'' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about
-  how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS
-  . Terms from other OBO ontologies are permissible as long as they reference mass/volume
-  nouns (e.g. air, water, blood) and not discrete, countable entities (e.g. a tree,
-  a leaf, a table top).'
-title: environmental medium
-examples:
-- value: 'soil [ENVO:00001998]; Annotating a fish swimming in the upper 100 m of the
-    Atlantic Ocean, consider: ocean water [ENVO:00002151]. Example: Annotating a duck
-    on a pond consider: pond water [ENVO:00002228]|air [ENVO_00002005]'
+<pre><code class="language-yaml">name: contigset_type
+description: The type of contig collection.
 from_schema: https://github.com/kbase/cdm-schema
-aliases:
-- environmental medium
 rank: 1000
-string_serialization: '{termLabel} {[termID]}'
-slot_uri: MIXS:0000014
-alias: env_medium
-owner: MixsEnvironmentalContext
+alias: contigset_type
+owner: Contigset
 domain_of:
-- MixsEnvironmentalContext
-range: uriorcurie
-multivalued: false
+- Contigset
+range: ContigsetType
 
 </code></pre>
 

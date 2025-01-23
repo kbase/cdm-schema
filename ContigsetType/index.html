@@ -8,14 +8,14 @@
       
       
       
-        <link rel="canonical" href="https://kbase.github.io/cdm-schema/env_medium/">
+        <link rel="canonical" href="https://kbase.github.io/cdm-schema/ContigsetType/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-8.5.10">
     
     
       
-        <title>Slot: environmental medium (env_medium) - cdm-schema</title>
+        <title>Enum: ContigsetType - cdm-schema</title>
       
     
     
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-environmental-medium-env_medium" class="md-skip">
+        <a href="#enum-contigsettype" class="md-skip">
           Skip to content
         </a>
       
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: environmental medium (env_medium)
+              Enum: ContigsetType
             
           </span>
         </div>
@@ -284,29 +284,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#applicable-classes" class="md-nav__link">
-    Applicable Classes
+  <a href="#permissible-values" class="md-nav__link">
+    Permissible Values
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#properties" class="md-nav__link">
-    Properties
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#aliases" class="md-nav__link">
-    Aliases
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#examples" class="md-nav__link">
-    Examples
+  <a href="#slots" class="md-nav__link">
+    Slots
   </a>
   
 </li>
@@ -320,13 +306,6 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#annotations" class="md-nav__link">
-    Annotations
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#schema-source" class="md-nav__link">
     Schema Source
   </a>
@@ -335,13 +314,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mappings" class="md-nav__link">
-    Mappings
-  </a>
   
 </li>
       
@@ -366,136 +338,160 @@
                 
                   
 
-  <a href="https://github.com/kbase/cdm-schema/edit/master/docs/env_medium.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/kbase/cdm-schema/edit/master/docs/ContigsetType.md" title="Edit this page" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-<h1 id="slot-environmental-medium-env_medium">Slot: environmental medium (env_medium)</h1>
-<p><em>Report the environmental material(s) immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of 'environmental material' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS . Terms from other OBO ontologies are permissible as long as they reference mass/volume nouns (e.g. air, water, blood) and not discrete, countable entities (e.g. a tree, a leaf, a table top).</em></p>
-<p>URI: <a href="https://genomicsstandardsconsortium.github.io/mixs/0000014">MIXS:0000014</a></p>
-<!-- no inheritance hierarchy -->
-
-<h2 id="applicable-classes">Applicable Classes</h2>
+<h1 id="enum-contigsettype">Enum: ContigsetType</h1>
+<p><em>The type of the contig set; the type of the 'omics data set. Terms are taken from the Genomics Standards Consortium where possible. See the GSC checklists at  https://genomicsstandardsconsortium.github.io/mixs/ for the controlled vocabularies used.</em></p>
+<p>URI: <a href="./">ContigsetType</a></p>
+<h2 id="permissible-values">Permissible Values</h2>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Meaning</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>isolate</td>
+<td>None</td>
+<td>Sequences assembled from DNA of isolated organism</td>
+</tr>
+<tr>
+<td>mag</td>
+<td>mixs:0010011</td>
+<td>Sequences assembled from DNA of mixed community and binned</td>
+</tr>
+<tr>
+<td>metagenome</td>
+<td>mixs:0010007</td>
+<td>Sequences assembled from DNA of mixed community</td>
+</tr>
+<tr>
+<td>metatranscriptome</td>
+<td>None</td>
+<td>Sequences assembled from RNA of mixed community</td>
+</tr>
+<tr>
+<td>sag</td>
+<td>mixs:0010010</td>
+<td>Sequences assembled from DNA of single cell</td>
+</tr>
+<tr>
+<td>virus</td>
+<td>mixs:0010012</td>
+<td>Sequences assembled from uncultivated virus genome (DNA/RNA)</td>
+</tr>
+<tr>
+<td>marker</td>
+<td>None</td>
+<td>Sequences from targeted region of DNA; see protocol for information on target...</td>
+</tr>
+</tbody>
+</table>
+<h2 id="slots">Slots</h2>
 <table>
 <thead>
 <tr>
 <th>Name</th>
 <th>Description</th>
-<th>Modifies Slot</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><a href="../MixsEnvironmentalContext/">MixsEnvironmentalContext</a></td>
-<td>Environmental context, described using the MiXS convention of broad and local...</td>
-<td>no</td>
-</tr>
-</tbody>
-</table>
-<h2 id="properties">Properties</h2>
-<ul>
-<li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
-</ul>
-<h2 id="aliases">Aliases</h2>
-<ul>
-<li>environmental medium</li>
-</ul>
-<h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>soil [ENVO:00001998]; Annotating a fish swimming in the upper 100 m of the Atlantic Ocean, consider: ocean water [ENVO:00002151]. Example: Annotating a duck on a pond consider: pond water [ENVO:00002228]</td>
+<td><a href="../contigset_type/">contigset_type</a></td>
+<td>The type of contig collection</td>
 </tr>
 </tbody>
 </table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="annotations">Annotations</h3>
-<table>
-<thead>
-<tr>
-<th>property</th>
-<th>value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>expected_value</td>
-<td>The material displaced by the entity at time of sampling. Recommend subclasses of environmental material [ENVO:00010483].</td>
-</tr>
-</tbody>
-</table>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
 <li>from schema: https://github.com/kbase/cdm-schema</li>
 </ul>
-<h2 id="mappings">Mappings</h2>
-<table>
-<thead>
-<tr>
-<th>Mapping Type</th>
-<th>Mapped Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>self</td>
-<td>MIXS:0000014</td>
-</tr>
-<tr>
-<td>native</td>
-<td>kb_cdm:env_medium</td>
-</tr>
-</tbody>
-</table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: env_medium
-annotations:
-  expected_value:
-    tag: expected_value
-    value: The material displaced by the entity at time of sampling. Recommend subclasses
-      of environmental material [ENVO:00010483].
-  tooltip:
-    tag: tooltip
-    value: The predominant environmental material or substrate that directly surrounds
-      or hosts the sample or specimen at the time of sampling. Choose values from
-      subclasses of the 'environmental material' class [ENVO:00010483] in the Environment
-      Ontology (ENVO). Values for this field should be measurable or mass material
-      nouns, representing continuous environmental materials. For host-associated
-      or plant-associated samples, use terms from the UBERON or Plant Ontology to
-      indicate a tissue, organ, or plant structure
-description: 'Report the environmental material(s) immediately surrounding the sample
-  or specimen at the time of sampling. We recommend using subclasses of ''environmental
-  material'' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about
-  how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS
-  . Terms from other OBO ontologies are permissible as long as they reference mass/volume
-  nouns (e.g. air, water, blood) and not discrete, countable entities (e.g. a tree,
-  a leaf, a table top).'
-title: environmental medium
-examples:
-- value: 'soil [ENVO:00001998]; Annotating a fish swimming in the upper 100 m of the
-    Atlantic Ocean, consider: ocean water [ENVO:00002151]. Example: Annotating a duck
-    on a pond consider: pond water [ENVO:00002228]|air [ENVO_00002005]'
+<pre><code class="language-yaml">name: ContigsetType
+description: The type of the contig set; the type of the 'omics data set. Terms are
+  taken from the Genomics Standards Consortium where possible. See the GSC checklists
+  at  https://genomicsstandardsconsortium.github.io/mixs/ for the controlled vocabularies
+  used.
 from_schema: https://github.com/kbase/cdm-schema
-aliases:
-- environmental medium
 rank: 1000
-string_serialization: '{termLabel} {[termID]}'
-slot_uri: MIXS:0000014
-alias: env_medium
-owner: MixsEnvironmentalContext
-domain_of:
-- MixsEnvironmentalContext
-range: uriorcurie
-multivalued: false
+permissible_values:
+  isolate:
+    text: isolate
+    description: 'Sequences assembled from DNA of isolated organism.
+
+      Bacteria/Archaea: https://genomicsstandardsconsortium.github.io/mixs/0010003/
+
+      Euk: https://genomicsstandardsconsortium.github.io/mixs/0010002/
+
+      Virus: https://genomicsstandardsconsortium.github.io/mixs/0010005/
+
+      Organelle: https://genomicsstandardsconsortium.github.io/mixs/0010006/
+
+      Plasmid: https://genomicsstandardsconsortium.github.io/mixs/0010004/
+
+      '
+  mag:
+    text: mag
+    description: 'Sequences assembled from DNA of mixed community and binned. MAGs
+      are likely to represent a single taxonomic origin. See checkm2 scores for quality
+      assessment.
+
+      https://genomicsstandardsconsortium.github.io/mixs/0010011/
+
+      '
+    meaning: mixs:0010011
+    title: Metagenome-Assembled Genome
+  metagenome:
+    text: metagenome
+    description: 'Sequences assembled from DNA of mixed community.
+
+      https://genomicsstandardsconsortium.github.io/mixs/0010007/
+
+      '
+    meaning: mixs:0010007
+  metatranscriptome:
+    text: metatranscriptome
+    description: 'Sequences assembled from RNA of mixed community. Currently not represented
+      by GSC.
+
+      '
+  sag:
+    text: sag
+    description: 'Sequences assembled from DNA of single cell.
+
+      https://genomicsstandardsconsortium.github.io/mixs/0010010/
+
+      '
+    meaning: mixs:0010010
+    title: Single Amplified Genome
+  virus:
+    text: virus
+    description: 'Sequences assembled from uncultivated virus genome (DNA/RNA).
+
+      https://genomicsstandardsconsortium.github.io/mixs/0010012/
+
+      '
+    meaning: mixs:0010012
+  marker:
+    text: marker
+    description: 'Sequences from targeted region of DNA; see protocol for information
+      on targeted region.
+
+      specimen: https://genomicsstandardsconsortium.github.io/mixs/0010009/
+
+      survey: https://genomicsstandardsconsortium.github.io/mixs/0010008/
+
+      '
 
 </code></pre>
 
