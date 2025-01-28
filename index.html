@@ -421,6 +421,78 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="AttributeMapping/">AttributeMapping</a></td>
+<td>A data class for attribute mappings between datasource vocabularies and BASIN-3D vocabularies. These are the associations defined in the datasource (i.e., plugin) mapping file.</td>
+</tr>
+<tr>
+<td><a href="Base/">Base</a></td>
+<td>Base synthesis model class.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="AbsoluteCoordinate/">AbsoluteCoordinate</a></td>
+<td>Absolute coordinate describes the geo-referenced location of a feature. Coordinates match the feature's shape. For example, a curve is a list of points. Currently collections of discrete points describing a feature are supported.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Coordinate/">Coordinate</a></td>
+<td>Top level coordinate class that holds <code>AbsoluteCoordinate</code> or <code>RepresentativeCoordinate</code></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="HorizontalCoordinate/">HorizontalCoordinate</a></td>
+<td>Generic XY coordinates for a point on earth (https://www.fgdc.gov/csdgmgraphical/spref.htm)</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="GeographicCoordinate/">GeographicCoordinate</a></td>
+<td>The latitude and longitude which define the position of a point on the Earth's surface with respect to a reference spheroid (https://www.fgdc.gov/csdgmgraphical/spref.htm).</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Observation/">Observation</a></td>
+<td>OGC OM_Observation feature type. This is a parent class to which Mixins should be added to create observation types with metadata and result.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="MeasurementTimeseriesTVPObservation/">MeasurementTimeseriesTVPObservation</a></td>
+<td>Series of measurement (numerical) observations in TVP format grouped by time (i.e., a time series).Anything specified at the group level automatically applies to the individual observation.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Person/">Person</a></td>
+<td>A person or organization</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="RelatedSamplingFeature/">RelatedSamplingFeature</a></td>
+<td>Class that represents a related sampling feature and its role relative to the sampling feature to which it is related. Spatial hierarchies of features are built by specifying related sampling features. Data model from OGC Observations and Measurements.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="RepresentativeCoordinate/">RepresentativeCoordinate</a></td>
+<td>Representative coordinates describe the location of a feature by a representative shape / location For example, a study area may be represented by the center point. The vertical position from a reference position (e.g., height, depth) is also described in this class. Currently representative points are supported. The class is extendable to other forms of representing (e.g., diameter, area, side_length) Representative point types are also expandable as use cases require.</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ResultListTVP/">ResultListTVP</a></td>
+<td>Result Point Float</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ResultPointFloat/">ResultPointFloat</a></td>
+<td>Result Point Float</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="VerticalCoordinate/">VerticalCoordinate</a></td>
+<td>The vertical position of the feature (altitudes or depths). The reference frame or system is specified.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="AltitudeCoordinate/">AltitudeCoordinate</a></td>
+<td>An altitudinal vertical position (i.e., distance from sea level). The reference frame or system is specified. The term "altitude" is used instead of the common term "elevation" to conform to the terminology in Federal Information Processing Standards 70-1 and 173.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="DepthCoordinate/">DepthCoordinate</a></td>
+<td>A depth vertical position (i.e., the height or depth from the specified reference position). The reference frame or system is specified.</td>
+</tr>
+<tr>
+<td><a href="DataSource/">DataSource</a></td>
+<td>Source for data.</td>
+</tr>
+<tr>
 <td><a href="FeatureAttributes/">FeatureAttributes</a></td>
 <td>Additional attributes of a feature, parsed from column 9 of a GFF file.</td>
 </tr>
@@ -433,8 +505,44 @@
 <td>An external identifier for an entity. This should be a URI or CURIE.</td>
 </tr>
 <tr>
+<td><a href="MappedAttribute/">MappedAttribute</a></td>
+<td>A data class for an attribute that is translated (i.e., mapped) from a datasource vocabulary to BASIN-3D vocabulary. Note that this model holds an AttributeMapping that maybe compound in nature; however this class specifies only one attribute types. For example, if the AttributeMapping is for a compound mapping of attribute types OBSERVED_PROPERTY:SAMPLING_MEDIUM, the attr_type field would be either OBSERVED_PROPERTY or SAMPLING_MEDIUM but not both.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="AggregationAttribute/">AggregationAttribute</a></td>
+<td>Aggregation.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ObservationTypeAttribute/">ObservationTypeAttribute</a></td>
+<td>Observation type.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ResultQualityAttribute/">ResultQualityAttribute</a></td>
+<td>Result quality.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SamplingMediumAttribute/">SamplingMediumAttribute</a></td>
+<td>Sampling medium.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="StatisticAttribute/">StatisticAttribute</a></td>
+<td>Statistic.</td>
+</tr>
+<tr>
+<td><a href="MeasurementMetadataMixin/">MeasurementMetadataMixin</a></td>
+<td>Metadata attributes for Observations type Measurement</td>
+</tr>
+<tr>
+<td><a href="MeasurementResultMixin/">MeasurementResultMixin</a></td>
+<td>Result Mixin - Measurement</td>
+</tr>
+<tr>
 <td><a href="MeasurementSet/">MeasurementSet</a></td>
 <td>A series of qualitative or quantitative measurements.</td>
+</tr>
+<tr>
+<td><a href="MeasurementTimeseriesTVPResultMixin/">MeasurementTimeseriesTVPResultMixin</a></td>
+<td>Result Mixin - Measurement Timeseries TimeValuePair</td>
 </tr>
 <tr>
 <td><a href="Name/">Name</a></td>
@@ -513,12 +621,40 @@
 <td>A feature localized to an interval along a contig.</td>
 </tr>
 <tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SamplingFeature/">SamplingFeature</a></td>
+<td>A feature where sampling is conducted. OGC Observation &amp; Measurements SF_SamplingFeature.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="SpatialSamplingFeature/">SpatialSamplingFeature</a></td>
+<td>A spatially-defined feature where sampling is conducted. OGC Observation &amp; Measurements SF_SpatialSamplingFeature.</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="MonitoringFeature/">MonitoringFeature</a></td>
+<td>A feature upon which monitoring is made. OGC Timeseries Profile OM_MonitoringFeature.</td>
+</tr>
+<tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Protein/">Protein</a></td>
 <td>Proteins are large, complex molecules made up of one or more long, folded chains of amino acids, whose sequences are determined by the DNA sequence of the protein-encoding gene.</td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ProtocolParticipant/">ProtocolParticipant</a></td>
 <td>Either an input or an output of a protocol.</td>
+</tr>
+<tr>
+<td><a href="ObservedProperty/">ObservedProperty</a></td>
+<td>Defining the properties being observed (measured). See http://vocabulary.odm2.org/variablename/ for controlled vocabulary. See http://vocabulary.odm2.org/variabletype/ for options, although I think we should have our own list (theirs is a bit funky).</td>
+</tr>
+<tr>
+<td><a href="TimeMetadataMixin/">TimeMetadataMixin</a></td>
+<td>Metadata attributes for Observations with a time</td>
+</tr>
+<tr>
+<td><a href="TimeValuePair/">TimeValuePair</a></td>
+<td>Tuple that represents a time value pair in the form <code>(timestamp, value)</code>.</td>
 </tr>
 </tbody>
 </table>
@@ -532,8 +668,24 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="absolute/">absolute</a></td>
+<td>Absolute coordinate</td>
+</tr>
+<tr>
+<td><a href="aggregation_duration/">aggregation_duration</a></td>
+<td>Time period represented by the observation</td>
+</tr>
+<tr>
 <td><a href="asm_score/">asm_score</a></td>
 <td>A composite score for comparing contigset quality</td>
+</tr>
+<tr>
+<td><a href="attr_mapping/">attr_mapping</a></td>
+<td>AttributeMapping as described in the datasource's (i</td>
+</tr>
+<tr>
+<td><a href="attr_type/">attr_type</a></td>
+<td>Duration of aggregation</td>
 </tr>
 <tr>
 <td><a href="attribute_name/">attribute_name</a></td>
@@ -542,6 +694,18 @@
 <tr>
 <td><a href="attribute_value/">attribute_value</a></td>
 <td>The value of the attribute</td>
+</tr>
+<tr>
+<td><a href="basin3d_desc/">basin3d_desc</a></td>
+<td>The BASIN-3D vocabulary descriptions; objects or enum</td>
+</tr>
+<tr>
+<td><a href="basin3d_vocab/">basin3d_vocab</a></td>
+<td>The BASIN-3D vocabulary; separate compound mappings with ':'</td>
+</tr>
+<tr>
+<td><a href="categories/">categories</a></td>
+<td>List of categories, in order of priority</td>
 </tr>
 <tr>
 <td><a href="cds_phase/">cds_phase</a></td>
@@ -576,8 +740,16 @@
 <td>The type of contig collection</td>
 </tr>
 <tr>
+<td><a href="coordinates/">coordinates</a></td>
+<td>Description of feature location</td>
+</tr>
+<tr>
 <td><a href="created_at/">created_at</a></td>
 <td>The time at which the event started or was created</td>
+</tr>
+<tr>
+<td><a href="credentials/">credentials</a></td>
+<td></td>
 </tr>
 <tr>
 <td><a href="ctg_L50/">ctg_L50</a></td>
@@ -608,8 +780,36 @@
 <td>Powersum of all contigs is the same as logsum except that it uses the sum of ...</td>
 </tr>
 <tr>
+<td><a href="datasource/">datasource</a></td>
+<td>The datasource of the mapping</td>
+</tr>
+<tr>
+<td><a href="datasource_desc/">datasource_desc</a></td>
+<td>The datasource vocabulary description</td>
+</tr>
+<tr>
+<td><a href="datasource_ids/">datasource_ids</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="datasource_vocab/">datasource_vocab</a></td>
+<td>The datasource vocabulary</td>
+</tr>
+<tr>
+<td><a href="datum/">datum</a></td>
+<td>The reference coordinate system</td>
+</tr>
+<tr>
 <td><a href="description/">description</a></td>
 <td>Definition or description of the entity</td>
+</tr>
+<tr>
+<td><a href="description_reference/">description_reference</a></td>
+<td>Extra information about the Monitoring Feature</td>
+</tr>
+<tr>
+<td><a href="distance_units/">distance_units</a></td>
+<td>The unit of distance</td>
 </tr>
 <tr>
 <td><a href="doi/">doi</a></td>
@@ -636,6 +836,10 @@
 <td>JGI GOLD descriptor representing the ecosystem type</td>
 </tr>
 <tr>
+<td><a href="email/">email</a></td>
+<td>Email address</td>
+</tr>
+<tr>
 <td><a href="encoded_by/">encoded_by</a></td>
 <td>The feature(s) that encode this protein</td>
 </tr>
@@ -646,6 +850,10 @@
 <tr>
 <td><a href="encodes/">encodes</a></td>
 <td>Known or predicted transcription products from this feature</td>
+</tr>
+<tr>
+<td><a href="encoding_method/">encoding_method</a></td>
+<td>The method for encoding the units of distance</td>
 </tr>
 <tr>
 <td><a href="end/">end</a></td>
@@ -688,6 +896,22 @@
 <td>Internal (CDM) unique identifier</td>
 </tr>
 <tr>
+<td><a href="feature_of_interest/">feature_of_interest</a></td>
+<td>The feature on which the observed property was observed</td>
+</tr>
+<tr>
+<td><a href="feature_of_interest_type/">feature_of_interest_type</a></td>
+<td>The type of feature that was observed</td>
+</tr>
+<tr>
+<td><a href="first_name/">first_name</a></td>
+<td>First (given) name of person</td>
+</tr>
+<tr>
+<td><a href="full_name/">full_name</a></td>
+<td></td>
+</tr>
+<tr>
 <td><a href="gap_pct/">gap_pct</a></td>
 <td>The gap size percentage of all scaffolds</td>
 </tr>
@@ -724,6 +948,18 @@
 <td>Unique string generated by combining the defining attributes of the class</td>
 </tr>
 <tr>
+<td><a href="horizontal_position/">horizontal_position</a></td>
+<td>list of GeographicCoordinates</td>
+</tr>
+<tr>
+<td><a href="id/">id</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="id_prefix/">id_prefix</a></td>
+<td>Prefix added to all data source IDs</td>
+</tr>
+<tr>
 <td><a href="identifier/">identifier</a></td>
 <td>Fully-qualifier URL or CURIE used as an identifier for an entity</td>
 </tr>
@@ -736,12 +972,28 @@
 <td>The inputs for a protocol; may be software parameters, experimental reagents,...</td>
 </tr>
 <tr>
+<td><a href="institution/">institution</a></td>
+<td>Institution or organization name</td>
+</tr>
+<tr>
+<td><a href="last_name/">last_name</a></td>
+<td>Last (family) name</td>
+</tr>
+<tr>
+<td><a href="latitude/">latitude</a></td>
+<td>Alias for Y Coordinate</td>
+</tr>
+<tr>
 <td><a href="length/">length</a></td>
 <td>Length of the contig in bp</td>
 </tr>
 <tr>
 <td><a href="location/">location</a></td>
 <td>The location for this event</td>
+</tr>
+<tr>
+<td><a href="longitude/">longitude</a></td>
+<td>Alias for X Coordinate</td>
 </tr>
 <tr>
 <td><a href="measurement_id/">measurement_id</a></td>
@@ -772,6 +1024,14 @@
 <td>The object in a subject-predicate-object statement</td>
 </tr>
 <tr>
+<td><a href="observed_property/">observed_property</a></td>
+<td>The property that was observed</td>
+</tr>
+<tr>
+<td><a href="original_id/">original_id</a></td>
+<td></td>
+</tr>
+<tr>
 <td><a href="outputs/">outputs</a></td>
 <td>The outputs of a protocol; may be physical entities, files, etc</td>
 </tr>
@@ -782,6 +1042,10 @@
 <tr>
 <td><a href="part_of/">part_of</a></td>
 <td>The project to which this experiment belongs</td>
+</tr>
+<tr>
+<td><a href="phenomenon_time/">phenomenon_time</a></td>
+<td>datetime of the observation (required OGC attribute timePhenomenon)</td>
 </tr>
 <tr>
 <td><a href="predicate/">predicate</a></td>
@@ -808,8 +1072,56 @@
 <td>The quality of the measurement, indicating the confidence that one can have i...</td>
 </tr>
 <tr>
+<td><a href="related_party/">related_party</a></td>
+<td>list of Person, people or organizations responsible for Feature</td>
+</tr>
+<tr>
+<td><a href="related_sampling_feature/">related_sampling_feature</a></td>
+<td>A sampling feature relation</td>
+</tr>
+<tr>
+<td><a href="related_sampling_feature_complex/">related_sampling_feature_complex</a></td>
+<td>List of related sampling features</td>
+</tr>
+<tr>
+<td><a href="related_sampling_feature_type/">related_sampling_feature_type</a></td>
+<td>Feature type of the related sampling feature</td>
+</tr>
+<tr>
+<td><a href="representative/">representative</a></td>
+<td>Representative coordinate</td>
+</tr>
+<tr>
+<td><a href="representative_point/">representative_point</a></td>
+<td>A point representation of the feature</td>
+</tr>
+<tr>
+<td><a href="representative_point_type/">representative_point_type</a></td>
+<td>The type of representative point relative to the feature's geometry</td>
+</tr>
+<tr>
+<td><a href="resolution/">resolution</a></td>
+<td>The minimum distance possible between two adjacent depth values, expressed in...</td>
+</tr>
+<tr>
+<td><a href="result/">result</a></td>
+<td>Result</td>
+</tr>
+<tr>
+<td><a href="result_quality/">result_quality</a></td>
+<td>The result quality assessment</td>
+</tr>
+<tr>
+<td><a href="role/">role</a></td>
+<td>Role of person in relation to responsibility</td>
+</tr>
+<tr>
 <td><a href="sample_id/">sample_id</a></td>
 <td>Internal (CDM) unique identifier</td>
+</tr>
+<tr>
+<td><a href="sampling_medium/">sampling_medium</a></td>
+<td>Sampling medium in which the observed property was measured</td>
 </tr>
 <tr>
 <td><a href="scaf_bp/">scaf_bp</a></td>
@@ -860,6 +1172,10 @@
 <td>The protein amino acid sequence</td>
 </tr>
 <tr>
+<td><a href="shape/">shape</a></td>
+<td>The shape of the feature</td>
+</tr>
+<tr>
 <td><a href="source/">source</a></td>
 <td>The data source for the identifier</td>
 </tr>
@@ -880,12 +1196,24 @@
 <td>The start and end coordinates of the feature are given in positive 1-based in...</td>
 </tr>
 <tr>
+<td><a href="statistic/">statistic</a></td>
+<td>The statistical property of the observation result</td>
+</tr>
+<tr>
 <td><a href="strand/">strand</a></td>
 <td>The strand of the feature</td>
 </tr>
 <tr>
 <td><a href="subject/">subject</a></td>
 <td>The subject in a subject-predicate-object statement</td>
+</tr>
+<tr>
+<td><a href="time_reference_position/">time_reference_position</a></td>
+<td>Position of timestamp in aggregated_duration</td>
+</tr>
+<tr>
+<td><a href="timestamp/">timestamp</a></td>
+<td>timestamp in ISO format (i</td>
 </tr>
 <tr>
 <td><a href="type/">type</a></td>
@@ -896,8 +1224,20 @@
 <td>Units used in the measurement</td>
 </tr>
 <tr>
+<td><a href="unit_of_measurement/">unit_of_measurement</a></td>
+<td>Unit of measurement</td>
+</tr>
+<tr>
+<td><a href="units/">units</a></td>
+<td>Latitude and longitude units</td>
+</tr>
+<tr>
 <td><a href="url/">url</a></td>
 <td>The URL for a protocol</td>
+</tr>
+<tr>
+<td><a href="utc_offset/">utc_offset</a></td>
+<td>Coordinated Universal Time (UTC) offset in hours (e</td>
 </tr>
 <tr>
 <td><a href="value/">value</a></td>
@@ -906,6 +1246,22 @@
 <tr>
 <td><a href="version/">version</a></td>
 <td>The version of the protocol that has been used</td>
+</tr>
+<tr>
+<td><a href="vertical_extent/">vertical_extent</a></td>
+<td>list of AltitudeCoordinates</td>
+</tr>
+<tr>
+<td><a href="vertical_position/">vertical_position</a></td>
+<td>The vertical position of the feature from a reference position (e</td>
+</tr>
+<tr>
+<td><a href="x/">x</a></td>
+<td>X Coordinate</td>
+</tr>
+<tr>
+<td><a href="y/">y</a></td>
+<td>Y Coordinate</td>
 </tr>
 </tbody>
 </table>
@@ -919,6 +1275,14 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="AggregationDurationEnum/">AggregationDurationEnum</a></td>
+<td>Aggregation Duration enums</td>
+</tr>
+<tr>
+<td><a href="AltitudeCoordinateEnum/">AltitudeCoordinateEnum</a></td>
+<td>The reference coordinate system to specify an altitudinal vertical position (...</td>
+</tr>
+<tr>
 <td><a href="CdsPhaseType/">CdsPhaseType</a></td>
 <td>For features of type CDS (coding sequence), the phase indicates where the fea...</td>
 </tr>
@@ -927,12 +1291,84 @@
 <td>The type of the contig set; the type of the 'omics data set</td>
 </tr>
 <tr>
+<td><a href="DepthCoordinateEnum/">DepthCoordinateEnum</a></td>
+<td>The reference coordinate system to specify a depth vertical position (i</td>
+</tr>
+<tr>
+<td><a href="DistanceUnitEnum/">DistanceUnitEnum</a></td>
+<td>The unit of distance</td>
+</tr>
+<tr>
+<td><a href="EncodingMethodEnum/">EncodingMethodEnum</a></td>
+<td>The method for encoding the units of distance</td>
+</tr>
+<tr>
 <td><a href="EvidenceForExistence/">EvidenceForExistence</a></td>
 <td>The evidence for the existence of a biological entity</td>
 </tr>
 <tr>
+<td><a href="FeatureTypeEnum/">FeatureTypeEnum</a></td>
+<td>Enumeration for Feature Types</td>
+</tr>
+<tr>
+<td><a href="GeographicCoordinateUnitEnum/">GeographicCoordinateUnitEnum</a></td>
+<td>Latitude and longitude units</td>
+</tr>
+<tr>
+<td><a href="HorizontalCoordinateEnum/">HorizontalCoordinateEnum</a></td>
+<td>The reference coordinate system for generic XY coordinates for a point on ear...</td>
+</tr>
+<tr>
+<td><a href="HorizontalCoordinateTypeEnum/">HorizontalCoordinateTypeEnum</a></td>
+<td>The type of horizontal coordinates</td>
+</tr>
+<tr>
+<td><a href="MappedAttributeEnum/">MappedAttributeEnum</a></td>
+<td>Enumeration for mapped attributes</td>
+</tr>
+<tr>
+<td><a href="ObservationTypeEnum/">ObservationTypeEnum</a></td>
+<td>Type of observation</td>
+</tr>
+<tr>
+<td><a href="RelatedSamplingFeatureRoleEnum/">RelatedSamplingFeatureRoleEnum</a></td>
+<td>Role of related sampling feature</td>
+</tr>
+<tr>
+<td><a href="RepresentativePointTypeEnum/">RepresentativePointTypeEnum</a></td>
+<td>Types of representative points</td>
+</tr>
+<tr>
+<td><a href="ResultQualityEnum/">ResultQualityEnum</a></td>
+<td>Enumeration for Result Quality</td>
+</tr>
+<tr>
+<td><a href="SamplingMediumEnum/">SamplingMediumEnum</a></td>
+<td>Types of sampling mediums for Observed Properties</td>
+</tr>
+<tr>
+<td><a href="SpatialSamplingShapes/">SpatialSamplingShapes</a></td>
+<td>Spatial sampling shape describing a spatial sampling feature</td>
+</tr>
+<tr>
+<td><a href="StatisticEnum/">StatisticEnum</a></td>
+<td>Enumeration for Statistics</td>
+</tr>
+<tr>
 <td><a href="StrandType/">StrandType</a></td>
 <td>The strand that a feature appears on relative to a landmark</td>
+</tr>
+<tr>
+<td><a href="TimeFrequencyEnum/">TimeFrequencyEnum</a></td>
+<td>Enumeration for time frequencies</td>
+</tr>
+<tr>
+<td><a href="TimeReferenceEnum/">TimeReferenceEnum</a></td>
+<td>Position of timestamp in aggregated_duration</td>
+</tr>
+<tr>
+<td><a href="VerticalCoordinateTypeEnum/">VerticalCoordinateTypeEnum</a></td>
+<td>The type of vertical position, altitude or depth</td>
 </tr>
 </tbody>
 </table>

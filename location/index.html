@@ -302,19 +302,6 @@
     Identifier and Mapping Information
   </a>
   
-    <nav class="md-nav" aria-label="Identifier and Mapping Information">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#schema-source" class="md-nav__link">
-    Schema Source
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -352,7 +339,6 @@
 
 
 <h1 id="slot-location">Slot: location</h1>
-<p><em>The location for this event. May be described in terms of coordinates.</em></p>
 <p>URI: <a href="http://kbase.github.io/cdm-schema/location">kb_cdm:location</a></p>
 <!-- no inheritance hierarchy -->
 
@@ -371,6 +357,11 @@
 <td>Something that happened</td>
 <td>no</td>
 </tr>
+<tr>
+<td><a href="../DataSource/">DataSource</a></td>
+<td>Source for data</td>
+<td>no</td>
+</tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
@@ -378,10 +369,6 @@
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="schema-source">Schema Source</h3>
-<ul>
-<li>from schema: https://github.com/kbase/cdm-schema</li>
-</ul>
 <h2 id="mappings">Mappings</h2>
 <table>
 <thead>
@@ -405,13 +392,10 @@
 <details>
 
 <pre><code class="language-yaml">name: location
-description: The location for this event. May be described in terms of coordinates.
-from_schema: https://github.com/kbase/cdm-schema
-rank: 1000
 alias: location
-owner: Event
 domain_of:
 - Event
+- DataSource
 range: string
 
 </code></pre>

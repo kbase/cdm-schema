@@ -395,6 +395,24 @@
 <td>range</td>
 <td><a href="./">Name</a></td>
 </tr>
+<tr>
+<td><a href="../MonitoringFeature/">MonitoringFeature</a></td>
+<td><a href="../names/">names</a></td>
+<td>range</td>
+<td><a href="./">Name</a></td>
+</tr>
+<tr>
+<td><a href="../SamplingFeature/">SamplingFeature</a></td>
+<td><a href="../names/">names</a></td>
+<td>range</td>
+<td><a href="./">Name</a></td>
+</tr>
+<tr>
+<td><a href="../SpatialSamplingFeature/">SpatialSamplingFeature</a></td>
+<td><a href="../names/">names</a></td>
+<td>range</td>
+<td><a href="./">Name</a></td>
+</tr>
 </tbody>
 </table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
@@ -464,6 +482,7 @@ attributes:
     slot_uri: schema:name
     domain_of:
     - Name
+    - DataSource
     required: true
   source:
     name: source
@@ -528,6 +547,7 @@ attributes:
     owner: Name
     domain_of:
     - Name
+    - DataSource
     range: string
     required: true
   source:

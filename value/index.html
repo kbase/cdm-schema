@@ -353,8 +353,38 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../VerticalCoordinate/">VerticalCoordinate</a></td>
+<td>The vertical position of the feature (altitudes or depths)</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../TimeValuePair/">TimeValuePair</a></td>
+<td>Tuple that represents a time value pair in the form <code>(timestamp, value)</code></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../DepthCoordinate/">DepthCoordinate</a></td>
+<td>A depth vertical position (i</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ResultPointFloat/">ResultPointFloat</a></td>
+<td>Result Point Float</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../AltitudeCoordinate/">AltitudeCoordinate</a></td>
+<td>An altitudinal vertical position (i</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../ProcessedMeasurement/">ProcessedMeasurement</a></td>
 <td>A measurement that requires additional processing to generate a result</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ResultListTVP/">ResultListTVP</a></td>
+<td>Result Point Float</td>
 <td>no</td>
 </tr>
 <tr>
@@ -401,6 +431,10 @@ alias: value
 domain_of:
 - Measurement
 - MeasurementSet
+- ResultListTVP
+- ResultPointFloat
+- TimeValuePair
+- VerticalCoordinate
 range: string
 
 </code></pre>

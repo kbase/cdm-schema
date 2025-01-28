@@ -234,6 +234,11 @@
       UniqueNamedThing &lt;|-- Feature
         click UniqueNamedThing href "../UniqueNamedThing"
 
+
+      Feature &lt;|-- SamplingFeature
+        click SamplingFeature href "../SamplingFeature"
+
+
       Feature : cds_phase
 
 
@@ -322,7 +327,10 @@
 <li><a href="../NamedThing/">NamedThing</a><ul>
 <li><a href="../NamedThingWithId/">NamedThingWithId</a><ul>
 <li><a href="../UniqueNamedThing/">UniqueNamedThing</a><ul>
-<li><strong>Feature</strong></li>
+<li><strong>Feature</strong><ul>
+<li><a href="../SamplingFeature/">SamplingFeature</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -628,6 +636,9 @@ attributes:
     - Feature
     - Measurement
     - Sample
+    - HorizontalCoordinate
+    - Observation
+    - VerticalCoordinate
     range: uriorcurie
     pattern: ^SO:\d+$
 
@@ -793,6 +804,9 @@ attributes:
     - Feature
     - Measurement
     - Sample
+    - HorizontalCoordinate
+    - Observation
+    - VerticalCoordinate
     range: uriorcurie
     pattern: ^SO:\d+$
   hash:
