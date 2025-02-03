@@ -234,8 +234,6 @@
     click Name href "../Name"
 
 
-      ProcessedMeasurement : processed_measurement_id
-
       ProcessedMeasurement : protocol_id
 
 
@@ -276,12 +274,6 @@
 </tr>
 </thead>
 <tbody>
-<tr>
-<td><a href="../processed_measurement_id/">processed_measurement_id</a></td>
-<td>1 <br/> <a href="../UUID/">UUID</a></td>
-<td>Internal (CDM) unique identifier</td>
-<td>direct</td>
-</tr>
 <tr>
 <td><a href="../quality/">quality</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
@@ -371,16 +363,6 @@ description: A measurement that requires additional processing to generate a res
 from_schema: https://github.com/kbase/cdm-schema
 is_a: Measurement
 attributes:
-  processed_measurement_id:
-    name: processed_measurement_id
-    description: Internal (CDM) unique identifier.
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    identifier: true
-    domain_of:
-    - ProcessedMeasurement
-    range: UUID
-    required: true
   quality:
     name: quality
     description: The quality of the measurement, indicating the confidence that one
@@ -399,18 +381,6 @@ description: A measurement that requires additional processing to generate a res
 from_schema: https://github.com/kbase/cdm-schema
 is_a: Measurement
 attributes:
-  processed_measurement_id:
-    name: processed_measurement_id
-    description: Internal (CDM) unique identifier.
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    identifier: true
-    alias: processed_measurement_id
-    owner: ProcessedMeasurement
-    domain_of:
-    - ProcessedMeasurement
-    range: UUID
-    required: true
   quality:
     name: quality
     description: The quality of the measurement, indicating the confidence that one
@@ -441,7 +411,8 @@ attributes:
     alias: protocol_id
     owner: ProcessedMeasurement
     domain_of:
-    - FeatureXProtein
+    - Cluster
+    - Feature
     - Measurement
     - Protocol
     range: Protocol
@@ -468,9 +439,6 @@ attributes:
     - Feature
     - Measurement
     - Sample
-    - HorizontalCoordinate
-    - Observation
-    - VerticalCoordinate
     range: string
   value:
     name: value
@@ -483,10 +451,6 @@ attributes:
     domain_of:
     - Measurement
     - MeasurementSet
-    - ResultListTVP
-    - ResultPointFloat
-    - TimeValuePair
-    - VerticalCoordinate
     range: string
   unit:
     name: unit
@@ -507,6 +471,7 @@ attributes:
     owner: ProcessedMeasurement
     domain_of:
     - NamedThing
+    - Cluster
     - Event
     - Experiment
     - Identifier

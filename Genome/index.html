@@ -260,6 +260,15 @@
 
       Genome : gc_std
 
+      Genome : has_contigs
+
+
+
+
+    Genome --&gt; "*" Contig : has_contigs
+    click Contig href "../Contig"
+
+
       Genome : hash
 
       Genome : identifiers
@@ -510,6 +519,12 @@
 <td><a href="../Contigset/">Contigset</a></td>
 </tr>
 <tr>
+<td><a href="../has_contigs/">has_contigs</a></td>
+<td>* <br/> <a href="../Contig/">Contig</a></td>
+<td>Contigs that are part of this contigset</td>
+<td><a href="../Contigset/">Contigset</a></td>
+</tr>
+<tr>
 <td><a href="../hash/">hash</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>A hash value generated from one or more object attributes that serves to ensu...</td>
@@ -615,11 +630,11 @@ attributes:
     name: contigset_id
     description: Internal (CDM) unique identifier.
     from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
     identifier: true
     alias: contigset_id
     owner: Genome
     domain_of:
+    - Contig_X_Contigset
     - Contigset
     range: UUID
     required: true
@@ -891,6 +906,17 @@ attributes:
     domain_of:
     - Contigset
     range: float
+  has_contigs:
+    name: has_contigs
+    description: Contigs that are part of this contigset.
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    alias: has_contigs
+    owner: Genome
+    domain_of:
+    - Contigset
+    range: Contig
+    multivalued: true
   hash:
     name: hash
     description: A hash value generated from one or more object attributes that serves
@@ -921,6 +947,7 @@ attributes:
     owner: Genome
     domain_of:
     - NamedThing
+    - Cluster
     - Event
     - Experiment
     - Identifier

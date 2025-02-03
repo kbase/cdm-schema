@@ -339,24 +339,6 @@
 <td>range</td>
 <td><a href="./">EncodedFeature</a></td>
 </tr>
-<tr>
-<td><a href="../MonitoringFeature/">MonitoringFeature</a></td>
-<td><a href="../encodes/">encodes</a></td>
-<td>range</td>
-<td><a href="./">EncodedFeature</a></td>
-</tr>
-<tr>
-<td><a href="../SamplingFeature/">SamplingFeature</a></td>
-<td><a href="../encodes/">encodes</a></td>
-<td>range</td>
-<td><a href="./">EncodedFeature</a></td>
-</tr>
-<tr>
-<td><a href="../SpatialSamplingFeature/">SpatialSamplingFeature</a></td>
-<td><a href="../encodes/">encodes</a></td>
-<td>range</td>
-<td><a href="./">EncodedFeature</a></td>
-</tr>
 </tbody>
 </table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
@@ -400,6 +382,7 @@ attributes:
     identifier: true
     domain_of:
     - EncodedFeature
+    - EncodedFeature_X_Feature
     range: UUID
     required: true
   has_stop_codon:
@@ -420,9 +403,6 @@ attributes:
     - Feature
     - Measurement
     - Sample
-    - HorizontalCoordinate
-    - Observation
-    - VerticalCoordinate
 
 </code></pre>
 </details>
@@ -443,6 +423,7 @@ attributes:
     owner: EncodedFeature
     domain_of:
     - EncodedFeature
+    - EncodedFeature_X_Feature
     range: UUID
     required: true
   has_stop_codon:
@@ -467,9 +448,6 @@ attributes:
     - Feature
     - Measurement
     - Sample
-    - HorizontalCoordinate
-    - Observation
-    - VerticalCoordinate
     range: string
   hash:
     name: hash
@@ -501,6 +479,7 @@ attributes:
     owner: EncodedFeature
     domain_of:
     - NamedThing
+    - Cluster
     - Event
     - Experiment
     - Identifier

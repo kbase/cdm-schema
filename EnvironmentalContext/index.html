@@ -236,6 +236,8 @@
 
       EnvironmentalContext : description
 
+      EnvironmentalContext : environmental_context_id
+
       EnvironmentalContext : hash
 
       EnvironmentalContext : identifiers
@@ -286,6 +288,12 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><a href="../environmental_context_id/">environmental_context_id</a></td>
+<td>1 <br/> <a href="../UUID/">UUID</a></td>
+<td>Internal (CDM) unique identifier</td>
+<td>direct</td>
+</tr>
 <tr>
 <td><a href="../hash/">hash</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
@@ -364,6 +372,18 @@ description: The environmental context for the event.
 from_schema: https://github.com/kbase/cdm-schema
 is_a: UniqueNamedThing
 abstract: true
+attributes:
+  environmental_context_id:
+    name: environmental_context_id
+    description: Internal (CDM) unique identifier.
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    identifier: true
+    domain_of:
+    - EnvironmentalContext
+    - Event
+    range: UUID
+    required: true
 
 </code></pre>
 </details>
@@ -375,6 +395,19 @@ from_schema: https://github.com/kbase/cdm-schema
 is_a: UniqueNamedThing
 abstract: true
 attributes:
+  environmental_context_id:
+    name: environmental_context_id
+    description: Internal (CDM) unique identifier.
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    identifier: true
+    alias: environmental_context_id
+    owner: EnvironmentalContext
+    domain_of:
+    - EnvironmentalContext
+    - Event
+    range: UUID
+    required: true
   hash:
     name: hash
     description: A hash value generated from one or more object attributes that serves
@@ -405,6 +438,7 @@ attributes:
     owner: EnvironmentalContext
     domain_of:
     - NamedThing
+    - Cluster
     - Event
     - Experiment
     - Identifier

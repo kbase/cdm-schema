@@ -302,19 +302,6 @@
     Identifier and Mapping Information
   </a>
   
-    <nav class="md-nav" aria-label="Identifier and Mapping Information">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#schema-source" class="md-nav__link">
-    Schema Source
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -352,7 +339,6 @@
 
 
 <h1 id="slot-environmental_context_id">Slot: environmental_context_id</h1>
-<p><em>The environmental context for this event.</em></p>
 <p>URI: <a href="http://kbase.github.io/cdm-schema/environmental_context_id">kb_cdm:environmental_context_id</a></p>
 <!-- no inheritance hierarchy -->
 
@@ -367,6 +353,21 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../MixsEnvironmentalContext/">MixsEnvironmentalContext</a></td>
+<td>Environmental context, described using the MiXS convention of broad and local...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../EnvironmentalContext/">EnvironmentalContext</a></td>
+<td>The environmental context for the event</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../GoldEnvironmentalContext/">GoldEnvironmentalContext</a></td>
+<td>Environmental context, described using JGI's five level system</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../Event/">Event</a></td>
 <td>Something that happened</td>
 <td>no</td>
@@ -375,13 +376,9 @@
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../EnvironmentalContext/">EnvironmentalContext</a></li>
+<li>Range: <a href="../String/">String</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="schema-source">Schema Source</h3>
-<ul>
-<li>from schema: https://github.com/kbase/cdm-schema</li>
-</ul>
 <h2 id="mappings">Mappings</h2>
 <table>
 <thead>
@@ -405,14 +402,11 @@
 <details>
 
 <pre><code class="language-yaml">name: environmental_context_id
-description: The environmental context for this event.
-from_schema: https://github.com/kbase/cdm-schema
-rank: 1000
 alias: environmental_context_id
-owner: Event
 domain_of:
+- EnvironmentalContext
 - Event
-range: EnvironmentalContext
+range: string
 
 </code></pre>
 

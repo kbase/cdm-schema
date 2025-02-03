@@ -367,13 +367,63 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../EnvironmentalContext/">EnvironmentalContext</a></td>
+<td>The environmental context for the event</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../NamedThing/">NamedThing</a></td>
+<td>Abstract class to represent things with names</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../GoldEnvironmentalContext/">GoldEnvironmentalContext</a></td>
+<td>Environmental context, described using JGI's five level system</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Contigset/">Contigset</a></td>
+<td>A set of individual, overlapping contigs that represent the complete sequence...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ProcessedMeasurement/">ProcessedMeasurement</a></td>
+<td>A measurement that requires additional processing to generate a result</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../NamedThingWithId/">NamedThingWithId</a></td>
+<td>Abstract class to represent things with names and identifiers</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../UniqueNamedThing/">UniqueNamedThing</a></td>
+<td>Represents an entity with a hash value generated from combining its unique at...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Event/">Event</a></td>
+<td>Something that happened</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../EncodedFeature/">EncodedFeature</a></td>
 <td>An entity generated from a feature, such as a transcript</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../SpatialSamplingFeature/">SpatialSamplingFeature</a></td>
-<td>A spatially-defined feature where sampling is conducted</td>
+<td><a href="../MixsEnvironmentalContext/">MixsEnvironmentalContext</a></td>
+<td>Environmental context, described using the MiXS convention of broad and local...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Contig/">Contig</a></td>
+<td>A contig (derived from the word "contiguous") is a set of DNA segments or seq...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Protein/">Protein</a></td>
+<td>Proteins are large, complex molecules made up of one or more long, folded cha...</td>
 <td>no</td>
 </tr>
 <tr>
@@ -384,6 +434,21 @@
 <tr>
 <td><a href="../ProtocolParticipant/">ProtocolParticipant</a></td>
 <td>Either an input or an output of a protocol</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Feature/">Feature</a></td>
+<td>A feature localized to an interval along a contig</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Protocol/">Protocol</a></td>
+<td>Defined method or set of methods</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Sample/">Sample</a></td>
+<td>A material entity that can be characterised by an experiment</td>
 <td>no</td>
 </tr>
 <tr>
@@ -399,86 +464,6 @@
 <tr>
 <td><a href="../Measurement/">Measurement</a></td>
 <td>A qualitative or quantitative observation of an attribute of an object or eve...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Protocol/">Protocol</a></td>
-<td>Defined method or set of methods</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../GoldEnvironmentalContext/">GoldEnvironmentalContext</a></td>
-<td>Environmental context, described using JGI's five level system</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ProcessedMeasurement/">ProcessedMeasurement</a></td>
-<td>A measurement that requires additional processing to generate a result</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../EnvironmentalContext/">EnvironmentalContext</a></td>
-<td>The environmental context for the event</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Feature/">Feature</a></td>
-<td>A feature localized to an interval along a contig</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Event/">Event</a></td>
-<td>Something that happened</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Contig/">Contig</a></td>
-<td>A contig (derived from the word "contiguous") is a set of DNA segments or seq...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../MonitoringFeature/">MonitoringFeature</a></td>
-<td>A feature upon which monitoring is made</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../NamedThing/">NamedThing</a></td>
-<td>Abstract class to represent things with names</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Protein/">Protein</a></td>
-<td>Proteins are large, complex molecules made up of one or more long, folded cha...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Sample/">Sample</a></td>
-<td>A material entity that can be characterised by an experiment</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../SamplingFeature/">SamplingFeature</a></td>
-<td>A feature where sampling is conducted</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../MixsEnvironmentalContext/">MixsEnvironmentalContext</a></td>
-<td>Environmental context, described using the MiXS convention of broad and local...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../UniqueNamedThing/">UniqueNamedThing</a></td>
-<td>Represents an entity with a hash value generated from combining its unique at...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Contigset/">Contigset</a></td>
-<td>A set of individual, overlapping contigs that represent the complete sequence...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../NamedThingWithId/">NamedThingWithId</a></td>
-<td>Abstract class to represent things with names and identifiers</td>
 <td>no</td>
 </tr>
 </tbody>

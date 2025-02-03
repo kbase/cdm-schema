@@ -221,10 +221,19 @@
 <div class="mermaid"> classDiagram
     class ProtocolParticipant
     click ProtocolParticipant href "../ProtocolParticipant"
-      NamedThing &lt;|-- ProtocolParticipant
-        click NamedThing href "../NamedThing"
+      NamedThingWithId &lt;|-- ProtocolParticipant
+        click NamedThingWithId href "../NamedThingWithId"
 
       ProtocolParticipant : description
+
+      ProtocolParticipant : identifiers
+
+
+
+
+    ProtocolParticipant --&gt; "*" Identifier : identifiers
+    click Identifier href "../Identifier"
+
 
       ProtocolParticipant : names
 
@@ -235,12 +244,17 @@
     click Name href "../Name"
 
 
+      ProtocolParticipant : protocol_participant_id
+
 
 </div>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><a href="../NamedThing/">NamedThing</a><ul>
+<li><a href="../NamedThingWithId/">NamedThingWithId</a><ul>
 <li><strong>ProtocolParticipant</strong></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -255,6 +269,18 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><a href="../protocol_participant_id/">protocol_participant_id</a></td>
+<td>1 <br/> <a href="../UUID/">UUID</a></td>
+<td>Internal (CDM) unique identifier</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../identifiers/">identifiers</a></td>
+<td>* <br/> <a href="../Identifier/">Identifier</a></td>
+<td>URIs or CURIEs used to refer to this entity</td>
+<td><a href="../NamedThingWithId/">NamedThingWithId</a></td>
+</tr>
 <tr>
 <td><a href="../description/">description</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
@@ -325,7 +351,18 @@
 <pre><code class="language-yaml">name: ProtocolParticipant
 description: Either an input or an output of a protocol.
 from_schema: https://github.com/kbase/cdm-schema
-is_a: NamedThing
+is_a: NamedThingWithId
+attributes:
+  protocol_participant_id:
+    name: protocol_participant_id
+    description: Internal (CDM) unique identifier.
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    identifier: true
+    domain_of:
+    - ProtocolParticipant
+    range: UUID
+    required: true
 
 </code></pre>
 </details>
@@ -334,8 +371,31 @@ is_a: NamedThing
 <pre><code class="language-yaml">name: ProtocolParticipant
 description: Either an input or an output of a protocol.
 from_schema: https://github.com/kbase/cdm-schema
-is_a: NamedThing
+is_a: NamedThingWithId
 attributes:
+  protocol_participant_id:
+    name: protocol_participant_id
+    description: Internal (CDM) unique identifier.
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    identifier: true
+    alias: protocol_participant_id
+    owner: ProtocolParticipant
+    domain_of:
+    - ProtocolParticipant
+    range: UUID
+    required: true
+  identifiers:
+    name: identifiers
+    description: URIs or CURIEs used to refer to this entity.
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    alias: identifiers
+    owner: ProtocolParticipant
+    domain_of:
+    - NamedThingWithId
+    range: Identifier
+    multivalued: true
   description:
     name: description
     description: Definition or description of the entity.
@@ -345,6 +405,7 @@ attributes:
     owner: ProtocolParticipant
     domain_of:
     - NamedThing
+    - Cluster
     - Event
     - Experiment
     - Identifier

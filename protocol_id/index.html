@@ -353,23 +353,28 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../ProcessedMeasurement/">ProcessedMeasurement</a></td>
-<td>A measurement that requires additional processing to generate a result</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../Protocol/">Protocol</a></td>
 <td>Defined method or set of methods</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Measurement/">Measurement</a></td>
-<td>A qualitative or quantitative observation of an attribute of an object or eve...</td>
+<td><a href="../ProcessedMeasurement/">ProcessedMeasurement</a></td>
+<td>A measurement that requires additional processing to generate a result</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../FeatureXProtein/">FeatureXProtein</a></td>
-<td>Captures the relationship between a feature and a protein; equivalent to feat...</td>
+<td><a href="../Cluster/">Cluster</a></td>
+<td>Represents an individual execution of a clustering protocol</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Feature/">Feature</a></td>
+<td>A feature localized to an interval along a contig</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Measurement/">Measurement</a></td>
+<td>A qualitative or quantitative observation of an attribute of an object or eve...</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -404,7 +409,8 @@
 <pre><code class="language-yaml">name: protocol_id
 alias: protocol_id
 domain_of:
-- FeatureXProtein
+- Cluster
+- Feature
 - Measurement
 - Protocol
 range: string

@@ -227,6 +227,8 @@
 
       MixsEnvironmentalContext : env_medium
 
+      MixsEnvironmentalContext : environmental_context_id
+
       MixsEnvironmentalContext : hash
 
       MixsEnvironmentalContext : identifiers
@@ -237,8 +239,6 @@
     MixsEnvironmentalContext --&gt; "*" Identifier : identifiers
     click Identifier href "../Identifier"
 
-
-      MixsEnvironmentalContext : mixs_environmental_context_id
 
       MixsEnvironmentalContext : names
 
@@ -297,10 +297,10 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../mixs_environmental_context_id/">mixs_environmental_context_id</a></td>
+<td><a href="../environmental_context_id/">environmental_context_id</a></td>
 <td>1 <br/> <a href="../UUID/">UUID</a></td>
 <td>Internal (CDM) unique identifier</td>
-<td>direct</td>
+<td><a href="../EnvironmentalContext/">EnvironmentalContext</a></td>
 </tr>
 <tr>
 <td><a href="../hash/">hash</a></td>
@@ -392,7 +392,7 @@ attributes:
     - broad-scale environmental context
     rank: 1000
     string_serialization: '{termLabel} {[termID]}'
-    slot_uri: MIXS:0000012
+    slot_uri: mixs:0000012
     domain_of:
     - MixsEnvironmentalContext
     range: uriorcurie
@@ -406,7 +406,7 @@ attributes:
           time of sampling.
       tooltip:
         tag: tooltip
-        value: The specific environmental entities or features near the sample or
+        value: The specific environmental  entities or features near the sample or
           specimen that significantly influence its characteristics or composition.
           These entities are typically smaller in scale than the broad environmental
           context. Values for this field should be countable, material nouns and must
@@ -431,7 +431,7 @@ attributes:
     - local environmental context
     rank: 1000
     string_serialization: '{termLabel} {[termID]}'
-    slot_uri: MIXS:0000013
+    slot_uri: mixs:0000013
     domain_of:
     - MixsEnvironmentalContext
     range: uriorcurie
@@ -469,21 +469,11 @@ attributes:
     - environmental medium
     rank: 1000
     string_serialization: '{termLabel} {[termID]}'
-    slot_uri: MIXS:0000014
+    slot_uri: mixs:0000014
     domain_of:
     - MixsEnvironmentalContext
     range: uriorcurie
     multivalued: false
-  mixs_environmental_context_id:
-    name: mixs_environmental_context_id
-    description: Internal (CDM) unique identifier.
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    identifier: true
-    domain_of:
-    - MixsEnvironmentalContext
-    range: UUID
-    required: true
 
 </code></pre>
 </details>
@@ -525,7 +515,7 @@ attributes:
     - broad-scale environmental context
     rank: 1000
     string_serialization: '{termLabel} {[termID]}'
-    slot_uri: MIXS:0000012
+    slot_uri: mixs:0000012
     alias: env_broad_scale
     owner: MixsEnvironmentalContext
     domain_of:
@@ -541,7 +531,7 @@ attributes:
           time of sampling.
       tooltip:
         tag: tooltip
-        value: The specific environmental entities or features near the sample or
+        value: The specific environmental  entities or features near the sample or
           specimen that significantly influence its characteristics or composition.
           These entities are typically smaller in scale than the broad environmental
           context. Values for this field should be countable, material nouns and must
@@ -566,7 +556,7 @@ attributes:
     - local environmental context
     rank: 1000
     string_serialization: '{termLabel} {[termID]}'
-    slot_uri: MIXS:0000013
+    slot_uri: mixs:0000013
     alias: env_local_scale
     owner: MixsEnvironmentalContext
     domain_of:
@@ -606,23 +596,24 @@ attributes:
     - environmental medium
     rank: 1000
     string_serialization: '{termLabel} {[termID]}'
-    slot_uri: MIXS:0000014
+    slot_uri: mixs:0000014
     alias: env_medium
     owner: MixsEnvironmentalContext
     domain_of:
     - MixsEnvironmentalContext
     range: uriorcurie
     multivalued: false
-  mixs_environmental_context_id:
-    name: mixs_environmental_context_id
+  environmental_context_id:
+    name: environmental_context_id
     description: Internal (CDM) unique identifier.
     from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     identifier: true
-    alias: mixs_environmental_context_id
+    alias: environmental_context_id
     owner: MixsEnvironmentalContext
     domain_of:
-    - MixsEnvironmentalContext
+    - EnvironmentalContext
+    - Event
     range: UUID
     required: true
   hash:
@@ -655,6 +646,7 @@ attributes:
     owner: MixsEnvironmentalContext
     domain_of:
     - NamedThing
+    - Cluster
     - Event
     - Experiment
     - Identifier

@@ -229,7 +229,7 @@
 
       GoldEnvironmentalContext : ecosystem_type
 
-      GoldEnvironmentalContext : gold_environmental_context_id
+      GoldEnvironmentalContext : environmental_context_id
 
       GoldEnvironmentalContext : hash
 
@@ -283,12 +283,6 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../gold_environmental_context_id/">gold_environmental_context_id</a></td>
-<td>1 <br/> <a href="../UUID/">UUID</a></td>
-<td>Internal (CDM) unique identifier</td>
-<td>direct</td>
-</tr>
-<tr>
 <td><a href="../ecosystem/">ecosystem</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>JGI GOLD descriptor representing the top level ecosystem categorization</td>
@@ -317,6 +311,12 @@
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>JGI GOLD descriptor representing the most specific level of ecosystem categor...</td>
 <td>direct</td>
+</tr>
+<tr>
+<td><a href="../environmental_context_id/">environmental_context_id</a></td>
+<td>1 <br/> <a href="../UUID/">UUID</a></td>
+<td>Internal (CDM) unique identifier</td>
+<td><a href="../EnvironmentalContext/">EnvironmentalContext</a></td>
 </tr>
 <tr>
 <td><a href="../hash/">hash</a></td>
@@ -377,16 +377,6 @@ description: Environmental context, described using JGI's five level system.
 from_schema: https://github.com/kbase/cdm-schema
 is_a: EnvironmentalContext
 attributes:
-  gold_environmental_context_id:
-    name: gold_environmental_context_id
-    description: Internal (CDM) unique identifier.
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    identifier: true
-    domain_of:
-    - GoldEnvironmentalContext
-    range: UUID
-    required: true
   ecosystem:
     name: ecosystem
     description: JGI GOLD descriptor representing the top level ecosystem categorization.
@@ -434,18 +424,6 @@ description: Environmental context, described using JGI's five level system.
 from_schema: https://github.com/kbase/cdm-schema
 is_a: EnvironmentalContext
 attributes:
-  gold_environmental_context_id:
-    name: gold_environmental_context_id
-    description: Internal (CDM) unique identifier.
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    identifier: true
-    alias: gold_environmental_context_id
-    owner: GoldEnvironmentalContext
-    domain_of:
-    - GoldEnvironmentalContext
-    range: UUID
-    required: true
   ecosystem:
     name: ecosystem
     description: JGI GOLD descriptor representing the top level ecosystem categorization.
@@ -498,6 +476,19 @@ attributes:
     domain_of:
     - GoldEnvironmentalContext
     range: string
+  environmental_context_id:
+    name: environmental_context_id
+    description: Internal (CDM) unique identifier.
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    identifier: true
+    alias: environmental_context_id
+    owner: GoldEnvironmentalContext
+    domain_of:
+    - EnvironmentalContext
+    - Event
+    range: UUID
+    required: true
   hash:
     name: hash
     description: A hash value generated from one or more object attributes that serves
@@ -528,6 +519,7 @@ attributes:
     owner: GoldEnvironmentalContext
     domain_of:
     - NamedThing
+    - Cluster
     - Event
     - Experiment
     - Identifier

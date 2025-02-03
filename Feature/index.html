@@ -234,11 +234,6 @@
       UniqueNamedThing &lt;|-- Feature
         click UniqueNamedThing href "../UniqueNamedThing"
 
-
-      Feature &lt;|-- SamplingFeature
-        click SamplingFeature href "../SamplingFeature"
-
-
       Feature : cds_phase
 
 
@@ -274,6 +269,15 @@
     click Protocol href "../Protocol"
 
 
+      Feature : has_translation_product
+
+
+
+
+    Feature --&gt; "*" Protein : has_translation_product
+    click Protein href "../Protein"
+
+
       Feature : hash
 
       Feature : identifiers
@@ -296,16 +300,25 @@
 
       Feature : p_value
 
-      Feature : source_database
-
-      Feature : source_protocol
+      Feature : part_of_contig
 
 
 
 
-    Feature --&gt; "0..1" Protocol : source_protocol
+    Feature --&gt; "*" Contig : part_of_contig
+    click Contig href "../Contig"
+
+
+      Feature : protocol_id
+
+
+
+
+    Feature --&gt; "0..1" Protocol : protocol_id
     click Protocol href "../Protocol"
 
+
+      Feature : source_database
 
       Feature : start
 
@@ -327,10 +340,7 @@
 <li><a href="../NamedThing/">NamedThing</a><ul>
 <li><a href="../NamedThingWithId/">NamedThingWithId</a><ul>
 <li><a href="../UniqueNamedThing/">UniqueNamedThing</a><ul>
-<li><strong>Feature</strong><ul>
-<li><a href="../SamplingFeature/">SamplingFeature</a></li>
-</ul>
-</li>
+<li><strong>Feature</strong></li>
 </ul>
 </li>
 </ul>
@@ -359,12 +369,6 @@
 <td><a href="../e_value/">e_value</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
 <td>The 'score' of the feature</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../encodes/">encodes</a></td>
-<td>* <br/> <a href="../EncodedFeature/">EncodedFeature</a></td>
-<td>Known or predicted transcription products from this feature</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -410,7 +414,7 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../source_protocol/">source_protocol</a></td>
+<td><a href="../protocol_id/">protocol_id</a></td>
 <td>0..1 <br/> <a href="../Protocol/">Protocol</a></td>
 <td>ID of the protocol used to generate the feature</td>
 <td>direct</td>
@@ -419,6 +423,24 @@
 <td><a href="../type/">type</a></td>
 <td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>The type of the feature; constrained to be either a term from the Sequence On...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../part_of_contig/">part_of_contig</a></td>
+<td>* <br/> <a href="../Contig/">Contig</a></td>
+<td>The contig that this feature appears on</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../encodes/">encodes</a></td>
+<td>* <br/> <a href="../EncodedFeature/">EncodedFeature</a></td>
+<td>Known or predicted transcription products from this feature</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../has_translation_product/">has_translation_product</a></td>
+<td>* <br/> <a href="../Protein/">Protein</a></td>
+<td>Known or predicted proteins related to this feature</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -458,6 +480,12 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><a href="../Contig/">Contig</a></td>
+<td><a href="../has_features/">has_features</a></td>
+<td>range</td>
+<td><a href="./">Feature</a></td>
+</tr>
 <tr>
 <td><a href="../Protein/">Protein</a></td>
 <td><a href="../encoded_by/">encoded_by</a></td>
@@ -531,15 +559,6 @@ attributes:
     domain_of:
     - Feature
     range: float
-  encodes:
-    name: encodes
-    description: Known or predicted transcription products from this feature.
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    domain_of:
-    - Feature
-    range: EncodedFeature
-    multivalued: true
   end:
     name: end
     description: The start and end coordinates of the feature are given in positive
@@ -559,12 +578,13 @@ attributes:
     name: feature_id
     description: Internal (CDM) unique identifier.
     from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
     identifier: true
     domain_of:
+    - Contig_X_Feature
+    - EncodedFeature_X_Feature
     - Feature
     - FeatureAttributes
-    - FeatureXProtein
+    - Feature_X_Protein
     range: UUID
     required: true
   generated_by:
@@ -615,13 +635,15 @@ attributes:
     domain_of:
     - Feature
     range: uriorcurie
-  source_protocol:
-    name: source_protocol
+  protocol_id:
+    name: protocol_id
     description: ID of the protocol used to generate the feature.
     from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
     domain_of:
+    - Cluster
     - Feature
+    - Measurement
+    - Protocol
     range: Protocol
   type:
     name: type
@@ -636,11 +658,35 @@ attributes:
     - Feature
     - Measurement
     - Sample
-    - HorizontalCoordinate
-    - Observation
-    - VerticalCoordinate
     range: uriorcurie
     pattern: ^SO:\d+$
+  part_of_contig:
+    name: part_of_contig
+    description: The contig that this feature appears on.
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    domain_of:
+    - Feature
+    range: Contig
+    multivalued: true
+  encodes:
+    name: encodes
+    description: Known or predicted transcription products from this feature.
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    domain_of:
+    - Feature
+    range: EncodedFeature
+    multivalued: true
+  has_translation_product:
+    name: has_translation_product
+    description: Known or predicted proteins related to this feature.
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    domain_of:
+    - Feature
+    range: Protein
+    multivalued: true
 
 </code></pre>
 </details>
@@ -679,17 +725,6 @@ attributes:
     domain_of:
     - Feature
     range: float
-  encodes:
-    name: encodes
-    description: Known or predicted transcription products from this feature.
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    alias: encodes
-    owner: Feature
-    domain_of:
-    - Feature
-    range: EncodedFeature
-    multivalued: true
   end:
     name: end
     description: The start and end coordinates of the feature are given in positive
@@ -711,14 +746,15 @@ attributes:
     name: feature_id
     description: Internal (CDM) unique identifier.
     from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
     identifier: true
     alias: feature_id
     owner: Feature
     domain_of:
+    - Contig_X_Feature
+    - EncodedFeature_X_Feature
     - Feature
     - FeatureAttributes
-    - FeatureXProtein
+    - Feature_X_Protein
     range: UUID
     required: true
   generated_by:
@@ -779,15 +815,17 @@ attributes:
     domain_of:
     - Feature
     range: uriorcurie
-  source_protocol:
-    name: source_protocol
+  protocol_id:
+    name: protocol_id
     description: ID of the protocol used to generate the feature.
     from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    alias: source_protocol
+    alias: protocol_id
     owner: Feature
     domain_of:
+    - Cluster
     - Feature
+    - Measurement
+    - Protocol
     range: Protocol
   type:
     name: type
@@ -804,11 +842,41 @@ attributes:
     - Feature
     - Measurement
     - Sample
-    - HorizontalCoordinate
-    - Observation
-    - VerticalCoordinate
     range: uriorcurie
     pattern: ^SO:\d+$
+  part_of_contig:
+    name: part_of_contig
+    description: The contig that this feature appears on.
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    alias: part_of_contig
+    owner: Feature
+    domain_of:
+    - Feature
+    range: Contig
+    multivalued: true
+  encodes:
+    name: encodes
+    description: Known or predicted transcription products from this feature.
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    alias: encodes
+    owner: Feature
+    domain_of:
+    - Feature
+    range: EncodedFeature
+    multivalued: true
+  has_translation_product:
+    name: has_translation_product
+    description: Known or predicted proteins related to this feature.
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    alias: has_translation_product
+    owner: Feature
+    domain_of:
+    - Feature
+    range: Protein
+    multivalued: true
   hash:
     name: hash
     description: A hash value generated from one or more object attributes that serves
@@ -839,6 +907,7 @@ attributes:
     owner: Feature
     domain_of:
     - NamedThing
+    - Cluster
     - Event
     - Experiment
     - Identifier

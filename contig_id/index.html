@@ -302,19 +302,6 @@
     Identifier and Mapping Information
   </a>
   
-    <nav class="md-nav" aria-label="Identifier and Mapping Information">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#schema-source" class="md-nav__link">
-    Schema Source
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -352,7 +339,6 @@
 
 
 <h1 id="slot-contig_id">Slot: contig_id</h1>
-<p><em>Internal (CDM) unique identifier.</em></p>
 <p>URI: <a href="http://kbase.github.io/cdm-schema/contig_id">kb_cdm:contig_id</a></p>
 <!-- no inheritance hierarchy -->
 
@@ -367,6 +353,16 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../ContigXFeature/">ContigXFeature</a></td>
+<td>Captures the relationship between a contig and a feature; equivalent to featu...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ContigXContigset/">ContigXContigset</a></td>
+<td>Captures the relationship between a contig and a contigset; equivalent to con...</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../Contig/">Contig</a></td>
 <td>A contig (derived from the word "contiguous") is a set of DNA segments or seq...</td>
 <td>no</td>
@@ -375,18 +371,9 @@
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>
-<p>Range: <a href="../UUID/">UUID</a></p>
-</li>
-<li>
-<p>Required: True</p>
-</li>
+<li>Range: <a href="../String/">String</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="schema-source">Schema Source</h3>
-<ul>
-<li>from schema: https://github.com/kbase/cdm-schema</li>
-</ul>
 <h2 id="mappings">Mappings</h2>
 <table>
 <thead>
@@ -410,16 +397,12 @@
 <details>
 
 <pre><code class="language-yaml">name: contig_id
-description: Internal (CDM) unique identifier.
-from_schema: https://github.com/kbase/cdm-schema
-rank: 1000
-identifier: true
 alias: contig_id
-owner: Contig
 domain_of:
 - Contig
-range: UUID
-required: true
+- Contig_X_Contigset
+- Contig_X_Feature
+range: string
 
 </code></pre>
 

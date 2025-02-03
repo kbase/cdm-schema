@@ -368,7 +368,7 @@
 </tr>
 <tr>
 <td><a href="../Feature/">Feature</a></td>
-<td><a href="../source_protocol/">source_protocol</a></td>
+<td><a href="../protocol_id/">protocol_id</a></td>
 <td>range</td>
 <td><a href="./">Protocol</a></td>
 </tr>
@@ -381,42 +381,6 @@
 <tr>
 <td><a href="../ProcessedMeasurement/">ProcessedMeasurement</a></td>
 <td><a href="../protocol_id/">protocol_id</a></td>
-<td>range</td>
-<td><a href="./">Protocol</a></td>
-</tr>
-<tr>
-<td><a href="../MonitoringFeature/">MonitoringFeature</a></td>
-<td><a href="../generated_by/">generated_by</a></td>
-<td>range</td>
-<td><a href="./">Protocol</a></td>
-</tr>
-<tr>
-<td><a href="../MonitoringFeature/">MonitoringFeature</a></td>
-<td><a href="../source_protocol/">source_protocol</a></td>
-<td>range</td>
-<td><a href="./">Protocol</a></td>
-</tr>
-<tr>
-<td><a href="../SamplingFeature/">SamplingFeature</a></td>
-<td><a href="../generated_by/">generated_by</a></td>
-<td>range</td>
-<td><a href="./">Protocol</a></td>
-</tr>
-<tr>
-<td><a href="../SamplingFeature/">SamplingFeature</a></td>
-<td><a href="../source_protocol/">source_protocol</a></td>
-<td>range</td>
-<td><a href="./">Protocol</a></td>
-</tr>
-<tr>
-<td><a href="../SpatialSamplingFeature/">SpatialSamplingFeature</a></td>
-<td><a href="../generated_by/">generated_by</a></td>
-<td>range</td>
-<td><a href="./">Protocol</a></td>
-</tr>
-<tr>
-<td><a href="../SpatialSamplingFeature/">SpatialSamplingFeature</a></td>
-<td><a href="../source_protocol/">source_protocol</a></td>
 <td>range</td>
 <td><a href="./">Protocol</a></td>
 </tr>
@@ -487,7 +451,8 @@ attributes:
     from_schema: https://github.com/kbase/cdm-schema
     identifier: true
     domain_of:
-    - FeatureXProtein
+    - Cluster
+    - Feature
     - Measurement
     - Protocol
     range: UUID
@@ -557,7 +522,8 @@ attributes:
     alias: protocol_id
     owner: Protocol
     domain_of:
-    - FeatureXProtein
+    - Cluster
+    - Feature
     - Measurement
     - Protocol
     range: UUID
@@ -602,6 +568,7 @@ attributes:
     owner: Protocol
     domain_of:
     - NamedThing
+    - Cluster
     - Event
     - Experiment
     - Identifier

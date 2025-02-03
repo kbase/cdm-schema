@@ -353,28 +353,23 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../FeatureAttributes/">FeatureAttributes</a></td>
-<td>Additional attributes of a feature, parsed from column 9 of a GFF file</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../SamplingFeature/">SamplingFeature</a></td>
-<td>A feature where sampling is conducted</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../SpatialSamplingFeature/">SpatialSamplingFeature</a></td>
-<td>A spatially-defined feature where sampling is conducted</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../MonitoringFeature/">MonitoringFeature</a></td>
-<td>A feature upon which monitoring is made</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../FeatureXProtein/">FeatureXProtein</a></td>
 <td>Captures the relationship between a feature and a protein; equivalent to feat...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../EncodedFeatureXFeature/">EncodedFeatureXFeature</a></td>
+<td>Captures the relationship between a feature and its transcription product</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ContigXFeature/">ContigXFeature</a></td>
+<td>Captures the relationship between a contig and a feature; equivalent to featu...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../FeatureAttributes/">FeatureAttributes</a></td>
+<td>Additional attributes of a feature, parsed from column 9 of a GFF file</td>
 <td>no</td>
 </tr>
 <tr>
@@ -414,9 +409,11 @@
 <pre><code class="language-yaml">name: feature_id
 alias: feature_id
 domain_of:
+- Contig_X_Feature
+- EncodedFeature_X_Feature
 - Feature
 - FeatureAttributes
-- FeatureXProtein
+- Feature_X_Protein
 range: string
 
 </code></pre>

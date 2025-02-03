@@ -229,6 +229,8 @@
         click Project href "../Project"
       NamedThingWithId &lt;|-- Protocol
         click Protocol href "../Protocol"
+      NamedThingWithId &lt;|-- ProtocolParticipant
+        click ProtocolParticipant href "../ProtocolParticipant"
       NamedThingWithId &lt;|-- Sample
         click Sample href "../Sample"
 
@@ -262,6 +264,7 @@
 <li><a href="../UniqueNamedThing/">UniqueNamedThing</a></li>
 <li><a href="../Project/">Project</a></li>
 <li><a href="../Protocol/">Protocol</a></li>
+<li><a href="../ProtocolParticipant/">ProtocolParticipant</a></li>
 <li><a href="../Sample/">Sample</a></li>
 </ul>
 </li>
@@ -373,6 +376,7 @@ attributes:
     owner: NamedThingWithId
     domain_of:
     - NamedThing
+    - Cluster
     - Event
     - Experiment
     - Identifier

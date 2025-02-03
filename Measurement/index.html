@@ -385,7 +385,8 @@ attributes:
     description: The ID of the protocol used to generate the measurement.
     from_schema: https://github.com/kbase/cdm-schema
     domain_of:
-    - FeatureXProtein
+    - Cluster
+    - Feature
     - Measurement
     - Protocol
     range: Protocol
@@ -408,9 +409,6 @@ attributes:
     - Feature
     - Measurement
     - Sample
-    - HorizontalCoordinate
-    - Observation
-    - VerticalCoordinate
   quality:
     name: quality
     description: The quality of the measurement, indicating the confidence that one
@@ -429,10 +427,6 @@ attributes:
     domain_of:
     - Measurement
     - MeasurementSet
-    - ResultListTVP
-    - ResultPointFloat
-    - TimeValuePair
-    - VerticalCoordinate
   unit:
     name: unit
     description: Units used in the measurement.
@@ -471,7 +465,8 @@ attributes:
     alias: protocol_id
     owner: Measurement
     domain_of:
-    - FeatureXProtein
+    - Cluster
+    - Feature
     - Measurement
     - Protocol
     range: Protocol
@@ -498,9 +493,6 @@ attributes:
     - Feature
     - Measurement
     - Sample
-    - HorizontalCoordinate
-    - Observation
-    - VerticalCoordinate
     range: string
   quality:
     name: quality
@@ -525,10 +517,6 @@ attributes:
     domain_of:
     - Measurement
     - MeasurementSet
-    - ResultListTVP
-    - ResultPointFloat
-    - TimeValuePair
-    - VerticalCoordinate
     range: string
   unit:
     name: unit
@@ -549,6 +537,7 @@ attributes:
     owner: Measurement
     domain_of:
     - NamedThing
+    - Cluster
     - Event
     - Experiment
     - Identifier

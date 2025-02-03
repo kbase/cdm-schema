@@ -371,6 +371,7 @@ attributes:
     from_schema: https://github.com/kbase/cdm-schema
     domain_of:
     - NamedThing
+    - Cluster
     - Event
     - Experiment
     - Identifier
@@ -382,8 +383,8 @@ attributes:
     name: environmental_context_id
     description: The environmental context for this event.
     from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
     domain_of:
+    - EnvironmentalContext
     - Event
     range: EnvironmentalContext
   event_id:
@@ -403,7 +404,6 @@ attributes:
     rank: 1000
     domain_of:
     - Event
-    - DataSource
 
 </code></pre>
 </details>
@@ -448,6 +448,7 @@ attributes:
     owner: Event
     domain_of:
     - NamedThing
+    - Cluster
     - Event
     - Experiment
     - Identifier
@@ -460,10 +461,10 @@ attributes:
     name: environmental_context_id
     description: The environmental context for this event.
     from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
     alias: environmental_context_id
     owner: Event
     domain_of:
+    - EnvironmentalContext
     - Event
     range: EnvironmentalContext
   event_id:
@@ -487,7 +488,6 @@ attributes:
     owner: Event
     domain_of:
     - Event
-    - DataSource
     range: string
   names:
     name: names

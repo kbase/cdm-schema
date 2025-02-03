@@ -227,8 +227,6 @@
         click Experiment href "../Experiment"
       NamedThing &lt;|-- Measurement
         click Measurement href "../Measurement"
-      NamedThing &lt;|-- ProtocolParticipant
-        click ProtocolParticipant href "../ProtocolParticipant"
 
       NamedThing : description
 
@@ -250,7 +248,6 @@
 <li><a href="../Event/">Event</a></li>
 <li><a href="../Experiment/">Experiment</a></li>
 <li><a href="../Measurement/">Measurement</a></li>
-<li><a href="../ProtocolParticipant/">ProtocolParticipant</a></li>
 </ul>
 </li>
 </ul>
@@ -319,6 +316,7 @@ attributes:
     rank: 1000
     domain_of:
     - NamedThing
+    - Cluster
     - Event
     - Experiment
     - Identifier
@@ -354,6 +352,7 @@ attributes:
     owner: NamedThing
     domain_of:
     - NamedThing
+    - Cluster
     - Event
     - Experiment
     - Identifier

@@ -353,13 +353,18 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../Protein/">Protein</a></td>
-<td>Proteins are large, complex molecules made up of one or more long, folded cha...</td>
+<td><a href="../FeatureXProtein/">FeatureXProtein</a></td>
+<td>Captures the relationship between a feature and a protein; equivalent to feat...</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../FeatureXProtein/">FeatureXProtein</a></td>
-<td>Captures the relationship between a feature and a protein; equivalent to feat...</td>
+<td><a href="../ClusterXProtein/">ClusterXProtein</a></td>
+<td>Relationship representing membership of a cluster</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Protein/">Protein</a></td>
+<td>Proteins are large, complex molecules made up of one or more long, folded cha...</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -394,7 +399,8 @@
 <pre><code class="language-yaml">name: protein_id
 alias: protein_id
 domain_of:
-- FeatureXProtein
+- Cluster_X_Protein
+- Feature_X_Protein
 - Protein
 range: string
 

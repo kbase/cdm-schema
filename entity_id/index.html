@@ -353,6 +353,11 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../DataSource/">DataSource</a></td>
+<td>The source from which a given database entity was derived</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../Name/">Name</a></td>
 <td>The name or label for an entity</td>
 <td>no</td>
@@ -394,6 +399,7 @@
 <pre><code class="language-yaml">name: entity_id
 alias: entity_id
 domain_of:
+- DataSource
 - Identifier
 - Name
 range: string

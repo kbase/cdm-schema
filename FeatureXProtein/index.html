@@ -206,7 +206,7 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
 <h1 id="class-featurexprotein">Class: FeatureXProtein</h1>
-<p><em>Captures the relationship between a feature and a protein; equivalent to feature encodes protein. An additional protocol ID may be specified to annotate the protocol used to elucidate or predict the relationship.</em></p>
+<p><em>Captures the relationship between a feature and a protein; equivalent to feature encodes protein.</em></p>
 <p>URI: <a href="http://kbase.github.io/cdm-schema/FeatureXProtein">kb_cdm:FeatureXProtein</a></p>
 <div class="mermaid"> classDiagram
     class FeatureXProtein
@@ -214,8 +214,6 @@
       FeatureXProtein : feature_id
 
       FeatureXProtein : protein_id
-
-      FeatureXProtein : protocol_id
 
 
 </div>
@@ -241,12 +239,6 @@
 <td><a href="../protein_id/">protein_id</a></td>
 <td>1 <br/> <a href="../UUID/">UUID</a></td>
 <td>Internal (CDM) unique identifier for a protein</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../protocol_id/">protocol_id</a></td>
-<td>0..1 <br/> <a href="../UUID/">UUID</a></td>
-<td>Internal (CDM) unique identifier for a protocol</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -279,10 +271,9 @@
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
 <h3 id="direct">Direct</h3>
 <details>
-<pre><code class="language-yaml">name: FeatureXProtein
+<pre><code class="language-yaml">name: Feature_X_Protein
 description: Captures the relationship between a feature and a protein; equivalent
-  to feature encodes protein. An additional protocol ID may be specified to annotate
-  the protocol used to elucidate or predict the relationship.
+  to feature encodes protein.
 from_schema: https://github.com/kbase/cdm-schema
 attributes:
   feature_id:
@@ -290,40 +281,32 @@ attributes:
     description: Internal (CDM) unique identifier for a feature.
     from_schema: https://github.com/kbase/cdm-schema
     domain_of:
+    - Contig_X_Feature
+    - EncodedFeature_X_Feature
     - Feature
     - FeatureAttributes
-    - FeatureXProtein
+    - Feature_X_Protein
     range: UUID
     required: true
   protein_id:
     name: protein_id
     description: Internal (CDM) unique identifier for a protein.
     from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
     domain_of:
-    - FeatureXProtein
+    - Cluster_X_Protein
+    - Feature_X_Protein
     - Protein
     range: UUID
     required: true
-  protocol_id:
-    name: protocol_id
-    description: Internal (CDM) unique identifier for a protocol.
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    domain_of:
-    - FeatureXProtein
-    - Measurement
-    - Protocol
-    range: UUID
+represents_relationship: true
 
 </code></pre>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
-<pre><code class="language-yaml">name: FeatureXProtein
+<pre><code class="language-yaml">name: Feature_X_Protein
 description: Captures the relationship between a feature and a protein; equivalent
-  to feature encodes protein. An additional protocol ID may be specified to annotate
-  the protocol used to elucidate or predict the relationship.
+  to feature encodes protein.
 from_schema: https://github.com/kbase/cdm-schema
 attributes:
   feature_id:
@@ -331,37 +314,28 @@ attributes:
     description: Internal (CDM) unique identifier for a feature.
     from_schema: https://github.com/kbase/cdm-schema
     alias: feature_id
-    owner: FeatureXProtein
+    owner: Feature_X_Protein
     domain_of:
+    - Contig_X_Feature
+    - EncodedFeature_X_Feature
     - Feature
     - FeatureAttributes
-    - FeatureXProtein
+    - Feature_X_Protein
     range: UUID
     required: true
   protein_id:
     name: protein_id
     description: Internal (CDM) unique identifier for a protein.
     from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
     alias: protein_id
-    owner: FeatureXProtein
+    owner: Feature_X_Protein
     domain_of:
-    - FeatureXProtein
+    - Cluster_X_Protein
+    - Feature_X_Protein
     - Protein
     range: UUID
     required: true
-  protocol_id:
-    name: protocol_id
-    description: Internal (CDM) unique identifier for a protocol.
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    alias: protocol_id
-    owner: FeatureXProtein
-    domain_of:
-    - FeatureXProtein
-    - Measurement
-    - Protocol
-    range: UUID
+represents_relationship: true
 
 </code></pre>
 </details>

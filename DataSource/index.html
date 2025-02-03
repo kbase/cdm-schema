@@ -158,11 +158,6 @@
   </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#usages">
-    Usages
-  </a>
-</li>
-<li class="md-nav__item">
 <a class="md-nav__link" href="#identifier-and-mapping-information">
     Identifier and Mapping Information
   </a>
@@ -211,20 +206,20 @@
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"></path></svg>
 </a>
 <h1 id="class-datasource">Class: DataSource</h1>
-<p><em>Source for data.</em></p>
+<p><em>The source from which a given database entity was derived.</em></p>
 <p>URI: <a href="http://kbase.github.io/cdm-schema/DataSource">kb_cdm:DataSource</a></p>
 <div class="mermaid"> classDiagram
     class DataSource
     click DataSource href "../DataSource"
-      DataSource : credentials
+      DataSource : created
 
-      DataSource : id
+      DataSource : entity_id
 
-      DataSource : id_prefix
+      DataSource : entity_type
 
-      DataSource : location
+      DataSource : provenance
 
-      DataSource : name
+      DataSource : updated
 
 
 </div>
@@ -241,53 +236,34 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../credentials/">credentials</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td><a href="../entity_id/">entity_id</a></td>
+<td>1 <br/> <a href="../UUID/">UUID</a></td>
+<td>Internal (CDM) unique identifier</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../id/">id</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td><a href="../entity_type/">entity_type</a></td>
+<td>1 <br/> <a href="../String/">String</a></td>
+<td>The class of the entity</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../id_prefix/">id_prefix</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Prefix added to all data source IDs</td>
+<td><a href="../created/">created</a></td>
+<td>1 <br/> <a href="../Datetime/">Datetime</a></td>
+<td>When the entity was created</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../location/">location</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td><a href="../updated/">updated</a></td>
+<td>1 <br/> <a href="../Datetime/">Datetime</a></td>
+<td>When the entity was updated</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../name/">name</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td><a href="../provenance/">provenance</a></td>
+<td>1 <br/> <a href="../String/">String</a></td>
+<td>How this entity was derived and added to the database</td>
 <td>direct</td>
-</tr>
-</tbody>
-</table>
-<h2 id="usages">Usages</h2>
-<table>
-<thead>
-<tr>
-<th>used by</th>
-<th>used in</th>
-<th>type</th>
-<th>used</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../AttributeMapping/">AttributeMapping</a></td>
-<td><a href="../datasource/">datasource</a></td>
-<td>range</td>
-<td><a href="./">DataSource</a></td>
 </tr>
 </tbody>
 </table>
@@ -320,97 +296,122 @@
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: DataSource
-description: Source for data.
+description: The source from which a given database entity was derived.
 from_schema: https://github.com/kbase/cdm-schema
 attributes:
-  credentials:
-    name: credentials
+  entity_id:
+    name: entity_id
+    description: Internal (CDM) unique identifier.
     from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
+    identifier: true
     domain_of:
     - DataSource
-  id:
-    name: id
-    from_schema: https://github.com/kbase/cdm-schema
-    domain_of:
-    - Base
-    - DataSource
-    - Observation
-  id_prefix:
-    name: id_prefix
-    description: Prefix added to all data source IDs
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    domain_of:
-    - DataSource
-  location:
-    name: location
-    from_schema: https://github.com/kbase/cdm-schema
-    domain_of:
-    - Event
-    - DataSource
-  name:
-    name: name
-    from_schema: https://github.com/kbase/cdm-schema
-    domain_of:
+    - Identifier
     - Name
+    range: UUID
+    required: true
+  entity_type:
+    name: entity_type
+    description: The class of the entity. Must be a valid CDM class.
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    domain_of:
     - DataSource
+    required: true
+  created:
+    name: created
+    description: When the entity was created.
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    domain_of:
+    - DataSource
+    range: datetime
+    required: true
+  updated:
+    name: updated
+    description: When the entity was updated.
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    domain_of:
+    - DataSource
+    range: datetime
+    required: true
+  provenance:
+    name: provenance
+    description: How this entity was derived and added to the database.
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    domain_of:
+    - DataSource
+    required: true
 
 </code></pre>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: DataSource
-description: Source for data.
+description: The source from which a given database entity was derived.
 from_schema: https://github.com/kbase/cdm-schema
 attributes:
-  credentials:
-    name: credentials
+  entity_id:
+    name: entity_id
+    description: Internal (CDM) unique identifier.
     from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
-    alias: credentials
+    identifier: true
+    alias: entity_id
     owner: DataSource
     domain_of:
     - DataSource
-    range: string
-  id:
-    name: id
-    from_schema: https://github.com/kbase/cdm-schema
-    alias: id
-    owner: DataSource
-    domain_of:
-    - Base
-    - DataSource
-    - Observation
-    range: string
-  id_prefix:
-    name: id_prefix
-    description: Prefix added to all data source IDs
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    alias: id_prefix
-    owner: DataSource
-    domain_of:
-    - DataSource
-    range: string
-  location:
-    name: location
-    from_schema: https://github.com/kbase/cdm-schema
-    alias: location
-    owner: DataSource
-    domain_of:
-    - Event
-    - DataSource
-    range: string
-  name:
-    name: name
-    from_schema: https://github.com/kbase/cdm-schema
-    alias: name
-    owner: DataSource
-    domain_of:
+    - Identifier
     - Name
+    range: UUID
+    required: true
+  entity_type:
+    name: entity_type
+    description: The class of the entity. Must be a valid CDM class.
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    alias: entity_type
+    owner: DataSource
+    domain_of:
     - DataSource
     range: string
+    required: true
+  created:
+    name: created
+    description: When the entity was created.
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    alias: created
+    owner: DataSource
+    domain_of:
+    - DataSource
+    range: datetime
+    required: true
+  updated:
+    name: updated
+    description: When the entity was updated.
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    alias: updated
+    owner: DataSource
+    domain_of:
+    - DataSource
+    range: datetime
+    required: true
+  provenance:
+    name: provenance
+    description: How this entity was derived and added to the database.
+    from_schema: https://github.com/kbase/cdm-schema
+    rank: 1000
+    alias: provenance
+    owner: DataSource
+    domain_of:
+    - DataSource
+    range: string
+    required: true
 
 </code></pre>
 </details>

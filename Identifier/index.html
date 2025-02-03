@@ -354,25 +354,13 @@
 <td><a href="./">Identifier</a></td>
 </tr>
 <tr>
+<td><a href="../ProtocolParticipant/">ProtocolParticipant</a></td>
+<td><a href="../identifiers/">identifiers</a></td>
+<td>range</td>
+<td><a href="./">Identifier</a></td>
+</tr>
+<tr>
 <td><a href="../Sample/">Sample</a></td>
-<td><a href="../identifiers/">identifiers</a></td>
-<td>range</td>
-<td><a href="./">Identifier</a></td>
-</tr>
-<tr>
-<td><a href="../MonitoringFeature/">MonitoringFeature</a></td>
-<td><a href="../identifiers/">identifiers</a></td>
-<td>range</td>
-<td><a href="./">Identifier</a></td>
-</tr>
-<tr>
-<td><a href="../SamplingFeature/">SamplingFeature</a></td>
-<td><a href="../identifiers/">identifiers</a></td>
-<td>range</td>
-<td><a href="./">Identifier</a></td>
-</tr>
-<tr>
-<td><a href="../SpatialSamplingFeature/">SpatialSamplingFeature</a></td>
 <td><a href="../identifiers/">identifiers</a></td>
 <td>range</td>
 <td><a href="./">Identifier</a></td>
@@ -418,6 +406,7 @@ attributes:
     from_schema: https://github.com/kbase/cdm-schema
     domain_of:
     - NamedThing
+    - Cluster
     - Event
     - Experiment
     - Identifier
@@ -429,8 +418,8 @@ attributes:
     name: entity_id
     description: Internal (CDM) unique identifier for the entity that has the identifiers.
     from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
     domain_of:
+    - DataSource
     - Identifier
     - Name
     range: UUID
@@ -444,6 +433,7 @@ attributes:
     from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     slot_uri: schema:identifier
+    identifier: true
     domain_of:
     - Identifier
     range: uriorcurie
@@ -479,6 +469,7 @@ attributes:
     owner: Identifier
     domain_of:
     - NamedThing
+    - Cluster
     - Event
     - Experiment
     - Identifier
@@ -491,10 +482,10 @@ attributes:
     name: entity_id
     description: Internal (CDM) unique identifier for the entity that has the identifiers.
     from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
     alias: entity_id
     owner: Identifier
     domain_of:
+    - DataSource
     - Identifier
     - Name
     range: UUID
@@ -508,6 +499,7 @@ attributes:
     from_schema: https://github.com/kbase/cdm-schema
     rank: 1000
     slot_uri: schema:identifier
+    identifier: true
     alias: identifier
     owner: Identifier
     domain_of:

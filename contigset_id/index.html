@@ -302,19 +302,6 @@
     Identifier and Mapping Information
   </a>
   
-    <nav class="md-nav" aria-label="Identifier and Mapping Information">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#schema-source" class="md-nav__link">
-    Schema Source
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -352,7 +339,6 @@
 
 
 <h1 id="slot-contigset_id">Slot: contigset_id</h1>
-<p><em>Internal (CDM) unique identifier.</em></p>
 <p>URI: <a href="http://kbase.github.io/cdm-schema/contigset_id">kb_cdm:contigset_id</a></p>
 <!-- no inheritance hierarchy -->
 
@@ -367,31 +353,27 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../Contigset/">Contigset</a></td>
-<td>A set of individual, overlapping contigs that represent the complete sequence...</td>
+<td><a href="../Genome/">Genome</a></td>
+<td>A contigset with a completeness score of greater than 90% and a contamination...</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Genome/">Genome</a></td>
-<td>A contigset with a completeness score of greater than 90% and a contamination...</td>
+<td><a href="../ContigXContigset/">ContigXContigset</a></td>
+<td>Captures the relationship between a contig and a contigset; equivalent to con...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Contigset/">Contigset</a></td>
+<td>A set of individual, overlapping contigs that represent the complete sequence...</td>
 <td>no</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>
-<p>Range: <a href="../UUID/">UUID</a></p>
-</li>
-<li>
-<p>Required: True</p>
-</li>
+<li>Range: <a href="../String/">String</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="schema-source">Schema Source</h3>
-<ul>
-<li>from schema: https://github.com/kbase/cdm-schema</li>
-</ul>
 <h2 id="mappings">Mappings</h2>
 <table>
 <thead>
@@ -415,16 +397,11 @@
 <details>
 
 <pre><code class="language-yaml">name: contigset_id
-description: Internal (CDM) unique identifier.
-from_schema: https://github.com/kbase/cdm-schema
-rank: 1000
-identifier: true
 alias: contigset_id
-owner: Contigset
 domain_of:
+- Contig_X_Contigset
 - Contigset
-range: UUID
-required: true
+range: string
 
 </code></pre>
 
