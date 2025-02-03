@@ -7,7 +7,7 @@ version: 0.0.1
 
 imports:
   - linkml:types
-  - basin_3d_schema
+  # - basin_3d_schema
   # - rdf
   # - owl
   # - omo
@@ -80,6 +80,34 @@ classes:
     description: Represents an entity with a hash value generated from combining its unique attributes.
     is_a: NamedThingWithId
 
+  Cluster:
+    attributes:
+      cluster_id:
+        description: Internal (CDM) unique identifier.
+        identifier: true
+        range: UUID
+        required: true
+      description:
+        description: Description of the cluster.
+      protocol_id:
+        description: Protocol used to generate the cluster.
+    description: Represents an individual execution of a clustering protocol. See the Cluster_X_Protein class for clustering results.
+
+  Cluster_X_Protein:
+    attributes:
+      cluster_id:
+        range: UUID
+        required: true
+        description: Internal (CDM) unique identifier.
+      protein_id:
+        range: UUID
+        required: true
+        description: Internal (CDM) unique identifier for a protein within a cluster.
+      score:
+        range: float
+        description: Output from clustering protocol.
+    description: Relationship representing membership of a cluster. An optional score can be assigned to each cluster member.
+
   Contig:
     attributes:
       contig_id:
@@ -93,10 +121,44 @@ classes:
       length:
         description: Length of the contig in bp.
         range: integer
+      part_of_contigset:
+        description: Contigset that this contig is part of.
+        multivalued: true
+        range: Contigset
+      has_features:
+        description: Features that are part of this contig.
+        multivalued: true
+        range: Feature
     description: A contig (derived from the word "contiguous") is a set of DNA
       segments or sequences that overlap in a way that provides a contiguous
       representation of a genomic region. A contig should not contain any gaps.
     is_a: UniqueNamedThing
+
+  Contig_X_Contigset:
+    represents_relationship: true
+    attributes:
+      contig_id:
+        description: Internal (CDM) unique identifier for a contig.
+        range: UUID
+        required: true
+      contigset_id:
+        description: Internal (CDM) unique identifier for a contigset.
+        range: UUID
+        required: true
+    description: Captures the relationship between a contig and a contigset; equivalent to contig part-of contigset.
+
+  Contig_X_Feature:
+    represents_relationship: true
+    attributes:
+      contig_id:
+        description: Internal (CDM) unique identifier for a contig.
+        range: UUID
+        required: true
+      feature_id:
+        description: Internal (CDM) unique identifier for a feature.
+        range: UUID
+        required: true
+    description: Captures the relationship between a contig and a feature; equivalent to feature part-of contig.
 
   Contigset:
     aliases:
@@ -127,10 +189,6 @@ classes:
       contigset_type:
         description: The type of contig collection.
         range: ContigsetType
-      # contigs:
-      #   description: The contigs in this contigset.
-      #   multivalued: true
-      #   range: Contig
       ctg_L50:
         description: Given a set of contigs, the L50 is defined as the sequence length
           of the shortest contig at 50% of the total contigset length
@@ -220,6 +278,10 @@ classes:
         description: Powersum of all scaffolds is the same as logsum except that it uses
           the sum of (length*(length^P)) for some power P (default P=0.25).
         range: float
+      has_contigs:
+        description: Contigs that are part of this contigset.
+        multivalued: true
+        range: Contig
     description: A set of individual, overlapping contigs that represent the
       complete sequenced genome of an organism.
     is_a: UniqueNamedThing
@@ -365,6 +427,30 @@ classes:
   #         name:
   #           required: true
 
+  DataSource:
+    attributes:
+      entity_id:
+        description: Internal (CDM) unique identifier.
+        identifier: true
+        range: UUID
+        required: true
+      entity_type:
+        # range: valid CDM classes
+        description: The class of the entity. Must be a valid CDM class.
+        required: true
+      created:
+        description: When the entity was created.
+        required: true
+        range: datetime
+      updated:
+        description: When the entity was updated.
+        required: true
+        range: datetime
+      provenance:
+        description: How this entity was derived and added to the database.
+        required: true
+    description: The source from which a given database entity was derived.
+
   EncodedFeature:
     attributes:
       encoded_feature_id:
@@ -372,9 +458,6 @@ classes:
         identifier: true
         range: UUID
         required: true
-      # encoded_by:
-      #   description: The feature that encodes this EncodedFeature.
-      #   range: Feature
       has_stop_codon:
         description: Captures whether or not the sequence includes a stop coordinates.
         range: boolean
@@ -383,20 +466,35 @@ classes:
     description: An entity generated from a feature, such as a transcript.
     is_a: UniqueNamedThing
 
+
+  EncodedFeature_X_Feature:
+    attributes:
+      encoded_feature_id:
+        description: Internal (CDM) unique identifier.
+        range: UUID
+        required: true
+      feature_id:
+        description: Internal (CDM) unique identifier.
+        range: UUID
+        required: true
+    description: Captures the relationship between a feature and its transcription product.
+
   EnvironmentalContext:
     description: The environmental context for the event.
     abstract: true
     is_a: UniqueNamedThing
+    attributes:
+      environmental_context_id:
+        description: Internal (CDM) unique identifier.
+        identifier: true
+        range: UUID
+        required: true
+
 
   GoldEnvironmentalContext:
     description: Environmental context, described using JGI's five level system.
     is_a: EnvironmentalContext
     attributes:
-      gold_environmental_context_id:
-        description: Internal (CDM) unique identifier.
-        identifier: true
-        range: UUID
-        required: true
       ecosystem:
         description: JGI GOLD descriptor representing the top level ecosystem categorization.
       ecosystem_category:
@@ -407,6 +505,11 @@ classes:
         description: JGI GOLD descriptor representing the ecosystem type. May be "Unclassified".
       specific_ecosystem:
         description: JGI GOLD descriptor representing the most specific level of ecosystem categorization. May be "Unclassified".
+      # gold_environmental_context_id:
+      #   description: Internal (CDM) unique identifier.
+      #   identifier: true
+      #   range: UUID
+      #   required: true
 
   MixsEnvironmentalContext:
     description: Environmental context, described using the MiXS convention of broad and local environment, plus the medium.
@@ -426,7 +529,7 @@ classes:
         aliases:
           - broad-scale environmental context
         string_serialization: '{termLabel} {[termID]}'
-        slot_uri: MIXS:0000012
+        slot_uri: mixs:0000012
         # range: ControlledIdentifiedTermValue
         range: uriorcurie
         multivalued: false
@@ -435,7 +538,7 @@ classes:
           expected_value:
             tag: expected_value
             value: Environmental entities having causal influences upon the entity at time of sampling.
-          tooltip: The specific environmental entities or features near the sample or specimen that significantly influence its characteristics or composition. These entities are typically smaller in scale than the broad environmental context. Values for this field should be countable, material nouns and must be chosen from subclasses of BFO:0000040 (material entity) that appear in the Environment Ontology (ENVO). For host-associated or plant-associated samples, use terms from the UBERON or Plant Ontology to describe specific anatomical structures or plant parts.
+          tooltip: The specific environmental  entities or features near the sample or specimen that significantly influence its characteristics or composition. These entities are typically smaller in scale than the broad environmental context. Values for this field should be countable, material nouns and must be chosen from subclasses of BFO:0000040 (material entity) that appear in the Environment Ontology (ENVO). For host-associated or plant-associated samples, use terms from the UBERON or Plant Ontology to describe specific anatomical structures or plant parts.
         description: "Report the entity or entities which are in the sample or specimen's local vicinity and which you believe have significant causal influences on your sample or specimen. We recommend using EnvO terms which are of smaller spatial grain than your entry for env_broad_scale. Terms, such as anatomical sites, from other OBO Library ontologies which interoperate with EnvO (e.g. UBERON) are accepted in this field. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS."
         title: local environmental context
         examples:
@@ -444,7 +547,7 @@ classes:
         aliases:
           - local environmental context
         string_serialization: '{termLabel} {[termID]}'
-        slot_uri: MIXS:0000013
+        slot_uri: mixs:0000013
         # range: ControlledIdentifiedTermValue
         range: uriorcurie
         multivalued: false
@@ -462,15 +565,15 @@ classes:
         aliases:
           - environmental medium
         string_serialization: '{termLabel} {[termID]}'
-        slot_uri: MIXS:0000014
+        slot_uri: mixs:0000014
         # range: ControlledIdentifiedTermValue
         range: uriorcurie
         multivalued: false
-      mixs_environmental_context_id:
-        description: Internal (CDM) unique identifier.
-        identifier: true
-        range: UUID
-        required: true
+      # mixs_environmental_context_id:
+      #   description: Internal (CDM) unique identifier.
+      #   identifier: true
+      #   range: UUID
+      #   required: true
 
   Event:
     attributes:
@@ -531,10 +634,6 @@ classes:
         description: The 'score' of the feature. The semantics of this field are
           ill-defined. E-values should be used for sequence similarity features.
         range: float
-      encodes:
-        description: Known or predicted transcription products from this feature.
-        multivalued: true
-        range: EncodedFeature
       end:
         description: The start and end coordinates of the feature are given in positive
           1-based int coordinates, relative to the landmark given in column one.
@@ -578,7 +677,7 @@ classes:
         # FIXME: should be an organisation from the ontology tables
         # range: Organization
         range: uriorcurie
-      source_protocol:
+      protocol_id:
         description: ID of the protocol used to generate the feature.
         range: Protocol
       type:
@@ -589,6 +688,18 @@ classes:
           (SO:0000110) or an is_a child of it.
         pattern: ^SO:\d+$
         range: uriorcurie
+      part_of_contig:
+        description: The contig that this feature appears on.
+        multivalued: true
+        range: Contig
+      encodes:
+        description: Known or predicted transcription products from this feature.
+        multivalued: true
+        range: EncodedFeature
+      has_translation_product:
+        description: Known or predicted proteins related to this feature.
+        multivalued: true
+        range: Protein
     comments:
       - corresponds to an entry in GFF3
     description: A feature localized to an interval along a contig.
@@ -609,7 +720,8 @@ classes:
         description: The value of the attribute.
     description: Additional attributes of a feature, parsed from column 9 of a GFF file.
 
-  FeatureXProtein:
+  Feature_X_Protein:
+    represents_relationship: true
     attributes:
       feature_id:
         description: Internal (CDM) unique identifier for a feature.
@@ -619,10 +731,7 @@ classes:
         description: Internal (CDM) unique identifier for a protein.
         range: UUID
         required: true
-      protocol_id:
-        description: Internal (CDM) unique identifier for a protocol.
-        range: UUID
-    description: Captures the relationship between a feature and a protein; equivalent to feature encodes protein. An additional protocol ID may be specified to annotate the protocol used to elucidate or predict the relationship.
+    description: Captures the relationship between a feature and a protein; equivalent to feature encodes protein.
 
   Genome:
     description: A contigset with a completeness score of greater than 90% and a
@@ -639,6 +748,7 @@ classes:
         range: UUID
         required: true
       identifier:
+        identifier: true
         description: Fully-qualifier URL or CURIE used as an identifier for an entity.
         range: uriorcurie
         required: true
@@ -699,6 +809,7 @@ classes:
         required: true
       name:
         description: The string used as a name.
+        identifier: true
         required: true
         slot_uri: schema:name
         examples:
@@ -716,11 +827,11 @@ classes:
 
   ProcessedMeasurement:
     attributes:
-      processed_measurement_id:
-        description: Internal (CDM) unique identifier.
-        identifier: true
-        range: UUID
-        required: true
+      # processed_measurement_id:
+      #   description: Internal (CDM) unique identifier.
+      #   identifier: true
+      #   range: UUID
+      #   required: true
       quality:
         description: The quality of the measurement, indicating the confidence that one can have in its correctness.
     description: A measurement that requires additional processing to generate a result.
@@ -791,8 +902,13 @@ classes:
 
   ProtocolParticipant:
     description: Either an input or an output of a protocol.
-    is_a: NamedThing
-    # attributes:
+    is_a: NamedThingWithId
+    attributes:
+      protocol_participant_id:
+        description: Internal (CDM) unique identifier.
+        identifier: true
+        range: UUID
+        required: true
 
   # Relationship:
   #   description: tbd
@@ -939,6 +1055,7 @@ enums:
 
 types:
   UUID:
+    uri: xsd:string
     base: str
     description: A universally unique ID, generating using uuid4.
     # 8-4-4-4-12, x = [0-9a-f]
