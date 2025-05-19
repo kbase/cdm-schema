@@ -1,30 +1,134 @@
-[tool.poetry]
-name = "cdm_schema"
+[project]
+name = "cdm-schema"
 version = "0.1.0"
-description = "KBase CDM schema in linkml format."
-authors = ["KBase CDM developers <engage@kbase.us>"]
-license = "MIT"
+description = "CDM Schema repo"
 readme = "README.md"
-include = ["README.md", "src/cdm_schema/schema", "project"]
+requires-python = ">=3.13"
+dependencies = [
+    "linkml>=1.9.2",
+    "linkml-runtime>=1.9.2",
+    "mkdocs-material>=9.6.14",
+    "mkdocs-mermaid2-plugin>=1.2.1",
+]
 
-[tool.poetry.dependencies]
-python = "^3.12"
-linkml-runtime = "^1.8.3"
 
-[tool.poetry-dynamic-versioning]
-enable = true
-vcs = "git"
-style = "pep440"
+[tool.ruff]
+select = [
+    # core
+    "F", # Pyflakes
+    "E", # pycodestyle errors
+    "W", # pycodestyle warnings
+    "C90", # mccabe +
+    "I", # isort
+    "N", # pep8-naming
+    "D", # pydocstyle
+    "UP", # pyupgrade
+    # extensions
+    "YTT", # flake8-2020
+    "ANN", # flake8-annotations
+    "ASYNC", # flake8-async
+    "S", # flake8-bandit
+    "BLE", # flake8-blind-except
+    "FBT", # flake8-boolean-trap
+    "B", # flake8-bugbear
+    "A", # flake8-builtins
+    # "COM", # flake8-commas
+    # "CPY", # flake8-copyright
+    "C4", # flake8-comprehensions
+    "DTZ", # flake8-datetimez
+    "T10", # flake8-debugger
+    "DJ", # flake8-django
+    "EM", # flake8-errmsg
+    "EXE", # flake8-executable
+    "FA", # flake8-future-annotations
+    "ISC", # flake8-implicit-str-concat
+    "ICN", # flake8-import-conventions
+    "G", # flake8-logging-format
+    "INP", # flake8-no-pep420
+    "PIE", # flake8-pie
+    "T20", # flake8-print
+    "PYI", # flake8-pyi
+    "PT", # flake8-pytest-style
+    "Q", # flake8-quotes
+    "RSE", # flake8-raise
+    "RET", # flake8-return
+    "SLF", # flake8-self
+    "SLOT", # flake8-slots
+    "SIM", # flake8-simplify
+    "TID", # flake8-tidy-imports
+    "TC", # flake8-type-checking
+    "INT", # flake8-gettext
+    "ARG", # flake8-unused-arguments
+    "PTH", # flake8-use-pathlib
+    "TD", # flake8-todos
+    "FIX", # flake8-fixme
+    "ERA", # eradicate
+    "PD", # pandas-vet
+    "PGH", # pygrep-hooks
+    "PL", # Pylint
+    "TRY", # tryceratops
+    "FLY", # flynt
+    "NPY", # NumPy-specific rules
+    "AIR", # Airflow
+    "PERF", # Perflint
+    "FURB", # refurb
+    "LOG", # flake8-logging
+    "RUF", # Ruff-specific rules
+]
 
-[tool.poetry.group.dev.dependencies]
-linkml = "^1.8.5"
-mkdocs-material = "^8.5.11"
-mkdocs-mermaid2-plugin = "^1.2.1"
-# schemasheets = "^0.1.14"
 
-[build-system]
-requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning"]
-build-backend = "poetry_dynamic_versioning.backend"
+# E203: whitespace before ‘,’, ‘;’, or ‘:’
+# E501: line length
+# W503: line break after binary operator
+# PGH003: use type: ignore without specific arguments
+ignore = [
+    "E203",
+    "E501",
+    "S101",
+    "PGH003"
+]
 
-[tool.poetry.extras]
-docs = ["linkml", "mkdocs-material"]
+# Allow autofix for all enabled rules (when `--fix`) is provided.
+fixable = ["ALL"]
+unfixable = []
+
+# Exclude a variety of commonly ignored directories.
+exclude = [
+    "__pypackages__",
+    "_build",
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git-rewrite",
+    ".git",
+    ".github",
+    ".hg",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    "*.pyc",
+    "buck-out",
+    "build",
+    "deps",
+    "dist",
+    "node_modules",
+    "other_schema",
+    "python-coverage",
+    "sample_data",
+    "venv",
+]
+per-file-ignores = {}
+
+# Same as Black.
+line-length = 120
+
+# Assume Python 3.13.
+target-version = "py313"
+
+[tool.ruff.pydocstyle]
+convention = "google"
