@@ -3,9 +3,9 @@ id: https://github.com/kbase/cdm-schema
 
 name: cdm_ontology
 description: Ontology representation, modelled on Semantic SQL, https://w3id.org/semsql/rdf
-
 imports:
   - linkml:types
+
 prefixes:
   cdm: http://kbase.github.io/cdm-schema/
   semsql: https://w3id.org/semsql/
@@ -14,6 +14,7 @@ prefixes:
 
 default_curi_maps:
 - semweb_context
+
 default_prefix: cdm
 default_range: string
 
@@ -30,6 +31,11 @@ types:
     typeof: string
 
 slots:
+  id:
+    description: An identifier for an element. Note blank node ids are not unique
+      across databases
+    identifier: true
+    range: node_id_type
 
   # prefix table
   prefix:
@@ -40,6 +46,7 @@ slots:
     description: The base URI a prefix will expand to
     slot_uri: sh:namespace
     range: uri
+
   # statements table
   subject:
     aliases:
@@ -47,15 +54,23 @@ slots:
       - source
       - head
     slot_uri: rdf:subject
-    range: node
     description: The subject of the statement
+    todos:
+    - set range appropriately for ontology and association use
+    # range: node
+    range: uriorcurie
+
   predicate:
     aliases:
       - relationship type
       - property
     slot_uri: rdf:predicate
-    range: property_node
     description: The predicate of the statement
+    # range: property_node
+    todos:
+    - set range appropriately for ontology and association use
+    range: uriorcurie
+
   object:
     aliases:
       - target
@@ -64,22 +79,27 @@ slots:
     description: Note the range of this slot is always a node. If the triple represents
       a literal, instead value will be populated
     slot_uri: rdf:object
-    range: node
+    # range: node
+    todos:
+    - set range appropriately for ontology and association use
+    range: uriorcurie
+
   value:
     close_mappings:
     - rdf:object
     description: Note the range of this slot is always a string. Only used the triple
       represents a literal assertion
-    range: literal_as_string_type
     slot_uri: rdf:object
+    range: literal_as_string_type
+
   datatype:
     description: the rdf datatype of the value, for example, xsd:string
     comments:
       - only used when value is populated
+
   language:
     todos:
-    - use an enum
-    range: string
+    - use an enum (rather than a string)
     description: the human language in which the value is encoded, e.g. 'en'
     comments:
       - only used when value is populated
