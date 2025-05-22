@@ -10,14 +10,16 @@
 LINKML_SCHEMA_NAME=cdm_schema
 LINKML_SCHEMA_AUTHOR=KBase CDM developers <engage@kbase.us>
 LINKML_SCHEMA_DESCRIPTION=KBase CDM schema in linkml format.
-LINKML_SCHEMA_SOURCE_PATH=src/cdm_schema/schema/cdm_schema.yaml
+LINKML_SCHEMA_SOURCE_PATH=src/schema/linkml/cdm_schema.yaml
 LINKML_SCHEMA_GOOGLE_SHEET_ID=
 LINKML_SCHEMA_GOOGLE_SHEET_TABS=
+LINKML_SCHEMA_GOOGLE_SHEET_MODULE=
 
 ###### linkml generator variables, used by makefile
 
 ## gen-project configuration file
-LINKML_GENERATORS_CONFIG_YAML= --config-file config.yaml
+LINKML_GENERATORS_CONFIG_YAML=
+# --config-file config.yaml
 
 ## pass args if gendoc ignores config.yaml (e.g. --include-top-level-diagram)
 LINKML_GENERATORS_DOC_ARGS=
