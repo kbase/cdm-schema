@@ -216,7 +216,7 @@ gen-artefacts: $(PYTHON_DIR) $(JSONSCHEMA_DIR)  ## generate derived files: JSON 
 	PYTHONPATH=$(PYTHON_DIR) $(RUN) erdantic $(SCHEMA_BASE_NAME)_pydantic.$(SCHEMA_ROOT) -o $(SCHEMA_DIR)/$(SCHEMA_BASE_NAME)-schema.png
 
 gendoc: $(DOC_DIR)  ## generate Markdown documentation locally
-	echo $(RUN) gen-doc ${GEN_DOC_ARGS} -d $(DOC_DIR) $(LINKML_SCHEMA_FILE)
+	$(RUN) gen-doc ${GEN_DOC_ARGS} -d $(DOC_DIR) $(LINKML_SCHEMA_FILE)
 	mkdir -p $(DOC_DIR)/js
 	cp $(SRC_DIR)/docs/js/*.js $(DOC_DIR)/js/
 	mkdir -p $(DOC_DIR)/pages
