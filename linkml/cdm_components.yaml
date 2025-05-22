@@ -1,0 +1,769 @@
+# yaml-language-server: $schema=https://linkml.io/linkml-model/linkml_model/jsonschema/meta.schema.json
+id: https://github.com/kbase/cdm-schema
+
+name: cdm_components
+description: CDM schema components
+
+imports:
+  - linkml:types
+  - cdm_enums
+  - cdm_base
+  - cdm_ontology
+
+prefixes:
+  cdm: http://kbase.github.io/cdm-schema/
+  linkml: https://w3id.org/linkml/
+  mixs: https://genomicsstandardsconsortium.github.io/mixs/
+  schema: http://schema.org/
+
+default_curi_maps:
+  - semweb_context
+default_prefix: kb_cdm
+default_range: string
+
+classes:
+
+  Association:
+    aliases:
+      - annotation
+      - functional annotation
+      - gene annotation
+      - structural annotation
+      - protein annotation
+    slots:
+      - subject
+      - object
+      - predicate
+    slot_usage:
+      subject:
+        alias: subject_id
+        description: The subject of an association.
+        range: Any
+        required: true
+        any_of:
+          - range: Feature
+          - range: Protein
+      predicate:
+        alias: relationship
+        description: The relationship between subject and object in an association. Should be a term from the OBO relations ontology.
+        range: curie
+      object:
+        alias: object_id
+        description: The object of an association. Should be an ontology term or database cross-reference.
+        range: curie
+        required: true
+    attributes:
+      association_id:
+        description: Unique ID for the association.
+        identifier: true
+        range: UUID
+        required: true
+      negated:
+        description: If true, the relationship between the subject and object is negated. For example, consider an association where the subject is a protein ID, the object is the GO term for "glucose biosynthesis", and the predicate is "involved in". With the "negated" field set to false, the association is interpreted as "<protein ID> is involved in glucose biosynthesis". With the "negated" field set to true, the association is interpreted as "<protein ID> is not involved in glucose biosynthesis".
+        range: boolean
+      evidence_type:
+        description: The type of evidence supporting the association. Should be a term from the Evidence and Conclusion Ontology (ECO).
+        range: curie
+        pattern: "^ECO:\\d+$"
+      publications:
+        description: Publications that support the association.
+        multivalued: true
+        range: Publication
+      supporting_objects:
+        description: Objects that support the association. Should be URLs or CURIEs. Where possible, CDM identifiers should be used.
+        multivalued: true
+        range: Any
+        todos:
+          - work out range of supporting objects
+        any_of:
+          - range: Feature
+          - range: Protein
+      primary_knowledge_source:
+        description: The knowledge source that created the association.
+        todos:
+          - generate a controlled vocab for this field.
+        range: uriorcurie
+      aggregator_knowledge_source:
+        description: The knowledge source that aggregated the association.
+        todos:
+          - generate a controlled vocab for this field.
+        range: uriorcurie
+      annotation_date:
+        description: The date when the annotation was made.
+        range: date
+      comments:
+        description: Any comments about the association.
+        multivalued: true
+    description: An association between an object--typically an entity such as a protein or a feature--and a classification system or ontology, such as the Gene Ontology, the Enzyme Classification, or TIGRFAMS domains.
+
+  Cluster:
+    attributes:
+      cluster_id:
+        description: Internal (CDM) unique identifier.
+        identifier: true
+        range: UUID
+        required: true
+      description:
+        description: Description of the cluster.
+      protocol_id:
+        description: Protocol used to generate the cluster.
+    description: Represents an individual execution of a clustering protocol. See the Cluster_X_Protein class for clustering results.
+
+  Contig:
+    mixins:
+      - HasNames
+      - HasIdentifiers
+      - HasHash
+    attributes:
+      contig_id:
+        description: Internal (CDM) unique identifier.
+        identifier: true
+        range: UUID
+        required: true
+      gc_content:
+        description: GC content of the contig, expressed as a percentage.
+        range: float
+      length:
+        description: Length of the contig in bp.
+        range: integer
+    description: A contig (derived from the word "contiguous") is a set of DNA
+      segments or sequences that overlap in a way that provides a contiguous
+      representation of a genomic region. A contig should not contain any gaps.
+
+  ContigCollection:
+    aliases:
+      - genome
+      - biological subject
+      - assembly
+      - contig collection
+      - contig set
+    mixins:
+      - HasNames
+      - HasIdentifiers
+      - HasHash
+    attributes:
+      asm_score:
+        description: A composite score for comparing contig collection quality
+        range: float
+      checkm2_completeness:
+        description: Estimate of the completeness of a contig collection (MAG or genome),
+          estimated by CheckM2 tool
+        range: float
+      checkm2_contamination:
+        description: Estimate of the contamination of a contig collection (MAG or genome),
+          estimated by CheckM2 tool
+        range: float
+      contig_collection_id:
+        description: Internal (CDM) unique identifier.
+        identifier: true
+        range: UUID
+        required: true
+      contig_bp:
+        description: Total size in bp of all contigs
+        range: integer
+      contig_collection_type:
+        description: The type of contig collection.
+        range: ContigCollectionType
+      ctg_L50:
+        description: Given a set of contigs, the L50 is defined as the sequence length
+          of the shortest contig at 50% of the total contig collection length
+        range: integer
+      ctg_L90:
+        description: The L90 statistic is less than or equal to the L50 statistic; it is
+          the length for which the collection of all contigs of that length or
+          longer contains at least 90% of the sum of the lengths of all contigs
+        range: integer
+      ctg_N50:
+        description: Given a set of contigs, each with its own length, the N50 count is
+          defined as the smallest number_of_contigs whose length sum makes up
+          half of contig collection size
+        range: integer
+      ctg_N90:
+        description: Given a set of contigs, each with its own length, the N90 count is
+          defined as the smallest number of contigs whose length sum makes up
+          90% of contig collection size
+        range: integer
+      ctg_logsum:
+        description: The sum of the (length*log(length)) of all contigs, times some
+          constant.
+        range: float
+      ctg_max:
+        description: Maximum contig length
+        range: integer
+      ctg_powsum:
+        description: Powersum of all contigs is the same as logsum except that it uses
+          the sum of (length*(length^P)) for some power P (default P=0.25)
+        range: float
+      gap_pct:
+        description: The gap size percentage of all scaffolds
+        range: float
+      gc_avg:
+        description: The average GC content of the contig collection, expressed as a percentage
+        range: float
+      gc_std:
+        description: The standard deviation of GC content across the contig collection
+        range: float
+      n_contigs:
+        description: Total number of contigs
+        range: integer
+      n_scaffolds:
+        description: Total number of scaffolds
+        range: integer
+      scaf_L50:
+        description: Given a set of scaffolds, the L50 is defined as the sequence length
+          of the shortest scaffold at 50% of the total contig collection length
+        range: integer
+      scaf_L90:
+        description: The L90 statistic is less than or equal to the L50 statistic; it is
+          the length for which the collection of all scaffolds of that length or
+          longer contains at least 90% of the sum of the lengths of all
+          scaffolds.
+        range: integer
+      scaf_N50:
+        description: Given a set of scaffolds, each with its own length, the N50 count
+          is defined as the smallest number of scaffolds whose length sum makes
+          up half of contig collection size
+        range: integer
+      scaf_N90:
+        description: Given a set of scaffolds, each with its own length, the N90 count
+          is defined as the smallest number of scaffolds whose length sum makes
+          up 90% of contig collection size
+        range: integer
+      scaf_bp:
+        description: Total size in bp of all scaffolds
+        range: integer
+      scaf_l_gt50k:
+        description: The total length of scaffolds longer than 50,000 base pairs
+        range: integer
+      scaf_logsum:
+        description: The sum of the (length*log(length)) of all scaffolds, times some
+          constant. Increase the contiguity, the score will increase
+        range: float
+      scaf_max:
+        description: Maximum scaffold length
+        range: integer
+      scaf_n_gt50K:
+        description: The number of scaffolds longer than 50,000 base pairs.
+        range: integer
+      scaf_pct_gt50K:
+        description: The percentage of the total assembly length represented by
+          scaffolds longer than 50,000 base pairs
+        range: float
+      scaf_powsum:
+        description: Powersum of all scaffolds is the same as logsum except that it uses
+          the sum of (length*(length^P)) for some power P (default P=0.25).
+        range: float
+      # has_contigs:
+      #   description: Contigs that are part of this contig collection.
+      #   multivalued: true
+      #   range: Contig
+    description: A set of individual, overlapping contigs that represent the
+      complete sequenced genome of an organism.
+
+  Contributor:
+    description: |
+      Represents a contributor to the resource.
+
+      Contributors must have a 'contributor_type', either 'Person' or 'Organization', and
+      one of the 'name' fields: either 'given_name' and 'family_name' (for a person), or 'name' (for an organization or a person).
+
+      The 'contributor_role' field takes values from the DataCite and CRediT contributor
+      roles vocabularies. For more information on these resources and choosing
+      appropriate roles, please see the following links:
+
+      DataCite contributor roles: https://support.datacite.org/docs/datacite-metadata-schema-v44-recommended-and-optional-properties#7a-contributortype
+
+      CRediT contributor role taxonomy: https://credit.niso.org
+    mixins:
+    - HasIdentifiers
+    attributes:
+      contributor_id:
+        description: Internal (CDM) unique identifier.
+        identifier: true
+        range: UUID
+        required: true
+      contributor_type:
+        slot_uri: schema:@type
+        description: Must be either 'Person' or 'Organization'.
+        range: ContributorType
+        examples:
+        - value: Person
+        - value: Organization
+        exact_mappings:
+        - DataCite:attributes.contributors.name_type
+        - DataCite:attributes.creators.name_type
+      name:
+        slot_uri: schema:name
+        description: Contributor name. For organizations, this should be the full (unabbreviated) name; can also be used for a person if the given name/family name format is not applicable.
+        examples:
+          - value: National Institute of Mental Health
+          - value: Madonna
+          - value: Ransome the Clown
+        related_mappings:
+        # these have the names comma-separated and inverted
+        - DataCite:attributes.creators.name
+        - DataCite:attributes.contributors.name
+        exact_mappings:
+        - JGI:organisms.pi.name
+        - ORCID:name
+        close_mappings:
+          - OSTI.ARTICLE:author
+          # from OSTI.ARTICLE:author
+          # via: f"{src.author.first_name} {src.author.last_name}"
+          - OSTI.ARTICLE:contributor
+          # from OSTI.ARTICLE:contributor
+          # via: f"{src.contributor.first_name} {src.contributor.last_name}"
+      given_name:
+        description: The given name(s) of the contributor.
+        examples:
+          - value: Marionetta Cecille de la
+          - value: Helena
+          - value: Hubert George
+        related_mappings:
+          - DataCite:attributes.contributors.givenName
+          - DataCite:attributes.creators.givenName
+      family_name:
+        description: The family name(s) of the contributor.
+        examples:
+          - value: Carte-Postale
+          - value: Bonham Carter
+          - value: Wells
+        related_mappings:
+          - DataCite:attributes.contributors.familyName
+          - DataCite:attributes.creators.familyName
+      affiliations:
+        slot_uri: schema:affiliation
+        description: List of organizations with which the contributor is affiliated. For contributors that represent an organization, this may be a parent organization (e.g. KBase, US DOE; Arkin lab, LBNL).
+        multivalued: true
+        # TODO: implement circularity checks
+        range: Contributor
+        inlined_as_list: true
+        inlined: true
+        related_mappings:
+        - DataCite:attributes.contributors.affiliation
+          # from: DataCite:attributes.contributors[].affiliation[]
+          # via: { organization_name: src.attributes.contributors[].affiliation[].name }
+        - DataCite:attributes.creators.affiliation
+          # from: DataCite:attributes.creators[].affiliation[]
+          # via: { organization_name: src.attributes.creators[].affiliation[].name }
+        - JGI:organisms.pi.institution
+          # from: JGI:organisms[].pi.institution
+          # via: { organization_name: src.organisms[].pi.institution }
+        narrow_mappings:
+          - OSTI.ARTICLE:contributor.affiliation_name
+          # via { organization_name: src.contributor.affiliation_name }
+    any_of:
+      - slot_conditions:
+          given_name:
+            required: true
+          family_name:
+            required: true
+      - slot_conditions:
+          name:
+            required: true
+
+  DataSource:
+    slots:
+      - name
+    attributes:
+      comments:
+        description: Additional details about the dataset.
+      date_accessed:
+        description: The date when the data was downloaded from the data source.
+      source:
+        description: The name of the data source.
+        examples:
+          - value: "UniProt"
+          - value: "NMDC Runtime API"
+        range: string
+      url:
+        description: The URL from which the data was loaded.
+        range: uri
+      version:
+        description: For versioned data sources, the version of the dataset.
+        examples:
+          - value: "115"
+          - value: "v1.5.3"
+    description: The source dataset from which data within the CDM was extracted. This might be an API query; a set of files downloaded from a website or uploaded by a user; a database dump; etc. A given data source should have either version information (e.g. UniProt's release number) or an access date to allow the original raw data dump to be recapitulated.
+
+  EncodedFeature:
+    mixins:
+      - HasNames
+      - HasIdentifiers
+    attributes:
+      encoded_feature_id:
+        description: Internal (CDM) unique identifier.
+        identifier: true
+        range: Entity
+        required: true
+      has_stop_codon:
+        description: Captures whether or not the sequence includes a stop coordinates.
+        range: boolean
+      type:
+        description: The type of the entity. Should be a term from the sequence ontology.
+    description: An entity generated from a feature, such as a transcript.
+
+  GoldEnvironmentalContext:
+    description: Environmental context, described using JGI's five level system.
+    attributes:
+      ecosystem:
+        description: JGI GOLD descriptor representing the top level ecosystem categorization.
+      ecosystem_category:
+        description: JGI GOLD descriptor representing the ecosystem category.
+      ecosystem_subtype:
+        description: JGI GOLD descriptor representing the subtype of ecosystem. May be "Unclassified".
+      ecosystem_type:
+        description: JGI GOLD descriptor representing the ecosystem type. May be "Unclassified".
+      specific_ecosystem:
+        description: JGI GOLD descriptor representing the most specific level of ecosystem categorization. May be "Unclassified".
+      # gold_environmental_context_id:
+      #   description: Internal (CDM) unique identifier.
+      #   identifier: true
+      #   range: UUID
+      #   required: true
+
+  MixsEnvironmentalContext:
+    description: Environmental context, described using the MiXS convention of broad and local environment, plus the medium.
+    attributes:
+      env_broad_scale:
+        annotations:
+          expected_value:
+            tag: expected_value
+            value: The major environment type(s) where the sample was collected. Recommend subclasses of biome [ENVO:00000428]. Multiple terms can be separated by one or more pipes.
+          tooltip: The biome or major environmental system where the sample or specimen originated. Choose values from subclasses of the 'biome' class [ENVO:00000428] in the Environment Ontology (ENVO). For host-associated or plant-associated samples, use terms from the UBERON or Plant Ontology to describe the broad anatomical or morphological context
+        description: "Report the major environmental system the sample or specimen came from. The system(s) identified should have a coarse spatial grain, to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO's biome class: http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS"
+        title: broad-scale environmental context
+        examples:
+          - value: oceanic epipelagic zone biome [ENVO:01000033] for annotating a water sample from the photic zone in middle of the Atlantic Ocean
+        from_schema: http://w3id.org/mixs/terms
+        aliases:
+          - broad-scale environmental context
+        string_serialization: '{termLabel} {[termID]}'
+        slot_uri: mixs:0000012
+        # range: ControlledIdentifiedTermValue
+        range: uriorcurie
+        multivalued: false
+      env_local_scale:
+        annotations:
+          expected_value:
+            tag: expected_value
+            value: Environmental entities having causal influences upon the entity at time of sampling.
+          tooltip: The specific environmental  entities or features near the sample or specimen that significantly influence its characteristics or composition. These entities are typically smaller in scale than the broad environmental context. Values for this field should be countable, material nouns and must be chosen from subclasses of BFO:0000040 (material entity) that appear in the Environment Ontology (ENVO). For host-associated or plant-associated samples, use terms from the UBERON or Plant Ontology to describe specific anatomical structures or plant parts.
+        description: "Report the entity or entities which are in the sample or specimen's local vicinity and which you believe have significant causal influences on your sample or specimen. We recommend using EnvO terms which are of smaller spatial grain than your entry for env_broad_scale. Terms, such as anatomical sites, from other OBO Library ontologies which interoperate with EnvO (e.g. UBERON) are accepted in this field. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS."
+        title: local environmental context
+        examples:
+          - value: 'litter layer [ENVO:01000338]; Annotating a pooled sample taken from various vegetation layers in a forest consider: canopy [ENVO:00000047]|herb and fern layer [ENVO:01000337]|litter layer [ENVO:01000338]|understory [01000335]|shrub layer [ENVO:01000336].'
+        from_schema: http://w3id.org/mixs/terms
+        aliases:
+          - local environmental context
+        string_serialization: '{termLabel} {[termID]}'
+        slot_uri: mixs:0000013
+        # range: ControlledIdentifiedTermValue
+        range: uriorcurie
+        multivalued: false
+      env_medium:
+        annotations:
+          expected_value:
+            tag: expected_value
+            value: The material displaced by the entity at time of sampling. Recommend subclasses of environmental material [ENVO:00010483].
+          tooltip: The predominant environmental material or substrate that directly surrounds or hosts the sample or specimen at the time of sampling. Choose values from subclasses of the 'environmental material' class [ENVO:00010483] in the Environment Ontology (ENVO). Values for this field should be measurable or mass material nouns, representing continuous environmental materials. For host-associated or plant-associated samples, use terms from the UBERON or Plant Ontology to indicate a tissue, organ, or plant structure
+        description: "Report the environmental material(s) immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of 'environmental material' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS . Terms from other OBO ontologies are permissible as long as they reference mass/volume nouns (e.g. air, water, blood) and not discrete, countable entities (e.g. a tree, a leaf, a table top)."
+        title: environmental medium
+        examples:
+          - value: 'soil [ENVO:00001998]; Annotating a fish swimming in the upper 100 m of the Atlantic Ocean, consider: ocean water [ENVO:00002151]. Example: Annotating a duck on a pond consider: pond water [ENVO:00002228]|air [ENVO_00002005]'
+        from_schema: http://w3id.org/mixs/terms
+        aliases:
+          - environmental medium
+        string_serialization: '{termLabel} {[termID]}'
+        slot_uri: mixs:0000014
+        # range: ControlledIdentifiedTermValue
+        range: uriorcurie
+        multivalued: false
+      # mixs_environmental_context_id:
+      #   description: Internal (CDM) unique identifier.
+      #   identifier: true
+      #   range: UUID
+      #   required: true
+
+  Event:
+    attributes:
+      conditions:
+        description: TBD
+        multivalued: true
+      created_at:
+        description: The time at which the event started or was created.
+        range: datetime
+      description:
+        description: Brief text description of what actually happened.
+        todos:
+        - Create controlled vocab for events?
+      gold_environmental_context:
+        description: The environmental context for this event.
+        range: MixsEnvironmentalContext
+      mixs_environmental_context:
+        description: The environmental context for this event.
+        range: MixsEnvironmentalContext
+      event_id:
+        description: Internal (CDM) unique identifier.
+        identifier: true
+        range: UUID
+        required: true
+      name:
+        description: Name or title for the event.
+      location:
+        description: The location for this event. May be described in terms of coordinates.
+    description: Something that happened.
+
+  Experiment:
+    attributes:
+      created_at:
+        range: datetime
+        description: The start time of the exeperiment.
+      description:
+        description: Brief explanation of what was done.
+      experiment_id:
+        description: Internal (CDM) unique identifier.
+        identifier: true
+        range: UUID
+        required: true
+      has_participant:
+        description: Participants in an experiment.
+        multivalued: true
+        range: Sample
+      part_of:
+        description: The project to which this experiment belongs.
+        range: Project
+    slots:
+      - name
+    description: A discrete scientific procedure undertaken to make a discovery, test a hypothesis, or demonstrate a known fact.
+
+  Feature:
+    mixins:
+      - HasNames
+      - HasIdentifiers
+      - HasHash
+    attributes:
+      cds_phase:
+        description: For features of type CDS, the phase indicates where the next codon
+          begins relative to the 5' end (where the 5' end of the CDS is relative
+          to the strand of the CDS feature) of the current CDS feature.
+          cds_phase is required if the feature type is CDS.
+        range: CdsPhaseType
+      e_value:
+        description: The 'score' of the feature. The semantics of this field are
+          ill-defined. E-values should be used for sequence similarity features.
+        range: float
+      end:
+        description: The start and end coordinates of the feature are given in positive
+          1-based int coordinates, relative to the landmark given in column one.
+          Start is always less than or equal to end. For features that cross the
+          origin of a circular feature (e.g. most bacterial genomes, plasmids,
+          and some viral genomes), the requirement for start to be less than or
+          equal to end is satisfied by making end = the position of the end +
+          the length of the landmark feature. For zero-length features, such as
+          insertion sites, start equals end and the implied site is to the right
+          of the indicated base in the direction of the landmark.
+        range: integer
+      feature_id:
+        description: Internal (CDM) unique identifier.
+        identifier: true
+        range: Entity
+        required: true
+      generated_by:
+        description: The algorithm or procedure that generated the feature.
+        range: Protocol
+      p_value:
+        description: The 'score' of the feature. The semantics of this field are
+          ill-defined. P-values should be used for ab initio gene prediction
+          features.
+        range: float
+      start:
+        description: The start and end coordinates of the feature are given in positive
+          1-based int coordinates, relative to the landmark given in column one.
+          Start is always less than or equal to end. For features that cross the
+          origin of a circular feature (e.g. most bacterial genomes, plasmids,
+          and some viral genomes), the requirement for start to be less than or
+          equal to end is satisfied by making end = the position of the end +
+          the length of the landmark feature. For zero-length features, such as
+          insertion sites, start equals end and the implied site is to the right
+          of the indicated base in the direction of the landmark.
+        range: integer
+      strand:
+        description: The strand of the feature.
+        range: StrandType
+      source_database:
+        description: ID of the data source from which this entity came.
+        # FIXME: should be an organisation from the ontology tables
+        # range: Organization
+        range: uriorcurie
+      protocol_id:
+        description: ID of the protocol used to generate the feature.
+        range: Protocol
+      type:
+        aliases:
+          - feature type
+        description: The type of the feature; constrained to be either a term from the
+          Sequence Ontology or an SO accession number. Must be sequence_feature
+          (SO:0000110) or an is_a child of it.
+        pattern: ^SO:\d+$
+        range: uriorcurie
+    comments:
+      - corresponds to an entry in GFF3
+    description: A feature localized to an interval along a contig.
+    see_also:
+      - https://github.com/The-Sequence-Ontology/Specifications/blob/master/gff3.md
+
+  Measurement:
+    slots:
+      - name
+    attributes:
+      measurement_id:
+        description: Internal (CDM) unique identifier.
+        identifier: true
+        range: UUID
+        required: true
+      protocol_id:
+        description: The ID of the protocol used to generate the measurement.
+        range: Protocol
+      created_at:
+        description: Timestamp for the measurement.
+        range: datetime
+      type:
+        description: The type of measurement or the parameter being measured.
+      quality:
+        description: The quality of the measurement, indicating the confidence that one can have in its correctness.
+      value:
+        description: Value of the measurement. May be a quantity with the appropriate units, a term from a controlled vocabulary, or a qualitative description.
+      unit:
+        description: Units used in the measurement.
+    description: A qualitative or quantitative observation of an attribute of an object or event against a standardized scale, to enable it to be compared with other objects or events.
+
+  ProcessedMeasurement:
+    attributes:
+      # processed_measurement_id:
+      #   description: Internal (CDM) unique identifier.
+      #   identifier: true
+      #   range: UUID
+      #   required: true
+      quality:
+        description: The quality of the measurement, indicating the confidence that one can have in its correctness.
+    description: A measurement that requires additional processing to generate a result.
+    is_a: Measurement
+
+  Project:
+    aliases:
+      - proposal
+      - research proposal
+      - research study
+      - investigation
+      - project
+      - study
+      - umbrella project
+      - research initiative
+    mixins:
+      - HasNames
+      - HasIdentifiers
+    attributes:
+      description:
+        description: Brief text description of the project.
+      project_id:
+        description: Internal (CDM) unique identifier.
+        identifier: true
+        range: UUID
+        required: true
+    description: Administrative unit for collecting data related to a certain topic,
+      location, data type, grant funding, and so on.
+
+  Protein:
+    mixins:
+      - HasNames
+      - HasIdentifiers
+      - HasHash
+    attributes:
+      description:
+        description: Brief text description of the entity.
+      encoded_by:
+        description: The feature(s) that encode this protein.
+        range: Feature
+      evidence_for_existence:
+        description: The evidence that this protein exists. For example, the protein may have been isolated from a cell, or it may be predicted based on sequence features.
+        range: ProteinEvidenceForExistence
+      length:
+        range: integer
+        description: The length of the protein.
+      protein_id:
+        description: Internal (CDM) unique identifier.
+        identifier: true
+        range: Entity
+        required: true
+      sequence:
+        description: The protein amino acid sequence.
+    description: Proteins are large, complex molecules made up of one or more long,
+      folded chains of amino acids, whose sequences are determined by the DNA
+      sequence of the protein-encoding gene.
+
+  Protocol:
+    mixins:
+      - HasNames
+      - HasIdentifiers
+    attributes:
+      doi:
+        description: The DOI for a protocol.
+      inputs:
+        description: The inputs for a protocol; may be software parameters, experimental
+          reagents, etc.
+        multivalued: true
+        range: ProtocolParticipant
+      outputs:
+        description: The outputs of a protocol; may be physical entities, files, etc.
+        multivalued: true
+        range: ProtocolParticipant
+      protocol_id:
+        description: Internal (CDM) unique identifier.
+        identifier: true
+        range: UUID
+        required: true
+      version:
+        description: The version of the protocol that has been used.
+      url:
+        description: The URL for a protocol.
+    description: Defined method or set of methods .
+
+  ProtocolParticipant:
+    description: Either an input or an output of a protocol.
+    todos:
+    - finish this!
+    mixins:
+    - HasNames
+    - HasIdentifiers
+    attributes:
+      protocol_participant_id:
+        description: Internal (CDM) unique identifier.
+        identifier: true
+        range: UUID
+        required: true
+
+
+  Publication:
+    attributes:
+      publication_id:
+        identifier: true
+        description: Unique identifier for the publication - e.g. PMID, DOI, URL, etc.
+        range: uriorcurie
+    description: A publication (e.g. journal article).
+
+  Sample:
+    mixins:
+    - HasNames
+    - HasIdentifiers
+    attributes:
+      description:
+        description: Brief textual description of the sample.
+      sample_id:
+        description: Internal (CDM) unique identifier.
+        identifier: true
+        range: Entity
+        required: true
+      type:
+        description: The type of entity that the sample is. Vocab TBD.
+    description: A material entity that can be characterised by an experiment.

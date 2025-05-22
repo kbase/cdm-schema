@@ -1,0 +1,175 @@
+# yaml-language-server: $schema=https://linkml.io/linkml-model/linkml_model/jsonschema/meta.schema.json
+id: https://github.com/kbase/cdm-schema
+
+name: kbase_cdm
+description: Schema for KBase CDM
+version: 0.0.1
+
+imports:
+  - linkml:types
+  - cdm_components
+  - cdm_to_review
+
+prefixes:
+  cdm: http://kbase.github.io/cdm-schema/
+  linkml: https://w3id.org/linkml/
+  mixs: https://genomicsstandardsconsortium.github.io/mixs/
+  schema: http://schema.org/
+
+default_curi_maps:
+  - semweb_context
+default_prefix: cdm
+default_range: string
+
+classes:
+  # "join" classes
+  Association_x_Publication:
+    represents_relationship: true
+    attributes:
+      association_id:
+        range: Association
+        required: true
+        description: Unique identifier for an association.
+      publication_id:
+        range: Publication
+        required: true
+        description: Unique identifier for a publication.
+    description: Links associations to supporting literature.
+
+  Association_X_Entity:
+    represents_relationship: true
+    attributes:
+      association_id:
+        range: Association
+        required: true
+        description: Unique identifier for an association.
+      entity_id:
+        range: Entity
+        required: true
+        description: Unique identifier for an association.
+    description: Links associations to entities. For capturing supporting objects in an association.
+
+  Cluster_X_Protein:
+    represents_relationship: true
+    attributes:
+      cluster_id:
+        range: Cluster
+        required: true
+        description: Internal (CDM) unique identifier.
+      protein_id:
+        range: Protein
+        required: true
+        description: Internal (CDM) unique identifier for a protein within a cluster.
+      score:
+        range: float
+        description: Output from clustering protocol.
+    description: Relationship representing membership of a cluster. An optional score can be assigned to each cluster member.
+
+  Contig_X_ContigCollection:
+    represents_relationship: true
+    attributes:
+      contig_id:
+        description: Internal (CDM) unique identifier for a contig.
+        range: Contig
+        required: true
+      contig_collection_id:
+        description: Internal (CDM) unique identifier for a contig collection.
+        range: ContigCollection
+        required: true
+    description: Captures the relationship between a contig and a contig collection; equivalent to contig part-of contig collection.
+
+  Contig_X_Feature:
+    represents_relationship: true
+    attributes:
+      contig_id:
+        description: Internal (CDM) unique identifier for a contig.
+        range: Contig
+        required: true
+      feature_id:
+        description: Internal (CDM) unique identifier for a feature.
+        range: Feature
+        required: true
+    description: Captures the relationship between a contig and a feature; equivalent to feature part-of contig.
+
+  ContigCollection_X_Feature:
+    represents_relationship: true
+    attributes:
+      contig_collection_id:
+        description: Internal (CDM) unique identifier for a contig collection.
+        range: ContigCollection
+        required: true
+      feature_id:
+        description: Internal (CDM) unique identifier for a feature.
+        range: Contig
+        required: true
+    description: Captures the relationship between a contig collection and a feature; equivalent to feature part-of contig collection.
+
+  ContigCollection_X_Protein:
+    represents_relationship: true
+    attributes:
+      contig_collection_id:
+        description: Internal (CDM) unique identifier for a contig collection.
+        range: ContigCollection
+        required: true
+      protein_id:
+        description: Internal (CDM) unique identifier for a protein.
+        range: Protein
+        required: true
+    description: Captures the relationship between a contig collection and a protein; equivalent to protein is ribosomal translation of (http://purl.obolibrary.org/obo/RO_0002512) contig collection.
+
+  Contributor_X_Experiment:
+    attributes:
+      contributor_id:
+        description: Internal (CDM) unique identifier for a contributor.
+        range: Contributor
+        required: true
+      experiment_id:
+        description: Internal (CDM) unique identifier for an experiment.
+        range: Experiment
+        required: true
+      contributor_roles:
+        slot_uri: schema:Role
+        description: List of roles played by the contributor when working on the resource.
+        multivalued: true
+        range: ContributorRole
+
+  Contributor_X_Project:
+    attributes:
+      contributor_id:
+        description: Internal (CDM) unique identifier for a contributor.
+        range: Contributor
+        required: true
+      project_id:
+        description: Internal (CDM) unique identifier for a project.
+        range: Project
+        required: true
+      contributor_roles:
+        slot_uri: schema:Role
+        description: List of roles played by the contributor when working on the resource.
+        multivalued: true
+        range: ContributorRole
+
+  EncodedFeature_X_Feature:
+    attributes:
+      encoded_feature_id:
+        description: Internal (CDM) unique identifier.
+        range: EncodedFeature
+        required: true
+      feature_id:
+        description: Internal (CDM) unique identifier.
+        range: Feature
+        required: true
+    description: Captures the relationship between a feature and its transcription product.
+
+  Feature_X_Protein:
+    represents_relationship: true
+    attributes:
+      feature_id:
+        description: Internal (CDM) unique identifier for a feature.
+        range: Feature
+        required: true
+      protein_id:
+        description: Internal (CDM) unique identifier for a protein.
+        range: Protein
+        required: true
+    description: Captures the relationship between a feature and a protein; equivalent to feature encodes protein.

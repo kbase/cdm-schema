@@ -1,0 +1,116 @@
+# yaml-language-server: $schema=https://linkml.io/linkml-model/linkml_model/jsonschema/meta.schema.json
+id: https://github.com/kbase/cdm-schema
+
+name: cdm_ontology
+description: Ontology representation, modelled on Semantic SQL, https://w3id.org/semsql/rdf
+
+imports:
+  - linkml:types
+prefixes:
+  cdm: http://kbase.github.io/cdm-schema/
+  semsql: https://w3id.org/semsql/
+  linkml: https://w3id.org/linkml/
+  sh: http://www.w3.org/ns/shacl#
+
+default_curi_maps:
+- semweb_context
+default_prefix: cdm
+default_range: string
+
+types:
+  node_id_type:
+    description: IDs are either CURIEs, IRI, or blank nodes. IRIs are wrapped in <>s
+      to distinguish them from CURIEs, but in general it is good practice to populate
+      the [prefixes][Prefixes.md] table such that they are shortened to CURIEs. Blank
+      nodes are ids starting with `_:`.
+    see_also:
+    - https://github.com/ontodev/rdftab.rs/issues/18
+    typeof: uriorcurie
+  literal_as_string_type:
+    typeof: string
+
+slots:
+
+  # prefix table
+  prefix:
+    description: A standardized prefix such as 'GO' or 'rdf' or 'FlyBase'
+    slot_uri: sh:prefix
+    range: ncname
+  base:
+    description: The base URI a prefix will expand to
+    slot_uri: sh:namespace
+    range: uri
+  # statements table
+  subject:
+    aliases:
+      - about
+      - source
+      - head
+    slot_uri: rdf:subject
+    range: node
+    description: The subject of the statement
+  predicate:
+    aliases:
+      - relationship type
+      - property
+    slot_uri: rdf:predicate
+    range: property_node
+    description: The predicate of the statement
+  object:
+    aliases:
+      - target
+      - sink
+      - tail
+    description: Note the range of this slot is always a node. If the triple represents
+      a literal, instead value will be populated
+    slot_uri: rdf:object
+    range: node
+  value:
+    close_mappings:
+    - rdf:object
+    description: Note the range of this slot is always a string. Only used the triple
+      represents a literal assertion
+    range: literal_as_string_type
+    slot_uri: rdf:object
+  datatype:
+    description: the rdf datatype of the value, for example, xsd:string
+    comments:
+      - only used when value is populated
+  language:
+    todos:
+    - use an enum
+    range: string
+    description: the human language in which the value is encoded, e.g. 'en'
+    comments:
+      - only used when value is populated
+
+classes:
+  Prefix:
+    description: Maps CURIEs to URIs
+    slots:
+    - prefix
+    - base
+    class_uri: sh:PrefixDeclaration
+  Statements:
+    aliases:
+    - triple
+    description: Represents an RDF triple
+    slots:
+    - subject
+    - predicate
+    - object
+    - value
+    - datatype
+    - language
+    class_uri: rdf:Statement
+  EntailedEdge:
+    description: A relation graph edge that is inferred
+    comments:
+    - '- It is common to populate this via a procedure external to the database, e.g
+      balhoff/relation-graph'
+    see_also:
+    - https://github.com/balhoff/relation-graph
+    slots:
+    - subject
+    - predicate
+    - object
