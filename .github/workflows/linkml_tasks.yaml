@@ -1,0 +1,74 @@
+name: Lint and Test
+
+on:
+    workflow_call:
+    pull_request:
+
+jobs:
+    run_linkml_tasks:
+      runs-on: ubuntu-latest
+
+      steps:
+          - name: Repo checkout
+            uses: actions/checkout@main
+
+          - name: Set up Python 3.
+            uses: actions/setup-python@main
+            with:
+              python-version: 3.13
+
+          - name: Install uv
+            uses: astral-sh/setup-uv@v6
+
+          - name: Install dependencies
+            id: install_deps
+            run: uv sync
+
+          - name: Lint linkml file
+            id: lint_linkml
+            run: |
+                make lint-no-warn
+            continue-on-error: true
+
+          - name: Validate linkml file
+            id: validate_linkml
+            run: |
+                make lint-validate-no-warn
+            continue-on-error: true
+
+          # - name: Validate sample data against the schema
+          #   id: test_sample_data
+          #   run: |
+          #       make test-sample-data
+          #   continue-on-error: true
+
+          # - name: Validate sample data against JSONschema
+          #   id: test_sample_data_jsonschema
+          #   run: |
+          #       make test-sample-data-jsonschema
+          #   continue-on-error: true
+
+          - name: Test documentation generation
+            id: test_docgen
+            run: |
+                uv sync --group docs
+                make gendoc
+            continue-on-error: true
+
+          - name: outcome failure
+            if: steps.lint_linkml.outcome != 'success' || steps.validate_linkml.outcome != 'success' || steps.test_docgen.outcome != 'success'
+            # steps.test_sample_data.outcome != 'success' || steps.test_sample_data_jsonschema.outcome != 'success'
+
+            run: |
+                echo "linkml linting: ${{ steps.lint_linkml.outcome }}"
+                echo "linkml schema validation: ${{ steps.validate_linkml.outcome }}"
+                echo "documentation generator: ${{ steps.test_docgen.outcome }}"
+                exit 1
+            # echo "sample data validation: ${{ steps.test_sample_data.outcome }}"
+            # echo "sample data JSON Schema validation: ${{ steps.test_sample_data_jsonschema.outcome }}"
+
+          - name: outcome success
+            if: steps.lint_linkml.outcome == 'success' && steps.validate_linkml.outcome == 'success' && steps.test_docgen.outcome == 'success'
+            run: |
+                echo All tests passed successfully!
+                exit 0
