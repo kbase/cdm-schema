@@ -16,8 +16,8 @@ dependencies = [
     "ruff>=0.12.4",
 ]
 
-[project.scripts]
-cdm-schema = "cdm_schema:main"
+# [project.scripts]
+# cdm-schema = "cdm_schema:main"
 
 [build-system]
 requires = ["uv_build>=0.7.15,<0.8"]
