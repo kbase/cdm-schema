@@ -1,0 +1,221 @@
+# yaml-language-server: $schema=https://linkml.io/linkml-model/linkml_model/jsonschema/meta.schema.json
+id: https://github.com/kbase/cdm-schema
+
+name: kbase_cdm
+description: Schema for KBase CDM
+version: 0.0.1
+
+imports:
+  - linkml:types
+  - cdm_components
+  - cdm_to_review
+
+prefixes:
+  kb_cdm: http://kbase.github.io/cdm-schema/
+  linkml: https://w3id.org/linkml/
+  mixs: https://genomicsstandardsconsortium.github.io/mixs/
+  schema: http://schema.org/
+
+default_curi_maps:
+  - semweb_context
+default_prefix: cdm
+default_range: string
+
+classes:
+  # "join" classes
+  Association_X_Publication:
+    represents_relationship: true
+    slots:
+      - association_id
+      - publication_id
+    slot_usage:
+      association_id:
+        multivalued: true
+      publication_id:
+        multivalued: true
+    description: Links associations to supporting literature.
+
+  Association_X_SupportingObject:
+    represents_relationship: true
+    slots:
+      - association_id
+      - entity_id
+    slot_usage:
+      association_id:
+        multivalued: true
+      entity_id:
+        multivalued: true
+    description: Links associations to entities to capture supporting objects in an association. ay be a biological entity, such as a protein or feature, or a URL to a resource (e.g. a publication) that supports the association. Where possible, CDM identifiers should be used.
+
+  Contig_X_ContigCollection:
+    represents_relationship: true
+    slots:
+      - contig_id
+      - contig_collection_id
+    slot_usage:
+      contig_id:
+        multivalued: true
+    description: Captures the relationship between a contig and a contig collection; equivalent to contig part-of contig collection.
+
+  Contig_X_EncodedFeature:
+    represents_relationship: true
+    slots:
+      - contig_id
+      - encoded_feature_id
+    slot_usage:
+      encoded_feature_id:
+        multivalued: true
+    description: Captures the relationship between a contig and an encoded feature.
+
+  Contig_X_Feature:
+    represents_relationship: true
+    slots:
+      - contig_id
+      - feature_id
+    slot_usage:
+      feature_id:
+        multivalued: true
+    description: Captures the relationship between a contig and a feature; equivalent to feature part-of contig.
+
+  Contig_X_Protein:
+    represents_relationship: true
+    slots:
+      - contig_id
+      - protein_id
+    slot_usage:
+      protein_id:
+        multivalued: true
+    description: Captures the relationship between a contig and a protein; equivalent to protein is ribosomal translation of (http://purl.obolibrary.org/obo/RO_0002512) contig.
+
+  ContigCollection_X_EncodedFeature:
+    represents_relationship: true
+    slots:
+      - contig_collection_id
+      - encoded_feature_id
+    slot_usage:
+      encoded_feature_id:
+        multivalued: true
+    description: Captures the relationship between a contig collection and an encoded feature.
+
+  ContigCollection_X_Feature:
+    represents_relationship: true
+    slots:
+      - contig_collection_id
+      - feature_id
+    slot_usage:
+      feature_id:
+        multivalued: true
+    description: Captures the relationship between a contig collection and a feature; equivalent to feature part-of contig collection.
+
+  ContigCollection_X_Protein:
+    represents_relationship: true
+    slots:
+      - contig_collection_id
+      - protein_id
+    slot_usage:
+      protein_id:
+        multivalued: true
+    description: Captures the relationship between a contig collection and a protein; equivalent to protein is ribosomal translation of (http://purl.obolibrary.org/obo/RO_0002512) contig collection.
+
+  Contributor_X_Role_X_Experiment:
+    represents_relationship: true
+    slots:
+      - contributor_id
+      - experiment_id
+      - contributor_role
+
+  Contributor_X_Role_X_Project:
+    represents_relationship: true
+    slots:
+      - contributor_id
+      - project_id
+      - contributor_role
+
+  EncodedFeature_X_Feature:
+    represents_relationship: true
+    slots:
+      - encoded_feature_id
+      - feature_id
+    description: Captures the relationship between a feature and its transcription product.
+
+  Entity_X_Measurement:
+    represents_relationship: true
+    slots:
+      - entity_id
+      - measurement_id
+    slot_usage:
+      entity_id:
+        multivalued: true
+      measurement_id:
+        multivalued: true
+    description: Captures a measurement made on an entity.
+
+  Experiment_X_Project:
+    represents_relationship: true
+    slots:
+      - experiment_id
+      - project_id
+    slot_usage:
+      experiment_id:
+        multivalued: true
+    description: Captures the relationship between an experiment and the project that it is a part of.
+
+  Experiment_X_Sample:
+    represents_relationship: true
+    slots:
+      - experiment_id
+      - sample_id
+    slot_usage:
+      experiment_id:
+        multivalued: true
+      sample_id:
+        multivalued: true
+    description: Represents the participation of a sample in an experiment.
+
+  Feature_X_Protein:
+    represents_relationship: true
+    slots:
+      - feature_id
+      - protein_id
+    slot_usage:
+      protein_id:
+        multivalued: true
+    description: Captures the relationship between a feature and a protein; equivalent to feature encodes protein.
+
+  Protocol_X_ProtocolParticipant:
+    represents_relationship: true
+    slots:
+      - protocol_id
+    attributes:
+      protocol_participant_id:
+        description: The unique identifier for the protocol participant.
+        range: ProtocolParticipant
+        required: true
+      participant_type:
+        description: The type of participant in the protocol.
+        range: string
+        examples:
+        - value: "input"
+        - value: "output"
+
+  NamedEntity:
+    description: Represents the link between an entity and its names.
+    represents_relationship: true
+    comments:
+      - Entity.entity_id == Name.entity_id
+      - one entity can have multiple names, and one name can be associated with multiple entities.
+
+  IdentifiedEntity:
+    description: Represents the link between an entity and its identifiers.
+    represents_relationship: true
+    comments:
+      - Entity.entity_id == Identifier.entity_id
+      - one entity can have multiple identifiers, and one identifier can be associated with multiple entities.
+
+  AttributeValueEntity:
+    description: Represents the link between an entity and its attribute values.
+    represents_relationship: true
+    comments:
+      - Entity.entity_id == QuantityValue.entity_id
+      - Entity.entity_id == TextValue.entity_id
+      - one entity can have multiple attribute values, and one attribute value can be associated with multiple entities.

@@ -1,0 +1,98 @@
+# yaml-language-server: $schema=https://linkml.io/linkml-model/linkml_model/jsonschema/meta.schema.json
+id: https://github.com/kbase/cdm-schema
+
+name: cdm_attr_value
+description: CDM schema attribute/value classes
+
+imports:
+  - linkml:types
+  - cdm_types
+  - cdm_base
+
+prefixes:
+  kb_cdm: http://kbase.github.io/cdm-schema/
+  linkml: https://w3id.org/linkml/
+  schema: http://schema.org/
+
+default_prefix: kb_cdm
+
+classes:
+  AttributeValue:
+    abstract: true
+    description: A generic class for capturing tag-value information in a structured form.
+    slots:
+      - entity_id
+    slot_usage:
+      entity_id:
+        description: The database entity (sample, feature, protein, etc.) to which the attribute-value annotation refers.
+    attributes:
+      attribute_name:
+        aliases:
+        - type
+        - name
+        description: The attribute being captured in this annotation.
+        required: true
+      attribute_cv_term_id:
+        description: If the attribute is a term from a controlled vocabulary, the ID of the term.
+        range: local_curie
+      raw_value:
+        description: Raw value from the source data. May or may not include units or other unstructured information.
+
+  QuantityValue:
+    class_uri: schema:QuantityValue
+    is_a: AttributeValue
+    description: A simple quantity, e.g. 2cm. May be used to describe a range using the minimum_value and maximum_value fields.
+    # existing attributes:
+    # entity_id, attribute (name/ID), raw_value
+    attributes:
+      maximum_value:
+        description: If the quantity describes a range, represents the upper bound of the range.
+        range: float
+      minimum_value:
+        description: If the quantity describes a range, represents the lower bound of the range.
+        range: float
+      value:
+        description: The numeric portion of the quantity.
+        range: float
+      unit:
+        description: The unit of the quantity. Should be a term from UCUM.
+        range: curie
+
+  TextValue:
+    is_a: AttributeValue
+    description: A basic string value
+    # existing attributes:
+    # entity_id, attribute (name/ID), raw_value
+    attributes:
+      value:
+        description: The value after undergoing normalisation or standardisation.
+        required: true
+      value_cv_term_id:
+        range: local_curie
+        description: If the term comes from the controlled vocabulary, the CURIE for the term. This will always be null if the text string is not from a controlled vocabulary.
+      language:
+        description: Language of the text value.
+
+  Measurement:
+    is_a: QuantityValue
+    slots:
+      - measurement_id
+      - protocol_id
+    slot_usage:
+      measurement_id:
+        identifier: true
+      protocol_id:
+        description: The ID of the protocol used to generate the measurement.
+    attributes:
+      created_at:
+        description: Timestamp for the measurement.
+        range: iso8601
+      quality:
+        aliases:
+          - confidence
+        description: The quality of the measurement, indicating the confidence that one can have in its correctness.
+    description: A qualitative or quantitative observation of an attribute of an object or event against a standardized scale, to enable it to be compared with other objects or events.
+
+  ProcessedMeasurement:
+    description: A measurement that requires additional processing to generate a result.
+    is_a: Measurement

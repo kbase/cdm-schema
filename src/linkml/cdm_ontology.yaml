@@ -7,7 +7,7 @@ imports:
   - linkml:types
 
 prefixes:
-  cdm: http://kbase.github.io/cdm-schema/
+  kb_cdm: http://kbase.github.io/cdm-schema/
   semsql: https://w3id.org/semsql/
   linkml: https://w3id.org/linkml/
   sh: http://www.w3.org/ns/shacl#
@@ -15,7 +15,7 @@ prefixes:
 default_curi_maps:
 - semweb_context
 
-default_prefix: cdm
+default_prefix: kb_cdm
 default_range: string
 
 types:
