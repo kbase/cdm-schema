@@ -51,7 +51,6 @@ jobs:
           - name: Test documentation generation
             id: test_docgen
             run: |
-                uv sync --group docs
                 make gendoc
             continue-on-error: true
 
