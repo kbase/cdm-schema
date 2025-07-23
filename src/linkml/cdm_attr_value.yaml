@@ -1,5 +1,5 @@
 # yaml-language-server: $schema=https://linkml.io/linkml-model/linkml_model/jsonschema/meta.schema.json
-id: https://github.com/kbase/cdm-schema
+id: http://kbase.github.io/cdm-schema/cdm_attr_value
 
 name: cdm_attr_value
 description: CDM schema attribute/value classes
@@ -18,6 +18,7 @@ default_prefix: kb_cdm
 
 classes:
   AttributeValue:
+    is_a: Table
     abstract: true
     description: A generic class for capturing tag-value information in a structured form.
     slots:

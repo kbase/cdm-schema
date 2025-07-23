@@ -1,10 +1,11 @@
 # yaml-language-server: $schema=https://linkml.io/linkml-model/linkml_model/jsonschema/meta.schema.json
-id: https://github.com/kbase/cdm-schema
+id: http://kbase.github.io/cdm-schema/cdm_ontology
 
 name: cdm_ontology
 description: Ontology representation, modelled on Semantic SQL, https://w3id.org/semsql/rdf
 imports:
   - linkml:types
+  - cdm_base
 
 prefixes:
   kb_cdm: http://kbase.github.io/cdm-schema/
@@ -53,6 +54,7 @@ slots:
       - about
       - source
       - head
+      - subject_id
     slot_uri: rdf:subject
     description: The subject of the statement
     todos:
@@ -62,8 +64,10 @@ slots:
 
   predicate:
     aliases:
+      - relationship
       - relationship type
       - property
+      - predicate_id
     slot_uri: rdf:predicate
     description: The predicate of the statement
     # range: property_node
@@ -76,6 +80,7 @@ slots:
       - target
       - sink
       - tail
+      - object_id
     description: Note the range of this slot is always a node. If the triple represents
       a literal, instead value will be populated
     slot_uri: rdf:object
@@ -106,12 +111,14 @@ slots:
 
 classes:
   Prefix:
+    is_a: Table
     description: Maps CURIEs to URIs
     slots:
     - prefix
     - base
     class_uri: sh:PrefixDeclaration
   Statements:
+    is_a: Table
     aliases:
     - triple
     description: Represents an RDF triple
@@ -124,6 +131,7 @@ classes:
     - language
     class_uri: rdf:Statement
   EntailedEdge:
+    is_a: Table
     description: A relation graph edge that is inferred
     comments:
     - '- It is common to populate this via a procedure external to the database, e.g

@@ -212,9 +212,9 @@ $(DOC_DIR):
 	mkdir -p $@
 
 gen-artefacts: $(PYTHON_DIR) $(JSONSCHEMA_DIR)  ## generate derived files: JSON Schema, Python, Pydantic, erdantic ERD.
-	$(RUN) gen-json-schema $(LINKML_SCHEMA_SOURCE_PATH) > $(JSONSCHEMA_DIR)/$(SCHEMA_BASE_NAME).schema.json
-	$(RUN) gen-python $(LINKML_SCHEMA_SOURCE_PATH) > $(PYTHON_DIR)/$(SCHEMA_BASE_NAME).py
-	$(RUN) gen-pydantic $(LINKML_SCHEMA_SOURCE_PATH) > $(PYTHON_DIR)/$(SCHEMA_BASE_NAME)_pydantic.py
+	$(RUN) gen-json-schema -v $(LINKML_SCHEMA_SOURCE_PATH) > $(JSONSCHEMA_DIR)/$(SCHEMA_BASE_NAME).schema.json
+	$(RUN) gen-python -v $(LINKML_SCHEMA_SOURCE_PATH) > $(PYTHON_DIR)/$(SCHEMA_BASE_NAME).py
+	$(RUN) gen-pydantic -v $(LINKML_SCHEMA_SOURCE_PATH) --meta AUTO > $(PYTHON_DIR)/$(SCHEMA_BASE_NAME)_pydantic.py
 	$(RUN) ruff format $(PYTHON_DIR)
 	PYTHONPATH=$(PYTHON_DIR) $(RUN) erdantic $(SCHEMA_BASE_NAME)_pydantic.$(SCHEMA_ROOT) -o $(SRC_DIR)/$(SCHEMA_BASE_NAME)-schema.png
 

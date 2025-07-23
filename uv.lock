@@ -92,6 +92,7 @@ dependencies = [
     { name = "linkml-runtime" },
     { name = "mkdocs-material" },
     { name = "mkdocs-mermaid2-plugin" },
+    { name = "pyspark" },
     { name = "ruff" },
 ]
 
@@ -101,6 +102,7 @@ requires-dist = [
     { name = "linkml-runtime", specifier = ">=1.9.4" },
     { name = "mkdocs-material", specifier = ">=9.6.14" },
     { name = "mkdocs-mermaid2-plugin", specifier = ">=1.2.1" },
+    { name = "pyspark", specifier = "<4.0.0" },
     { name = "ruff", specifier = ">=0.12.4" },
 ]
 
@@ -731,6 +733,15 @@ wheels = [
 ]
 
 [[package]]
+name = "py4j"
+version = "0.10.9.7"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/1e/f2/b34255180c72c36ff7097f7c2cdca02abcbd89f5eebf7c7c41262a9a0637/py4j-0.10.9.7.tar.gz", hash = "sha256:0b6e5315bb3ada5cf62ac651d107bb2ebc02def3dee9d9548e3baac644ea8dbb", size = 1508234, upload-time = "2022-08-12T22:49:09.792Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/10/30/a58b32568f1623aaad7db22aa9eafc4c6c194b429ff35bdc55ca2726da47/py4j-0.10.9.7-py2.py3-none-any.whl", hash = "sha256:85defdfd2b2376eb3abf5ca6474b51ab7e0de341c75a02f46dc9b5976f5a5c1b", size = 200481, upload-time = "2022-08-12T22:49:07.05Z" },
+]
+
+[[package]]
 name = "pydantic"
 version = "2.11.7"
 source = { registry = "https://pypi.org/simple" }
@@ -853,6 +864,15 @@ sdist = { url = "https://files.pythonhosted.org/packages/2a/31/95c590e8ed6e8cff1
 wheels = [
     { url = "https://files.pythonhosted.org/packages/39/7d/ff5000e0882f2b3995bef20b667945d3faa9289b556295e4cc5d2e91f104/PyShExC-0.9.1-py2.py3-none-any.whl", hash = "sha256:efc55ed5cb2453e9df569b03e282505e96bb06597934288f3b23dd980ef10028", size = 69792, upload-time = "2022-04-14T18:51:44.148Z" },
 ]
+
+[[package]]
+name = "pyspark"
+version = "3.5.6"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "py4j" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/2e/62/36e50d38e5fe158e97cddec983b44f9417b1e205b02320e3c463b5f802fa/pyspark-3.5.6.tar.gz", hash = "sha256:f8b1c4360e41ab398c64904fae08740503bcb6bd389457d659fa6d9f2952cc48", size = 317359167, upload-time = "2025-05-27T08:24:20.82Z" }
 
 [[package]]
 name = "pytest"

@@ -13,6 +13,7 @@ dependencies = [
     "linkml-runtime>=1.9.4",
     "mkdocs-material>=9.6.14",
     "mkdocs-mermaid2-plugin>=1.2.1",
+    "pyspark<4.0.0",
     "ruff>=0.12.4",
 ]
 
