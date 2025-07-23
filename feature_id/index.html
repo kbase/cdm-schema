@@ -340,6 +340,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Identifier and Mapping Information">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#schema-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      Schema Source
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -380,7 +395,8 @@
 
 
 <h1 id="slot-feature_id">Slot: feature_id</h1>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/feature_id">cdm:feature_id</a>
+<p><em>Internal (CDM) unique identifier for a feature.</em></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/feature_id">kb_cdm:feature_id</a>
 Alias: feature_id</p>
 <!-- no inheritance hierarchy -->
 
@@ -395,42 +411,46 @@ Alias: feature_id</p>
 </thead>
 <tbody>
 <tr>
+<td><a href="../Feature/">Feature</a></td>
+<td>A feature localized to an interval along a contig</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../ContigCollectionXFeature/">ContigCollectionXFeature</a></td>
+<td>Captures the relationship between a contig collection and a feature; equivale...</td>
+<td>yes</td>
+</tr>
+<tr>
 <td><a href="../EncodedFeatureXFeature/">EncodedFeatureXFeature</a></td>
 <td>Captures the relationship between a feature and its transcription product</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../ContigCollectionXFeature/">ContigCollectionXFeature</a></td>
-<td>Captures the relationship between a contig collection and a feature; equivale...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Feature/">Feature</a></td>
-<td>A feature localized to an interval along a contig</td>
-<td>no</td>
+<td><a href="../ContigXFeature/">ContigXFeature</a></td>
+<td>Captures the relationship between a contig and a feature; equivalent to featu...</td>
+<td>yes</td>
 </tr>
 <tr>
 <td><a href="../FeatureXProtein/">FeatureXProtein</a></td>
 <td>Captures the relationship between a feature and a protein; equivalent to feat...</td>
 <td>no</td>
 </tr>
-<tr>
-<td><a href="../FeatureAttributes/">FeatureAttributes</a></td>
-<td>Additional attributes of a feature, parsed from column 9 of a GFF file</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ContigXFeature/">ContigXFeature</a></td>
-<td>Captures the relationship between a contig and a feature; equivalent to featu...</td>
-<td>no</td>
-</tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../String/">String</a></li>
+<li>
+<p>Range: <a href="../UUID/">UUID</a></p>
+</li>
+<li>
+<p>Required: True</p>
+</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="schema-source">Schema Source</h3>
+<ul>
+<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+</ul>
 <h2 id="mappings">Mappings</h2>
 <table>
 <thead>
@@ -442,11 +462,11 @@ Alias: feature_id</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>cdm:feature_id</td>
+<td>kb_cdm:feature_id</td>
 </tr>
 <tr>
 <td>native</td>
-<td>cdm:feature_id</td>
+<td>kb_cdm:feature_id</td>
 </tr>
 </tbody>
 </table>
@@ -454,6 +474,9 @@ Alias: feature_id</p>
 <details>
 
 <pre><code class="language-yaml">name: feature_id
+description: Internal (CDM) unique identifier for a feature.
+from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+rank: 1000
 alias: feature_id
 domain_of:
 - Contig_X_Feature
@@ -461,8 +484,8 @@ domain_of:
 - EncodedFeature_X_Feature
 - Feature_X_Protein
 - Feature
-- FeatureAttributes
-range: string
+range: UUID
+required: true
 
 </code></pre>
 

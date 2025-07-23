@@ -159,6 +159,13 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
+<a class="md-nav__link" href="#inheritance">
+<span class="md-ellipsis">
+      Inheritance
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#slots">
 <span class="md-ellipsis">
       Slots
@@ -224,11 +231,12 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-event">Class: Event</h1>
 <p><em>Something that happened.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/Event">cdm:Event</a></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/Event">kb_cdm:Event</a></p>
 <div class="mermaid"> classDiagram
     class Event
     click Event href "../Event"
-      Event : conditions
+      Table &lt;|-- Event
+        click Table href "../Table"
 
       Event : created_at
 
@@ -236,35 +244,19 @@
 
       Event : event_id
 
-      Event : gold_environmental_context
-
-
-
-
-
-        Event --&gt; "0..1" MixsEnvironmentalContext : gold_environmental_context
-        click MixsEnvironmentalContext href "../MixsEnvironmentalContext"
-
-
-
       Event : location
-
-      Event : mixs_environmental_context
-
-
-
-
-
-        Event --&gt; "0..1" MixsEnvironmentalContext : mixs_environmental_context
-        click MixsEnvironmentalContext href "../MixsEnvironmentalContext"
-
-
 
       Event : name
 
 
 </div>
-<!-- no inheritance hierarchy -->
+<h2 id="inheritance">Inheritance</h2>
+<ul>
+<li><a href="../Table/">Table</a><ul>
+<li><strong>Event</strong></li>
+</ul>
+</li>
+</ul>
 <h2 id="slots">Slots</h2>
 <table>
 <thead>
@@ -277,14 +269,14 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../conditions/">conditions</a></td>
-<td>* <br/> <a href="../String/">String</a></td>
-<td>TBD</td>
+<td><a href="../event_id/">event_id</a></td>
+<td>1 <br/> <a href="../UUID/">UUID</a></td>
+<td>Internal (CDM) unique identifier for an event</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../created_at/">created_at</a></td>
-<td>0..1 <br/> <a href="../Datetime/">Datetime</a></td>
+<td>0..1 <br/> <a href="../Iso8601/">Iso8601</a></td>
 <td>The time at which the event started or was created</td>
 <td>direct</td>
 </tr>
@@ -292,24 +284,6 @@
 <td><a href="../description/">description</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>Brief text description of what actually happened</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../gold_environmental_context/">gold_environmental_context</a></td>
-<td>0..1 <br/> <a href="../MixsEnvironmentalContext/">MixsEnvironmentalContext</a></td>
-<td>The environmental context for this event</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../mixs_environmental_context/">mixs_environmental_context</a></td>
-<td>0..1 <br/> <a href="../MixsEnvironmentalContext/">MixsEnvironmentalContext</a></td>
-<td>The environmental context for this event</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../event_id/">event_id</a></td>
-<td>1 <br/> <a href="../UUID/">UUID</a></td>
-<td>Internal (CDM) unique identifier</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -329,7 +303,7 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://github.com/kbase/cdm-schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -342,11 +316,11 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>cdm:Event</td>
+<td>kb_cdm:Event</td>
 </tr>
 <tr>
 <td>native</td>
-<td>cdm:Event</td>
+<td>kb_cdm:Event</td>
 </tr>
 </tbody>
 </table>
@@ -356,83 +330,56 @@
 <details>
 <pre><code class="language-yaml">name: Event
 description: Something that happened.
-from_schema: https://github.com/kbase/cdm-schema
+from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+is_a: Table
+slots:
+- event_id
+slot_usage:
+  event_id:
+    name: event_id
+    identifier: true
 attributes:
-  conditions:
-    name: conditions
-    description: TBD
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    domain_of:
-    - Event
-    multivalued: true
   created_at:
     name: created_at
     description: The time at which the event started or was created.
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
     rank: 1000
     domain_of:
     - Event
     - Experiment
     - Measurement
-    - MeasurementSet
-    range: datetime
+    range: iso8601
   description:
     name: description
     description: Brief text description of what actually happened.
     todos:
     - Create controlled vocab for events?
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
     domain_of:
     - Cluster
     - Event
     - Experiment
     - Project
     - Protein
+    - Protocol
     - Sample
     - Identifier
     - Name
-  gold_environmental_context:
-    name: gold_environmental_context
-    description: The environmental context for this event.
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    domain_of:
-    - Event
-    range: MixsEnvironmentalContext
-  mixs_environmental_context:
-    name: mixs_environmental_context
-    description: The environmental context for this event.
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    domain_of:
-    - Event
-    range: MixsEnvironmentalContext
-  event_id:
-    name: event_id
-    description: Internal (CDM) unique identifier.
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    identifier: true
-    domain_of:
-    - Event
-    range: UUID
-    required: true
   name:
     name: name
     description: Name or title for the event.
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
     domain_of:
+    - Cluster
     - Contributor
     - DataSource
     - Event
     - Experiment
-    - Measurement
     - Name
   location:
     name: location
     description: The location for this event. May be described in terms of coordinates.
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
     rank: 1000
     domain_of:
     - Event
@@ -443,23 +390,17 @@ attributes:
 <details>
 <pre><code class="language-yaml">name: Event
 description: Something that happened.
-from_schema: https://github.com/kbase/cdm-schema
+from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+is_a: Table
+slot_usage:
+  event_id:
+    name: event_id
+    identifier: true
 attributes:
-  conditions:
-    name: conditions
-    description: TBD
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    alias: conditions
-    owner: Event
-    domain_of:
-    - Event
-    range: string
-    multivalued: true
   created_at:
     name: created_at
     description: The time at which the event started or was created.
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
     rank: 1000
     alias: created_at
     owner: Event
@@ -467,14 +408,13 @@ attributes:
     - Event
     - Experiment
     - Measurement
-    - MeasurementSet
-    range: datetime
+    range: iso8601
   description:
     name: description
     description: Brief text description of what actually happened.
     todos:
     - Create controlled vocab for events?
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
     alias: description
     owner: Event
     domain_of:
@@ -483,34 +423,39 @@ attributes:
     - Experiment
     - Project
     - Protein
+    - Protocol
     - Sample
     - Identifier
     - Name
     range: string
-  gold_environmental_context:
-    name: gold_environmental_context
-    description: The environmental context for this event.
-    from_schema: https://github.com/kbase/cdm-schema
+  name:
+    name: name
+    description: Name or title for the event.
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    alias: name
+    owner: Event
+    domain_of:
+    - Cluster
+    - Contributor
+    - DataSource
+    - Event
+    - Experiment
+    - Name
+    range: string
+  location:
+    name: location
+    description: The location for this event. May be described in terms of coordinates.
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
     rank: 1000
-    alias: gold_environmental_context
+    alias: location
     owner: Event
     domain_of:
     - Event
-    range: MixsEnvironmentalContext
-  mixs_environmental_context:
-    name: mixs_environmental_context
-    description: The environmental context for this event.
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    alias: mixs_environmental_context
-    owner: Event
-    domain_of:
-    - Event
-    range: MixsEnvironmentalContext
+    range: string
   event_id:
     name: event_id
-    description: Internal (CDM) unique identifier.
-    from_schema: https://github.com/kbase/cdm-schema
+    description: Internal (CDM) unique identifier for an event.
+    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
     rank: 1000
     identifier: true
     alias: event_id
@@ -519,30 +464,6 @@ attributes:
     - Event
     range: UUID
     required: true
-  name:
-    name: name
-    description: Name or title for the event.
-    from_schema: https://github.com/kbase/cdm-schema
-    alias: name
-    owner: Event
-    domain_of:
-    - Contributor
-    - DataSource
-    - Event
-    - Experiment
-    - Measurement
-    - Name
-    range: string
-  location:
-    name: location
-    description: The location for this event. May be described in terms of coordinates.
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    alias: location
-    owner: Event
-    domain_of:
-    - Event
-    range: string
 
 </code></pre>
 </details>

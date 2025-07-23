@@ -395,8 +395,8 @@
 
 
 <h1 id="slot-created">Slot: created</h1>
-<p><em>POSIX timestamp for when the entity was created or added to the CDM.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/created">cdm:created</a>
+<p><em>Date/timestamp for when the entity was created or added to the CDM.</em></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/created">kb_cdm:created</a>
 Alias: created</p>
 <!-- no inheritance hierarchy -->
 
@@ -420,7 +420,7 @@ Alias: created</p>
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../Integer/">Integer</a></p>
+<p>Range: <a href="../Iso8601/">Iso8601</a></p>
 </li>
 <li>
 <p>Required: True</p>
@@ -429,7 +429,7 @@ Alias: created</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://github.com/kbase/cdm-schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -442,11 +442,11 @@ Alias: created</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>cdm:created</td>
+<td>kb_cdm:created</td>
 </tr>
 <tr>
 <td>native</td>
-<td>cdm:created</td>
+<td>kb_cdm:created</td>
 </tr>
 </tbody>
 </table>
@@ -454,14 +454,14 @@ Alias: created</p>
 <details>
 
 <pre><code class="language-yaml">name: created
-description: POSIX timestamp for when the entity was created or added to the CDM.
-from_schema: https://github.com/kbase/cdm-schema
+description: Date/timestamp for when the entity was created or added to the CDM.
+from_schema: http://kbase.github.io/cdm-schema/cdm_schema
 rank: 1000
 alias: created
 owner: Entity
 domain_of:
 - Entity
-range: integer
+range: iso8601
 required: true
 
 </code></pre>

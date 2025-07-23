@@ -395,7 +395,8 @@
 
 
 <h1 id="slot-unit">Slot: unit</h1>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/unit">cdm:unit</a>
+<p><em>The unit of the quantity. Should be a term from UCUM.</em></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/unit">kb_cdm:unit</a>
 Alias: unit</p>
 <!-- no inheritance hierarchy -->
 
@@ -422,18 +423,18 @@ Alias: unit</p>
 <tr>
 <td><a href="../QuantityValue/">QuantityValue</a></td>
 <td>A simple quantity, e</td>
-<td>yes</td>
+<td>no</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../String/">String</a></li>
+<li>Range: <a href="../Curie/">Curie</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://github.com/kbase/cdm-schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -446,11 +447,11 @@ Alias: unit</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>cdm:unit</td>
+<td>kb_cdm:unit</td>
 </tr>
 <tr>
 <td>native</td>
-<td>cdm:unit</td>
+<td>kb_cdm:unit</td>
 </tr>
 </tbody>
 </table>
@@ -458,13 +459,14 @@ Alias: unit</p>
 <details>
 
 <pre><code class="language-yaml">name: unit
-from_schema: https://github.com/kbase/cdm-schema
+description: The unit of the quantity. Should be a term from UCUM.
+from_schema: http://kbase.github.io/cdm-schema/cdm_schema
 rank: 1000
 alias: unit
+owner: QuantityValue
 domain_of:
-- Measurement
 - QuantityValue
-range: string
+range: curie
 
 </code></pre>
 

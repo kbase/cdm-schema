@@ -340,6 +340,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Identifier and Mapping Information">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#schema-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      Schema Source
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -380,7 +395,8 @@
 
 
 <h1 id="slot-protocol_id">Slot: protocol_id</h1>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/protocol_id">cdm:protocol_id</a>
+<p><em>Internal (CDM) unique identifier for a protocol.</em></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/protocol_id">kb_cdm:protocol_id</a>
 Alias: protocol_id</p>
 <!-- no inheritance hierarchy -->
 
@@ -400,32 +416,46 @@ Alias: protocol_id</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Protocol/">Protocol</a></td>
-<td>Defined method or set of methods</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../ProcessedMeasurement/">ProcessedMeasurement</a></td>
 <td>A measurement that requires additional processing to generate a result</td>
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../Protocol/">Protocol</a></td>
+<td>Defined method or set of methods</td>
+<td>yes</td>
+</tr>
+<tr>
 <td><a href="../Measurement/">Measurement</a></td>
 <td>A qualitative or quantitative observation of an attribute of an object or eve...</td>
-<td>no</td>
+<td>yes</td>
 </tr>
 <tr>
 <td><a href="../Cluster/">Cluster</a></td>
 <td>Represents an individual execution of a clustering protocol</td>
 <td>no</td>
 </tr>
+<tr>
+<td><a href="../ProtocolXProtocolParticipant/">ProtocolXProtocolParticipant</a></td>
+<td></td>
+<td>no</td>
+</tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../String/">String</a></li>
+<li>
+<p>Range: <a href="../UUID/">UUID</a></p>
+</li>
+<li>
+<p>Required: True</p>
+</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="schema-source">Schema Source</h3>
+<ul>
+<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+</ul>
 <h2 id="mappings">Mappings</h2>
 <table>
 <thead>
@@ -437,11 +467,11 @@ Alias: protocol_id</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>cdm:protocol_id</td>
+<td>kb_cdm:protocol_id</td>
 </tr>
 <tr>
 <td>native</td>
-<td>cdm:protocol_id</td>
+<td>kb_cdm:protocol_id</td>
 </tr>
 </tbody>
 </table>
@@ -449,13 +479,18 @@ Alias: protocol_id</p>
 <details>
 
 <pre><code class="language-yaml">name: protocol_id
+description: Internal (CDM) unique identifier for a protocol.
+from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+rank: 1000
 alias: protocol_id
 domain_of:
+- Protocol_X_ProtocolParticipant
 - Cluster
 - Feature
-- Measurement
 - Protocol
-range: string
+- Measurement
+range: UUID
+required: true
 
 </code></pre>
 

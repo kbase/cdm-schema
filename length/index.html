@@ -380,7 +380,7 @@
 
 
 <h1 id="slot-length">Slot: length</h1>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/length">cdm:length</a>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/length">kb_cdm:length</a>
 Alias: length</p>
 <!-- no inheritance hierarchy -->
 
@@ -394,6 +394,11 @@ Alias: length</p>
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><a href="../Sequence/">Sequence</a></td>
+<td></td>
+<td>no</td>
+</tr>
 <tr>
 <td><a href="../Contig/">Contig</a></td>
 <td>A contig (derived from the word "contiguous") is a set of DNA segments or seq...</td>
@@ -422,11 +427,11 @@ Alias: length</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>cdm:length</td>
+<td>kb_cdm:length</td>
 </tr>
 <tr>
 <td>native</td>
-<td>cdm:length</td>
+<td>kb_cdm:length</td>
 </tr>
 </tbody>
 </table>
@@ -438,6 +443,7 @@ alias: length
 domain_of:
 - Contig
 - Protein
+- Sequence
 range: string
 
 </code></pre>

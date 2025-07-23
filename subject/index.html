@@ -454,6 +454,7 @@ Alias: subject</p>
 <li>about</li>
 <li>source</li>
 <li>head</li>
+<li>subject_id</li>
 </ul>
 <h2 id="todos">TODOs</h2>
 <ul>
@@ -462,7 +463,7 @@ Alias: subject</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://github.com/kbase/cdm-schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -479,7 +480,7 @@ Alias: subject</p>
 </tr>
 <tr>
 <td>native</td>
-<td>cdm:subject</td>
+<td>kb_cdm:subject</td>
 </tr>
 </tbody>
 </table>
@@ -490,11 +491,12 @@ Alias: subject</p>
 description: The subject of the statement
 todos:
 - set range appropriately for ontology and association use
-from_schema: https://github.com/kbase/cdm-schema
+from_schema: http://kbase.github.io/cdm-schema/cdm_schema
 aliases:
 - about
 - source
 - head
+- subject_id
 rank: 1000
 slot_uri: rdf:subject
 alias: subject

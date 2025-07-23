@@ -231,25 +231,36 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-textvalue">Class: TextValue</h1>
 <p><em>A basic string value</em></p>
-<p>URI: <a href="nmdc:TextValue">nmdc:TextValue</a></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/TextValue">kb_cdm:TextValue</a></p>
 <div class="mermaid"> classDiagram
     class TextValue
     click TextValue href "../TextValue"
       AttributeValue &lt;|-- TextValue
         click AttributeValue href "../AttributeValue"
 
+      TextValue : attribute_cv_term_id
+
+      TextValue : attribute_name
+
+      TextValue : entity_id
+
       TextValue : language
 
       TextValue : raw_value
 
-      TextValue : type
+      TextValue : value
+
+      TextValue : value_cv_term_id
 
 
 </div>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
+<li><a href="../Table/">Table</a><ul>
 <li><a href="../AttributeValue/">AttributeValue</a><ul>
 <li><strong>TextValue</strong></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -265,21 +276,45 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../value/">value</a></td>
+<td>1 <br/> <a href="../String/">String</a></td>
+<td>The value after undergoing normalisation or standardisation</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../value_cv_term_id/">value_cv_term_id</a></td>
+<td>0..1 <br/> <a href="../LocalCurie/">LocalCurie</a></td>
+<td>If the term comes from the controlled vocabulary, the CURIE for the term</td>
+<td>direct</td>
+</tr>
+<tr>
 <td><a href="../language/">language</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>the human language in which the value is encoded, e</td>
+<td>Language of the text value</td>
 <td>direct</td>
+</tr>
+<tr>
+<td><a href="../entity_id/">entity_id</a></td>
+<td>1 <br/> <a href="../UUID/">UUID</a></td>
+<td>The database entity (sample, feature, protein, etc</td>
+<td><a href="../AttributeValue/">AttributeValue</a></td>
+</tr>
+<tr>
+<td><a href="../attribute_name/">attribute_name</a></td>
+<td>1 <br/> <a href="../String/">String</a></td>
+<td>The attribute being captured in this annotation</td>
+<td><a href="../AttributeValue/">AttributeValue</a></td>
+</tr>
+<tr>
+<td><a href="../attribute_cv_term_id/">attribute_cv_term_id</a></td>
+<td>0..1 <br/> <a href="../LocalCurie/">LocalCurie</a></td>
+<td>If the attribute is a term from a controlled vocabulary, the ID of the term</td>
+<td><a href="../AttributeValue/">AttributeValue</a></td>
 </tr>
 <tr>
 <td><a href="../raw_value/">raw_value</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
-<td><a href="../AttributeValue/">AttributeValue</a></td>
-</tr>
-<tr>
-<td><a href="../type/">type</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td>Raw value from the source data</td>
 <td><a href="../AttributeValue/">AttributeValue</a></td>
 </tr>
 </tbody>
@@ -287,7 +322,7 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://github.com/kbase/cdm-schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -300,11 +335,11 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>nmdc:TextValue</td>
+<td>kb_cdm:TextValue</td>
 </tr>
 <tr>
 <td>native</td>
-<td>cdm:TextValue</td>
+<td>kb_cdm:TextValue</td>
 </tr>
 </tbody>
 </table>
@@ -314,11 +349,34 @@
 <details>
 <pre><code class="language-yaml">name: TextValue
 description: A basic string value
-from_schema: https://github.com/kbase/cdm-schema
+from_schema: http://kbase.github.io/cdm-schema/cdm_schema
 is_a: AttributeValue
-slots:
-- language
-class_uri: nmdc:TextValue
+attributes:
+  value:
+    name: value
+    description: The value after undergoing normalisation or standardisation.
+    from_schema: http://kbase.github.io/cdm-schema/cdm_attr_value
+    domain_of:
+    - QuantityValue
+    - TextValue
+    - Statements
+    required: true
+  value_cv_term_id:
+    name: value_cv_term_id
+    description: If the term comes from the controlled vocabulary, the CURIE for the
+      term. This will always be null if the text string is not from a controlled vocabulary.
+    from_schema: http://kbase.github.io/cdm-schema/cdm_attr_value
+    rank: 1000
+    domain_of:
+    - TextValue
+    range: local_curie
+  language:
+    name: language
+    description: Language of the text value.
+    from_schema: http://kbase.github.io/cdm-schema/cdm_attr_value
+    domain_of:
+    - TextValue
+    - Statements
 
 </code></pre>
 </details>
@@ -326,47 +384,98 @@ class_uri: nmdc:TextValue
 <details>
 <pre><code class="language-yaml">name: TextValue
 description: A basic string value
-from_schema: https://github.com/kbase/cdm-schema
+from_schema: http://kbase.github.io/cdm-schema/cdm_schema
 is_a: AttributeValue
 attributes:
+  value:
+    name: value
+    description: The value after undergoing normalisation or standardisation.
+    from_schema: http://kbase.github.io/cdm-schema/cdm_attr_value
+    alias: value
+    owner: TextValue
+    domain_of:
+    - QuantityValue
+    - TextValue
+    - Statements
+    range: string
+    required: true
+  value_cv_term_id:
+    name: value_cv_term_id
+    description: If the term comes from the controlled vocabulary, the CURIE for the
+      term. This will always be null if the text string is not from a controlled vocabulary.
+    from_schema: http://kbase.github.io/cdm-schema/cdm_attr_value
+    rank: 1000
+    alias: value_cv_term_id
+    owner: TextValue
+    domain_of:
+    - TextValue
+    range: local_curie
   language:
     name: language
-    description: the human language in which the value is encoded, e.g. 'en'
-    todos:
-    - use an enum (rather than a string)
-    comments:
-    - only used when value is populated
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
+    description: Language of the text value.
+    from_schema: http://kbase.github.io/cdm-schema/cdm_attr_value
     alias: language
     owner: TextValue
     domain_of:
-    - Statements
     - TextValue
+    - Statements
     range: string
+  entity_id:
+    name: entity_id
+    description: The database entity (sample, feature, protein, etc.) to which the
+      attribute-value annotation refers.
+    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+    rank: 1000
+    alias: entity_id
+    owner: TextValue
+    domain_of:
+    - Association_X_SupportingObject
+    - Entity_X_Measurement
+    - ClusterMember
+    - Sequence
+    - Entity
+    - Identifier
+    - Name
+    - AttributeValue
+    range: UUID
+    required: true
+  attribute_name:
+    name: attribute_name
+    description: The attribute being captured in this annotation.
+    from_schema: http://kbase.github.io/cdm-schema/cdm_attr_value
+    aliases:
+    - type
+    - name
+    rank: 1000
+    alias: attribute_name
+    owner: TextValue
+    domain_of:
+    - AttributeValue
+    range: string
+    required: true
+  attribute_cv_term_id:
+    name: attribute_cv_term_id
+    description: If the attribute is a term from a controlled vocabulary, the ID of
+      the term.
+    from_schema: http://kbase.github.io/cdm-schema/cdm_attr_value
+    rank: 1000
+    alias: attribute_cv_term_id
+    owner: TextValue
+    domain_of:
+    - AttributeValue
+    range: local_curie
   raw_value:
     name: raw_value
-    from_schema: https://github.com/kbase/cdm-schema
+    description: Raw value from the source data. May or may not include units or other
+      unstructured information.
+    from_schema: http://kbase.github.io/cdm-schema/cdm_attr_value
     rank: 1000
     alias: raw_value
     owner: TextValue
     domain_of:
     - AttributeValue
+    - Geolocation
     range: string
-  type:
-    name: type
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    alias: type
-    owner: TextValue
-    domain_of:
-    - EncodedFeature
-    - Feature
-    - Measurement
-    - Sample
-    - AttributeValue
-    range: string
-class_uri: nmdc:TextValue
 
 </code></pre>
 </details>

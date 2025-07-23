@@ -252,16 +252,12 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-feature">Class: Feature</h1>
 <p><em>A feature localized to an interval along a contig.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/Feature">cdm:Feature</a></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/Feature">kb_cdm:Feature</a></p>
 <div class="mermaid"> classDiagram
     class Feature
     click Feature href "../Feature"
-      HasNames &lt;|-- Feature
-        click HasNames href "../HasNames"
-      HasIdentifiers &lt;|-- Feature
-        click HasIdentifiers href "../HasIdentifiers"
-      HasHash &lt;|-- Feature
-        click HasHash href "../HasHash"
+      Table &lt;|-- Feature
+        click Table href "../Table"
 
       Feature : cds_phase
 
@@ -280,49 +276,7 @@
 
       Feature : feature_id
 
-
-
-
-
-        Feature --&gt; "1" Entity : feature_id
-        click Entity href "../Entity"
-
-
-
-      Feature : generated_by
-
-
-
-
-
-        Feature --&gt; "0..1" Protocol : generated_by
-        click Protocol href "../Protocol"
-
-
-
       Feature : hash
-
-      Feature : identifiers
-
-
-
-
-
-        Feature --&gt; "*" Identifier : identifiers
-        click Identifier href "../Identifier"
-
-
-
-      Feature : names
-
-
-
-
-
-        Feature --&gt; "*" Name : names
-        click Name href "../Name"
-
-
 
       Feature : p_value
 
@@ -358,7 +312,10 @@
 </div>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
-<li><strong>Feature</strong> [ <a href="../HasNames/">HasNames</a> <a href="../HasIdentifiers/">HasIdentifiers</a> <a href="../HasHash/">HasHash</a>]</li>
+<li><a href="../Table/">Table</a><ul>
+<li><strong>Feature</strong></li>
+</ul>
+</li>
 </ul>
 <h2 id="slots">Slots</h2>
 <table>
@@ -371,6 +328,18 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><a href="../feature_id/">feature_id</a></td>
+<td>1 <br/> <a href="../UUID/">UUID</a></td>
+<td>Internal (CDM) unique identifier for a feature</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../hash/">hash</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>A hash value generated from one or more object attributes that serves to ensu...</td>
+<td>direct</td>
+</tr>
 <tr>
 <td><a href="../cds_phase/">cds_phase</a></td>
 <td>0..1 <br/> <a href="../CdsPhaseType/">CdsPhaseType</a></td>
@@ -387,18 +356,6 @@
 <td><a href="../end/">end</a></td>
 <td>0..1 <br/> <a href="../Integer/">Integer</a></td>
 <td>The start and end coordinates of the feature are given in positive 1-based in...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../feature_id/">feature_id</a></td>
-<td>1 <br/> <a href="../Entity/">Entity</a></td>
-<td>Internal (CDM) unique identifier</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../generated_by/">generated_by</a></td>
-<td>0..1 <br/> <a href="../Protocol/">Protocol</a></td>
-<td>The algorithm or procedure that generated the feature</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -437,24 +394,6 @@
 <td>The type of the feature; constrained to be either a term from the Sequence On...</td>
 <td>direct</td>
 </tr>
-<tr>
-<td><a href="../names/">names</a></td>
-<td>* <br/> <a href="../Name/">Name</a></td>
-<td>Names, alternative names, and synonyms for an entity</td>
-<td><a href="../HasNames/">HasNames</a></td>
-</tr>
-<tr>
-<td><a href="../identifiers/">identifiers</a></td>
-<td>* <br/> <a href="../Identifier/">Identifier</a></td>
-<td>URIs or CURIEs used to refer to this entity</td>
-<td><a href="../HasIdentifiers/">HasIdentifiers</a></td>
-</tr>
-<tr>
-<td><a href="../hash/">hash</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>A hash value generated from one or more object attributes that serves to ensu...</td>
-<td><a href="../HasHash/">HasHash</a></td>
-</tr>
 </tbody>
 </table>
 <h2 id="usages">Usages</h2>
@@ -469,39 +408,9 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../ContigXFeature/">ContigXFeature</a></td>
-<td><a href="../feature_id/">feature_id</a></td>
-<td>range</td>
-<td><a href="./">Feature</a></td>
-</tr>
-<tr>
-<td><a href="../EncodedFeatureXFeature/">EncodedFeatureXFeature</a></td>
-<td><a href="../feature_id/">feature_id</a></td>
-<td>range</td>
-<td><a href="./">Feature</a></td>
-</tr>
-<tr>
-<td><a href="../FeatureXProtein/">FeatureXProtein</a></td>
-<td><a href="../feature_id/">feature_id</a></td>
-<td>range</td>
-<td><a href="./">Feature</a></td>
-</tr>
-<tr>
 <td><a href="../Association/">Association</a></td>
 <td><a href="../subject/">subject</a></td>
 <td>any_of[range]</td>
-<td><a href="./">Feature</a></td>
-</tr>
-<tr>
-<td><a href="../Association/">Association</a></td>
-<td><a href="../supporting_objects/">supporting_objects</a></td>
-<td>any_of[range]</td>
-<td><a href="./">Feature</a></td>
-</tr>
-<tr>
-<td><a href="../Protein/">Protein</a></td>
-<td><a href="../encoded_by/">encoded_by</a></td>
-<td>range</td>
 <td><a href="./">Feature</a></td>
 </tr>
 </tbody>
@@ -517,7 +426,7 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://github.com/kbase/cdm-schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -530,11 +439,11 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>cdm:Feature</td>
+<td>kb_cdm:Feature</td>
 </tr>
 <tr>
 <td>native</td>
-<td>cdm:Feature</td>
+<td>kb_cdm:Feature</td>
 </tr>
 </tbody>
 </table>
@@ -546,13 +455,17 @@
 description: A feature localized to an interval along a contig.
 comments:
 - corresponds to an entry in GFF3
-from_schema: https://github.com/kbase/cdm-schema
+from_schema: http://kbase.github.io/cdm-schema/cdm_schema
 see_also:
 - https://github.com/The-Sequence-Ontology/Specifications/blob/master/gff3.md
-mixins:
-- HasNames
-- HasIdentifiers
-- HasHash
+is_a: Table
+slots:
+- feature_id
+- hash
+slot_usage:
+  feature_id:
+    name: feature_id
+    identifier: true
 attributes:
   cds_phase:
     name: cds_phase
@@ -560,7 +473,7 @@ attributes:
       begins relative to the 5' end (where the 5' end of the CDS is relative to the
       strand of the CDS feature) of the current CDS feature. cds_phase is required
       if the feature type is CDS.
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
     rank: 1000
     domain_of:
     - Feature
@@ -569,7 +482,7 @@ attributes:
     name: e_value
     description: The 'score' of the feature. The semantics of this field are ill-defined.
       E-values should be used for sequence similarity features.
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
     rank: 1000
     domain_of:
     - Feature
@@ -584,38 +497,16 @@ attributes:
       end = the position of the end + the length of the landmark feature. For zero-length
       features, such as insertion sites, start equals end and the implied site is
       to the right of the indicated base in the direction of the landmark.
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
     rank: 1000
     domain_of:
     - Feature
     range: integer
-  feature_id:
-    name: feature_id
-    description: Internal (CDM) unique identifier.
-    from_schema: https://github.com/kbase/cdm-schema
-    identifier: true
-    domain_of:
-    - Contig_X_Feature
-    - ContigCollection_X_Feature
-    - EncodedFeature_X_Feature
-    - Feature_X_Protein
-    - Feature
-    - FeatureAttributes
-    range: Entity
-    required: true
-  generated_by:
-    name: generated_by
-    description: The algorithm or procedure that generated the feature.
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    domain_of:
-    - Feature
-    range: Protocol
   p_value:
     name: p_value
     description: The 'score' of the feature. The semantics of this field are ill-defined.
       P-values should be used for ab initio gene prediction features.
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
     rank: 1000
     domain_of:
     - Feature
@@ -630,7 +521,7 @@ attributes:
       end = the position of the end + the length of the landmark feature. For zero-length
       features, such as insertion sites, start equals end and the implied site is
       to the right of the indicated base in the direction of the landmark.
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
     rank: 1000
     domain_of:
     - Feature
@@ -638,7 +529,7 @@ attributes:
   strand:
     name: strand
     description: The strand of the feature.
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
     rank: 1000
     domain_of:
     - Feature
@@ -646,7 +537,7 @@ attributes:
   source_database:
     name: source_database
     description: ID of the data source from which this entity came.
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
     rank: 1000
     domain_of:
     - Feature
@@ -654,27 +545,29 @@ attributes:
   protocol_id:
     name: protocol_id
     description: ID of the protocol used to generate the feature.
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    aliases:
+    - generated by
     domain_of:
+    - Protocol_X_ProtocolParticipant
     - Cluster
     - Feature
-    - Measurement
     - Protocol
+    - Measurement
     range: Protocol
   type:
     name: type
     description: The type of the feature; constrained to be either a term from the
       Sequence Ontology or an SO accession number. Must be sequence_feature (SO:0000110)
       or an is_a child of it.
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
     aliases:
     - feature type
     domain_of:
     - EncodedFeature
     - Feature
-    - Measurement
     - Sample
-    - AttributeValue
+    - Sequence
     range: uriorcurie
     pattern: ^SO:\d+$
 
@@ -686,13 +579,14 @@ attributes:
 description: A feature localized to an interval along a contig.
 comments:
 - corresponds to an entry in GFF3
-from_schema: https://github.com/kbase/cdm-schema
+from_schema: http://kbase.github.io/cdm-schema/cdm_schema
 see_also:
 - https://github.com/The-Sequence-Ontology/Specifications/blob/master/gff3.md
-mixins:
-- HasNames
-- HasIdentifiers
-- HasHash
+is_a: Table
+slot_usage:
+  feature_id:
+    name: feature_id
+    identifier: true
 attributes:
   cds_phase:
     name: cds_phase
@@ -700,7 +594,7 @@ attributes:
       begins relative to the 5' end (where the 5' end of the CDS is relative to the
       strand of the CDS feature) of the current CDS feature. cds_phase is required
       if the feature type is CDS.
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
     rank: 1000
     alias: cds_phase
     owner: Feature
@@ -711,7 +605,7 @@ attributes:
     name: e_value
     description: The 'score' of the feature. The semantics of this field are ill-defined.
       E-values should be used for sequence similarity features.
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
     rank: 1000
     alias: e_value
     owner: Feature
@@ -728,44 +622,18 @@ attributes:
       end = the position of the end + the length of the landmark feature. For zero-length
       features, such as insertion sites, start equals end and the implied site is
       to the right of the indicated base in the direction of the landmark.
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
     rank: 1000
     alias: end
     owner: Feature
     domain_of:
     - Feature
     range: integer
-  feature_id:
-    name: feature_id
-    description: Internal (CDM) unique identifier.
-    from_schema: https://github.com/kbase/cdm-schema
-    identifier: true
-    alias: feature_id
-    owner: Feature
-    domain_of:
-    - Contig_X_Feature
-    - ContigCollection_X_Feature
-    - EncodedFeature_X_Feature
-    - Feature_X_Protein
-    - Feature
-    - FeatureAttributes
-    range: Entity
-    required: true
-  generated_by:
-    name: generated_by
-    description: The algorithm or procedure that generated the feature.
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    alias: generated_by
-    owner: Feature
-    domain_of:
-    - Feature
-    range: Protocol
   p_value:
     name: p_value
     description: The 'score' of the feature. The semantics of this field are ill-defined.
       P-values should be used for ab initio gene prediction features.
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
     rank: 1000
     alias: p_value
     owner: Feature
@@ -782,7 +650,7 @@ attributes:
       end = the position of the end + the length of the landmark feature. For zero-length
       features, such as insertion sites, start equals end and the implied site is
       to the right of the indicated base in the direction of the landmark.
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
     rank: 1000
     alias: start
     owner: Feature
@@ -792,7 +660,7 @@ attributes:
   strand:
     name: strand
     description: The strand of the feature.
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
     rank: 1000
     alias: strand
     owner: Feature
@@ -802,7 +670,7 @@ attributes:
   source_database:
     name: source_database
     description: ID of the data source from which this entity came.
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
     rank: 1000
     alias: source_database
     owner: Feature
@@ -812,21 +680,24 @@ attributes:
   protocol_id:
     name: protocol_id
     description: ID of the protocol used to generate the feature.
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    aliases:
+    - generated by
     alias: protocol_id
     owner: Feature
     domain_of:
+    - Protocol_X_ProtocolParticipant
     - Cluster
     - Feature
-    - Measurement
     - Protocol
+    - Measurement
     range: Protocol
   type:
     name: type
     description: The type of the feature; constrained to be either a term from the
       Sequence Ontology or an SO accession number. Must be sequence_feature (SO:0000110)
       or an is_a child of it.
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
     aliases:
     - feature type
     alias: type
@@ -834,43 +705,40 @@ attributes:
     domain_of:
     - EncodedFeature
     - Feature
-    - Measurement
     - Sample
-    - AttributeValue
+    - Sequence
     range: uriorcurie
     pattern: ^SO:\d+$
-  names:
-    name: names
-    description: Names, alternative names, and synonyms for an entity.
-    from_schema: https://github.com/kbase/cdm-schema
+  feature_id:
+    name: feature_id
+    description: Internal (CDM) unique identifier for a feature.
+    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
     rank: 1000
-    alias: names
+    identifier: true
+    alias: feature_id
     owner: Feature
     domain_of:
-    - HasNames
-    range: Name
-    multivalued: true
-  identifiers:
-    name: identifiers
-    description: URIs or CURIEs used to refer to this entity.
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    alias: identifiers
-    owner: Feature
-    domain_of:
-    - HasIdentifiers
-    range: Identifier
-    multivalued: true
+    - Contig_X_Feature
+    - ContigCollection_X_Feature
+    - EncodedFeature_X_Feature
+    - Feature_X_Protein
+    - Feature
+    range: UUID
+    required: true
   hash:
     name: hash
     description: A hash value generated from one or more object attributes that serves
       to ensure the entity is unique.
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
     rank: 1000
     alias: hash
     owner: Feature
     domain_of:
-    - HasHash
+    - Contig
+    - ContigCollection
+    - EncodedFeature
+    - Feature
+    - Protein
     range: string
 
 </code></pre>

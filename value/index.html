@@ -426,8 +426,13 @@ Alias: value</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../MeasurementSet/">MeasurementSet</a></td>
-<td>A series of qualitative or quantitative measurements</td>
+<td><a href="../QuantityValue/">QuantityValue</a></td>
+<td>A simple quantity, e</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../TextValue/">TextValue</a></td>
+<td>A basic string value</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -439,7 +444,7 @@ Alias: value</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://github.com/kbase/cdm-schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -456,7 +461,7 @@ Alias: value</p>
 </tr>
 <tr>
 <td>native</td>
-<td>cdm:value</td>
+<td>kb_cdm:value</td>
 </tr>
 <tr>
 <td>close</td>
@@ -470,16 +475,16 @@ Alias: value</p>
 <pre><code class="language-yaml">name: value
 description: Note the range of this slot is always a string. Only used the triple
   represents a literal assertion
-from_schema: https://github.com/kbase/cdm-schema
+from_schema: http://kbase.github.io/cdm-schema/cdm_schema
 close_mappings:
 - rdf:object
 rank: 1000
 slot_uri: rdf:object
 alias: value
 domain_of:
-- Measurement
+- QuantityValue
+- TextValue
 - Statements
-- MeasurementSet
 range: literal_as_string_type
 
 </code></pre>

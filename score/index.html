@@ -395,8 +395,8 @@
 
 
 <h1 id="slot-score">Slot: score</h1>
-<p><em>Output from clustering protocol.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/score">cdm:score</a>
+<p><em>Output from the clustering protocol indicating how closely a member matches the representative.</em></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/score">kb_cdm:score</a>
 Alias: score</p>
 <!-- no inheritance hierarchy -->
 
@@ -411,7 +411,7 @@ Alias: score</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../ClusterXProtein/">ClusterXProtein</a></td>
+<td><a href="../ClusterMember/">ClusterMember</a></td>
 <td>Relationship representing membership of a cluster</td>
 <td>no</td>
 </tr>
@@ -424,7 +424,7 @@ Alias: score</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://github.com/kbase/cdm-schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -437,11 +437,11 @@ Alias: score</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>cdm:score</td>
+<td>kb_cdm:score</td>
 </tr>
 <tr>
 <td>native</td>
-<td>cdm:score</td>
+<td>kb_cdm:score</td>
 </tr>
 </tbody>
 </table>
@@ -449,13 +449,14 @@ Alias: score</p>
 <details>
 
 <pre><code class="language-yaml">name: score
-description: Output from clustering protocol.
-from_schema: https://github.com/kbase/cdm-schema
+description: Output from the clustering protocol indicating how closely a member matches
+  the representative.
+from_schema: http://kbase.github.io/cdm-schema/cdm_schema
 rank: 1000
 alias: score
-owner: Cluster_X_Protein
+owner: ClusterMember
 domain_of:
-- Cluster_X_Protein
+- ClusterMember
 range: float
 
 </code></pre>

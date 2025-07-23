@@ -325,15 +325,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#slots" class="md-nav__link">
-    <span class="md-ellipsis">
-      Slots
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       Identifier and Mapping Information
@@ -399,83 +390,109 @@
 </thead>
 <tbody>
 <tr>
-<td>contig</td>
-<td>cdm:Contig</td>
+<td>Cluster</td>
+<td>kb_cdm:Cluster</td>
 <td></td>
 </tr>
 <tr>
-<td>contig_collection</td>
-<td>cdm:ContigCollection</td>
+<td>Contig</td>
+<td>kb_cdm:Contig</td>
 <td></td>
 </tr>
 <tr>
-<td>encoded_feature</td>
-<td>cdm:EncodedFeature</td>
+<td>ContigCollection</td>
+<td>kb_cdm:ContigCollection</td>
 <td></td>
 </tr>
 <tr>
-<td>feature</td>
-<td>cdm:Feature</td>
+<td>EncodedFeature</td>
+<td>kb_cdm:EncodedFeature</td>
+<td>The output of transcribing a sequence; includes mRNA, tRNA, etc</td>
+</tr>
+<tr>
+<td>Feature</td>
+<td>kb_cdm:Feature</td>
 <td></td>
 </tr>
 <tr>
-<td>protein</td>
-<td>cdm:Protein</td>
+<td>Protein</td>
+<td>kb_cdm:Protein</td>
 <td></td>
 </tr>
 <tr>
-<td>sample</td>
-<td>cdm:Sample</td>
+<td>Sample</td>
+<td>kb_cdm:Sample</td>
 <td></td>
 </tr>
-</tbody>
-</table>
-<h2 id="slots">Slots</h2>
-<table>
-<thead>
 <tr>
-<th>Name</th>
-<th>Description</th>
+<td>Organization</td>
+<td>kb_cdm:Organization</td>
+<td></td>
 </tr>
-</thead>
-<tbody>
 <tr>
-<td><a href="../entity_type/">entity_type</a></td>
-<td>The class of the entity</td>
+<td>Contributor</td>
+<td>kb_cdm:Contributor</td>
+<td></td>
+</tr>
+<tr>
+<td>Project</td>
+<td>kb_cdm:Project</td>
+<td></td>
+</tr>
+<tr>
+<td>Experiment</td>
+<td>kb_cdm:Experiment</td>
+<td></td>
 </tr>
 </tbody>
 </table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://github.com/kbase/cdm-schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
 </ul>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
 <pre><code class="language-yaml">name: EntityType
 description: The type of an entity. Must be represented by a table in the CDM schema.
-from_schema: https://github.com/kbase/cdm-schema
+from_schema: http://kbase.github.io/cdm-schema/cdm_schema
 rank: 1000
 permissible_values:
-  contig:
-    text: contig
-    meaning: cdm:Contig
-  contig_collection:
-    text: contig_collection
-    meaning: cdm:ContigCollection
-  encoded_feature:
-    text: encoded_feature
-    meaning: cdm:EncodedFeature
-  feature:
-    text: feature
-    meaning: cdm:Feature
-  protein:
-    text: protein
-    meaning: cdm:Protein
-  sample:
-    text: sample
-    meaning: cdm:Sample
+  Cluster:
+    text: Cluster
+    meaning: kb_cdm:Cluster
+  Contig:
+    text: Contig
+    meaning: kb_cdm:Contig
+  ContigCollection:
+    text: ContigCollection
+    meaning: kb_cdm:ContigCollection
+  EncodedFeature:
+    text: EncodedFeature
+    description: The output of transcribing a sequence; includes mRNA, tRNA, etc.
+    meaning: kb_cdm:EncodedFeature
+  Feature:
+    text: Feature
+    meaning: kb_cdm:Feature
+  Protein:
+    text: Protein
+    meaning: kb_cdm:Protein
+  Sample:
+    text: Sample
+    meaning: kb_cdm:Sample
+  Organization:
+    text: Organization
+    meaning: kb_cdm:Organization
+  Contributor:
+    text: Contributor
+    meaning: kb_cdm:Contributor
+  Project:
+    text: Project
+    meaning: kb_cdm:Project
+  Experiment:
+    text: Experiment
+    meaning: kb_cdm:Experiment
 
 </code></pre>
 

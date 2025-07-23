@@ -395,8 +395,8 @@
 
 
 <h1 id="slot-event_id">Slot: event_id</h1>
-<p><em>Internal (CDM) unique identifier.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/event_id">cdm:event_id</a>
+<p><em>Internal (CDM) unique identifier for an event.</em></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/event_id">kb_cdm:event_id</a>
 Alias: event_id</p>
 <!-- no inheritance hierarchy -->
 
@@ -413,7 +413,7 @@ Alias: event_id</p>
 <tr>
 <td><a href="../Event/">Event</a></td>
 <td>Something that happened</td>
-<td>no</td>
+<td>yes</td>
 </tr>
 </tbody>
 </table>
@@ -429,7 +429,7 @@ Alias: event_id</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://github.com/kbase/cdm-schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -442,11 +442,11 @@ Alias: event_id</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>cdm:event_id</td>
+<td>kb_cdm:event_id</td>
 </tr>
 <tr>
 <td>native</td>
-<td>cdm:event_id</td>
+<td>kb_cdm:event_id</td>
 </tr>
 </tbody>
 </table>
@@ -454,12 +454,10 @@ Alias: event_id</p>
 <details>
 
 <pre><code class="language-yaml">name: event_id
-description: Internal (CDM) unique identifier.
-from_schema: https://github.com/kbase/cdm-schema
+description: Internal (CDM) unique identifier for an event.
+from_schema: http://kbase.github.io/cdm-schema/cdm_schema
 rank: 1000
-identifier: true
 alias: event_id
-owner: Event
 domain_of:
 - Event
 range: UUID

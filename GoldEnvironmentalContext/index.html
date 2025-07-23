@@ -159,6 +159,13 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
+<a class="md-nav__link" href="#inheritance">
+<span class="md-ellipsis">
+      Inheritance
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#slots">
 <span class="md-ellipsis">
       Slots
@@ -224,10 +231,13 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-goldenvironmentalcontext">Class: GoldEnvironmentalContext</h1>
 <p><em>Environmental context, described using JGI's five level system.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/GoldEnvironmentalContext">cdm:GoldEnvironmentalContext</a></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/GoldEnvironmentalContext">kb_cdm:GoldEnvironmentalContext</a></p>
 <div class="mermaid"> classDiagram
     class GoldEnvironmentalContext
     click GoldEnvironmentalContext href "../GoldEnvironmentalContext"
+      Table &lt;|-- GoldEnvironmentalContext
+        click Table href "../Table"
+
       GoldEnvironmentalContext : ecosystem
 
       GoldEnvironmentalContext : ecosystem_category
@@ -236,11 +246,19 @@
 
       GoldEnvironmentalContext : ecosystem_type
 
+      GoldEnvironmentalContext : gold_environmental_context_id
+
       GoldEnvironmentalContext : specific_ecosystem
 
 
 </div>
-<!-- no inheritance hierarchy -->
+<h2 id="inheritance">Inheritance</h2>
+<ul>
+<li><a href="../Table/">Table</a><ul>
+<li><strong>GoldEnvironmentalContext</strong></li>
+</ul>
+</li>
+</ul>
 <h2 id="slots">Slots</h2>
 <table>
 <thead>
@@ -252,6 +270,12 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><a href="../gold_environmental_context_id/">gold_environmental_context_id</a></td>
+<td>1 <br/> <a href="../UUID/">UUID</a></td>
+<td>Internal (CDM) unique identifier for a GOLD environmental context</td>
+<td>direct</td>
+</tr>
 <tr>
 <td><a href="../ecosystem/">ecosystem</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
@@ -287,7 +311,7 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://github.com/kbase/cdm-schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -300,11 +324,11 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>cdm:GoldEnvironmentalContext</td>
+<td>kb_cdm:GoldEnvironmentalContext</td>
 </tr>
 <tr>
 <td>native</td>
-<td>cdm:GoldEnvironmentalContext</td>
+<td>kb_cdm:GoldEnvironmentalContext</td>
 </tr>
 </tbody>
 </table>
@@ -314,19 +338,26 @@
 <details>
 <pre><code class="language-yaml">name: GoldEnvironmentalContext
 description: Environmental context, described using JGI's five level system.
-from_schema: https://github.com/kbase/cdm-schema
+from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+is_a: Table
+slots:
+- gold_environmental_context_id
+slot_usage:
+  gold_environmental_context_id:
+    name: gold_environmental_context_id
+    identifier: true
 attributes:
   ecosystem:
     name: ecosystem
     description: JGI GOLD descriptor representing the top level ecosystem categorization.
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
     rank: 1000
     domain_of:
     - GoldEnvironmentalContext
   ecosystem_category:
     name: ecosystem_category
     description: JGI GOLD descriptor representing the ecosystem category.
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
     rank: 1000
     domain_of:
     - GoldEnvironmentalContext
@@ -334,14 +365,14 @@ attributes:
     name: ecosystem_subtype
     description: JGI GOLD descriptor representing the subtype of ecosystem. May be
       "Unclassified".
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
     rank: 1000
     domain_of:
     - GoldEnvironmentalContext
   ecosystem_type:
     name: ecosystem_type
     description: JGI GOLD descriptor representing the ecosystem type. May be "Unclassified".
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
     rank: 1000
     domain_of:
     - GoldEnvironmentalContext
@@ -349,7 +380,7 @@ attributes:
     name: specific_ecosystem
     description: JGI GOLD descriptor representing the most specific level of ecosystem
       categorization. May be "Unclassified".
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
     rank: 1000
     domain_of:
     - GoldEnvironmentalContext
@@ -360,12 +391,17 @@ attributes:
 <details>
 <pre><code class="language-yaml">name: GoldEnvironmentalContext
 description: Environmental context, described using JGI's five level system.
-from_schema: https://github.com/kbase/cdm-schema
+from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+is_a: Table
+slot_usage:
+  gold_environmental_context_id:
+    name: gold_environmental_context_id
+    identifier: true
 attributes:
   ecosystem:
     name: ecosystem
     description: JGI GOLD descriptor representing the top level ecosystem categorization.
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
     rank: 1000
     alias: ecosystem
     owner: GoldEnvironmentalContext
@@ -375,7 +411,7 @@ attributes:
   ecosystem_category:
     name: ecosystem_category
     description: JGI GOLD descriptor representing the ecosystem category.
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
     rank: 1000
     alias: ecosystem_category
     owner: GoldEnvironmentalContext
@@ -386,7 +422,7 @@ attributes:
     name: ecosystem_subtype
     description: JGI GOLD descriptor representing the subtype of ecosystem. May be
       "Unclassified".
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
     rank: 1000
     alias: ecosystem_subtype
     owner: GoldEnvironmentalContext
@@ -396,7 +432,7 @@ attributes:
   ecosystem_type:
     name: ecosystem_type
     description: JGI GOLD descriptor representing the ecosystem type. May be "Unclassified".
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
     rank: 1000
     alias: ecosystem_type
     owner: GoldEnvironmentalContext
@@ -407,13 +443,25 @@ attributes:
     name: specific_ecosystem
     description: JGI GOLD descriptor representing the most specific level of ecosystem
       categorization. May be "Unclassified".
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
     rank: 1000
     alias: specific_ecosystem
     owner: GoldEnvironmentalContext
     domain_of:
     - GoldEnvironmentalContext
     range: string
+  gold_environmental_context_id:
+    name: gold_environmental_context_id
+    description: Internal (CDM) unique identifier for a GOLD environmental context.
+    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+    rank: 1000
+    identifier: true
+    alias: gold_environmental_context_id
+    owner: GoldEnvironmentalContext
+    domain_of:
+    - GoldEnvironmentalContext
+    range: UUID
+    required: true
 
 </code></pre>
 </details>

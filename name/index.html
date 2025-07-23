@@ -396,7 +396,7 @@
 
 <h1 id="slot-name">Slot: name</h1>
 <p><em>A string used as a name or title.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/name">cdm:name</a>
+<p>URI: <a href="http://schema.org/name">schema:name</a>
 Alias: name</p>
 <!-- no inheritance hierarchy -->
 
@@ -411,38 +411,33 @@ Alias: name</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../Experiment/">Experiment</a></td>
-<td>A discrete scientific procedure undertaken to make a discovery, test a hypoth...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../DataSource/">DataSource</a></td>
-<td>The source dataset from which data within the CDM was extracted</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Contributor/">Contributor</a></td>
-<td>Represents a contributor to the resource</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ProcessedMeasurement/">ProcessedMeasurement</a></td>
-<td>A measurement that requires additional processing to generate a result</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../Event/">Event</a></td>
 <td>Something that happened</td>
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../DataSource/">DataSource</a></td>
+<td>The source dataset from which data within the CDM was extracted</td>
+<td>yes</td>
+</tr>
+<tr>
 <td><a href="../Name/">Name</a></td>
-<td>The name or label for an entity</td>
+<td>A string used as the name or label for an entity</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../Experiment/">Experiment</a></td>
+<td>A discrete scientific procedure undertaken to make a discovery, test a hypoth...</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Measurement/">Measurement</a></td>
-<td>A qualitative or quantitative observation of an attribute of an object or eve...</td>
+<td><a href="../Cluster/">Cluster</a></td>
+<td>Represents an individual execution of a clustering protocol</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Contributor/">Contributor</a></td>
+<td>Represents a contributor to the resource</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -454,7 +449,7 @@ Alias: name</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://github.com/kbase/cdm-schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -467,11 +462,11 @@ Alias: name</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>cdm:name</td>
+<td>schema:name</td>
 </tr>
 <tr>
 <td>native</td>
-<td>cdm:name</td>
+<td>kb_cdm:name</td>
 </tr>
 </tbody>
 </table>
@@ -480,15 +475,16 @@ Alias: name</p>
 
 <pre><code class="language-yaml">name: name
 description: A string used as a name or title.
-from_schema: https://github.com/kbase/cdm-schema
+from_schema: http://kbase.github.io/cdm-schema/cdm_schema
 rank: 1000
+slot_uri: schema:name
 alias: name
 domain_of:
+- Cluster
 - Contributor
 - DataSource
 - Event
 - Experiment
-- Measurement
 - Name
 range: string
 

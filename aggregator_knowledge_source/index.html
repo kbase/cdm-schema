@@ -334,15 +334,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#todos" class="md-nav__link">
-    <span class="md-ellipsis">
-      TODOs
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       Identifier and Mapping Information
@@ -404,8 +395,8 @@
 
 
 <h1 id="slot-aggregator_knowledge_source">Slot: aggregator_knowledge_source</h1>
-<p><em>The knowledge source that aggregated the association.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/aggregator_knowledge_source">cdm:aggregator_knowledge_source</a>
+<p><em>The knowledge source that aggregated the association. Should be a UUID from the DataSource table.</em></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/aggregator_knowledge_source">kb_cdm:aggregator_knowledge_source</a>
 Alias: aggregator_knowledge_source</p>
 <!-- no inheritance hierarchy -->
 
@@ -430,14 +421,10 @@ Alias: aggregator_knowledge_source</p>
 <ul>
 <li>Range: <a href="../Uriorcurie/">Uriorcurie</a></li>
 </ul>
-<h2 id="todos">TODOs</h2>
-<ul>
-<li>generate a controlled vocab for this field.</li>
-</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://github.com/kbase/cdm-schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -450,11 +437,11 @@ Alias: aggregator_knowledge_source</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>cdm:aggregator_knowledge_source</td>
+<td>kb_cdm:aggregator_knowledge_source</td>
 </tr>
 <tr>
 <td>native</td>
-<td>cdm:aggregator_knowledge_source</td>
+<td>kb_cdm:aggregator_knowledge_source</td>
 </tr>
 </tbody>
 </table>
@@ -462,10 +449,9 @@ Alias: aggregator_knowledge_source</p>
 <details>
 
 <pre><code class="language-yaml">name: aggregator_knowledge_source
-description: The knowledge source that aggregated the association.
-todos:
-- generate a controlled vocab for this field.
-from_schema: https://github.com/kbase/cdm-schema
+description: The knowledge source that aggregated the association. Should be a UUID
+  from the DataSource table.
+from_schema: http://kbase.github.io/cdm-schema/cdm_schema
 rank: 1000
 alias: aggregator_knowledge_source
 owner: Association

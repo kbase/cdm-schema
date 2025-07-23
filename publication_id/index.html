@@ -340,6 +340,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Identifier and Mapping Information">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#schema-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      Schema Source
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -380,7 +395,8 @@
 
 
 <h1 id="slot-publication_id">Slot: publication_id</h1>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/publication_id">cdm:publication_id</a>
+<p><em>Unique identifier for a publication - e.g. PMID, DOI, URL, etc.</em></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/publication_id">kb_cdm:publication_id</a>
 Alias: publication_id</p>
 <!-- no inheritance hierarchy -->
 
@@ -397,20 +413,29 @@ Alias: publication_id</p>
 <tr>
 <td><a href="../AssociationXPublication/">AssociationXPublication</a></td>
 <td>Links associations to supporting literature</td>
-<td>no</td>
+<td>yes</td>
 </tr>
 <tr>
 <td><a href="../Publication/">Publication</a></td>
 <td>A publication (e</td>
-<td>no</td>
+<td>yes</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../String/">String</a></li>
+<li>
+<p>Range: <a href="../Uriorcurie/">Uriorcurie</a></p>
+</li>
+<li>
+<p>Required: True</p>
+</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="schema-source">Schema Source</h3>
+<ul>
+<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+</ul>
 <h2 id="mappings">Mappings</h2>
 <table>
 <thead>
@@ -422,11 +447,11 @@ Alias: publication_id</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>cdm:publication_id</td>
+<td>kb_cdm:publication_id</td>
 </tr>
 <tr>
 <td>native</td>
-<td>cdm:publication_id</td>
+<td>kb_cdm:publication_id</td>
 </tr>
 </tbody>
 </table>
@@ -434,11 +459,15 @@ Alias: publication_id</p>
 <details>
 
 <pre><code class="language-yaml">name: publication_id
+description: Unique identifier for a publication - e.g. PMID, DOI, URL, etc.
+from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+rank: 1000
 alias: publication_id
 domain_of:
-- Association_x_Publication
+- Association_X_Publication
 - Publication
-range: string
+range: uriorcurie
+required: true
 
 </code></pre>
 

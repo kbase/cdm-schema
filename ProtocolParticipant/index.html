@@ -245,36 +245,12 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-protocolparticipant">Class: ProtocolParticipant</h1>
 <p><em>Either an input or an output of a protocol.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/ProtocolParticipant">cdm:ProtocolParticipant</a></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/ProtocolParticipant">kb_cdm:ProtocolParticipant</a></p>
 <div class="mermaid"> classDiagram
     class ProtocolParticipant
     click ProtocolParticipant href "../ProtocolParticipant"
-      HasNames &lt;|-- ProtocolParticipant
-        click HasNames href "../HasNames"
-      HasIdentifiers &lt;|-- ProtocolParticipant
-        click HasIdentifiers href "../HasIdentifiers"
-
-      ProtocolParticipant : identifiers
-
-
-
-
-
-        ProtocolParticipant --&gt; "*" Identifier : identifiers
-        click Identifier href "../Identifier"
-
-
-
-      ProtocolParticipant : names
-
-
-
-
-
-        ProtocolParticipant --&gt; "*" Name : names
-        click Name href "../Name"
-
-
+      Table &lt;|-- ProtocolParticipant
+        click Table href "../Table"
 
       ProtocolParticipant : protocol_participant_id
 
@@ -282,7 +258,10 @@
 </div>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
-<li><strong>ProtocolParticipant</strong> [ <a href="../HasNames/">HasNames</a> <a href="../HasIdentifiers/">HasIdentifiers</a>]</li>
+<li><a href="../Table/">Table</a><ul>
+<li><strong>ProtocolParticipant</strong></li>
+</ul>
+</li>
 </ul>
 <h2 id="slots">Slots</h2>
 <table>
@@ -301,18 +280,6 @@
 <td>Internal (CDM) unique identifier</td>
 <td>direct</td>
 </tr>
-<tr>
-<td><a href="../names/">names</a></td>
-<td>* <br/> <a href="../Name/">Name</a></td>
-<td>Names, alternative names, and synonyms for an entity</td>
-<td><a href="../HasNames/">HasNames</a></td>
-</tr>
-<tr>
-<td><a href="../identifiers/">identifiers</a></td>
-<td>* <br/> <a href="../Identifier/">Identifier</a></td>
-<td>URIs or CURIEs used to refer to this entity</td>
-<td><a href="../HasIdentifiers/">HasIdentifiers</a></td>
-</tr>
 </tbody>
 </table>
 <h2 id="usages">Usages</h2>
@@ -327,14 +294,8 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../Protocol/">Protocol</a></td>
-<td><a href="../inputs/">inputs</a></td>
-<td>range</td>
-<td><a href="./">ProtocolParticipant</a></td>
-</tr>
-<tr>
-<td><a href="../Protocol/">Protocol</a></td>
-<td><a href="../outputs/">outputs</a></td>
+<td><a href="../ProtocolXProtocolParticipant/">ProtocolXProtocolParticipant</a></td>
+<td><a href="../protocol_participant_id/">protocol_participant_id</a></td>
 <td>range</td>
 <td><a href="./">ProtocolParticipant</a></td>
 </tr>
@@ -347,7 +308,7 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://github.com/kbase/cdm-schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -360,11 +321,11 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>cdm:ProtocolParticipant</td>
+<td>kb_cdm:ProtocolParticipant</td>
 </tr>
 <tr>
 <td>native</td>
-<td>cdm:ProtocolParticipant</td>
+<td>kb_cdm:ProtocolParticipant</td>
 </tr>
 </tbody>
 </table>
@@ -376,18 +337,16 @@
 description: Either an input or an output of a protocol.
 todos:
 - finish this!
-from_schema: https://github.com/kbase/cdm-schema
-mixins:
-- HasNames
-- HasIdentifiers
+from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+is_a: Table
 attributes:
   protocol_participant_id:
     name: protocol_participant_id
     description: Internal (CDM) unique identifier.
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
     identifier: true
     domain_of:
+    - Protocol_X_ProtocolParticipant
     - ProtocolParticipant
     range: UUID
     required: true
@@ -400,45 +359,21 @@ attributes:
 description: Either an input or an output of a protocol.
 todos:
 - finish this!
-from_schema: https://github.com/kbase/cdm-schema
-mixins:
-- HasNames
-- HasIdentifiers
+from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+is_a: Table
 attributes:
   protocol_participant_id:
     name: protocol_participant_id
     description: Internal (CDM) unique identifier.
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
     identifier: true
     alias: protocol_participant_id
     owner: ProtocolParticipant
     domain_of:
+    - Protocol_X_ProtocolParticipant
     - ProtocolParticipant
     range: UUID
     required: true
-  names:
-    name: names
-    description: Names, alternative names, and synonyms for an entity.
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    alias: names
-    owner: ProtocolParticipant
-    domain_of:
-    - HasNames
-    range: Name
-    multivalued: true
-  identifiers:
-    name: identifiers
-    description: URIs or CURIEs used to refer to this entity.
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    alias: identifiers
-    owner: ProtocolParticipant
-    domain_of:
-    - HasIdentifiers
-    range: Identifier
-    multivalued: true
 
 </code></pre>
 </details>

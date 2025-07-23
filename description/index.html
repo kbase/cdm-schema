@@ -395,8 +395,8 @@
 
 
 <h1 id="slot-description">Slot: description</h1>
-<p><em>Definition or description.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/description">cdm:description</a>
+<p><em>Brief textual definition or description.</em></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/description">kb_cdm:description</a>
 Alias: description</p>
 <!-- no inheritance hierarchy -->
 
@@ -411,28 +411,13 @@ Alias: description</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../Experiment/">Experiment</a></td>
-<td>A discrete scientific procedure undertaken to make a discovery, test a hypoth...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Sample/">Sample</a></td>
-<td>A material entity that can be characterised by an experiment</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Identifier/">Identifier</a></td>
-<td>An external identifier for an entity</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../Event/">Event</a></td>
 <td>Something that happened</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Name/">Name</a></td>
-<td>The name or label for an entity</td>
+<td><a href="../Project/">Project</a></td>
+<td>Administrative unit for collecting data related to a certain topic, location,...</td>
 <td>no</td>
 </tr>
 <tr>
@@ -441,14 +426,34 @@ Alias: description</p>
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../Protocol/">Protocol</a></td>
+<td>Defined method or set of methods</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Sample/">Sample</a></td>
+<td>A material entity that can be characterised by an experiment</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Name/">Name</a></td>
+<td>A string used as the name or label for an entity</td>
+<td>yes</td>
+</tr>
+<tr>
 <td><a href="../Cluster/">Cluster</a></td>
 <td>Represents an individual execution of a clustering protocol</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Project/">Project</a></td>
-<td>Administrative unit for collecting data related to a certain topic, location,...</td>
+<td><a href="../Experiment/">Experiment</a></td>
+<td>A discrete scientific procedure undertaken to make a discovery, test a hypoth...</td>
 <td>no</td>
+</tr>
+<tr>
+<td><a href="../Identifier/">Identifier</a></td>
+<td>A string used as a resolvable (external) identifier for an entity</td>
+<td>yes</td>
 </tr>
 </tbody>
 </table>
@@ -459,7 +464,7 @@ Alias: description</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://github.com/kbase/cdm-schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -472,11 +477,11 @@ Alias: description</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>cdm:description</td>
+<td>kb_cdm:description</td>
 </tr>
 <tr>
 <td>native</td>
-<td>cdm:description</td>
+<td>kb_cdm:description</td>
 </tr>
 </tbody>
 </table>
@@ -484,8 +489,8 @@ Alias: description</p>
 <details>
 
 <pre><code class="language-yaml">name: description
-description: Definition or description.
-from_schema: https://github.com/kbase/cdm-schema
+description: Brief textual definition or description.
+from_schema: http://kbase.github.io/cdm-schema/cdm_schema
 rank: 1000
 alias: description
 domain_of:
@@ -494,6 +499,7 @@ domain_of:
 - Experiment
 - Project
 - Protein
+- Protocol
 - Sample
 - Identifier
 - Name

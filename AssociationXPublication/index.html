@@ -159,6 +159,13 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
+<a class="md-nav__link" href="#inheritance">
+<span class="md-ellipsis">
+      Inheritance
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#slots">
 <span class="md-ellipsis">
       Slots
@@ -224,35 +231,26 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-associationxpublication">Class: AssociationXPublication</h1>
 <p><em>Links associations to supporting literature.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/AssociationXPublication">cdm:AssociationXPublication</a></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/AssociationXPublication">kb_cdm:AssociationXPublication</a></p>
 <div class="mermaid"> classDiagram
     class AssociationXPublication
     click AssociationXPublication href "../AssociationXPublication"
+      Table &lt;|-- AssociationXPublication
+        click Table href "../Table"
+
       AssociationXPublication : association_id
-
-
-
-
-
-        AssociationXPublication --&gt; "1" Association : association_id
-        click Association href "../Association"
-
-
 
       AssociationXPublication : publication_id
 
 
-
-
-
-        AssociationXPublication --&gt; "1" Publication : publication_id
-        click Publication href "../Publication"
-
-
-
-
 </div>
-<!-- no inheritance hierarchy -->
+<h2 id="inheritance">Inheritance</h2>
+<ul>
+<li><a href="../Table/">Table</a><ul>
+<li><strong>AssociationXPublication</strong></li>
+</ul>
+</li>
+</ul>
 <h2 id="slots">Slots</h2>
 <table>
 <thead>
@@ -266,14 +264,14 @@
 <tbody>
 <tr>
 <td><a href="../association_id/">association_id</a></td>
-<td>1 <br/> <a href="../Association/">Association</a></td>
-<td>Unique identifier for an association</td>
+<td>1..* <br/> <a href="../UUID/">UUID</a></td>
+<td>Internal (CDM) unique identifier for an association</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../publication_id/">publication_id</a></td>
-<td>1 <br/> <a href="../Publication/">Publication</a></td>
-<td>Unique identifier for a publication</td>
+<td>1..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>Unique identifier for a publication - e</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -281,7 +279,7 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://github.com/kbase/cdm-schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -294,11 +292,11 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>cdm:AssociationXPublication</td>
+<td>kb_cdm:AssociationXPublication</td>
 </tr>
 <tr>
 <td>native</td>
-<td>cdm:AssociationXPublication</td>
+<td>kb_cdm:AssociationXPublication</td>
 </tr>
 </tbody>
 </table>
@@ -306,66 +304,65 @@
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
 <h3 id="direct">Direct</h3>
 <details>
-<pre><code class="language-yaml">name: Association_x_Publication
+<pre><code class="language-yaml">name: Association_X_Publication
 description: Links associations to supporting literature.
-from_schema: https://github.com/kbase/cdm-schema
-attributes:
+from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+is_a: Table
+slots:
+- association_id
+- publication_id
+slot_usage:
   association_id:
     name: association_id
-    description: Unique identifier for an association.
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    domain_of:
-    - Association_x_Publication
-    - Association_X_Entity
-    - Association
-    range: Association
-    required: true
+    multivalued: true
   publication_id:
     name: publication_id
-    description: Unique identifier for a publication.
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    domain_of:
-    - Association_x_Publication
-    - Publication
-    range: Publication
-    required: true
+    multivalued: true
 represents_relationship: true
 
 </code></pre>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
-<pre><code class="language-yaml">name: Association_x_Publication
+<pre><code class="language-yaml">name: Association_X_Publication
 description: Links associations to supporting literature.
-from_schema: https://github.com/kbase/cdm-schema
+from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+is_a: Table
+slot_usage:
+  association_id:
+    name: association_id
+    multivalued: true
+  publication_id:
+    name: publication_id
+    multivalued: true
 attributes:
   association_id:
     name: association_id
-    description: Unique identifier for an association.
-    from_schema: https://github.com/kbase/cdm-schema
+    description: Internal (CDM) unique identifier for an association.
+    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
     rank: 1000
     alias: association_id
-    owner: Association_x_Publication
+    owner: Association_X_Publication
     domain_of:
-    - Association_x_Publication
-    - Association_X_Entity
+    - Association_X_Publication
+    - Association_X_SupportingObject
     - Association
-    range: Association
+    range: UUID
     required: true
+    multivalued: true
   publication_id:
     name: publication_id
-    description: Unique identifier for a publication.
-    from_schema: https://github.com/kbase/cdm-schema
+    description: Unique identifier for a publication - e.g. PMID, DOI, URL, etc.
+    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
     rank: 1000
     alias: publication_id
-    owner: Association_x_Publication
+    owner: Association_X_Publication
     domain_of:
-    - Association_x_Publication
+    - Association_X_Publication
     - Publication
-    range: Publication
+    range: uriorcurie
     required: true
+    multivalued: true
 represents_relationship: true
 
 </code></pre>

@@ -396,7 +396,7 @@
 
 <h1 id="slot-ctg_logsum">Slot: ctg_logsum</h1>
 <p><em>The sum of the (length*log(length)) of all contigs, times some constant.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/ctg_logsum">cdm:ctg_logsum</a>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/ctg_logsum">kb_cdm:ctg_logsum</a>
 Alias: ctg_logsum</p>
 <!-- no inheritance hierarchy -->
 
@@ -415,11 +415,6 @@ Alias: ctg_logsum</p>
 <td>A set of individual, overlapping contigs that represent the complete sequence...</td>
 <td>no</td>
 </tr>
-<tr>
-<td><a href="../Genome/">Genome</a></td>
-<td>A contig collection with a completeness score of greater than 90% and a conta...</td>
-<td>no</td>
-</tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
@@ -429,7 +424,7 @@ Alias: ctg_logsum</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://github.com/kbase/cdm-schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -442,11 +437,11 @@ Alias: ctg_logsum</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>cdm:ctg_logsum</td>
+<td>kb_cdm:ctg_logsum</td>
 </tr>
 <tr>
 <td>native</td>
-<td>cdm:ctg_logsum</td>
+<td>kb_cdm:ctg_logsum</td>
 </tr>
 </tbody>
 </table>
@@ -455,7 +450,7 @@ Alias: ctg_logsum</p>
 
 <pre><code class="language-yaml">name: ctg_logsum
 description: The sum of the (length*log(length)) of all contigs, times some constant.
-from_schema: https://github.com/kbase/cdm-schema
+from_schema: http://kbase.github.io/cdm-schema/cdm_schema
 rank: 1000
 alias: ctg_logsum
 owner: ContigCollection

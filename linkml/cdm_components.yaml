@@ -1,17 +1,18 @@
 # yaml-language-server: $schema=https://linkml.io/linkml-model/linkml_model/jsonschema/meta.schema.json
-id: https://github.com/kbase/cdm-schema
+id: http://kbase.github.io/cdm-schema/cdm_components
 
 name: cdm_components
 description: CDM schema components
 
 imports:
   - linkml:types
-  - cdm_enums
+  - cdm_attr_value
   - cdm_base
+  - cdm_enums
   - cdm_ontology
 
 prefixes:
-  cdm: http://kbase.github.io/cdm-schema/
+  kb_cdm: http://kbase.github.io/cdm-schema/
   linkml: https://w3id.org/linkml/
   mixs: https://genomicsstandardsconsortium.github.io/mixs/
   schema: http://schema.org/
@@ -24,6 +25,7 @@ default_range: string
 classes:
 
   Association:
+    is_a: Table
     aliases:
       - annotation
       - functional annotation
@@ -31,116 +33,126 @@ classes:
       - structural annotation
       - protein annotation
     slots:
+      - association_id
       - subject
       - object
       - predicate
     slot_usage:
+      association_id:
+        identifier: true
       subject:
-        alias: subject_id
         description: The subject of an association.
         range: Any
         required: true
         any_of:
           - range: Feature
           - range: Protein
+          - range: ContigCollection
       predicate:
-        alias: relationship
-        description: The relationship between subject and object in an association. Should be a term from the OBO relations ontology.
-        range: curie
+        description: The relationship between subject and object in an association. Should be a term from the Relation Ontology.
+        range: local_curie
       object:
-        alias: object_id
         description: The object of an association. Should be an ontology term or database cross-reference.
-        range: curie
+        range: local_curie
         required: true
     attributes:
-      association_id:
-        description: Unique ID for the association.
-        identifier: true
-        range: UUID
-        required: true
       negated:
         description: If true, the relationship between the subject and object is negated. For example, consider an association where the subject is a protein ID, the object is the GO term for "glucose biosynthesis", and the predicate is "involved in". With the "negated" field set to false, the association is interpreted as "<protein ID> is involved in glucose biosynthesis". With the "negated" field set to true, the association is interpreted as "<protein ID> is not involved in glucose biosynthesis".
         range: boolean
       evidence_type:
         description: The type of evidence supporting the association. Should be a term from the Evidence and Conclusion Ontology (ECO).
-        range: curie
+        range: local_curie
         pattern: "^ECO:\\d+$"
-      publications:
-        description: Publications that support the association.
-        multivalued: true
-        range: Publication
-      supporting_objects:
-        description: Objects that support the association. Should be URLs or CURIEs. Where possible, CDM identifiers should be used.
-        multivalued: true
-        range: Any
-        todos:
-          - work out range of supporting objects
-        any_of:
-          - range: Feature
-          - range: Protein
       primary_knowledge_source:
-        description: The knowledge source that created the association.
-        todos:
-          - generate a controlled vocab for this field.
+        description: The knowledge source that created the association. Should be a UUID from the DataSource table.
         range: uriorcurie
       aggregator_knowledge_source:
-        description: The knowledge source that aggregated the association.
-        todos:
-          - generate a controlled vocab for this field.
+        description: The knowledge source that aggregated the association. Should be a UUID from the DataSource table.
         range: uriorcurie
       annotation_date:
         description: The date when the annotation was made.
-        range: date
+        range: iso8601
       comments:
         description: Any comments about the association.
-        multivalued: true
+      # publications:
+      #   multivalued: true
+      #   range: Association_X_Publication
+      # supporting_objects:
+      #   multivalued: true
+      #   range: Association_X_SupportingObject
     description: An association between an object--typically an entity such as a protein or a feature--and a classification system or ontology, such as the Gene Ontology, the Enzyme Classification, or TIGRFAMS domains.
 
   Cluster:
-    attributes:
+    is_a: Table
+    slots:
+      - cluster_id
+      - description
+    slot_usage:
       cluster_id:
-        description: Internal (CDM) unique identifier.
         identifier: true
-        range: UUID
+    attributes:
+      name:
+        description: Name of the cluster, if available.
+      entity_type:
+        description: Type of entity being clustered.
+        range: ClusterType
         required: true
-      description:
-        description: Description of the cluster.
+        todos:
+        - "This should be an enum: Protein, Feature, strain/species/other?"
       protocol_id:
         description: Protocol used to generate the cluster.
-    description: Represents an individual execution of a clustering protocol. See the Cluster_X_Protein class for clustering results.
+    description: Represents an individual execution of a clustering protocol. See the ClusterMember class for clustering results.
+
+  ClusterMember:
+    is_a: Table
+    slots:
+      - cluster_id
+      - entity_id
+    attributes:
+      is_representative:
+        range: boolean
+        description: Whether or not this member is the representative for the cluster. If 'is_representative' is false, it is assumed that this is a cluster member.
+        ifabsent: "false"
+      is_seed:
+        range: boolean
+        description: Whether or not this is the seed for this cluster.
+        ifabsent: "false"
+      score:
+        description: Output from the clustering protocol indicating how closely a member matches the representative.
+        range: float
+    description: Relationship representing membership of a cluster. An optional score can be assigned to each cluster member.
 
   Contig:
-    mixins:
-      - HasNames
-      - HasIdentifiers
-      - HasHash
-    attributes:
+    is_a: Table
+    slots:
+    - contig_id
+    - hash
+    slot_usage:
       contig_id:
-        description: Internal (CDM) unique identifier.
         identifier: true
-        range: UUID
-        required: true
+    attributes:
       gc_content:
         description: GC content of the contig, expressed as a percentage.
         range: float
       length:
         description: Length of the contig in bp.
         range: integer
-    description: A contig (derived from the word "contiguous") is a set of DNA
-      segments or sequences that overlap in a way that provides a contiguous
-      representation of a genomic region. A contig should not contain any gaps.
+    description: A contig (derived from the word "contiguous") is a set of DNA segments or sequences that overlap in a way that provides a contiguous representation of a genomic region. A contig should not contain any gaps.
 
   ContigCollection:
+    is_a: Table
     aliases:
       - genome
       - biological subject
       - assembly
       - contig collection
       - contig set
-    mixins:
-      - HasNames
-      - HasIdentifiers
-      - HasHash
+    slots:
+    - contig_collection_id
+    - hash
+    slot_usage:
+      contig_collection_id:
+        identifier: true
     attributes:
       asm_score:
         description: A composite score for comparing contig collection quality
@@ -153,11 +165,6 @@ classes:
         description: Estimate of the contamination of a contig collection (MAG or genome),
           estimated by CheckM2 tool
         range: float
-      contig_collection_id:
-        description: Internal (CDM) unique identifier.
-        identifier: true
-        range: UUID
-        required: true
       contig_bp:
         description: Total size in bp of all contigs
         range: integer
@@ -253,14 +260,11 @@ classes:
         description: Powersum of all scaffolds is the same as logsum except that it uses
           the sum of (length*(length^P)) for some power P (default P=0.25).
         range: float
-      # has_contigs:
-      #   description: Contigs that are part of this contig collection.
-      #   multivalued: true
-      #   range: Contig
     description: A set of individual, overlapping contigs that represent the
       complete sequenced genome of an organism.
 
   Contributor:
+    is_a: Table
     description: |
       Represents a contributor to the resource.
 
@@ -274,14 +278,12 @@ classes:
       DataCite contributor roles: https://support.datacite.org/docs/datacite-metadata-schema-v44-recommended-and-optional-properties#7a-contributortype
 
       CRediT contributor role taxonomy: https://credit.niso.org
-    mixins:
-    - HasIdentifiers
-    attributes:
+    slots:
+      - contributor_id
+    slot_usage:
       contributor_id:
-        description: Internal (CDM) unique identifier.
         identifier: true
-        range: UUID
-        required: true
+    attributes:
       contributor_type:
         slot_uri: schema:@type
         description: Must be either 'Person' or 'Organization'.
@@ -331,27 +333,27 @@ classes:
         related_mappings:
           - DataCite:attributes.contributors.familyName
           - DataCite:attributes.creators.familyName
-      affiliations:
-        slot_uri: schema:affiliation
-        description: List of organizations with which the contributor is affiliated. For contributors that represent an organization, this may be a parent organization (e.g. KBase, US DOE; Arkin lab, LBNL).
-        multivalued: true
-        # TODO: implement circularity checks
-        range: Contributor
-        inlined_as_list: true
-        inlined: true
-        related_mappings:
-        - DataCite:attributes.contributors.affiliation
-          # from: DataCite:attributes.contributors[].affiliation[]
-          # via: { organization_name: src.attributes.contributors[].affiliation[].name }
-        - DataCite:attributes.creators.affiliation
-          # from: DataCite:attributes.creators[].affiliation[]
-          # via: { organization_name: src.attributes.creators[].affiliation[].name }
-        - JGI:organisms.pi.institution
-          # from: JGI:organisms[].pi.institution
-          # via: { organization_name: src.organisms[].pi.institution }
-        narrow_mappings:
-          - OSTI.ARTICLE:contributor.affiliation_name
-          # via { organization_name: src.contributor.affiliation_name }
+      # affiliations:
+      #   slot_uri: schema:affiliation
+      #   description: List of organizations with which the contributor is affiliated. For contributors that represent an organization, this may be a parent organization (e.g. KBase, US DOE; Arkin lab, LBNL).
+      #   multivalued: true
+      #   # TODO: implement circularity checks
+      #   range: Contributor
+      #   inlined_as_list: true
+      #   inlined: true
+      #   related_mappings:
+      #   - DataCite:attributes.contributors.affiliation
+      #     # from: DataCite:attributes.contributors[].affiliation[]
+      #     # via: { organization_name: src.attributes.contributors[].affiliation[].name }
+      #   - DataCite:attributes.creators.affiliation
+      #     # from: DataCite:attributes.creators[].affiliation[]
+      #     # via: { organization_name: src.attributes.creators[].affiliation[].name }
+      #   - JGI:organisms.pi.institution
+      #     # from: JGI:organisms[].pi.institution
+      #     # via: { organization_name: src.organisms[].pi.institution }
+      #   narrow_mappings:
+      #     - OSTI.ARTICLE:contributor.affiliation_name
+      #     # via { organization_name: src.contributor.affiliation_name }
     any_of:
       - slot_conditions:
           given_name:
@@ -363,19 +365,24 @@ classes:
             required: true
 
   DataSource:
+    is_a: Table
     slots:
+      - data_source_id
       - name
+    slot_usage:
+      data_source_id:
+        identifier: true
+      name:
+        description: The name of the data source.
+        examples:
+          - value: "UniProt"
+          - value: "NMDC Runtime API"
     attributes:
       comments:
         description: Additional details about the dataset.
       date_accessed:
         description: The date when the data was downloaded from the data source.
-      source:
-        description: The name of the data source.
-        examples:
-          - value: "UniProt"
-          - value: "NMDC Runtime API"
-        range: string
+        range: iso8601
       url:
         description: The URL from which the data was loaded.
         range: uri
@@ -387,23 +394,29 @@ classes:
     description: The source dataset from which data within the CDM was extracted. This might be an API query; a set of files downloaded from a website or uploaded by a user; a database dump; etc. A given data source should have either version information (e.g. UniProt's release number) or an access date to allow the original raw data dump to be recapitulated.
 
   EncodedFeature:
-    mixins:
-      - HasNames
-      - HasIdentifiers
-    attributes:
+    is_a: Table
+    slots:
+      - encoded_feature_id
+      - hash
+    slot_usage:
       encoded_feature_id:
-        description: Internal (CDM) unique identifier.
         identifier: true
-        range: Entity
-        required: true
+    attributes:
       has_stop_codon:
-        description: Captures whether or not the sequence includes a stop coordinates.
+        description: Captures whether or not the sequence includes stop coordinates.
         range: boolean
       type:
         description: The type of the entity. Should be a term from the sequence ontology.
+        pattern: "^SO:\\d+$"
     description: An entity generated from a feature, such as a transcript.
 
   GoldEnvironmentalContext:
+    is_a: Table
+    slots:
+      - gold_environmental_context_id
+    slot_usage:
+      gold_environmental_context_id:
+        identifier: true
     description: Environmental context, described using JGI's five level system.
     attributes:
       ecosystem:
@@ -416,13 +429,14 @@ classes:
         description: JGI GOLD descriptor representing the ecosystem type. May be "Unclassified".
       specific_ecosystem:
         description: JGI GOLD descriptor representing the most specific level of ecosystem categorization. May be "Unclassified".
-      # gold_environmental_context_id:
-      #   description: Internal (CDM) unique identifier.
-      #   identifier: true
-      #   range: UUID
-      #   required: true
 
   MixsEnvironmentalContext:
+    is_a: Table
+    slots:
+      - mixs_environmental_context_id
+    slot_usage:
+      mixs_environmental_context_id:
+        identifier: true
     description: Environmental context, described using the MiXS convention of broad and local environment, plus the medium.
     attributes:
       env_broad_scale:
@@ -440,7 +454,6 @@ classes:
           - broad-scale environmental context
         string_serialization: '{termLabel} {[termID]}'
         slot_uri: mixs:0000012
-        # range: ControlledIdentifiedTermValue
         range: uriorcurie
         multivalued: false
       env_local_scale:
@@ -458,7 +471,6 @@ classes:
           - local environmental context
         string_serialization: '{termLabel} {[termID]}'
         slot_uri: mixs:0000013
-        # range: ControlledIdentifiedTermValue
         range: uriorcurie
         multivalued: false
       env_medium:
@@ -476,72 +488,64 @@ classes:
           - environmental medium
         string_serialization: '{termLabel} {[termID]}'
         slot_uri: mixs:0000014
-        # range: ControlledIdentifiedTermValue
         range: uriorcurie
         multivalued: false
-      # mixs_environmental_context_id:
-      #   description: Internal (CDM) unique identifier.
-      #   identifier: true
-      #   range: UUID
-      #   required: true
 
   Event:
+    is_a: Table
+    slots:
+      - event_id
+    slot_usage:
+      event_id:
+        identifier: true
     attributes:
-      conditions:
-        description: TBD
-        multivalued: true
+      # conditions:
+      #   description: TBD
+      #   multivalued: true
       created_at:
         description: The time at which the event started or was created.
-        range: datetime
+        range: iso8601
       description:
         description: Brief text description of what actually happened.
         todos:
         - Create controlled vocab for events?
-      gold_environmental_context:
-        description: The environmental context for this event.
-        range: MixsEnvironmentalContext
-      mixs_environmental_context:
-        description: The environmental context for this event.
-        range: MixsEnvironmentalContext
-      event_id:
-        description: Internal (CDM) unique identifier.
-        identifier: true
-        range: UUID
-        required: true
       name:
         description: Name or title for the event.
+      # gold_environmental_context:
+      #   description: The environmental context for this event.
+      #   range: GoldEnvironmentalContext
+      # mixs_environmental_context:
+      #   description: The environmental context for this event.
+      #   range: MixsEnvironmentalContext
       location:
         description: The location for this event. May be described in terms of coordinates.
     description: Something that happened.
 
   Experiment:
+    is_a: Table
+    slots:
+      - experiment_id
+    slot_usage:
+      experiment_id:
+        identifier: true
     attributes:
       created_at:
-        range: datetime
-        description: The start time of the exeperiment.
+        range: iso8601
+        description: The start time of the experiment.
       description:
         description: Brief explanation of what was done.
-      experiment_id:
-        description: Internal (CDM) unique identifier.
-        identifier: true
-        range: UUID
-        required: true
-      has_participant:
-        description: Participants in an experiment.
-        multivalued: true
-        range: Sample
-      part_of:
-        description: The project to which this experiment belongs.
-        range: Project
-    slots:
-      - name
+      name:
+        description: Name or title of the experiment.
     description: A discrete scientific procedure undertaken to make a discovery, test a hypothesis, or demonstrate a known fact.
 
   Feature:
-    mixins:
-      - HasNames
-      - HasIdentifiers
-      - HasHash
+    is_a: Table
+    slots:
+      - feature_id
+      - hash
+    slot_usage:
+      feature_id:
+        identifier: true
     attributes:
       cds_phase:
         description: For features of type CDS, the phase indicates where the next codon
@@ -564,14 +568,6 @@ classes:
           insertion sites, start equals end and the implied site is to the right
           of the indicated base in the direction of the landmark.
         range: integer
-      feature_id:
-        description: Internal (CDM) unique identifier.
-        identifier: true
-        range: Entity
-        required: true
-      generated_by:
-        description: The algorithm or procedure that generated the feature.
-        range: Protocol
       p_value:
         description: The 'score' of the feature. The semantics of this field are
           ill-defined. P-values should be used for ab initio gene prediction
@@ -597,6 +593,8 @@ classes:
         # range: Organization
         range: uriorcurie
       protocol_id:
+        aliases:
+        - generated by
         description: ID of the protocol used to generate the feature.
         range: Protocol
       type:
@@ -613,44 +611,8 @@ classes:
     see_also:
       - https://github.com/The-Sequence-Ontology/Specifications/blob/master/gff3.md
 
-  Measurement:
-    slots:
-      - name
-    attributes:
-      measurement_id:
-        description: Internal (CDM) unique identifier.
-        identifier: true
-        range: UUID
-        required: true
-      protocol_id:
-        description: The ID of the protocol used to generate the measurement.
-        range: Protocol
-      created_at:
-        description: Timestamp for the measurement.
-        range: datetime
-      type:
-        description: The type of measurement or the parameter being measured.
-      quality:
-        description: The quality of the measurement, indicating the confidence that one can have in its correctness.
-      value:
-        description: Value of the measurement. May be a quantity with the appropriate units, a term from a controlled vocabulary, or a qualitative description.
-      unit:
-        description: Units used in the measurement.
-    description: A qualitative or quantitative observation of an attribute of an object or event against a standardized scale, to enable it to be compared with other objects or events.
-
-  ProcessedMeasurement:
-    attributes:
-      # processed_measurement_id:
-      #   description: Internal (CDM) unique identifier.
-      #   identifier: true
-      #   range: UUID
-      #   required: true
-      quality:
-        description: The quality of the measurement, indicating the confidence that one can have in its correctness.
-    description: A measurement that requires additional processing to generate a result.
-    is_a: Measurement
-
   Project:
+    is_a: Table
     aliases:
       - proposal
       - research proposal
@@ -660,42 +622,34 @@ classes:
       - study
       - umbrella project
       - research initiative
-    mixins:
-      - HasNames
-      - HasIdentifiers
+    slots:
+    - project_id
+    slot_usage:
+      project_id:
+        identifier: true
     attributes:
       description:
         description: Brief text description of the project.
-      project_id:
-        description: Internal (CDM) unique identifier.
-        identifier: true
-        range: UUID
-        required: true
     description: Administrative unit for collecting data related to a certain topic,
       location, data type, grant funding, and so on.
 
   Protein:
-    mixins:
-      - HasNames
-      - HasIdentifiers
-      - HasHash
+    is_a: Table
+    slots:
+    - protein_id
+    - hash
+    slot_usage:
+      protein_id:
+        identifier: true
     attributes:
       description:
         description: Brief text description of the entity.
-      encoded_by:
-        description: The feature(s) that encode this protein.
-        range: Feature
       evidence_for_existence:
         description: The evidence that this protein exists. For example, the protein may have been isolated from a cell, or it may be predicted based on sequence features.
         range: ProteinEvidenceForExistence
       length:
         range: integer
         description: The length of the protein.
-      protein_id:
-        description: Internal (CDM) unique identifier.
-        identifier: true
-        range: Entity
-        required: true
       sequence:
         description: The protein amino acid sequence.
     description: Proteins are large, complex molecules made up of one or more long,
@@ -703,39 +657,37 @@ classes:
       sequence of the protein-encoding gene.
 
   Protocol:
-    mixins:
-      - HasNames
-      - HasIdentifiers
+    is_a: Table
+    slots:
+      - protocol_id
+    slot_usage:
+      protocol_id:
+        identifier: true
     attributes:
       doi:
         description: The DOI for a protocol.
-      inputs:
-        description: The inputs for a protocol; may be software parameters, experimental
-          reagents, etc.
-        multivalued: true
-        range: ProtocolParticipant
-      outputs:
-        description: The outputs of a protocol; may be physical entities, files, etc.
-        multivalued: true
-        range: ProtocolParticipant
-      protocol_id:
-        description: Internal (CDM) unique identifier.
-        identifier: true
-        range: UUID
-        required: true
+      # inputs:
+      #   description: The inputs for a protocol; may be software parameters, experimental
+      #     reagents, etc.
+      #   multivalued: true
+      #   range: ProtocolParticipant
+      # outputs:
+      #   description: The outputs of a protocol; may be physical entities, files, etc.
+      #   multivalued: true
+      #   range: ProtocolParticipant
+      description:
+        description: Brief text description of the protocol.
       version:
         description: The version of the protocol that has been used.
       url:
         description: The URL for a protocol.
-    description: Defined method or set of methods .
+    description: Defined method or set of methods.
 
   ProtocolParticipant:
+    is_a: Table
     description: Either an input or an output of a protocol.
     todos:
     - finish this!
-    mixins:
-    - HasNames
-    - HasIdentifiers
     attributes:
       protocol_participant_id:
         description: Internal (CDM) unique identifier.
@@ -743,27 +695,44 @@ classes:
         range: UUID
         required: true
 
-
   Publication:
-    attributes:
+    is_a: Table
+    slots:
+      - publication_id
+    slot_usage:
       publication_id:
         identifier: true
-        description: Unique identifier for the publication - e.g. PMID, DOI, URL, etc.
-        range: uriorcurie
     description: A publication (e.g. journal article).
 
   Sample:
-    mixins:
-    - HasNames
-    - HasIdentifiers
+    is_a: Table
+    slots:
+      - sample_id
+    slot_usage:
+      sample_id:
+        identifier: true
     attributes:
       description:
         description: Brief textual description of the sample.
-      sample_id:
-        description: Internal (CDM) unique identifier.
-        identifier: true
-        range: Entity
-        required: true
       type:
         description: The type of entity that the sample is. Vocab TBD.
     description: A material entity that can be characterised by an experiment.
+
+  Sequence:
+    is_a: Table
+    slots:
+      - sequence_id
+      - entity_id
+    slot_usage:
+      entity_id:
+        description: The entity to which this sequence belongs.
+    attributes:
+      type:
+        description: The type of the sequence, either "Nucleotide" or "Amino Acid".
+        range: SequenceType
+      length:
+        description: The length of the sequence in base pairs (for nucleotide sequences) or amino acids (for amino acid sequences).
+        range: integer
+      checksum:
+        description: The checksum of the sequence, used to verify its integrity.
+        range: string

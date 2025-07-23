@@ -340,6 +340,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Identifier and Mapping Information">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#schema-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      Schema Source
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -380,7 +395,8 @@
 
 
 <h1 id="slot-contig_collection_id">Slot: contig_collection_id</h1>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/contig_collection_id">cdm:contig_collection_id</a>
+<p><em>Internal (CDM) unique identifier for a contig collection.</em></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/contig_collection_id">kb_cdm:contig_collection_id</a>
 Alias: contig_collection_id</p>
 <!-- no inheritance hierarchy -->
 
@@ -395,23 +411,23 @@ Alias: contig_collection_id</p>
 </thead>
 <tbody>
 <tr>
+<td><a href="../ContigCollection/">ContigCollection</a></td>
+<td>A set of individual, overlapping contigs that represent the complete sequence...</td>
+<td>yes</td>
+</tr>
+<tr>
 <td><a href="../ContigCollectionXFeature/">ContigCollectionXFeature</a></td>
 <td>Captures the relationship between a contig collection and a feature; equivale...</td>
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../ContigCollectionXEncodedFeature/">ContigCollectionXEncodedFeature</a></td>
+<td>Captures the relationship between a contig collection and an encoded feature</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../ContigCollectionXProtein/">ContigCollectionXProtein</a></td>
 <td>Captures the relationship between a contig collection and a protein; equivale...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ContigCollection/">ContigCollection</a></td>
-<td>A set of individual, overlapping contigs that represent the complete sequence...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Genome/">Genome</a></td>
-<td>A contig collection with a completeness score of greater than 90% and a conta...</td>
 <td>no</td>
 </tr>
 <tr>
@@ -423,9 +439,18 @@ Alias: contig_collection_id</p>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../String/">String</a></li>
+<li>
+<p>Range: <a href="../UUID/">UUID</a></p>
+</li>
+<li>
+<p>Required: True</p>
+</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="schema-source">Schema Source</h3>
+<ul>
+<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+</ul>
 <h2 id="mappings">Mappings</h2>
 <table>
 <thead>
@@ -437,11 +462,11 @@ Alias: contig_collection_id</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>cdm:contig_collection_id</td>
+<td>kb_cdm:contig_collection_id</td>
 </tr>
 <tr>
 <td>native</td>
-<td>cdm:contig_collection_id</td>
+<td>kb_cdm:contig_collection_id</td>
 </tr>
 </tbody>
 </table>
@@ -449,13 +474,18 @@ Alias: contig_collection_id</p>
 <details>
 
 <pre><code class="language-yaml">name: contig_collection_id
+description: Internal (CDM) unique identifier for a contig collection.
+from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+rank: 1000
 alias: contig_collection_id
 domain_of:
 - Contig_X_ContigCollection
+- ContigCollection_X_EncodedFeature
 - ContigCollection_X_Feature
 - ContigCollection_X_Protein
 - ContigCollection
-range: string
+range: UUID
+required: true
 
 </code></pre>
 

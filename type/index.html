@@ -340,21 +340,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Identifier and Mapping Information">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#schema-source" class="md-nav__link">
-    <span class="md-ellipsis">
-      Schema Source
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -395,7 +380,7 @@
 
 
 <h1 id="slot-type">Slot: type</h1>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/type">cdm:type</a>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/type">kb_cdm:type</a>
 Alias: type</p>
 <!-- no inheritance hierarchy -->
 
@@ -410,8 +395,8 @@ Alias: type</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../Feature/">Feature</a></td>
-<td>A feature localized to an interval along a contig</td>
+<td><a href="../Sequence/">Sequence</a></td>
+<td></td>
 <td>no</td>
 </tr>
 <tr>
@@ -420,53 +405,13 @@ Alias: type</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../ControlledTermValue/">ControlledTermValue</a></td>
-<td>A controlled term or class from an ontology</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../AttributeValue/">AttributeValue</a></td>
-<td>The value for any value of a attribute for a sample</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ProcessedMeasurement/">ProcessedMeasurement</a></td>
-<td>A measurement that requires additional processing to generate a result</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Measurement/">Measurement</a></td>
-<td>A qualitative or quantitative observation of an attribute of an object or eve...</td>
+<td><a href="../Feature/">Feature</a></td>
+<td>A feature localized to an interval along a contig</td>
 <td>no</td>
 </tr>
 <tr>
 <td><a href="../EncodedFeature/">EncodedFeature</a></td>
 <td>An entity generated from a feature, such as a transcript</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../TimestampValue/">TimestampValue</a></td>
-<td>A value that is a timestamp</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Geolocation/">Geolocation</a></td>
-<td>A normalized value for a location on the earth's surface</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../TextValue/">TextValue</a></td>
-<td>A basic string value</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../QuantityValue/">QuantityValue</a></td>
-<td>A simple quantity, e</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ControlledIdentifiedTermValue/">ControlledIdentifiedTermValue</a></td>
-<td>A controlled term or class from an ontology, requiring the presence of term w...</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -476,10 +421,6 @@ Alias: type</p>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="schema-source">Schema Source</h3>
-<ul>
-<li>from schema: https://github.com/kbase/cdm-schema</li>
-</ul>
 <h2 id="mappings">Mappings</h2>
 <table>
 <thead>
@@ -491,11 +432,11 @@ Alias: type</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>cdm:type</td>
+<td>kb_cdm:type</td>
 </tr>
 <tr>
 <td>native</td>
-<td>cdm:type</td>
+<td>kb_cdm:type</td>
 </tr>
 </tbody>
 </table>
@@ -503,15 +444,12 @@ Alias: type</p>
 <details>
 
 <pre><code class="language-yaml">name: type
-from_schema: https://github.com/kbase/cdm-schema
-rank: 1000
 alias: type
 domain_of:
 - EncodedFeature
 - Feature
-- Measurement
 - Sample
-- AttributeValue
+- Sequence
 range: string
 
 </code></pre>

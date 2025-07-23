@@ -238,29 +238,14 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-protein">Class: Protein</h1>
 <p><em>Proteins are large, complex molecules made up of one or more long, folded chains of amino acids, whose sequences are determined by the DNA sequence of the protein-encoding gene.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/Protein">cdm:Protein</a></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/Protein">kb_cdm:Protein</a></p>
 <div class="mermaid"> classDiagram
     class Protein
     click Protein href "../Protein"
-      HasNames &lt;|-- Protein
-        click HasNames href "../HasNames"
-      HasIdentifiers &lt;|-- Protein
-        click HasIdentifiers href "../HasIdentifiers"
-      HasHash &lt;|-- Protein
-        click HasHash href "../HasHash"
+      Table &lt;|-- Protein
+        click Table href "../Table"
 
       Protein : description
-
-      Protein : encoded_by
-
-
-
-
-
-        Protein --&gt; "0..1" Feature : encoded_by
-        click Feature href "../Feature"
-
-
 
       Protein : evidence_for_existence
 
@@ -275,40 +260,9 @@
 
       Protein : hash
 
-      Protein : identifiers
-
-
-
-
-
-        Protein --&gt; "*" Identifier : identifiers
-        click Identifier href "../Identifier"
-
-
-
       Protein : length
 
-      Protein : names
-
-
-
-
-
-        Protein --&gt; "*" Name : names
-        click Name href "../Name"
-
-
-
       Protein : protein_id
-
-
-
-
-
-        Protein --&gt; "1" Entity : protein_id
-        click Entity href "../Entity"
-
-
 
       Protein : sequence
 
@@ -316,7 +270,10 @@
 </div>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
-<li><strong>Protein</strong> [ <a href="../HasNames/">HasNames</a> <a href="../HasIdentifiers/">HasIdentifiers</a> <a href="../HasHash/">HasHash</a>]</li>
+<li><a href="../Table/">Table</a><ul>
+<li><strong>Protein</strong></li>
+</ul>
+</li>
 </ul>
 <h2 id="slots">Slots</h2>
 <table>
@@ -330,15 +287,21 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../description/">description</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Brief text description of the entity</td>
+<td><a href="../protein_id/">protein_id</a></td>
+<td>1 <br/> <a href="../UUID/">UUID</a></td>
+<td>Internal (CDM) unique identifier for a protein</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../encoded_by/">encoded_by</a></td>
-<td>0..1 <br/> <a href="../Feature/">Feature</a></td>
-<td>The feature(s) that encode this protein</td>
+<td><a href="../hash/">hash</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>A hash value generated from one or more object attributes that serves to ensu...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../description/">description</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Brief text description of the entity</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -354,34 +317,10 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../protein_id/">protein_id</a></td>
-<td>1 <br/> <a href="../Entity/">Entity</a></td>
-<td>Internal (CDM) unique identifier</td>
-<td>direct</td>
-</tr>
-<tr>
 <td><a href="../sequence/">sequence</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>The protein amino acid sequence</td>
 <td>direct</td>
-</tr>
-<tr>
-<td><a href="../names/">names</a></td>
-<td>* <br/> <a href="../Name/">Name</a></td>
-<td>Names, alternative names, and synonyms for an entity</td>
-<td><a href="../HasNames/">HasNames</a></td>
-</tr>
-<tr>
-<td><a href="../identifiers/">identifiers</a></td>
-<td>* <br/> <a href="../Identifier/">Identifier</a></td>
-<td>URIs or CURIEs used to refer to this entity</td>
-<td><a href="../HasIdentifiers/">HasIdentifiers</a></td>
-</tr>
-<tr>
-<td><a href="../hash/">hash</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>A hash value generated from one or more object attributes that serves to ensu...</td>
-<td><a href="../HasHash/">HasHash</a></td>
 </tr>
 </tbody>
 </table>
@@ -397,32 +336,8 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../ClusterXProtein/">ClusterXProtein</a></td>
-<td><a href="../protein_id/">protein_id</a></td>
-<td>range</td>
-<td><a href="./">Protein</a></td>
-</tr>
-<tr>
-<td><a href="../ContigCollectionXProtein/">ContigCollectionXProtein</a></td>
-<td><a href="../protein_id/">protein_id</a></td>
-<td>range</td>
-<td><a href="./">Protein</a></td>
-</tr>
-<tr>
-<td><a href="../FeatureXProtein/">FeatureXProtein</a></td>
-<td><a href="../protein_id/">protein_id</a></td>
-<td>range</td>
-<td><a href="./">Protein</a></td>
-</tr>
-<tr>
 <td><a href="../Association/">Association</a></td>
 <td><a href="../subject/">subject</a></td>
-<td>any_of[range]</td>
-<td><a href="./">Protein</a></td>
-</tr>
-<tr>
-<td><a href="../Association/">Association</a></td>
-<td><a href="../supporting_objects/">supporting_objects</a></td>
 <td>any_of[range]</td>
 <td><a href="./">Protein</a></td>
 </tr>
@@ -431,7 +346,7 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://github.com/kbase/cdm-schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -444,11 +359,11 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>cdm:Protein</td>
+<td>kb_cdm:Protein</td>
 </tr>
 <tr>
 <td>native</td>
-<td>cdm:Protein</td>
+<td>kb_cdm:Protein</td>
 </tr>
 </tbody>
 </table>
@@ -460,38 +375,35 @@
 description: Proteins are large, complex molecules made up of one or more long, folded
   chains of amino acids, whose sequences are determined by the DNA sequence of the
   protein-encoding gene.
-from_schema: https://github.com/kbase/cdm-schema
-mixins:
-- HasNames
-- HasIdentifiers
-- HasHash
+from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+is_a: Table
+slots:
+- protein_id
+- hash
+slot_usage:
+  protein_id:
+    name: protein_id
+    identifier: true
 attributes:
   description:
     name: description
     description: Brief text description of the entity.
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
     domain_of:
     - Cluster
     - Event
     - Experiment
     - Project
     - Protein
+    - Protocol
     - Sample
     - Identifier
     - Name
-  encoded_by:
-    name: encoded_by
-    description: The feature(s) that encode this protein.
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    domain_of:
-    - Protein
-    range: Feature
   evidence_for_existence:
     name: evidence_for_existence
     description: The evidence that this protein exists. For example, the protein may
       have been isolated from a cell, or it may be predicted based on sequence features.
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
     rank: 1000
     domain_of:
     - Protein
@@ -499,27 +411,16 @@ attributes:
   length:
     name: length
     description: The length of the protein.
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
     domain_of:
     - Contig
     - Protein
+    - Sequence
     range: integer
-  protein_id:
-    name: protein_id
-    description: Internal (CDM) unique identifier.
-    from_schema: https://github.com/kbase/cdm-schema
-    identifier: true
-    domain_of:
-    - Cluster_X_Protein
-    - ContigCollection_X_Protein
-    - Feature_X_Protein
-    - Protein
-    range: Entity
-    required: true
   sequence:
     name: sequence
     description: The protein amino acid sequence.
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
     rank: 1000
     domain_of:
     - Protein
@@ -532,16 +433,17 @@ attributes:
 description: Proteins are large, complex molecules made up of one or more long, folded
   chains of amino acids, whose sequences are determined by the DNA sequence of the
   protein-encoding gene.
-from_schema: https://github.com/kbase/cdm-schema
-mixins:
-- HasNames
-- HasIdentifiers
-- HasHash
+from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+is_a: Table
+slot_usage:
+  protein_id:
+    name: protein_id
+    identifier: true
 attributes:
   description:
     name: description
     description: Brief text description of the entity.
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
     alias: description
     owner: Protein
     domain_of:
@@ -550,25 +452,16 @@ attributes:
     - Experiment
     - Project
     - Protein
+    - Protocol
     - Sample
     - Identifier
     - Name
     range: string
-  encoded_by:
-    name: encoded_by
-    description: The feature(s) that encode this protein.
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    alias: encoded_by
-    owner: Protein
-    domain_of:
-    - Protein
-    range: Feature
   evidence_for_existence:
     name: evidence_for_existence
     description: The evidence that this protein exists. For example, the protein may
       have been isolated from a cell, or it may be predicted based on sequence features.
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
     rank: 1000
     alias: evidence_for_existence
     owner: Protein
@@ -578,69 +471,53 @@ attributes:
   length:
     name: length
     description: The length of the protein.
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
     alias: length
     owner: Protein
     domain_of:
     - Contig
     - Protein
+    - Sequence
     range: integer
-  protein_id:
-    name: protein_id
-    description: Internal (CDM) unique identifier.
-    from_schema: https://github.com/kbase/cdm-schema
-    identifier: true
-    alias: protein_id
-    owner: Protein
-    domain_of:
-    - Cluster_X_Protein
-    - ContigCollection_X_Protein
-    - Feature_X_Protein
-    - Protein
-    range: Entity
-    required: true
   sequence:
     name: sequence
     description: The protein amino acid sequence.
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
     rank: 1000
     alias: sequence
     owner: Protein
     domain_of:
     - Protein
     range: string
-  names:
-    name: names
-    description: Names, alternative names, and synonyms for an entity.
-    from_schema: https://github.com/kbase/cdm-schema
+  protein_id:
+    name: protein_id
+    description: Internal (CDM) unique identifier for a protein.
+    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
     rank: 1000
-    alias: names
+    identifier: true
+    alias: protein_id
     owner: Protein
     domain_of:
-    - HasNames
-    range: Name
-    multivalued: true
-  identifiers:
-    name: identifiers
-    description: URIs or CURIEs used to refer to this entity.
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    alias: identifiers
-    owner: Protein
-    domain_of:
-    - HasIdentifiers
-    range: Identifier
-    multivalued: true
+    - Contig_X_Protein
+    - ContigCollection_X_Protein
+    - Feature_X_Protein
+    - Protein
+    range: UUID
+    required: true
   hash:
     name: hash
     description: A hash value generated from one or more object attributes that serves
       to ensure the entity is unique.
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
     rank: 1000
     alias: hash
     owner: Protein
     domain_of:
-    - HasHash
+    - Contig
+    - ContigCollection
+    - EncodedFeature
+    - Feature
+    - Protein
     range: string
 
 </code></pre>

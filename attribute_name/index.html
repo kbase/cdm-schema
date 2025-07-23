@@ -334,6 +334,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#aliases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aliases
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       Identifier and Mapping Information
@@ -395,8 +404,8 @@
 
 
 <h1 id="slot-attribute_name">Slot: attribute_name</h1>
-<p><em>The name of the attribute.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/attribute_name">cdm:attribute_name</a>
+<p><em>The attribute being captured in this annotation.</em></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/attribute_name">kb_cdm:attribute_name</a>
 Alias: attribute_name</p>
 <!-- no inheritance hierarchy -->
 
@@ -411,20 +420,55 @@ Alias: attribute_name</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../FeatureAttributes/">FeatureAttributes</a></td>
-<td>Additional attributes of a feature, parsed from column 9 of a GFF file</td>
+<td><a href="../AttributeValue/">AttributeValue</a></td>
+<td>A generic class for capturing tag-value information in a structured form</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ProcessedMeasurement/">ProcessedMeasurement</a></td>
+<td>A measurement that requires additional processing to generate a result</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Measurement/">Measurement</a></td>
+<td>A qualitative or quantitative observation of an attribute of an object or eve...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../QuantityValue/">QuantityValue</a></td>
+<td>A simple quantity, e</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Geolocation/">Geolocation</a></td>
+<td>A normalized value for a location on the earth's surface</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../TextValue/">TextValue</a></td>
+<td>A basic string value</td>
 <td>no</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../String/">String</a></li>
+<li>
+<p>Range: <a href="../String/">String</a></p>
+</li>
+<li>
+<p>Required: True</p>
+</li>
+</ul>
+<h2 id="aliases">Aliases</h2>
+<ul>
+<li>type</li>
+<li>name</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://github.com/kbase/cdm-schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -437,11 +481,11 @@ Alias: attribute_name</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>cdm:attribute_name</td>
+<td>kb_cdm:attribute_name</td>
 </tr>
 <tr>
 <td>native</td>
-<td>cdm:attribute_name</td>
+<td>kb_cdm:attribute_name</td>
 </tr>
 </tbody>
 </table>
@@ -449,14 +493,18 @@ Alias: attribute_name</p>
 <details>
 
 <pre><code class="language-yaml">name: attribute_name
-description: The name of the attribute.
-from_schema: https://github.com/kbase/cdm-schema
+description: The attribute being captured in this annotation.
+from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+aliases:
+- type
+- name
 rank: 1000
 alias: attribute_name
-owner: FeatureAttributes
+owner: AttributeValue
 domain_of:
-- FeatureAttributes
+- AttributeValue
 range: string
+required: true
 
 </code></pre>
 

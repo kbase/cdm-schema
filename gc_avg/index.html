@@ -396,7 +396,7 @@
 
 <h1 id="slot-gc_avg">Slot: gc_avg</h1>
 <p><em>The average GC content of the contig collection, expressed as a percentage</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/gc_avg">cdm:gc_avg</a>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/gc_avg">kb_cdm:gc_avg</a>
 Alias: gc_avg</p>
 <!-- no inheritance hierarchy -->
 
@@ -415,11 +415,6 @@ Alias: gc_avg</p>
 <td>A set of individual, overlapping contigs that represent the complete sequence...</td>
 <td>no</td>
 </tr>
-<tr>
-<td><a href="../Genome/">Genome</a></td>
-<td>A contig collection with a completeness score of greater than 90% and a conta...</td>
-<td>no</td>
-</tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
@@ -429,7 +424,7 @@ Alias: gc_avg</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://github.com/kbase/cdm-schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -442,11 +437,11 @@ Alias: gc_avg</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>cdm:gc_avg</td>
+<td>kb_cdm:gc_avg</td>
 </tr>
 <tr>
 <td>native</td>
-<td>cdm:gc_avg</td>
+<td>kb_cdm:gc_avg</td>
 </tr>
 </tbody>
 </table>
@@ -455,7 +450,7 @@ Alias: gc_avg</p>
 
 <pre><code class="language-yaml">name: gc_avg
 description: The average GC content of the contig collection, expressed as a percentage
-from_schema: https://github.com/kbase/cdm-schema
+from_schema: http://kbase.github.io/cdm-schema/cdm_schema
 rank: 1000
 alias: gc_avg
 owner: ContigCollection

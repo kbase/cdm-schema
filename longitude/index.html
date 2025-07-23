@@ -340,6 +340,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Identifier and Mapping Information">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#schema-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      Schema Source
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -380,7 +395,7 @@
 
 
 <h1 id="slot-longitude">Slot: longitude</h1>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/longitude">cdm:longitude</a>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/longitude">kb_cdm:longitude</a>
 Alias: longitude</p>
 <!-- no inheritance hierarchy -->
 
@@ -399,18 +414,22 @@ Alias: longitude</p>
 <td>A normalized value for a location on the earth's surface</td>
 <td>no</td>
 </tr>
-<tr>
-<td><a href="../Location/">Location</a></td>
-<td></td>
-<td>no</td>
-</tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../String/">String</a></li>
+<li>
+<p>Range: <a href="../String/">String</a></p>
+</li>
+<li>
+<p>Required: True</p>
+</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="schema-source">Schema Source</h3>
+<ul>
+<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+</ul>
 <h2 id="mappings">Mappings</h2>
 <table>
 <thead>
@@ -422,11 +441,11 @@ Alias: longitude</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>cdm:longitude</td>
+<td>kb_cdm:longitude</td>
 </tr>
 <tr>
 <td>native</td>
-<td>cdm:longitude</td>
+<td>kb_cdm:longitude</td>
 </tr>
 </tbody>
 </table>
@@ -434,11 +453,14 @@ Alias: longitude</p>
 <details>
 
 <pre><code class="language-yaml">name: longitude
+from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+rank: 1000
 alias: longitude
+owner: Geolocation
 domain_of:
 - Geolocation
-- Location
 range: string
+required: true
 
 </code></pre>
 

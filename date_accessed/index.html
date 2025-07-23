@@ -396,7 +396,7 @@
 
 <h1 id="slot-date_accessed">Slot: date_accessed</h1>
 <p><em>The date when the data was downloaded from the data source.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/date_accessed">cdm:date_accessed</a>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/date_accessed">kb_cdm:date_accessed</a>
 Alias: date_accessed</p>
 <!-- no inheritance hierarchy -->
 
@@ -419,12 +419,12 @@ Alias: date_accessed</p>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../String/">String</a></li>
+<li>Range: <a href="../Iso8601/">Iso8601</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://github.com/kbase/cdm-schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -437,11 +437,11 @@ Alias: date_accessed</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>cdm:date_accessed</td>
+<td>kb_cdm:date_accessed</td>
 </tr>
 <tr>
 <td>native</td>
-<td>cdm:date_accessed</td>
+<td>kb_cdm:date_accessed</td>
 </tr>
 </tbody>
 </table>
@@ -450,13 +450,13 @@ Alias: date_accessed</p>
 
 <pre><code class="language-yaml">name: date_accessed
 description: The date when the data was downloaded from the data source.
-from_schema: https://github.com/kbase/cdm-schema
+from_schema: http://kbase.github.io/cdm-schema/cdm_schema
 rank: 1000
 alias: date_accessed
 owner: DataSource
 domain_of:
 - DataSource
-range: string
+range: iso8601
 
 </code></pre>
 

@@ -237,61 +237,17 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="class-protocol">Class: Protocol</h1>
-<p><em>Defined method or set of methods .</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/Protocol">cdm:Protocol</a></p>
+<p><em>Defined method or set of methods.</em></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/Protocol">kb_cdm:Protocol</a></p>
 <div class="mermaid"> classDiagram
     class Protocol
     click Protocol href "../Protocol"
-      HasNames &lt;|-- Protocol
-        click HasNames href "../HasNames"
-      HasIdentifiers &lt;|-- Protocol
-        click HasIdentifiers href "../HasIdentifiers"
+      Table &lt;|-- Protocol
+        click Table href "../Table"
+
+      Protocol : description
 
       Protocol : doi
-
-      Protocol : identifiers
-
-
-
-
-
-        Protocol --&gt; "*" Identifier : identifiers
-        click Identifier href "../Identifier"
-
-
-
-      Protocol : inputs
-
-
-
-
-
-        Protocol --&gt; "*" ProtocolParticipant : inputs
-        click ProtocolParticipant href "../ProtocolParticipant"
-
-
-
-      Protocol : names
-
-
-
-
-
-        Protocol --&gt; "*" Name : names
-        click Name href "../Name"
-
-
-
-      Protocol : outputs
-
-
-
-
-
-        Protocol --&gt; "*" ProtocolParticipant : outputs
-        click ProtocolParticipant href "../ProtocolParticipant"
-
-
 
       Protocol : protocol_id
 
@@ -303,7 +259,10 @@
 </div>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
-<li><strong>Protocol</strong> [ <a href="../HasNames/">HasNames</a> <a href="../HasIdentifiers/">HasIdentifiers</a>]</li>
+<li><a href="../Table/">Table</a><ul>
+<li><strong>Protocol</strong></li>
+</ul>
+</li>
 </ul>
 <h2 id="slots">Slots</h2>
 <table>
@@ -317,27 +276,21 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../protocol_id/">protocol_id</a></td>
+<td>1 <br/> <a href="../UUID/">UUID</a></td>
+<td>Internal (CDM) unique identifier for a protocol</td>
+<td>direct</td>
+</tr>
+<tr>
 <td><a href="../doi/">doi</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>The DOI for a protocol</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../inputs/">inputs</a></td>
-<td>* <br/> <a href="../ProtocolParticipant/">ProtocolParticipant</a></td>
-<td>The inputs for a protocol; may be software parameters, experimental reagents,...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../outputs/">outputs</a></td>
-<td>* <br/> <a href="../ProtocolParticipant/">ProtocolParticipant</a></td>
-<td>The outputs of a protocol; may be physical entities, files, etc</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../protocol_id/">protocol_id</a></td>
-<td>1 <br/> <a href="../UUID/">UUID</a></td>
-<td>Internal (CDM) unique identifier</td>
+<td><a href="../description/">description</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Brief text description of the protocol</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -351,18 +304,6 @@
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>The URL for a protocol</td>
 <td>direct</td>
-</tr>
-<tr>
-<td><a href="../names/">names</a></td>
-<td>* <br/> <a href="../Name/">Name</a></td>
-<td>Names, alternative names, and synonyms for an entity</td>
-<td><a href="../HasNames/">HasNames</a></td>
-</tr>
-<tr>
-<td><a href="../identifiers/">identifiers</a></td>
-<td>* <br/> <a href="../Identifier/">Identifier</a></td>
-<td>URIs or CURIEs used to refer to this entity</td>
-<td><a href="../HasIdentifiers/">HasIdentifiers</a></td>
 </tr>
 </tbody>
 </table>
@@ -379,24 +320,6 @@
 <tbody>
 <tr>
 <td><a href="../Feature/">Feature</a></td>
-<td><a href="../generated_by/">generated_by</a></td>
-<td>range</td>
-<td><a href="./">Protocol</a></td>
-</tr>
-<tr>
-<td><a href="../Feature/">Feature</a></td>
-<td><a href="../protocol_id/">protocol_id</a></td>
-<td>range</td>
-<td><a href="./">Protocol</a></td>
-</tr>
-<tr>
-<td><a href="../Measurement/">Measurement</a></td>
-<td><a href="../protocol_id/">protocol_id</a></td>
-<td>range</td>
-<td><a href="./">Protocol</a></td>
-</tr>
-<tr>
-<td><a href="../ProcessedMeasurement/">ProcessedMeasurement</a></td>
 <td><a href="../protocol_id/">protocol_id</a></td>
 <td>range</td>
 <td><a href="./">Protocol</a></td>
@@ -406,7 +329,7 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://github.com/kbase/cdm-schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -419,11 +342,11 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>cdm:Protocol</td>
+<td>kb_cdm:Protocol</td>
 </tr>
 <tr>
 <td>native</td>
-<td>cdm:Protocol</td>
+<td>kb_cdm:Protocol</td>
 </tr>
 </tbody>
 </table>
@@ -432,61 +355,48 @@
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: Protocol
-description: Defined method or set of methods .
-from_schema: https://github.com/kbase/cdm-schema
-mixins:
-- HasNames
-- HasIdentifiers
+description: Defined method or set of methods.
+from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+is_a: Table
+slots:
+- protocol_id
+slot_usage:
+  protocol_id:
+    name: protocol_id
+    identifier: true
 attributes:
   doi:
     name: doi
     description: The DOI for a protocol.
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
     rank: 1000
     domain_of:
     - Protocol
-  inputs:
-    name: inputs
-    description: The inputs for a protocol; may be software parameters, experimental
-      reagents, etc.
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    domain_of:
-    - Protocol
-    range: ProtocolParticipant
-    multivalued: true
-  outputs:
-    name: outputs
-    description: The outputs of a protocol; may be physical entities, files, etc.
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    domain_of:
-    - Protocol
-    range: ProtocolParticipant
-    multivalued: true
-  protocol_id:
-    name: protocol_id
-    description: Internal (CDM) unique identifier.
-    from_schema: https://github.com/kbase/cdm-schema
-    identifier: true
+  description:
+    name: description
+    description: Brief text description of the protocol.
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
     domain_of:
     - Cluster
-    - Feature
-    - Measurement
+    - Event
+    - Experiment
+    - Project
+    - Protein
     - Protocol
-    range: UUID
-    required: true
+    - Sample
+    - Identifier
+    - Name
   version:
     name: version
     description: The version of the protocol that has been used.
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
     domain_of:
     - DataSource
     - Protocol
   url:
     name: url
     description: The URL for a protocol.
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
     domain_of:
     - DataSource
     - Protocol
@@ -496,63 +406,45 @@ attributes:
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: Protocol
-description: Defined method or set of methods .
-from_schema: https://github.com/kbase/cdm-schema
-mixins:
-- HasNames
-- HasIdentifiers
+description: Defined method or set of methods.
+from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+is_a: Table
+slot_usage:
+  protocol_id:
+    name: protocol_id
+    identifier: true
 attributes:
   doi:
     name: doi
     description: The DOI for a protocol.
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
     rank: 1000
     alias: doi
     owner: Protocol
     domain_of:
     - Protocol
     range: string
-  inputs:
-    name: inputs
-    description: The inputs for a protocol; may be software parameters, experimental
-      reagents, etc.
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    alias: inputs
-    owner: Protocol
-    domain_of:
-    - Protocol
-    range: ProtocolParticipant
-    multivalued: true
-  outputs:
-    name: outputs
-    description: The outputs of a protocol; may be physical entities, files, etc.
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    alias: outputs
-    owner: Protocol
-    domain_of:
-    - Protocol
-    range: ProtocolParticipant
-    multivalued: true
-  protocol_id:
-    name: protocol_id
-    description: Internal (CDM) unique identifier.
-    from_schema: https://github.com/kbase/cdm-schema
-    identifier: true
-    alias: protocol_id
+  description:
+    name: description
+    description: Brief text description of the protocol.
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    alias: description
     owner: Protocol
     domain_of:
     - Cluster
-    - Feature
-    - Measurement
+    - Event
+    - Experiment
+    - Project
+    - Protein
     - Protocol
-    range: UUID
-    required: true
+    - Sample
+    - Identifier
+    - Name
+    range: string
   version:
     name: version
     description: The version of the protocol that has been used.
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
     alias: version
     owner: Protocol
     domain_of:
@@ -562,35 +454,29 @@ attributes:
   url:
     name: url
     description: The URL for a protocol.
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
     alias: url
     owner: Protocol
     domain_of:
     - DataSource
     - Protocol
     range: string
-  names:
-    name: names
-    description: Names, alternative names, and synonyms for an entity.
-    from_schema: https://github.com/kbase/cdm-schema
+  protocol_id:
+    name: protocol_id
+    description: Internal (CDM) unique identifier for a protocol.
+    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
     rank: 1000
-    alias: names
+    identifier: true
+    alias: protocol_id
     owner: Protocol
     domain_of:
-    - HasNames
-    range: Name
-    multivalued: true
-  identifiers:
-    name: identifiers
-    description: URIs or CURIEs used to refer to this entity.
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    alias: identifiers
-    owner: Protocol
-    domain_of:
-    - HasIdentifiers
-    range: Identifier
-    multivalued: true
+    - Protocol_X_ProtocolParticipant
+    - Cluster
+    - Feature
+    - Protocol
+    - Measurement
+    range: UUID
+    required: true
 
 </code></pre>
 </details>

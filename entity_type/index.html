@@ -340,21 +340,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Identifier and Mapping Information">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#schema-source" class="md-nav__link">
-    <span class="md-ellipsis">
-      Schema Source
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -395,8 +380,7 @@
 
 
 <h1 id="slot-entity_type">Slot: entity_type</h1>
-<p><em>The class of the entity. Must be a valid CDM class.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/entity_type">cdm:entity_type</a>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/entity_type">kb_cdm:entity_type</a>
 Alias: entity_type</p>
 <!-- no inheritance hierarchy -->
 
@@ -415,22 +399,18 @@ Alias: entity_type</p>
 <td>A database entity</td>
 <td>no</td>
 </tr>
+<tr>
+<td><a href="../Cluster/">Cluster</a></td>
+<td>Represents an individual execution of a clustering protocol</td>
+<td>no</td>
+</tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>
-<p>Range: <a href="../EntityType/">EntityType</a></p>
-</li>
-<li>
-<p>Required: True</p>
-</li>
+<li>Range: <a href="../String/">String</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="schema-source">Schema Source</h3>
-<ul>
-<li>from schema: https://github.com/kbase/cdm-schema</li>
-</ul>
 <h2 id="mappings">Mappings</h2>
 <table>
 <thead>
@@ -442,11 +422,11 @@ Alias: entity_type</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>cdm:entity_type</td>
+<td>kb_cdm:entity_type</td>
 </tr>
 <tr>
 <td>native</td>
-<td>cdm:entity_type</td>
+<td>kb_cdm:entity_type</td>
 </tr>
 </tbody>
 </table>
@@ -454,15 +434,11 @@ Alias: entity_type</p>
 <details>
 
 <pre><code class="language-yaml">name: entity_type
-description: The class of the entity. Must be a valid CDM class.
-from_schema: https://github.com/kbase/cdm-schema
-rank: 1000
 alias: entity_type
-owner: Entity
 domain_of:
+- Cluster
 - Entity
-range: EntityType
-required: true
+range: string
 
 </code></pre>
 

@@ -159,16 +159,16 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#slots">
+<a class="md-nav__link" href="#inheritance">
 <span class="md-ellipsis">
-      Slots
+      Inheritance
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#usages">
+<a class="md-nav__link" href="#slots">
 <span class="md-ellipsis">
-      Usages
+      Slots
     </span>
 </a>
 </li>
@@ -238,10 +238,13 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-association">Class: Association</h1>
 <p><em>An association between an object--typically an entity such as a protein or a feature--and a classification system or ontology, such as the Gene Ontology, the Enzyme Classification, or TIGRFAMS domains.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/Association">cdm:Association</a></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/Association">kb_cdm:Association</a></p>
 <div class="mermaid"> classDiagram
     class Association
     click Association href "../Association"
+      Table &lt;|-- Association
+        click Table href "../Table"
+
       Association : aggregator_knowledge_source
 
       Association : annotation_date
@@ -260,17 +263,6 @@
 
       Association : primary_knowledge_source
 
-      Association : publications
-
-
-
-
-
-        Association --&gt; "*" Publication : publications
-        click Publication href "../Publication"
-
-
-
       Association : subject
 
 
@@ -282,20 +274,15 @@
 
 
 
-      Association : supporting_objects
-
-
-
-
-
-        Association --&gt; "*" Any : supporting_objects
-        click Any href "../Any"
-
-
-
 
 </div>
-<!-- no inheritance hierarchy -->
+<h2 id="inheritance">Inheritance</h2>
+<ul>
+<li><a href="../Table/">Table</a><ul>
+<li><strong>Association</strong></li>
+</ul>
+</li>
+</ul>
 <h2 id="slots">Slots</h2>
 <table>
 <thead>
@@ -308,27 +295,27 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../association_id/">association_id</a></td>
+<td>1 <br/> <a href="../UUID/">UUID</a></td>
+<td>Internal (CDM) unique identifier for an association</td>
+<td>direct</td>
+</tr>
+<tr>
 <td><a href="../subject/">subject</a></td>
-<td>1 <br/> <a href="../Any/">Any</a> or <br/><a href="../Feature/">Feature</a> or <br/><a href="../Protein/">Protein</a></td>
+<td>1 <br/> <a href="../Any/">Any</a> or <br/><a href="../Feature/">Feature</a> or <br/><a href="../Protein/">Protein</a> or <br/><a href="../ContigCollection/">ContigCollection</a></td>
 <td>The subject of an association</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../object/">object</a></td>
-<td>1 <br/> <a href="../Curie/">Curie</a></td>
+<td>1 <br/> <a href="../LocalCurie/">LocalCurie</a></td>
 <td>The object of an association</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../predicate/">predicate</a></td>
-<td>0..1 <br/> <a href="../Curie/">Curie</a></td>
+<td>0..1 <br/> <a href="../LocalCurie/">LocalCurie</a></td>
 <td>The relationship between subject and object in an association</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../association_id/">association_id</a></td>
-<td>1 <br/> <a href="../UUID/">UUID</a></td>
-<td>Unique ID for the association</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -339,20 +326,8 @@
 </tr>
 <tr>
 <td><a href="../evidence_type/">evidence_type</a></td>
-<td>0..1 <br/> <a href="../Curie/">Curie</a></td>
+<td>0..1 <br/> <a href="../LocalCurie/">LocalCurie</a></td>
 <td>The type of evidence supporting the association</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../publications/">publications</a></td>
-<td>* <br/> <a href="../Publication/">Publication</a></td>
-<td>Publications that support the association</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../supporting_objects/">supporting_objects</a></td>
-<td>* <br/> <a href="../Any/">Any</a> or <br/><a href="../Feature/">Feature</a> or <br/><a href="../Protein/">Protein</a></td>
-<td>Objects that support the association</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -369,40 +344,15 @@
 </tr>
 <tr>
 <td><a href="../annotation_date/">annotation_date</a></td>
-<td>0..1 <br/> <a href="../Date/">Date</a></td>
+<td>0..1 <br/> <a href="../Iso8601/">Iso8601</a></td>
 <td>The date when the annotation was made</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../comments/">comments</a></td>
-<td>* <br/> <a href="../String/">String</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
 <td>Any comments about the association</td>
 <td>direct</td>
-</tr>
-</tbody>
-</table>
-<h2 id="usages">Usages</h2>
-<table>
-<thead>
-<tr>
-<th>used by</th>
-<th>used in</th>
-<th>type</th>
-<th>used</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../AssociationXPublication/">AssociationXPublication</a></td>
-<td><a href="../association_id/">association_id</a></td>
-<td>range</td>
-<td><a href="./">Association</a></td>
-</tr>
-<tr>
-<td><a href="../AssociationXEntity/">AssociationXEntity</a></td>
-<td><a href="../association_id/">association_id</a></td>
-<td>range</td>
-<td><a href="./">Association</a></td>
 </tr>
 </tbody>
 </table>
@@ -417,7 +367,7 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://github.com/kbase/cdm-schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -430,11 +380,11 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>cdm:Association</td>
+<td>kb_cdm:Association</td>
 </tr>
 <tr>
 <td>native</td>
-<td>cdm:Association</td>
+<td>kb_cdm:Association</td>
 </tr>
 </tbody>
 </table>
@@ -446,52 +396,44 @@
 description: An association between an object--typically an entity such as a protein
   or a feature--and a classification system or ontology, such as the Gene Ontology,
   the Enzyme Classification, or TIGRFAMS domains.
-from_schema: https://github.com/kbase/cdm-schema
+from_schema: http://kbase.github.io/cdm-schema/cdm_schema
 aliases:
 - annotation
 - functional annotation
 - gene annotation
 - structural annotation
 - protein annotation
+is_a: Table
 slots:
+- association_id
 - subject
 - object
 - predicate
 slot_usage:
+  association_id:
+    name: association_id
+    identifier: true
   subject:
     name: subject
     description: The subject of an association.
-    alias: subject_id
     range: Any
     required: true
     any_of:
     - range: Feature
     - range: Protein
+    - range: ContigCollection
   predicate:
     name: predicate
     description: The relationship between subject and object in an association. Should
-      be a term from the OBO relations ontology.
-    alias: relationship
-    range: curie
+      be a term from the Relation Ontology.
+    range: local_curie
   object:
     name: object
     description: The object of an association. Should be an ontology term or database
       cross-reference.
-    alias: object_id
-    range: curie
+    range: local_curie
     required: true
 attributes:
-  association_id:
-    name: association_id
-    description: Unique ID for the association.
-    from_schema: https://github.com/kbase/cdm-schema
-    identifier: true
-    domain_of:
-    - Association_x_Publication
-    - Association_X_Entity
-    - Association
-    range: UUID
-    required: true
   negated:
     name: negated
     description: If true, the relationship between the subject and object is negated.
@@ -501,7 +443,7 @@ attributes:
       "&lt;protein ID&gt; is involved in glucose biosynthesis". With the "negated" field
       set to true, the association is interpreted as "&lt;protein ID&gt; is not involved
       in glucose biosynthesis".
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
     rank: 1000
     domain_of:
     - Association
@@ -510,52 +452,26 @@ attributes:
     name: evidence_type
     description: The type of evidence supporting the association. Should be a term
       from the Evidence and Conclusion Ontology (ECO).
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
     rank: 1000
     domain_of:
     - Association
-    range: curie
+    range: local_curie
     pattern: ^ECO:\d+$
-  publications:
-    name: publications
-    description: Publications that support the association.
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    domain_of:
-    - Association
-    range: Publication
-    multivalued: true
-  supporting_objects:
-    name: supporting_objects
-    description: Objects that support the association. Should be URLs or CURIEs. Where
-      possible, CDM identifiers should be used.
-    todos:
-    - work out range of supporting objects
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    domain_of:
-    - Association
-    range: Any
-    multivalued: true
-    any_of:
-    - range: Feature
-    - range: Protein
   primary_knowledge_source:
     name: primary_knowledge_source
-    description: The knowledge source that created the association.
-    todos:
-    - generate a controlled vocab for this field.
-    from_schema: https://github.com/kbase/cdm-schema
+    description: The knowledge source that created the association. Should be a UUID
+      from the DataSource table.
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
     rank: 1000
     domain_of:
     - Association
     range: uriorcurie
   aggregator_knowledge_source:
     name: aggregator_knowledge_source
-    description: The knowledge source that aggregated the association.
-    todos:
-    - generate a controlled vocab for this field.
-    from_schema: https://github.com/kbase/cdm-schema
+    description: The knowledge source that aggregated the association. Should be a
+      UUID from the DataSource table.
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
     rank: 1000
     domain_of:
     - Association
@@ -563,20 +479,19 @@ attributes:
   annotation_date:
     name: annotation_date
     description: The date when the annotation was made.
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
     rank: 1000
     domain_of:
     - Association
-    range: date
+    range: iso8601
   comments:
     name: comments
     description: Any comments about the association.
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
     rank: 1000
     domain_of:
     - Association
     - DataSource
-    multivalued: true
 
 </code></pre>
 </details>
@@ -586,50 +501,39 @@ attributes:
 description: An association between an object--typically an entity such as a protein
   or a feature--and a classification system or ontology, such as the Gene Ontology,
   the Enzyme Classification, or TIGRFAMS domains.
-from_schema: https://github.com/kbase/cdm-schema
+from_schema: http://kbase.github.io/cdm-schema/cdm_schema
 aliases:
 - annotation
 - functional annotation
 - gene annotation
 - structural annotation
 - protein annotation
+is_a: Table
 slot_usage:
+  association_id:
+    name: association_id
+    identifier: true
   subject:
     name: subject
     description: The subject of an association.
-    alias: subject_id
     range: Any
     required: true
     any_of:
     - range: Feature
     - range: Protein
+    - range: ContigCollection
   predicate:
     name: predicate
     description: The relationship between subject and object in an association. Should
-      be a term from the OBO relations ontology.
-    alias: relationship
-    range: curie
+      be a term from the Relation Ontology.
+    range: local_curie
   object:
     name: object
     description: The object of an association. Should be an ontology term or database
       cross-reference.
-    alias: object_id
-    range: curie
+    range: local_curie
     required: true
 attributes:
-  association_id:
-    name: association_id
-    description: Unique ID for the association.
-    from_schema: https://github.com/kbase/cdm-schema
-    identifier: true
-    alias: association_id
-    owner: Association
-    domain_of:
-    - Association_x_Publication
-    - Association_X_Entity
-    - Association
-    range: UUID
-    required: true
   negated:
     name: negated
     description: If true, the relationship between the subject and object is negated.
@@ -639,7 +543,7 @@ attributes:
       "&lt;protein ID&gt; is involved in glucose biosynthesis". With the "negated" field
       set to true, the association is interpreted as "&lt;protein ID&gt; is not involved
       in glucose biosynthesis".
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
     rank: 1000
     alias: negated
     owner: Association
@@ -650,48 +554,19 @@ attributes:
     name: evidence_type
     description: The type of evidence supporting the association. Should be a term
       from the Evidence and Conclusion Ontology (ECO).
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
     rank: 1000
     alias: evidence_type
     owner: Association
     domain_of:
     - Association
-    range: curie
+    range: local_curie
     pattern: ^ECO:\d+$
-  publications:
-    name: publications
-    description: Publications that support the association.
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    alias: publications
-    owner: Association
-    domain_of:
-    - Association
-    range: Publication
-    multivalued: true
-  supporting_objects:
-    name: supporting_objects
-    description: Objects that support the association. Should be URLs or CURIEs. Where
-      possible, CDM identifiers should be used.
-    todos:
-    - work out range of supporting objects
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    alias: supporting_objects
-    owner: Association
-    domain_of:
-    - Association
-    range: Any
-    multivalued: true
-    any_of:
-    - range: Feature
-    - range: Protein
   primary_knowledge_source:
     name: primary_knowledge_source
-    description: The knowledge source that created the association.
-    todos:
-    - generate a controlled vocab for this field.
-    from_schema: https://github.com/kbase/cdm-schema
+    description: The knowledge source that created the association. Should be a UUID
+      from the DataSource table.
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
     rank: 1000
     alias: primary_knowledge_source
     owner: Association
@@ -700,10 +575,9 @@ attributes:
     range: uriorcurie
   aggregator_knowledge_source:
     name: aggregator_knowledge_source
-    description: The knowledge source that aggregated the association.
-    todos:
-    - generate a controlled vocab for this field.
-    from_schema: https://github.com/kbase/cdm-schema
+    description: The knowledge source that aggregated the association. Should be a
+      UUID from the DataSource table.
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
     rank: 1000
     alias: aggregator_knowledge_source
     owner: Association
@@ -713,17 +587,17 @@ attributes:
   annotation_date:
     name: annotation_date
     description: The date when the annotation was made.
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
     rank: 1000
     alias: annotation_date
     owner: Association
     domain_of:
     - Association
-    range: date
+    range: iso8601
   comments:
     name: comments
     description: Any comments about the association.
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_components
     rank: 1000
     alias: comments
     owner: Association
@@ -731,20 +605,34 @@ attributes:
     - Association
     - DataSource
     range: string
-    multivalued: true
+  association_id:
+    name: association_id
+    description: Internal (CDM) unique identifier for an association.
+    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+    rank: 1000
+    identifier: true
+    alias: association_id
+    owner: Association
+    domain_of:
+    - Association_X_Publication
+    - Association_X_SupportingObject
+    - Association
+    range: UUID
+    required: true
   subject:
     name: subject
     description: The subject of an association.
     todos:
     - set range appropriately for ontology and association use
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
     aliases:
     - about
     - source
     - head
+    - subject_id
     rank: 1000
     slot_uri: rdf:subject
-    alias: subject_id
+    alias: subject
     owner: Association
     domain_of:
     - Association
@@ -755,46 +643,50 @@ attributes:
     any_of:
     - range: Feature
     - range: Protein
+    - range: ContigCollection
   object:
     name: object
     description: The object of an association. Should be an ontology term or database
       cross-reference.
     todos:
     - set range appropriately for ontology and association use
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
     aliases:
     - target
     - sink
     - tail
+    - object_id
     rank: 1000
     slot_uri: rdf:object
-    alias: object_id
+    alias: object
     owner: Association
     domain_of:
     - Association
     - Statements
     - EntailedEdge
-    range: curie
+    range: local_curie
     required: true
   predicate:
     name: predicate
     description: The relationship between subject and object in an association. Should
-      be a term from the OBO relations ontology.
+      be a term from the Relation Ontology.
     todos:
     - set range appropriately for ontology and association use
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
     aliases:
+    - relationship
     - relationship type
     - property
+    - predicate_id
     rank: 1000
     slot_uri: rdf:predicate
-    alias: relationship
+    alias: predicate
     owner: Association
     domain_of:
     - Association
     - Statements
     - EntailedEdge
-    range: curie
+    range: local_curie
 
 </code></pre>
 </details>

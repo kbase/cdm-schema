@@ -380,7 +380,7 @@
 
 
 <h1 id="slot-created_at">Slot: created_at</h1>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/created_at">cdm:created_at</a>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/created_at">kb_cdm:created_at</a>
 Alias: created_at</p>
 <!-- no inheritance hierarchy -->
 
@@ -395,18 +395,13 @@ Alias: created_at</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../Experiment/">Experiment</a></td>
-<td>A discrete scientific procedure undertaken to make a discovery, test a hypoth...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../MeasurementSet/">MeasurementSet</a></td>
-<td>A series of qualitative or quantitative measurements</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../ProcessedMeasurement/">ProcessedMeasurement</a></td>
 <td>A measurement that requires additional processing to generate a result</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Experiment/">Experiment</a></td>
+<td>A discrete scientific procedure undertaken to make a discovery, test a hypoth...</td>
 <td>no</td>
 </tr>
 <tr>
@@ -437,11 +432,11 @@ Alias: created_at</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>cdm:created_at</td>
+<td>kb_cdm:created_at</td>
 </tr>
 <tr>
 <td>native</td>
-<td>cdm:created_at</td>
+<td>kb_cdm:created_at</td>
 </tr>
 </tbody>
 </table>
@@ -454,7 +449,6 @@ domain_of:
 - Event
 - Experiment
 - Measurement
-- MeasurementSet
 range: string
 
 </code></pre>

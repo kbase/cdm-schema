@@ -340,6 +340,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Identifier and Mapping Information">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#schema-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      Schema Source
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -380,7 +395,8 @@
 
 
 <h1 id="slot-cluster_id">Slot: cluster_id</h1>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/cluster_id">cdm:cluster_id</a>
+<p><em>Internal (CDM) unique identifier for a cluster.</em></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/cluster_id">kb_cdm:cluster_id</a>
 Alias: cluster_id</p>
 <!-- no inheritance hierarchy -->
 
@@ -395,22 +411,31 @@ Alias: cluster_id</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../ClusterXProtein/">ClusterXProtein</a></td>
+<td><a href="../ClusterMember/">ClusterMember</a></td>
 <td>Relationship representing membership of a cluster</td>
 <td>no</td>
 </tr>
 <tr>
 <td><a href="../Cluster/">Cluster</a></td>
 <td>Represents an individual execution of a clustering protocol</td>
-<td>no</td>
+<td>yes</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../String/">String</a></li>
+<li>
+<p>Range: <a href="../UUID/">UUID</a></p>
+</li>
+<li>
+<p>Required: True</p>
+</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="schema-source">Schema Source</h3>
+<ul>
+<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+</ul>
 <h2 id="mappings">Mappings</h2>
 <table>
 <thead>
@@ -422,11 +447,11 @@ Alias: cluster_id</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>cdm:cluster_id</td>
+<td>kb_cdm:cluster_id</td>
 </tr>
 <tr>
 <td>native</td>
-<td>cdm:cluster_id</td>
+<td>kb_cdm:cluster_id</td>
 </tr>
 </tbody>
 </table>
@@ -434,11 +459,15 @@ Alias: cluster_id</p>
 <details>
 
 <pre><code class="language-yaml">name: cluster_id
+description: Internal (CDM) unique identifier for a cluster.
+from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+rank: 1000
 alias: cluster_id
 domain_of:
-- Cluster_X_Protein
 - Cluster
-range: string
+- ClusterMember
+range: UUID
+required: true
 
 </code></pre>
 

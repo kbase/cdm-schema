@@ -340,6 +340,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Identifier and Mapping Information">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#schema-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      Schema Source
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -380,7 +395,8 @@
 
 
 <h1 id="slot-experiment_id">Slot: experiment_id</h1>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/experiment_id">cdm:experiment_id</a>
+<p><em>Internal (CDM) unique identifier for an experiment.</em></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/experiment_id">kb_cdm:experiment_id</a>
 Alias: experiment_id</p>
 <!-- no inheritance hierarchy -->
 
@@ -395,22 +411,41 @@ Alias: experiment_id</p>
 </thead>
 <tbody>
 <tr>
+<td><a href="../ExperimentXSample/">ExperimentXSample</a></td>
+<td>Represents the participation of a sample in an experiment</td>
+<td>yes</td>
+</tr>
+<tr>
 <td><a href="../Experiment/">Experiment</a></td>
 <td>A discrete scientific procedure undertaken to make a discovery, test a hypoth...</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../ContributorXRoleXExperiment/">ContributorXRoleXExperiment</a></td>
+<td></td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../ContributorXExperiment/">ContributorXExperiment</a></td>
-<td></td>
-<td>no</td>
+<td><a href="../ExperimentXProject/">ExperimentXProject</a></td>
+<td>Captures the relationship between an experiment and the project that it is a ...</td>
+<td>yes</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../String/">String</a></li>
+<li>
+<p>Range: <a href="../UUID/">UUID</a></p>
+</li>
+<li>
+<p>Required: True</p>
+</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="schema-source">Schema Source</h3>
+<ul>
+<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+</ul>
 <h2 id="mappings">Mappings</h2>
 <table>
 <thead>
@@ -422,11 +457,11 @@ Alias: experiment_id</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>cdm:experiment_id</td>
+<td>kb_cdm:experiment_id</td>
 </tr>
 <tr>
 <td>native</td>
-<td>cdm:experiment_id</td>
+<td>kb_cdm:experiment_id</td>
 </tr>
 </tbody>
 </table>
@@ -434,11 +469,17 @@ Alias: experiment_id</p>
 <details>
 
 <pre><code class="language-yaml">name: experiment_id
+description: Internal (CDM) unique identifier for an experiment.
+from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+rank: 1000
 alias: experiment_id
 domain_of:
-- Contributor_X_Experiment
+- Contributor_X_Role_X_Experiment
+- Experiment_X_Project
+- Experiment_X_Sample
 - Experiment
-range: string
+range: UUID
+required: true
 
 </code></pre>
 

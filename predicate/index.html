@@ -451,8 +451,10 @@ Alias: predicate</p>
 </ul>
 <h2 id="aliases">Aliases</h2>
 <ul>
+<li>relationship</li>
 <li>relationship type</li>
 <li>property</li>
+<li>predicate_id</li>
 </ul>
 <h2 id="todos">TODOs</h2>
 <ul>
@@ -461,7 +463,7 @@ Alias: predicate</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://github.com/kbase/cdm-schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -478,7 +480,7 @@ Alias: predicate</p>
 </tr>
 <tr>
 <td>native</td>
-<td>cdm:predicate</td>
+<td>kb_cdm:predicate</td>
 </tr>
 </tbody>
 </table>
@@ -489,10 +491,12 @@ Alias: predicate</p>
 description: The predicate of the statement
 todos:
 - set range appropriately for ontology and association use
-from_schema: https://github.com/kbase/cdm-schema
+from_schema: http://kbase.github.io/cdm-schema/cdm_schema
 aliases:
+- relationship
 - relationship type
 - property
+- predicate_id
 rank: 1000
 slot_uri: rdf:predicate
 alias: predicate

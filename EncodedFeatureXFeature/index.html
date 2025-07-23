@@ -159,6 +159,13 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
+<a class="md-nav__link" href="#inheritance">
+<span class="md-ellipsis">
+      Inheritance
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#slots">
 <span class="md-ellipsis">
       Slots
@@ -224,35 +231,26 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-encodedfeaturexfeature">Class: EncodedFeatureXFeature</h1>
 <p><em>Captures the relationship between a feature and its transcription product.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/EncodedFeatureXFeature">cdm:EncodedFeatureXFeature</a></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/EncodedFeatureXFeature">kb_cdm:EncodedFeatureXFeature</a></p>
 <div class="mermaid"> classDiagram
     class EncodedFeatureXFeature
     click EncodedFeatureXFeature href "../EncodedFeatureXFeature"
+      Table &lt;|-- EncodedFeatureXFeature
+        click Table href "../Table"
+
       EncodedFeatureXFeature : encoded_feature_id
-
-
-
-
-
-        EncodedFeatureXFeature --&gt; "1" EncodedFeature : encoded_feature_id
-        click EncodedFeature href "../EncodedFeature"
-
-
 
       EncodedFeatureXFeature : feature_id
 
 
-
-
-
-        EncodedFeatureXFeature --&gt; "1" Feature : feature_id
-        click Feature href "../Feature"
-
-
-
-
 </div>
-<!-- no inheritance hierarchy -->
+<h2 id="inheritance">Inheritance</h2>
+<ul>
+<li><a href="../Table/">Table</a><ul>
+<li><strong>EncodedFeatureXFeature</strong></li>
+</ul>
+</li>
+</ul>
 <h2 id="slots">Slots</h2>
 <table>
 <thead>
@@ -266,14 +264,14 @@
 <tbody>
 <tr>
 <td><a href="../encoded_feature_id/">encoded_feature_id</a></td>
-<td>1 <br/> <a href="../EncodedFeature/">EncodedFeature</a></td>
-<td>Internal (CDM) unique identifier</td>
+<td>1 <br/> <a href="../UUID/">UUID</a></td>
+<td>Internal (CDM) unique identifier for an encoded feature</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../feature_id/">feature_id</a></td>
-<td>1 <br/> <a href="../Feature/">Feature</a></td>
-<td>Internal (CDM) unique identifier</td>
+<td>1 <br/> <a href="../UUID/">UUID</a></td>
+<td>Internal (CDM) unique identifier for a feature</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -281,7 +279,7 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://github.com/kbase/cdm-schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -294,11 +292,11 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>cdm:EncodedFeatureXFeature</td>
+<td>kb_cdm:EncodedFeatureXFeature</td>
 </tr>
 <tr>
 <td>native</td>
-<td>cdm:EncodedFeatureXFeature</td>
+<td>kb_cdm:EncodedFeatureXFeature</td>
 </tr>
 </tbody>
 </table>
@@ -308,31 +306,12 @@
 <details>
 <pre><code class="language-yaml">name: EncodedFeature_X_Feature
 description: Captures the relationship between a feature and its transcription product.
-from_schema: https://github.com/kbase/cdm-schema
-attributes:
-  encoded_feature_id:
-    name: encoded_feature_id
-    description: Internal (CDM) unique identifier.
-    from_schema: https://github.com/kbase/cdm-schema
-    rank: 1000
-    domain_of:
-    - EncodedFeature_X_Feature
-    - EncodedFeature
-    range: EncodedFeature
-    required: true
-  feature_id:
-    name: feature_id
-    description: Internal (CDM) unique identifier.
-    from_schema: https://github.com/kbase/cdm-schema
-    domain_of:
-    - Contig_X_Feature
-    - ContigCollection_X_Feature
-    - EncodedFeature_X_Feature
-    - Feature_X_Protein
-    - Feature
-    - FeatureAttributes
-    range: Feature
-    required: true
+from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+is_a: Table
+slots:
+- encoded_feature_id
+- feature_id
+represents_relationship: true
 
 </code></pre>
 </details>
@@ -340,24 +319,28 @@ attributes:
 <details>
 <pre><code class="language-yaml">name: EncodedFeature_X_Feature
 description: Captures the relationship between a feature and its transcription product.
-from_schema: https://github.com/kbase/cdm-schema
+from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+is_a: Table
 attributes:
   encoded_feature_id:
     name: encoded_feature_id
-    description: Internal (CDM) unique identifier.
-    from_schema: https://github.com/kbase/cdm-schema
+    description: Internal (CDM) unique identifier for an encoded feature.
+    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
     rank: 1000
     alias: encoded_feature_id
     owner: EncodedFeature_X_Feature
     domain_of:
+    - Contig_X_EncodedFeature
+    - ContigCollection_X_EncodedFeature
     - EncodedFeature_X_Feature
     - EncodedFeature
-    range: EncodedFeature
+    range: UUID
     required: true
   feature_id:
     name: feature_id
-    description: Internal (CDM) unique identifier.
-    from_schema: https://github.com/kbase/cdm-schema
+    description: Internal (CDM) unique identifier for a feature.
+    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+    rank: 1000
     alias: feature_id
     owner: EncodedFeature_X_Feature
     domain_of:
@@ -366,9 +349,9 @@ attributes:
     - EncodedFeature_X_Feature
     - Feature_X_Protein
     - Feature
-    - FeatureAttributes
-    range: Feature
+    range: UUID
     required: true
+represents_relationship: true
 
 </code></pre>
 </details>

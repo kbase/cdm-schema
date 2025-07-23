@@ -340,21 +340,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Identifier and Mapping Information">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#schema-source" class="md-nav__link">
-    <span class="md-ellipsis">
-      Schema Source
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -395,8 +380,7 @@
 
 
 <h1 id="slot-protocol_participant_id">Slot: protocol_participant_id</h1>
-<p><em>Internal (CDM) unique identifier.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/protocol_participant_id">cdm:protocol_participant_id</a>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/protocol_participant_id">kb_cdm:protocol_participant_id</a>
 Alias: protocol_participant_id</p>
 <!-- no inheritance hierarchy -->
 
@@ -415,22 +399,18 @@ Alias: protocol_participant_id</p>
 <td>Either an input or an output of a protocol</td>
 <td>no</td>
 </tr>
+<tr>
+<td><a href="../ProtocolXProtocolParticipant/">ProtocolXProtocolParticipant</a></td>
+<td></td>
+<td>no</td>
+</tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>
-<p>Range: <a href="../UUID/">UUID</a></p>
-</li>
-<li>
-<p>Required: True</p>
-</li>
+<li>Range: <a href="../String/">String</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="schema-source">Schema Source</h3>
-<ul>
-<li>from schema: https://github.com/kbase/cdm-schema</li>
-</ul>
 <h2 id="mappings">Mappings</h2>
 <table>
 <thead>
@@ -442,11 +422,11 @@ Alias: protocol_participant_id</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>cdm:protocol_participant_id</td>
+<td>kb_cdm:protocol_participant_id</td>
 </tr>
 <tr>
 <td>native</td>
-<td>cdm:protocol_participant_id</td>
+<td>kb_cdm:protocol_participant_id</td>
 </tr>
 </tbody>
 </table>
@@ -454,16 +434,11 @@ Alias: protocol_participant_id</p>
 <details>
 
 <pre><code class="language-yaml">name: protocol_participant_id
-description: Internal (CDM) unique identifier.
-from_schema: https://github.com/kbase/cdm-schema
-rank: 1000
-identifier: true
 alias: protocol_participant_id
-owner: ProtocolParticipant
 domain_of:
+- Protocol_X_ProtocolParticipant
 - ProtocolParticipant
-range: UUID
-required: true
+range: string
 
 </code></pre>
 

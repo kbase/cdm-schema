@@ -334,11 +334,35 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#aliases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aliases
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       Identifier and Mapping Information
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Identifier and Mapping Information">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#schema-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      Schema Source
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -380,7 +404,8 @@
 
 
 <h1 id="slot-quality">Slot: quality</h1>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/quality">cdm:quality</a>
+<p><em>The quality of the measurement, indicating the confidence that one can have in its correctness.</em></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/quality">kb_cdm:quality</a>
 Alias: quality</p>
 <!-- no inheritance hierarchy -->
 
@@ -410,7 +435,15 @@ Alias: quality</p>
 <ul>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
+<h2 id="aliases">Aliases</h2>
+<ul>
+<li>confidence</li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="schema-source">Schema Source</h3>
+<ul>
+<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+</ul>
 <h2 id="mappings">Mappings</h2>
 <table>
 <thead>
@@ -422,11 +455,11 @@ Alias: quality</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>cdm:quality</td>
+<td>kb_cdm:quality</td>
 </tr>
 <tr>
 <td>native</td>
-<td>cdm:quality</td>
+<td>kb_cdm:quality</td>
 </tr>
 </tbody>
 </table>
@@ -434,10 +467,16 @@ Alias: quality</p>
 <details>
 
 <pre><code class="language-yaml">name: quality
+description: The quality of the measurement, indicating the confidence that one can
+  have in its correctness.
+from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+aliases:
+- confidence
+rank: 1000
 alias: quality
+owner: Measurement
 domain_of:
 - Measurement
-- ProcessedMeasurement
 range: string
 
 </code></pre>

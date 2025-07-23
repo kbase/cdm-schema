@@ -396,7 +396,7 @@
 
 <h1 id="slot-hash">Slot: hash</h1>
 <p><em>A hash value generated from one or more object attributes that serves to ensure the entity is unique.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/hash">cdm:hash</a>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/hash">kb_cdm:hash</a>
 Alias: hash</p>
 <!-- no inheritance hierarchy -->
 
@@ -411,23 +411,8 @@ Alias: hash</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../Contig/">Contig</a></td>
-<td>A contig (derived from the word "contiguous") is a set of DNA segments or seq...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Feature/">Feature</a></td>
-<td>A feature localized to an interval along a contig</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../ContigCollection/">ContigCollection</a></td>
 <td>A set of individual, overlapping contigs that represent the complete sequence...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Genome/">Genome</a></td>
-<td>A contig collection with a completeness score of greater than 90% and a conta...</td>
 <td>no</td>
 </tr>
 <tr>
@@ -436,8 +421,18 @@ Alias: hash</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../HasHash/">HasHash</a></td>
-<td></td>
+<td><a href="../Feature/">Feature</a></td>
+<td>A feature localized to an interval along a contig</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../EncodedFeature/">EncodedFeature</a></td>
+<td>An entity generated from a feature, such as a transcript</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Contig/">Contig</a></td>
+<td>A contig (derived from the word "contiguous") is a set of DNA segments or seq...</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -449,7 +444,7 @@ Alias: hash</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://github.com/kbase/cdm-schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -462,11 +457,11 @@ Alias: hash</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>cdm:hash</td>
+<td>kb_cdm:hash</td>
 </tr>
 <tr>
 <td>native</td>
-<td>cdm:hash</td>
+<td>kb_cdm:hash</td>
 </tr>
 </tbody>
 </table>
@@ -476,11 +471,15 @@ Alias: hash</p>
 <pre><code class="language-yaml">name: hash
 description: A hash value generated from one or more object attributes that serves
   to ensure the entity is unique.
-from_schema: https://github.com/kbase/cdm-schema
+from_schema: http://kbase.github.io/cdm-schema/cdm_schema
 rank: 1000
 alias: hash
 domain_of:
-- HasHash
+- Contig
+- ContigCollection
+- EncodedFeature
+- Feature
+- Protein
 range: string
 
 </code></pre>

@@ -159,6 +159,13 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
+<a class="md-nav__link" href="#inheritance">
+<span class="md-ellipsis">
+      Inheritance
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#slots">
 <span class="md-ellipsis">
       Slots
@@ -224,35 +231,26 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-featurexprotein">Class: FeatureXProtein</h1>
 <p><em>Captures the relationship between a feature and a protein; equivalent to feature encodes protein.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/FeatureXProtein">cdm:FeatureXProtein</a></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/FeatureXProtein">kb_cdm:FeatureXProtein</a></p>
 <div class="mermaid"> classDiagram
     class FeatureXProtein
     click FeatureXProtein href "../FeatureXProtein"
+      Table &lt;|-- FeatureXProtein
+        click Table href "../Table"
+
       FeatureXProtein : feature_id
-
-
-
-
-
-        FeatureXProtein --&gt; "1" Feature : feature_id
-        click Feature href "../Feature"
-
-
 
       FeatureXProtein : protein_id
 
 
-
-
-
-        FeatureXProtein --&gt; "1" Protein : protein_id
-        click Protein href "../Protein"
-
-
-
-
 </div>
-<!-- no inheritance hierarchy -->
+<h2 id="inheritance">Inheritance</h2>
+<ul>
+<li><a href="../Table/">Table</a><ul>
+<li><strong>FeatureXProtein</strong></li>
+</ul>
+</li>
+</ul>
 <h2 id="slots">Slots</h2>
 <table>
 <thead>
@@ -266,13 +264,13 @@
 <tbody>
 <tr>
 <td><a href="../feature_id/">feature_id</a></td>
-<td>1 <br/> <a href="../Feature/">Feature</a></td>
+<td>1 <br/> <a href="../UUID/">UUID</a></td>
 <td>Internal (CDM) unique identifier for a feature</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../protein_id/">protein_id</a></td>
-<td>1 <br/> <a href="../Protein/">Protein</a></td>
+<td>1..* <br/> <a href="../UUID/">UUID</a></td>
 <td>Internal (CDM) unique identifier for a protein</td>
 <td>direct</td>
 </tr>
@@ -281,7 +279,7 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://github.com/kbase/cdm-schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -294,11 +292,11 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>cdm:FeatureXProtein</td>
+<td>kb_cdm:FeatureXProtein</td>
 </tr>
 <tr>
 <td>native</td>
-<td>cdm:FeatureXProtein</td>
+<td>kb_cdm:FeatureXProtein</td>
 </tr>
 </tbody>
 </table>
@@ -309,32 +307,15 @@
 <pre><code class="language-yaml">name: Feature_X_Protein
 description: Captures the relationship between a feature and a protein; equivalent
   to feature encodes protein.
-from_schema: https://github.com/kbase/cdm-schema
-attributes:
-  feature_id:
-    name: feature_id
-    description: Internal (CDM) unique identifier for a feature.
-    from_schema: https://github.com/kbase/cdm-schema
-    domain_of:
-    - Contig_X_Feature
-    - ContigCollection_X_Feature
-    - EncodedFeature_X_Feature
-    - Feature_X_Protein
-    - Feature
-    - FeatureAttributes
-    range: Feature
-    required: true
+from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+is_a: Table
+slots:
+- feature_id
+- protein_id
+slot_usage:
   protein_id:
     name: protein_id
-    description: Internal (CDM) unique identifier for a protein.
-    from_schema: https://github.com/kbase/cdm-schema
-    domain_of:
-    - Cluster_X_Protein
-    - ContigCollection_X_Protein
-    - Feature_X_Protein
-    - Protein
-    range: Protein
-    required: true
+    multivalued: true
 represents_relationship: true
 
 </code></pre>
@@ -344,12 +325,18 @@ represents_relationship: true
 <pre><code class="language-yaml">name: Feature_X_Protein
 description: Captures the relationship between a feature and a protein; equivalent
   to feature encodes protein.
-from_schema: https://github.com/kbase/cdm-schema
+from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+is_a: Table
+slot_usage:
+  protein_id:
+    name: protein_id
+    multivalued: true
 attributes:
   feature_id:
     name: feature_id
     description: Internal (CDM) unique identifier for a feature.
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+    rank: 1000
     alias: feature_id
     owner: Feature_X_Protein
     domain_of:
@@ -358,22 +345,23 @@ attributes:
     - EncodedFeature_X_Feature
     - Feature_X_Protein
     - Feature
-    - FeatureAttributes
-    range: Feature
+    range: UUID
     required: true
   protein_id:
     name: protein_id
     description: Internal (CDM) unique identifier for a protein.
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+    rank: 1000
     alias: protein_id
     owner: Feature_X_Protein
     domain_of:
-    - Cluster_X_Protein
+    - Contig_X_Protein
     - ContigCollection_X_Protein
     - Feature_X_Protein
     - Protein
-    range: Protein
+    range: UUID
     required: true
+    multivalued: true
 represents_relationship: true
 
 </code></pre>

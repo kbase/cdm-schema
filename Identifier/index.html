@@ -159,16 +159,16 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#slots">
+<a class="md-nav__link" href="#inheritance">
 <span class="md-ellipsis">
-      Slots
+      Inheritance
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#usages">
+<a class="md-nav__link" href="#slots">
 <span class="md-ellipsis">
-      Usages
+      Slots
     </span>
 </a>
 </li>
@@ -230,22 +230,36 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="class-identifier">Class: Identifier</h1>
-<p><em>An external identifier for an entity. This should be a URI or CURIE.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/Identifier">cdm:Identifier</a></p>
+<p><em>A string used as a resolvable (external) identifier for an entity. This should be a URI or CURIE. If the string cannot be resolved to an URL, it should be added as a 'name' instead.</em></p>
+<p>__</p>
+<p><em>This table is used for capturing external IDs. The internal CDM identifier should be used in the *_id field (e.g. feature_id, protein_id, contig_collection_id).</em></p>
+<p>__</p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/Identifier">kb_cdm:Identifier</a></p>
 <div class="mermaid"> classDiagram
     class Identifier
     click Identifier href "../Identifier"
+      Table &lt;|-- Identifier
+        click Table href "../Table"
+
       Identifier : description
 
       Identifier : entity_id
 
       Identifier : identifier
 
+      Identifier : relationship
+
       Identifier : source
 
 
 </div>
-<!-- no inheritance hierarchy -->
+<h2 id="inheritance">Inheritance</h2>
+<ul>
+<li><a href="../Table/">Table</a><ul>
+<li><strong>Identifier</strong></li>
+</ul>
+</li>
+</ul>
 <h2 id="slots">Slots</h2>
 <table>
 <thead>
@@ -258,138 +272,41 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../entity_id/">entity_id</a></td>
+<td>1 <br/> <a href="../UUID/">UUID</a></td>
+<td>Internal (CDM) unique identifier for an entity</td>
+<td>direct</td>
+</tr>
+<tr>
 <td><a href="../identifier/">identifier</a></td>
 <td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>Fully-qualifier URL or CURIE used as an identifier for an entity</td>
+<td>Fully-qualified URL or CURIE used as an identifier for an entity</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../description/">description</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Brief description of the identifier and/or its relationship to the entity</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../entity_id/">entity_id</a></td>
-<td>1 <br/> <a href="../UUID/">UUID</a></td>
-<td>Internal (CDM) unique identifier for the entity that has the identifiers</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../identifier/">identifier</a></td>
-<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>Fully-qualifier URL or CURIE used as an identifier for an entity</td>
+<td>Brief description of the identifier</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../source/">source</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>The data source for the identifier</td>
+<td>0..1 <br/> <a href="../DataSourceUuid/">DataSourceUuid</a></td>
+<td>The source for a specific piece of information; should be a CDM internal ID o...</td>
 <td>direct</td>
 </tr>
-</tbody>
-</table>
-<h2 id="usages">Usages</h2>
-<table>
-<thead>
 <tr>
-<th>used by</th>
-<th>used in</th>
-<th>type</th>
-<th>used</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../Contig/">Contig</a></td>
-<td><a href="../identifiers/">identifiers</a></td>
-<td>range</td>
-<td><a href="./">Identifier</a></td>
-</tr>
-<tr>
-<td><a href="../ContigCollection/">ContigCollection</a></td>
-<td><a href="../identifiers/">identifiers</a></td>
-<td>range</td>
-<td><a href="./">Identifier</a></td>
-</tr>
-<tr>
-<td><a href="../Contributor/">Contributor</a></td>
-<td><a href="../identifiers/">identifiers</a></td>
-<td>range</td>
-<td><a href="./">Identifier</a></td>
-</tr>
-<tr>
-<td><a href="../EncodedFeature/">EncodedFeature</a></td>
-<td><a href="../identifiers/">identifiers</a></td>
-<td>range</td>
-<td><a href="./">Identifier</a></td>
-</tr>
-<tr>
-<td><a href="../Feature/">Feature</a></td>
-<td><a href="../identifiers/">identifiers</a></td>
-<td>range</td>
-<td><a href="./">Identifier</a></td>
-</tr>
-<tr>
-<td><a href="../Project/">Project</a></td>
-<td><a href="../identifiers/">identifiers</a></td>
-<td>range</td>
-<td><a href="./">Identifier</a></td>
-</tr>
-<tr>
-<td><a href="../Protein/">Protein</a></td>
-<td><a href="../identifiers/">identifiers</a></td>
-<td>range</td>
-<td><a href="./">Identifier</a></td>
-</tr>
-<tr>
-<td><a href="../Protocol/">Protocol</a></td>
-<td><a href="../identifiers/">identifiers</a></td>
-<td>range</td>
-<td><a href="./">Identifier</a></td>
-</tr>
-<tr>
-<td><a href="../ProtocolParticipant/">ProtocolParticipant</a></td>
-<td><a href="../identifiers/">identifiers</a></td>
-<td>range</td>
-<td><a href="./">Identifier</a></td>
-</tr>
-<tr>
-<td><a href="../Sample/">Sample</a></td>
-<td><a href="../identifiers/">identifiers</a></td>
-<td>range</td>
-<td><a href="./">Identifier</a></td>
-</tr>
-<tr>
-<td><a href="../HasIdentifiers/">HasIdentifiers</a></td>
-<td><a href="../identifiers/">identifiers</a></td>
-<td>range</td>
-<td><a href="./">Identifier</a></td>
-</tr>
-<tr>
-<td><a href="../NamedThingWithIDs/">NamedThingWithIDs</a></td>
-<td><a href="../identifiers/">identifiers</a></td>
-<td>range</td>
-<td><a href="./">Identifier</a></td>
-</tr>
-<tr>
-<td><a href="../Genome/">Genome</a></td>
-<td><a href="../identifiers/">identifiers</a></td>
-<td>range</td>
-<td><a href="./">Identifier</a></td>
-</tr>
-<tr>
-<td><a href="../Organization/">Organization</a></td>
-<td><a href="../identifiers/">identifiers</a></td>
-<td>range</td>
-<td><a href="./">Identifier</a></td>
+<td><a href="../relationship/">relationship</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Relationship between this identifier and the entity in the <code>entity_id</code> field</td>
+<td>direct</td>
 </tr>
 </tbody>
 </table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://github.com/kbase/cdm-schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -402,11 +319,11 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>cdm:Identifier</td>
+<td>kb_cdm:Identifier</td>
 </tr>
 <tr>
 <td>native</td>
-<td>cdm:Identifier</td>
+<td>kb_cdm:Identifier</td>
 </tr>
 </tbody>
 </table>
@@ -415,75 +332,106 @@
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: Identifier
-description: An external identifier for an entity. This should be a URI or CURIE.
-from_schema: https://github.com/kbase/cdm-schema
+description: 'A string used as a resolvable (external) identifier for an entity. This
+  should be a URI or CURIE. If the string cannot be resolved to an URL, it should
+  be added as a ''name'' instead.
+
+
+  This table is used for capturing external IDs. The internal CDM identifier should
+  be used in the *_id field (e.g. feature_id, protein_id, contig_collection_id).
+
+  '
+from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+is_a: Table
 slots:
+- entity_id
 - identifier
-attributes:
+- description
+- source
+slot_usage:
   description:
     name: description
-    description: Brief description of the identifier and/or its relationship to the
-      entity.
-    from_schema: https://github.com/kbase/cdm-schema
-    domain_of:
-    - Cluster
-    - Event
-    - Experiment
-    - Project
-    - Protein
-    - Sample
-    - Identifier
-    - Name
-  entity_id:
-    name: entity_id
-    description: Internal (CDM) unique identifier for the entity that has the identifiers.
-    from_schema: https://github.com/kbase/cdm-schema
-    domain_of:
-    - Association_X_Entity
-    - Identifier
-    - Name
-    range: UUID
-    required: true
-  identifier:
-    name: identifier
-    description: Fully-qualifier URL or CURIE used as an identifier for an entity.
-    examples:
-    - value: UniProt:Q8KCD6
-    - value: EC:5.2.3.14
-    from_schema: https://github.com/kbase/cdm-schema
-    slot_uri: schema:identifier
-    identifier: true
+    description: Brief description of the identifier.
+attributes:
+  relationship:
+    name: relationship
+    description: Relationship between this identifier and the entity in the `entity_id`
+      field.
+    from_schema: http://kbase.github.io/cdm-schema/cdm_base
+    rank: 1000
     domain_of:
     - Identifier
-    range: uriorcurie
-    required: true
-  source:
-    name: source
-    description: The data source for the identifier. Should be a ROR ID.
-    examples:
-    - value: UniProt
-    - value: NCBI
-    - value: KE-Pangenomes
-    from_schema: https://github.com/kbase/cdm-schema
-    domain_of:
-    - DataSource
-    - Identifier
-    - Name
-    range: uriorcurie
 
 </code></pre>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: Identifier
-description: An external identifier for an entity. This should be a URI or CURIE.
-from_schema: https://github.com/kbase/cdm-schema
-attributes:
+description: 'A string used as a resolvable (external) identifier for an entity. This
+  should be a URI or CURIE. If the string cannot be resolved to an URL, it should
+  be added as a ''name'' instead.
+
+
+  This table is used for capturing external IDs. The internal CDM identifier should
+  be used in the *_id field (e.g. feature_id, protein_id, contig_collection_id).
+
+  '
+from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+is_a: Table
+slot_usage:
   description:
     name: description
-    description: Brief description of the identifier and/or its relationship to the
-      entity.
-    from_schema: https://github.com/kbase/cdm-schema
+    description: Brief description of the identifier.
+attributes:
+  relationship:
+    name: relationship
+    description: Relationship between this identifier and the entity in the `entity_id`
+      field.
+    from_schema: http://kbase.github.io/cdm-schema/cdm_base
+    rank: 1000
+    alias: relationship
+    owner: Identifier
+    domain_of:
+    - Identifier
+    range: string
+  entity_id:
+    name: entity_id
+    description: Internal (CDM) unique identifier for an entity.
+    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+    rank: 1000
+    alias: entity_id
+    owner: Identifier
+    domain_of:
+    - Association_X_SupportingObject
+    - Entity_X_Measurement
+    - ClusterMember
+    - Sequence
+    - Entity
+    - Identifier
+    - Name
+    - AttributeValue
+    range: UUID
+    required: true
+  identifier:
+    name: identifier
+    description: Fully-qualified URL or CURIE used as an identifier for an entity.
+    examples:
+    - value: UniProt:Q8KCD6
+    - value: EC:5.2.3.14
+    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+    rank: 1000
+    slot_uri: schema:identifier
+    alias: identifier
+    owner: Identifier
+    domain_of:
+    - Identifier
+    range: uriorcurie
+    required: true
+  description:
+    name: description
+    description: Brief description of the identifier.
+    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+    rank: 1000
     alias: description
     owner: Identifier
     domain_of:
@@ -492,52 +440,23 @@ attributes:
     - Experiment
     - Project
     - Protein
+    - Protocol
     - Sample
     - Identifier
     - Name
     range: string
-  entity_id:
-    name: entity_id
-    description: Internal (CDM) unique identifier for the entity that has the identifiers.
-    from_schema: https://github.com/kbase/cdm-schema
-    alias: entity_id
-    owner: Identifier
-    domain_of:
-    - Association_X_Entity
-    - Identifier
-    - Name
-    range: UUID
-    required: true
-  identifier:
-    name: identifier
-    description: Fully-qualifier URL or CURIE used as an identifier for an entity.
-    examples:
-    - value: UniProt:Q8KCD6
-    - value: EC:5.2.3.14
-    from_schema: https://github.com/kbase/cdm-schema
-    slot_uri: schema:identifier
-    identifier: true
-    alias: identifier
-    owner: Identifier
-    domain_of:
-    - Identifier
-    range: uriorcurie
-    required: true
   source:
     name: source
-    description: The data source for the identifier. Should be a ROR ID.
-    examples:
-    - value: UniProt
-    - value: NCBI
-    - value: KE-Pangenomes
-    from_schema: https://github.com/kbase/cdm-schema
+    description: The source for a specific piece of information; should be a CDM internal
+      ID of a source in the DataSource table.
+    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+    rank: 1000
     alias: source
     owner: Identifier
     domain_of:
-    - DataSource
     - Identifier
     - Name
-    range: uriorcurie
+    range: data_source_uuid
 
 </code></pre>
 </details>

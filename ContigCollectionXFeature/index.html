@@ -159,6 +159,13 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
+<a class="md-nav__link" href="#inheritance">
+<span class="md-ellipsis">
+      Inheritance
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#slots">
 <span class="md-ellipsis">
       Slots
@@ -224,35 +231,26 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-contigcollectionxfeature">Class: ContigCollectionXFeature</h1>
 <p><em>Captures the relationship between a contig collection and a feature; equivalent to feature part-of contig collection.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/ContigCollectionXFeature">cdm:ContigCollectionXFeature</a></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/ContigCollectionXFeature">kb_cdm:ContigCollectionXFeature</a></p>
 <div class="mermaid"> classDiagram
     class ContigCollectionXFeature
     click ContigCollectionXFeature href "../ContigCollectionXFeature"
+      Table &lt;|-- ContigCollectionXFeature
+        click Table href "../Table"
+
       ContigCollectionXFeature : contig_collection_id
-
-
-
-
-
-        ContigCollectionXFeature --&gt; "1" ContigCollection : contig_collection_id
-        click ContigCollection href "../ContigCollection"
-
-
 
       ContigCollectionXFeature : feature_id
 
 
-
-
-
-        ContigCollectionXFeature --&gt; "1" Contig : feature_id
-        click Contig href "../Contig"
-
-
-
-
 </div>
-<!-- no inheritance hierarchy -->
+<h2 id="inheritance">Inheritance</h2>
+<ul>
+<li><a href="../Table/">Table</a><ul>
+<li><strong>ContigCollectionXFeature</strong></li>
+</ul>
+</li>
+</ul>
 <h2 id="slots">Slots</h2>
 <table>
 <thead>
@@ -266,13 +264,13 @@
 <tbody>
 <tr>
 <td><a href="../contig_collection_id/">contig_collection_id</a></td>
-<td>1 <br/> <a href="../ContigCollection/">ContigCollection</a></td>
+<td>1 <br/> <a href="../UUID/">UUID</a></td>
 <td>Internal (CDM) unique identifier for a contig collection</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../feature_id/">feature_id</a></td>
-<td>1 <br/> <a href="../Contig/">Contig</a></td>
+<td>1..* <br/> <a href="../UUID/">UUID</a></td>
 <td>Internal (CDM) unique identifier for a feature</td>
 <td>direct</td>
 </tr>
@@ -281,7 +279,7 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://github.com/kbase/cdm-schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -294,11 +292,11 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>cdm:ContigCollectionXFeature</td>
+<td>kb_cdm:ContigCollectionXFeature</td>
 </tr>
 <tr>
 <td>native</td>
-<td>cdm:ContigCollectionXFeature</td>
+<td>kb_cdm:ContigCollectionXFeature</td>
 </tr>
 </tbody>
 </table>
@@ -309,32 +307,15 @@
 <pre><code class="language-yaml">name: ContigCollection_X_Feature
 description: Captures the relationship between a contig collection and a feature;
   equivalent to feature part-of contig collection.
-from_schema: https://github.com/kbase/cdm-schema
-attributes:
-  contig_collection_id:
-    name: contig_collection_id
-    description: Internal (CDM) unique identifier for a contig collection.
-    from_schema: https://github.com/kbase/cdm-schema
-    domain_of:
-    - Contig_X_ContigCollection
-    - ContigCollection_X_Feature
-    - ContigCollection_X_Protein
-    - ContigCollection
-    range: ContigCollection
-    required: true
+from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+is_a: Table
+slots:
+- contig_collection_id
+- feature_id
+slot_usage:
   feature_id:
     name: feature_id
-    description: Internal (CDM) unique identifier for a feature.
-    from_schema: https://github.com/kbase/cdm-schema
-    domain_of:
-    - Contig_X_Feature
-    - ContigCollection_X_Feature
-    - EncodedFeature_X_Feature
-    - Feature_X_Protein
-    - Feature
-    - FeatureAttributes
-    range: Contig
-    required: true
+    multivalued: true
 represents_relationship: true
 
 </code></pre>
@@ -344,25 +325,33 @@ represents_relationship: true
 <pre><code class="language-yaml">name: ContigCollection_X_Feature
 description: Captures the relationship between a contig collection and a feature;
   equivalent to feature part-of contig collection.
-from_schema: https://github.com/kbase/cdm-schema
+from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+is_a: Table
+slot_usage:
+  feature_id:
+    name: feature_id
+    multivalued: true
 attributes:
   contig_collection_id:
     name: contig_collection_id
     description: Internal (CDM) unique identifier for a contig collection.
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+    rank: 1000
     alias: contig_collection_id
     owner: ContigCollection_X_Feature
     domain_of:
     - Contig_X_ContigCollection
+    - ContigCollection_X_EncodedFeature
     - ContigCollection_X_Feature
     - ContigCollection_X_Protein
     - ContigCollection
-    range: ContigCollection
+    range: UUID
     required: true
   feature_id:
     name: feature_id
     description: Internal (CDM) unique identifier for a feature.
-    from_schema: https://github.com/kbase/cdm-schema
+    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+    rank: 1000
     alias: feature_id
     owner: ContigCollection_X_Feature
     domain_of:
@@ -371,9 +360,9 @@ attributes:
     - EncodedFeature_X_Feature
     - Feature_X_Protein
     - Feature
-    - FeatureAttributes
-    range: Contig
+    range: UUID
     required: true
+    multivalued: true
 represents_relationship: true
 
 </code></pre>

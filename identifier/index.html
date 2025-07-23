@@ -404,7 +404,7 @@
 
 
 <h1 id="slot-identifier">Slot: identifier</h1>
-<p><em>Fully-qualifier URL or CURIE used as an identifier for an entity.</em></p>
+<p><em>Fully-qualified URL or CURIE used as an identifier for an entity.</em></p>
 <p>URI: <a href="http://schema.org/identifier">schema:identifier</a>
 Alias: identifier</p>
 <!-- no inheritance hierarchy -->
@@ -421,7 +421,7 @@ Alias: identifier</p>
 <tbody>
 <tr>
 <td><a href="../Identifier/">Identifier</a></td>
-<td>An external identifier for an entity</td>
+<td>A string used as a resolvable (external) identifier for an entity</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -454,7 +454,7 @@ Alias: identifier</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://github.com/kbase/cdm-schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -471,7 +471,7 @@ Alias: identifier</p>
 </tr>
 <tr>
 <td>native</td>
-<td>cdm:identifier</td>
+<td>kb_cdm:identifier</td>
 </tr>
 </tbody>
 </table>
@@ -479,14 +479,13 @@ Alias: identifier</p>
 <details>
 
 <pre><code class="language-yaml">name: identifier
-description: Fully-qualifier URL or CURIE used as an identifier for an entity.
+description: Fully-qualified URL or CURIE used as an identifier for an entity.
 examples:
 - value: UniProt:Q8KCD6
 - value: EC:5.2.3.14
-from_schema: https://github.com/kbase/cdm-schema
+from_schema: http://kbase.github.io/cdm-schema/cdm_schema
 rank: 1000
 slot_uri: schema:identifier
-identifier: true
 alias: identifier
 domain_of:
 - Identifier

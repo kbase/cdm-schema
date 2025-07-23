@@ -395,8 +395,8 @@
 
 
 <h1 id="slot-entity_id">Slot: entity_id</h1>
-<p><em>Internal (CDM) unique identifier for an entity in the CDM.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/entity_id">cdm:entity_id</a>
+<p><em>Internal (CDM) unique identifier for an entity.</em></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/entity_id">kb_cdm:entity_id</a>
 Alias: entity_id</p>
 <!-- no inheritance hierarchy -->
 
@@ -411,18 +411,68 @@ Alias: entity_id</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../Name/">Name</a></td>
-<td>The name or label for an entity</td>
+<td><a href="../AttributeValue/">AttributeValue</a></td>
+<td>A generic class for capturing tag-value information in a structured form</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../Sequence/">Sequence</a></td>
+<td></td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../ProcessedMeasurement/">ProcessedMeasurement</a></td>
+<td>A measurement that requires additional processing to generate a result</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../AssociationXEntity/">AssociationXEntity</a></td>
-<td>Links associations to entities</td>
+<td><a href="../ClusterMember/">ClusterMember</a></td>
+<td>Relationship representing membership of a cluster</td>
 <td>no</td>
+</tr>
+<tr>
+<td><a href="../Measurement/">Measurement</a></td>
+<td>A qualitative or quantitative observation of an attribute of an object or eve...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Name/">Name</a></td>
+<td>A string used as the name or label for an entity</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Entity/">Entity</a></td>
+<td>A database entity</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../QuantityValue/">QuantityValue</a></td>
+<td>A simple quantity, e</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../AssociationXSupportingObject/">AssociationXSupportingObject</a></td>
+<td>Links associations to entities to capture supporting objects in an associatio...</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../EntityXMeasurement/">EntityXMeasurement</a></td>
+<td>Captures a measurement made on an entity</td>
+<td>yes</td>
 </tr>
 <tr>
 <td><a href="../Identifier/">Identifier</a></td>
-<td>An external identifier for an entity</td>
+<td>A string used as a resolvable (external) identifier for an entity</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Geolocation/">Geolocation</a></td>
+<td>A normalized value for a location on the earth's surface</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../TextValue/">TextValue</a></td>
+<td>A basic string value</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -439,7 +489,7 @@ Alias: entity_id</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://github.com/kbase/cdm-schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -452,11 +502,11 @@ Alias: entity_id</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>cdm:entity_id</td>
+<td>kb_cdm:entity_id</td>
 </tr>
 <tr>
 <td>native</td>
-<td>cdm:entity_id</td>
+<td>kb_cdm:entity_id</td>
 </tr>
 </tbody>
 </table>
@@ -464,15 +514,19 @@ Alias: entity_id</p>
 <details>
 
 <pre><code class="language-yaml">name: entity_id
-description: Internal (CDM) unique identifier for an entity in the CDM.
-from_schema: https://github.com/kbase/cdm-schema
+description: Internal (CDM) unique identifier for an entity.
+from_schema: http://kbase.github.io/cdm-schema/cdm_schema
 rank: 1000
-identifier: true
 alias: entity_id
 domain_of:
-- Association_X_Entity
+- Association_X_SupportingObject
+- Entity_X_Measurement
+- ClusterMember
+- Sequence
+- Entity
 - Identifier
 - Name
+- AttributeValue
 range: UUID
 required: true
 
