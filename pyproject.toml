@@ -4,12 +4,25 @@ version = "0.1.0"
 description = "CDM Schema repo"
 readme = "README.md"
 requires-python = ">=3.13"
+authors = [
+    { name = "ialarmedalien", email = "ialarmedalien@gmail.com" }
+]
+
 dependencies = [
     "linkml>=1.9.2",
-    "linkml-runtime>=1.9.2",
+    "linkml-runtime>=1.9.4",
     "mkdocs-material>=9.6.14",
     "mkdocs-mermaid2-plugin>=1.2.1",
+    "pyspark<4.0.0",
+    "ruff>=0.12.4",
 ]
+
+# [project.scripts]
+# cdm-schema = "cdm_schema:main"
+
+[build-system]
+requires = ["uv_build>=0.7.15,<0.8"]
+build-backend = "uv_build"
 
 
 [tool.ruff]
@@ -85,7 +98,6 @@ ignore = [
     "E203",
     "E501",
     "S101",
-    "PGH003"
 ]
 
 # Allow autofix for all enabled rules (when `--fix`) is provided.
@@ -124,11 +136,9 @@ exclude = [
 ]
 per-file-ignores = {}
 
-# Same as Black.
-line-length = 120
-
 # Assume Python 3.13.
 target-version = "py313"
+line-length = 120
 
 [tool.ruff.pydocstyle]
 convention = "google"

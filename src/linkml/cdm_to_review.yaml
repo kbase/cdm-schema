@@ -1,0 +1,60 @@
+# yaml-language-server: $schema=https://linkml.io/linkml-model/linkml_model/jsonschema/meta.schema.json
+id: http://kbase.github.io/cdm-schema/cdm_to_review
+
+name: cdm_to_review
+description: CDM schema elements to be reviewed
+
+imports:
+  - linkml:types
+  - cdm_components
+
+prefixes:
+  kb_cdm: http://kbase.github.io/cdm-schema/
+  linkml: https://w3id.org/linkml/
+  mixs: https://genomicsstandardsconsortium.github.io/mixs/
+  schema: http://schema.org/
+
+default_curi_maps:
+  - semweb_context
+default_prefix: kb_cdm
+default_range: string
+
+
+classes:
+  Geolocation:
+    class_uri: nmdc:GeolocationValue
+    is_a: AttributeValue
+    description: A normalized value for a location on the earth's surface
+    attributes:
+      latitude:
+        required: true
+      longitude:
+        required: true
+      raw_value:
+        description: The raw value for a geolocation should follow {latitude} {longitude}
+    mappings:
+      - schema:GeoCoordinates
+
+  # Location:
+  #   attributes:
+  #     latitude:
+  #     longitude:
+  #     altitude_value:
+  #     altitude_units:
+  #     depth_value:
+  #     depth_units:
+  #     elevation_value:
+  #     elevation_units:
+
+  # FeatureAttributes:
+  #   attributes:
+  #     feature_id:
+  #       description: Internal (CDM) unique identifier.
+  #       identifier: true
+  #       range: UUID
+  #       required: true
+  #     attribute_name:
+  #       description: The name of the attribute.
+  #     attribute_value:
+  #       description: The value of the attribute.
+  #   description: Additional attributes of a feature, parsed from column 9 of a GFF file.

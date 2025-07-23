@@ -1,5 +1,5 @@
 # yaml-language-server: $schema=https://linkml.io/linkml-model/linkml_model/jsonschema/meta.schema.json
-id: https://github.com/kbase/cdm-schema
+id: http://kbase.github.io/cdm-schema/cdm_enums
 name: cdm_enums
 description: Enums for the CDM schema.
 
@@ -7,14 +7,17 @@ imports:
   - linkml:types
 
 prefixes:
+  kb_cdm: http://kbase.github.io/cdm-schema/
   linkml: https://w3id.org/linkml/
   mixs: https://genomicsstandardsconsortium.github.io/mixs/
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
   schema: http://schema.org/
+
 
 default_curi_maps:
   - semweb_context
 
-default_prefix: cdm
+default_prefix: kb_cdm
 
 enums:
   CdsPhaseType:
@@ -26,6 +29,16 @@ enums:
         description: One base from reading frame to feature start.
       2:
         description: Two bases from reading frame to feature start.
+
+  ClusterType:
+    description: The type of the entities in a cluster. Must be represented by a table in the CDM schema.
+    permissible_values:
+      Protein:
+        meaning: kb_cdm:Protein
+      Feature:
+        meaning: kb_cdm:Feature
+      ContigCollection:
+        meaning: kb_cdm:ContigCollection
 
   ContigCollectionType:
     description: The type of the contig set; the type of the 'omics data set. Terms are taken from the Genomics Standards Consortium where possible. See the GSC checklists at  https://genomicsstandardsconsortium.github.io/mixs/ for the controlled vocabularies used.
@@ -91,6 +104,33 @@ enums:
       relationship_types:
         - RDFS:subClassOf
 
+  EntityType:
+    description: The type of an entity. Must be represented by a table in the CDM schema.
+    permissible_values:
+      Cluster:
+        meaning: kb_cdm:Cluster
+      Contig:
+        meaning: kb_cdm:Contig
+      ContigCollection:
+        meaning: kb_cdm:ContigCollection
+      EncodedFeature:
+        meaning: kb_cdm:EncodedFeature
+        description: The output of transcribing a sequence; includes mRNA, tRNA, etc.
+      Feature:
+        meaning: kb_cdm:Feature
+      Protein:
+        meaning: kb_cdm:Protein
+      Sample:
+        meaning: kb_cdm:Sample
+      Organization:
+        meaning: kb_cdm:Organization
+      Contributor:
+        meaning: kb_cdm:Contributor
+      Project:
+        meaning: kb_cdm:Project
+      Experiment:
+        meaning: kb_cdm:Experiment
+
   ProteinEvidenceForExistence:
     description: The evidence for the existence of a biological entity. See
       https://www.uniprot.org/help/protein_existence and
@@ -133,6 +173,15 @@ enums:
         description: The RefSeq record has undergone an initial review to provide the preferred sequence standard. The record has not yet been subject to final review at which time additional functional information may be provided.
       WGS:
         description: The RefSeq record is provided to represent a collection of whole genome shotgun sequences. These records are not subject to individual review or revisions between genome updates.
+
+  SequenceType:
+    description: The type of sequence being represented.
+    permissible_values:
+      NucleicAcid:
+        description: A nucleic acid sequence, as found in an FNA file.
+      AminoAcid:
+        description: An amino acid sequence, as would be found in an FAA file.
+
 
   StrandType:
     description: The strand that a feature appears on relative to a landmark. Also encompasses unknown or irrelevant strandedness.

@@ -1,0 +1,43 @@
+# yaml-language-server: $schema=https://linkml.io/linkml-model/linkml_model/jsonschema/meta.schema.json
+id: http://kbase.github.io/cdm-schema/cdm_types
+name: cdm_types
+description: Types used in the CDM schema.
+
+prefixes:
+  kb_cdm: http://kbase.github.io/cdm-schema/
+  xsd: "http://www.w3.org/2001/XMLSchema#"
+
+default_prefix: kb_cdm
+
+types:
+  UUID:
+    uri: xsd:string
+    base: str
+    typeof: uriorcurie
+    description: A universally unique ID, generated using uuid4, with the prefix "CDM:".
+    # 8-4-4-4-12, x = [0-9a-f]
+
+  iso8601:
+    uri: xsd:dateTime
+    base: str
+    description: A date in ISO 8601 format, e.g. 2024-04-05T12:34:56Z. "Z" indicates UTC time.
+    examples:
+      - value: "2024-04-05"
+      - value: "2024-04-05T12:34:56Z"
+      - value: "2024-04-05T12:34:56+00:00"
+    pattern: "^\\d{4}-\\d{2}-\\d{2}(T\\d{2}:\\d{2}:\\d{2}(Z|[+-]\\d{2}:\\d{2})?)?$"
+
+  local_curie:
+    uri: xsd:string
+    base: str
+    typeof: uriorcurie
+    description: A CURIE that exists as a subject in the `statements` table (i.e. `Statements.subject`). Should not be used for external identifiers.
+    examples:
+      - value: "GO:0008150"
+      - value: "ECO:0000315"
+
+  data_source_uuid:
+    uri: xsd:string
+    base: str
+    typeof: UUID
+    description: A UUID that identifies a data source in the CDM.

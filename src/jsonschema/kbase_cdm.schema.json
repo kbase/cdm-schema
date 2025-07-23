@@ -1,0 +1,2119 @@
+{
+    "$defs": {
+        "Association": {
+            "additionalProperties": false,
+            "description": "An association between an object--typically an entity such as a protein or a feature--and a classification system or ontology, such as the Gene Ontology, the Enzyme Classification, or TIGRFAMS domains.",
+            "properties": {
+                "aggregator_knowledge_source": {
+                    "description": "The knowledge source that aggregated the association. Should be a UUID from the DataSource table.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "annotation_date": {
+                    "description": "The date when the annotation was made.",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}(T\\d{2}:\\d{2}:\\d{2}(Z|[+-]\\d{2}:\\d{2})?)?$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "association_id": {
+                    "description": "Internal (CDM) unique identifier for an association.",
+                    "type": "string"
+                },
+                "comments": {
+                    "description": "Any comments about the association.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "evidence_type": {
+                    "description": "The type of evidence supporting the association. Should be a term from the Evidence and Conclusion Ontology (ECO).",
+                    "pattern": "^ECO:\\d+$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "negated": {
+                    "description": "If true, the relationship between the subject and object is negated. For example, consider an association where the subject is a protein ID, the object is the GO term for \"glucose biosynthesis\", and the predicate is \"involved in\". With the \"negated\" field set to false, the association is interpreted as \"<protein ID> is involved in glucose biosynthesis\". With the \"negated\" field set to true, the association is interpreted as \"<protein ID> is not involved in glucose biosynthesis\".",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "object": {
+                    "description": "The object of an association. Should be an ontology term or database cross-reference.",
+                    "type": "string"
+                },
+                "predicate": {
+                    "description": "The relationship between subject and object in an association. Should be a term from the Relation Ontology.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "primary_knowledge_source": {
+                    "description": "The knowledge source that created the association. Should be a UUID from the DataSource table.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "subject": {
+                    "$ref": "#/$defs/Any",
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "description": "The subject of an association."
+                }
+            },
+            "required": [
+                "association_id",
+                "subject",
+                "object"
+            ],
+            "title": "Association",
+            "type": "object"
+        },
+        "AssociationXPublication": {
+            "additionalProperties": false,
+            "description": "Links associations to supporting literature.",
+            "properties": {
+                "association_id": {
+                    "description": "Internal (CDM) unique identifier for an association.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "publication_id": {
+                    "description": "Unique identifier for a publication - e.g. PMID, DOI, URL, etc.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "association_id",
+                "publication_id"
+            ],
+            "title": "AssociationXPublication",
+            "type": "object"
+        },
+        "AssociationXSupportingObject": {
+            "additionalProperties": false,
+            "description": "Links associations to entities to capture supporting objects in an association. ay be a biological entity, such as a protein or feature, or a URL to a resource (e.g. a publication) that supports the association. Where possible, CDM identifiers should be used.",
+            "properties": {
+                "association_id": {
+                    "description": "Internal (CDM) unique identifier for an association.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "entity_id": {
+                    "description": "Internal (CDM) unique identifier for an entity.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "association_id",
+                "entity_id"
+            ],
+            "title": "AssociationXSupportingObject",
+            "type": "object"
+        },
+        "AttributeValueEntity": {
+            "additionalProperties": false,
+            "description": "Represents the link between an entity and its attribute values.",
+            "title": "AttributeValueEntity",
+            "type": "object"
+        },
+        "CdsPhaseType": {
+            "description": "For features of type CDS (coding sequence), the phase indicates where the feature begins with reference to the reading frame. The phase is one of the integers 0, 1, or 2, indicating the number of bases that should be removed from the beginning of this feature to reach the first base of the next codon.",
+            "enum": [
+                "0",
+                "1",
+                "2"
+            ],
+            "title": "CdsPhaseType",
+            "type": "string"
+        },
+        "Cluster": {
+            "additionalProperties": false,
+            "description": "Represents an individual execution of a clustering protocol. See the ClusterMember class for clustering results.",
+            "properties": {
+                "cluster_id": {
+                    "description": "Internal (CDM) unique identifier for a cluster.",
+                    "type": "string"
+                },
+                "description": {
+                    "description": "Brief textual definition or description.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "entity_type": {
+                    "$ref": "#/$defs/ClusterType",
+                    "description": "Type of entity being clustered."
+                },
+                "name": {
+                    "description": "Name of the cluster, if available.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "protocol_id": {
+                    "description": "Protocol used to generate the cluster.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "cluster_id",
+                "entity_type"
+            ],
+            "title": "Cluster",
+            "type": "object"
+        },
+        "ClusterMember": {
+            "additionalProperties": false,
+            "description": "Relationship representing membership of a cluster. An optional score can be assigned to each cluster member.",
+            "properties": {
+                "cluster_id": {
+                    "description": "Internal (CDM) unique identifier for a cluster.",
+                    "type": "string"
+                },
+                "entity_id": {
+                    "description": "Internal (CDM) unique identifier for an entity.",
+                    "type": "string"
+                },
+                "is_representative": {
+                    "description": "Whether or not this member is the representative for the cluster. If 'is_representative' is false, it is assumed that this is a cluster member.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "is_seed": {
+                    "description": "Whether or not this is the seed for this cluster.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "score": {
+                    "description": "Output from the clustering protocol indicating how closely a member matches the representative.",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "cluster_id",
+                "entity_id"
+            ],
+            "title": "ClusterMember",
+            "type": "object"
+        },
+        "ClusterType": {
+            "description": "The type of the entities in a cluster. Must be represented by a table in the CDM schema.",
+            "enum": [
+                "Protein",
+                "Feature",
+                "ContigCollection"
+            ],
+            "title": "ClusterType",
+            "type": "string"
+        },
+        "Contig": {
+            "additionalProperties": false,
+            "description": "A contig (derived from the word \"contiguous\") is a set of DNA segments or sequences that overlap in a way that provides a contiguous representation of a genomic region. A contig should not contain any gaps.",
+            "properties": {
+                "contig_id": {
+                    "description": "Internal (CDM) unique identifier for a contig.",
+                    "type": "string"
+                },
+                "gc_content": {
+                    "description": "GC content of the contig, expressed as a percentage.",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "hash": {
+                    "description": "A hash value generated from one or more object attributes that serves to ensure the entity is unique.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "length": {
+                    "description": "Length of the contig in bp.",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "contig_id"
+            ],
+            "title": "Contig",
+            "type": "object"
+        },
+        "ContigCollection": {
+            "additionalProperties": false,
+            "description": "A set of individual, overlapping contigs that represent the complete sequenced genome of an organism.",
+            "properties": {
+                "asm_score": {
+                    "description": "A composite score for comparing contig collection quality",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "checkm2_completeness": {
+                    "description": "Estimate of the completeness of a contig collection (MAG or genome), estimated by CheckM2 tool",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "checkm2_contamination": {
+                    "description": "Estimate of the contamination of a contig collection (MAG or genome), estimated by CheckM2 tool",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "contig_bp": {
+                    "description": "Total size in bp of all contigs",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "contig_collection_id": {
+                    "description": "Internal (CDM) unique identifier for a contig collection.",
+                    "type": "string"
+                },
+                "contig_collection_type": {
+                    "$ref": "#/$defs/ContigCollectionType",
+                    "description": "The type of contig collection."
+                },
+                "ctg_L50": {
+                    "description": "Given a set of contigs, the L50 is defined as the sequence length of the shortest contig at 50% of the total contig collection length",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "ctg_L90": {
+                    "description": "The L90 statistic is less than or equal to the L50 statistic; it is the length for which the collection of all contigs of that length or longer contains at least 90% of the sum of the lengths of all contigs",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "ctg_N50": {
+                    "description": "Given a set of contigs, each with its own length, the N50 count is defined as the smallest number_of_contigs whose length sum makes up half of contig collection size",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "ctg_N90": {
+                    "description": "Given a set of contigs, each with its own length, the N90 count is defined as the smallest number of contigs whose length sum makes up 90% of contig collection size",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "ctg_logsum": {
+                    "description": "The sum of the (length*log(length)) of all contigs, times some constant.",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "ctg_max": {
+                    "description": "Maximum contig length",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "ctg_powsum": {
+                    "description": "Powersum of all contigs is the same as logsum except that it uses the sum of (length*(length^P)) for some power P (default P=0.25)",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "gap_pct": {
+                    "description": "The gap size percentage of all scaffolds",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "gc_avg": {
+                    "description": "The average GC content of the contig collection, expressed as a percentage",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "gc_std": {
+                    "description": "The standard deviation of GC content across the contig collection",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "hash": {
+                    "description": "A hash value generated from one or more object attributes that serves to ensure the entity is unique.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "n_contigs": {
+                    "description": "Total number of contigs",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "n_scaffolds": {
+                    "description": "Total number of scaffolds",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "scaf_L50": {
+                    "description": "Given a set of scaffolds, the L50 is defined as the sequence length of the shortest scaffold at 50% of the total contig collection length",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "scaf_L90": {
+                    "description": "The L90 statistic is less than or equal to the L50 statistic; it is the length for which the collection of all scaffolds of that length or longer contains at least 90% of the sum of the lengths of all scaffolds.",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "scaf_N50": {
+                    "description": "Given a set of scaffolds, each with its own length, the N50 count is defined as the smallest number of scaffolds whose length sum makes up half of contig collection size",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "scaf_N90": {
+                    "description": "Given a set of scaffolds, each with its own length, the N90 count is defined as the smallest number of scaffolds whose length sum makes up 90% of contig collection size",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "scaf_bp": {
+                    "description": "Total size in bp of all scaffolds",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "scaf_l_gt50k": {
+                    "description": "The total length of scaffolds longer than 50,000 base pairs",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "scaf_logsum": {
+                    "description": "The sum of the (length*log(length)) of all scaffolds, times some constant. Increase the contiguity, the score will increase",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "scaf_max": {
+                    "description": "Maximum scaffold length",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "scaf_n_gt50K": {
+                    "description": "The number of scaffolds longer than 50,000 base pairs.",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "scaf_pct_gt50K": {
+                    "description": "The percentage of the total assembly length represented by scaffolds longer than 50,000 base pairs",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "scaf_powsum": {
+                    "description": "Powersum of all scaffolds is the same as logsum except that it uses the sum of (length*(length^P)) for some power P (default P=0.25).",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "contig_collection_id"
+            ],
+            "title": "ContigCollection",
+            "type": "object"
+        },
+        "ContigCollectionType": {
+            "description": "The type of the contig set; the type of the 'omics data set. Terms are taken from the Genomics Standards Consortium where possible. See the GSC checklists at  https://genomicsstandardsconsortium.github.io/mixs/ for the controlled vocabularies used.",
+            "enum": [
+                "isolate",
+                "mag",
+                "metagenome",
+                "metatranscriptome",
+                "sag",
+                "virus",
+                "marker"
+            ],
+            "title": "ContigCollectionType",
+            "type": "string"
+        },
+        "ContigCollectionXEncodedFeature": {
+            "additionalProperties": false,
+            "description": "Captures the relationship between a contig collection and an encoded feature.",
+            "properties": {
+                "contig_collection_id": {
+                    "description": "Internal (CDM) unique identifier for a contig collection.",
+                    "type": "string"
+                },
+                "encoded_feature_id": {
+                    "description": "Internal (CDM) unique identifier for an encoded feature.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "contig_collection_id",
+                "encoded_feature_id"
+            ],
+            "title": "ContigCollectionXEncodedFeature",
+            "type": "object"
+        },
+        "ContigCollectionXFeature": {
+            "additionalProperties": false,
+            "description": "Captures the relationship between a contig collection and a feature; equivalent to feature part-of contig collection.",
+            "properties": {
+                "contig_collection_id": {
+                    "description": "Internal (CDM) unique identifier for a contig collection.",
+                    "type": "string"
+                },
+                "feature_id": {
+                    "description": "Internal (CDM) unique identifier for a feature.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "contig_collection_id",
+                "feature_id"
+            ],
+            "title": "ContigCollectionXFeature",
+            "type": "object"
+        },
+        "ContigCollectionXProtein": {
+            "additionalProperties": false,
+            "description": "Captures the relationship between a contig collection and a protein; equivalent to protein is ribosomal translation of (http://purl.obolibrary.org/obo/RO_0002512) contig collection.",
+            "properties": {
+                "contig_collection_id": {
+                    "description": "Internal (CDM) unique identifier for a contig collection.",
+                    "type": "string"
+                },
+                "protein_id": {
+                    "description": "Internal (CDM) unique identifier for a protein.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "contig_collection_id",
+                "protein_id"
+            ],
+            "title": "ContigCollectionXProtein",
+            "type": "object"
+        },
+        "ContigXContigCollection": {
+            "additionalProperties": false,
+            "description": "Captures the relationship between a contig and a contig collection; equivalent to contig part-of contig collection.",
+            "properties": {
+                "contig_collection_id": {
+                    "description": "Internal (CDM) unique identifier for a contig collection.",
+                    "type": "string"
+                },
+                "contig_id": {
+                    "description": "Internal (CDM) unique identifier for a contig.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "contig_id",
+                "contig_collection_id"
+            ],
+            "title": "ContigXContigCollection",
+            "type": "object"
+        },
+        "ContigXEncodedFeature": {
+            "additionalProperties": false,
+            "description": "Captures the relationship between a contig and an encoded feature.",
+            "properties": {
+                "contig_id": {
+                    "description": "Internal (CDM) unique identifier for a contig.",
+                    "type": "string"
+                },
+                "encoded_feature_id": {
+                    "description": "Internal (CDM) unique identifier for an encoded feature.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "contig_id",
+                "encoded_feature_id"
+            ],
+            "title": "ContigXEncodedFeature",
+            "type": "object"
+        },
+        "ContigXFeature": {
+            "additionalProperties": false,
+            "description": "Captures the relationship between a contig and a feature; equivalent to feature part-of contig.",
+            "properties": {
+                "contig_id": {
+                    "description": "Internal (CDM) unique identifier for a contig.",
+                    "type": "string"
+                },
+                "feature_id": {
+                    "description": "Internal (CDM) unique identifier for a feature.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "contig_id",
+                "feature_id"
+            ],
+            "title": "ContigXFeature",
+            "type": "object"
+        },
+        "ContigXProtein": {
+            "additionalProperties": false,
+            "description": "Captures the relationship between a contig and a protein; equivalent to protein is ribosomal translation of (http://purl.obolibrary.org/obo/RO_0002512) contig.",
+            "properties": {
+                "contig_id": {
+                    "description": "Internal (CDM) unique identifier for a contig.",
+                    "type": "string"
+                },
+                "protein_id": {
+                    "description": "Internal (CDM) unique identifier for a protein.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "contig_id",
+                "protein_id"
+            ],
+            "title": "ContigXProtein",
+            "type": "object"
+        },
+        "Contributor": {
+            "additionalProperties": false,
+            "description": "Represents a contributor to the resource.\n\nContributors must have a 'contributor_type', either 'Person' or 'Organization', and\none of the 'name' fields: either 'given_name' and 'family_name' (for a person), or 'name' (for an organization or a person).\n\nThe 'contributor_role' field takes values from the DataCite and CRediT contributor\nroles vocabularies. For more information on these resources and choosing\nappropriate roles, please see the following links:\n\nDataCite contributor roles: https://support.datacite.org/docs/datacite-metadata-schema-v44-recommended-and-optional-properties#7a-contributortype\n\nCRediT contributor role taxonomy: https://credit.niso.org",
+            "properties": {
+                "contributor_id": {
+                    "description": "Internal (CDM) unique identifier for a contributor.",
+                    "type": "string"
+                },
+                "contributor_type": {
+                    "$ref": "#/$defs/ContributorType",
+                    "description": "Must be either 'Person' or 'Organization'."
+                },
+                "family_name": {
+                    "description": "The family name(s) of the contributor.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "given_name": {
+                    "description": "The given name(s) of the contributor.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "name": {
+                    "description": "Contributor name. For organizations, this should be the full (unabbreviated) name; can also be used for a person if the given name/family name format is not applicable.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "contributor_id"
+            ],
+            "title": "Contributor",
+            "type": "object"
+        },
+        "ContributorRole": {
+            "description": "The role of a contributor to a resource.",
+            "enum": [
+                "TODO"
+            ],
+            "title": "ContributorRole",
+            "type": "string"
+        },
+        "ContributorType": {
+            "description": "The type of contributor being represented.",
+            "enum": [
+                "Person",
+                "Organization"
+            ],
+            "title": "ContributorType",
+            "type": "string"
+        },
+        "ContributorXRoleXExperiment": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "contributor_id": {
+                    "description": "Internal (CDM) unique identifier for a contributor.",
+                    "type": "string"
+                },
+                "contributor_role": {
+                    "$ref": "#/$defs/ContributorRole",
+                    "description": "Role(s) played by the contributor when working on the experiment. If more than one role was played, additional rows should be added to represent each role."
+                },
+                "experiment_id": {
+                    "description": "Internal (CDM) unique identifier for an experiment.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "contributor_id",
+                "experiment_id"
+            ],
+            "title": "ContributorXRoleXExperiment",
+            "type": "object"
+        },
+        "ContributorXRoleXProject": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "contributor_id": {
+                    "description": "Internal (CDM) unique identifier for a contributor.",
+                    "type": "string"
+                },
+                "contributor_role": {
+                    "$ref": "#/$defs/ContributorRole",
+                    "description": "Role(s) played by the contributor when working on the experiment. If more than one role was played, additional rows should be added to represent each role."
+                },
+                "project_id": {
+                    "description": "Internal (CDM) unique identifier for a project.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "contributor_id",
+                "project_id"
+            ],
+            "title": "ContributorXRoleXProject",
+            "type": "object"
+        },
+        "DataSource": {
+            "additionalProperties": false,
+            "description": "The source dataset from which data within the CDM was extracted. This might be an API query; a set of files downloaded from a website or uploaded by a user; a database dump; etc. A given data source should have either version information (e.g. UniProt's release number) or an access date to allow the original raw data dump to be recapitulated.",
+            "properties": {
+                "comments": {
+                    "description": "Additional details about the dataset.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "data_source_id": {
+                    "description": "Internal (CDM) unique identifier for a data source.",
+                    "type": "string"
+                },
+                "date_accessed": {
+                    "description": "The date when the data was downloaded from the data source.",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}(T\\d{2}:\\d{2}:\\d{2}(Z|[+-]\\d{2}:\\d{2})?)?$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "name": {
+                    "description": "The name of the data source.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "url": {
+                    "description": "The URL from which the data was loaded.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "version": {
+                    "description": "For versioned data sources, the version of the dataset.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "data_source_id"
+            ],
+            "title": "DataSource",
+            "type": "object"
+        },
+        "EncodedFeature": {
+            "additionalProperties": false,
+            "description": "An entity generated from a feature, such as a transcript.",
+            "properties": {
+                "encoded_feature_id": {
+                    "description": "Internal (CDM) unique identifier for an encoded feature.",
+                    "type": "string"
+                },
+                "has_stop_codon": {
+                    "description": "Captures whether or not the sequence includes stop coordinates.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "hash": {
+                    "description": "A hash value generated from one or more object attributes that serves to ensure the entity is unique.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "description": "The type of the entity. Should be a term from the sequence ontology.",
+                    "pattern": "^SO:\\d+$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "encoded_feature_id"
+            ],
+            "title": "EncodedFeature",
+            "type": "object"
+        },
+        "EncodedFeatureXFeature": {
+            "additionalProperties": false,
+            "description": "Captures the relationship between a feature and its transcription product.",
+            "properties": {
+                "encoded_feature_id": {
+                    "description": "Internal (CDM) unique identifier for an encoded feature.",
+                    "type": "string"
+                },
+                "feature_id": {
+                    "description": "Internal (CDM) unique identifier for a feature.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "encoded_feature_id",
+                "feature_id"
+            ],
+            "title": "EncodedFeatureXFeature",
+            "type": "object"
+        },
+        "EntailedEdge": {
+            "additionalProperties": false,
+            "description": "A relation graph edge that is inferred",
+            "properties": {
+                "object": {
+                    "description": "Note the range of this slot is always a node. If the triple represents a literal, instead value will be populated",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "predicate": {
+                    "description": "The predicate of the statement",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "subject": {
+                    "description": "The subject of the statement",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "EntailedEdge",
+            "type": "object"
+        },
+        "Entity": {
+            "additionalProperties": false,
+            "description": "A database entity.",
+            "properties": {
+                "created": {
+                    "description": "Date/timestamp for when the entity was created or added to the CDM.",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}(T\\d{2}:\\d{2}:\\d{2}(Z|[+-]\\d{2}:\\d{2})?)?$",
+                    "type": "string"
+                },
+                "data_source_created": {
+                    "description": "Date/timestamp for when the entity was created or added to the data source.",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}(T\\d{2}:\\d{2}:\\d{2}(Z|[+-]\\d{2}:\\d{2})?)?$",
+                    "type": "string"
+                },
+                "data_source_entity_id": {
+                    "description": "The primary ID of the entity at the data source.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "data_source_id": {
+                    "description": "Internal (CDM) unique identifier for a data source.",
+                    "type": "string"
+                },
+                "data_source_updated": {
+                    "description": "Date/timestamp for when the entity was updated in the data source.",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}(T\\d{2}:\\d{2}:\\d{2}(Z|[+-]\\d{2}:\\d{2})?)?$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "entity_id": {
+                    "description": "Internal (CDM) unique identifier for an entity.",
+                    "type": "string"
+                },
+                "entity_type": {
+                    "$ref": "#/$defs/EntityType",
+                    "description": "The class of the entity. Must be a valid CDM class."
+                },
+                "updated": {
+                    "description": "Date/timestamp for when the entity was updated in the CDM.",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}(T\\d{2}:\\d{2}:\\d{2}(Z|[+-]\\d{2}:\\d{2})?)?$",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "entity_id",
+                "data_source_id",
+                "entity_type",
+                "data_source_created",
+                "created",
+                "updated"
+            ],
+            "title": "Entity",
+            "type": "object"
+        },
+        "EntityType": {
+            "description": "The type of an entity. Must be represented by a table in the CDM schema.",
+            "enum": [
+                "Cluster",
+                "Contig",
+                "ContigCollection",
+                "EncodedFeature",
+                "Feature",
+                "Protein",
+                "Sample",
+                "Organization",
+                "Contributor",
+                "Project",
+                "Experiment"
+            ],
+            "title": "EntityType",
+            "type": "string"
+        },
+        "EntityXMeasurement": {
+            "additionalProperties": false,
+            "description": "Captures a measurement made on an entity.",
+            "properties": {
+                "entity_id": {
+                    "description": "Internal (CDM) unique identifier for an entity.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "measurement_id": {
+                    "description": "Internal (CDM) unique identifier for a measurement.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "entity_id",
+                "measurement_id"
+            ],
+            "title": "EntityXMeasurement",
+            "type": "object"
+        },
+        "Event": {
+            "additionalProperties": false,
+            "description": "Something that happened.",
+            "properties": {
+                "created_at": {
+                    "description": "The time at which the event started or was created.",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}(T\\d{2}:\\d{2}:\\d{2}(Z|[+-]\\d{2}:\\d{2})?)?$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "Brief text description of what actually happened.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "event_id": {
+                    "description": "Internal (CDM) unique identifier for an event.",
+                    "type": "string"
+                },
+                "location": {
+                    "description": "The location for this event. May be described in terms of coordinates.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "name": {
+                    "description": "Name or title for the event.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "event_id"
+            ],
+            "title": "Event",
+            "type": "object"
+        },
+        "Experiment": {
+            "additionalProperties": false,
+            "description": "A discrete scientific procedure undertaken to make a discovery, test a hypothesis, or demonstrate a known fact.",
+            "properties": {
+                "created_at": {
+                    "description": "The start time of the experiment.",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}(T\\d{2}:\\d{2}:\\d{2}(Z|[+-]\\d{2}:\\d{2})?)?$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "Brief explanation of what was done.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "experiment_id": {
+                    "description": "Internal (CDM) unique identifier for an experiment.",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Name or title of the experiment.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "experiment_id"
+            ],
+            "title": "Experiment",
+            "type": "object"
+        },
+        "ExperimentXProject": {
+            "additionalProperties": false,
+            "description": "Captures the relationship between an experiment and the project that it is a part of.",
+            "properties": {
+                "experiment_id": {
+                    "description": "Internal (CDM) unique identifier for an experiment.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "project_id": {
+                    "description": "Internal (CDM) unique identifier for a project.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "experiment_id",
+                "project_id"
+            ],
+            "title": "ExperimentXProject",
+            "type": "object"
+        },
+        "ExperimentXSample": {
+            "additionalProperties": false,
+            "description": "Represents the participation of a sample in an experiment.",
+            "properties": {
+                "experiment_id": {
+                    "description": "Internal (CDM) unique identifier for an experiment.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "sample_id": {
+                    "description": "Internal (CDM) unique identifier for a sample.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "experiment_id",
+                "sample_id"
+            ],
+            "title": "ExperimentXSample",
+            "type": "object"
+        },
+        "Feature": {
+            "additionalProperties": false,
+            "description": "A feature localized to an interval along a contig.",
+            "properties": {
+                "cds_phase": {
+                    "$ref": "#/$defs/CdsPhaseType",
+                    "description": "For features of type CDS, the phase indicates where the next codon begins relative to the 5' end (where the 5' end of the CDS is relative to the strand of the CDS feature) of the current CDS feature. cds_phase is required if the feature type is CDS."
+                },
+                "e_value": {
+                    "description": "The 'score' of the feature. The semantics of this field are ill-defined. E-values should be used for sequence similarity features.",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "end": {
+                    "description": "The start and end coordinates of the feature are given in positive 1-based int coordinates, relative to the landmark given in column one. Start is always less than or equal to end. For features that cross the origin of a circular feature (e.g. most bacterial genomes, plasmids, and some viral genomes), the requirement for start to be less than or equal to end is satisfied by making end = the position of the end + the length of the landmark feature. For zero-length features, such as insertion sites, start equals end and the implied site is to the right of the indicated base in the direction of the landmark.",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "feature_id": {
+                    "description": "Internal (CDM) unique identifier for a feature.",
+                    "type": "string"
+                },
+                "hash": {
+                    "description": "A hash value generated from one or more object attributes that serves to ensure the entity is unique.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "p_value": {
+                    "description": "The 'score' of the feature. The semantics of this field are ill-defined. P-values should be used for ab initio gene prediction features.",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "protocol_id": {
+                    "description": "ID of the protocol used to generate the feature.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "source_database": {
+                    "description": "ID of the data source from which this entity came.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "start": {
+                    "description": "The start and end coordinates of the feature are given in positive 1-based int coordinates, relative to the landmark given in column one. Start is always less than or equal to end. For features that cross the origin of a circular feature (e.g. most bacterial genomes, plasmids, and some viral genomes), the requirement for start to be less than or equal to end is satisfied by making end = the position of the end + the length of the landmark feature. For zero-length features, such as insertion sites, start equals end and the implied site is to the right of the indicated base in the direction of the landmark.",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "strand": {
+                    "$ref": "#/$defs/StrandType",
+                    "description": "The strand of the feature."
+                },
+                "type": {
+                    "description": "The type of the feature; constrained to be either a term from the Sequence Ontology or an SO accession number. Must be sequence_feature (SO:0000110) or an is_a child of it.",
+                    "pattern": "^SO:\\d+$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "feature_id"
+            ],
+            "title": "Feature",
+            "type": "object"
+        },
+        "FeatureXProtein": {
+            "additionalProperties": false,
+            "description": "Captures the relationship between a feature and a protein; equivalent to feature encodes protein.",
+            "properties": {
+                "feature_id": {
+                    "description": "Internal (CDM) unique identifier for a feature.",
+                    "type": "string"
+                },
+                "protein_id": {
+                    "description": "Internal (CDM) unique identifier for a protein.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "feature_id",
+                "protein_id"
+            ],
+            "title": "FeatureXProtein",
+            "type": "object"
+        },
+        "Geolocation": {
+            "additionalProperties": false,
+            "description": "A normalized value for a location on the earth's surface",
+            "properties": {
+                "attribute_cv_term_id": {
+                    "description": "If the attribute is a term from a controlled vocabulary, the ID of the term.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "attribute_name": {
+                    "description": "The attribute being captured in this annotation.",
+                    "type": "string"
+                },
+                "entity_id": {
+                    "description": "The database entity (sample, feature, protein, etc.) to which the attribute-value annotation refers.",
+                    "type": "string"
+                },
+                "latitude": {
+                    "type": "string"
+                },
+                "longitude": {
+                    "type": "string"
+                },
+                "raw_value": {
+                    "description": "The raw value for a geolocation should follow {latitude} {longitude}",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "latitude",
+                "longitude",
+                "entity_id",
+                "attribute_name"
+            ],
+            "title": "Geolocation",
+            "type": "object"
+        },
+        "GoldEnvironmentalContext": {
+            "additionalProperties": false,
+            "description": "Environmental context, described using JGI's five level system.",
+            "properties": {
+                "ecosystem": {
+                    "description": "JGI GOLD descriptor representing the top level ecosystem categorization.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "ecosystem_category": {
+                    "description": "JGI GOLD descriptor representing the ecosystem category.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "ecosystem_subtype": {
+                    "description": "JGI GOLD descriptor representing the subtype of ecosystem. May be \"Unclassified\".",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "ecosystem_type": {
+                    "description": "JGI GOLD descriptor representing the ecosystem type. May be \"Unclassified\".",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "gold_environmental_context_id": {
+                    "description": "Internal (CDM) unique identifier for a GOLD environmental context.",
+                    "type": "string"
+                },
+                "specific_ecosystem": {
+                    "description": "JGI GOLD descriptor representing the most specific level of ecosystem categorization. May be \"Unclassified\".",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "gold_environmental_context_id"
+            ],
+            "title": "GoldEnvironmentalContext",
+            "type": "object"
+        },
+        "IdentifiedEntity": {
+            "additionalProperties": false,
+            "description": "Represents the link between an entity and its identifiers.",
+            "title": "IdentifiedEntity",
+            "type": "object"
+        },
+        "Identifier": {
+            "additionalProperties": false,
+            "description": "A string used as a resolvable (external) identifier for an entity. This should be a URI or CURIE. If the string cannot be resolved to an URL, it should be added as a 'name' instead.\n\nThis table is used for capturing external IDs. The internal CDM identifier should be used in the *_id field (e.g. feature_id, protein_id, contig_collection_id).",
+            "properties": {
+                "description": {
+                    "description": "Brief description of the identifier.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "entity_id": {
+                    "description": "Internal (CDM) unique identifier for an entity.",
+                    "type": "string"
+                },
+                "identifier": {
+                    "description": "Fully-qualified URL or CURIE used as an identifier for an entity.",
+                    "type": "string"
+                },
+                "relationship": {
+                    "description": "Relationship between this identifier and the entity in the `entity_id` field.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "source": {
+                    "description": "The source for a specific piece of information; should be a CDM internal ID of a source in the DataSource table.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "entity_id",
+                "identifier"
+            ],
+            "title": "Identifier",
+            "type": "object"
+        },
+        "Measurement": {
+            "additionalProperties": false,
+            "description": "A qualitative or quantitative observation of an attribute of an object or event against a standardized scale, to enable it to be compared with other objects or events.",
+            "properties": {
+                "attribute_cv_term_id": {
+                    "description": "If the attribute is a term from a controlled vocabulary, the ID of the term.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "attribute_name": {
+                    "description": "The attribute being captured in this annotation.",
+                    "type": "string"
+                },
+                "created_at": {
+                    "description": "Timestamp for the measurement.",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}(T\\d{2}:\\d{2}:\\d{2}(Z|[+-]\\d{2}:\\d{2})?)?$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "entity_id": {
+                    "description": "The database entity (sample, feature, protein, etc.) to which the attribute-value annotation refers.",
+                    "type": "string"
+                },
+                "maximum_value": {
+                    "description": "If the quantity describes a range, represents the upper bound of the range.",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "measurement_id": {
+                    "description": "Internal (CDM) unique identifier for a measurement.",
+                    "type": "string"
+                },
+                "minimum_value": {
+                    "description": "If the quantity describes a range, represents the lower bound of the range.",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "protocol_id": {
+                    "description": "The ID of the protocol used to generate the measurement.",
+                    "type": "string"
+                },
+                "quality": {
+                    "description": "The quality of the measurement, indicating the confidence that one can have in its correctness.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "raw_value": {
+                    "description": "Raw value from the source data. May or may not include units or other unstructured information.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "unit": {
+                    "description": "The unit of the quantity. Should be a term from UCUM.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "value": {
+                    "description": "The numeric portion of the quantity.",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "measurement_id",
+                "protocol_id",
+                "entity_id",
+                "attribute_name"
+            ],
+            "title": "Measurement",
+            "type": "object"
+        },
+        "MixsEnvironmentalContext": {
+            "additionalProperties": false,
+            "description": "Environmental context, described using the MiXS convention of broad and local environment, plus the medium.",
+            "properties": {
+                "env_broad_scale": {
+                    "description": "Report the major environmental system the sample or specimen came from. The system(s) identified should have a coarse spatial grain, to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO's biome class: http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "env_local_scale": {
+                    "description": "Report the entity or entities which are in the sample or specimen's local vicinity and which you believe have significant causal influences on your sample or specimen. We recommend using EnvO terms which are of smaller spatial grain than your entry for env_broad_scale. Terms, such as anatomical sites, from other OBO Library ontologies which interoperate with EnvO (e.g. UBERON) are accepted in this field. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "env_medium": {
+                    "description": "Report the environmental material(s) immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of 'environmental material' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS . Terms from other OBO ontologies are permissible as long as they reference mass/volume nouns (e.g. air, water, blood) and not discrete, countable entities (e.g. a tree, a leaf, a table top).",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "mixs_environmental_context_id": {
+                    "description": "Internal (CDM) unique identifier for a mixs environmental context.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "mixs_environmental_context_id"
+            ],
+            "title": "MixsEnvironmentalContext",
+            "type": "object"
+        },
+        "Name": {
+            "additionalProperties": false,
+            "description": "A string used as the name or label for an entity. This may be a primary name, alternative name, synonym, acronym, or any other label used to refer to an entity.\n\nIdentifiers that look like CURIEs or database references, but which cannot be resolved using bioregistry or identifiers.org should be added as names.",
+            "properties": {
+                "description": {
+                    "description": "Brief description of the name and/or its relationship to the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "entity_id": {
+                    "description": "Internal (CDM) unique identifier for an entity.",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "The string used as a name.",
+                    "type": "string"
+                },
+                "source": {
+                    "description": "The source for a specific piece of information; should be a CDM internal ID of a source in the DataSource table.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "entity_id",
+                "name"
+            ],
+            "title": "Name",
+            "type": "object"
+        },
+        "NamedEntity": {
+            "additionalProperties": false,
+            "description": "Represents the link between an entity and its names.",
+            "title": "NamedEntity",
+            "type": "object"
+        },
+        "Prefix": {
+            "additionalProperties": false,
+            "description": "Maps CURIEs to URIs",
+            "properties": {
+                "base": {
+                    "description": "The base URI a prefix will expand to",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "prefix": {
+                    "description": "A standardized prefix such as 'GO' or 'rdf' or 'FlyBase'",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "Prefix",
+            "type": "object"
+        },
+        "ProcessedMeasurement": {
+            "additionalProperties": false,
+            "description": "A measurement that requires additional processing to generate a result.",
+            "properties": {
+                "attribute_cv_term_id": {
+                    "description": "If the attribute is a term from a controlled vocabulary, the ID of the term.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "attribute_name": {
+                    "description": "The attribute being captured in this annotation.",
+                    "type": "string"
+                },
+                "created_at": {
+                    "description": "Timestamp for the measurement.",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}(T\\d{2}:\\d{2}:\\d{2}(Z|[+-]\\d{2}:\\d{2})?)?$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "entity_id": {
+                    "description": "The database entity (sample, feature, protein, etc.) to which the attribute-value annotation refers.",
+                    "type": "string"
+                },
+                "maximum_value": {
+                    "description": "If the quantity describes a range, represents the upper bound of the range.",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "measurement_id": {
+                    "description": "Internal (CDM) unique identifier for a measurement.",
+                    "type": "string"
+                },
+                "minimum_value": {
+                    "description": "If the quantity describes a range, represents the lower bound of the range.",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "protocol_id": {
+                    "description": "The ID of the protocol used to generate the measurement.",
+                    "type": "string"
+                },
+                "quality": {
+                    "description": "The quality of the measurement, indicating the confidence that one can have in its correctness.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "raw_value": {
+                    "description": "Raw value from the source data. May or may not include units or other unstructured information.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "unit": {
+                    "description": "The unit of the quantity. Should be a term from UCUM.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "value": {
+                    "description": "The numeric portion of the quantity.",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "measurement_id",
+                "protocol_id",
+                "entity_id",
+                "attribute_name"
+            ],
+            "title": "ProcessedMeasurement",
+            "type": "object"
+        },
+        "Project": {
+            "additionalProperties": false,
+            "description": "Administrative unit for collecting data related to a certain topic, location, data type, grant funding, and so on.",
+            "properties": {
+                "description": {
+                    "description": "Brief text description of the project.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "project_id": {
+                    "description": "Internal (CDM) unique identifier for a project.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "project_id"
+            ],
+            "title": "Project",
+            "type": "object"
+        },
+        "Protein": {
+            "additionalProperties": false,
+            "description": "Proteins are large, complex molecules made up of one or more long, folded chains of amino acids, whose sequences are determined by the DNA sequence of the protein-encoding gene.",
+            "properties": {
+                "description": {
+                    "description": "Brief text description of the entity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "evidence_for_existence": {
+                    "$ref": "#/$defs/ProteinEvidenceForExistence",
+                    "description": "The evidence that this protein exists. For example, the protein may have been isolated from a cell, or it may be predicted based on sequence features."
+                },
+                "hash": {
+                    "description": "A hash value generated from one or more object attributes that serves to ensure the entity is unique.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "length": {
+                    "description": "The length of the protein.",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "protein_id": {
+                    "description": "Internal (CDM) unique identifier for a protein.",
+                    "type": "string"
+                },
+                "sequence": {
+                    "description": "The protein amino acid sequence.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "protein_id"
+            ],
+            "title": "Protein",
+            "type": "object"
+        },
+        "ProteinEvidenceForExistence": {
+            "description": "The evidence for the existence of a biological entity. See https://www.uniprot.org/help/protein_existence and https://www.ncbi.nlm.nih.gov/genbank/evidence/.",
+            "enum": [
+                "experimental_evidence_at_protein_level",
+                "experimental_evidence_at_transcript_level",
+                "protein_inferred_by_homology",
+                "protein_predicted",
+                "protein_uncertain"
+            ],
+            "title": "ProteinEvidenceForExistence",
+            "type": "string"
+        },
+        "Protocol": {
+            "additionalProperties": false,
+            "description": "Defined method or set of methods.",
+            "properties": {
+                "description": {
+                    "description": "Brief text description of the protocol.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "doi": {
+                    "description": "The DOI for a protocol.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "protocol_id": {
+                    "description": "Internal (CDM) unique identifier for a protocol.",
+                    "type": "string"
+                },
+                "url": {
+                    "description": "The URL for a protocol.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "version": {
+                    "description": "The version of the protocol that has been used.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "protocol_id"
+            ],
+            "title": "Protocol",
+            "type": "object"
+        },
+        "ProtocolParticipant": {
+            "additionalProperties": false,
+            "description": "Either an input or an output of a protocol.",
+            "properties": {
+                "protocol_participant_id": {
+                    "description": "Internal (CDM) unique identifier.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "protocol_participant_id"
+            ],
+            "title": "ProtocolParticipant",
+            "type": "object"
+        },
+        "ProtocolXProtocolParticipant": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "participant_type": {
+                    "description": "The type of participant in the protocol.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "protocol_id": {
+                    "description": "Internal (CDM) unique identifier for a protocol.",
+                    "type": "string"
+                },
+                "protocol_participant_id": {
+                    "description": "The unique identifier for the protocol participant.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "protocol_id",
+                "protocol_participant_id"
+            ],
+            "title": "ProtocolXProtocolParticipant",
+            "type": "object"
+        },
+        "Publication": {
+            "additionalProperties": false,
+            "description": "A publication (e.g. journal article).",
+            "properties": {
+                "publication_id": {
+                    "description": "Unique identifier for a publication - e.g. PMID, DOI, URL, etc.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "publication_id"
+            ],
+            "title": "Publication",
+            "type": "object"
+        },
+        "QuantityValue": {
+            "additionalProperties": false,
+            "description": "A simple quantity, e.g. 2cm. May be used to describe a range using the minimum_value and maximum_value fields.",
+            "properties": {
+                "attribute_cv_term_id": {
+                    "description": "If the attribute is a term from a controlled vocabulary, the ID of the term.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "attribute_name": {
+                    "description": "The attribute being captured in this annotation.",
+                    "type": "string"
+                },
+                "entity_id": {
+                    "description": "The database entity (sample, feature, protein, etc.) to which the attribute-value annotation refers.",
+                    "type": "string"
+                },
+                "maximum_value": {
+                    "description": "If the quantity describes a range, represents the upper bound of the range.",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "minimum_value": {
+                    "description": "If the quantity describes a range, represents the lower bound of the range.",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "raw_value": {
+                    "description": "Raw value from the source data. May or may not include units or other unstructured information.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "unit": {
+                    "description": "The unit of the quantity. Should be a term from UCUM.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "value": {
+                    "description": "The numeric portion of the quantity.",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "entity_id",
+                "attribute_name"
+            ],
+            "title": "QuantityValue",
+            "type": "object"
+        },
+        "RefSeqStatusType": {
+            "description": "RefSeq status codes, taken from https://www.ncbi.nlm.nih.gov/genbank/evidence/.",
+            "enum": [
+                "MODEL",
+                "INFERRED",
+                "PREDICTED",
+                "PROVISIONAL",
+                "REVIEWED",
+                "VALIDATED",
+                "WGS"
+            ],
+            "title": "RefSeqStatusType",
+            "type": "string"
+        },
+        "Sample": {
+            "additionalProperties": false,
+            "description": "A material entity that can be characterised by an experiment.",
+            "properties": {
+                "description": {
+                    "description": "Brief textual description of the sample.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "sample_id": {
+                    "description": "Internal (CDM) unique identifier for a sample.",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "The type of entity that the sample is. Vocab TBD.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "sample_id"
+            ],
+            "title": "Sample",
+            "type": "object"
+        },
+        "Sequence": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "checksum": {
+                    "description": "The checksum of the sequence, used to verify its integrity.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "entity_id": {
+                    "description": "The entity to which this sequence belongs.",
+                    "type": "string"
+                },
+                "length": {
+                    "description": "The length of the sequence in base pairs (for nucleotide sequences) or amino acids (for amino acid sequences).",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "sequence_id": {
+                    "description": "Internal (CDM) unique identifier for a sequence.",
+                    "type": "string"
+                },
+                "type": {
+                    "$ref": "#/$defs/SequenceType",
+                    "description": "The type of the sequence, either \"Nucleotide\" or \"Amino Acid\"."
+                }
+            },
+            "required": [
+                "sequence_id",
+                "entity_id"
+            ],
+            "title": "Sequence",
+            "type": "object"
+        },
+        "SequenceType": {
+            "description": "The type of sequence being represented.",
+            "enum": [
+                "NucleicAcid",
+                "AminoAcid"
+            ],
+            "title": "SequenceType",
+            "type": "string"
+        },
+        "Statements": {
+            "additionalProperties": false,
+            "description": "Represents an RDF triple",
+            "properties": {
+                "datatype": {
+                    "description": "the rdf datatype of the value, for example, xsd:string",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "language": {
+                    "description": "the human language in which the value is encoded, e.g. 'en'",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "object": {
+                    "description": "Note the range of this slot is always a node. If the triple represents a literal, instead value will be populated",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "predicate": {
+                    "description": "The predicate of the statement",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "subject": {
+                    "description": "The subject of the statement",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "value": {
+                    "description": "Note the range of this slot is always a string. Only used the triple represents a literal assertion",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "title": "Statements",
+            "type": "object"
+        },
+        "StrandType": {
+            "description": "The strand that a feature appears on relative to a landmark. Also encompasses unknown or irrelevant strandedness.",
+            "enum": [
+                "negative",
+                "positive",
+                "unknown",
+                "unstranded"
+            ],
+            "title": "StrandType",
+            "type": "string"
+        },
+        "TextValue": {
+            "additionalProperties": false,
+            "description": "A basic string value",
+            "properties": {
+                "attribute_cv_term_id": {
+                    "description": "If the attribute is a term from a controlled vocabulary, the ID of the term.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "attribute_name": {
+                    "description": "The attribute being captured in this annotation.",
+                    "type": "string"
+                },
+                "entity_id": {
+                    "description": "The database entity (sample, feature, protein, etc.) to which the attribute-value annotation refers.",
+                    "type": "string"
+                },
+                "language": {
+                    "description": "Language of the text value.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "raw_value": {
+                    "description": "Raw value from the source data. May or may not include units or other unstructured information.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "value": {
+                    "description": "The value after undergoing normalisation or standardisation.",
+                    "type": "string"
+                },
+                "value_cv_term_id": {
+                    "description": "If the term comes from the controlled vocabulary, the CURIE for the term. This will always be null if the text string is not from a controlled vocabulary.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "value",
+                "entity_id",
+                "attribute_name"
+            ],
+            "title": "TextValue",
+            "type": "object"
+        }
+    },
+    "$id": "http://kbase.github.io/cdm-schema/cdm_schema",
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "additionalProperties": true,
+    "metamodel_version": "1.7.0",
+    "title": "cdm_schema",
+    "type": "object",
+    "version": "0.0.1"
+}

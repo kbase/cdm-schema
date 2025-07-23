@@ -18,6 +18,8 @@ RUN = uv run
 SCHEMA_NAME = $(LINKML_SCHEMA_NAME)
 SCHEMA_BASE_NAME = kbase_cdm
 SCHEMA_ROOT = Entity
+# from config.public.mk
+# LINKML_SCHEMA_SOURCE_PATH=src/linkml/cdm_schema.yaml
 LINKML_SCHEMA_FILE = $(LINKML_SCHEMA_SOURCE_PATH)
 SRC_DIR = src
 DEST_DIR = project
@@ -27,12 +29,10 @@ DOC_DIR = docs
 # jinja templates for generating docs
 DOC_TEMPLATES_DIR = $(SRC_DIR)/docs/templates
 
-# DCM schema directories
-# source dir for all versions of CDM schema
-SCHEMA_DIR = $(SRC_DIR)/schema
-LINKML_DIR = $(SCHEMA_DIR)/linkml
-JSONSCHEMA_DIR = $(SCHEMA_DIR)/jsonschema
-PYTHON_DIR = $(SCHEMA_DIR)/python
+# CDM schema directories
+LINKML_DIR = $(SRC_DIR)/linkml
+JSONSCHEMA_DIR = $(SRC_DIR)/jsonschema
+PYTHON_DIR = $(SRC_DIR)/cdm_schema
 # sample data
 SAMPLE_DATA_DIR = sample_data
 
@@ -40,7 +40,7 @@ SAMPLE_DATA_DIR = sample_data
 SHEET_MODULE = $(LINKML_SCHEMA_GOOGLE_SHEET_MODULE)
 SHEET_ID = $(LINKML_SCHEMA_GOOGLE_SHEET_ID)
 SHEET_TABS = $(LINKML_SCHEMA_GOOGLE_SHEET_TABS)
-SHEET_MODULE_PATH = $(SCHEMA_DIR)/sheets/$(SHEET_MODULE).yaml
+SHEET_MODULE_PATH = $(SRC_DIR)/sheets/$(SHEET_MODULE).yaml
 
 # Use += to append variables from the variables file
 CONFIG_YAML =
@@ -107,16 +107,16 @@ update-packages: ## update packages in the uv lock file. Does not update pyproje
 	uv sync -U
 
 # EXPERIMENTAL
-create-data-harmonizer:
-	npm init data-harmonizer $(LINKML_SCHEMA_FILE)
+# create-data-harmonizer:
+# 	npm init data-harmonizer $(LINKML_SCHEMA_FILE)
 
 all: site
 site: gen-project gendoc
 %.yaml: gen-project
 deploy: all mkd-gh-deploy
 
-compile-sheets:
-	$(RUN) sheets2linkml --gsheet-id $(SHEET_ID) $(SHEET_TABS) > $(SHEET_MODULE_PATH).tmp && mv $(SHEET_MODULE_PATH).tmp $(SHEET_MODULE_PATH)
+# compile-sheets:
+# 	$(RUN) sheets2linkml --gsheet-id $(SHEET_ID) $(SHEET_TABS) > $(SHEET_MODULE_PATH).tmp && mv $(SHEET_MODULE_PATH).tmp $(SHEET_MODULE_PATH)
 
 # In future this will be done by conversion
 gen-examples:
@@ -157,6 +157,9 @@ lint-validate:  ## validate the schema; warnings or errors result in a non-zero 
 
 lint-no-warn:  ## lint the schema; warnings do not result in a non-zero exit code
 	$(RUN) linkml-lint --ignore-warnings $(LINKML_SCHEMA_FILE)
+
+lint-validate-no-warn:  ## lint the schema; warnings do not result in a non-zero exit code
+	$(RUN) linkml-lint --ignore-warnings --validate $(LINKML_SCHEMA_FILE)
 
 test-sample-data:  ## validate sample data against LinkML schema
 	$(RUN) linkml-validate -s $(LINKML_SCHEMA_FILE) sample_data/**/**/*.json
@@ -209,11 +212,11 @@ $(DOC_DIR):
 	mkdir -p $@
 
 gen-artefacts: $(PYTHON_DIR) $(JSONSCHEMA_DIR)  ## generate derived files: JSON Schema, Python, Pydantic, erdantic ERD.
-	$(RUN) gen-json-schema $(LINKML_SCHEMA_SOURCE_PATH) > $(JSONSCHEMA_DIR)/$(SCHEMA_BASE_NAME).schema.json
-	$(RUN) gen-python $(LINKML_SCHEMA_SOURCE_PATH) > $(PYTHON_DIR)/$(SCHEMA_BASE_NAME).py
-	$(RUN) gen-pydantic $(LINKML_SCHEMA_SOURCE_PATH) > $(PYTHON_DIR)/$(SCHEMA_BASE_NAME)_pydantic.py
+	$(RUN) gen-json-schema -v $(LINKML_SCHEMA_SOURCE_PATH) > $(JSONSCHEMA_DIR)/$(SCHEMA_BASE_NAME).schema.json
+	$(RUN) gen-python -v $(LINKML_SCHEMA_SOURCE_PATH) > $(PYTHON_DIR)/$(SCHEMA_BASE_NAME).py
+	$(RUN) gen-pydantic -v $(LINKML_SCHEMA_SOURCE_PATH) --meta AUTO > $(PYTHON_DIR)/$(SCHEMA_BASE_NAME)_pydantic.py
 	$(RUN) ruff format $(PYTHON_DIR)
-	PYTHONPATH=$(PYTHON_DIR) $(RUN) erdantic $(SCHEMA_BASE_NAME)_pydantic.$(SCHEMA_ROOT) -o $(SCHEMA_DIR)/$(SCHEMA_BASE_NAME)-schema.png
+	PYTHONPATH=$(PYTHON_DIR) $(RUN) erdantic $(SCHEMA_BASE_NAME)_pydantic.$(SCHEMA_ROOT) -o $(SRC_DIR)/$(SCHEMA_BASE_NAME)-schema.png
 
 gendoc: $(DOC_DIR)  ## generate Markdown documentation locally
 	$(RUN) gen-doc ${GEN_DOC_ARGS} -d $(DOC_DIR) $(LINKML_SCHEMA_FILE)
