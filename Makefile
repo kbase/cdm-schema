@@ -216,7 +216,7 @@ gen-artefacts: $(PYTHON_DIR) $(JSONSCHEMA_DIR)  ## generate derived files: JSON 
 	$(RUN) gen-python -v $(LINKML_SCHEMA_SOURCE_PATH) > $(PYTHON_DIR)/$(SCHEMA_BASE_NAME).py
 	$(RUN) gen-pydantic -v $(LINKML_SCHEMA_SOURCE_PATH) --meta AUTO > $(PYTHON_DIR)/$(SCHEMA_BASE_NAME)_pydantic.py
 	$(RUN) ruff format $(PYTHON_DIR)
-	PYTHONPATH=$(PYTHON_DIR) $(RUN) erdantic $(SCHEMA_BASE_NAME)_pydantic.$(SCHEMA_ROOT) -o $(SRC_DIR)/$(SCHEMA_BASE_NAME)-schema.png
+# 	PYTHONPATH=$(PYTHON_DIR) $(RUN) erdantic $(SCHEMA_BASE_NAME)_pydantic.$(SCHEMA_ROOT) -o $(SRC_DIR)/$(SCHEMA_BASE_NAME)-schema.png
 
 gendoc: $(DOC_DIR)  ## generate Markdown documentation locally
 	$(RUN) gen-doc ${GEN_DOC_ARGS} -d $(DOC_DIR) $(LINKML_SCHEMA_FILE)

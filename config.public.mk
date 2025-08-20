@@ -22,7 +22,7 @@ LINKML_GENERATORS_CONFIG_YAML=
 # --config-file config.yaml
 
 ## pass args if gendoc ignores config.yaml (e.g. --include-top-level-diagram)
-LINKML_GENERATORS_DOC_ARGS=
+LINKML_GENERATORS_DOC_ARGS=--truncate-descriptions False
 
 ## pass args to workaround genowl rdfs config bug (linkml#1453)
 ##   (i.e. --no-type-objects --no-metaclasses --metadata-profile rdfs)
