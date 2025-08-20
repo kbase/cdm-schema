@@ -2,13 +2,14 @@
 
 from typing import TYPE_CHECKING
 
-from linkml_runtime.linkml_model.meta import ClassDefinitionName, ElementName, EnumDefinitionName, TypeDefinitionName
+from linkml_runtime.linkml_model.meta import ClassDefinitionName, EnumDefinitionName, TypeDefinitionName
 from linkml_runtime.utils.schemaview import SchemaView
 
 if TYPE_CHECKING:
     from linkml_runtime.linkml_model.meta import (
         ClassDefinition,
         ClassDefinitionName,
+        ElementName,
         EnumDefinition,
         EnumDefinitionName,
         SlotDefinition,
@@ -33,9 +34,10 @@ def check_schema(sv: SchemaView) -> list[str]:
     all_possible_ranges: set[TypeDefinitionName | EnumDefinitionName | ClassDefinitionName] = (
         set(all_types) | set(all_enums) | set(all_classes)
     )
-    relationship_classes: dict[ClassDefinitionName, ClassDefinition] = {
-        cl: cl_obj for cl, cl_obj in all_classes.items() if cl_obj.represents_relationship
-    }
+    # TODO: check relationships
+    # relationship_classes: dict[ClassDefinitionName, ClassDefinition] = {
+    #     cl: cl_obj for cl, cl_obj in all_classes.items() if cl_obj.represents_relationship
+    # }
 
     all_slot_ranges: set[ElementName] = set()
     rslt = []
@@ -78,7 +80,7 @@ def check_schema(sv: SchemaView) -> list[str]:
 
 
 if __name__ == "__main__":
-    sv = SchemaView("/Users/gwg/code/kbase/cdm-schema/src/schema/linkml/cdm_schema.yaml")
+    sv = SchemaView("./src/linkml/cdm_schema.yaml")
     sanity_checks = check_schema(sv)
     if sanity_checks:
         print("\n".join(sanity_checks))  # noqa: T201
