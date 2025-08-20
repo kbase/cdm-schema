@@ -233,9 +233,9 @@
 <p>URI: <a href="http://kbase.github.io/cdm-schema/ContributorXRoleXProject">kb_cdm:ContributorXRoleXProject</a></p>
 <div class="mermaid"> classDiagram
     class ContributorXRoleXProject
-    click ContributorXRoleXProject href "../ContributorXRoleXProject"
+    click ContributorXRoleXProject href "../ContributorXRoleXProject/"
       Table &lt;|-- ContributorXRoleXProject
-        click Table href "../Table"
+        click Table href "../Table/"
 
       ContributorXRoleXProject : contributor_id
 
@@ -246,7 +246,7 @@
 
 
         ContributorXRoleXProject --&gt; "0..1" ContributorRole : contributor_role
-        click ContributorRole href "../ContributorRole"
+        click ContributorRole href "../ContributorRole/"
 
 
 
@@ -275,19 +275,19 @@
 <tr>
 <td><a href="../contributor_id/">contributor_id</a></td>
 <td>1 <br/> <a href="../UUID/">UUID</a></td>
-<td>Internal (CDM) unique identifier for a contributor</td>
+<td>Internal (CDM) unique identifier for a contributor.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../project_id/">project_id</a></td>
 <td>1 <br/> <a href="../UUID/">UUID</a></td>
-<td>Internal (CDM) unique identifier for a project</td>
+<td>Internal (CDM) unique identifier for a project.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../contributor_role/">contributor_role</a></td>
 <td>0..1 <br/> <a href="../ContributorRole/">ContributorRole</a></td>
-<td>Role(s) played by the contributor when working on the experiment</td>
+<td>Role(s) played by the contributor when working on the experiment. If more than one role was played, additional rows should be added to represent each role.</td>
 <td>direct</td>
 </tr>
 </tbody>

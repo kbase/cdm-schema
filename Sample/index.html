@@ -234,9 +234,9 @@
 <p>URI: <a href="http://kbase.github.io/cdm-schema/Sample">kb_cdm:Sample</a></p>
 <div class="mermaid"> classDiagram
     class Sample
-    click Sample href "../Sample"
+    click Sample href "../Sample/"
       Table &lt;|-- Sample
-        click Table href "../Table"
+        click Table href "../Table/"
 
       Sample : description
 
@@ -267,19 +267,19 @@
 <tr>
 <td><a href="../sample_id/">sample_id</a></td>
 <td>1 <br/> <a href="../UUID/">UUID</a></td>
-<td>Internal (CDM) unique identifier for a sample</td>
+<td>Internal (CDM) unique identifier for a sample.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../description/">description</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Brief textual description of the sample</td>
+<td>Brief textual description of the sample.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../type/">type</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>The type of entity that the sample is</td>
+<td>The type of entity that the sample is. Vocab TBD.</td>
 <td>direct</td>
 </tr>
 </tbody>

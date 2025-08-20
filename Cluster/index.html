@@ -234,9 +234,9 @@
 <p>URI: <a href="http://kbase.github.io/cdm-schema/Cluster">kb_cdm:Cluster</a></p>
 <div class="mermaid"> classDiagram
     class Cluster
-    click Cluster href "../Cluster"
+    click Cluster href "../Cluster/"
       Table &lt;|-- Cluster
-        click Table href "../Table"
+        click Table href "../Table/"
 
       Cluster : cluster_id
 
@@ -249,7 +249,7 @@
 
 
         Cluster --&gt; "1" ClusterType : entity_type
-        click ClusterType href "../ClusterType"
+        click ClusterType href "../ClusterType/"
 
 
 
@@ -280,31 +280,31 @@
 <tr>
 <td><a href="../cluster_id/">cluster_id</a></td>
 <td>1 <br/> <a href="../UUID/">UUID</a></td>
-<td>Internal (CDM) unique identifier for a cluster</td>
+<td>Internal (CDM) unique identifier for a cluster.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../description/">description</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Brief textual definition or description</td>
+<td>Brief textual definition or description.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../name/">name</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Name of the cluster, if available</td>
+<td>Name of the cluster, if available.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../entity_type/">entity_type</a></td>
 <td>1 <br/> <a href="../ClusterType/">ClusterType</a></td>
-<td>Type of entity being clustered</td>
+<td>Type of entity being clustered.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../protocol_id/">protocol_id</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Protocol used to generate the cluster</td>
+<td>Protocol used to generate the cluster.</td>
 <td>direct</td>
 </tr>
 </tbody>

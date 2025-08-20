@@ -234,9 +234,9 @@
 <p>URI: <a href="http://kbase.github.io/cdm-schema/ContigXContigCollection">kb_cdm:ContigXContigCollection</a></p>
 <div class="mermaid"> classDiagram
     class ContigXContigCollection
-    click ContigXContigCollection href "../ContigXContigCollection"
+    click ContigXContigCollection href "../ContigXContigCollection/"
       Table &lt;|-- ContigXContigCollection
-        click Table href "../Table"
+        click Table href "../Table/"
 
       ContigXContigCollection : contig_collection_id
 
@@ -265,13 +265,13 @@
 <tr>
 <td><a href="../contig_id/">contig_id</a></td>
 <td>1..* <br/> <a href="../UUID/">UUID</a></td>
-<td>Internal (CDM) unique identifier for a contig</td>
+<td>Internal (CDM) unique identifier for a contig.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../contig_collection_id/">contig_collection_id</a></td>
 <td>1 <br/> <a href="../UUID/">UUID</a></td>
-<td>Internal (CDM) unique identifier for a contig collection</td>
+<td>Internal (CDM) unique identifier for a contig collection.</td>
 <td>direct</td>
 </tr>
 </tbody>

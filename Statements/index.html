@@ -241,9 +241,9 @@
 <p>URI: <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement">rdf:Statement</a></p>
 <div class="mermaid"> classDiagram
     class Statements
-    click Statements href "../Statements"
+    click Statements href "../Statements/"
       Table &lt;|-- Statements
-        click Table href "../Table"
+        click Table href "../Table/"
 
       Statements : datatype
 
@@ -292,13 +292,13 @@
 <tr>
 <td><a href="../object/">object</a></td>
 <td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>Note the range of this slot is always a node</td>
+<td>Note the range of this slot is always a node. If the triple represents a literal, instead value will be populated</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../value/">value</a></td>
 <td>0..1 <br/> <a href="../LiteralAsStringType/">LiteralAsStringType</a></td>
-<td>Note the range of this slot is always a string</td>
+<td>Note the range of this slot is always a string. Only used the triple represents a literal assertion</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -310,7 +310,7 @@
 <tr>
 <td><a href="../language/">language</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>the human language in which the value is encoded, e</td>
+<td>the human language in which the value is encoded, e.g. 'en'</td>
 <td>direct</td>
 </tr>
 </tbody>

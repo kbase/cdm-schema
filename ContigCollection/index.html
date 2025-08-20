@@ -248,9 +248,9 @@
 <p>URI: <a href="http://kbase.github.io/cdm-schema/ContigCollection">kb_cdm:ContigCollection</a></p>
 <div class="mermaid"> classDiagram
     class ContigCollection
-    click ContigCollection href "../ContigCollection"
+    click ContigCollection href "../ContigCollection/"
       Table &lt;|-- ContigCollection
-        click Table href "../Table"
+        click Table href "../Table/"
 
       ContigCollection : asm_score
 
@@ -269,7 +269,7 @@
 
 
         ContigCollection --&gt; "0..1" ContigCollectionType : contig_collection_type
-        click ContigCollectionType href "../ContigCollectionType"
+        click ContigCollectionType href "../ContigCollectionType/"
 
 
 
@@ -344,13 +344,13 @@
 <tr>
 <td><a href="../contig_collection_id/">contig_collection_id</a></td>
 <td>1 <br/> <a href="../UUID/">UUID</a></td>
-<td>Internal (CDM) unique identifier for a contig collection</td>
+<td>Internal (CDM) unique identifier for a contig collection.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../hash/">hash</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>A hash value generated from one or more object attributes that serves to ensu...</td>
+<td>A hash value generated from one or more object attributes that serves to ensure the entity is unique.</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -362,13 +362,13 @@
 <tr>
 <td><a href="../checkm2_completeness/">checkm2_completeness</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Estimate of the completeness of a contig collection (MAG or genome), estimate...</td>
+<td>Estimate of the completeness of a contig collection (MAG or genome), estimated by CheckM2 tool</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../checkm2_contamination/">checkm2_contamination</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Estimate of the contamination of a contig collection (MAG or genome), estimat...</td>
+<td>Estimate of the contamination of a contig collection (MAG or genome), estimated by CheckM2 tool</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -380,37 +380,37 @@
 <tr>
 <td><a href="../contig_collection_type/">contig_collection_type</a></td>
 <td>0..1 <br/> <a href="../ContigCollectionType/">ContigCollectionType</a></td>
-<td>The type of contig collection</td>
+<td>The type of contig collection.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../ctg_L50/">ctg_L50</a></td>
 <td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>Given a set of contigs, the L50 is defined as the sequence length of the shor...</td>
+<td>Given a set of contigs, the L50 is defined as the sequence length of the shortest contig at 50% of the total contig collection length</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../ctg_L90/">ctg_L90</a></td>
 <td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>The L90 statistic is less than or equal to the L50 statistic; it is the lengt...</td>
+<td>The L90 statistic is less than or equal to the L50 statistic; it is the length for which the collection of all contigs of that length or longer contains at least 90% of the sum of the lengths of all contigs</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../ctg_N50/">ctg_N50</a></td>
 <td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>Given a set of contigs, each with its own length, the N50 count is defined as...</td>
+<td>Given a set of contigs, each with its own length, the N50 count is defined as the smallest number_of_contigs whose length sum makes up half of contig collection size</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../ctg_N90/">ctg_N90</a></td>
 <td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>Given a set of contigs, each with its own length, the N90 count is defined as...</td>
+<td>Given a set of contigs, each with its own length, the N90 count is defined as the smallest number of contigs whose length sum makes up 90% of contig collection size</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../ctg_logsum/">ctg_logsum</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>The sum of the (length*log(length)) of all contigs, times some constant</td>
+<td>The sum of the (length*log(length)) of all contigs, times some constant.</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -422,7 +422,7 @@
 <tr>
 <td><a href="../ctg_powsum/">ctg_powsum</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Powersum of all contigs is the same as logsum except that it uses the sum of ...</td>
+<td>Powersum of all contigs is the same as logsum except that it uses the sum of (length*(length^P)) for some power P (default P=0.25)</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -458,25 +458,25 @@
 <tr>
 <td><a href="../scaf_L50/">scaf_L50</a></td>
 <td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>Given a set of scaffolds, the L50 is defined as the sequence length of the sh...</td>
+<td>Given a set of scaffolds, the L50 is defined as the sequence length of the shortest scaffold at 50% of the total contig collection length</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../scaf_L90/">scaf_L90</a></td>
 <td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>The L90 statistic is less than or equal to the L50 statistic; it is the lengt...</td>
+<td>The L90 statistic is less than or equal to the L50 statistic; it is the length for which the collection of all scaffolds of that length or longer contains at least 90% of the sum of the lengths of all scaffolds.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../scaf_N50/">scaf_N50</a></td>
 <td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>Given a set of scaffolds, each with its own length, the N50 count is defined ...</td>
+<td>Given a set of scaffolds, each with its own length, the N50 count is defined as the smallest number of scaffolds whose length sum makes up half of contig collection size</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../scaf_N90/">scaf_N90</a></td>
 <td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>Given a set of scaffolds, each with its own length, the N90 count is defined ...</td>
+<td>Given a set of scaffolds, each with its own length, the N90 count is defined as the smallest number of scaffolds whose length sum makes up 90% of contig collection size</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -494,7 +494,7 @@
 <tr>
 <td><a href="../scaf_logsum/">scaf_logsum</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>The sum of the (length*log(length)) of all scaffolds, times some constant</td>
+<td>The sum of the (length*log(length)) of all scaffolds, times some constant. Increase the contiguity, the score will increase</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -506,19 +506,19 @@
 <tr>
 <td><a href="../scaf_n_gt50K/">scaf_n_gt50K</a></td>
 <td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>The number of scaffolds longer than 50,000 base pairs</td>
+<td>The number of scaffolds longer than 50,000 base pairs.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../scaf_pct_gt50K/">scaf_pct_gt50K</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>The percentage of the total assembly length represented by scaffolds longer t...</td>
+<td>The percentage of the total assembly length represented by scaffolds longer than 50,000 base pairs</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../scaf_powsum/">scaf_powsum</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Powersum of all scaffolds is the same as logsum except that it uses the sum o...</td>
+<td>Powersum of all scaffolds is the same as logsum except that it uses the sum of (length*(length^P)) for some power P (default P=0.25).</td>
 <td>direct</td>
 </tr>
 </tbody>

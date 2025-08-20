@@ -234,9 +234,9 @@
 <p>URI: <a href="http://kbase.github.io/cdm-schema/DataSource">kb_cdm:DataSource</a></p>
 <div class="mermaid"> classDiagram
     class DataSource
-    click DataSource href "../DataSource"
+    click DataSource href "../DataSource/"
       Table &lt;|-- DataSource
-        click Table href "../Table"
+        click Table href "../Table/"
 
       DataSource : comments
 
@@ -273,37 +273,37 @@
 <tr>
 <td><a href="../data_source_id/">data_source_id</a></td>
 <td>1 <br/> <a href="../UUID/">UUID</a></td>
-<td>Internal (CDM) unique identifier for a data source</td>
+<td>Internal (CDM) unique identifier for a data source.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../name/">name</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>The name of the data source</td>
+<td>The name of the data source.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../comments/">comments</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Additional details about the dataset</td>
+<td>Additional details about the dataset.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../date_accessed/">date_accessed</a></td>
 <td>0..1 <br/> <a href="../Iso8601/">Iso8601</a></td>
-<td>The date when the data was downloaded from the data source</td>
+<td>The date when the data was downloaded from the data source.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../url/">url</a></td>
 <td>0..1 <br/> <a href="../Uri/">Uri</a></td>
-<td>The URL from which the data was loaded</td>
+<td>The URL from which the data was loaded.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../version/">version</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>For versioned data sources, the version of the dataset</td>
+<td>For versioned data sources, the version of the dataset.</td>
 <td>direct</td>
 </tr>
 </tbody>

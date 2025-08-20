@@ -248,9 +248,9 @@
 <p>URI: <a href="http://kbase.github.io/cdm-schema/EntailedEdge">kb_cdm:EntailedEdge</a></p>
 <div class="mermaid"> classDiagram
     class EntailedEdge
-    click EntailedEdge href "../EntailedEdge"
+    click EntailedEdge href "../EntailedEdge/"
       Table &lt;|-- EntailedEdge
-        click Table href "../Table"
+        click Table href "../Table/"
 
       EntailedEdge : object
 
@@ -293,7 +293,7 @@
 <tr>
 <td><a href="../object/">object</a></td>
 <td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>Note the range of this slot is always a node</td>
+<td>Note the range of this slot is always a node. If the triple represents a literal, instead value will be populated</td>
 <td>direct</td>
 </tr>
 </tbody>

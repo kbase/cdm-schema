@@ -234,9 +234,9 @@
 <p>URI: <a href="http://kbase.github.io/cdm-schema/ExperimentXProject">kb_cdm:ExperimentXProject</a></p>
 <div class="mermaid"> classDiagram
     class ExperimentXProject
-    click ExperimentXProject href "../ExperimentXProject"
+    click ExperimentXProject href "../ExperimentXProject/"
       Table &lt;|-- ExperimentXProject
-        click Table href "../Table"
+        click Table href "../Table/"
 
       ExperimentXProject : experiment_id
 
@@ -265,13 +265,13 @@
 <tr>
 <td><a href="../experiment_id/">experiment_id</a></td>
 <td>1..* <br/> <a href="../UUID/">UUID</a></td>
-<td>Internal (CDM) unique identifier for an experiment</td>
+<td>Internal (CDM) unique identifier for an experiment.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../project_id/">project_id</a></td>
 <td>1 <br/> <a href="../UUID/">UUID</a></td>
-<td>Internal (CDM) unique identifier for a project</td>
+<td>Internal (CDM) unique identifier for a project.</td>
 <td>direct</td>
 </tr>
 </tbody>

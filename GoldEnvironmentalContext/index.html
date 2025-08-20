@@ -234,9 +234,9 @@
 <p>URI: <a href="http://kbase.github.io/cdm-schema/GoldEnvironmentalContext">kb_cdm:GoldEnvironmentalContext</a></p>
 <div class="mermaid"> classDiagram
     class GoldEnvironmentalContext
-    click GoldEnvironmentalContext href "../GoldEnvironmentalContext"
+    click GoldEnvironmentalContext href "../GoldEnvironmentalContext/"
       Table &lt;|-- GoldEnvironmentalContext
-        click Table href "../Table"
+        click Table href "../Table/"
 
       GoldEnvironmentalContext : ecosystem
 
@@ -273,37 +273,37 @@
 <tr>
 <td><a href="../gold_environmental_context_id/">gold_environmental_context_id</a></td>
 <td>1 <br/> <a href="../UUID/">UUID</a></td>
-<td>Internal (CDM) unique identifier for a GOLD environmental context</td>
+<td>Internal (CDM) unique identifier for a GOLD environmental context.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../ecosystem/">ecosystem</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>JGI GOLD descriptor representing the top level ecosystem categorization</td>
+<td>JGI GOLD descriptor representing the top level ecosystem categorization.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../ecosystem_category/">ecosystem_category</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>JGI GOLD descriptor representing the ecosystem category</td>
+<td>JGI GOLD descriptor representing the ecosystem category.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../ecosystem_subtype/">ecosystem_subtype</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>JGI GOLD descriptor representing the subtype of ecosystem</td>
+<td>JGI GOLD descriptor representing the subtype of ecosystem. May be "Unclassified".</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../ecosystem_type/">ecosystem_type</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>JGI GOLD descriptor representing the ecosystem type</td>
+<td>JGI GOLD descriptor representing the ecosystem type. May be "Unclassified".</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../specific_ecosystem/">specific_ecosystem</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>JGI GOLD descriptor representing the most specific level of ecosystem categor...</td>
+<td>JGI GOLD descriptor representing the most specific level of ecosystem categorization. May be "Unclassified".</td>
 <td>direct</td>
 </tr>
 </tbody>

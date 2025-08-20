@@ -255,9 +255,9 @@
 <p>URI: <a href="http://kbase.github.io/cdm-schema/Feature">kb_cdm:Feature</a></p>
 <div class="mermaid"> classDiagram
     class Feature
-    click Feature href "../Feature"
+    click Feature href "../Feature/"
       Table &lt;|-- Feature
-        click Table href "../Table"
+        click Table href "../Table/"
 
       Feature : cds_phase
 
@@ -266,7 +266,7 @@
 
 
         Feature --&gt; "0..1" CdsPhaseType : cds_phase
-        click CdsPhaseType href "../CdsPhaseType"
+        click CdsPhaseType href "../CdsPhaseType/"
 
 
 
@@ -287,7 +287,7 @@
 
 
         Feature --&gt; "0..1" Protocol : protocol_id
-        click Protocol href "../Protocol"
+        click Protocol href "../Protocol/"
 
 
 
@@ -302,7 +302,7 @@
 
 
         Feature --&gt; "0..1" StrandType : strand
-        click StrandType href "../StrandType"
+        click StrandType href "../StrandType/"
 
 
 
@@ -331,67 +331,67 @@
 <tr>
 <td><a href="../feature_id/">feature_id</a></td>
 <td>1 <br/> <a href="../UUID/">UUID</a></td>
-<td>Internal (CDM) unique identifier for a feature</td>
+<td>Internal (CDM) unique identifier for a feature.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../hash/">hash</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>A hash value generated from one or more object attributes that serves to ensu...</td>
+<td>A hash value generated from one or more object attributes that serves to ensure the entity is unique.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../cds_phase/">cds_phase</a></td>
 <td>0..1 <br/> <a href="../CdsPhaseType/">CdsPhaseType</a></td>
-<td>For features of type CDS, the phase indicates where the next codon begins rel...</td>
+<td>For features of type CDS, the phase indicates where the next codon begins relative to the 5' end (where the 5' end of the CDS is relative to the strand of the CDS feature) of the current CDS feature. cds_phase is required if the feature type is CDS.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../e_value/">e_value</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>The 'score' of the feature</td>
+<td>The 'score' of the feature. The semantics of this field are ill-defined. E-values should be used for sequence similarity features.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../end/">end</a></td>
 <td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>The start and end coordinates of the feature are given in positive 1-based in...</td>
+<td>The start and end coordinates of the feature are given in positive 1-based int coordinates, relative to the landmark given in column one. Start is always less than or equal to end. For features that cross the origin of a circular feature (e.g. most bacterial genomes, plasmids, and some viral genomes), the requirement for start to be less than or equal to end is satisfied by making end = the position of the end + the length of the landmark feature. For zero-length features, such as insertion sites, start equals end and the implied site is to the right of the indicated base in the direction of the landmark.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../p_value/">p_value</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>The 'score' of the feature</td>
+<td>The 'score' of the feature. The semantics of this field are ill-defined. P-values should be used for ab initio gene prediction features.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../start/">start</a></td>
 <td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>The start and end coordinates of the feature are given in positive 1-based in...</td>
+<td>The start and end coordinates of the feature are given in positive 1-based int coordinates, relative to the landmark given in column one. Start is always less than or equal to end. For features that cross the origin of a circular feature (e.g. most bacterial genomes, plasmids, and some viral genomes), the requirement for start to be less than or equal to end is satisfied by making end = the position of the end + the length of the landmark feature. For zero-length features, such as insertion sites, start equals end and the implied site is to the right of the indicated base in the direction of the landmark.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../strand/">strand</a></td>
 <td>0..1 <br/> <a href="../StrandType/">StrandType</a></td>
-<td>The strand of the feature</td>
+<td>The strand of the feature.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../source_database/">source_database</a></td>
 <td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>ID of the data source from which this entity came</td>
+<td>ID of the data source from which this entity came.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../protocol_id/">protocol_id</a></td>
 <td>0..1 <br/> <a href="../Protocol/">Protocol</a></td>
-<td>ID of the protocol used to generate the feature</td>
+<td>ID of the protocol used to generate the feature.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../type/">type</a></td>
 <td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>The type of the feature; constrained to be either a term from the Sequence On...</td>
+<td>The type of the feature; constrained to be either a term from the Sequence Ontology or an SO accession number. Must be sequence_feature (SO:0000110) or an is_a child of it.</td>
 <td>direct</td>
 </tr>
 </tbody>

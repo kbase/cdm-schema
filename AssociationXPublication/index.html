@@ -234,9 +234,9 @@
 <p>URI: <a href="http://kbase.github.io/cdm-schema/AssociationXPublication">kb_cdm:AssociationXPublication</a></p>
 <div class="mermaid"> classDiagram
     class AssociationXPublication
-    click AssociationXPublication href "../AssociationXPublication"
+    click AssociationXPublication href "../AssociationXPublication/"
       Table &lt;|-- AssociationXPublication
-        click Table href "../Table"
+        click Table href "../Table/"
 
       AssociationXPublication : association_id
 
@@ -265,13 +265,13 @@
 <tr>
 <td><a href="../association_id/">association_id</a></td>
 <td>1..* <br/> <a href="../UUID/">UUID</a></td>
-<td>Internal (CDM) unique identifier for an association</td>
+<td>Internal (CDM) unique identifier for an association.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../publication_id/">publication_id</a></td>
 <td>1..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>Unique identifier for a publication - e</td>
+<td>Unique identifier for a publication - e.g. PMID, DOI, URL, etc.</td>
 <td>direct</td>
 </tr>
 </tbody>

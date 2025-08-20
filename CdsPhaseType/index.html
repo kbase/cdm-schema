@@ -387,7 +387,7 @@
 
 <h1 id="enum-cdsphasetype">Enum: CdsPhaseType</h1>
 <p><em>For features of type CDS (coding sequence), the phase indicates where the feature begins with reference to the reading frame. The phase is one of the integers 0, 1, or 2, indicating the number of bases that should be removed from the beginning of this feature to reach the first base of the next codon.</em></p>
-<p>URI: <a href="./">CdsPhaseType</a></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/CdsPhaseType">kb_cdm:CdsPhaseType</a></p>
 <h2 id="permissible-values">Permissible Values</h2>
 <table>
 <thead>
@@ -401,17 +401,17 @@
 <tr>
 <td>0</td>
 <td>None</td>
-<td>Zero bases from reading frame to feature start</td>
+<td>Zero bases from reading frame to feature start.</td>
 </tr>
 <tr>
 <td>1</td>
 <td>None</td>
-<td>One base from reading frame to feature start</td>
+<td>One base from reading frame to feature start.</td>
 </tr>
 <tr>
 <td>2</td>
 <td>None</td>
-<td>Two bases from reading frame to feature start</td>
+<td>Two bases from reading frame to feature start.</td>
 </tr>
 </tbody>
 </table>
@@ -426,7 +426,7 @@
 <tbody>
 <tr>
 <td><a href="../cds_phase/">cds_phase</a></td>
-<td>For features of type CDS, the phase indicates where the next codon begins rel...</td>
+<td>For features of type CDS, the phase indicates where the next codon begins relative to the 5' end (where the 5' end of the CDS is relative to the strand of the CDS feature) of the current CDS feature. cds_phase is required if the feature type is CDS.</td>
 </tr>
 </tbody>
 </table>

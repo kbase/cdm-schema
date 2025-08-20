@@ -233,9 +233,9 @@
 <p>URI: <a href="http://kbase.github.io/cdm-schema/Sequence">kb_cdm:Sequence</a></p>
 <div class="mermaid"> classDiagram
     class Sequence
-    click Sequence href "../Sequence"
+    click Sequence href "../Sequence/"
       Table &lt;|-- Sequence
-        click Table href "../Table"
+        click Table href "../Table/"
 
       Sequence : checksum
 
@@ -252,7 +252,7 @@
 
 
         Sequence --&gt; "0..1" SequenceType : type
-        click SequenceType href "../SequenceType"
+        click SequenceType href "../SequenceType/"
 
 
 
@@ -279,31 +279,31 @@
 <tr>
 <td><a href="../sequence_id/">sequence_id</a></td>
 <td>1 <br/> <a href="../UUID/">UUID</a></td>
-<td>Internal (CDM) unique identifier for a sequence</td>
+<td>Internal (CDM) unique identifier for a sequence.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../entity_id/">entity_id</a></td>
 <td>1 <br/> <a href="../UUID/">UUID</a></td>
-<td>The entity to which this sequence belongs</td>
+<td>The entity to which this sequence belongs.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../type/">type</a></td>
 <td>0..1 <br/> <a href="../SequenceType/">SequenceType</a></td>
-<td>The type of the sequence, either "Nucleotide" or "Amino Acid"</td>
+<td>The type of the sequence, either "Nucleotide" or "Amino Acid".</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../length/">length</a></td>
 <td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>The length of the sequence in base pairs (for nucleotide sequences) or amino ...</td>
+<td>The length of the sequence in base pairs (for nucleotide sequences) or amino acids (for amino acid sequences).</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../checksum/">checksum</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>The checksum of the sequence, used to verify its integrity</td>
+<td>The checksum of the sequence, used to verify its integrity.</td>
 <td>direct</td>
 </tr>
 </tbody>

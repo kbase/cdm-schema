@@ -241,9 +241,9 @@
 <p>URI: <a href="http://kbase.github.io/cdm-schema/Protein">kb_cdm:Protein</a></p>
 <div class="mermaid"> classDiagram
     class Protein
-    click Protein href "../Protein"
+    click Protein href "../Protein/"
       Table &lt;|-- Protein
-        click Table href "../Table"
+        click Table href "../Table/"
 
       Protein : description
 
@@ -254,7 +254,7 @@
 
 
         Protein --&gt; "0..1" ProteinEvidenceForExistence : evidence_for_existence
-        click ProteinEvidenceForExistence href "../ProteinEvidenceForExistence"
+        click ProteinEvidenceForExistence href "../ProteinEvidenceForExistence/"
 
 
 
@@ -289,37 +289,37 @@
 <tr>
 <td><a href="../protein_id/">protein_id</a></td>
 <td>1 <br/> <a href="../UUID/">UUID</a></td>
-<td>Internal (CDM) unique identifier for a protein</td>
+<td>Internal (CDM) unique identifier for a protein.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../hash/">hash</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>A hash value generated from one or more object attributes that serves to ensu...</td>
+<td>A hash value generated from one or more object attributes that serves to ensure the entity is unique.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../description/">description</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Brief text description of the entity</td>
+<td>Brief text description of the entity.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../evidence_for_existence/">evidence_for_existence</a></td>
 <td>0..1 <br/> <a href="../ProteinEvidenceForExistence/">ProteinEvidenceForExistence</a></td>
-<td>The evidence that this protein exists</td>
+<td>The evidence that this protein exists. For example, the protein may have been isolated from a cell, or it may be predicted based on sequence features.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../length/">length</a></td>
 <td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>The length of the protein</td>
+<td>The length of the protein.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../sequence/">sequence</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>The protein amino acid sequence</td>
+<td>The protein amino acid sequence.</td>
 <td>direct</td>
 </tr>
 </tbody>

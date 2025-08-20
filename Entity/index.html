@@ -234,9 +234,9 @@
 <p>URI: <a href="http://kbase.github.io/cdm-schema/Entity">kb_cdm:Entity</a></p>
 <div class="mermaid"> classDiagram
     class Entity
-    click Entity href "../Entity"
+    click Entity href "../Entity/"
       Table &lt;|-- Entity
-        click Table href "../Table"
+        click Table href "../Table/"
 
       Entity : created
 
@@ -257,7 +257,7 @@
 
 
         Entity --&gt; "1" EntityType : entity_type
-        click EntityType href "../EntityType"
+        click EntityType href "../EntityType/"
 
 
 
@@ -286,49 +286,49 @@
 <tr>
 <td><a href="../entity_id/">entity_id</a></td>
 <td>1 <br/> <a href="../UUID/">UUID</a></td>
-<td>Internal (CDM) unique identifier for an entity</td>
+<td>Internal (CDM) unique identifier for an entity.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../data_source_id/">data_source_id</a></td>
 <td>1 <br/> <a href="../UUID/">UUID</a></td>
-<td>Internal (CDM) unique identifier for a data source</td>
+<td>Internal (CDM) unique identifier for a data source.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../entity_type/">entity_type</a></td>
 <td>1 <br/> <a href="../EntityType/">EntityType</a></td>
-<td>The class of the entity</td>
+<td>The class of the entity. Must be a valid CDM class.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../data_source_entity_id/">data_source_entity_id</a></td>
 <td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>The primary ID of the entity at the data source</td>
+<td>The primary ID of the entity at the data source.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../data_source_created/">data_source_created</a></td>
 <td>1 <br/> <a href="../Iso8601/">Iso8601</a></td>
-<td>Date/timestamp for when the entity was created or added to the data source</td>
+<td>Date/timestamp for when the entity was created or added to the data source.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../data_source_updated/">data_source_updated</a></td>
 <td>0..1 <br/> <a href="../Iso8601/">Iso8601</a></td>
-<td>Date/timestamp for when the entity was updated in the data source</td>
+<td>Date/timestamp for when the entity was updated in the data source.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../created/">created</a></td>
 <td>1 <br/> <a href="../Iso8601/">Iso8601</a></td>
-<td>Date/timestamp for when the entity was created or added to the CDM</td>
+<td>Date/timestamp for when the entity was created or added to the CDM.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../updated/">updated</a></td>
 <td>1 <br/> <a href="../Iso8601/">Iso8601</a></td>
-<td>Date/timestamp for when the entity was updated in the CDM</td>
+<td>Date/timestamp for when the entity was updated in the CDM.</td>
 <td>direct</td>
 </tr>
 </tbody>

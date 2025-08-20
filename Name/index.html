@@ -237,9 +237,9 @@
 <p>URI: <a href="http://kbase.github.io/cdm-schema/Name">kb_cdm:Name</a></p>
 <div class="mermaid"> classDiagram
     class Name
-    click Name href "../Name"
+    click Name href "../Name/"
       Table &lt;|-- Name
-        click Table href "../Table"
+        click Table href "../Table/"
 
       Name : description
 
@@ -272,25 +272,25 @@
 <tr>
 <td><a href="../entity_id/">entity_id</a></td>
 <td>1 <br/> <a href="../UUID/">UUID</a></td>
-<td>Internal (CDM) unique identifier for an entity</td>
+<td>Internal (CDM) unique identifier for an entity.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../name/">name</a></td>
 <td>1 <br/> <a href="../String/">String</a></td>
-<td>The string used as a name</td>
+<td>The string used as a name.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../description/">description</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Brief description of the name and/or its relationship to the entity</td>
+<td>Brief description of the name and/or its relationship to the entity.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../source/">source</a></td>
 <td>0..1 <br/> <a href="../DataSourceUuid/">DataSourceUuid</a></td>
-<td>The source for a specific piece of information; should be a CDM internal ID o...</td>
+<td>The source for a specific piece of information; should be a CDM internal ID of a source in the DataSource table.</td>
 <td>direct</td>
 </tr>
 </tbody>

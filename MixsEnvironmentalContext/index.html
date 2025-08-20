@@ -234,9 +234,9 @@
 <p>URI: <a href="http://kbase.github.io/cdm-schema/MixsEnvironmentalContext">kb_cdm:MixsEnvironmentalContext</a></p>
 <div class="mermaid"> classDiagram
     class MixsEnvironmentalContext
-    click MixsEnvironmentalContext href "../MixsEnvironmentalContext"
+    click MixsEnvironmentalContext href "../MixsEnvironmentalContext/"
       Table &lt;|-- MixsEnvironmentalContext
-        click Table href "../Table"
+        click Table href "../Table/"
 
       MixsEnvironmentalContext : env_broad_scale
 
@@ -269,25 +269,25 @@
 <tr>
 <td><a href="../mixs_environmental_context_id/">mixs_environmental_context_id</a></td>
 <td>1 <br/> <a href="../UUID/">UUID</a></td>
-<td>Internal (CDM) unique identifier for a mixs environmental context</td>
+<td>Internal (CDM) unique identifier for a mixs environmental context.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../env_broad_scale/">env_broad_scale</a></td>
 <td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>Report the major environmental system the sample or specimen came from</td>
+<td>Report the major environmental system the sample or specimen came from. The system(s) identified should have a coarse spatial grain, to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO's biome class: http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../env_local_scale/">env_local_scale</a></td>
 <td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>Report the entity or entities which are in the sample or specimen's local vic...</td>
+<td>Report the entity or entities which are in the sample or specimen's local vicinity and which you believe have significant causal influences on your sample or specimen. We recommend using EnvO terms which are of smaller spatial grain than your entry for env_broad_scale. Terms, such as anatomical sites, from other OBO Library ontologies which interoperate with EnvO (e.g. UBERON) are accepted in this field. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../env_medium/">env_medium</a></td>
 <td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>Report the environmental material(s) immediately surrounding the sample or sp...</td>
+<td>Report the environmental material(s) immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of 'environmental material' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS . Terms from other OBO ontologies are permissible as long as they reference mass/volume nouns (e.g. air, water, blood) and not discrete, countable entities (e.g. a tree, a leaf, a table top).</td>
 <td>direct</td>
 </tr>
 </tbody>

@@ -246,9 +246,9 @@
 <p>URI: <a href="http://kbase.github.io/cdm-schema/Contributor">kb_cdm:Contributor</a></p>
 <div class="mermaid"> classDiagram
     class Contributor
-    click Contributor href "../Contributor"
+    click Contributor href "../Contributor/"
       Table &lt;|-- Contributor
-        click Table href "../Table"
+        click Table href "../Table/"
 
       Contributor : contributor_id
 
@@ -259,7 +259,7 @@
 
 
         Contributor --&gt; "0..1" ContributorType : contributor_type
-        click ContributorType href "../ContributorType"
+        click ContributorType href "../ContributorType/"
 
 
 
@@ -292,31 +292,31 @@
 <tr>
 <td><a href="../contributor_id/">contributor_id</a></td>
 <td>1 <br/> <a href="../UUID/">UUID</a></td>
-<td>Internal (CDM) unique identifier for a contributor</td>
+<td>Internal (CDM) unique identifier for a contributor.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../contributor_type/">contributor_type</a></td>
 <td>0..1 <br/> <a href="../ContributorType/">ContributorType</a></td>
-<td>Must be either 'Person' or 'Organization'</td>
+<td>Must be either 'Person' or 'Organization'.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../name/">name</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Contributor name</td>
+<td>Contributor name. For organizations, this should be the full (unabbreviated) name; can also be used for a person if the given name/family name format is not applicable.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../given_name/">given_name</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>The given name(s) of the contributor</td>
+<td>The given name(s) of the contributor.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../family_name/">family_name</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>The family name(s) of the contributor</td>
+<td>The family name(s) of the contributor.</td>
 <td>direct</td>
 </tr>
 </tbody>

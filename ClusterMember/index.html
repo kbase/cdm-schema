@@ -234,9 +234,9 @@
 <p>URI: <a href="http://kbase.github.io/cdm-schema/ClusterMember">kb_cdm:ClusterMember</a></p>
 <div class="mermaid"> classDiagram
     class ClusterMember
-    click ClusterMember href "../ClusterMember"
+    click ClusterMember href "../ClusterMember/"
       Table &lt;|-- ClusterMember
-        click Table href "../Table"
+        click Table href "../Table/"
 
       ClusterMember : cluster_id
 
@@ -271,31 +271,31 @@
 <tr>
 <td><a href="../cluster_id/">cluster_id</a></td>
 <td>1 <br/> <a href="../UUID/">UUID</a></td>
-<td>Internal (CDM) unique identifier for a cluster</td>
+<td>Internal (CDM) unique identifier for a cluster.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../entity_id/">entity_id</a></td>
 <td>1 <br/> <a href="../UUID/">UUID</a></td>
-<td>Internal (CDM) unique identifier for an entity</td>
+<td>Internal (CDM) unique identifier for an entity.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../is_representative/">is_representative</a></td>
 <td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
-<td>Whether or not this member is the representative for the cluster</td>
+<td>Whether or not this member is the representative for the cluster. If 'is_representative' is false, it is assumed that this is a cluster member.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../is_seed/">is_seed</a></td>
 <td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
-<td>Whether or not this is the seed for this cluster</td>
+<td>Whether or not this is the seed for this cluster.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../score/">score</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Output from the clustering protocol indicating how closely a member matches t...</td>
+<td>Output from the clustering protocol indicating how closely a member matches the representative.</td>
 <td>direct</td>
 </tr>
 </tbody>

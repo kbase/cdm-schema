@@ -233,9 +233,9 @@
 <p>URI: <a href="http://kbase.github.io/cdm-schema/ProtocolXProtocolParticipant">kb_cdm:ProtocolXProtocolParticipant</a></p>
 <div class="mermaid"> classDiagram
     class ProtocolXProtocolParticipant
-    click ProtocolXProtocolParticipant href "../ProtocolXProtocolParticipant"
+    click ProtocolXProtocolParticipant href "../ProtocolXProtocolParticipant/"
       Table &lt;|-- ProtocolXProtocolParticipant
-        click Table href "../Table"
+        click Table href "../Table/"
 
       ProtocolXProtocolParticipant : participant_type
 
@@ -248,7 +248,7 @@
 
 
         ProtocolXProtocolParticipant --&gt; "1" ProtocolParticipant : protocol_participant_id
-        click ProtocolParticipant href "../ProtocolParticipant"
+        click ProtocolParticipant href "../ProtocolParticipant/"
 
 
 
@@ -275,19 +275,19 @@
 <tr>
 <td><a href="../protocol_id/">protocol_id</a></td>
 <td>1 <br/> <a href="../UUID/">UUID</a></td>
-<td>Internal (CDM) unique identifier for a protocol</td>
+<td>Internal (CDM) unique identifier for a protocol.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../protocol_participant_id/">protocol_participant_id</a></td>
 <td>1 <br/> <a href="../ProtocolParticipant/">ProtocolParticipant</a></td>
-<td>The unique identifier for the protocol participant</td>
+<td>The unique identifier for the protocol participant.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../participant_type/">participant_type</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>The type of participant in the protocol</td>
+<td>The type of participant in the protocol.</td>
 <td>direct</td>
 </tr>
 </tbody>

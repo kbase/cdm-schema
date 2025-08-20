@@ -241,9 +241,9 @@
 <p>URI: <a href="http://kbase.github.io/cdm-schema/Association">kb_cdm:Association</a></p>
 <div class="mermaid"> classDiagram
     class Association
-    click Association href "../Association"
+    click Association href "../Association/"
       Table &lt;|-- Association
-        click Table href "../Table"
+        click Table href "../Table/"
 
       Association : aggregator_knowledge_source
 
@@ -270,7 +270,7 @@
 
 
         Association --&gt; "1" Any : subject
-        click Any href "../Any"
+        click Any href "../Any/"
 
 
 
@@ -297,61 +297,61 @@
 <tr>
 <td><a href="../association_id/">association_id</a></td>
 <td>1 <br/> <a href="../UUID/">UUID</a></td>
-<td>Internal (CDM) unique identifier for an association</td>
+<td>Internal (CDM) unique identifier for an association.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../subject/">subject</a></td>
 <td>1 <br/> <a href="../Any/">Any</a> or <br/><a href="../Feature/">Feature</a> or <br/><a href="../Protein/">Protein</a> or <br/><a href="../ContigCollection/">ContigCollection</a></td>
-<td>The subject of an association</td>
+<td>The subject of an association.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../object/">object</a></td>
 <td>1 <br/> <a href="../LocalCurie/">LocalCurie</a></td>
-<td>The object of an association</td>
+<td>The object of an association. Should be an ontology term or database cross-reference.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../predicate/">predicate</a></td>
 <td>0..1 <br/> <a href="../LocalCurie/">LocalCurie</a></td>
-<td>The relationship between subject and object in an association</td>
+<td>The relationship between subject and object in an association. Should be a term from the Relation Ontology.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../negated/">negated</a></td>
 <td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
-<td>If true, the relationship between the subject and object is negated</td>
+<td>If true, the relationship between the subject and object is negated. For example, consider an association where the subject is a protein ID, the object is the GO term for "glucose biosynthesis", and the predicate is "involved in". With the "negated" field set to false, the association is interpreted as "<protein id=""> is involved in glucose biosynthesis". With the "negated" field set to true, the association is interpreted as "<protein id=""> is not involved in glucose biosynthesis".</protein></protein></td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../evidence_type/">evidence_type</a></td>
 <td>0..1 <br/> <a href="../LocalCurie/">LocalCurie</a></td>
-<td>The type of evidence supporting the association</td>
+<td>The type of evidence supporting the association. Should be a term from the Evidence and Conclusion Ontology (ECO).</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../primary_knowledge_source/">primary_knowledge_source</a></td>
 <td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>The knowledge source that created the association</td>
+<td>The knowledge source that created the association. Should be a UUID from the DataSource table.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../aggregator_knowledge_source/">aggregator_knowledge_source</a></td>
 <td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>The knowledge source that aggregated the association</td>
+<td>The knowledge source that aggregated the association. Should be a UUID from the DataSource table.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../annotation_date/">annotation_date</a></td>
 <td>0..1 <br/> <a href="../Iso8601/">Iso8601</a></td>
-<td>The date when the annotation was made</td>
+<td>The date when the annotation was made.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../comments/">comments</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Any comments about the association</td>
+<td>Any comments about the association.</td>
 <td>direct</td>
 </tr>
 </tbody>

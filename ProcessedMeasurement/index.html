@@ -234,9 +234,9 @@
 <p>URI: <a href="http://kbase.github.io/cdm-schema/ProcessedMeasurement">kb_cdm:ProcessedMeasurement</a></p>
 <div class="mermaid"> classDiagram
     class ProcessedMeasurement
-    click ProcessedMeasurement href "../ProcessedMeasurement"
+    click ProcessedMeasurement href "../ProcessedMeasurement/"
       Measurement &lt;|-- ProcessedMeasurement
-        click Measurement href "../Measurement"
+        click Measurement href "../Measurement/"
 
       ProcessedMeasurement : attribute_cv_term_id
 
@@ -294,73 +294,73 @@
 <tr>
 <td><a href="../measurement_id/">measurement_id</a></td>
 <td>1 <br/> <a href="../UUID/">UUID</a></td>
-<td>Internal (CDM) unique identifier for a measurement</td>
+<td>Internal (CDM) unique identifier for a measurement.</td>
 <td><a href="../Measurement/">Measurement</a></td>
 </tr>
 <tr>
 <td><a href="../protocol_id/">protocol_id</a></td>
 <td>1 <br/> <a href="../UUID/">UUID</a></td>
-<td>The ID of the protocol used to generate the measurement</td>
+<td>The ID of the protocol used to generate the measurement.</td>
 <td><a href="../Measurement/">Measurement</a></td>
 </tr>
 <tr>
 <td><a href="../created_at/">created_at</a></td>
 <td>0..1 <br/> <a href="../Iso8601/">Iso8601</a></td>
-<td>Timestamp for the measurement</td>
+<td>Timestamp for the measurement.</td>
 <td><a href="../Measurement/">Measurement</a></td>
 </tr>
 <tr>
 <td><a href="../quality/">quality</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>The quality of the measurement, indicating the confidence that one can have i...</td>
+<td>The quality of the measurement, indicating the confidence that one can have in its correctness.</td>
 <td><a href="../Measurement/">Measurement</a></td>
 </tr>
 <tr>
 <td><a href="../maximum_value/">maximum_value</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>If the quantity describes a range, represents the upper bound of the range</td>
+<td>If the quantity describes a range, represents the upper bound of the range.</td>
 <td><a href="../QuantityValue/">QuantityValue</a></td>
 </tr>
 <tr>
 <td><a href="../minimum_value/">minimum_value</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>If the quantity describes a range, represents the lower bound of the range</td>
+<td>If the quantity describes a range, represents the lower bound of the range.</td>
 <td><a href="../QuantityValue/">QuantityValue</a></td>
 </tr>
 <tr>
 <td><a href="../value/">value</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>The numeric portion of the quantity</td>
+<td>The numeric portion of the quantity.</td>
 <td><a href="../QuantityValue/">QuantityValue</a></td>
 </tr>
 <tr>
 <td><a href="../unit/">unit</a></td>
 <td>0..1 <br/> <a href="../Curie/">Curie</a></td>
-<td>The unit of the quantity</td>
+<td>The unit of the quantity. Should be a term from UCUM.</td>
 <td><a href="../QuantityValue/">QuantityValue</a></td>
 </tr>
 <tr>
 <td><a href="../entity_id/">entity_id</a></td>
 <td>1 <br/> <a href="../UUID/">UUID</a></td>
-<td>The database entity (sample, feature, protein, etc</td>
+<td>The database entity (sample, feature, protein, etc.) to which the attribute-value annotation refers.</td>
 <td><a href="../AttributeValue/">AttributeValue</a></td>
 </tr>
 <tr>
 <td><a href="../attribute_name/">attribute_name</a></td>
 <td>1 <br/> <a href="../String/">String</a></td>
-<td>The attribute being captured in this annotation</td>
+<td>The attribute being captured in this annotation.</td>
 <td><a href="../AttributeValue/">AttributeValue</a></td>
 </tr>
 <tr>
 <td><a href="../attribute_cv_term_id/">attribute_cv_term_id</a></td>
 <td>0..1 <br/> <a href="../LocalCurie/">LocalCurie</a></td>
-<td>If the attribute is a term from a controlled vocabulary, the ID of the term</td>
+<td>If the attribute is a term from a controlled vocabulary, the ID of the term.</td>
 <td><a href="../AttributeValue/">AttributeValue</a></td>
 </tr>
 <tr>
 <td><a href="../raw_value/">raw_value</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Raw value from the source data</td>
+<td>Raw value from the source data. May or may not include units or other unstructured information.</td>
 <td><a href="../AttributeValue/">AttributeValue</a></td>
 </tr>
 </tbody>

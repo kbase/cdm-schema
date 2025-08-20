@@ -234,9 +234,9 @@
 <p>URI: <a href="http://kbase.github.io/cdm-schema/Event">kb_cdm:Event</a></p>
 <div class="mermaid"> classDiagram
     class Event
-    click Event href "../Event"
+    click Event href "../Event/"
       Table &lt;|-- Event
-        click Table href "../Table"
+        click Table href "../Table/"
 
       Event : created_at
 
@@ -271,31 +271,31 @@
 <tr>
 <td><a href="../event_id/">event_id</a></td>
 <td>1 <br/> <a href="../UUID/">UUID</a></td>
-<td>Internal (CDM) unique identifier for an event</td>
+<td>Internal (CDM) unique identifier for an event.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../created_at/">created_at</a></td>
 <td>0..1 <br/> <a href="../Iso8601/">Iso8601</a></td>
-<td>The time at which the event started or was created</td>
+<td>The time at which the event started or was created.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../description/">description</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Brief text description of what actually happened</td>
+<td>Brief text description of what actually happened.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../name/">name</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Name or title for the event</td>
+<td>Name or title for the event.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../location/">location</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>The location for this event</td>
+<td>The location for this event. May be described in terms of coordinates.</td>
 <td>direct</td>
 </tr>
 </tbody>

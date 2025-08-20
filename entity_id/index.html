@@ -411,59 +411,24 @@ Alias: entity_id</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../AttributeValue/">AttributeValue</a></td>
-<td>A generic class for capturing tag-value information in a structured form</td>
-<td>yes</td>
-</tr>
-<tr>
 <td><a href="../Sequence/">Sequence</a></td>
 <td></td>
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../ProcessedMeasurement/">ProcessedMeasurement</a></td>
-<td>A measurement that requires additional processing to generate a result</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ClusterMember/">ClusterMember</a></td>
-<td>Relationship representing membership of a cluster</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Measurement/">Measurement</a></td>
-<td>A qualitative or quantitative observation of an attribute of an object or eve...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Name/">Name</a></td>
-<td>A string used as the name or label for an entity</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Entity/">Entity</a></td>
-<td>A database entity</td>
-<td>yes</td>
-</tr>
-<tr>
 <td><a href="../QuantityValue/">QuantityValue</a></td>
-<td>A simple quantity, e</td>
+<td>A simple quantity, e.g. 2cm. May be used to describe a range using the minimum_value and maximum_value fields.</td>
 <td>no</td>
-</tr>
-<tr>
-<td><a href="../AssociationXSupportingObject/">AssociationXSupportingObject</a></td>
-<td>Links associations to entities to capture supporting objects in an associatio...</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../EntityXMeasurement/">EntityXMeasurement</a></td>
-<td>Captures a measurement made on an entity</td>
-<td>yes</td>
 </tr>
 <tr>
 <td><a href="../Identifier/">Identifier</a></td>
-<td>A string used as a resolvable (external) identifier for an entity</td>
+<td>A string used as a resolvable (external) identifier for an entity. This should be a URI or CURIE. If the string cannot be resolved to an URL, it should be added as a 'name' instead.<br><br>This table is used for capturing external IDs. The internal CDM identifier should be used in the *_id field (e.g. feature_id, protein_id, contig_collection_id).</td>
 <td>no</td>
+</tr>
+<tr>
+<td><a href="../AttributeValue/">AttributeValue</a></td>
+<td>A generic class for capturing tag-value information in a structured form.</td>
+<td>yes</td>
 </tr>
 <tr>
 <td><a href="../Geolocation/">Geolocation</a></td>
@@ -471,8 +436,43 @@ Alias: entity_id</p>
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../AssociationXSupportingObject/">AssociationXSupportingObject</a></td>
+<td>Links associations to entities to capture supporting objects in an association. ay be a biological entity, such as a protein or feature, or a URL to a resource (e.g. a publication) that supports the association. Where possible, CDM identifiers should be used.</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../ProcessedMeasurement/">ProcessedMeasurement</a></td>
+<td>A measurement that requires additional processing to generate a result.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Measurement/">Measurement</a></td>
+<td>A qualitative or quantitative observation of an attribute of an object or event against a standardized scale, to enable it to be compared with other objects or events.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Entity/">Entity</a></td>
+<td>A database entity.</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../Name/">Name</a></td>
+<td>A string used as the name or label for an entity. This may be a primary name, alternative name, synonym, acronym, or any other label used to refer to an entity.<br><br>Identifiers that look like CURIEs or database references, but which cannot be resolved using bioregistry or identifiers.org should be added as names.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../EntityXMeasurement/">EntityXMeasurement</a></td>
+<td>Captures a measurement made on an entity.</td>
+<td>yes</td>
+</tr>
+<tr>
 <td><a href="../TextValue/">TextValue</a></td>
 <td>A basic string value</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ClusterMember/">ClusterMember</a></td>
+<td>Relationship representing membership of a cluster. An optional score can be assigned to each cluster member.</td>
 <td>no</td>
 </tr>
 </tbody>

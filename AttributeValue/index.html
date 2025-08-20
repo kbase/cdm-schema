@@ -237,17 +237,17 @@
 <p>URI: <a href="http://kbase.github.io/cdm-schema/AttributeValue">kb_cdm:AttributeValue</a></p>
 <div class="mermaid"> classDiagram
     class AttributeValue
-    click AttributeValue href "../AttributeValue"
+    click AttributeValue href "../AttributeValue/"
       Table &lt;|-- AttributeValue
-        click Table href "../Table"
+        click Table href "../Table/"
 
 
       AttributeValue &lt;|-- QuantityValue
-        click QuantityValue href "../QuantityValue"
+        click QuantityValue href "../QuantityValue/"
       AttributeValue &lt;|-- TextValue
-        click TextValue href "../TextValue"
+        click TextValue href "../TextValue/"
       AttributeValue &lt;|-- Geolocation
-        click Geolocation href "../Geolocation"
+        click Geolocation href "../Geolocation/"
 
 
       AttributeValue : attribute_cv_term_id
@@ -286,25 +286,25 @@
 <tr>
 <td><a href="../entity_id/">entity_id</a></td>
 <td>1 <br/> <a href="../UUID/">UUID</a></td>
-<td>The database entity (sample, feature, protein, etc</td>
+<td>The database entity (sample, feature, protein, etc.) to which the attribute-value annotation refers.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../attribute_name/">attribute_name</a></td>
 <td>1 <br/> <a href="../String/">String</a></td>
-<td>The attribute being captured in this annotation</td>
+<td>The attribute being captured in this annotation.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../attribute_cv_term_id/">attribute_cv_term_id</a></td>
 <td>0..1 <br/> <a href="../LocalCurie/">LocalCurie</a></td>
-<td>If the attribute is a term from a controlled vocabulary, the ID of the term</td>
+<td>If the attribute is a term from a controlled vocabulary, the ID of the term.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../raw_value/">raw_value</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Raw value from the source data</td>
+<td>Raw value from the source data. May or may not include units or other unstructured information.</td>
 <td>direct</td>
 </tr>
 </tbody>
