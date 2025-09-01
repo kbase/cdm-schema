@@ -1,5 +1,5 @@
 version = 1
-revision = 2
+revision = 3
 requires-python = ">=3.13"
 
 [[package]]
@@ -157,14 +157,14 @@ wheels = [
 
 [[package]]
 name = "click"
-version = "8.2.1"
+version = "8.1.8"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "colorama", marker = "sys_platform == 'win32'" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/60/6c/8ca2efa64cf75a977a0d7fac081354553ebe483345c734fb6b6515d96bbc/click-8.2.1.tar.gz", hash = "sha256:27c491cc05d968d271d5a1db13e3b5a184636d9d930f148c50b038f0d0646202", size = 286342, upload-time = "2025-05-20T23:19:49.832Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/b9/2e/0090cbf739cee7d23781ad4b89a9894a41538e4fcf4c31dcdd705b78eb8b/click-8.1.8.tar.gz", hash = "sha256:ed53c9d8990d83c2a27deae68e4ee337473f6330c040a31d4225c9574d16096a", size = 226593, upload-time = "2024-12-21T18:38:44.339Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/85/32/10bb5764d90a8eee674e9dc6f4db6a0ab47c8c4d0d83c27f7c39ac415a4d/click-8.2.1-py3-none-any.whl", hash = "sha256:61a3265b914e850b85317d0b3109c7f8cd35a670f963866005d6ef1d5175a12b", size = 102215, upload-time = "2025-05-20T23:19:47.796Z" },
+    { url = "https://files.pythonhosted.org/packages/7e/d4/7ebdbd03970677812aac39c869717059dbb71a4cfc033ca6e5221787892c/click-8.1.8-py3-none-any.whl", hash = "sha256:63c132bbbed01578a06712a2d1f497bb62d9c1c0d329b7903a866228027263b2", size = 98188, upload-time = "2024-12-21T18:38:41.666Z" },
 ]
 
 [[package]]
@@ -449,7 +449,7 @@ wheels = [
 
 [[package]]
 name = "linkml"
-version = "1.9.3"
+version = "1.9.4"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "antlr4-python3-runtime" },
@@ -477,9 +477,9 @@ dependencies = [
     { name = "sqlalchemy" },
     { name = "watchdog" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/a3/cf/ab84deb8130d63d9a7baa52cd88b134ea9ad2186eeb4df6cdd3b837e6058/linkml-1.9.3.tar.gz", hash = "sha256:96de208001dae5bde43092ce0f3fab61df4c85231939476dc3f93d0b5b0d4590", size = 263725, upload-time = "2025-07-30T19:58:33.837Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/9d/7c/ea1548762bf9098d7a50925579318d1f773a97b2666c8eaa397321afe242/linkml-1.9.4.tar.gz", hash = "sha256:b5075a697bfdb6ef829e19e15046f6efc11a946352eb7f5024e89f710ebd96ca", size = 42799474, upload-time = "2025-08-26T18:07:49.725Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/91/54/5bb8f9fd0fbdd076a631bcae7c5aa3f8c1447e04650b79e45f77fab661e4/linkml-1.9.3-py3-none-any.whl", hash = "sha256:77f2e566ce03f897bc0a9dc49d4d933a859d2a78ef56f080c9a0f8415becb884", size = 336474, upload-time = "2025-07-30T19:58:30.483Z" },
+    { url = "https://files.pythonhosted.org/packages/a8/bd/e46587d1c99334c708d485c7a357ee58de13e2348881917829001d7a11ac/linkml-1.9.4-py3-none-any.whl", hash = "sha256:ecc5cb73669da7d48340f689ae6ed8076b6b15099aef472668345fc9b5931b11", size = 337157, upload-time = "2025-08-26T18:07:47.205Z" },
 ]
 
 [[package]]
