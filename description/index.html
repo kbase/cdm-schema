@@ -274,7 +274,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../about.md" class="md-nav__link">
+      <a href="../pages/about/" class="md-nav__link">
         
   
   
@@ -411,29 +411,9 @@ Alias: description</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../Name/">Name</a></td>
-<td>A string used as the name or label for an entity. This may be a primary name, alternative name, synonym, acronym, or any other label used to refer to an entity.<br><br>Identifiers that look like CURIEs or database references, but which cannot be resolved using bioregistry or identifiers.org should be added as names.</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../Cluster/">Cluster</a></td>
-<td>Represents an individual execution of a clustering protocol. See the ClusterMember class for clustering results.</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../Experiment/">Experiment</a></td>
 <td>A discrete scientific procedure undertaken to make a discovery, test a hypothesis, or demonstrate a known fact.</td>
 <td>no</td>
-</tr>
-<tr>
-<td><a href="../Protein/">Protein</a></td>
-<td>Proteins are large, complex molecules made up of one or more long, folded chains of amino acids, whose sequences are determined by the DNA sequence of the protein-encoding gene.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Identifier/">Identifier</a></td>
-<td>A string used as a resolvable (external) identifier for an entity. This should be a URI or CURIE. If the string cannot be resolved to an URL, it should be added as a 'name' instead.<br><br>This table is used for capturing external IDs. The internal CDM identifier should be used in the *_id field (e.g. feature_id, protein_id, contig_collection_id).</td>
-<td>yes</td>
 </tr>
 <tr>
 <td><a href="../Event/">Event</a></td>
@@ -446,13 +426,33 @@ Alias: description</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Project/">Project</a></td>
-<td>Administrative unit for collecting data related to a certain topic, location, data type, grant funding, and so on.</td>
+<td><a href="../Identifier/">Identifier</a></td>
+<td>A string used as a resolvable (external) identifier for an entity. This should be a URI or CURIE. If the string cannot be resolved to an URL, it should be added as a 'name' instead.<br><br>This table is used for capturing external IDs. The internal CDM identifier should be used in the *_id field (e.g. feature_id, protein_id, contig_collection_id).</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../Name/">Name</a></td>
+<td>A string used as the name or label for an entity. This may be a primary name, alternative name, synonym, acronym, or any other label used to refer to an entity.<br><br>Identifiers that look like CURIEs or database references, but which cannot be resolved using bioregistry or identifiers.org should be added as names.</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../Protein/">Protein</a></td>
+<td>Proteins are large, complex molecules made up of one or more long, folded chains of amino acids, whose sequences are determined by the DNA sequence of the protein-encoding gene.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Cluster/">Cluster</a></td>
+<td>Represents an individual execution of a clustering protocol. See the ClusterMember class for clustering results.</td>
 <td>no</td>
 </tr>
 <tr>
 <td><a href="../Protocol/">Protocol</a></td>
 <td>Defined method or set of methods.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Project/">Project</a></td>
+<td>Administrative unit for collecting data related to a certain topic, location, data type, grant funding, and so on.</td>
 <td>no</td>
 </tr>
 </tbody>
