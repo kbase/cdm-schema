@@ -24,16 +24,16 @@ jobs:
             id: install_deps
             run: uv sync
 
+          - name: Validate linkml files
+            id: validate_linkml
+            run: |
+                make lint-validate
+            continue-on-error: true
+
           - name: Lint linkml file
             id: lint_linkml
             run: |
-                make lint-no-warn
-            continue-on-error: true
-
-          - name: Validate linkml file
-            id: validate_linkml
-            run: |
-                make lint-validate-no-warn
+                make lint
             continue-on-error: true
 
           # - name: Validate sample data against the schema

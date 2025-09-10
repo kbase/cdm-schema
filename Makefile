@@ -152,14 +152,14 @@ test-python:
 lint:  ## lint the schema; warnings or errors result in a non-zero exit code
 	$(RUN) linkml-lint $(LINKML_SCHEMA_FILE)
 
-lint-validate:  ## validate the schema; warnings or errors result in a non-zero exit code
-	$(RUN) linkml-lint --validate $(LINKML_SCHEMA_FILE)
-
 lint-no-warn:  ## lint the schema; warnings do not result in a non-zero exit code
 	$(RUN) linkml-lint --ignore-warnings $(LINKML_SCHEMA_FILE)
 
-lint-validate-no-warn:  ## lint the schema; warnings do not result in a non-zero exit code
-	$(RUN) linkml-lint --ignore-warnings --validate $(LINKML_SCHEMA_FILE)
+lint-validate:  ## validate the schema; warnings or errors result in a non-zero exit code
+	$(RUN) linkml-lint --validate-only $(LINKML_DIR)
+
+lint-validate-no-warn:  ## validate the schema; warnings do not result in a non-zero exit code
+	$(RUN) linkml-lint --ignore-warnings --validate $(LINKML_DIR)
 
 test-sample-data:  ## validate sample data against LinkML schema
 	$(RUN) linkml-validate -s $(LINKML_SCHEMA_FILE) sample_data/**/**/*.json

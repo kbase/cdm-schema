@@ -34,7 +34,7 @@ extra_javascript:
 nav:
   # - Home: home.md
   - Index: index.md
-  - About: about.md
+  - About: pages/about.md
 site_url: https://kbase.github.io/cdm-schema
 repo_url: https://github.com/kbase/cdm-schema
 
