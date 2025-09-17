@@ -196,6 +196,15 @@ examples/output: src/$(SCHEMA_NAME)/schema/$(SCHEMA_NAME).yaml
 		--output-directory $@ \
 		--schema $< > $@/README.md
 
+  uv run linkml-run-examples \
+    --input-formats json \
+    --input-formats yaml \
+    --output-formats json \
+    --output-formats yaml \
+    --counter-example-input-directory tests/data/invalid \
+    --input-directory tests/data/valid \
+    --output-directory examples/output \
+    --schema {{source_schema_path}} > examples/output/README.md
 
 serve: mkd-serve ## Test documentation locally
 

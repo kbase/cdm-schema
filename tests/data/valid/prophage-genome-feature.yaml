@@ -8,3 +8,17 @@
   cds_phase: 0
   e_value: 1.2e-15
   p_value: 0.001
+- feature_id: PV:AA_WF_I-V_contig_3062_provirus_3_11663 # PV= provirus aka prophage
+  hash: "3c6e0b8a9c15224a8228b9a98ca1531d"
+  start: 3
+  end: 11663
+  p_value: 0.9805 # virus_score?
+  type: "SO:0001006"
+  strand: .
+- feature_id: SP:AA_WF_I-V_contig_20285 # SP= someplasmid
+  hash: "7d793037a0760186574b0282f2f435e7"
+  start: 1
+  end: 40484
+  type: "SO:0000155"
+  strand: .
+  p_value: 0.9953 # plasmid_score
