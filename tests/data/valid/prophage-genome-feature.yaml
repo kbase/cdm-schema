@@ -1,0 +1,10 @@
+- feature_id: "CDM:f47ac10b-58cc-4372-a567-0e02b2c3d479"
+  hash: "5d41402abc4b2a76b9719d911017c592"
+  start: 125000
+  end: 175000
+  strand: positive
+  type: "SO:0001006"
+  source_database: "RefSeq"
+  cds_phase: 0
+  e_value: 1.2e-15
+  p_value: 0.001
