@@ -34,7 +34,7 @@ LINKML_DIR = $(SRC_DIR)/linkml
 JSONSCHEMA_DIR = $(SRC_DIR)/jsonschema
 PYTHON_DIR = $(SRC_DIR)/cdm_schema
 # sample data
-SAMPLE_DATA_DIR = sample_data
+SAMPLE_DATA_DIR = test/data
 
 # unused
 SHEET_MODULE = $(LINKML_SCHEMA_GOOGLE_SHEET_MODULE)
@@ -161,12 +161,6 @@ lint-validate:  ## validate the schema; warnings or errors result in a non-zero 
 lint-validate-no-warn:  ## validate the schema; warnings do not result in a non-zero exit code
 	$(RUN) linkml-lint --ignore-warnings --validate $(LINKML_DIR)
 
-test-sample-data:  ## validate sample data against LinkML schema
-	$(RUN) linkml-validate -s $(LINKML_SCHEMA_FILE) sample_data/**/**/*.json
-
-test-sample-data-jsonschema: ## validate sample data against JSONschema
-	$(RUN) check-jsonschema --schemafile $(JSONSCHEMA_DIR)/$(SCHEMA_BASE_NAME).schema.json --verbose sample_data/**/**/*.json
-
 check-config:
 ifndef LINKML_SCHEMA_NAME
 	$(error **Project not configured**:\n\n - See '.env.public'\n\n)
@@ -184,27 +178,15 @@ examples/%.json: $(SAMPLE_DATA_DIR)/%.yaml
 examples/%.ttl: $(SAMPLE_DATA_DIR)/%.yaml
 	$(RUN) linkml-convert -P EXAMPLE=http://example.org/ -s $(LINKML_SCHEMA_FILE) -C $(SCHEMA_ROOT) $< -o $@
 
-test-examples: examples/output
 
-examples/output: src/$(SCHEMA_NAME)/schema/$(SCHEMA_NAME).yaml
-	mkdir -p $@
+test-examples:
 	$(RUN) linkml-run-examples \
-		--output-formats json \
+		--input-formats yaml \
 		--output-formats yaml \
-		--counter-example-input-directory $(SAMPLE_DATA_DIR)/invalid \
-		--input-directory $(SAMPLE_DATA_DIR)/valid \
-		--output-directory $@ \
-		--schema $< > $@/README.md
-
-  uv run linkml-run-examples \
-    --input-formats json \
-    --input-formats yaml \
-    --output-formats json \
-    --output-formats yaml \
-    --counter-example-input-directory tests/data/invalid \
-    --input-directory tests/data/valid \
-    --output-directory examples/output \
-    --schema {{source_schema_path}} > examples/output/README.md
+		--counter-example-input-directory tests/data/invalid \
+		--input-directory tests/data/valid \
+		--output-directory examples/output \
+		--schema $(LINKML_SCHEMA_FILE) > examples/output/README.md
 
 serve: mkd-serve ## Test documentation locally
 
