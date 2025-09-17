@@ -39,7 +39,7 @@ jobs:
           - name: Run LinkML example files
             id: run_linkml_examples
             run: |
-              make linkml-run-examples
+              make test-examples
             continue-on-error: true
 
           - name: Test documentation generation
