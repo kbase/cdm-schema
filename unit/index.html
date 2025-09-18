@@ -395,8 +395,8 @@
 
 
 <h1 id="slot-unit">Slot: unit</h1>
-<p><em>The unit of the quantity. Should be a term from UCUM.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/unit">kb_cdm:unit</a>
+<p><em>The units used to measure the value of the variable, if applicable. Units should be expressed using the Unit Ontology or a term from UCUM.</em></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/linkml/unit">kb_cdm:unit</a>
 Alias: unit</p>
 <!-- no inheritance hierarchy -->
 
@@ -411,30 +411,20 @@ Alias: unit</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../Measurement/">Measurement</a></td>
-<td>A qualitative or quantitative observation of an attribute of an object or event against a standardized scale, to enable it to be compared with other objects or events.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ProcessedMeasurement/">ProcessedMeasurement</a></td>
-<td>A measurement that requires additional processing to generate a result.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../QuantityValue/">QuantityValue</a></td>
-<td>A simple quantity, e.g. 2cm. May be used to describe a range using the minimum_value and maximum_value fields.</td>
+<td><a href="../Variable/">Variable</a></td>
+<td>A variable (input, output, environmental, etc.) that can be set or measured as part of a protocol.</td>
 <td>no</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Curie/">Curie</a></li>
+<li>Range: <a href="../String/">String</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -459,14 +449,16 @@ Alias: unit</p>
 <details>
 
 <pre><code class="language-yaml">name: unit
-description: The unit of the quantity. Should be a term from UCUM.
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+description: The units used to measure the value of the variable, if applicable. Units
+  should be expressed using the Unit Ontology or a term from UCUM.
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 rank: 1000
 alias: unit
-owner: QuantityValue
+owner: Variable
 domain_of:
-- QuantityValue
-range: curie
+- Variable
+range: string
+required: false
 
 </code></pre>
 

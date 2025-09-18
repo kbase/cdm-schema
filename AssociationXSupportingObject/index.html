@@ -230,13 +230,13 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="class-associationxsupportingobject">Class: AssociationXSupportingObject</h1>
-<p><em>Links associations to entities to capture supporting objects in an association. ay be a biological entity, such as a protein or feature, or a URL to a resource (e.g. a publication) that supports the association. Where possible, CDM identifiers should be used.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/AssociationXSupportingObject">kb_cdm:AssociationXSupportingObject</a></p>
+<p><em>Links associations to entities to capture supporting objects in an association. May be a biological entity, such as a protein or feature, or a URL to a resource (e.g. a publication) that supports the association. Where possible, CDM identifiers should be used.</em></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/linkml/AssociationXSupportingObject">kb_cdm:AssociationXSupportingObject</a></p>
 <div class="mermaid"> classDiagram
     class AssociationXSupportingObject
     click AssociationXSupportingObject href "../AssociationXSupportingObject/"
-      Table &lt;|-- AssociationXSupportingObject
-        click Table href "../Table/"
+      LinkerTable &lt;|-- AssociationXSupportingObject
+        click LinkerTable href "../LinkerTable/"
 
       AssociationXSupportingObject : association_id
 
@@ -247,7 +247,10 @@
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><a href="../Table/">Table</a><ul>
+<li><a href="../LinkerTable/">LinkerTable</a><ul>
 <li><strong>AssociationXSupportingObject</strong></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -264,13 +267,13 @@
 <tbody>
 <tr>
 <td><a href="../association_id/">association_id</a></td>
-<td>1..* <br/> <a href="../UUID/">UUID</a></td>
+<td>1..* <br/> <a href="../CdmAssociationId/">CdmAssociationId</a></td>
 <td>Internal (CDM) unique identifier for an association.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../entity_id/">entity_id</a></td>
-<td>1..* <br/> <a href="../UUID/">UUID</a></td>
+<td>1..* <br/> <a href="../CdmId/">CdmId</a></td>
 <td>Internal (CDM) unique identifier for an entity.</td>
 <td>direct</td>
 </tr>
@@ -279,7 +282,7 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -304,13 +307,13 @@
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
 <h3 id="direct">Direct</h3>
 <details>
-<pre><code class="language-yaml">name: Association_X_SupportingObject
+<pre><code class="language-yaml">name: Association_x_SupportingObject
 description: Links associations to entities to capture supporting objects in an association.
-  ay be a biological entity, such as a protein or feature, or a URL to a resource
+  May be a biological entity, such as a protein or feature, or a URL to a resource
   (e.g. a publication) that supports the association. Where possible, CDM identifiers
   should be used.
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
-is_a: Table
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+is_a: LinkerTable
 slots:
 - association_id
 - entity_id
@@ -327,13 +330,13 @@ represents_relationship: true
 </details>
 <h3 id="induced">Induced</h3>
 <details>
-<pre><code class="language-yaml">name: Association_X_SupportingObject
+<pre><code class="language-yaml">name: Association_x_SupportingObject
 description: Links associations to entities to capture supporting objects in an association.
-  ay be a biological entity, such as a protein or feature, or a URL to a resource
+  May be a biological entity, such as a protein or feature, or a URL to a resource
   (e.g. a publication) that supports the association. Where possible, CDM identifiers
   should be used.
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
-is_a: Table
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+is_a: LinkerTable
 slot_usage:
   association_id:
     name: association_id
@@ -345,34 +348,32 @@ attributes:
   association_id:
     name: association_id
     description: Internal (CDM) unique identifier for an association.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
     rank: 1000
     alias: association_id
-    owner: Association_X_SupportingObject
+    owner: Association_x_SupportingObject
     domain_of:
-    - Association_X_Publication
-    - Association_X_SupportingObject
     - Association
-    range: UUID
+    - Association_x_SupportingObject
+    range: cdm_association_id
     required: true
     multivalued: true
   entity_id:
     name: entity_id
     description: Internal (CDM) unique identifier for an entity.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
     rank: 1000
     alias: entity_id
-    owner: Association_X_SupportingObject
+    owner: Association_x_SupportingObject
     domain_of:
-    - Association_X_SupportingObject
-    - Entity_X_Measurement
     - ClusterMember
-    - Sequence
+    - EntityMixin
     - Entity
     - Identifier
     - Name
-    - AttributeValue
-    range: UUID
+    - Sequence
+    - Association_x_SupportingObject
+    range: cdm_id
     required: true
     multivalued: true
 represents_relationship: true

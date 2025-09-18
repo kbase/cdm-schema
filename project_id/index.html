@@ -396,7 +396,9 @@
 
 <h1 id="slot-project_id">Slot: project_id</h1>
 <p><em>Internal (CDM) unique identifier for a project.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/project_id">kb_cdm:project_id</a>
+<p><em>From the Entity table: entity_id where entity_type == 'Project'.</em></p>
+<p>__</p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/linkml/project_id">kb_cdm:project_id</a>
 Alias: project_id</p>
 <!-- no inheritance hierarchy -->
 
@@ -411,26 +413,21 @@ Alias: project_id</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../ContributorXRoleXProject/">ContributorXRoleXProject</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ExperimentXProject/">ExperimentXProject</a></td>
-<td>Captures the relationship between an experiment and the project that it is a part of.</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../Project/">Project</a></td>
 <td>Administrative unit for collecting data related to a certain topic, location, data type, grant funding, and so on.</td>
 <td>yes</td>
+</tr>
+<tr>
+<td><a href="../ContributorXRoleXProject/">ContributorXRoleXProject</a></td>
+<td>Describes the participation of a contributor in a project; ideally the contributor_role field will capture how the contributor was involved.</td>
+<td>no</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../UUID/">UUID</a></p>
+<p>Range: <a href="../CdmId/">CdmId</a></p>
 </li>
 <li>
 <p>Required: True</p>
@@ -439,7 +436,7 @@ Alias: project_id</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -464,15 +461,18 @@ Alias: project_id</p>
 <details>
 
 <pre><code class="language-yaml">name: project_id
-description: Internal (CDM) unique identifier for a project.
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+description: 'Internal (CDM) unique identifier for a project.
+
+  From the Entity table: entity_id where entity_type == ''Project''.
+
+  '
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 rank: 1000
 alias: project_id
 domain_of:
-- Contributor_X_Role_X_Project
-- Experiment_X_Project
+- Contributor_x_Role_x_Project
 - Project
-range: UUID
+range: cdm_id
 required: true
 
 </code></pre>

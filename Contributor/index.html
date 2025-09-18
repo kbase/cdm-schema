@@ -230,20 +230,17 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="class-contributor">Class: Contributor</h1>
-<p><em>Represents a contributor to the resource.</em></p>
+<p><em>Represents a contributor to a resource.</em></p>
 <p>__</p>
-<p><em>Contributors must have a 'contributor_type', either 'Person' or 'Organization', and</em></p>
-<p><em>one of the 'name' fields: either 'given_name' and 'family_name' (for a person), or 'name' (for an organization or a person).</em></p>
+<p><em>Contributors must have a 'contributor_type', either 'Person' or 'Organization', and one of the 'name' fields: either 'given_name' and 'family_name' (for a person), or 'name' (for an organization or a person).</em></p>
 <p>__</p>
-<p><em>The 'contributor_role' field takes values from the DataCite and CRediT contributor</em></p>
-<p><em>roles vocabularies. For more information on these resources and choosing</em></p>
-<p><em>appropriate roles, please see the following links:</em></p>
+<p><em>The 'contributor_role' field takes values from the DataCite and CRediT contributor roles vocabularies. For more information on these resources and choosing appropriate roles, please see the following links:</em></p>
 <p>__</p>
 <p><em>DataCite contributor roles: https://support.datacite.org/docs/datacite-metadata-schema-v44-recommended-and-optional-properties#7a-contributortype</em></p>
 <p>__</p>
 <p><em>CRediT contributor role taxonomy: https://credit.niso.org</em></p>
 <p>__</p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/Contributor">kb_cdm:Contributor</a></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/linkml/Contributor">kb_cdm:Contributor</a></p>
 <div class="mermaid"> classDiagram
     class Contributor
     click Contributor href "../Contributor/"
@@ -291,13 +288,13 @@
 <tbody>
 <tr>
 <td><a href="../contributor_id/">contributor_id</a></td>
-<td>1 <br/> <a href="../UUID/">UUID</a></td>
-<td>Internal (CDM) unique identifier for a contributor.</td>
+<td>1 <br/> <a href="../CdmContributorId/">CdmContributorId</a></td>
+<td>Internal (CDM) unique identifier for a contributor.<br/>From the Entity table: entity_id where entity_type == 'Contributor'.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../contributor_type/">contributor_type</a></td>
-<td>0..1 <br/> <a href="../ContributorType/">ContributorType</a></td>
+<td>0..1 <br> <a href="../ContributorType/">ContributorType</a></br></td>
 <td>Must be either 'Person' or 'Organization'.</td>
 <td>direct</td>
 </tr>
@@ -324,7 +321,7 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -350,21 +347,17 @@
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: Contributor
-description: 'Represents a contributor to the resource.
+description: 'Represents a contributor to a resource.
 
 
   Contributors must have a ''contributor_type'', either ''Person'' or ''Organization'',
-  and
-
-  one of the ''name'' fields: either ''given_name'' and ''family_name'' (for a person),
-  or ''name'' (for an organization or a person).
+  and one of the ''name'' fields: either ''given_name'' and ''family_name'' (for a
+  person), or ''name'' (for an organization or a person).
 
 
   The ''contributor_role'' field takes values from the DataCite and CRediT contributor
-
-  roles vocabularies. For more information on these resources and choosing
-
-  appropriate roles, please see the following links:
+  roles vocabularies. For more information on these resources and choosing appropriate
+  roles, please see the following links:
 
 
   DataCite contributor roles: https://support.datacite.org/docs/datacite-metadata-schema-v44-recommended-and-optional-properties#7a-contributortype
@@ -373,7 +366,7 @@ description: 'Represents a contributor to the resource.
   CRediT contributor role taxonomy: https://credit.niso.org
 
   '
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 is_a: Table
 slots:
 - contributor_id
@@ -388,7 +381,7 @@ attributes:
     examples:
     - value: Person
     - value: Organization
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_credit
     exact_mappings:
     - DataCite:attributes.contributors.name_type
     - DataCite:attributes.creators.name_type
@@ -406,7 +399,7 @@ attributes:
     - value: National Institute of Mental Health
     - value: Madonna
     - value: Ransome the Clown
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_credit
     exact_mappings:
     - JGI:organisms.pi.name
     - ORCID:name
@@ -419,11 +412,17 @@ attributes:
     slot_uri: schema:name
     domain_of:
     - Cluster
+    - Event
+    - Name
     - Contributor
     - DataSource
-    - Event
+    - DataSourceNew
+    - License
     - Experiment
-    - Name
+    - Parameter
+    - Protocol
+    - ProtocolExecution
+    - Variable
   given_name:
     name: given_name
     description: The given name(s) of the contributor.
@@ -431,7 +430,7 @@ attributes:
     - value: Marionetta Cecille de la
     - value: Helena
     - value: Hubert George
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_credit
     related_mappings:
     - DataCite:attributes.contributors.givenName
     - DataCite:attributes.creators.givenName
@@ -445,7 +444,7 @@ attributes:
     - value: Carte-Postale
     - value: Bonham Carter
     - value: Wells
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_credit
     related_mappings:
     - DataCite:attributes.contributors.familyName
     - DataCite:attributes.creators.familyName
@@ -470,21 +469,17 @@ any_of:
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: Contributor
-description: 'Represents a contributor to the resource.
+description: 'Represents a contributor to a resource.
 
 
   Contributors must have a ''contributor_type'', either ''Person'' or ''Organization'',
-  and
-
-  one of the ''name'' fields: either ''given_name'' and ''family_name'' (for a person),
-  or ''name'' (for an organization or a person).
+  and one of the ''name'' fields: either ''given_name'' and ''family_name'' (for a
+  person), or ''name'' (for an organization or a person).
 
 
   The ''contributor_role'' field takes values from the DataCite and CRediT contributor
-
-  roles vocabularies. For more information on these resources and choosing
-
-  appropriate roles, please see the following links:
+  roles vocabularies. For more information on these resources and choosing appropriate
+  roles, please see the following links:
 
 
   DataCite contributor roles: https://support.datacite.org/docs/datacite-metadata-schema-v44-recommended-and-optional-properties#7a-contributortype
@@ -493,7 +488,7 @@ description: 'Represents a contributor to the resource.
   CRediT contributor role taxonomy: https://credit.niso.org
 
   '
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 is_a: Table
 slot_usage:
   contributor_id:
@@ -506,7 +501,7 @@ attributes:
     examples:
     - value: Person
     - value: Organization
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_credit
     exact_mappings:
     - DataCite:attributes.contributors.name_type
     - DataCite:attributes.creators.name_type
@@ -526,7 +521,7 @@ attributes:
     - value: National Institute of Mental Health
     - value: Madonna
     - value: Ransome the Clown
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_credit
     exact_mappings:
     - JGI:organisms.pi.name
     - ORCID:name
@@ -541,11 +536,17 @@ attributes:
     owner: Contributor
     domain_of:
     - Cluster
+    - Event
+    - Name
     - Contributor
     - DataSource
-    - Event
+    - DataSourceNew
+    - License
     - Experiment
-    - Name
+    - Parameter
+    - Protocol
+    - ProtocolExecution
+    - Variable
     range: string
   given_name:
     name: given_name
@@ -554,7 +555,7 @@ attributes:
     - value: Marionetta Cecille de la
     - value: Helena
     - value: Hubert George
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_credit
     related_mappings:
     - DataCite:attributes.contributors.givenName
     - DataCite:attributes.creators.givenName
@@ -571,7 +572,7 @@ attributes:
     - value: Carte-Postale
     - value: Bonham Carter
     - value: Wells
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_credit
     related_mappings:
     - DataCite:attributes.contributors.familyName
     - DataCite:attributes.creators.familyName
@@ -583,17 +584,22 @@ attributes:
     range: string
   contributor_id:
     name: contributor_id
-    description: Internal (CDM) unique identifier for a contributor.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+    description: 'Internal (CDM) unique identifier for a contributor.
+
+      From the Entity table: entity_id where entity_type == ''Contributor''.
+
+      '
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
     rank: 1000
     identifier: true
     alias: contributor_id
     owner: Contributor
     domain_of:
-    - Contributor_X_Role_X_Experiment
-    - Contributor_X_Role_X_Project
     - Contributor
-    range: UUID
+    - ContributorAffiliations
+    - Contributor_x_Role_x_Project
+    - Contributor_to_DataSource
+    range: cdm_contributor_id
     required: true
 any_of:
 - slot_conditions:

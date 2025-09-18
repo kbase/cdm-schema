@@ -396,7 +396,9 @@
 
 <h1 id="slot-sample_id">Slot: sample_id</h1>
 <p><em>Internal (CDM) unique identifier for a sample.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/sample_id">kb_cdm:sample_id</a>
+<p><em>From the Entity table: entity_id where entity_type == 'Sample'.</em></p>
+<p>__</p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/linkml/sample_id">kb_cdm:sample_id</a>
 Alias: sample_id</p>
 <!-- no inheritance hierarchy -->
 
@@ -415,17 +417,12 @@ Alias: sample_id</p>
 <td>A material entity that can be characterised by an experiment.</td>
 <td>yes</td>
 </tr>
-<tr>
-<td><a href="../ExperimentXSample/">ExperimentXSample</a></td>
-<td>Represents the participation of a sample in an experiment.</td>
-<td>yes</td>
-</tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../UUID/">UUID</a></p>
+<p>Range: <a href="../CdmSampleId/">CdmSampleId</a></p>
 </li>
 <li>
 <p>Required: True</p>
@@ -434,7 +431,7 @@ Alias: sample_id</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -459,14 +456,17 @@ Alias: sample_id</p>
 <details>
 
 <pre><code class="language-yaml">name: sample_id
-description: Internal (CDM) unique identifier for a sample.
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+description: 'Internal (CDM) unique identifier for a sample.
+
+  From the Entity table: entity_id where entity_type == ''Sample''.
+
+  '
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 rank: 1000
 alias: sample_id
 domain_of:
-- Experiment_X_Sample
 - Sample
-range: UUID
+range: cdm_sample_id
 required: true
 
 </code></pre>

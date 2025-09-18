@@ -411,14 +411,9 @@ Alias: name</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../Experiment/">Experiment</a></td>
-<td>A discrete scientific procedure undertaken to make a discovery, test a hypothesis, or demonstrate a known fact.</td>
+<td><a href="../Variable/">Variable</a></td>
+<td>A variable (input, output, environmental, etc.) that can be set or measured as part of a protocol.</td>
 <td>no</td>
-</tr>
-<tr>
-<td><a href="../DataSource/">DataSource</a></td>
-<td>The source dataset from which data within the CDM was extracted. This might be an API query; a set of files downloaded from a website or uploaded by a user; a database dump; etc. A given data source should have either version information (e.g. UniProt's release number) or an access date to allow the original raw data dump to be recapitulated.</td>
-<td>yes</td>
 </tr>
 <tr>
 <td><a href="../Event/">Event</a></td>
@@ -426,18 +421,53 @@ Alias: name</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Contributor/">Contributor</a></td>
-<td>Represents a contributor to the resource.<br><br>Contributors must have a 'contributor_type', either 'Person' or 'Organization', and<br>one of the 'name' fields: either 'given_name' and 'family_name' (for a person), or 'name' (for an organization or a person).<br><br>The 'contributor_role' field takes values from the DataCite and CRediT contributor<br>roles vocabularies. For more information on these resources and choosing<br>appropriate roles, please see the following links:<br><br>DataCite contributor roles: https://support.datacite.org/docs/datacite-metadata-schema-v44-recommended-and-optional-properties#7a-contributortype<br><br>CRediT contributor role taxonomy: https://credit.niso.org</td>
+<td><a href="../Protocol/">Protocol</a></td>
+<td>A defined method or set of methods.</td>
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../Contributor/">Contributor</a></td>
+<td>Represents a contributor to a resource.<br><br>Contributors must have a 'contributor_type', either 'Person' or 'Organization', and one of the 'name' fields: either 'given_name' and 'family_name' (for a person), or 'name' (for an organization or a person).<br><br>The 'contributor_role' field takes values from the DataCite and CRediT contributor roles vocabularies. For more information on these resources and choosing appropriate roles, please see the following links:<br><br>DataCite contributor roles: https://support.datacite.org/docs/datacite-metadata-schema-v44-recommended-and-optional-properties#7a-contributortype<br><br>CRediT contributor role taxonomy: https://credit.niso.org</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../License/">License</a></td>
+<td>License information for the resource.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Parameter/">Parameter</a></td>
+<td>A parameter in a protocol. Currently specific to computational protocols.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../DataSourceNew/">DataSourceNew</a></td>
+<td>The source dataset from which data within the CDM was extracted. This might be an API query; a set of files downloaded from a website or uploaded by a user; a database dump; etc. A given data source should have either version information (e.g. a release number, like those used by UniProt or RefSeq) or an access date to allow the original raw data dump to be recapitulated.</td>
+<td>yes</td>
+</tr>
+<tr>
 <td><a href="../Name/">Name</a></td>
-<td>A string used as the name or label for an entity. This may be a primary name, alternative name, synonym, acronym, or any other label used to refer to an entity.<br><br>Identifiers that look like CURIEs or database references, but which cannot be resolved using bioregistry or identifiers.org should be added as names.</td>
+<td>A string used as the name or label for an entity. This may be a primary name, alternative name, synonym, acronym, or any other label used to refer to an entity.<br><br>Identifiers that look like CURIEs or database references, but which cannot be resolved using <a href="https://bioregistry.io">Bioregistry</a> or <a href="https://identifiers.org">identifiers.org</a> should be added to the <code>Name</code> table.</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../ProtocolExecution/">ProtocolExecution</a></td>
+<td>An instance of executing a protocol. Used for</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Experiment/">Experiment</a></td>
+<td>A discrete scientific procedure undertaken to make a discovery, test a hypothesis, or demonstrate a known fact. The protocol_id links to the workflow followed to perform the experiment.</td>
 <td>yes</td>
 </tr>
 <tr>
 <td><a href="../Cluster/">Cluster</a></td>
 <td>Represents an individual execution of a clustering protocol. See the ClusterMember class for clustering results.</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../DataSource/">DataSource</a></td>
+<td>The source for a resource, dataset, association, etc.</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -449,7 +479,7 @@ Alias: name</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -475,17 +505,23 @@ Alias: name</p>
 
 <pre><code class="language-yaml">name: name
 description: A string used as a name or title.
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 rank: 1000
 slot_uri: schema:name
 alias: name
 domain_of:
 - Cluster
+- Event
+- Name
 - Contributor
 - DataSource
-- Event
+- DataSourceNew
+- License
 - Experiment
-- Name
+- Parameter
+- Protocol
+- ProtocolExecution
+- Variable
 range: string
 
 </code></pre>

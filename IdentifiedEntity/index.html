@@ -238,19 +238,22 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-identifiedentity">Class: IdentifiedEntity</h1>
 <p><em>Represents the link between an entity and its identifiers.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/IdentifiedEntity">kb_cdm:IdentifiedEntity</a></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/linkml/IdentifiedEntity">kb_cdm:IdentifiedEntity</a></p>
 <div class="mermaid"> classDiagram
     class IdentifiedEntity
     click IdentifiedEntity href "../IdentifiedEntity/"
-      Table &lt;|-- IdentifiedEntity
-        click Table href "../Table/"
+      LinkerTable &lt;|-- IdentifiedEntity
+        click LinkerTable href "../LinkerTable/"
 
 
 </div>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><a href="../Table/">Table</a><ul>
+<li><a href="../LinkerTable/">LinkerTable</a><ul>
 <li><strong>IdentifiedEntity</strong></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -275,13 +278,13 @@
 </table>
 <h2 id="comments">Comments</h2>
 <ul>
-<li>Entity.entity_id &lt;&gt; Identifier.entity_id</li>
+<li>Entity.entity_id one:many Identifier.entity_id</li>
 <li>one entity can have multiple identifiers, and one identifier can be associated with multiple entities.</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -309,11 +312,11 @@
 <pre><code class="language-yaml">name: IdentifiedEntity
 description: Represents the link between an entity and its identifiers.
 comments:
-- Entity.entity_id &lt;&gt; Identifier.entity_id
+- Entity.entity_id one:many Identifier.entity_id
 - one entity can have multiple identifiers, and one identifier can be associated with
   multiple entities.
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
-is_a: Table
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+is_a: LinkerTable
 represents_relationship: true
 
 </code></pre>
@@ -323,11 +326,11 @@ represents_relationship: true
 <pre><code class="language-yaml">name: IdentifiedEntity
 description: Represents the link between an entity and its identifiers.
 comments:
-- Entity.entity_id &lt;&gt; Identifier.entity_id
+- Entity.entity_id one:many Identifier.entity_id
 - one entity can have multiple identifiers, and one identifier can be associated with
   multiple entities.
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
-is_a: Table
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+is_a: LinkerTable
 represents_relationship: true
 
 </code></pre>

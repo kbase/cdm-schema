@@ -380,7 +380,7 @@
 
 
 <h1 id="slot-created_at">Slot: created_at</h1>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/created_at">kb_cdm:created_at</a>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/linkml/created_at">kb_cdm:created_at</a>
 Alias: created_at</p>
 <!-- no inheritance hierarchy -->
 
@@ -395,23 +395,23 @@ Alias: created_at</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../Measurement/">Measurement</a></td>
-<td>A qualitative or quantitative observation of an attribute of an object or event against a standardized scale, to enable it to be compared with other objects or events.</td>
+<td><a href="../ProtocolExecution/">ProtocolExecution</a></td>
+<td>An instance of executing a protocol. Used for</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../MeasurementSet/">MeasurementSet</a></td>
+<td>Grouping table to collate a set of protocol outputs by variable, quality, and timestamp.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Experiment/">Experiment</a></td>
+<td>A discrete scientific procedure undertaken to make a discovery, test a hypothesis, or demonstrate a known fact. The protocol_id links to the workflow followed to perform the experiment.</td>
 <td>no</td>
 </tr>
 <tr>
 <td><a href="../Event/">Event</a></td>
 <td>Something that happened.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ProcessedMeasurement/">ProcessedMeasurement</a></td>
-<td>A measurement that requires additional processing to generate a result.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Experiment/">Experiment</a></td>
-<td>A discrete scientific procedure undertaken to make a discovery, test a hypothesis, or demonstrate a known fact.</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -448,7 +448,8 @@ alias: created_at
 domain_of:
 - Event
 - Experiment
-- Measurement
+- MeasurementSet
+- ProtocolExecution
 range: string
 
 </code></pre>

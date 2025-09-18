@@ -396,7 +396,9 @@
 
 <h1 id="slot-encoded_feature_id">Slot: encoded_feature_id</h1>
 <p><em>Internal (CDM) unique identifier for an encoded feature.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/encoded_feature_id">kb_cdm:encoded_feature_id</a>
+<p><em>From the Entity table: entity_id where entity_type == 'EncodedFeature'.</em></p>
+<p>__</p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/linkml/encoded_feature_id">kb_cdm:encoded_feature_id</a>
 Alias: encoded_feature_id</p>
 <!-- no inheritance hierarchy -->
 
@@ -411,23 +413,23 @@ Alias: encoded_feature_id</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../EncodedFeatureXFeature/">EncodedFeatureXFeature</a></td>
-<td>Captures the relationship between a feature and its transcription product.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ContigCollectionXEncodedFeature/">ContigCollectionXEncodedFeature</a></td>
-<td>Captures the relationship between a contig collection and an encoded feature.</td>
-<td>yes</td>
-</tr>
-<tr>
 <td><a href="../EncodedFeature/">EncodedFeature</a></td>
 <td>An entity generated from a feature, such as a transcript.</td>
 <td>yes</td>
 </tr>
 <tr>
+<td><a href="../EncodedFeatureXFeature/">EncodedFeatureXFeature</a></td>
+<td>Captures the relationship between a feature and its transcription product.</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../ContigXEncodedFeature/">ContigXEncodedFeature</a></td>
 <td>Captures the relationship between a contig and an encoded feature.</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../ContigCollectionXEncodedFeature/">ContigCollectionXEncodedFeature</a></td>
+<td>Captures the relationship between a contig collection and an encoded feature.</td>
 <td>yes</td>
 </tr>
 </tbody>
@@ -435,7 +437,7 @@ Alias: encoded_feature_id</p>
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../UUID/">UUID</a></p>
+<p>Range: <a href="../CdmEncodedFeatureId/">CdmEncodedFeatureId</a></p>
 </li>
 <li>
 <p>Required: True</p>
@@ -444,7 +446,7 @@ Alias: encoded_feature_id</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -469,16 +471,20 @@ Alias: encoded_feature_id</p>
 <details>
 
 <pre><code class="language-yaml">name: encoded_feature_id
-description: Internal (CDM) unique identifier for an encoded feature.
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+description: 'Internal (CDM) unique identifier for an encoded feature.
+
+  From the Entity table: entity_id where entity_type == ''EncodedFeature''.
+
+  '
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 rank: 1000
 alias: encoded_feature_id
 domain_of:
-- Contig_X_EncodedFeature
-- ContigCollection_X_EncodedFeature
-- EncodedFeature_X_Feature
 - EncodedFeature
-range: UUID
+- Contig_x_EncodedFeature
+- ContigCollection_x_EncodedFeature
+- EncodedFeature_x_Feature
+range: cdm_encoded_feature_id
 required: true
 
 </code></pre>

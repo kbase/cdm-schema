@@ -238,19 +238,22 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-namedentity">Class: NamedEntity</h1>
 <p><em>Represents the link between an entity and its names.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/NamedEntity">kb_cdm:NamedEntity</a></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/linkml/NamedEntity">kb_cdm:NamedEntity</a></p>
 <div class="mermaid"> classDiagram
     class NamedEntity
     click NamedEntity href "../NamedEntity/"
-      Table &lt;|-- NamedEntity
-        click Table href "../Table/"
+      LinkerTable &lt;|-- NamedEntity
+        click LinkerTable href "../LinkerTable/"
 
 
 </div>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><a href="../Table/">Table</a><ul>
+<li><a href="../LinkerTable/">LinkerTable</a><ul>
 <li><strong>NamedEntity</strong></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -275,13 +278,13 @@
 </table>
 <h2 id="comments">Comments</h2>
 <ul>
-<li>Entity.entity_id &lt;&gt; Name.entity_id</li>
+<li>Entity.entity_id one:many Name.entity_id</li>
 <li>one entity can have multiple names, and one name can be associated with multiple entities.</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -309,11 +312,11 @@
 <pre><code class="language-yaml">name: NamedEntity
 description: Represents the link between an entity and its names.
 comments:
-- Entity.entity_id &lt;&gt; Name.entity_id
+- Entity.entity_id one:many Name.entity_id
 - one entity can have multiple names, and one name can be associated with multiple
   entities.
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
-is_a: Table
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+is_a: LinkerTable
 represents_relationship: true
 
 </code></pre>
@@ -323,11 +326,11 @@ represents_relationship: true
 <pre><code class="language-yaml">name: NamedEntity
 description: Represents the link between an entity and its names.
 comments:
-- Entity.entity_id &lt;&gt; Name.entity_id
+- Entity.entity_id one:many Name.entity_id
 - one entity can have multiple names, and one name can be associated with multiple
   entities.
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
-is_a: Table
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+is_a: LinkerTable
 represents_relationship: true
 
 </code></pre>

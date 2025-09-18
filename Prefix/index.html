@@ -265,13 +265,13 @@
 <tr>
 <td><a href="../prefix/">prefix</a></td>
 <td>0..1 <br/> <a href="../Ncname/">Ncname</a></td>
-<td>A standardized prefix such as 'GO' or 'rdf' or 'FlyBase'</td>
+<td>A standardized prefix such as 'GO' or 'rdf' or 'FlyBase'.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../base/">base</a></td>
 <td>0..1 <br/> <a href="../Uri/">Uri</a></td>
-<td>The base URI a prefix will expand to</td>
+<td>The base URI a prefix will expand to.</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -279,7 +279,7 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -306,7 +306,7 @@
 <details>
 <pre><code class="language-yaml">name: Prefix
 description: Maps CURIEs to URIs
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 is_a: Table
 slots:
 - prefix
@@ -319,13 +319,13 @@ class_uri: sh:PrefixDeclaration
 <details>
 <pre><code class="language-yaml">name: Prefix
 description: Maps CURIEs to URIs
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 is_a: Table
 attributes:
   prefix:
     name: prefix
-    description: A standardized prefix such as 'GO' or 'rdf' or 'FlyBase'
-    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+    description: A standardized prefix such as 'GO' or 'rdf' or 'FlyBase'.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
     rank: 1000
     slot_uri: sh:prefix
     alias: prefix
@@ -335,8 +335,8 @@ attributes:
     range: ncname
   base:
     name: base
-    description: The base URI a prefix will expand to
-    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+    description: The base URI a prefix will expand to.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
     rank: 1000
     slot_uri: sh:namespace
     alias: base

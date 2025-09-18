@@ -231,7 +231,7 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-cluster">Class: Cluster</h1>
 <p><em>Represents an individual execution of a clustering protocol. See the ClusterMember class for clustering results.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/Cluster">kb_cdm:Cluster</a></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/linkml/Cluster">kb_cdm:Cluster</a></p>
 <div class="mermaid"> classDiagram
     class Cluster
     click Cluster href "../Cluster/"
@@ -279,13 +279,13 @@
 <tbody>
 <tr>
 <td><a href="../cluster_id/">cluster_id</a></td>
-<td>1 <br/> <a href="../UUID/">UUID</a></td>
-<td>Internal (CDM) unique identifier for a cluster.</td>
+<td>1 <br/> <a href="../CdmClusterId/">CdmClusterId</a></td>
+<td>Internal (CDM) unique identifier for a cluster.<br/>From the Entity table: entity_id where entity_type == 'Cluster'.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../description/">description</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>0..1 <br> <a href="../String/">String</a></br></td>
 <td>Brief textual definition or description.</td>
 <td>direct</td>
 </tr>
@@ -312,7 +312,7 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -340,33 +340,26 @@
 <pre><code class="language-yaml">name: Cluster
 description: Represents an individual execution of a clustering protocol. See the
   ClusterMember class for clustering results.
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 is_a: Table
 slots:
 - cluster_id
 - description
+- name
 slot_usage:
   cluster_id:
     name: cluster_id
     identifier: true
-attributes:
   name:
     name: name
     description: Name of the cluster, if available.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
-    domain_of:
-    - Cluster
-    - Contributor
-    - DataSource
-    - Event
-    - Experiment
-    - Name
+attributes:
   entity_type:
     name: entity_type
     description: Type of entity being clustered.
     todos:
     - 'This should be an enum: Protein, Feature, strain/species/other?'
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_components
     rank: 1000
     domain_of:
     - Cluster
@@ -376,13 +369,15 @@ attributes:
   protocol_id:
     name: protocol_id
     description: Protocol used to generate the cluster.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_components
     domain_of:
-    - Protocol_X_ProtocolParticipant
     - Cluster
     - Feature
+    - Experiment
+    - OrderedProtocolStep
     - Protocol
-    - Measurement
+    - ProtocolExecution
+    - ProtocolVariable
 
 </code></pre>
 </details>
@@ -391,33 +386,22 @@ attributes:
 <pre><code class="language-yaml">name: Cluster
 description: Represents an individual execution of a clustering protocol. See the
   ClusterMember class for clustering results.
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 is_a: Table
 slot_usage:
   cluster_id:
     name: cluster_id
     identifier: true
-attributes:
   name:
     name: name
     description: Name of the cluster, if available.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
-    alias: name
-    owner: Cluster
-    domain_of:
-    - Cluster
-    - Contributor
-    - DataSource
-    - Event
-    - Experiment
-    - Name
-    range: string
+attributes:
   entity_type:
     name: entity_type
     description: Type of entity being clustered.
     todos:
     - 'This should be an enum: Protein, Feature, strain/species/other?'
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_components
     rank: 1000
     alias: entity_type
     owner: Cluster
@@ -429,20 +413,26 @@ attributes:
   protocol_id:
     name: protocol_id
     description: Protocol used to generate the cluster.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_components
     alias: protocol_id
     owner: Cluster
     domain_of:
-    - Protocol_X_ProtocolParticipant
     - Cluster
     - Feature
+    - Experiment
+    - OrderedProtocolStep
     - Protocol
-    - Measurement
+    - ProtocolExecution
+    - ProtocolVariable
     range: string
   cluster_id:
     name: cluster_id
-    description: Internal (CDM) unique identifier for a cluster.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+    description: 'Internal (CDM) unique identifier for a cluster.
+
+      From the Entity table: entity_id where entity_type == ''Cluster''.
+
+      '
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
     rank: 1000
     identifier: true
     alias: cluster_id
@@ -450,25 +440,50 @@ attributes:
     domain_of:
     - Cluster
     - ClusterMember
-    range: UUID
+    range: cdm_cluster_id
     required: true
   description:
     name: description
     description: Brief textual definition or description.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
     rank: 1000
     alias: description
     owner: Cluster
     domain_of:
     - Cluster
     - Event
-    - Experiment
-    - Project
-    - Protein
-    - Protocol
-    - Sample
     - Identifier
     - Name
+    - Protein
+    - Sample
+    - Project
+    - Experiment
+    - Parameter
+    - Protocol
+    - ProtocolExecution
+    - Variable
+    range: string
+  name:
+    name: name
+    description: Name of the cluster, if available.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    slot_uri: schema:name
+    alias: name
+    owner: Cluster
+    domain_of:
+    - Cluster
+    - Event
+    - Name
+    - Contributor
+    - DataSource
+    - DataSourceNew
+    - License
+    - Experiment
+    - Parameter
+    - Protocol
+    - ProtocolExecution
+    - Variable
     range: string
 
 </code></pre>

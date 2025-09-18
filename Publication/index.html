@@ -231,7 +231,7 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-publication">Class: Publication</h1>
 <p><em>A publication (e.g. journal article).</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/Publication">kb_cdm:Publication</a></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/linkml/Publication">kb_cdm:Publication</a></p>
 <div class="mermaid"> classDiagram
     class Publication
     click Publication href "../Publication/"
@@ -262,7 +262,7 @@
 <tbody>
 <tr>
 <td><a href="../publication_id/">publication_id</a></td>
-<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>1 <br/> <a href="../CdmId/">CdmId</a></td>
 <td>Unique identifier for a publication - e.g. PMID, DOI, URL, etc.</td>
 <td>direct</td>
 </tr>
@@ -271,7 +271,7 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -298,7 +298,7 @@
 <details>
 <pre><code class="language-yaml">name: Publication
 description: A publication (e.g. journal article).
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 is_a: Table
 slots:
 - publication_id
@@ -313,7 +313,7 @@ slot_usage:
 <details>
 <pre><code class="language-yaml">name: Publication
 description: A publication (e.g. journal article).
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 is_a: Table
 slot_usage:
   publication_id:
@@ -323,15 +323,14 @@ attributes:
   publication_id:
     name: publication_id
     description: Unique identifier for a publication - e.g. PMID, DOI, URL, etc.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
     rank: 1000
     identifier: true
     alias: publication_id
     owner: Publication
     domain_of:
-    - Association_X_Publication
     - Publication
-    range: uriorcurie
+    range: cdm_id
     required: true
 
 </code></pre>

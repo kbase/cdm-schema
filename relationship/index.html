@@ -395,8 +395,8 @@
 
 
 <h1 id="slot-relationship">Slot: relationship</h1>
-<p><em>Relationship between this identifier and the entity in the <code>entity_id</code> field.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/relationship">kb_cdm:relationship</a>
+<p><em>Relationship between this identifier and the entity in the <code>entity_id</code> field. If absent, it is assumed that the identifier represents the same entity in another data source.</em></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/linkml/relationship">kb_cdm:relationship</a>
 Alias: relationship</p>
 <!-- no inheritance hierarchy -->
 
@@ -412,7 +412,7 @@ Alias: relationship</p>
 <tbody>
 <tr>
 <td><a href="../Identifier/">Identifier</a></td>
-<td>A string used as a resolvable (external) identifier for an entity. This should be a URI or CURIE. If the string cannot be resolved to an URL, it should be added as a 'name' instead.<br><br>This table is used for capturing external IDs. The internal CDM identifier should be used in the *_id field (e.g. feature_id, protein_id, contig_collection_id).</td>
+<td>A string used as a resolvable (external) identifier for an entity. This should be a CURIE in the form <code>&lt;database_prefix&gt;:&lt;local_identifier&gt;</code>. <a href="https://bioregistry.io">Bioregistry</a> is used as the canonical reference for CURIE database prefixes; please use the prefix exactly as written in the Bioregistry entry.<br><br>If the string cannot be resolved to an URL, it should be added to the <code>Name</code> table instead.<br><br>This table is used for capturing external IDs. The internal CDM identifier should be used in the *_id field (e.g. feature_id, protein_id, contig_collection_id).</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -424,7 +424,7 @@ Alias: relationship</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -450,8 +450,9 @@ Alias: relationship</p>
 
 <pre><code class="language-yaml">name: relationship
 description: Relationship between this identifier and the entity in the `entity_id`
-  field.
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+  field. If absent, it is assumed that the identifier represents the same entity in
+  another data source.
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 rank: 1000
 alias: relationship
 owner: Identifier

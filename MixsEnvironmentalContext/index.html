@@ -231,7 +231,7 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-mixsenvironmentalcontext">Class: MixsEnvironmentalContext</h1>
 <p><em>Environmental context, described using the MiXS convention of broad and local environment, plus the medium.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/MixsEnvironmentalContext">kb_cdm:MixsEnvironmentalContext</a></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/linkml/MixsEnvironmentalContext">kb_cdm:MixsEnvironmentalContext</a></p>
 <div class="mermaid"> classDiagram
     class MixsEnvironmentalContext
     click MixsEnvironmentalContext href "../MixsEnvironmentalContext/"
@@ -268,7 +268,7 @@
 <tbody>
 <tr>
 <td><a href="../mixs_environmental_context_id/">mixs_environmental_context_id</a></td>
-<td>1 <br/> <a href="../UUID/">UUID</a></td>
+<td>1 <br/> <a href="../CdmId/">CdmId</a></td>
 <td>Internal (CDM) unique identifier for a mixs environmental context.</td>
 <td>direct</td>
 </tr>
@@ -295,7 +295,7 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -323,7 +323,7 @@
 <pre><code class="language-yaml">name: MixsEnvironmentalContext
 description: Environmental context, described using the MiXS convention of broad and
   local environment, plus the medium.
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 is_a: Table
 slots:
 - mixs_environmental_context_id
@@ -357,7 +357,7 @@ attributes:
     examples:
     - value: oceanic epipelagic zone biome [ENVO:01000033] for annotating a water
         sample from the photic zone in middle of the Atlantic Ocean
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_components
     aliases:
     - broad-scale environmental context
     rank: 1000
@@ -396,7 +396,7 @@ attributes:
         various vegetation layers in a forest consider: canopy [ENVO:00000047]|herb
         and fern layer [ENVO:01000337]|litter layer [ENVO:01000338]|understory [01000335]|shrub
         layer [ENVO:01000336].'
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_components
     aliases:
     - local environmental context
     rank: 1000
@@ -434,7 +434,7 @@ attributes:
     - value: 'soil [ENVO:00001998]; Annotating a fish swimming in the upper 100 m
         of the Atlantic Ocean, consider: ocean water [ENVO:00002151]. Example: Annotating
         a duck on a pond consider: pond water [ENVO:00002228]|air [ENVO_00002005]'
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_components
     aliases:
     - environmental medium
     rank: 1000
@@ -452,7 +452,7 @@ attributes:
 <pre><code class="language-yaml">name: MixsEnvironmentalContext
 description: Environmental context, described using the MiXS convention of broad and
   local environment, plus the medium.
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 is_a: Table
 slot_usage:
   mixs_environmental_context_id:
@@ -484,7 +484,7 @@ attributes:
     examples:
     - value: oceanic epipelagic zone biome [ENVO:01000033] for annotating a water
         sample from the photic zone in middle of the Atlantic Ocean
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_components
     aliases:
     - broad-scale environmental context
     rank: 1000
@@ -525,7 +525,7 @@ attributes:
         various vegetation layers in a forest consider: canopy [ENVO:00000047]|herb
         and fern layer [ENVO:01000337]|litter layer [ENVO:01000338]|understory [01000335]|shrub
         layer [ENVO:01000336].'
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_components
     aliases:
     - local environmental context
     rank: 1000
@@ -565,7 +565,7 @@ attributes:
     - value: 'soil [ENVO:00001998]; Annotating a fish swimming in the upper 100 m
         of the Atlantic Ocean, consider: ocean water [ENVO:00002151]. Example: Annotating
         a duck on a pond consider: pond water [ENVO:00002228]|air [ENVO_00002005]'
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_components
     aliases:
     - environmental medium
     rank: 1000
@@ -580,14 +580,14 @@ attributes:
   mixs_environmental_context_id:
     name: mixs_environmental_context_id
     description: Internal (CDM) unique identifier for a mixs environmental context.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
     rank: 1000
     identifier: true
     alias: mixs_environmental_context_id
     owner: MixsEnvironmentalContext
     domain_of:
     - MixsEnvironmentalContext
-    range: UUID
+    range: cdm_id
     required: true
 
 </code></pre>

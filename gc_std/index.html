@@ -334,6 +334,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#aliases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aliases
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       Identifier and Mapping Information
@@ -396,7 +405,7 @@
 
 <h1 id="slot-gc_std">Slot: gc_std</h1>
 <p><em>The standard deviation of GC content across the contig collection</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/gc_std">kb_cdm:gc_std</a>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/linkml/gc_std">kb_cdm:gc_std</a>
 Alias: gc_std</p>
 <!-- no inheritance hierarchy -->
 
@@ -421,10 +430,14 @@ Alias: gc_std</p>
 <ul>
 <li>Range: <a href="../Float/">Float</a></li>
 </ul>
+<h2 id="aliases">Aliases</h2>
+<ul>
+<li>gc_stdev</li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -450,7 +463,9 @@ Alias: gc_std</p>
 
 <pre><code class="language-yaml">name: gc_std
 description: The standard deviation of GC content across the contig collection
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+aliases:
+- gc_stdev
 rank: 1000
 alias: gc_std
 owner: ContigCollection

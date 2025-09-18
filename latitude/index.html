@@ -395,7 +395,8 @@
 
 
 <h1 id="slot-latitude">Slot: latitude</h1>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/latitude">kb_cdm:latitude</a>
+<p><em>The latitude portion of a geolocation.</em></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/linkml/latitude">kb_cdm:latitude</a>
 Alias: latitude</p>
 <!-- no inheritance hierarchy -->
 
@@ -410,25 +411,25 @@ Alias: latitude</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../Geolocation/">Geolocation</a></td>
-<td>A normalized value for a location on the earth's surface</td>
+<td><a href="../EntityAttributeValue/">EntityAttributeValue</a></td>
+<td>Class comprising all possible entity-attribute-value slots.</td>
 <td>no</td>
+</tr>
+<tr>
+<td><a href="../Geolocation/">Geolocation</a></td>
+<td>A normalized value for a location on the earth's surface. Should be expressed in decimal degrees.</td>
+<td>yes</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>
-<p>Range: <a href="../String/">String</a></p>
-</li>
-<li>
-<p>Required: True</p>
-</li>
+<li>Range: <a href="../DecimalDegree/">DecimalDegree</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -453,14 +454,14 @@ Alias: latitude</p>
 <details>
 
 <pre><code class="language-yaml">name: latitude
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+description: The latitude portion of a geolocation.
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 rank: 1000
 alias: latitude
-owner: Geolocation
 domain_of:
+- EntityAttributeValue
 - Geolocation
-range: string
-required: true
+range: decimal_degree
 
 </code></pre>
 

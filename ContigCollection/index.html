@@ -173,13 +173,6 @@
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#usages">
-<span class="md-ellipsis">
-      Usages
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
 <a class="md-nav__link" href="#aliases">
 <span class="md-ellipsis">
       Aliases
@@ -245,7 +238,7 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-contigcollection">Class: ContigCollection</h1>
 <p><em>A set of individual, overlapping contigs that represent the complete sequenced genome of an organism.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/ContigCollection">kb_cdm:ContigCollection</a></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/linkml/ContigCollection">kb_cdm:ContigCollection</a></p>
 <div class="mermaid"> classDiagram
     class ContigCollection
     click ContigCollection href "../ContigCollection/"
@@ -254,9 +247,11 @@
 
       ContigCollection : asm_score
 
-      ContigCollection : checkm2_completeness
+      ContigCollection : checkm_completeness
 
-      ContigCollection : checkm2_contamination
+      ContigCollection : checkm_contamination
+
+      ContigCollection : checkm_version
 
       ContigCollection : contig_bp
 
@@ -273,53 +268,59 @@
 
 
 
-      ContigCollection : ctg_L50
+      ContigCollection : contig_l50
 
-      ContigCollection : ctg_L90
+      ContigCollection : contig_l90
 
-      ContigCollection : ctg_logsum
+      ContigCollection : contig_logsum
 
-      ContigCollection : ctg_max
+      ContigCollection : contig_max
 
-      ContigCollection : ctg_N50
+      ContigCollection : contig_n50
 
-      ContigCollection : ctg_N90
+      ContigCollection : contig_n90
 
-      ContigCollection : ctg_powsum
+      ContigCollection : contig_powersum
 
-      ContigCollection : gap_pct
+      ContigCollection : gap_percent
 
-      ContigCollection : gc_avg
+      ContigCollection : gc_average
 
       ContigCollection : gc_std
 
+      ContigCollection : gtdb_taxon_id
+
       ContigCollection : hash
+
+      ContigCollection : n_chromosomes
 
       ContigCollection : n_contigs
 
       ContigCollection : n_scaffolds
 
-      ContigCollection : scaf_bp
+      ContigCollection : ncbi_taxon_id
 
-      ContigCollection : scaf_L50
+      ContigCollection : scaffold_bp
 
-      ContigCollection : scaf_L90
+      ContigCollection : scaffold_l50
 
-      ContigCollection : scaf_l_gt50k
+      ContigCollection : scaffold_l90
 
-      ContigCollection : scaf_logsum
+      ContigCollection : scaffold_logsum
 
-      ContigCollection : scaf_max
+      ContigCollection : scaffold_maximum_length
 
-      ContigCollection : scaf_N50
+      ContigCollection : scaffold_n50
 
-      ContigCollection : scaf_N90
+      ContigCollection : scaffold_n90
 
-      ContigCollection : scaf_n_gt50K
+      ContigCollection : scaffold_powersum
 
-      ContigCollection : scaf_pct_gt50K
+      ContigCollection : scaffolds_n_over_50K
 
-      ContigCollection : scaf_powsum
+      ContigCollection : scaffolds_percent_over_50K
+
+      ContigCollection : scaffolds_total_length_over_50k
 
 
 </div>
@@ -343,32 +344,38 @@
 <tbody>
 <tr>
 <td><a href="../contig_collection_id/">contig_collection_id</a></td>
-<td>1 <br/> <a href="../UUID/">UUID</a></td>
-<td>Internal (CDM) unique identifier for a contig collection.</td>
+<td>1 <br/> <a href="../CdmContigCollectionId/">CdmContigCollectionId</a></td>
+<td>Internal (CDM) unique identifier for a contig collection.<br/>From the Entity table: entity_id where entity_type == 'ContigCollection'.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../hash/">hash</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>0..1 <br> <a href="../String/">String</a></br></td>
 <td>A hash value generated from one or more object attributes that serves to ensure the entity is unique.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../asm_score/">asm_score</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>A composite score for comparing contig collection quality</td>
+<td>A composite score for comparing contig collection quality.</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../checkm2_completeness/">checkm2_completeness</a></td>
+<td><a href="../checkm_completeness/">checkm_completeness</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Estimate of the completeness of a contig collection (MAG or genome), estimated by CheckM2 tool</td>
+<td>Estimate of the completeness of a contig collection (MAG or genome), estimated by CheckM tool. Ensure that percentage values are converted to floats.</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../checkm2_contamination/">checkm2_contamination</a></td>
+<td><a href="../checkm_contamination/">checkm_contamination</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Estimate of the contamination of a contig collection (MAG or genome), estimated by CheckM2 tool</td>
+<td>Estimate of the contamination of a contig collection (MAG or genome), estimated by CheckM tool. Ensure that percentage values are converted to floats.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../checkm_version/">checkm_version</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Version of the CheckM tool used.</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -384,55 +391,55 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../ctg_L50/">ctg_L50</a></td>
+<td><a href="../contig_l50/">contig_l50</a></td>
 <td>0..1 <br/> <a href="../Integer/">Integer</a></td>
 <td>Given a set of contigs, the L50 is defined as the sequence length of the shortest contig at 50% of the total contig collection length</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../ctg_L90/">ctg_L90</a></td>
+<td><a href="../contig_l90/">contig_l90</a></td>
 <td>0..1 <br/> <a href="../Integer/">Integer</a></td>
 <td>The L90 statistic is less than or equal to the L50 statistic; it is the length for which the collection of all contigs of that length or longer contains at least 90% of the sum of the lengths of all contigs</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../ctg_N50/">ctg_N50</a></td>
+<td><a href="../contig_n50/">contig_n50</a></td>
 <td>0..1 <br/> <a href="../Integer/">Integer</a></td>
 <td>Given a set of contigs, each with its own length, the N50 count is defined as the smallest number_of_contigs whose length sum makes up half of contig collection size</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../ctg_N90/">ctg_N90</a></td>
+<td><a href="../contig_n90/">contig_n90</a></td>
 <td>0..1 <br/> <a href="../Integer/">Integer</a></td>
 <td>Given a set of contigs, each with its own length, the N90 count is defined as the smallest number of contigs whose length sum makes up 90% of contig collection size</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../ctg_logsum/">ctg_logsum</a></td>
+<td><a href="../contig_logsum/">contig_logsum</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
 <td>The sum of the (length*log(length)) of all contigs, times some constant.</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../ctg_max/">ctg_max</a></td>
+<td><a href="../contig_max/">contig_max</a></td>
 <td>0..1 <br/> <a href="../Integer/">Integer</a></td>
 <td>Maximum contig length</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../ctg_powsum/">ctg_powsum</a></td>
+<td><a href="../contig_powersum/">contig_powersum</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
 <td>Powersum of all contigs is the same as logsum except that it uses the sum of (length*(length^P)) for some power P (default P=0.25)</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../gap_pct/">gap_pct</a></td>
+<td><a href="../gap_percent/">gap_percent</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
 <td>The gap size percentage of all scaffolds</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../gc_avg/">gc_avg</a></td>
+<td><a href="../gc_average/">gc_average</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
 <td>The average GC content of the contig collection, expressed as a percentage</td>
 <td>direct</td>
@@ -441,6 +448,18 @@
 <td><a href="../gc_std/">gc_std</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
 <td>The standard deviation of GC content across the contig collection</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../gtdb_taxon_id/">gtdb_taxon_id</a></td>
+<td>0..1 <br/> <a href="../Curie/">Curie</a></td>
+<td>The GTDB taxon ID for this contig collection.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../n_chromosomes/">n_chromosomes</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>Total number of chromosomes</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -456,89 +475,76 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../scaf_L50/">scaf_L50</a></td>
+<td><a href="../ncbi_taxon_id/">ncbi_taxon_id</a></td>
+<td>0..1 <br/> <a href="../Curie/">Curie</a></td>
+<td>The NCBI taxon ID for this contig collection.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../scaffold_l50/">scaffold_l50</a></td>
 <td>0..1 <br/> <a href="../Integer/">Integer</a></td>
 <td>Given a set of scaffolds, the L50 is defined as the sequence length of the shortest scaffold at 50% of the total contig collection length</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../scaf_L90/">scaf_L90</a></td>
+<td><a href="../scaffold_l90/">scaffold_l90</a></td>
 <td>0..1 <br/> <a href="../Integer/">Integer</a></td>
 <td>The L90 statistic is less than or equal to the L50 statistic; it is the length for which the collection of all scaffolds of that length or longer contains at least 90% of the sum of the lengths of all scaffolds.</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../scaf_N50/">scaf_N50</a></td>
+<td><a href="../scaffold_n50/">scaffold_n50</a></td>
 <td>0..1 <br/> <a href="../Integer/">Integer</a></td>
 <td>Given a set of scaffolds, each with its own length, the N50 count is defined as the smallest number of scaffolds whose length sum makes up half of contig collection size</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../scaf_N90/">scaf_N90</a></td>
+<td><a href="../scaffold_n90/">scaffold_n90</a></td>
 <td>0..1 <br/> <a href="../Integer/">Integer</a></td>
 <td>Given a set of scaffolds, each with its own length, the N90 count is defined as the smallest number of scaffolds whose length sum makes up 90% of contig collection size</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../scaf_bp/">scaf_bp</a></td>
+<td><a href="../scaffold_bp/">scaffold_bp</a></td>
 <td>0..1 <br/> <a href="../Integer/">Integer</a></td>
 <td>Total size in bp of all scaffolds</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../scaf_l_gt50k/">scaf_l_gt50k</a></td>
-<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
-<td>The total length of scaffolds longer than 50,000 base pairs</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../scaf_logsum/">scaf_logsum</a></td>
+<td><a href="../scaffold_logsum/">scaffold_logsum</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
 <td>The sum of the (length*log(length)) of all scaffolds, times some constant. Increase the contiguity, the score will increase</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../scaf_max/">scaf_max</a></td>
+<td><a href="../scaffold_maximum_length/">scaffold_maximum_length</a></td>
 <td>0..1 <br/> <a href="../Integer/">Integer</a></td>
 <td>Maximum scaffold length</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../scaf_n_gt50K/">scaf_n_gt50K</a></td>
+<td><a href="../scaffold_powersum/">scaffold_powersum</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>Powersum of all scaffolds is the same as logsum except that it uses the sum of (length*(length^P)) for some power P (default P=0.25).</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../scaffolds_n_over_50K/">scaffolds_n_over_50K</a></td>
 <td>0..1 <br/> <a href="../Integer/">Integer</a></td>
 <td>The number of scaffolds longer than 50,000 base pairs.</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../scaf_pct_gt50K/">scaf_pct_gt50K</a></td>
+<td><a href="../scaffolds_percent_over_50K/">scaffolds_percent_over_50K</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
 <td>The percentage of the total assembly length represented by scaffolds longer than 50,000 base pairs</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../scaf_powsum/">scaf_powsum</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>Powersum of all scaffolds is the same as logsum except that it uses the sum of (length*(length^P)) for some power P (default P=0.25).</td>
+<td><a href="../scaffolds_total_length_over_50k/">scaffolds_total_length_over_50k</a></td>
+<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>The total length of scaffolds longer than 50,000 base pairs</td>
 <td>direct</td>
-</tr>
-</tbody>
-</table>
-<h2 id="usages">Usages</h2>
-<table>
-<thead>
-<tr>
-<th>used by</th>
-<th>used in</th>
-<th>type</th>
-<th>used</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../Association/">Association</a></td>
-<td><a href="../subject/">subject</a></td>
-<td>any_of[range]</td>
-<td><a href="./">ContigCollection</a></td>
 </tr>
 </tbody>
 </table>
@@ -553,7 +559,7 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -581,7 +587,7 @@
 <pre><code class="language-yaml">name: ContigCollection
 description: A set of individual, overlapping contigs that represent the complete
   sequenced genome of an organism.
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 aliases:
 - genome
 - biological subject
@@ -599,34 +605,45 @@ slot_usage:
 attributes:
   asm_score:
     name: asm_score
-    description: A composite score for comparing contig collection quality
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    description: A composite score for comparing contig collection quality.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
     rank: 1000
     domain_of:
     - ContigCollection
     range: float
-  checkm2_completeness:
-    name: checkm2_completeness
+  checkm_completeness:
+    name: checkm_completeness
     description: Estimate of the completeness of a contig collection (MAG or genome),
-      estimated by CheckM2 tool
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+      estimated by CheckM tool. Ensure that percentage values are converted to floats.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
     rank: 1000
     domain_of:
     - ContigCollection
     range: float
-  checkm2_contamination:
-    name: checkm2_contamination
+  checkm_contamination:
+    name: checkm_contamination
     description: Estimate of the contamination of a contig collection (MAG or genome),
-      estimated by CheckM2 tool
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+      estimated by CheckM tool. Ensure that percentage values are converted to floats.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
     rank: 1000
     domain_of:
     - ContigCollection
     range: float
+  checkm_version:
+    name: checkm_version
+    description: Version of the CheckM tool used.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
+    rank: 1000
+    domain_of:
+    - ContigCollection
+    range: string
   contig_bp:
     name: contig_bp
     description: Total size in bp of all contigs
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
+    aliases:
+    - sequence length
+    - total sequence length
     rank: 1000
     domain_of:
     - ContigCollection
@@ -634,87 +651,111 @@ attributes:
   contig_collection_type:
     name: contig_collection_type
     description: The type of contig collection.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
     rank: 1000
     domain_of:
     - ContigCollection
     range: ContigCollectionType
-  ctg_L50:
-    name: ctg_L50
+  contig_l50:
+    name: contig_l50
     description: Given a set of contigs, the L50 is defined as the sequence length
       of the shortest contig at 50% of the total contig collection length
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
+    aliases:
+    - ctg_L50
+    - contig_L50
     rank: 1000
     domain_of:
     - ContigCollection
     range: integer
-  ctg_L90:
-    name: ctg_L90
+  contig_l90:
+    name: contig_l90
     description: The L90 statistic is less than or equal to the L50 statistic; it
       is the length for which the collection of all contigs of that length or longer
       contains at least 90% of the sum of the lengths of all contigs
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
+    aliases:
+    - ctg_L90
+    - contig_L90
     rank: 1000
     domain_of:
     - ContigCollection
     range: integer
-  ctg_N50:
-    name: ctg_N50
+  contig_n50:
+    name: contig_n50
     description: Given a set of contigs, each with its own length, the N50 count is
       defined as the smallest number_of_contigs whose length sum makes up half of
       contig collection size
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
+    aliases:
+    - ctg_N50
+    - contig_N50
     rank: 1000
     domain_of:
     - ContigCollection
     range: integer
-  ctg_N90:
-    name: ctg_N90
+  contig_n90:
+    name: contig_n90
     description: Given a set of contigs, each with its own length, the N90 count is
       defined as the smallest number of contigs whose length sum makes up 90% of contig
       collection size
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
+    aliases:
+    - ctg_N90
+    - contig_N90
     rank: 1000
     domain_of:
     - ContigCollection
     range: integer
-  ctg_logsum:
-    name: ctg_logsum
+  contig_logsum:
+    name: contig_logsum
     description: The sum of the (length*log(length)) of all contigs, times some constant.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
+    aliases:
+    - ctg_logsum
     rank: 1000
     domain_of:
     - ContigCollection
     range: float
-  ctg_max:
-    name: ctg_max
+  contig_max:
+    name: contig_max
     description: Maximum contig length
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
+    aliases:
+    - ctg_max
     rank: 1000
     domain_of:
     - ContigCollection
     range: integer
-  ctg_powsum:
-    name: ctg_powsum
+  contig_powersum:
+    name: contig_powersum
     description: Powersum of all contigs is the same as logsum except that it uses
       the sum of (length*(length^P)) for some power P (default P=0.25)
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
+    aliases:
+    - ctg_powersum
+    - ctg_powsum
+    - contig_powsum
     rank: 1000
     domain_of:
     - ContigCollection
     range: float
-  gap_pct:
-    name: gap_pct
+  gap_percent:
+    name: gap_percent
     description: The gap size percentage of all scaffolds
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
+    aliases:
+    - gap_pct
     rank: 1000
     domain_of:
     - ContigCollection
     range: float
-  gc_avg:
-    name: gc_avg
+  gc_average:
+    name: gc_average
     description: The average GC content of the contig collection, expressed as a percentage
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
+    aliases:
+    - gc_avg
     rank: 1000
     domain_of:
     - ContigCollection
@@ -722,15 +763,33 @@ attributes:
   gc_std:
     name: gc_std
     description: The standard deviation of GC content across the contig collection
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
+    aliases:
+    - gc_stdev
     rank: 1000
     domain_of:
     - ContigCollection
     range: float
+  gtdb_taxon_id:
+    name: gtdb_taxon_id
+    description: The GTDB taxon ID for this contig collection.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
+    rank: 1000
+    domain_of:
+    - ContigCollection
+    range: curie
+  n_chromosomes:
+    name: n_chromosomes
+    description: Total number of chromosomes
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
+    rank: 1000
+    domain_of:
+    - ContigCollection
+    range: integer
   n_contigs:
     name: n_contigs
     description: Total number of contigs
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
     rank: 1000
     domain_of:
     - ContigCollection
@@ -738,109 +797,148 @@ attributes:
   n_scaffolds:
     name: n_scaffolds
     description: Total number of scaffolds
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
     rank: 1000
     domain_of:
     - ContigCollection
     range: integer
-  scaf_L50:
-    name: scaf_L50
+  ncbi_taxon_id:
+    name: ncbi_taxon_id
+    description: The NCBI taxon ID for this contig collection.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
+    rank: 1000
+    domain_of:
+    - ContigCollection
+    range: curie
+  scaffold_l50:
+    name: scaffold_l50
     description: Given a set of scaffolds, the L50 is defined as the sequence length
       of the shortest scaffold at 50% of the total contig collection length
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
+    aliases:
+    - scaf_L50
+    - scaffold_L50
     rank: 1000
     domain_of:
     - ContigCollection
     range: integer
-  scaf_L90:
-    name: scaf_L90
+  scaffold_l90:
+    name: scaffold_l90
     description: The L90 statistic is less than or equal to the L50 statistic; it
       is the length for which the collection of all scaffolds of that length or longer
       contains at least 90% of the sum of the lengths of all scaffolds.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
+    aliases:
+    - scaf_L90
+    - scaffold_L90
     rank: 1000
     domain_of:
     - ContigCollection
     range: integer
-  scaf_N50:
-    name: scaf_N50
+  scaffold_n50:
+    name: scaffold_n50
     description: Given a set of scaffolds, each with its own length, the N50 count
       is defined as the smallest number of scaffolds whose length sum makes up half
       of contig collection size
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
+    aliases:
+    - scaf_N50
+    - scaffold_N50
     rank: 1000
     domain_of:
     - ContigCollection
     range: integer
-  scaf_N90:
-    name: scaf_N90
+  scaffold_n90:
+    name: scaffold_n90
     description: Given a set of scaffolds, each with its own length, the N90 count
       is defined as the smallest number of scaffolds whose length sum makes up 90%
       of contig collection size
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
+    aliases:
+    - scaf_N90
+    - scaffold_N90
     rank: 1000
     domain_of:
     - ContigCollection
     range: integer
-  scaf_bp:
-    name: scaf_bp
+  scaffold_bp:
+    name: scaffold_bp
     description: Total size in bp of all scaffolds
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
+    aliases:
+    - scaf_bp
     rank: 1000
     domain_of:
     - ContigCollection
     range: integer
-  scaf_l_gt50k:
-    name: scaf_l_gt50k
-    description: The total length of scaffolds longer than 50,000 base pairs
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
-    rank: 1000
-    domain_of:
-    - ContigCollection
-    range: integer
-  scaf_logsum:
-    name: scaf_logsum
+  scaffold_logsum:
+    name: scaffold_logsum
     description: The sum of the (length*log(length)) of all scaffolds, times some
       constant. Increase the contiguity, the score will increase
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
+    aliases:
+    - scaf_logsum
     rank: 1000
     domain_of:
     - ContigCollection
     range: float
-  scaf_max:
-    name: scaf_max
+  scaffold_maximum_length:
+    name: scaffold_maximum_length
     description: Maximum scaffold length
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
+    aliases:
+    - scaf_max
+    - scaffold_max
     rank: 1000
     domain_of:
     - ContigCollection
     range: integer
-  scaf_n_gt50K:
-    name: scaf_n_gt50K
-    description: The number of scaffolds longer than 50,000 base pairs.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
-    rank: 1000
-    domain_of:
-    - ContigCollection
-    range: integer
-  scaf_pct_gt50K:
-    name: scaf_pct_gt50K
-    description: The percentage of the total assembly length represented by scaffolds
-      longer than 50,000 base pairs
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
-    rank: 1000
-    domain_of:
-    - ContigCollection
-    range: float
-  scaf_powsum:
-    name: scaf_powsum
+  scaffold_powersum:
+    name: scaffold_powersum
     description: Powersum of all scaffolds is the same as logsum except that it uses
       the sum of (length*(length^P)) for some power P (default P=0.25).
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
+    aliases:
+    - scaf_powsum
+    - scaffold_powsum
     rank: 1000
     domain_of:
     - ContigCollection
     range: float
+  scaffolds_n_over_50K:
+    name: scaffolds_n_over_50K
+    description: The number of scaffolds longer than 50,000 base pairs.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
+    aliases:
+    - scaf_n_gt50K
+    - scaffold_n_gt50K
+    rank: 1000
+    domain_of:
+    - ContigCollection
+    range: integer
+  scaffolds_percent_over_50K:
+    name: scaffolds_percent_over_50K
+    description: The percentage of the total assembly length represented by scaffolds
+      longer than 50,000 base pairs
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
+    aliases:
+    - scaf_pct_gt50K
+    - scaffold_pct_gt50K
+    rank: 1000
+    domain_of:
+    - ContigCollection
+    range: float
+  scaffolds_total_length_over_50k:
+    name: scaffolds_total_length_over_50k
+    description: The total length of scaffolds longer than 50,000 base pairs
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
+    aliases:
+    - scaf_l_gt50k
+    - scaffold_l_gt50k
+    rank: 1000
+    domain_of:
+    - ContigCollection
+    range: integer
 
 </code></pre>
 </details>
@@ -849,7 +947,7 @@ attributes:
 <pre><code class="language-yaml">name: ContigCollection
 description: A set of individual, overlapping contigs that represent the complete
   sequenced genome of an organism.
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 aliases:
 - genome
 - biological subject
@@ -864,40 +962,53 @@ slot_usage:
 attributes:
   asm_score:
     name: asm_score
-    description: A composite score for comparing contig collection quality
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    description: A composite score for comparing contig collection quality.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
     rank: 1000
     alias: asm_score
     owner: ContigCollection
     domain_of:
     - ContigCollection
     range: float
-  checkm2_completeness:
-    name: checkm2_completeness
+  checkm_completeness:
+    name: checkm_completeness
     description: Estimate of the completeness of a contig collection (MAG or genome),
-      estimated by CheckM2 tool
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+      estimated by CheckM tool. Ensure that percentage values are converted to floats.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
     rank: 1000
-    alias: checkm2_completeness
+    alias: checkm_completeness
     owner: ContigCollection
     domain_of:
     - ContigCollection
     range: float
-  checkm2_contamination:
-    name: checkm2_contamination
+  checkm_contamination:
+    name: checkm_contamination
     description: Estimate of the contamination of a contig collection (MAG or genome),
-      estimated by CheckM2 tool
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+      estimated by CheckM tool. Ensure that percentage values are converted to floats.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
     rank: 1000
-    alias: checkm2_contamination
+    alias: checkm_contamination
     owner: ContigCollection
     domain_of:
     - ContigCollection
     range: float
+  checkm_version:
+    name: checkm_version
+    description: Version of the CheckM tool used.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
+    rank: 1000
+    alias: checkm_version
+    owner: ContigCollection
+    domain_of:
+    - ContigCollection
+    range: string
   contig_bp:
     name: contig_bp
     description: Total size in bp of all contigs
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
+    aliases:
+    - sequence length
+    - total sequence length
     rank: 1000
     alias: contig_bp
     owner: ContigCollection
@@ -907,107 +1018,131 @@ attributes:
   contig_collection_type:
     name: contig_collection_type
     description: The type of contig collection.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
     rank: 1000
     alias: contig_collection_type
     owner: ContigCollection
     domain_of:
     - ContigCollection
     range: ContigCollectionType
-  ctg_L50:
-    name: ctg_L50
+  contig_l50:
+    name: contig_l50
     description: Given a set of contigs, the L50 is defined as the sequence length
       of the shortest contig at 50% of the total contig collection length
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
+    aliases:
+    - ctg_L50
+    - contig_L50
     rank: 1000
-    alias: ctg_L50
+    alias: contig_l50
     owner: ContigCollection
     domain_of:
     - ContigCollection
     range: integer
-  ctg_L90:
-    name: ctg_L90
+  contig_l90:
+    name: contig_l90
     description: The L90 statistic is less than or equal to the L50 statistic; it
       is the length for which the collection of all contigs of that length or longer
       contains at least 90% of the sum of the lengths of all contigs
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
+    aliases:
+    - ctg_L90
+    - contig_L90
     rank: 1000
-    alias: ctg_L90
+    alias: contig_l90
     owner: ContigCollection
     domain_of:
     - ContigCollection
     range: integer
-  ctg_N50:
-    name: ctg_N50
+  contig_n50:
+    name: contig_n50
     description: Given a set of contigs, each with its own length, the N50 count is
       defined as the smallest number_of_contigs whose length sum makes up half of
       contig collection size
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
+    aliases:
+    - ctg_N50
+    - contig_N50
     rank: 1000
-    alias: ctg_N50
+    alias: contig_n50
     owner: ContigCollection
     domain_of:
     - ContigCollection
     range: integer
-  ctg_N90:
-    name: ctg_N90
+  contig_n90:
+    name: contig_n90
     description: Given a set of contigs, each with its own length, the N90 count is
       defined as the smallest number of contigs whose length sum makes up 90% of contig
       collection size
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
+    aliases:
+    - ctg_N90
+    - contig_N90
     rank: 1000
-    alias: ctg_N90
+    alias: contig_n90
     owner: ContigCollection
     domain_of:
     - ContigCollection
     range: integer
-  ctg_logsum:
-    name: ctg_logsum
+  contig_logsum:
+    name: contig_logsum
     description: The sum of the (length*log(length)) of all contigs, times some constant.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
+    aliases:
+    - ctg_logsum
     rank: 1000
-    alias: ctg_logsum
+    alias: contig_logsum
     owner: ContigCollection
     domain_of:
     - ContigCollection
     range: float
-  ctg_max:
-    name: ctg_max
+  contig_max:
+    name: contig_max
     description: Maximum contig length
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
+    aliases:
+    - ctg_max
     rank: 1000
-    alias: ctg_max
+    alias: contig_max
     owner: ContigCollection
     domain_of:
     - ContigCollection
     range: integer
-  ctg_powsum:
-    name: ctg_powsum
+  contig_powersum:
+    name: contig_powersum
     description: Powersum of all contigs is the same as logsum except that it uses
       the sum of (length*(length^P)) for some power P (default P=0.25)
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
+    aliases:
+    - ctg_powersum
+    - ctg_powsum
+    - contig_powsum
     rank: 1000
-    alias: ctg_powsum
+    alias: contig_powersum
     owner: ContigCollection
     domain_of:
     - ContigCollection
     range: float
-  gap_pct:
-    name: gap_pct
+  gap_percent:
+    name: gap_percent
     description: The gap size percentage of all scaffolds
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
+    aliases:
+    - gap_pct
     rank: 1000
-    alias: gap_pct
+    alias: gap_percent
     owner: ContigCollection
     domain_of:
     - ContigCollection
     range: float
-  gc_avg:
-    name: gc_avg
+  gc_average:
+    name: gc_average
     description: The average GC content of the contig collection, expressed as a percentage
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
+    aliases:
+    - gc_avg
     rank: 1000
-    alias: gc_avg
+    alias: gc_average
     owner: ContigCollection
     domain_of:
     - ContigCollection
@@ -1015,17 +1150,39 @@ attributes:
   gc_std:
     name: gc_std
     description: The standard deviation of GC content across the contig collection
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
+    aliases:
+    - gc_stdev
     rank: 1000
     alias: gc_std
     owner: ContigCollection
     domain_of:
     - ContigCollection
     range: float
+  gtdb_taxon_id:
+    name: gtdb_taxon_id
+    description: The GTDB taxon ID for this contig collection.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
+    rank: 1000
+    alias: gtdb_taxon_id
+    owner: ContigCollection
+    domain_of:
+    - ContigCollection
+    range: curie
+  n_chromosomes:
+    name: n_chromosomes
+    description: Total number of chromosomes
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
+    rank: 1000
+    alias: n_chromosomes
+    owner: ContigCollection
+    domain_of:
+    - ContigCollection
+    range: integer
   n_contigs:
     name: n_contigs
     description: Total number of contigs
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
     rank: 1000
     alias: n_contigs
     owner: ContigCollection
@@ -1035,154 +1192,199 @@ attributes:
   n_scaffolds:
     name: n_scaffolds
     description: Total number of scaffolds
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
     rank: 1000
     alias: n_scaffolds
     owner: ContigCollection
     domain_of:
     - ContigCollection
     range: integer
-  scaf_L50:
-    name: scaf_L50
+  ncbi_taxon_id:
+    name: ncbi_taxon_id
+    description: The NCBI taxon ID for this contig collection.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
+    rank: 1000
+    alias: ncbi_taxon_id
+    owner: ContigCollection
+    domain_of:
+    - ContigCollection
+    range: curie
+  scaffold_l50:
+    name: scaffold_l50
     description: Given a set of scaffolds, the L50 is defined as the sequence length
       of the shortest scaffold at 50% of the total contig collection length
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
+    aliases:
+    - scaf_L50
+    - scaffold_L50
     rank: 1000
-    alias: scaf_L50
+    alias: scaffold_l50
     owner: ContigCollection
     domain_of:
     - ContigCollection
     range: integer
-  scaf_L90:
-    name: scaf_L90
+  scaffold_l90:
+    name: scaffold_l90
     description: The L90 statistic is less than or equal to the L50 statistic; it
       is the length for which the collection of all scaffolds of that length or longer
       contains at least 90% of the sum of the lengths of all scaffolds.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
+    aliases:
+    - scaf_L90
+    - scaffold_L90
     rank: 1000
-    alias: scaf_L90
+    alias: scaffold_l90
     owner: ContigCollection
     domain_of:
     - ContigCollection
     range: integer
-  scaf_N50:
-    name: scaf_N50
+  scaffold_n50:
+    name: scaffold_n50
     description: Given a set of scaffolds, each with its own length, the N50 count
       is defined as the smallest number of scaffolds whose length sum makes up half
       of contig collection size
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
+    aliases:
+    - scaf_N50
+    - scaffold_N50
     rank: 1000
-    alias: scaf_N50
+    alias: scaffold_n50
     owner: ContigCollection
     domain_of:
     - ContigCollection
     range: integer
-  scaf_N90:
-    name: scaf_N90
+  scaffold_n90:
+    name: scaffold_n90
     description: Given a set of scaffolds, each with its own length, the N90 count
       is defined as the smallest number of scaffolds whose length sum makes up 90%
       of contig collection size
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
+    aliases:
+    - scaf_N90
+    - scaffold_N90
     rank: 1000
-    alias: scaf_N90
+    alias: scaffold_n90
     owner: ContigCollection
     domain_of:
     - ContigCollection
     range: integer
-  scaf_bp:
-    name: scaf_bp
+  scaffold_bp:
+    name: scaffold_bp
     description: Total size in bp of all scaffolds
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
+    aliases:
+    - scaf_bp
     rank: 1000
-    alias: scaf_bp
+    alias: scaffold_bp
     owner: ContigCollection
     domain_of:
     - ContigCollection
     range: integer
-  scaf_l_gt50k:
-    name: scaf_l_gt50k
-    description: The total length of scaffolds longer than 50,000 base pairs
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
-    rank: 1000
-    alias: scaf_l_gt50k
-    owner: ContigCollection
-    domain_of:
-    - ContigCollection
-    range: integer
-  scaf_logsum:
-    name: scaf_logsum
+  scaffold_logsum:
+    name: scaffold_logsum
     description: The sum of the (length*log(length)) of all scaffolds, times some
       constant. Increase the contiguity, the score will increase
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
+    aliases:
+    - scaf_logsum
     rank: 1000
-    alias: scaf_logsum
+    alias: scaffold_logsum
     owner: ContigCollection
     domain_of:
     - ContigCollection
     range: float
-  scaf_max:
-    name: scaf_max
+  scaffold_maximum_length:
+    name: scaffold_maximum_length
     description: Maximum scaffold length
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
+    aliases:
+    - scaf_max
+    - scaffold_max
     rank: 1000
-    alias: scaf_max
+    alias: scaffold_maximum_length
     owner: ContigCollection
     domain_of:
     - ContigCollection
     range: integer
-  scaf_n_gt50K:
-    name: scaf_n_gt50K
-    description: The number of scaffolds longer than 50,000 base pairs.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
-    rank: 1000
-    alias: scaf_n_gt50K
-    owner: ContigCollection
-    domain_of:
-    - ContigCollection
-    range: integer
-  scaf_pct_gt50K:
-    name: scaf_pct_gt50K
-    description: The percentage of the total assembly length represented by scaffolds
-      longer than 50,000 base pairs
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
-    rank: 1000
-    alias: scaf_pct_gt50K
-    owner: ContigCollection
-    domain_of:
-    - ContigCollection
-    range: float
-  scaf_powsum:
-    name: scaf_powsum
+  scaffold_powersum:
+    name: scaffold_powersum
     description: Powersum of all scaffolds is the same as logsum except that it uses
       the sum of (length*(length^P)) for some power P (default P=0.25).
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
+    aliases:
+    - scaf_powsum
+    - scaffold_powsum
     rank: 1000
-    alias: scaf_powsum
+    alias: scaffold_powersum
     owner: ContigCollection
     domain_of:
     - ContigCollection
     range: float
+  scaffolds_n_over_50K:
+    name: scaffolds_n_over_50K
+    description: The number of scaffolds longer than 50,000 base pairs.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
+    aliases:
+    - scaf_n_gt50K
+    - scaffold_n_gt50K
+    rank: 1000
+    alias: scaffolds_n_over_50K
+    owner: ContigCollection
+    domain_of:
+    - ContigCollection
+    range: integer
+  scaffolds_percent_over_50K:
+    name: scaffolds_percent_over_50K
+    description: The percentage of the total assembly length represented by scaffolds
+      longer than 50,000 base pairs
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
+    aliases:
+    - scaf_pct_gt50K
+    - scaffold_pct_gt50K
+    rank: 1000
+    alias: scaffolds_percent_over_50K
+    owner: ContigCollection
+    domain_of:
+    - ContigCollection
+    range: float
+  scaffolds_total_length_over_50k:
+    name: scaffolds_total_length_over_50k
+    description: The total length of scaffolds longer than 50,000 base pairs
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
+    aliases:
+    - scaf_l_gt50k
+    - scaffold_l_gt50k
+    rank: 1000
+    alias: scaffolds_total_length_over_50k
+    owner: ContigCollection
+    domain_of:
+    - ContigCollection
+    range: integer
   contig_collection_id:
     name: contig_collection_id
-    description: Internal (CDM) unique identifier for a contig collection.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+    description: 'Internal (CDM) unique identifier for a contig collection.
+
+      From the Entity table: entity_id where entity_type == ''ContigCollection''.
+
+      '
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
     rank: 1000
     identifier: true
     alias: contig_collection_id
     owner: ContigCollection
     domain_of:
-    - Contig_X_ContigCollection
-    - ContigCollection_X_EncodedFeature
-    - ContigCollection_X_Feature
-    - ContigCollection_X_Protein
     - ContigCollection
-    range: UUID
+    - Contig_x_ContigCollection
+    - ContigCollection_x_EncodedFeature
+    - ContigCollection_x_Feature
+    - ContigCollection_x_Protein
+    range: cdm_contig_collection_id
     required: true
   hash:
     name: hash
     description: A hash value generated from one or more object attributes that serves
       to ensure the entity is unique.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
     rank: 1000
     alias: hash
     owner: ContigCollection

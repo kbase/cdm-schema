@@ -396,7 +396,7 @@
 
 <h1 id="slot-measurement_id">Slot: measurement_id</h1>
 <p><em>Internal (CDM) unique identifier for a measurement.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/measurement_id">kb_cdm:measurement_id</a>
+<p>URI: <a href="CDM:measurement_id">CDM:measurement_id</a>
 Alias: measurement_id</p>
 <!-- no inheritance hierarchy -->
 
@@ -412,17 +412,7 @@ Alias: measurement_id</p>
 <tbody>
 <tr>
 <td><a href="../Measurement/">Measurement</a></td>
-<td>A qualitative or quantitative observation of an attribute of an object or event against a standardized scale, to enable it to be compared with other objects or events.</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../ProcessedMeasurement/">ProcessedMeasurement</a></td>
-<td>A measurement that requires additional processing to generate a result.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../EntityXMeasurement/">EntityXMeasurement</a></td>
-<td>Captures a measurement made on an entity.</td>
+<td>The value of a specified variable_id under the specified conditions.</td>
 <td>yes</td>
 </tr>
 </tbody>
@@ -430,7 +420,7 @@ Alias: measurement_id</p>
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../UUID/">UUID</a></p>
+<p>Range: <a href="../CdmId/">CdmId</a></p>
 </li>
 <li>
 <p>Required: True</p>
@@ -439,7 +429,7 @@ Alias: measurement_id</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -452,7 +442,7 @@ Alias: measurement_id</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>kb_cdm:measurement_id</td>
+<td>CDM:measurement_id</td>
 </tr>
 <tr>
 <td>native</td>
@@ -465,13 +455,13 @@ Alias: measurement_id</p>
 
 <pre><code class="language-yaml">name: measurement_id
 description: Internal (CDM) unique identifier for a measurement.
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 rank: 1000
+slot_uri: CDM:measurement_id
 alias: measurement_id
 domain_of:
-- Entity_X_Measurement
 - Measurement
-range: UUID
+range: cdm_id
 required: true
 
 </code></pre>

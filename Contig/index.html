@@ -231,7 +231,7 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-contig">Class: Contig</h1>
 <p><em>A contig (derived from the word "contiguous") is a set of DNA segments or sequences that overlap in a way that provides a contiguous representation of a genomic region. A contig should not contain any gaps.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/Contig">kb_cdm:Contig</a></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/linkml/Contig">kb_cdm:Contig</a></p>
 <div class="mermaid"> classDiagram
     class Contig
     click Contig href "../Contig/"
@@ -268,13 +268,13 @@
 <tbody>
 <tr>
 <td><a href="../contig_id/">contig_id</a></td>
-<td>1 <br/> <a href="../UUID/">UUID</a></td>
-<td>Internal (CDM) unique identifier for a contig.</td>
+<td>1 <br/> <a href="../CdmContigId/">CdmContigId</a></td>
+<td>Internal (CDM) unique identifier for a contig.<br/>From the Entity table: entity_id where entity_type == 'Contig'.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../hash/">hash</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>0..1 <br> <a href="../String/">String</a></br></td>
 <td>A hash value generated from one or more object attributes that serves to ensure the entity is unique.</td>
 <td>direct</td>
 </tr>
@@ -295,7 +295,7 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -324,7 +324,7 @@
 description: A contig (derived from the word "contiguous") is a set of DNA segments
   or sequences that overlap in a way that provides a contiguous representation of
   a genomic region. A contig should not contain any gaps.
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 is_a: Table
 slots:
 - contig_id
@@ -337,7 +337,7 @@ attributes:
   gc_content:
     name: gc_content
     description: GC content of the contig, expressed as a percentage.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
     rank: 1000
     domain_of:
     - Contig
@@ -345,7 +345,7 @@ attributes:
   length:
     name: length
     description: Length of the contig in bp.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
     rank: 1000
     domain_of:
     - Contig
@@ -361,7 +361,7 @@ attributes:
 description: A contig (derived from the word "contiguous") is a set of DNA segments
   or sequences that overlap in a way that provides a contiguous representation of
   a genomic region. A contig should not contain any gaps.
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 is_a: Table
 slot_usage:
   contig_id:
@@ -371,7 +371,7 @@ attributes:
   gc_content:
     name: gc_content
     description: GC content of the contig, expressed as a percentage.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
     rank: 1000
     alias: gc_content
     owner: Contig
@@ -381,7 +381,7 @@ attributes:
   length:
     name: length
     description: Length of the contig in bp.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
     rank: 1000
     alias: length
     owner: Contig
@@ -392,25 +392,29 @@ attributes:
     range: integer
   contig_id:
     name: contig_id
-    description: Internal (CDM) unique identifier for a contig.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+    description: 'Internal (CDM) unique identifier for a contig.
+
+      From the Entity table: entity_id where entity_type == ''Contig''.
+
+      '
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
     rank: 1000
     identifier: true
     alias: contig_id
     owner: Contig
     domain_of:
-    - Contig_X_ContigCollection
-    - Contig_X_EncodedFeature
-    - Contig_X_Feature
-    - Contig_X_Protein
     - Contig
-    range: UUID
+    - Contig_x_ContigCollection
+    - Contig_x_EncodedFeature
+    - Contig_x_Feature
+    - Contig_x_Protein
+    range: cdm_contig_id
     required: true
   hash:
     name: hash
     description: A hash value generated from one or more object attributes that serves
       to ensure the entity is unique.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
     rank: 1000
     alias: hash
     owner: Contig

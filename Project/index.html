@@ -238,7 +238,7 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-project">Class: Project</h1>
 <p><em>Administrative unit for collecting data related to a certain topic, location, data type, grant funding, and so on.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/Project">kb_cdm:Project</a></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/linkml/Project">kb_cdm:Project</a></p>
 <div class="mermaid"> classDiagram
     class Project
     click Project href "../Project/"
@@ -271,13 +271,13 @@
 <tbody>
 <tr>
 <td><a href="../project_id/">project_id</a></td>
-<td>1 <br/> <a href="../UUID/">UUID</a></td>
-<td>Internal (CDM) unique identifier for a project.</td>
+<td>1 <br/> <a href="../CdmId/">CdmId</a></td>
+<td>Internal (CDM) unique identifier for a project.<br/>From the Entity table: entity_id where entity_type == 'Project'.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../description/">description</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>0..1 <br> <a href="../String/">String</a></br></td>
 <td>Brief text description of the project.</td>
 <td>direct</td>
 </tr>
@@ -297,7 +297,7 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -325,7 +325,7 @@
 <pre><code class="language-yaml">name: Project
 description: Administrative unit for collecting data related to a certain topic, location,
   data type, grant funding, and so on.
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 aliases:
 - proposal
 - research proposal
@@ -346,17 +346,20 @@ attributes:
   description:
     name: description
     description: Brief text description of the project.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_credit
     domain_of:
     - Cluster
     - Event
-    - Experiment
-    - Project
-    - Protein
-    - Protocol
-    - Sample
     - Identifier
     - Name
+    - Protein
+    - Sample
+    - Project
+    - Experiment
+    - Parameter
+    - Protocol
+    - ProtocolExecution
+    - Variable
 
 </code></pre>
 </details>
@@ -365,7 +368,7 @@ attributes:
 <pre><code class="language-yaml">name: Project
 description: Administrative unit for collecting data related to a certain topic, location,
   data type, grant funding, and so on.
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 aliases:
 - proposal
 - research proposal
@@ -384,33 +387,39 @@ attributes:
   description:
     name: description
     description: Brief text description of the project.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_credit
     alias: description
     owner: Project
     domain_of:
     - Cluster
     - Event
-    - Experiment
-    - Project
-    - Protein
-    - Protocol
-    - Sample
     - Identifier
     - Name
+    - Protein
+    - Sample
+    - Project
+    - Experiment
+    - Parameter
+    - Protocol
+    - ProtocolExecution
+    - Variable
     range: string
   project_id:
     name: project_id
-    description: Internal (CDM) unique identifier for a project.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+    description: 'Internal (CDM) unique identifier for a project.
+
+      From the Entity table: entity_id where entity_type == ''Project''.
+
+      '
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
     rank: 1000
     identifier: true
     alias: project_id
     owner: Project
     domain_of:
-    - Contributor_X_Role_X_Project
-    - Experiment_X_Project
+    - Contributor_x_Role_x_Project
     - Project
-    range: UUID
+    range: cdm_id
     required: true
 
 </code></pre>

@@ -396,7 +396,7 @@
 
 <h1 id="slot-association_id">Slot: association_id</h1>
 <p><em>Internal (CDM) unique identifier for an association.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/association_id">kb_cdm:association_id</a>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/linkml/association_id">kb_cdm:association_id</a>
 Alias: association_id</p>
 <!-- no inheritance hierarchy -->
 
@@ -412,7 +412,7 @@ Alias: association_id</p>
 <tbody>
 <tr>
 <td><a href="../AssociationXSupportingObject/">AssociationXSupportingObject</a></td>
-<td>Links associations to entities to capture supporting objects in an association. ay be a biological entity, such as a protein or feature, or a URL to a resource (e.g. a publication) that supports the association. Where possible, CDM identifiers should be used.</td>
+<td>Links associations to entities to capture supporting objects in an association. May be a biological entity, such as a protein or feature, or a URL to a resource (e.g. a publication) that supports the association. Where possible, CDM identifiers should be used.</td>
 <td>yes</td>
 </tr>
 <tr>
@@ -420,17 +420,12 @@ Alias: association_id</p>
 <td>An association between an object--typically an entity such as a protein or a feature--and a classification system or ontology, such as the Gene Ontology, the Enzyme Classification, or TIGRFAMS domains.</td>
 <td>yes</td>
 </tr>
-<tr>
-<td><a href="../AssociationXPublication/">AssociationXPublication</a></td>
-<td>Links associations to supporting literature.</td>
-<td>yes</td>
-</tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../UUID/">UUID</a></p>
+<p>Range: <a href="../CdmAssociationId/">CdmAssociationId</a></p>
 </li>
 <li>
 <p>Required: True</p>
@@ -439,7 +434,7 @@ Alias: association_id</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -465,14 +460,13 @@ Alias: association_id</p>
 
 <pre><code class="language-yaml">name: association_id
 description: Internal (CDM) unique identifier for an association.
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 rank: 1000
 alias: association_id
 domain_of:
-- Association_X_Publication
-- Association_X_SupportingObject
 - Association
-range: UUID
+- Association_x_SupportingObject
+range: cdm_association_id
 required: true
 
 </code></pre>

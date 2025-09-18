@@ -470,7 +470,7 @@
 
 <h1 id="cdm_schema">cdm_schema</h1>
 <p>Schema for KBase CDM</p>
-<p>URI: http://kbase.github.io/cdm-schema/cdm_schema</p>
+<p>URI: http://kbase.github.io/cdm-schema/linkml/cdm_schema</p>
 <p>Name: cdm_schema</p>
 <h2 id="classes">Classes</h2>
 <table>
@@ -483,7 +483,59 @@
 <tbody>
 <tr>
 <td><a href="Any/">Any</a></td>
-<td>Used as a range for slots that have more than one possible type.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="AttributeMixin/">AttributeMixin</a></td>
+<td>The attribute in an attribute-value pair. One of <code>attribute_cv_id</code>, <code>attribute_cv_label</code>, and <code>attribute_string</code> is required.</td>
+</tr>
+<tr>
+<td><a href="AttributeValue/">AttributeValue</a></td>
+<td>The value for any value of attribute for an entity. This object can hold both the un-normalized atomic value and the structured value.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ControlledTermValue/">ControlledTermValue</a></td>
+<td>A quality, described using a text string from a controlled vocabulary or enum.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ControlledVocabularyTermValue/">ControlledVocabularyTermValue</a></td>
+<td>A quality, described using a term from an ontology or schema with a stable persistent identifier.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="DateTimeValue/">DateTimeValue</a></td>
+<td>A date or date and time value.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Geolocation/">Geolocation</a></td>
+<td>A normalized value for a location on the earth's surface. Should be expressed in decimal degrees.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="QuantityRangeValue/">QuantityRangeValue</a></td>
+<td>A numerical range, e.g. 5-7 cm.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="QuantityValue/">QuantityValue</a></td>
+<td>A simple quantity, e.g. 2 cm.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="TextValue/">TextValue</a></td>
+<td>A basic string value.</td>
+</tr>
+<tr>
+<td><a href="EntityAttributeValue/">EntityAttributeValue</a></td>
+<td>Class comprising all possible entity-attribute-value slots.</td>
+</tr>
+<tr>
+<td><a href="EntityMixin/">EntityMixin</a></td>
+<td>A generic class for capturing attribute-value information about an entity in a structured form.</td>
+</tr>
+<tr>
+<td><a href="FundingReference/">FundingReference</a></td>
+<td>Represents a funding source for a resource, including the funding body and the grant awarded.<br><br>One (or more) of the fields <code>grant_id</code>, <code>grant_url</code>, or <code>funder.organization_name</code> is required; others are optional.<br><br>Recommended resources for organization identifiers include:<br>  - Research Organization Registry, http://ror.org<br>  - International Standard Name Identifier, https://isni.org<br>  - Crossref Funder Registry, https://www.crossref.org/services/funder-registry/ (to be subsumed into ROR)<br><br>Some organizations may have a digital object identifier (DOI).</td>
+</tr>
+<tr>
+<td><a href="ResourceDescription/">ResourceDescription</a></td>
+<td>Textual information about the resource being represented.</td>
 </tr>
 <tr>
 <td><a href="Table/">Table</a></td>
@@ -492,42 +544,6 @@
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Association/">Association</a></td>
 <td>An association between an object--typically an entity such as a protein or a feature--and a classification system or ontology, such as the Gene Ontology, the Enzyme Classification, or TIGRFAMS domains.</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="AssociationXPublication/">AssociationXPublication</a></td>
-<td>Links associations to supporting literature.</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="AssociationXSupportingObject/">AssociationXSupportingObject</a></td>
-<td>Links associations to entities to capture supporting objects in an association. ay be a biological entity, such as a protein or feature, or a URL to a resource (e.g. a publication) that supports the association. Where possible, CDM identifiers should be used.</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="AttributeValue/">AttributeValue</a></td>
-<td>A generic class for capturing tag-value information in a structured form.</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Geolocation/">Geolocation</a></td>
-<td>A normalized value for a location on the earth's surface</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="QuantityValue/">QuantityValue</a></td>
-<td>A simple quantity, e.g. 2cm. May be used to describe a range using the minimum_value and maximum_value fields.</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Measurement/">Measurement</a></td>
-<td>A qualitative or quantitative observation of an attribute of an object or event against a standardized scale, to enable it to be compared with other objects or events.</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ProcessedMeasurement/">ProcessedMeasurement</a></td>
-<td>A measurement that requires additional processing to generate a result.</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="TextValue/">TextValue</a></td>
-<td>A basic string value</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="AttributeValueEntity/">AttributeValueEntity</a></td>
-<td>Represents the link between an entity and its attribute values.</td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Cluster/">Cluster</a></td>
@@ -542,72 +558,36 @@
 <td>A contig (derived from the word "contiguous") is a set of DNA segments or sequences that overlap in a way that provides a contiguous representation of a genomic region. A contig should not contain any gaps.</td>
 </tr>
 <tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ContigXContigCollection/">ContigXContigCollection</a></td>
-<td>Captures the relationship between a contig and a contig collection; equivalent to contig part-of contig collection.</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ContigXEncodedFeature/">ContigXEncodedFeature</a></td>
-<td>Captures the relationship between a contig and an encoded feature.</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ContigXFeature/">ContigXFeature</a></td>
-<td>Captures the relationship between a contig and a feature; equivalent to feature part-of contig.</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ContigXProtein/">ContigXProtein</a></td>
-<td>Captures the relationship between a contig and a protein; equivalent to protein is ribosomal translation of (http://purl.obolibrary.org/obo/RO_0002512) contig.</td>
-</tr>
-<tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ContigCollection/">ContigCollection</a></td>
 <td>A set of individual, overlapping contigs that represent the complete sequenced genome of an organism.</td>
 </tr>
 <tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ContigCollectionXEncodedFeature/">ContigCollectionXEncodedFeature</a></td>
-<td>Captures the relationship between a contig collection and an encoded feature.</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ContigCollectionXFeature/">ContigCollectionXFeature</a></td>
-<td>Captures the relationship between a contig collection and a feature; equivalent to feature part-of contig collection.</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ContigCollectionXProtein/">ContigCollectionXProtein</a></td>
-<td>Captures the relationship between a contig collection and a protein; equivalent to protein is ribosomal translation of (http://purl.obolibrary.org/obo/RO_0002512) contig collection.</td>
-</tr>
-<tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Contributor/">Contributor</a></td>
-<td>Represents a contributor to the resource.<br><br>Contributors must have a 'contributor_type', either 'Person' or 'Organization', and<br>one of the 'name' fields: either 'given_name' and 'family_name' (for a person), or 'name' (for an organization or a person).<br><br>The 'contributor_role' field takes values from the DataCite and CRediT contributor<br>roles vocabularies. For more information on these resources and choosing<br>appropriate roles, please see the following links:<br><br>DataCite contributor roles: https://support.datacite.org/docs/datacite-metadata-schema-v44-recommended-and-optional-properties#7a-contributortype<br><br>CRediT contributor role taxonomy: https://credit.niso.org</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ContributorXRoleXExperiment/">ContributorXRoleXExperiment</a></td>
-<td></td>
+<td>Represents a contributor to a resource.<br><br>Contributors must have a 'contributor_type', either 'Person' or 'Organization', and one of the 'name' fields: either 'given_name' and 'family_name' (for a person), or 'name' (for an organization or a person).<br><br>The 'contributor_role' field takes values from the DataCite and CRediT contributor roles vocabularies. For more information on these resources and choosing appropriate roles, please see the following links:<br><br>DataCite contributor roles: https://support.datacite.org/docs/datacite-metadata-schema-v44-recommended-and-optional-properties#7a-contributortype<br><br>CRediT contributor role taxonomy: https://credit.niso.org</td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ContributorXRoleXProject/">ContributorXRoleXProject</a></td>
-<td></td>
+<td>Describes the participation of a contributor in a project; ideally the contributor_role field will capture how the contributor was involved.</td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="DataSource/">DataSource</a></td>
-<td>The source dataset from which data within the CDM was extracted. This might be an API query; a set of files downloaded from a website or uploaded by a user; a database dump; etc. A given data source should have either version information (e.g. UniProt's release number) or an access date to allow the original raw data dump to be recapitulated.</td>
+<td>The source for a resource, dataset, association, etc.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="DataSourceNew/">DataSourceNew</a></td>
+<td>The source dataset from which data within the CDM was extracted. This might be an API query; a set of files downloaded from a website or uploaded by a user; a database dump; etc. A given data source should have either version information (e.g. a release number, like those used by UniProt or RefSeq) or an access date to allow the original raw data dump to be recapitulated.</td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="EncodedFeature/">EncodedFeature</a></td>
 <td>An entity generated from a feature, such as a transcript.</td>
 </tr>
 <tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="EncodedFeatureXFeature/">EncodedFeatureXFeature</a></td>
-<td>Captures the relationship between a feature and its transcription product.</td>
-</tr>
-<tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="EntailedEdge/">EntailedEdge</a></td>
-<td>A relation graph edge that is inferred</td>
+<td>A relation graph edge that is inferred. This table contains links between the nodes that appear as subjects in the <a href="Statements">Statements</a> table. The graph contains all possible links between nodes and is created using a reasoner such as <a href="https://github.com/balhoff/relation-graph">relation-graph</a> to materialise inferrred links.</td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Entity/">Entity</a></td>
-<td>A database entity.</td>
-</tr>
-<tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="EntityXMeasurement/">EntityXMeasurement</a></td>
-<td>Captures a measurement made on an entity.</td>
+<td>An entity in the CDM.</td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Event/">Event</a></td>
@@ -615,35 +595,119 @@
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Experiment/">Experiment</a></td>
-<td>A discrete scientific procedure undertaken to make a discovery, test a hypothesis, or demonstrate a known fact.</td>
+<td>A discrete scientific procedure undertaken to make a discovery, test a hypothesis, or demonstrate a known fact. The protocol_id links to the workflow followed to perform the experiment.</td>
 </tr>
 <tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ExperimentXProject/">ExperimentXProject</a></td>
-<td>Captures the relationship between an experiment and the project that it is a part of.</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ExperimentCondition/">ExperimentCondition</a></td>
+<td>A measurement, reagent, or description of one aspect of the environment used in an experiment; examples include temperature; aerobic or anaerobic conditions; presence of a chemical in the environment. Used to describe the context, conditions, or set-up of an experiment.</td>
 </tr>
 <tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ExperimentXSample/">ExperimentXSample</a></td>
-<td>Represents the participation of a sample in an experiment.</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ExperimentConditionSet/">ExperimentConditionSet</a></td>
+<td>A unique combination of experimental conditions and entities that are used in a specific experiment. One experiment condition set is expected to comprise of multiple ExperimentConditions.</td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Feature/">Feature</a></td>
 <td>A feature localized to an interval along a contig.</td>
 </tr>
 <tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="FeatureXProtein/">FeatureXProtein</a></td>
-<td>Captures the relationship between a feature and a protein; equivalent to feature encodes protein.</td>
-</tr>
-<tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="GoldEnvironmentalContext/">GoldEnvironmentalContext</a></td>
 <td>Environmental context, described using JGI's five level system.</td>
 </tr>
 <tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="IdentifiedEntity/">IdentifiedEntity</a></td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Identifier/">Identifier</a></td>
+<td>A string used as a resolvable (external) identifier for an entity. This should be a CURIE in the form <code>&lt;database_prefix&gt;:&lt;local_identifier&gt;</code>. <a href="https://bioregistry.io">Bioregistry</a> is used as the canonical reference for CURIE database prefixes; please use the prefix exactly as written in the Bioregistry entry.<br><br>If the string cannot be resolved to an URL, it should be added to the <code>Name</code> table instead.<br><br>This table is used for capturing external IDs. The internal CDM identifier should be used in the *_id field (e.g. feature_id, protein_id, contig_collection_id).</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="License/">License</a></td>
+<td>License information for the resource.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="LinkerTable/">LinkerTable</a></td>
+<td>tables for linking between tables</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="AssociationXSupportingObject/">AssociationXSupportingObject</a></td>
+<td>Links associations to entities to capture supporting objects in an association. May be a biological entity, such as a protein or feature, or a URL to a resource (e.g. a publication) that supports the association. Where possible, CDM identifiers should be used.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ContigXContigCollection/">ContigXContigCollection</a></td>
+<td>Captures the relationship between a contig and a contig collection; equivalent to contig part-of contig collection.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ContigXEncodedFeature/">ContigXEncodedFeature</a></td>
+<td>Captures the relationship between a contig and an encoded feature.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ContigXFeature/">ContigXFeature</a></td>
+<td>Captures the relationship between a contig and a feature; equivalent to feature part-of contig.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ContigXProtein/">ContigXProtein</a></td>
+<td>Captures the relationship between a contig and a protein; equivalent to protein is ribosomal translation of (http://purl.obolibrary.org/obo/RO_0002512) contig.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ContigCollectionXEncodedFeature/">ContigCollectionXEncodedFeature</a></td>
+<td>Captures the relationship between a contig collection and an encoded feature.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ContigCollectionXFeature/">ContigCollectionXFeature</a></td>
+<td>Captures the relationship between a contig collection and a feature; equivalent to feature part-of contig collection.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ContigCollectionXProtein/">ContigCollectionXProtein</a></td>
+<td>Captures the relationship between a contig collection and a protein; equivalent to protein is ribosomal translation of (http://purl.obolibrary.org/obo/RO_0002512) contig collection.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ContributorToDataSource/">ContributorToDataSource</a></td>
+<td>Captures the people and/or organizations involved in producing a dataset; ideally the contributor_role field will capture how the contributor was involved.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ContributorAffiliations/">ContributorAffiliations</a></td>
+<td>Captures relationships between contributors where one contributor is part of another contributor, e.g. a member of a group or a group that is part of a larger organization.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="DataSourceDescription/">DataSourceDescription</a></td>
+<td>Links a data source to a description (e.g. the abstract or a free text description).</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="DataSourceFundingReference/">DataSourceFundingReference</a></td>
+<td>Links a data source to a funding reference.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="DataSourceLicense/">DataSourceLicense</a></td>
+<td>Links a data source to a license.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="DataSourceTitle/">DataSourceTitle</a></td>
+<td>Links a data source to a title.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="EncodedFeatureXFeature/">EncodedFeatureXFeature</a></td>
+<td>Captures the relationship between a feature and its transcription product.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="FeatureXProtein/">FeatureXProtein</a></td>
+<td>Captures the relationship between a feature and a protein; equivalent to feature encodes protein.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="IdentifiedEntity/">IdentifiedEntity</a></td>
 <td>Represents the link between an entity and its identifiers.</td>
 </tr>
 <tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Identifier/">Identifier</a></td>
-<td>A string used as a resolvable (external) identifier for an entity. This should be a URI or CURIE. If the string cannot be resolved to an URL, it should be added as a 'name' instead.<br><br>This table is used for capturing external IDs. The internal CDM identifier should be used in the *_id field (e.g. feature_id, protein_id, contig_collection_id).</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="NamedEntity/">NamedEntity</a></td>
+<td>Represents the link between an entity and its names.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ProtocolVariable/">ProtocolVariable</a></td>
+<td>A variable that may or may not be set as part of an experiment.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Measurement/">Measurement</a></td>
+<td>The value of a specified variable_id under the specified conditions.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="MeasurementSet/">MeasurementSet</a></td>
+<td>Grouping table to collate a set of protocol outputs by variable, quality, and timestamp.</td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="MixsEnvironmentalContext/">MixsEnvironmentalContext</a></td>
@@ -651,11 +715,15 @@
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Name/">Name</a></td>
-<td>A string used as the name or label for an entity. This may be a primary name, alternative name, synonym, acronym, or any other label used to refer to an entity.<br><br>Identifiers that look like CURIEs or database references, but which cannot be resolved using bioregistry or identifiers.org should be added as names.</td>
+<td>A string used as the name or label for an entity. This may be a primary name, alternative name, synonym, acronym, or any other label used to refer to an entity.<br><br>Identifiers that look like CURIEs or database references, but which cannot be resolved using <a href="https://bioregistry.io">Bioregistry</a> or <a href="https://identifiers.org">identifiers.org</a> should be added to the <code>Name</code> table.</td>
 </tr>
 <tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="NamedEntity/">NamedEntity</a></td>
-<td>Represents the link between an entity and its names.</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="OrderedProtocolStep/">OrderedProtocolStep</a></td>
+<td>A list of the steps in a protocol; the step_index indicates the order in which they should be executed.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Parameter/">Parameter</a></td>
+<td>A parameter in a protocol. Currently specific to computational protocols.</td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Prefix/">Prefix</a></td>
@@ -671,19 +739,35 @@
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Protocol/">Protocol</a></td>
-<td>Defined method or set of methods.</td>
+<td>A defined method or set of methods.</td>
 </tr>
 <tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ProtocolXProtocolParticipant/">ProtocolXProtocolParticipant</a></td>
-<td></td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ProtocolExecution/">ProtocolExecution</a></td>
+<td>An instance of executing a protocol. Used for</td>
 </tr>
 <tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ProtocolParticipant/">ProtocolParticipant</a></td>
-<td>Either an input or an output of a protocol.</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ProtocolInput/">ProtocolInput</a></td>
+<td>An input parameter for a protocol.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ProtocolInputSet/">ProtocolInputSet</a></td>
+<td>A set of input parameters for a protocol.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ProtocolOutput/">ProtocolOutput</a></td>
+<td>The output of a protocol.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ProtocolStep/">ProtocolStep</a></td>
+<td>A step in a protocol.</td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Publication/">Publication</a></td>
 <td>A publication (e.g. journal article).</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ResourceTitle/">ResourceTitle</a></td>
+<td>Represents the title or name of a resource, the type of that title, and the language used (if appropriate).<br><br>The <code>title</code> field is required; <code>title_type</code> is only necessary if the text is not the primary title.</td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Sample/">Sample</a></td>
@@ -691,11 +775,23 @@
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Sequence/">Sequence</a></td>
-<td></td>
+<td>A sequence of nucleotides or amino acids.</td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Statements/">Statements</a></td>
-<td>Represents an RDF triple</td>
+<td>Represents an RDF triple, a statement in the form "<em>subject</em> <em>predicate</em> <em>object</em>" or "<em>subject</em> <em>predicate</em> <em>value</em>".<br><br>See <a href="https://incatools.github.io/semantic-sql/">Semantic SQL</a> for more information on the contents of this table and how it is populated.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Variable/">Variable</a></td>
+<td>A variable (input, output, environmental, etc.) that can be set or measured as part of a protocol.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="VariableValue/">VariableValue</a></td>
+<td>The possible types for the value of a variable. Should be a LinkML data type or one of the defined CDM data types.</td>
+</tr>
+<tr>
+<td><a href="UnitMixin/">UnitMixin</a></td>
+<td>The unit used in expressing a quantity value.</td>
 </tr>
 </tbody>
 </table>
@@ -709,8 +805,12 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="affiliation_id/">affiliation_id</a></td>
+<td>The ID of the organization to which a contributor belongs. Should be the ID of another contributor.</td>
+</tr>
+<tr>
 <td><a href="aggregator_knowledge_source/">aggregator_knowledge_source</a></td>
-<td>The knowledge source that aggregated the association. Should be a UUID from the DataSource table.</td>
+<td>The knowledge source that aggregated the association. Should be a CDM ID from the Contributor or DataSource table.</td>
 </tr>
 <tr>
 <td><a href="annotation_date/">annotation_date</a></td>
@@ -718,35 +818,47 @@
 </tr>
 <tr>
 <td><a href="asm_score/">asm_score</a></td>
-<td>A composite score for comparing contig collection quality</td>
+<td>A composite score for comparing contig collection quality.</td>
 </tr>
 <tr>
 <td><a href="association_id/">association_id</a></td>
 <td>Internal (CDM) unique identifier for an association.</td>
 </tr>
 <tr>
-<td><a href="attribute_cv_term_id/">attribute_cv_term_id</a></td>
-<td>If the attribute is a term from a controlled vocabulary, the ID of the term.</td>
+<td><a href="attribute_cv_id/">attribute_cv_id</a></td>
+<td>The attribute being represented. For attributes that are in a controlled vocabulary, ontology, or enumeration, this attribute should capture the term ID from the controlled vocabulary.</td>
 </tr>
 <tr>
-<td><a href="attribute_name/">attribute_name</a></td>
-<td>The attribute being captured in this annotation.</td>
+<td><a href="attribute_cv_label/">attribute_cv_label</a></td>
+<td>The attribute being represented. For attributes that are in a controlled vocabulary, ontology, or enumeration, this attribute should capture the term from the controlled vocabulary.</td>
+</tr>
+<tr>
+<td><a href="attribute_string/">attribute_string</a></td>
+<td>The attribute being represented, as a text string. This field should only be used if the attribute is not represented in a controlled vocabulary, ontology, or enumeration.</td>
 </tr>
 <tr>
 <td><a href="base/">base</a></td>
-<td>The base URI a prefix will expand to</td>
+<td>The base URI a prefix will expand to.</td>
+</tr>
+<tr>
+<td><a href="cardinality/">cardinality</a></td>
+<td>The cardinality of the parameter.</td>
 </tr>
 <tr>
 <td><a href="cds_phase/">cds_phase</a></td>
 <td>For features of type CDS, the phase indicates where the next codon begins relative to the 5' end (where the 5' end of the CDS is relative to the strand of the CDS feature) of the current CDS feature. cds_phase is required if the feature type is CDS.</td>
 </tr>
 <tr>
-<td><a href="checkm2_completeness/">checkm2_completeness</a></td>
-<td>Estimate of the completeness of a contig collection (MAG or genome), estimated by CheckM2 tool</td>
+<td><a href="checkm_completeness/">checkm_completeness</a></td>
+<td>Estimate of the completeness of a contig collection (MAG or genome), estimated by CheckM tool. Ensure that percentage values are converted to floats.</td>
 </tr>
 <tr>
-<td><a href="checkm2_contamination/">checkm2_contamination</a></td>
-<td>Estimate of the contamination of a contig collection (MAG or genome), estimated by CheckM2 tool</td>
+<td><a href="checkm_contamination/">checkm_contamination</a></td>
+<td>Estimate of the contamination of a contig collection (MAG or genome), estimated by CheckM tool. Ensure that percentage values are converted to floats.</td>
+</tr>
+<tr>
+<td><a href="checkm_version/">checkm_version</a></td>
+<td>Version of the CheckM tool used.</td>
 </tr>
 <tr>
 <td><a href="checksum/">checksum</a></td>
@@ -754,7 +866,7 @@
 </tr>
 <tr>
 <td><a href="cluster_id/">cluster_id</a></td>
-<td>Internal (CDM) unique identifier for a cluster.</td>
+<td>Internal (CDM) unique identifier for a cluster.<br>From the Entity table: entity_id where entity_type == 'Cluster'.</td>
 </tr>
 <tr>
 <td><a href="comments/">comments</a></td>
@@ -766,7 +878,7 @@
 </tr>
 <tr>
 <td><a href="contig_collection_id/">contig_collection_id</a></td>
-<td>Internal (CDM) unique identifier for a contig collection.</td>
+<td>Internal (CDM) unique identifier for a contig collection.<br>From the Entity table: entity_id where entity_type == 'ContigCollection'.</td>
 </tr>
 <tr>
 <td><a href="contig_collection_type/">contig_collection_type</a></td>
@@ -774,11 +886,39 @@
 </tr>
 <tr>
 <td><a href="contig_id/">contig_id</a></td>
-<td>Internal (CDM) unique identifier for a contig.</td>
+<td>Internal (CDM) unique identifier for a contig.<br>From the Entity table: entity_id where entity_type == 'Contig'.</td>
+</tr>
+<tr>
+<td><a href="contig_l50/">contig_l50</a></td>
+<td>Given a set of contigs, the L50 is defined as the sequence length of the shortest contig at 50% of the total contig collection length</td>
+</tr>
+<tr>
+<td><a href="contig_l90/">contig_l90</a></td>
+<td>The L90 statistic is less than or equal to the L50 statistic; it is the length for which the collection of all contigs of that length or longer contains at least 90% of the sum of the lengths of all contigs</td>
+</tr>
+<tr>
+<td><a href="contig_logsum/">contig_logsum</a></td>
+<td>The sum of the (length*log(length)) of all contigs, times some constant.</td>
+</tr>
+<tr>
+<td><a href="contig_max/">contig_max</a></td>
+<td>Maximum contig length</td>
+</tr>
+<tr>
+<td><a href="contig_n50/">contig_n50</a></td>
+<td>Given a set of contigs, each with its own length, the N50 count is defined as the smallest number_of_contigs whose length sum makes up half of contig collection size</td>
+</tr>
+<tr>
+<td><a href="contig_n90/">contig_n90</a></td>
+<td>Given a set of contigs, each with its own length, the N90 count is defined as the smallest number of contigs whose length sum makes up 90% of contig collection size</td>
+</tr>
+<tr>
+<td><a href="contig_powersum/">contig_powersum</a></td>
+<td>Powersum of all contigs is the same as logsum except that it uses the sum of (length*(length^P)) for some power P (default P=0.25)</td>
 </tr>
 <tr>
 <td><a href="contributor_id/">contributor_id</a></td>
-<td>Internal (CDM) unique identifier for a contributor.</td>
+<td>Internal (CDM) unique identifier for a contributor.<br>From the Entity table: entity_id where entity_type == 'Contributor'.</td>
 </tr>
 <tr>
 <td><a href="contributor_role/">contributor_role</a></td>
@@ -797,44 +937,16 @@
 <td>The time at which the event started or was created.</td>
 </tr>
 <tr>
-<td><a href="ctg_L50/">ctg_L50</a></td>
-<td>Given a set of contigs, the L50 is defined as the sequence length of the shortest contig at 50% of the total contig collection length</td>
-</tr>
-<tr>
-<td><a href="ctg_L90/">ctg_L90</a></td>
-<td>The L90 statistic is less than or equal to the L50 statistic; it is the length for which the collection of all contigs of that length or longer contains at least 90% of the sum of the lengths of all contigs</td>
-</tr>
-<tr>
-<td><a href="ctg_logsum/">ctg_logsum</a></td>
-<td>The sum of the (length*log(length)) of all contigs, times some constant.</td>
-</tr>
-<tr>
-<td><a href="ctg_max/">ctg_max</a></td>
-<td>Maximum contig length</td>
-</tr>
-<tr>
-<td><a href="ctg_N50/">ctg_N50</a></td>
-<td>Given a set of contigs, each with its own length, the N50 count is defined as the smallest number_of_contigs whose length sum makes up half of contig collection size</td>
-</tr>
-<tr>
-<td><a href="ctg_N90/">ctg_N90</a></td>
-<td>Given a set of contigs, each with its own length, the N90 count is defined as the smallest number of contigs whose length sum makes up 90% of contig collection size</td>
-</tr>
-<tr>
-<td><a href="ctg_powsum/">ctg_powsum</a></td>
-<td>Powersum of all contigs is the same as logsum except that it uses the sum of (length*(length^P)) for some power P (default P=0.25)</td>
-</tr>
-<tr>
 <td><a href="data_source_created/">data_source_created</a></td>
 <td>Date/timestamp for when the entity was created or added to the data source.</td>
 </tr>
 <tr>
 <td><a href="data_source_entity_id/">data_source_entity_id</a></td>
-<td>The primary ID of the entity at the data source.</td>
+<td>The primary, ideally unique, ID of the entity at the data source.</td>
 </tr>
 <tr>
 <td><a href="data_source_id/">data_source_id</a></td>
-<td>Internal (CDM) unique identifier for a data source.</td>
+<td>Internal (CDM) unique identifier for a data source.<br>From the Entity table: entity_id where entity_type == 'DataSource'.</td>
 </tr>
 <tr>
 <td><a href="data_source_updated/">data_source_updated</a></td>
@@ -842,15 +954,39 @@
 </tr>
 <tr>
 <td><a href="datatype/">datatype</a></td>
-<td>the rdf datatype of the value, for example, xsd:string</td>
+<td>the rdf datatype of the value, for example, xsd:string or xsd:float.</td>
 </tr>
 <tr>
 <td><a href="date_accessed/">date_accessed</a></td>
 <td>The date when the data was downloaded from the data source.</td>
 </tr>
 <tr>
+<td><a href="date_published/">date_published</a></td>
+<td>The date when the data source was originally made public.</td>
+</tr>
+<tr>
+<td><a href="date_time/">date_time</a></td>
+<td>A date or date and time, expressed in ISO 8601 format with timezone indicators where appropriate.  The date or date/time value, expressed in ISO 8601-compatible form. Dates should be expressed as YYYY-MM-DD; times should be expressed as HH:MM:SS with optional milliseconds and an indication of the timezone.</td>
+</tr>
+<tr>
+<td><a href="date_updated/">date_updated</a></td>
+<td>The date when the data source was last updated.</td>
+</tr>
+<tr>
+<td><a href="default/">default</a></td>
+<td>The default value for the parameter if a value is not supplied.</td>
+</tr>
+<tr>
 <td><a href="description/">description</a></td>
 <td>Brief textual definition or description.</td>
+</tr>
+<tr>
+<td><a href="description_text/">description_text</a></td>
+<td>The text content of the informational element.</td>
+</tr>
+<tr>
+<td><a href="description_type/">description_type</a></td>
+<td>The type of text being represented.</td>
 </tr>
 <tr>
 <td><a href="doi/">doi</a></td>
@@ -878,7 +1014,7 @@
 </tr>
 <tr>
 <td><a href="encoded_feature_id/">encoded_feature_id</a></td>
-<td>Internal (CDM) unique identifier for an encoded feature.</td>
+<td>Internal (CDM) unique identifier for an encoded feature.<br>From the Entity table: entity_id where entity_type == 'EncodedFeature'.</td>
 </tr>
 <tr>
 <td><a href="end/">end</a></td>
@@ -914,7 +1050,15 @@
 </tr>
 <tr>
 <td><a href="evidence_type/">evidence_type</a></td>
-<td>The type of evidence supporting the association. Should be a term from the Evidence and Conclusion Ontology (ECO).</td>
+<td>The type of evidence supporting the association. Should be a term from the Evidence and Conclusion Ontology (ECO). Specific pieces of evidence that support the association should be added as supporting objects, in the AssociationSupportingObject table.</td>
+</tr>
+<tr>
+<td><a href="experiment_condition_id/">experiment_condition_id</a></td>
+<td>Internal (CDM) unique identifier for an experiment condition.</td>
+</tr>
+<tr>
+<td><a href="experiment_condition_set_id/">experiment_condition_set_id</a></td>
+<td>Internal (CDM) unique identifier for a set of experimental conditions.</td>
 </tr>
 <tr>
 <td><a href="experiment_id/">experiment_id</a></td>
@@ -926,14 +1070,22 @@
 </tr>
 <tr>
 <td><a href="feature_id/">feature_id</a></td>
-<td>Internal (CDM) unique identifier for a feature.</td>
+<td>Internal (CDM) unique identifier for a feature.<br>From the Entity table: entity_id where entity_type == 'Feature'.</td>
 </tr>
 <tr>
-<td><a href="gap_pct/">gap_pct</a></td>
+<td><a href="funder/">funder</a></td>
+<td>The funder for the grant or award.</td>
+</tr>
+<tr>
+<td><a href="funding_reference_id/">funding_reference_id</a></td>
+<td>Internal (CDM) unique identifier for a specific source of funding -- e.g. a grant or award.<br>From the Entity table: entity_id where entity_type == 'FundingReference'.</td>
+</tr>
+<tr>
+<td><a href="gap_percent/">gap_percent</a></td>
 <td>The gap size percentage of all scaffolds</td>
 </tr>
 <tr>
-<td><a href="gc_avg/">gc_avg</a></td>
+<td><a href="gc_average/">gc_average</a></td>
 <td>The average GC content of the contig collection, expressed as a percentage</td>
 </tr>
 <tr>
@@ -951,6 +1103,22 @@
 <tr>
 <td><a href="gold_environmental_context_id/">gold_environmental_context_id</a></td>
 <td>Internal (CDM) unique identifier for a GOLD environmental context.</td>
+</tr>
+<tr>
+<td><a href="grant_id/">grant_id</a></td>
+<td>Code for the grant, assigned by the funder.</td>
+</tr>
+<tr>
+<td><a href="grant_title/">grant_title</a></td>
+<td>Title for the grant.</td>
+</tr>
+<tr>
+<td><a href="grant_url/">grant_url</a></td>
+<td>URL for the grant.</td>
+</tr>
+<tr>
+<td><a href="gtdb_taxon_id/">gtdb_taxon_id</a></td>
+<td>The GTDB taxon ID for this contig collection.</td>
 </tr>
 <tr>
 <td><a href="has_stop_codon/">has_stop_codon</a></td>
@@ -982,11 +1150,19 @@
 </tr>
 <tr>
 <td><a href="latitude/">latitude</a></td>
-<td></td>
+<td>The latitude portion of a geolocation.</td>
 </tr>
 <tr>
 <td><a href="length/">length</a></td>
 <td>Length of the contig in bp.</td>
+</tr>
+<tr>
+<td><a href="license/">license</a></td>
+<td>Usage license for the resource. Use one of the SPDX license identifiers or provide a link to the license text if no SPDX ID is available.</td>
+</tr>
+<tr>
+<td><a href="license_id/">license_id</a></td>
+<td>Unique identifier for a license.</td>
 </tr>
 <tr>
 <td><a href="location/">location</a></td>
@@ -994,23 +1170,31 @@
 </tr>
 <tr>
 <td><a href="longitude/">longitude</a></td>
-<td></td>
+<td>The longitude portion of a geolocation.</td>
 </tr>
 <tr>
-<td><a href="maximum_value/">maximum_value</a></td>
-<td>If the quantity describes a range, represents the upper bound of the range.</td>
+<td><a href="maximum_numeric_value/">maximum_numeric_value</a></td>
+<td>The maximum value part, expressed as number, of the quantity value when the value covers a range.</td>
 </tr>
 <tr>
 <td><a href="measurement_id/">measurement_id</a></td>
 <td>Internal (CDM) unique identifier for a measurement.</td>
 </tr>
 <tr>
-<td><a href="minimum_value/">minimum_value</a></td>
-<td>If the quantity describes a range, represents the lower bound of the range.</td>
+<td><a href="measurement_set_id/">measurement_set_id</a></td>
+<td>Internal (CDM) unique identifier for a specified variable in a specified experiment.</td>
+</tr>
+<tr>
+<td><a href="minimum_numeric_value/">minimum_numeric_value</a></td>
+<td>The minimum value part, expressed as number, of the quantity value when the value covers a range.</td>
 </tr>
 <tr>
 <td><a href="mixs_environmental_context_id/">mixs_environmental_context_id</a></td>
 <td>Internal (CDM) unique identifier for a mixs environmental context.</td>
+</tr>
+<tr>
+<td><a href="n_chromosomes/">n_chromosomes</a></td>
+<td>Total number of chromosomes</td>
 </tr>
 <tr>
 <td><a href="n_contigs/">n_contigs</a></td>
@@ -1025,20 +1209,36 @@
 <td>A string used as a name or title.</td>
 </tr>
 <tr>
+<td><a href="name_cv_id/">name_cv_id</a></td>
+<td>If the <code>name</code> is from a controlled vocabulary (CV), the curie of the controlled vocabulary term.</td>
+</tr>
+<tr>
+<td><a href="ncbi_taxon_id/">ncbi_taxon_id</a></td>
+<td>The NCBI taxon ID for this contig collection.</td>
+</tr>
+<tr>
 <td><a href="negated/">negated</a></td>
 <td>If true, the relationship between the subject and object is negated. For example, consider an association where the subject is a protein ID, the object is the GO term for "glucose biosynthesis", and the predicate is "involved in". With the "negated" field set to false, the association is interpreted as "<protein ID> is involved in glucose biosynthesis". With the "negated" field set to true, the association is interpreted as "<protein ID> is not involved in glucose biosynthesis".</td>
 </tr>
 <tr>
+<td><a href="numeric_value/">numeric_value</a></td>
+<td>The numerical part of a quantity value.</td>
+</tr>
+<tr>
 <td><a href="object/">object</a></td>
-<td>Note the range of this slot is always a node. If the triple represents a literal, instead value will be populated</td>
+<td>Note the range of this slot is always a node. If the triple represents a literal, the "value" field will be populated instead.</td>
 </tr>
 <tr>
 <td><a href="p_value/">p_value</a></td>
 <td>The 'score' of the feature. The semantics of this field are ill-defined. P-values should be used for ab initio gene prediction features.</td>
 </tr>
 <tr>
-<td><a href="participant_type/">participant_type</a></td>
-<td>The type of participant in the protocol.</td>
+<td><a href="parameter_id/">parameter_id</a></td>
+<td>Internal (CDM) unique identifier for a parameter of a protocol.</td>
+</tr>
+<tr>
+<td><a href="parameter_type/">parameter_type</a></td>
+<td>Whether the parameter applies to the protocol input or output.</td>
 </tr>
 <tr>
 <td><a href="predicate/">predicate</a></td>
@@ -1046,91 +1246,131 @@
 </tr>
 <tr>
 <td><a href="prefix/">prefix</a></td>
-<td>A standardized prefix such as 'GO' or 'rdf' or 'FlyBase'</td>
+<td>A standardized prefix such as 'GO' or 'rdf' or 'FlyBase'.</td>
 </tr>
 <tr>
 <td><a href="primary_knowledge_source/">primary_knowledge_source</a></td>
-<td>The knowledge source that created the association. Should be a UUID from the DataSource table.</td>
+<td>The knowledge source or contributor that created the association. Should be a CDM ID from the Contributor or DataSource table.</td>
 </tr>
 <tr>
 <td><a href="project_id/">project_id</a></td>
-<td>Internal (CDM) unique identifier for a project.</td>
+<td>Internal (CDM) unique identifier for a project.<br>From the Entity table: entity_id where entity_type == 'Project'.</td>
 </tr>
 <tr>
 <td><a href="protein_id/">protein_id</a></td>
-<td>Internal (CDM) unique identifier for a protein.</td>
+<td>Internal (CDM) unique identifier for a protein.<br>From the Entity table: entity_id where entity_type == 'Protein'.</td>
+</tr>
+<tr>
+<td><a href="protocol_execution_id/">protocol_execution_id</a></td>
+<td>Internal CDM unique identifier for an execution of a protocol.</td>
 </tr>
 <tr>
 <td><a href="protocol_id/">protocol_id</a></td>
-<td>Internal (CDM) unique identifier for a protocol.</td>
+<td>Internal (CDM) unique identifier for a protocol.<br>From the Entity table: entity_id where entity_type == 'Protocol'.</td>
 </tr>
 <tr>
-<td><a href="protocol_participant_id/">protocol_participant_id</a></td>
-<td>The unique identifier for the protocol participant.</td>
+<td><a href="protocol_input_id/">protocol_input_id</a></td>
+<td>Internal CDM unique identifier for the value of an input parameter for a protocol.</td>
+</tr>
+<tr>
+<td><a href="protocol_input_set_id/">protocol_input_set_id</a></td>
+<td>Internal CDM unique identifier for a set of input parameter values for a protocol.</td>
+</tr>
+<tr>
+<td><a href="protocol_output_id/">protocol_output_id</a></td>
+<td>Internal CDM unique identifier for the value of an output of a protocol.</td>
+</tr>
+<tr>
+<td><a href="protocol_step_id/">protocol_step_id</a></td>
+<td>Internal CDM unique identifier for a step in a protocol.</td>
+</tr>
+<tr>
+<td><a href="protocol_variable_id/">protocol_variable_id</a></td>
+<td>Internal CDM unique identifier for a variable in a protocol.</td>
 </tr>
 <tr>
 <td><a href="publication_id/">publication_id</a></td>
 <td>Unique identifier for a publication - e.g. PMID, DOI, URL, etc.</td>
 </tr>
 <tr>
+<td><a href="publisher/">publisher</a></td>
+<td>The publisher of the resource. For a dataset, this is the repository where it is stored.</td>
+</tr>
+<tr>
 <td><a href="quality/">quality</a></td>
-<td>The quality of the measurement, indicating the confidence that one can have in its correctness.</td>
+<td>A quality score for measurement.</td>
 </tr>
 <tr>
 <td><a href="raw_value/">raw_value</a></td>
-<td>Raw value from the source data. May or may not include units or other unstructured information.</td>
+<td>The value that was specified for an annotation in its raw form; e.g. "2 cm" or "2-4 cm"</td>
 </tr>
 <tr>
 <td><a href="relationship/">relationship</a></td>
-<td>Relationship between this identifier and the entity in the <code>entity_id</code> field.</td>
+<td>Relationship between this identifier and the entity in the <code>entity_id</code> field. If absent, it is assumed that the identifier represents the same entity in another data source.</td>
+</tr>
+<tr>
+<td><a href="required/">required</a></td>
+<td>Whether or not this parameter must be supplied.</td>
+</tr>
+<tr>
+<td><a href="resource_description_id/">resource_description_id</a></td>
+<td>Unique identifier for a description for a resource.</td>
+</tr>
+<tr>
+<td><a href="resource_title_id/">resource_title_id</a></td>
+<td>Unique identifier for a title for a resource.</td>
+</tr>
+<tr>
+<td><a href="resource_type/">resource_type</a></td>
+<td>The broad type of the source data for this object. 'dataset' is currently the only valid value supported by this schema.</td>
 </tr>
 <tr>
 <td><a href="sample_id/">sample_id</a></td>
-<td>Internal (CDM) unique identifier for a sample.</td>
+<td>Internal (CDM) unique identifier for a sample.<br>From the Entity table: entity_id where entity_type == 'Sample'.</td>
 </tr>
 <tr>
-<td><a href="scaf_bp/">scaf_bp</a></td>
+<td><a href="scaffold_bp/">scaffold_bp</a></td>
 <td>Total size in bp of all scaffolds</td>
 </tr>
 <tr>
-<td><a href="scaf_L50/">scaf_L50</a></td>
+<td><a href="scaffold_l50/">scaffold_l50</a></td>
 <td>Given a set of scaffolds, the L50 is defined as the sequence length of the shortest scaffold at 50% of the total contig collection length</td>
 </tr>
 <tr>
-<td><a href="scaf_L90/">scaf_L90</a></td>
+<td><a href="scaffold_l90/">scaffold_l90</a></td>
 <td>The L90 statistic is less than or equal to the L50 statistic; it is the length for which the collection of all scaffolds of that length or longer contains at least 90% of the sum of the lengths of all scaffolds.</td>
 </tr>
 <tr>
-<td><a href="scaf_l_gt50k/">scaf_l_gt50k</a></td>
-<td>The total length of scaffolds longer than 50,000 base pairs</td>
-</tr>
-<tr>
-<td><a href="scaf_logsum/">scaf_logsum</a></td>
+<td><a href="scaffold_logsum/">scaffold_logsum</a></td>
 <td>The sum of the (length*log(length)) of all scaffolds, times some constant. Increase the contiguity, the score will increase</td>
 </tr>
 <tr>
-<td><a href="scaf_max/">scaf_max</a></td>
+<td><a href="scaffold_maximum_length/">scaffold_maximum_length</a></td>
 <td>Maximum scaffold length</td>
 </tr>
 <tr>
-<td><a href="scaf_N50/">scaf_N50</a></td>
+<td><a href="scaffold_n50/">scaffold_n50</a></td>
 <td>Given a set of scaffolds, each with its own length, the N50 count is defined as the smallest number of scaffolds whose length sum makes up half of contig collection size</td>
 </tr>
 <tr>
-<td><a href="scaf_N90/">scaf_N90</a></td>
+<td><a href="scaffold_n90/">scaffold_n90</a></td>
 <td>Given a set of scaffolds, each with its own length, the N90 count is defined as the smallest number of scaffolds whose length sum makes up 90% of contig collection size</td>
 </tr>
 <tr>
-<td><a href="scaf_n_gt50K/">scaf_n_gt50K</a></td>
+<td><a href="scaffold_powersum/">scaffold_powersum</a></td>
+<td>Powersum of all scaffolds is the same as logsum except that it uses the sum of (length*(length^P)) for some power P (default P=0.25).</td>
+</tr>
+<tr>
+<td><a href="scaffolds_n_over_50K/">scaffolds_n_over_50K</a></td>
 <td>The number of scaffolds longer than 50,000 base pairs.</td>
 </tr>
 <tr>
-<td><a href="scaf_pct_gt50K/">scaf_pct_gt50K</a></td>
+<td><a href="scaffolds_percent_over_50K/">scaffolds_percent_over_50K</a></td>
 <td>The percentage of the total assembly length represented by scaffolds longer than 50,000 base pairs</td>
 </tr>
 <tr>
-<td><a href="scaf_powsum/">scaf_powsum</a></td>
-<td>Powersum of all scaffolds is the same as logsum except that it uses the sum of (length*(length^P)) for some power P (default P=0.25).</td>
+<td><a href="scaffolds_total_length_over_50k/">scaffolds_total_length_over_50k</a></td>
+<td>The total length of scaffolds longer than 50,000 base pairs</td>
 </tr>
 <tr>
 <td><a href="score/">score</a></td>
@@ -1142,7 +1382,7 @@
 </tr>
 <tr>
 <td><a href="sequence_id/">sequence_id</a></td>
-<td>Internal (CDM) unique identifier for a sequence.</td>
+<td>Internal (CDM) unique identifier for a sequence.<br>From the Entity table: entity_id where entity_type == 'Sequence'.</td>
 </tr>
 <tr>
 <td><a href="source/">source</a></td>
@@ -1161,6 +1401,14 @@
 <td>The start and end coordinates of the feature are given in positive 1-based int coordinates, relative to the landmark given in column one. Start is always less than or equal to end. For features that cross the origin of a circular feature (e.g. most bacterial genomes, plasmids, and some viral genomes), the requirement for start to be less than or equal to end is satisfied by making end = the position of the end + the length of the landmark feature. For zero-length features, such as insertion sites, start equals end and the implied site is to the right of the indicated base in the direction of the landmark.</td>
 </tr>
 <tr>
+<td><a href="step/">step</a></td>
+<td>Text description of a step in a protocol.</td>
+</tr>
+<tr>
+<td><a href="step_index/">step_index</a></td>
+<td>The number of the step in an ordered progression.</td>
+</tr>
+<tr>
 <td><a href="strand/">strand</a></td>
 <td>The strand of the feature.</td>
 </tr>
@@ -1169,12 +1417,36 @@
 <td>The subject of the statement</td>
 </tr>
 <tr>
+<td><a href="text_value/">text_value</a></td>
+<td>The value, as a text string. This field should only be used if the value is not represented in a controlled vocabulary, ontology, or enumeration.</td>
+</tr>
+<tr>
+<td><a href="title/">title</a></td>
+<td>A string used as a title for a resource.</td>
+</tr>
+<tr>
+<td><a href="title_type/">title_type</a></td>
+<td>A descriptor for the title for cases where the contents of the <code>title</code> field is not the primary name or title.</td>
+</tr>
+<tr>
 <td><a href="type/">type</a></td>
-<td>The type of the entity. Should be a term from the sequence ontology.</td>
+<td>The type of value being represented - e.g. QuantityValue, TextValue, DateTimeValue, ControlledVocabularyTermValue, etc.</td>
 </tr>
 <tr>
 <td><a href="unit/">unit</a></td>
-<td>The unit of the quantity. Should be a term from UCUM.</td>
+<td>The units used to measure the value of the variable, if applicable. Units should be expressed using the Unit Ontology or a term from UCUM.</td>
+</tr>
+<tr>
+<td><a href="unit_cv_id/">unit_cv_id</a></td>
+<td>The unit of the quantity, expressed as a CURIE from the Unit Ontology.</td>
+</tr>
+<tr>
+<td><a href="unit_cv_label/">unit_cv_label</a></td>
+<td>The unit of a quantity, expressed as the term name of a term from the Unit Ontology or UCUM.</td>
+</tr>
+<tr>
+<td><a href="unit_string/">unit_string</a></td>
+<td>Links a QuantityValue to a unit. Units should be taken from the UCUM unit collection or the Unit Ontology. This field should only be used if the unit is not present in one of those sources.</td>
 </tr>
 <tr>
 <td><a href="updated/">updated</a></td>
@@ -1186,15 +1458,31 @@
 </tr>
 <tr>
 <td><a href="value/">value</a></td>
-<td>Note the range of this slot is always a string. Only used the triple represents a literal assertion</td>
+<td>Note the range of this slot is always a string. Only used if the triple represents a literal assertion</td>
 </tr>
 <tr>
-<td><a href="value_cv_term_id/">value_cv_term_id</a></td>
-<td>If the term comes from the controlled vocabulary, the CURIE for the term. This will always be null if the text string is not from a controlled vocabulary.</td>
+<td><a href="value_cv_id/">value_cv_id</a></td>
+<td>For values that are in a controlled vocabulary (CV), this attribute should capture the controlled vocabulary ID for the value.</td>
+</tr>
+<tr>
+<td><a href="value_cv_label/">value_cv_label</a></td>
+<td>For values that are in a controlled vocabulary, ontology, or enumeration, this attribute should capture the term from the controlled vocabulary.</td>
+</tr>
+<tr>
+<td><a href="value_type/">value_type</a></td>
+<td>The type(s) of the value.</td>
+</tr>
+<tr>
+<td><a href="variable_id/">variable_id</a></td>
+<td>Internal CDM unique identifier for a variable.</td>
+</tr>
+<tr>
+<td><a href="variable_value_id/">variable_value_id</a></td>
+<td>Internal CDM unique identifier for a variable value.</td>
 </tr>
 <tr>
 <td><a href="version/">version</a></td>
-<td>For versioned data sources, the version of the dataset.</td>
+<td>The version of the resource. This must be an absolute version, not a relative version like 'latest'.</td>
 </tr>
 </tbody>
 </table>
@@ -1207,6 +1495,10 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><a href="AttributeValueType/">AttributeValueType</a></td>
+<td></td>
+</tr>
 <tr>
 <td><a href="CdsPhaseType/">CdsPhaseType</a></td>
 <td>For features of type CDS (coding sequence), the phase indicates where the feature begins with reference to the reading frame. The phase is one of the integers 0, 1, or 2, indicating the number of bases that should be removed from the beginning of this feature to reach the first base of the next codon.</td>
@@ -1221,23 +1513,43 @@
 </tr>
 <tr>
 <td><a href="ContributorRole/">ContributorRole</a></td>
-<td>The role of a contributor to a resource.</td>
+<td>The type of contribution made by a contributor.</td>
 </tr>
 <tr>
 <td><a href="ContributorType/">ContributorType</a></td>
 <td>The type of contributor being represented.</td>
 </tr>
 <tr>
+<td><a href="DescriptionType/">DescriptionType</a></td>
+<td>The type of text being represented.</td>
+</tr>
+<tr>
 <td><a href="EntityType/">EntityType</a></td>
 <td>The type of an entity. Must be represented by a table in the CDM schema.</td>
+</tr>
+<tr>
+<td><a href="EventType/">EventType</a></td>
+<td>The type of date being represented.</td>
 </tr>
 <tr>
 <td><a href="ProteinEvidenceForExistence/">ProteinEvidenceForExistence</a></td>
 <td>The evidence for the existence of a biological entity. See https://www.uniprot.org/help/protein_existence and https://www.ncbi.nlm.nih.gov/genbank/evidence/.</td>
 </tr>
 <tr>
+<td><a href="ProtocolParameterType/">ProtocolParameterType</a></td>
+<td>An input, an operation parameter or switch, or an output for a protocol.</td>
+</tr>
+<tr>
 <td><a href="RefSeqStatusType/">RefSeqStatusType</a></td>
 <td>RefSeq status codes, taken from https://www.ncbi.nlm.nih.gov/genbank/evidence/.</td>
+</tr>
+<tr>
+<td><a href="RelationshipType/">RelationshipType</a></td>
+<td>The relationship between two entities. For example, when a PermanentID class is used to represent objects in the CreditMetadata field <code>related_identifiers</code>, the <code>relationship_type</code> field captures the relationship between the resource being registered (A) and this ID (B).</td>
+</tr>
+<tr>
+<td><a href="ResourceType/">ResourceType</a></td>
+<td>The type of resource being represented.</td>
 </tr>
 <tr>
 <td><a href="SequenceType/">SequenceType</a></td>
@@ -1246,6 +1558,14 @@
 <tr>
 <td><a href="StrandType/">StrandType</a></td>
 <td>The strand that a feature appears on relative to a landmark. Also encompasses unknown or irrelevant strandedness.</td>
+</tr>
+<tr>
+<td><a href="TitleType/">TitleType</a></td>
+<td>The type of title being represented.</td>
+</tr>
+<tr>
+<td><a href="VariableType/">VariableType</a></td>
+<td>The type of the value of a variable. Should be a LinkML data type or one of the defined CDM data types.</td>
 </tr>
 </tbody>
 </table>
@@ -1263,12 +1583,64 @@
 <td>A binary (true or false) value</td>
 </tr>
 <tr>
-<td><a href="Curie/">Curie</a></td>
-<td>a compact URI</td>
+<td><a href="CdmAssociationId/">CdmAssociationId</a></td>
+<td>A CDM ID (cdm_id) that identifies an association in the CDM.</td>
 </tr>
 <tr>
-<td><a href="DataSourceUuid/">DataSourceUuid</a></td>
-<td>A UUID that identifies a data source in the CDM.</td>
+<td><a href="CdmClusterId/">CdmClusterId</a></td>
+<td>A CDM ID (cdm_id) that identifies a cluster in the CDM.</td>
+</tr>
+<tr>
+<td><a href="CdmContigCollectionId/">CdmContigCollectionId</a></td>
+<td>A CDM ID (cdm_id) that identifies a contig collection in the CDM.</td>
+</tr>
+<tr>
+<td><a href="CdmContigId/">CdmContigId</a></td>
+<td>A CDM ID (cdm_id) that identifies a contig in the CDM.</td>
+</tr>
+<tr>
+<td><a href="CdmContributorId/">CdmContributorId</a></td>
+<td>A CDM ID (cdm_id) that identifies a contributor in the CDM.</td>
+</tr>
+<tr>
+<td><a href="CdmDataSourceId/">CdmDataSourceId</a></td>
+<td>A CDM ID (cdm_id) that identifies a data source in the CDM.</td>
+</tr>
+<tr>
+<td><a href="CdmEncodedFeatureId/">CdmEncodedFeatureId</a></td>
+<td>A CDM ID (cdm_id) that identifies an encoded feature in the CDM.</td>
+</tr>
+<tr>
+<td><a href="CdmFeatureId/">CdmFeatureId</a></td>
+<td>A CDM ID (cdm_id) that identifies a feature in the CDM.</td>
+</tr>
+<tr>
+<td><a href="CdmId/">CdmId</a></td>
+<td>A universally unique ID, generated using uuid4, with the prefix "CDM:". Used internally in the CDM.</td>
+</tr>
+<tr>
+<td><a href="CdmLicenseId/">CdmLicenseId</a></td>
+<td>A CDM ID (cdm_id) that identifies a license in the CDM.</td>
+</tr>
+<tr>
+<td><a href="CdmProteinId/">CdmProteinId</a></td>
+<td>A CDM ID (cdm_id) that identifies a protein in the CDM.</td>
+</tr>
+<tr>
+<td><a href="CdmProtocolId/">CdmProtocolId</a></td>
+<td>A CDM ID (cdm_id) that identifies a protocol in the CDM.</td>
+</tr>
+<tr>
+<td><a href="CdmSampleId/">CdmSampleId</a></td>
+<td>A CDM ID (cdm_id) that identifies a sample in the CDM.</td>
+</tr>
+<tr>
+<td><a href="CdmSequenceId/">CdmSequenceId</a></td>
+<td>A CDM ID (cdm_id) that identifies a sequence in the CDM.</td>
+</tr>
+<tr>
+<td><a href="Curie/">Curie</a></td>
+<td>a compact URI</td>
 </tr>
 <tr>
 <td><a href="Date/">Date</a></td>
@@ -1285,6 +1657,10 @@
 <tr>
 <td><a href="Decimal/">Decimal</a></td>
 <td>A real number with arbitrary precision that conforms to the xsd:decimal specification</td>
+</tr>
+<tr>
+<td><a href="DecimalDegree/">DecimalDegree</a></td>
+<td>A decimal degree expresses latitude or longitude as decimal fractions.</td>
 </tr>
 <tr>
 <td><a href="Double/">Double</a></td>
@@ -1312,11 +1688,15 @@
 </tr>
 <tr>
 <td><a href="LiteralAsStringType/">LiteralAsStringType</a></td>
-<td></td>
+<td>A literal represented as a string.</td>
 </tr>
 <tr>
 <td><a href="LocalCurie/">LocalCurie</a></td>
-<td>A CURIE that exists as a subject in the <code>statements</code> table (i.e. <code>Statements.subject</code>). Should not be used for external identifiers.</td>
+<td>A CURIE that exists as a subject in the <code>statements</code> table (i.e. <code>statements.subject</code>). Should not be used for external identifiers.</td>
+</tr>
+<tr>
+<td><a href="LocalCurieName/">LocalCurieName</a></td>
+<td>The term name for an ontology term; should appear as an object in the <code>statements</code> table with a relationship indicating that it is the name of an ontology term.</td>
 </tr>
 <tr>
 <td><a href="Ncname/">Ncname</a></td>
@@ -1353,10 +1733,6 @@
 <tr>
 <td><a href="Uriorcurie/">Uriorcurie</a></td>
 <td>a URI or a CURIE</td>
-</tr>
-<tr>
-<td><a href="UUID/">UUID</a></td>
-<td>A universally unique ID, generated using uuid4, with the prefix "CDM:".</td>
 </tr>
 </tbody>
 </table>

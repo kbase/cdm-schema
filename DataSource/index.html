@@ -230,25 +230,17 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="class-datasource">Class: DataSource</h1>
-<p><em>The source dataset from which data within the CDM was extracted. This might be an API query; a set of files downloaded from a website or uploaded by a user; a database dump; etc. A given data source should have either version information (e.g. UniProt's release number) or an access date to allow the original raw data dump to be recapitulated.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/DataSource">kb_cdm:DataSource</a></p>
+<p><em>The source for a resource, dataset, association, etc.</em></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/linkml/DataSource">kb_cdm:DataSource</a></p>
 <div class="mermaid"> classDiagram
     class DataSource
     click DataSource href "../DataSource/"
       Table &lt;|-- DataSource
         click Table href "../Table/"
 
-      DataSource : comments
-
       DataSource : data_source_id
 
-      DataSource : date_accessed
-
       DataSource : name
-
-      DataSource : url
-
-      DataSource : version
 
 
 </div>
@@ -272,38 +264,14 @@
 <tbody>
 <tr>
 <td><a href="../data_source_id/">data_source_id</a></td>
-<td>1 <br/> <a href="../UUID/">UUID</a></td>
-<td>Internal (CDM) unique identifier for a data source.</td>
+<td>1 <br/> <a href="../CdmDataSourceId/">CdmDataSourceId</a></td>
+<td>Internal (CDM) unique identifier for a data source.<br/>From the Entity table: entity_id where entity_type == 'DataSource'.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../name/">name</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>The name of the data source.</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../comments/">comments</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Additional details about the dataset.</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../date_accessed/">date_accessed</a></td>
-<td>0..1 <br/> <a href="../Iso8601/">Iso8601</a></td>
-<td>The date when the data was downloaded from the data source.</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../url/">url</a></td>
-<td>0..1 <br/> <a href="../Uri/">Uri</a></td>
-<td>The URL from which the data was loaded.</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../version/">version</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>For versioned data sources, the version of the dataset.</td>
+<td>0..1 <br> <a href="../String/">String</a></br></td>
+<td>A string used as a name or title.</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -311,7 +279,7 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -337,162 +305,65 @@
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: DataSource
-description: The source dataset from which data within the CDM was extracted. This
-  might be an API query; a set of files downloaded from a website or uploaded by a
-  user; a database dump; etc. A given data source should have either version information
-  (e.g. UniProt's release number) or an access date to allow the original raw data
-  dump to be recapitulated.
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+description: The source for a resource, dataset, association, etc.
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 is_a: Table
 slots:
 - data_source_id
 - name
-slot_usage:
-  data_source_id:
-    name: data_source_id
-    identifier: true
-  name:
-    name: name
-    description: The name of the data source.
-    examples:
-    - value: UniProt
-    - value: NMDC Runtime API
-attributes:
-  comments:
-    name: comments
-    description: Additional details about the dataset.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
-    domain_of:
-    - Association
-    - DataSource
-  date_accessed:
-    name: date_accessed
-    description: The date when the data was downloaded from the data source.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
-    rank: 1000
-    domain_of:
-    - DataSource
-    range: iso8601
-  url:
-    name: url
-    description: The URL from which the data was loaded.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
-    rank: 1000
-    domain_of:
-    - DataSource
-    - Protocol
-    range: uri
-  version:
-    name: version
-    description: For versioned data sources, the version of the dataset.
-    examples:
-    - value: '115'
-    - value: v1.5.3
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
-    rank: 1000
-    domain_of:
-    - DataSource
-    - Protocol
 
 </code></pre>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: DataSource
-description: The source dataset from which data within the CDM was extracted. This
-  might be an API query; a set of files downloaded from a website or uploaded by a
-  user; a database dump; etc. A given data source should have either version information
-  (e.g. UniProt's release number) or an access date to allow the original raw data
-  dump to be recapitulated.
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+description: The source for a resource, dataset, association, etc.
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 is_a: Table
-slot_usage:
-  data_source_id:
-    name: data_source_id
-    identifier: true
-  name:
-    name: name
-    description: The name of the data source.
-    examples:
-    - value: UniProt
-    - value: NMDC Runtime API
 attributes:
-  comments:
-    name: comments
-    description: Additional details about the dataset.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
-    alias: comments
-    owner: DataSource
-    domain_of:
-    - Association
-    - DataSource
-    range: string
-  date_accessed:
-    name: date_accessed
-    description: The date when the data was downloaded from the data source.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
-    rank: 1000
-    alias: date_accessed
-    owner: DataSource
-    domain_of:
-    - DataSource
-    range: iso8601
-  url:
-    name: url
-    description: The URL from which the data was loaded.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
-    rank: 1000
-    alias: url
-    owner: DataSource
-    domain_of:
-    - DataSource
-    - Protocol
-    range: uri
-  version:
-    name: version
-    description: For versioned data sources, the version of the dataset.
-    examples:
-    - value: '115'
-    - value: v1.5.3
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
-    rank: 1000
-    alias: version
-    owner: DataSource
-    domain_of:
-    - DataSource
-    - Protocol
-    range: string
   data_source_id:
     name: data_source_id
-    description: Internal (CDM) unique identifier for a data source.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+    description: 'Internal (CDM) unique identifier for a data source.
+
+      From the Entity table: entity_id where entity_type == ''DataSource''.
+
+      '
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
     rank: 1000
-    identifier: true
     alias: data_source_id
     owner: DataSource
     domain_of:
-    - DataSource
     - Entity
-    range: UUID
+    - DataSource
+    - DataSourceNew
+    - Contributor_to_DataSource
+    - DataSourceDescription
+    - DataSourceTitle
+    - DataSourceLicense
+    - DataSourceFundingReference
+    range: cdm_data_source_id
     required: true
   name:
     name: name
-    description: The name of the data source.
-    examples:
-    - value: UniProt
-    - value: NMDC Runtime API
-    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+    description: A string used as a name or title.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
     rank: 1000
     slot_uri: schema:name
     alias: name
     owner: DataSource
     domain_of:
     - Cluster
+    - Event
+    - Name
     - Contributor
     - DataSource
-    - Event
+    - DataSourceNew
+    - License
     - Experiment
-    - Name
+    - Parameter
+    - Protocol
+    - ProtocolExecution
+    - Variable
     range: string
 
 </code></pre>

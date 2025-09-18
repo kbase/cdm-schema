@@ -404,8 +404,8 @@
 
 
 <h1 id="slot-datatype">Slot: datatype</h1>
-<p><em>the rdf datatype of the value, for example, xsd:string</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/datatype">kb_cdm:datatype</a>
+<p><em>the rdf datatype of the value, for example, xsd:string or xsd:float.</em></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/linkml/datatype">kb_cdm:datatype</a>
 Alias: datatype</p>
 <!-- no inheritance hierarchy -->
 
@@ -421,7 +421,7 @@ Alias: datatype</p>
 <tbody>
 <tr>
 <td><a href="../Statements/">Statements</a></td>
-<td>Represents an RDF triple</td>
+<td>Represents an RDF triple, a statement in the form "<em>subject</em> <em>predicate</em> <em>object</em>" or "<em>subject</em> <em>predicate</em> <em>value</em>".<br><br>See <a href="https://incatools.github.io/semantic-sql/">Semantic SQL</a> for more information on the contents of this table and how it is populated.</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -437,7 +437,7 @@ Alias: datatype</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -462,10 +462,10 @@ Alias: datatype</p>
 <details>
 
 <pre><code class="language-yaml">name: datatype
-description: the rdf datatype of the value, for example, xsd:string
+description: the rdf datatype of the value, for example, xsd:string or xsd:float.
 comments:
 - only used when value is populated
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 rank: 1000
 alias: datatype
 domain_of:

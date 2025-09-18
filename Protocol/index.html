@@ -173,13 +173,6 @@
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#usages">
-<span class="md-ellipsis">
-      Usages
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
 <a class="md-nav__link" href="#identifier-and-mapping-information">
 <span class="md-ellipsis">
       Identifier and Mapping Information
@@ -237,8 +230,8 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="class-protocol">Class: Protocol</h1>
-<p><em>Defined method or set of methods.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/Protocol">kb_cdm:Protocol</a></p>
+<p><em>A defined method or set of methods.</em></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/linkml/Protocol">kb_cdm:Protocol</a></p>
 <div class="mermaid"> classDiagram
     class Protocol
     click Protocol href "../Protocol/"
@@ -248,6 +241,8 @@
       Protocol : description
 
       Protocol : doi
+
+      Protocol : name
 
       Protocol : protocol_id
 
@@ -277,14 +272,14 @@
 <tbody>
 <tr>
 <td><a href="../protocol_id/">protocol_id</a></td>
-<td>1 <br/> <a href="../UUID/">UUID</a></td>
-<td>Internal (CDM) unique identifier for a protocol.</td>
+<td>1 <br/> <a href="../CdmProtocolId/">CdmProtocolId</a></td>
+<td>Internal (CDM) unique identifier for a protocol.<br/>From the Entity table: entity_id where entity_type == 'Protocol'.</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../doi/">doi</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>The DOI for a protocol.</td>
+<td><a href="../name/">name</a></td>
+<td>0..1 <br> <a href="../String/">String</a></br></td>
+<td>A string used as a name or title.</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -294,42 +289,29 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../version/">version</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>The version of the protocol that has been used.</td>
+<td><a href="../doi/">doi</a></td>
+<td>0..1 <br/> <a href="../Curie/">Curie</a></td>
+<td>The DOI for a protocol.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../url/">url</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>0..1 <br/> <a href="../Uri/">Uri</a></td>
 <td>The URL for a protocol.</td>
 <td>direct</td>
 </tr>
-</tbody>
-</table>
-<h2 id="usages">Usages</h2>
-<table>
-<thead>
 <tr>
-<th>used by</th>
-<th>used in</th>
-<th>type</th>
-<th>used</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../Feature/">Feature</a></td>
-<td><a href="../protocol_id/">protocol_id</a></td>
-<td>range</td>
-<td><a href="./">Protocol</a></td>
+<td><a href="../version/">version</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>The version of the protocol that has been used.</td>
+<td>direct</td>
 </tr>
 </tbody>
 </table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -355,50 +337,57 @@
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: Protocol
-description: Defined method or set of methods.
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+description: A defined method or set of methods.
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 is_a: Table
 slots:
 - protocol_id
+- name
 slot_usage:
   protocol_id:
     name: protocol_id
     identifier: true
 attributes:
-  doi:
-    name: doi
-    description: The DOI for a protocol.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
-    rank: 1000
-    domain_of:
-    - Protocol
   description:
     name: description
     description: Brief text description of the protocol.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_protocol
     domain_of:
     - Cluster
     - Event
-    - Experiment
-    - Project
-    - Protein
-    - Protocol
-    - Sample
     - Identifier
     - Name
-  version:
-    name: version
-    description: The version of the protocol that has been used.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
-    domain_of:
-    - DataSource
+    - Protein
+    - Sample
+    - Project
+    - Experiment
+    - Parameter
     - Protocol
+    - ProtocolExecution
+    - Variable
+  doi:
+    name: doi
+    description: The DOI for a protocol.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_protocol
+    rank: 1000
+    domain_of:
+    - Protocol
+    range: curie
   url:
     name: url
     description: The URL for a protocol.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_protocol
     domain_of:
-    - DataSource
+    - DataSourceNew
+    - License
+    - Protocol
+    range: uri
+  version:
+    name: version
+    description: The version of the protocol that has been used.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_protocol
+    domain_of:
+    - DataSourceNew
     - Protocol
 
 </code></pre>
@@ -406,77 +395,110 @@ attributes:
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: Protocol
-description: Defined method or set of methods.
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+description: A defined method or set of methods.
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 is_a: Table
 slot_usage:
   protocol_id:
     name: protocol_id
     identifier: true
 attributes:
-  doi:
-    name: doi
-    description: The DOI for a protocol.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
-    rank: 1000
-    alias: doi
-    owner: Protocol
-    domain_of:
-    - Protocol
-    range: string
   description:
     name: description
     description: Brief text description of the protocol.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_protocol
     alias: description
     owner: Protocol
     domain_of:
     - Cluster
     - Event
-    - Experiment
-    - Project
-    - Protein
-    - Protocol
-    - Sample
     - Identifier
     - Name
+    - Protein
+    - Sample
+    - Project
+    - Experiment
+    - Parameter
+    - Protocol
+    - ProtocolExecution
+    - Variable
     range: string
-  version:
-    name: version
-    description: The version of the protocol that has been used.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
-    alias: version
+  doi:
+    name: doi
+    description: The DOI for a protocol.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_protocol
+    rank: 1000
+    alias: doi
     owner: Protocol
     domain_of:
-    - DataSource
     - Protocol
-    range: string
+    range: curie
   url:
     name: url
     description: The URL for a protocol.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_protocol
     alias: url
     owner: Protocol
     domain_of:
-    - DataSource
+    - DataSourceNew
+    - License
+    - Protocol
+    range: uri
+  version:
+    name: version
+    description: The version of the protocol that has been used.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_protocol
+    alias: version
+    owner: Protocol
+    domain_of:
+    - DataSourceNew
     - Protocol
     range: string
   protocol_id:
     name: protocol_id
-    description: Internal (CDM) unique identifier for a protocol.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+    description: 'Internal (CDM) unique identifier for a protocol.
+
+      From the Entity table: entity_id where entity_type == ''Protocol''.
+
+      '
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
     rank: 1000
+    slot_uri: CDM:protocol_id
     identifier: true
     alias: protocol_id
     owner: Protocol
     domain_of:
-    - Protocol_X_ProtocolParticipant
     - Cluster
     - Feature
+    - Experiment
+    - OrderedProtocolStep
     - Protocol
-    - Measurement
-    range: UUID
+    - ProtocolExecution
+    - ProtocolVariable
+    range: cdm_protocol_id
     required: true
+  name:
+    name: name
+    description: A string used as a name or title.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    slot_uri: schema:name
+    alias: name
+    owner: Protocol
+    domain_of:
+    - Cluster
+    - Event
+    - Name
+    - Contributor
+    - DataSource
+    - DataSourceNew
+    - License
+    - Experiment
+    - Parameter
+    - Protocol
+    - ProtocolExecution
+    - Variable
+    range: string
 
 </code></pre>
 </details>

@@ -396,7 +396,9 @@
 
 <h1 id="slot-cluster_id">Slot: cluster_id</h1>
 <p><em>Internal (CDM) unique identifier for a cluster.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/cluster_id">kb_cdm:cluster_id</a>
+<p><em>From the Entity table: entity_id where entity_type == 'Cluster'.</em></p>
+<p>__</p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/linkml/cluster_id">kb_cdm:cluster_id</a>
 Alias: cluster_id</p>
 <!-- no inheritance hierarchy -->
 
@@ -425,7 +427,7 @@ Alias: cluster_id</p>
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../UUID/">UUID</a></p>
+<p>Range: <a href="../CdmClusterId/">CdmClusterId</a></p>
 </li>
 <li>
 <p>Required: True</p>
@@ -434,7 +436,7 @@ Alias: cluster_id</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -459,14 +461,18 @@ Alias: cluster_id</p>
 <details>
 
 <pre><code class="language-yaml">name: cluster_id
-description: Internal (CDM) unique identifier for a cluster.
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+description: 'Internal (CDM) unique identifier for a cluster.
+
+  From the Entity table: entity_id where entity_type == ''Cluster''.
+
+  '
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 rank: 1000
 alias: cluster_id
 domain_of:
 - Cluster
 - ClusterMember
-range: UUID
+range: cdm_cluster_id
 required: true
 
 </code></pre>

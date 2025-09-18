@@ -412,13 +412,13 @@ Alias: contributor_role</p>
 <tbody>
 <tr>
 <td><a href="../ContributorXRoleXProject/">ContributorXRoleXProject</a></td>
-<td></td>
-<td>no</td>
+<td>Describes the participation of a contributor in a project; ideally the contributor_role field will capture how the contributor was involved.</td>
+<td>yes</td>
 </tr>
 <tr>
-<td><a href="../ContributorXRoleXExperiment/">ContributorXRoleXExperiment</a></td>
-<td></td>
-<td>no</td>
+<td><a href="../ContributorToDataSource/">ContributorToDataSource</a></td>
+<td>Captures the people and/or organizations involved in producing a dataset; ideally the contributor_role field will capture how the contributor was involved.</td>
+<td>yes</td>
 </tr>
 </tbody>
 </table>
@@ -429,7 +429,7 @@ Alias: contributor_role</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -457,13 +457,13 @@ Alias: contributor_role</p>
 description: Role(s) played by the contributor when working on the experiment. If
   more than one role was played, additional rows should be added to represent each
   role.
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 rank: 1000
 slot_uri: schema:Role
 alias: contributor_role
 domain_of:
-- Contributor_X_Role_X_Experiment
-- Contributor_X_Role_X_Project
+- Contributor_x_Role_x_Project
+- Contributor_to_DataSource
 range: ContributorRole
 
 </code></pre>

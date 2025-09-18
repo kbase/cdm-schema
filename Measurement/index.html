@@ -173,6 +173,13 @@
 </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#aliases">
+<span class="md-ellipsis">
+      Aliases
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#identifier-and-mapping-information">
 <span class="md-ellipsis">
       Identifier and Mapping Information
@@ -230,40 +237,19 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="class-measurement">Class: Measurement</h1>
-<p><em>A qualitative or quantitative observation of an attribute of an object or event against a standardized scale, to enable it to be compared with other objects or events.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/Measurement">kb_cdm:Measurement</a></p>
+<p><em>The value of a specified variable_id under the specified conditions.</em></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/linkml/Measurement">kb_cdm:Measurement</a></p>
 <div class="mermaid"> classDiagram
     class Measurement
     click Measurement href "../Measurement/"
-      QuantityValue &lt;|-- Measurement
-        click QuantityValue href "../QuantityValue/"
+      Table &lt;|-- Measurement
+        click Table href "../Table/"
 
-
-      Measurement &lt;|-- ProcessedMeasurement
-        click ProcessedMeasurement href "../ProcessedMeasurement/"
-
-
-      Measurement : attribute_cv_term_id
-
-      Measurement : attribute_name
-
-      Measurement : created_at
-
-      Measurement : entity_id
-
-      Measurement : maximum_value
+      Measurement : experiment_condition_set_id
 
       Measurement : measurement_id
 
-      Measurement : minimum_value
-
-      Measurement : protocol_id
-
-      Measurement : quality
-
-      Measurement : raw_value
-
-      Measurement : unit
+      Measurement : measurement_set_id
 
       Measurement : value
 
@@ -272,16 +258,7 @@
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><a href="../Table/">Table</a><ul>
-<li><a href="../AttributeValue/">AttributeValue</a><ul>
-<li><a href="../QuantityValue/">QuantityValue</a><ul>
-<li><strong>Measurement</strong><ul>
-<li><a href="../ProcessedMeasurement/">ProcessedMeasurement</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
+<li><strong>Measurement</strong></li>
 </ul>
 </li>
 </ul>
@@ -298,82 +275,42 @@
 <tbody>
 <tr>
 <td><a href="../measurement_id/">measurement_id</a></td>
-<td>1 <br/> <a href="../UUID/">UUID</a></td>
+<td>1 <br/> <a href="../CdmId/">CdmId</a></td>
 <td>Internal (CDM) unique identifier for a measurement.</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../protocol_id/">protocol_id</a></td>
-<td>1 <br/> <a href="../UUID/">UUID</a></td>
-<td>The ID of the protocol used to generate the measurement.</td>
+<td><a href="../measurement_set_id/">measurement_set_id</a></td>
+<td>1 <br/> <a href="../CdmId/">CdmId</a></td>
+<td>Internal (CDM) unique identifier for a specified variable in a specified experiment.</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../created_at/">created_at</a></td>
-<td>0..1 <br/> <a href="../Iso8601/">Iso8601</a></td>
-<td>Timestamp for the measurement.</td>
+<td><a href="../experiment_condition_set_id/">experiment_condition_set_id</a></td>
+<td>1 <br/> <a href="../CdmId/">CdmId</a></td>
+<td>Internal (CDM) unique identifier for a set of experimental conditions.</td>
 <td>direct</td>
-</tr>
-<tr>
-<td><a href="../quality/">quality</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>The quality of the measurement, indicating the confidence that one can have in its correctness.</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../maximum_value/">maximum_value</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>If the quantity describes a range, represents the upper bound of the range.</td>
-<td><a href="../QuantityValue/">QuantityValue</a></td>
-</tr>
-<tr>
-<td><a href="../minimum_value/">minimum_value</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>If the quantity describes a range, represents the lower bound of the range.</td>
-<td><a href="../QuantityValue/">QuantityValue</a></td>
 </tr>
 <tr>
 <td><a href="../value/">value</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
-<td>The numeric portion of the quantity.</td>
-<td><a href="../QuantityValue/">QuantityValue</a></td>
-</tr>
-<tr>
-<td><a href="../unit/">unit</a></td>
-<td>0..1 <br/> <a href="../Curie/">Curie</a></td>
-<td>The unit of the quantity. Should be a term from UCUM.</td>
-<td><a href="../QuantityValue/">QuantityValue</a></td>
-</tr>
-<tr>
-<td><a href="../entity_id/">entity_id</a></td>
-<td>1 <br/> <a href="../UUID/">UUID</a></td>
-<td>The database entity (sample, feature, protein, etc.) to which the attribute-value annotation refers.</td>
-<td><a href="../AttributeValue/">AttributeValue</a></td>
-</tr>
-<tr>
-<td><a href="../attribute_name/">attribute_name</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
-<td>The attribute being captured in this annotation.</td>
-<td><a href="../AttributeValue/">AttributeValue</a></td>
-</tr>
-<tr>
-<td><a href="../attribute_cv_term_id/">attribute_cv_term_id</a></td>
-<td>0..1 <br/> <a href="../LocalCurie/">LocalCurie</a></td>
-<td>If the attribute is a term from a controlled vocabulary, the ID of the term.</td>
-<td><a href="../AttributeValue/">AttributeValue</a></td>
-</tr>
-<tr>
-<td><a href="../raw_value/">raw_value</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Raw value from the source data. May or may not include units or other unstructured information.</td>
-<td><a href="../AttributeValue/">AttributeValue</a></td>
+<td>The value for a given measurement set (a specified variable in a specified experiment) in the environmental conditions specified by experiment_condition_set_id.</td>
+<td>direct</td>
 </tr>
 </tbody>
 </table>
+<h2 id="aliases">Aliases</h2>
+<ul>
+<li>computed measurement</li>
+<li>matrix entry</li>
+<li>observation</li>
+<li>result</li>
+<li>results</li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -399,211 +336,109 @@
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: Measurement
-description: A qualitative or quantitative observation of an attribute of an object
-  or event against a standardized scale, to enable it to be compared with other objects
-  or events.
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
-is_a: QuantityValue
+description: The value of a specified variable_id under the specified conditions.
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+aliases:
+- computed measurement
+- matrix entry
+- observation
+- result
+- results
+is_a: Table
 slots:
 - measurement_id
-- protocol_id
+- measurement_set_id
+- experiment_condition_set_id
 slot_usage:
   measurement_id:
     name: measurement_id
     identifier: true
-  protocol_id:
-    name: protocol_id
-    description: The ID of the protocol used to generate the measurement.
 attributes:
-  created_at:
-    name: created_at
-    description: Timestamp for the measurement.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_attr_value
+  value:
+    name: value
+    description: The value for a given measurement set (a specified variable in a
+      specified experiment) in the environmental conditions specified by experiment_condition_set_id.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_protocol
     domain_of:
-    - Event
-    - Experiment
+    - Statements
+    - ExperimentCondition
     - Measurement
-    range: iso8601
-  quality:
-    name: quality
-    description: The quality of the measurement, indicating the confidence that one
-      can have in its correctness.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_attr_value
-    aliases:
-    - confidence
-    rank: 1000
-    domain_of:
-    - Measurement
+    - ProtocolInput
+    - ProtocolOutput
 
 </code></pre>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: Measurement
-description: A qualitative or quantitative observation of an attribute of an object
-  or event against a standardized scale, to enable it to be compared with other objects
-  or events.
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
-is_a: QuantityValue
+description: The value of a specified variable_id under the specified conditions.
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+aliases:
+- computed measurement
+- matrix entry
+- observation
+- result
+- results
+is_a: Table
 slot_usage:
   measurement_id:
     name: measurement_id
     identifier: true
-  protocol_id:
-    name: protocol_id
-    description: The ID of the protocol used to generate the measurement.
 attributes:
-  created_at:
-    name: created_at
-    description: Timestamp for the measurement.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_attr_value
-    alias: created_at
+  value:
+    name: value
+    description: The value for a given measurement set (a specified variable in a
+      specified experiment) in the environmental conditions specified by experiment_condition_set_id.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_protocol
+    alias: value
     owner: Measurement
     domain_of:
-    - Event
-    - Experiment
+    - Statements
+    - ExperimentCondition
     - Measurement
-    range: iso8601
-  quality:
-    name: quality
-    description: The quality of the measurement, indicating the confidence that one
-      can have in its correctness.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_attr_value
-    aliases:
-    - confidence
-    rank: 1000
-    alias: quality
-    owner: Measurement
-    domain_of:
-    - Measurement
+    - ProtocolInput
+    - ProtocolOutput
     range: string
   measurement_id:
     name: measurement_id
     description: Internal (CDM) unique identifier for a measurement.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
     rank: 1000
+    slot_uri: CDM:measurement_id
     identifier: true
     alias: measurement_id
     owner: Measurement
     domain_of:
-    - Entity_X_Measurement
     - Measurement
-    range: UUID
+    range: cdm_id
     required: true
-  protocol_id:
-    name: protocol_id
-    description: The ID of the protocol used to generate the measurement.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+  measurement_set_id:
+    name: measurement_set_id
+    description: Internal (CDM) unique identifier for a specified variable in a specified
+      experiment.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
     rank: 1000
-    alias: protocol_id
+    slot_uri: CDM:measurement_set_id
+    alias: measurement_set_id
     owner: Measurement
     domain_of:
-    - Protocol_X_ProtocolParticipant
-    - Cluster
-    - Feature
-    - Protocol
     - Measurement
-    range: UUID
+    - MeasurementSet
+    range: cdm_id
     required: true
-  maximum_value:
-    name: maximum_value
-    description: If the quantity describes a range, represents the upper bound of
-      the range.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_attr_value
+  experiment_condition_set_id:
+    name: experiment_condition_set_id
+    description: Internal (CDM) unique identifier for a set of experimental conditions.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
     rank: 1000
-    alias: maximum_value
+    slot_uri: CDM:experiment_condition_set_id
+    alias: experiment_condition_set_id
     owner: Measurement
     domain_of:
-    - QuantityValue
-    range: float
-  minimum_value:
-    name: minimum_value
-    description: If the quantity describes a range, represents the lower bound of
-      the range.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_attr_value
-    rank: 1000
-    alias: minimum_value
-    owner: Measurement
-    domain_of:
-    - QuantityValue
-    range: float
-  value:
-    name: value
-    description: The numeric portion of the quantity.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_attr_value
-    alias: value
-    owner: Measurement
-    domain_of:
-    - QuantityValue
-    - TextValue
-    - Statements
-    range: float
-  unit:
-    name: unit
-    description: The unit of the quantity. Should be a term from UCUM.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_attr_value
-    rank: 1000
-    alias: unit
-    owner: Measurement
-    domain_of:
-    - QuantityValue
-    range: curie
-  entity_id:
-    name: entity_id
-    description: The database entity (sample, feature, protein, etc.) to which the
-      attribute-value annotation refers.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
-    rank: 1000
-    alias: entity_id
-    owner: Measurement
-    domain_of:
-    - Association_X_SupportingObject
-    - Entity_X_Measurement
-    - ClusterMember
-    - Sequence
-    - Entity
-    - Identifier
-    - Name
-    - AttributeValue
-    range: UUID
+    - ExperimentConditionSet
+    - Measurement
+    range: cdm_id
     required: true
-  attribute_name:
-    name: attribute_name
-    description: The attribute being captured in this annotation.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_attr_value
-    aliases:
-    - type
-    - name
-    rank: 1000
-    alias: attribute_name
-    owner: Measurement
-    domain_of:
-    - AttributeValue
-    range: string
-    required: true
-  attribute_cv_term_id:
-    name: attribute_cv_term_id
-    description: If the attribute is a term from a controlled vocabulary, the ID of
-      the term.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_attr_value
-    rank: 1000
-    alias: attribute_cv_term_id
-    owner: Measurement
-    domain_of:
-    - AttributeValue
-    range: local_curie
-  raw_value:
-    name: raw_value
-    description: Raw value from the source data. May or may not include units or other
-      unstructured information.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_attr_value
-    rank: 1000
-    alias: raw_value
-    owner: Measurement
-    domain_of:
-    - AttributeValue
-    - Geolocation
-    range: string
 
 </code></pre>
 </details>

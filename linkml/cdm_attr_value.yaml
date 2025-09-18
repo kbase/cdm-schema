@@ -1,5 +1,5 @@
 # yaml-language-server: $schema=https://linkml.io/linkml-model/linkml_model/jsonschema/meta.schema.json
-id: http://kbase.github.io/cdm-schema/cdm_attr_value
+id: http://kbase.github.io/cdm-schema/linkml/cdm_attr_value
 
 name: cdm_attr_value
 description: CDM schema attribute/value classes
@@ -10,90 +10,351 @@ imports:
   - cdm_base
 
 prefixes:
-  kb_cdm: http://kbase.github.io/cdm-schema/
+  kb_cdm: http://kbase.github.io/cdm-schema/linkml/
   linkml: https://w3id.org/linkml/
   schema: http://schema.org/
 
 default_prefix: kb_cdm
+default_range: string
+
+slots:
+
+  attribute_cv_id:
+    description: The attribute being represented. For attributes that are in a controlled vocabulary, ontology, or enumeration, this attribute should capture the term ID from the controlled vocabulary.
+    range: local_curie
+    aliases:
+    - attribute term ID
+    - attribute PID
+
+  attribute_cv_label:
+    description: The attribute being represented. For attributes that are in a controlled vocabulary, ontology, or enumeration, this attribute should capture the term from the controlled vocabulary.
+    range: local_curie_name
+    aliases:
+    - attribute term name
+
+  attribute_string:
+    description: The attribute being represented, as a text string. This field should only be used if the attribute is not represented in a controlled vocabulary, ontology, or enumeration.
+    range: string
+    aliases:
+    - attribute
+    - tag
+
+  date_time:
+    description: A date or date and time, expressed in ISO 8601 format with timezone indicators where appropriate.  The date or date/time value, expressed in ISO 8601-compatible form. Dates should be expressed as YYYY-MM-DD; times should be expressed as HH:MM:SS with optional milliseconds and an indication of the timezone.
+    range: iso8601
+    aliases:
+    - date
+    - time
+    - timestamp
+    examples:
+    - value: "2025-11-09"
+    - value: "2025-09-16T22:48:54Z"
+
+  latitude:
+    description: The latitude portion of a geolocation.
+    range: decimal_degree
+
+  longitude:
+    description: The longitude portion of a geolocation.
+    range: decimal_degree
+
+  minimum_numeric_value:
+    range: float
+    description: The minimum value part, expressed as number, of the quantity value when the value covers a range.
+    mappings:
+      - nmdc:minimum_numeric_value
+
+  maximum_numeric_value:
+    range: float
+    description: The maximum value part, expressed as number, of the quantity value when the value covers a range.
+    mappings:
+      - nmdc:maximum_numeric_value
+
+  numeric_value:
+    description: The numerical part of a quantity value.
+    range: float
+    mappings:
+      - nmdc:numeric_value
+      - qud:quantityValue
+      - schema:value
+
+  raw_value:
+    description: The value that was specified for an annotation in its raw form; e.g. "2 cm" or "2-4 cm"
+    range: string
+    mappings:
+      - nmdc:raw_value
+    examples:
+    - value: "2 cm"
+    - value: "2 to 5m"
+    - value: "37-39 degrees celcius"
+    - value: "Regulation of glucose biosynthesis."
+
+  text_value:
+    description: The value, as a text string. This field should only be used if the value is not represented in a controlled vocabulary, ontology, or enumeration.
+    range: string
+    aliases:
+    - value string
+    - value text
+    - string value
+
+  type:
+    description: The type of value being represented - e.g. QuantityValue, TextValue, DateTimeValue, ControlledVocabularyTermValue, etc.
+    range: AttributeValueType
+
+  unit_cv_id:
+    description: The unit of the quantity, expressed as a CURIE from the Unit Ontology.
+    range: local_curie
+    aliases:
+    - unit term ID
+    - unit PID
+
+  unit_cv_label:
+    description: The unit of a quantity, expressed as the term name of a term from the Unit Ontology or UCUM.
+    range: local_curie_name
+    aliases:
+    - unit term name
+
+  unit_string:
+    description: Links a QuantityValue to a unit. Units should be taken from the UCUM unit collection or the Unit Ontology. This field should only be used if the unit is not present in one of those sources.
+    aliases:
+      - scale
+    range: string
+    mappings:
+      - nmdc:unit
+      - qud:unit
+      - schema:unitCode
+      - UO:0000000
+
+  value_cv_id:
+    description: For values that are in a controlled vocabulary (CV), this attribute should capture the controlled vocabulary ID for the value.
+    range: local_curie
+    aliases:
+    - value term ID
+    - value PID
+
+  value_cv_label:
+    description: For values that are in a controlled vocabulary, ontology, or enumeration, this attribute should capture the term from the controlled vocabulary.
+    range: local_curie_name
+    aliases:
+    - value term name
 
 classes:
-  AttributeValue:
-    is_a: Table
-    abstract: true
-    description: A generic class for capturing tag-value information in a structured form.
+
+  # mixins
+  AttributeMixin:
+    mixin: true
+    description: The attribute in an attribute-value pair. One of `attribute_cv_id`, `attribute_cv_label`, and `attribute_string` is required.
     slots:
-      - entity_id
-    slot_usage:
+    - attribute_cv_id
+    - attribute_cv_label
+    - attribute_string
+    any_of:
+      - slot_conditions:
+          attribute_cv_id:
+            required: true
+      - slot_conditions:
+          attribute_cv_label:
+            required: true
+      - slot_conditions:
+          attribute_string:
+            required: true
+
+  EntityMixin:
+    mixin: true
+    description: A generic class for capturing attribute-value information about an entity in a structured form.
+    attributes:
       entity_id:
         description: The database entity (sample, feature, protein, etc.) to which the attribute-value annotation refers.
-    attributes:
-      attribute_name:
-        aliases:
-        - type
-        - name
-        description: The attribute being captured in this annotation.
         required: true
-      attribute_cv_term_id:
-        description: If the attribute is a term from a controlled vocabulary, the ID of the term.
-        range: local_curie
-      raw_value:
-        description: Raw value from the source data. May or may not include units or other unstructured information.
+        range: cdm_id
+
+  UnitMixin:
+    mixin: true
+    description: The unit used in expressing a quantity value.
+    slots:
+    - unit_cv_id
+    - unit_cv_label
+    - unit_string
+
+  # classes
+  AttributeValue:
+    abstract: true
+    aliases:
+    - EntityAttributeValue
+    mixins:
+    - AttributeMixin
+    - EntityMixin
+    class_uri: nmdc:AttributeValue
+    description: >-
+      The value for any value of attribute for an entity. This object can hold both the un-normalized atomic value and the structured value.
+    slots:
+    - raw_value
+    - type
+
+  EntityAttributeValue:
+    abstract: true
+    mixins:
+    - AttributeMixin
+    - EntityMixin
+    - UnitMixin
+    description: Class comprising all possible entity-attribute-value slots.
+    slots:
+      - date_time
+      - language
+      - latitude
+      - longitude
+      - minimum_numeric_value
+      - maximum_numeric_value
+      - numeric_value
+      - text_value
+      - language
+      - value_cv_id
+      - value_cv_label
 
   QuantityValue:
     class_uri: schema:QuantityValue
     is_a: AttributeValue
-    description: A simple quantity, e.g. 2cm. May be used to describe a range using the minimum_value and maximum_value fields.
-    # existing attributes:
-    # entity_id, attribute (name/ID), raw_value
-    attributes:
-      maximum_value:
-        description: If the quantity describes a range, represents the upper bound of the range.
-        range: float
-      minimum_value:
-        description: If the quantity describes a range, represents the lower bound of the range.
-        range: float
-      value:
-        description: The numeric portion of the quantity.
-        range: float
-      unit:
-        description: The unit of the quantity. Should be a term from UCUM.
-        range: curie
+    mixins:
+    - UnitMixin
+    description: A simple quantity, e.g. 2 cm.
+    slots:
+      - numeric_value
+    slot_usage:
+      numeric_value:
+        required: true
+      raw_value:
+        description: Unnormalized atomic string representation, suggested syntax {number} {unit}
+      type:
+        ifabsent: kb_cdm:QuantityValue
+    mappings:
+      - schema:QuantityValue
+
+  QuantityRangeValue:
+    is_a: AttributeValue
+    description: A numerical range, e.g. 5-7 cm.
+    mixins:
+    - UnitMixin
+    slots:
+      - maximum_numeric_value
+      - minimum_numeric_value
+    slot_usage:
+      maximum_numeric_value:
+        required: true
+      minimum_numeric_value:
+        required: true
+      raw_value:
+        description: Unnormalized atomic string representation, suggested syntax {minimum_number}-{maximum_number} {unit}
+      type:
+        ifabsent: kb_cdm:QuantityRangeValue
+    mappings:
+      - schema:QuantityRangeValue
+
+  DateTimeValue:
+    class_uri: nmdc:DateTimeValue
+    is_a: AttributeValue
+    description: A date or date and time value.
+    slots:
+    - date_time
+    slot_usage:
+      date_time:
+        required: true
+      type:
+        ifabsent: kb_cdm:DateTimeValue
+
+  Geolocation:
+    class_uri: nmdc:GeolocationValue
+    is_a: AttributeValue
+    description: A normalized value for a location on the earth's surface. Should be expressed in decimal degrees.
+    slots:
+    - latitude
+    - longitude
+    slot_usage:
+      latitude:
+        required: true
+      longitude:
+        required: true
+      raw_value:
+        description: The raw value for a geolocation; should follow {latitude} {longitude}.
+    mappings:
+      - schema:GeoCoordinates
+
+  ControlledTermValue:
+    class_uri: nmdc:ControlledTermValue
+    is_a: AttributeValue
+    description: A quality, described using a text string from a controlled vocabulary or enum.
+    slots:
+    - value_cv_label
+    slot_usage:
+      value_cv_label:
+        required: true
+      type:
+        ifabsent: kb_cdm:ControlledTermValue
+
+  ControlledVocabularyTermValue:
+    class_uri: nmdc:ControlledIdentifiedTermValue
+    is_a: AttributeValue
+    description: A quality, described using a term from an ontology or schema with a stable persistent identifier.
+    slots:
+    - value_cv_label
+    - value_cv_id
+    slot_usage:
+      type:
+        ifabsent: kb_cdm:ControlledVocabularyTermValue
+    any_of:
+      - slot_conditions:
+          value_cv_id:
+            required: true
+      - slot_conditions:
+          value_cv_label:
+            required: true
 
   TextValue:
+    class_uri: nmdc:TextValue
     is_a: AttributeValue
-    description: A basic string value
-    # existing attributes:
-    # entity_id, attribute (name/ID), raw_value
-    attributes:
-      value:
-        description: The value after undergoing normalisation or standardisation.
+    description: A basic string value.
+    slots:
+    - text_value
+    - language
+    slot_usage:
+      text_value:
         required: true
-      value_cv_term_id:
-        range: local_curie
-        description: If the term comes from the controlled vocabulary, the CURIE for the term. This will always be null if the text string is not from a controlled vocabulary.
+        description: The text value after undergoing normalisation or standardisation.
+      type:
+        ifabsent: kb_cdm:TextValue
+    attributes:
       language:
         description: Language of the text value.
 
-  Measurement:
-    is_a: QuantityValue
-    slots:
-      - measurement_id
-      - protocol_id
-    slot_usage:
-      measurement_id:
-        identifier: true
-      protocol_id:
-        description: The ID of the protocol used to generate the measurement.
-    attributes:
-      created_at:
-        description: Timestamp for the measurement.
-        range: iso8601
-      quality:
-        aliases:
-          - confidence
-        description: The quality of the measurement, indicating the confidence that one can have in its correctness.
-    description: A qualitative or quantitative observation of an attribute of an object or event against a standardized scale, to enable it to be compared with other objects or events.
 
-  ProcessedMeasurement:
-    description: A measurement that requires additional processing to generate a result.
-    is_a: Measurement
+enums:
+  AttributeValueType:
+    permissible_values:
+      DateTimeValue:
+        description: A date or date and time value.
+        meaning: kb_cdm:DateTimeValue
+      QuantityValue:
+        description: A simple quantity, e.g. 2 cm.
+        meaning: kb_cdm:QuantityValue
+      QuantityRangeValue:
+        description: A numerical range, e.g. 5-7 cm.
+        meaning: kb_cdm:QuantityRangeValue
+      TextValue:
+        description: A quality, described using a text string.
+        meaning: kb_cdm:TextValue
+      ControlledTermValue:
+        description: A quality, described using a text string from a controlled vocabulary or enum.
+        meaning: kb_cdm:ControlledTermValue
+      ControlledVocabularyTermValue:
+        description: A quality, described using a term from an ontology or schema with a stable persistent identifier.
+        meaning: kb_cdm:ControlledVocabularyTermValue
+      Geolocation:
+        description: A location, described using latitude and longitude.
+        meaning: kb_cdm:Geolocation
+
+types:
+  decimal_degree:
+    description: A decimal degree expresses latitude or longitude as decimal fractions.
+    uri: xsd:decimal
+    base: float
+    see_also:
+      - https://en.wikipedia.org/wiki/Decimal_degrees

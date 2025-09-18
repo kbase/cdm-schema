@@ -396,7 +396,9 @@
 
 <h1 id="slot-data_source_id">Slot: data_source_id</h1>
 <p><em>Internal (CDM) unique identifier for a data source.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/data_source_id">kb_cdm:data_source_id</a>
+<p><em>From the Entity table: entity_id where entity_type == 'DataSource'.</em></p>
+<p>__</p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/linkml/data_source_id">kb_cdm:data_source_id</a>
 Alias: data_source_id</p>
 <!-- no inheritance hierarchy -->
 
@@ -411,21 +413,51 @@ Alias: data_source_id</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../Entity/">Entity</a></td>
-<td>A database entity.</td>
+<td><a href="../DataSource/">DataSource</a></td>
+<td>The source for a resource, dataset, association, etc.</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../DataSource/">DataSource</a></td>
-<td>The source dataset from which data within the CDM was extracted. This might be an API query; a set of files downloaded from a website or uploaded by a user; a database dump; etc. A given data source should have either version information (e.g. UniProt's release number) or an access date to allow the original raw data dump to be recapitulated.</td>
+<td><a href="../DataSourceLicense/">DataSourceLicense</a></td>
+<td>Links a data source to a license.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../DataSourceTitle/">DataSourceTitle</a></td>
+<td>Links a data source to a title.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../DataSourceNew/">DataSourceNew</a></td>
+<td>The source dataset from which data within the CDM was extracted. This might be an API query; a set of files downloaded from a website or uploaded by a user; a database dump; etc. A given data source should have either version information (e.g. a release number, like those used by UniProt or RefSeq) or an access date to allow the original raw data dump to be recapitulated.</td>
 <td>yes</td>
+</tr>
+<tr>
+<td><a href="../DataSourceFundingReference/">DataSourceFundingReference</a></td>
+<td>Links a data source to a funding reference.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Entity/">Entity</a></td>
+<td>An entity in the CDM.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../DataSourceDescription/">DataSourceDescription</a></td>
+<td>Links a data source to a description (e.g. the abstract or a free text description).</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ContributorToDataSource/">ContributorToDataSource</a></td>
+<td>Captures the people and/or organizations involved in producing a dataset; ideally the contributor_role field will capture how the contributor was involved.</td>
+<td>no</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../UUID/">UUID</a></p>
+<p>Range: <a href="../CdmDataSourceId/">CdmDataSourceId</a></p>
 </li>
 <li>
 <p>Required: True</p>
@@ -434,7 +466,7 @@ Alias: data_source_id</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -459,14 +491,24 @@ Alias: data_source_id</p>
 <details>
 
 <pre><code class="language-yaml">name: data_source_id
-description: Internal (CDM) unique identifier for a data source.
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+description: 'Internal (CDM) unique identifier for a data source.
+
+  From the Entity table: entity_id where entity_type == ''DataSource''.
+
+  '
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 rank: 1000
 alias: data_source_id
 domain_of:
-- DataSource
 - Entity
-range: UUID
+- DataSource
+- DataSourceNew
+- Contributor_to_DataSource
+- DataSourceDescription
+- DataSourceTitle
+- DataSourceLicense
+- DataSourceFundingReference
+range: cdm_data_source_id
 required: true
 
 </code></pre>

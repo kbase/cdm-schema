@@ -396,7 +396,7 @@
 
 <h1 id="slot-publication_id">Slot: publication_id</h1>
 <p><em>Unique identifier for a publication - e.g. PMID, DOI, URL, etc.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/publication_id">kb_cdm:publication_id</a>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/linkml/publication_id">kb_cdm:publication_id</a>
 Alias: publication_id</p>
 <!-- no inheritance hierarchy -->
 
@@ -415,17 +415,12 @@ Alias: publication_id</p>
 <td>A publication (e.g. journal article).</td>
 <td>yes</td>
 </tr>
-<tr>
-<td><a href="../AssociationXPublication/">AssociationXPublication</a></td>
-<td>Links associations to supporting literature.</td>
-<td>yes</td>
-</tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../Uriorcurie/">Uriorcurie</a></p>
+<p>Range: <a href="../CdmId/">CdmId</a></p>
 </li>
 <li>
 <p>Required: True</p>
@@ -434,7 +429,7 @@ Alias: publication_id</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -460,13 +455,12 @@ Alias: publication_id</p>
 
 <pre><code class="language-yaml">name: publication_id
 description: Unique identifier for a publication - e.g. PMID, DOI, URL, etc.
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 rank: 1000
 alias: publication_id
 domain_of:
-- Association_X_Publication
 - Publication
-range: uriorcurie
+range: cdm_id
 required: true
 
 </code></pre>

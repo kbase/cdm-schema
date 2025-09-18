@@ -396,7 +396,9 @@
 
 <h1 id="slot-contig_id">Slot: contig_id</h1>
 <p><em>Internal (CDM) unique identifier for a contig.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/contig_id">kb_cdm:contig_id</a>
+<p><em>From the Entity table: entity_id where entity_type == 'Contig'.</em></p>
+<p>__</p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/linkml/contig_id">kb_cdm:contig_id</a>
 Alias: contig_id</p>
 <!-- no inheritance hierarchy -->
 
@@ -411,8 +413,8 @@ Alias: contig_id</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../ContigXProtein/">ContigXProtein</a></td>
-<td>Captures the relationship between a contig and a protein; equivalent to protein is ribosomal translation of (http://purl.obolibrary.org/obo/RO_0002512) contig.</td>
+<td><a href="../ContigXFeature/">ContigXFeature</a></td>
+<td>Captures the relationship between a contig and a feature; equivalent to feature part-of contig.</td>
 <td>no</td>
 </tr>
 <tr>
@@ -421,18 +423,18 @@ Alias: contig_id</p>
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../ContigXContigCollection/">ContigXContigCollection</a></td>
-<td>Captures the relationship between a contig and a contig collection; equivalent to contig part-of contig collection.</td>
-<td>yes</td>
-</tr>
-<tr>
 <td><a href="../ContigXEncodedFeature/">ContigXEncodedFeature</a></td>
 <td>Captures the relationship between a contig and an encoded feature.</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../ContigXFeature/">ContigXFeature</a></td>
-<td>Captures the relationship between a contig and a feature; equivalent to feature part-of contig.</td>
+<td><a href="../ContigXContigCollection/">ContigXContigCollection</a></td>
+<td>Captures the relationship between a contig and a contig collection; equivalent to contig part-of contig collection.</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../ContigXProtein/">ContigXProtein</a></td>
+<td>Captures the relationship between a contig and a protein; equivalent to protein is ribosomal translation of (http://purl.obolibrary.org/obo/RO_0002512) contig.</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -440,7 +442,7 @@ Alias: contig_id</p>
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../UUID/">UUID</a></p>
+<p>Range: <a href="../CdmContigId/">CdmContigId</a></p>
 </li>
 <li>
 <p>Required: True</p>
@@ -449,7 +451,7 @@ Alias: contig_id</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -474,17 +476,21 @@ Alias: contig_id</p>
 <details>
 
 <pre><code class="language-yaml">name: contig_id
-description: Internal (CDM) unique identifier for a contig.
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+description: 'Internal (CDM) unique identifier for a contig.
+
+  From the Entity table: entity_id where entity_type == ''Contig''.
+
+  '
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 rank: 1000
 alias: contig_id
 domain_of:
-- Contig_X_ContigCollection
-- Contig_X_EncodedFeature
-- Contig_X_Feature
-- Contig_X_Protein
 - Contig
-range: UUID
+- Contig_x_ContigCollection
+- Contig_x_EncodedFeature
+- Contig_x_Feature
+- Contig_x_Protein
+range: cdm_contig_id
 required: true
 
 </code></pre>

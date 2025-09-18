@@ -230,10 +230,6 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="class-any">Class: Any</h1>
-<p><em>Used as a range for slots that have more than one possible type.</em></p>
-<ul>
-<li><strong>NOTE</strong>: this is an abstract class and should not be instantiated directly</li>
-</ul>
 <p>URI: <a href="https://w3id.org/linkml/Any">linkml:Any</a></p>
 <div class="mermaid"> classDiagram
     class Any
@@ -277,12 +273,18 @@
 <td>range</td>
 <td><a href="./">Any</a></td>
 </tr>
+<tr>
+<td><a href="../ProtocolStep/">ProtocolStep</a></td>
+<td><a href="../step/">step</a></td>
+<td>range</td>
+<td><a href="./">Any</a></td>
+</tr>
 </tbody>
 </table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -308,9 +310,7 @@
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: Any
-description: Used as a range for slots that have more than one possible type.
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
-abstract: true
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 class_uri: linkml:Any
 
 </code></pre>
@@ -318,9 +318,7 @@ class_uri: linkml:Any
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: Any
-description: Used as a range for slots that have more than one possible type.
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
-abstract: true
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 class_uri: linkml:Any
 
 </code></pre>

@@ -230,7 +230,8 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="class-contributorxrolexproject">Class: ContributorXRoleXProject</h1>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/ContributorXRoleXProject">kb_cdm:ContributorXRoleXProject</a></p>
+<p><em>Describes the participation of a contributor in a project; ideally the contributor_role field will capture how the contributor was involved.</em></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/linkml/ContributorXRoleXProject">kb_cdm:ContributorXRoleXProject</a></p>
 <div class="mermaid"> classDiagram
     class ContributorXRoleXProject
     click ContributorXRoleXProject href "../ContributorXRoleXProject/"
@@ -274,19 +275,19 @@
 <tbody>
 <tr>
 <td><a href="../contributor_id/">contributor_id</a></td>
-<td>1 <br/> <a href="../UUID/">UUID</a></td>
-<td>Internal (CDM) unique identifier for a contributor.</td>
+<td>1 <br/> <a href="../CdmContributorId/">CdmContributorId</a></td>
+<td>Internal (CDM) unique identifier for a contributor.<br/>From the Entity table: entity_id where entity_type == 'Contributor'.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../project_id/">project_id</a></td>
-<td>1 <br/> <a href="../UUID/">UUID</a></td>
-<td>Internal (CDM) unique identifier for a project.</td>
+<td>1 <br> <a href="../CdmId/">CdmId</a></br></td>
+<td>Internal (CDM) unique identifier for a project.<br/>From the Entity table: entity_id where entity_type == 'Project'.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../contributor_role/">contributor_role</a></td>
-<td>0..1 <br/> <a href="../ContributorRole/">ContributorRole</a></td>
+<td>0..1 <br> <a href="../ContributorRole/">ContributorRole</a></br></td>
 <td>Role(s) played by the contributor when working on the experiment. If more than one role was played, additional rows should be added to represent each role.</td>
 <td>direct</td>
 </tr>
@@ -295,7 +296,7 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -320,64 +321,83 @@
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
 <h3 id="direct">Direct</h3>
 <details>
-<pre><code class="language-yaml">name: Contributor_X_Role_X_Project
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+<pre><code class="language-yaml">name: Contributor_x_Role_x_Project
+description: Describes the participation of a contributor in a project; ideally the
+  contributor_role field will capture how the contributor was involved.
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 is_a: Table
 slots:
 - contributor_id
 - project_id
 - contributor_role
-represents_relationship: true
+slot_usage:
+  contributor_role:
+    name: contributor_role
+    required: false
 
 </code></pre>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
-<pre><code class="language-yaml">name: Contributor_X_Role_X_Project
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+<pre><code class="language-yaml">name: Contributor_x_Role_x_Project
+description: Describes the participation of a contributor in a project; ideally the
+  contributor_role field will capture how the contributor was involved.
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 is_a: Table
+slot_usage:
+  contributor_role:
+    name: contributor_role
+    required: false
 attributes:
   contributor_id:
     name: contributor_id
-    description: Internal (CDM) unique identifier for a contributor.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+    description: 'Internal (CDM) unique identifier for a contributor.
+
+      From the Entity table: entity_id where entity_type == ''Contributor''.
+
+      '
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
     rank: 1000
     alias: contributor_id
-    owner: Contributor_X_Role_X_Project
+    owner: Contributor_x_Role_x_Project
     domain_of:
-    - Contributor_X_Role_X_Experiment
-    - Contributor_X_Role_X_Project
     - Contributor
-    range: UUID
+    - ContributorAffiliations
+    - Contributor_x_Role_x_Project
+    - Contributor_to_DataSource
+    range: cdm_contributor_id
     required: true
   project_id:
     name: project_id
-    description: Internal (CDM) unique identifier for a project.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+    description: 'Internal (CDM) unique identifier for a project.
+
+      From the Entity table: entity_id where entity_type == ''Project''.
+
+      '
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
     rank: 1000
     alias: project_id
-    owner: Contributor_X_Role_X_Project
+    owner: Contributor_x_Role_x_Project
     domain_of:
-    - Contributor_X_Role_X_Project
-    - Experiment_X_Project
+    - Contributor_x_Role_x_Project
     - Project
-    range: UUID
+    range: cdm_id
     required: true
   contributor_role:
     name: contributor_role
     description: Role(s) played by the contributor when working on the experiment.
       If more than one role was played, additional rows should be added to represent
       each role.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
     rank: 1000
     slot_uri: schema:Role
     alias: contributor_role
-    owner: Contributor_X_Role_X_Project
+    owner: Contributor_x_Role_x_Project
     domain_of:
-    - Contributor_X_Role_X_Experiment
-    - Contributor_X_Role_X_Project
+    - Contributor_x_Role_x_Project
+    - Contributor_to_DataSource
     range: ContributorRole
-represents_relationship: true
+    required: false
 
 </code></pre>
 </details>

@@ -230,11 +230,13 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="class-identifier">Class: Identifier</h1>
-<p><em>A string used as a resolvable (external) identifier for an entity. This should be a URI or CURIE. If the string cannot be resolved to an URL, it should be added as a 'name' instead.</em></p>
+<p><em>A string used as a resolvable (external) identifier for an entity. This should be a CURIE in the form <code>&lt;database_prefix&gt;:&lt;local_identifier&gt;</code>. <a href="https://bioregistry.io">Bioregistry</a> is used as the canonical reference for CURIE database prefixes; please use the prefix exactly as written in the Bioregistry entry.</em></p>
+<p>__</p>
+<p><em>If the string cannot be resolved to an URL, it should be added to the <code>Name</code> table instead.</em></p>
 <p>__</p>
 <p><em>This table is used for capturing external IDs. The internal CDM identifier should be used in the *_id field (e.g. feature_id, protein_id, contig_collection_id).</em></p>
 <p>__</p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/Identifier">kb_cdm:Identifier</a></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/linkml/Identifier">kb_cdm:Identifier</a></p>
 <div class="mermaid"> classDiagram
     class Identifier
     click Identifier href "../Identifier/"
@@ -273,7 +275,7 @@
 <tbody>
 <tr>
 <td><a href="../entity_id/">entity_id</a></td>
-<td>1 <br/> <a href="../UUID/">UUID</a></td>
+<td>1 <br/> <a href="../CdmId/">CdmId</a></td>
 <td>Internal (CDM) unique identifier for an entity.</td>
 <td>direct</td>
 </tr>
@@ -291,14 +293,14 @@
 </tr>
 <tr>
 <td><a href="../source/">source</a></td>
-<td>0..1 <br/> <a href="../DataSourceUuid/">DataSourceUuid</a></td>
+<td>0..1 <br/> <a href="../CdmDataSourceId/">CdmDataSourceId</a></td>
 <td>The source for a specific piece of information; should be a CDM internal ID of a source in the DataSource table.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../relationship/">relationship</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Relationship between this identifier and the entity in the <code>entity_id</code> field.</td>
+<td>Relationship between this identifier and the entity in the <code>entity_id</code> field. If absent, it is assumed that the identifier represents the same entity in another data source.</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -306,7 +308,7 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -333,15 +335,20 @@
 <details>
 <pre><code class="language-yaml">name: Identifier
 description: 'A string used as a resolvable (external) identifier for an entity. This
-  should be a URI or CURIE. If the string cannot be resolved to an URL, it should
-  be added as a ''name'' instead.
+  should be a CURIE in the form `&lt;database_prefix&gt;:&lt;local_identifier&gt;`. [Bioregistry](https://bioregistry.io)
+  is used as the canonical reference for CURIE database prefixes; please use the prefix
+  exactly as written in the Bioregistry entry.
+
+
+  If the string cannot be resolved to an URL, it should be added to the `Name` table
+  instead.
 
 
   This table is used for capturing external IDs. The internal CDM identifier should
   be used in the *_id field (e.g. feature_id, protein_id, contig_collection_id).
 
   '
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 is_a: Table
 slots:
 - entity_id
@@ -356,8 +363,9 @@ attributes:
   relationship:
     name: relationship
     description: Relationship between this identifier and the entity in the `entity_id`
-      field.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_base
+      field. If absent, it is assumed that the identifier represents the same entity
+      in another data source.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_base
     rank: 1000
     domain_of:
     - Identifier
@@ -368,15 +376,20 @@ attributes:
 <details>
 <pre><code class="language-yaml">name: Identifier
 description: 'A string used as a resolvable (external) identifier for an entity. This
-  should be a URI or CURIE. If the string cannot be resolved to an URL, it should
-  be added as a ''name'' instead.
+  should be a CURIE in the form `&lt;database_prefix&gt;:&lt;local_identifier&gt;`. [Bioregistry](https://bioregistry.io)
+  is used as the canonical reference for CURIE database prefixes; please use the prefix
+  exactly as written in the Bioregistry entry.
+
+
+  If the string cannot be resolved to an URL, it should be added to the `Name` table
+  instead.
 
 
   This table is used for capturing external IDs. The internal CDM identifier should
   be used in the *_id field (e.g. feature_id, protein_id, contig_collection_id).
 
   '
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 is_a: Table
 slot_usage:
   description:
@@ -386,8 +399,9 @@ attributes:
   relationship:
     name: relationship
     description: Relationship between this identifier and the entity in the `entity_id`
-      field.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_base
+      field. If absent, it is assumed that the identifier represents the same entity
+      in another data source.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_base
     rank: 1000
     alias: relationship
     owner: Identifier
@@ -397,20 +411,19 @@ attributes:
   entity_id:
     name: entity_id
     description: Internal (CDM) unique identifier for an entity.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
     rank: 1000
     alias: entity_id
     owner: Identifier
     domain_of:
-    - Association_X_SupportingObject
-    - Entity_X_Measurement
     - ClusterMember
-    - Sequence
+    - EntityMixin
     - Entity
     - Identifier
     - Name
-    - AttributeValue
-    range: UUID
+    - Sequence
+    - Association_x_SupportingObject
+    range: cdm_id
     required: true
   identifier:
     name: identifier
@@ -418,7 +431,7 @@ attributes:
     examples:
     - value: UniProt:Q8KCD6
     - value: EC:5.2.3.14
-    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
     rank: 1000
     slot_uri: schema:identifier
     alias: identifier
@@ -430,33 +443,36 @@ attributes:
   description:
     name: description
     description: Brief description of the identifier.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
     rank: 1000
     alias: description
     owner: Identifier
     domain_of:
     - Cluster
     - Event
-    - Experiment
-    - Project
-    - Protein
-    - Protocol
-    - Sample
     - Identifier
     - Name
+    - Protein
+    - Sample
+    - Project
+    - Experiment
+    - Parameter
+    - Protocol
+    - ProtocolExecution
+    - Variable
     range: string
   source:
     name: source
     description: The source for a specific piece of information; should be a CDM internal
       ID of a source in the DataSource table.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
     rank: 1000
     alias: source
     owner: Identifier
     domain_of:
     - Identifier
     - Name
-    range: data_source_uuid
+    range: cdm_data_source_id
 
 </code></pre>
 </details>

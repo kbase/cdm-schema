@@ -334,6 +334,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#aliases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aliases
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       Identifier and Mapping Information
@@ -395,8 +404,8 @@
 
 
 <h1 id="slot-evidence_type">Slot: evidence_type</h1>
-<p><em>The type of evidence supporting the association. Should be a term from the Evidence and Conclusion Ontology (ECO).</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/evidence_type">kb_cdm:evidence_type</a>
+<p><em>The type of evidence supporting the association. Should be a term from the Evidence and Conclusion Ontology (ECO). Specific pieces of evidence that support the association should be added as supporting objects, in the AssociationSupportingObject table.</em></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/linkml/evidence_type">kb_cdm:evidence_type</a>
 Alias: evidence_type</p>
 <!-- no inheritance hierarchy -->
 
@@ -426,10 +435,14 @@ Alias: evidence_type</p>
 <p>Regex pattern: <code>^ECO:\d+$</code></p>
 </li>
 </ul>
+<h2 id="aliases">Aliases</h2>
+<ul>
+<li>evidence code</li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -455,8 +468,12 @@ Alias: evidence_type</p>
 
 <pre><code class="language-yaml">name: evidence_type
 description: The type of evidence supporting the association. Should be a term from
-  the Evidence and Conclusion Ontology (ECO).
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+  the Evidence and Conclusion Ontology (ECO). Specific pieces of evidence that support
+  the association should be added as supporting objects, in the AssociationSupportingObject
+  table.
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+aliases:
+- evidence code
 rank: 1000
 alias: evidence_type
 owner: Association

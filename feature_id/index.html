@@ -396,7 +396,9 @@
 
 <h1 id="slot-feature_id">Slot: feature_id</h1>
 <p><em>Internal (CDM) unique identifier for a feature.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/feature_id">kb_cdm:feature_id</a>
+<p><em>From the Entity table: entity_id where entity_type == 'Feature'.</em></p>
+<p>__</p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/linkml/feature_id">kb_cdm:feature_id</a>
 Alias: feature_id</p>
 <!-- no inheritance hierarchy -->
 
@@ -411,18 +413,8 @@ Alias: feature_id</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../EncodedFeatureXFeature/">EncodedFeatureXFeature</a></td>
-<td>Captures the relationship between a feature and its transcription product.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../FeatureXProtein/">FeatureXProtein</a></td>
-<td>Captures the relationship between a feature and a protein; equivalent to feature encodes protein.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Feature/">Feature</a></td>
-<td>A feature localized to an interval along a contig.</td>
+<td><a href="../ContigXFeature/">ContigXFeature</a></td>
+<td>Captures the relationship between a contig and a feature; equivalent to feature part-of contig.</td>
 <td>yes</td>
 </tr>
 <tr>
@@ -431,16 +423,26 @@ Alias: feature_id</p>
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../ContigXFeature/">ContigXFeature</a></td>
-<td>Captures the relationship between a contig and a feature; equivalent to feature part-of contig.</td>
+<td><a href="../Feature/">Feature</a></td>
+<td>A feature localized to an interval along a contig.</td>
 <td>yes</td>
+</tr>
+<tr>
+<td><a href="../FeatureXProtein/">FeatureXProtein</a></td>
+<td>Captures the relationship between a feature and a protein; equivalent to feature encodes protein.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../EncodedFeatureXFeature/">EncodedFeatureXFeature</a></td>
+<td>Captures the relationship between a feature and its transcription product.</td>
+<td>no</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../UUID/">UUID</a></p>
+<p>Range: <a href="../CdmFeatureId/">CdmFeatureId</a></p>
 </li>
 <li>
 <p>Required: True</p>
@@ -449,7 +451,7 @@ Alias: feature_id</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -474,17 +476,21 @@ Alias: feature_id</p>
 <details>
 
 <pre><code class="language-yaml">name: feature_id
-description: Internal (CDM) unique identifier for a feature.
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+description: 'Internal (CDM) unique identifier for a feature.
+
+  From the Entity table: entity_id where entity_type == ''Feature''.
+
+  '
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 rank: 1000
 alias: feature_id
 domain_of:
-- Contig_X_Feature
-- ContigCollection_X_Feature
-- EncodedFeature_X_Feature
-- Feature_X_Protein
 - Feature
-range: UUID
+- Contig_x_Feature
+- ContigCollection_x_Feature
+- EncodedFeature_x_Feature
+- Feature_x_Protein
+range: cdm_feature_id
 required: true
 
 </code></pre>

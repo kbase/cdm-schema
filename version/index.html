@@ -380,7 +380,7 @@
 
 
 <h1 id="slot-version">Slot: version</h1>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/version">kb_cdm:version</a>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/linkml/version">kb_cdm:version</a>
 Alias: version</p>
 <!-- no inheritance hierarchy -->
 
@@ -396,12 +396,12 @@ Alias: version</p>
 <tbody>
 <tr>
 <td><a href="../Protocol/">Protocol</a></td>
-<td>Defined method or set of methods.</td>
+<td>A defined method or set of methods.</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../DataSource/">DataSource</a></td>
-<td>The source dataset from which data within the CDM was extracted. This might be an API query; a set of files downloaded from a website or uploaded by a user; a database dump; etc. A given data source should have either version information (e.g. UniProt's release number) or an access date to allow the original raw data dump to be recapitulated.</td>
+<td><a href="../DataSourceNew/">DataSourceNew</a></td>
+<td>The source dataset from which data within the CDM was extracted. This might be an API query; a set of files downloaded from a website or uploaded by a user; a database dump; etc. A given data source should have either version information (e.g. a release number, like those used by UniProt or RefSeq) or an access date to allow the original raw data dump to be recapitulated.</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -436,7 +436,7 @@ Alias: version</p>
 <pre><code class="language-yaml">name: version
 alias: version
 domain_of:
-- DataSource
+- DataSourceNew
 - Protocol
 range: string
 

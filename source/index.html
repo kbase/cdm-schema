@@ -396,7 +396,7 @@
 
 <h1 id="slot-source">Slot: source</h1>
 <p><em>The source for a specific piece of information; should be a CDM internal ID of a source in the DataSource table.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/source">kb_cdm:source</a>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/linkml/source">kb_cdm:source</a>
 Alias: source</p>
 <!-- no inheritance hierarchy -->
 
@@ -412,24 +412,24 @@ Alias: source</p>
 <tbody>
 <tr>
 <td><a href="../Identifier/">Identifier</a></td>
-<td>A string used as a resolvable (external) identifier for an entity. This should be a URI or CURIE. If the string cannot be resolved to an URL, it should be added as a 'name' instead.<br><br>This table is used for capturing external IDs. The internal CDM identifier should be used in the *_id field (e.g. feature_id, protein_id, contig_collection_id).</td>
+<td>A string used as a resolvable (external) identifier for an entity. This should be a CURIE in the form <code>&lt;database_prefix&gt;:&lt;local_identifier&gt;</code>. <a href="https://bioregistry.io">Bioregistry</a> is used as the canonical reference for CURIE database prefixes; please use the prefix exactly as written in the Bioregistry entry.<br><br>If the string cannot be resolved to an URL, it should be added to the <code>Name</code> table instead.<br><br>This table is used for capturing external IDs. The internal CDM identifier should be used in the *_id field (e.g. feature_id, protein_id, contig_collection_id).</td>
 <td>no</td>
 </tr>
 <tr>
 <td><a href="../Name/">Name</a></td>
-<td>A string used as the name or label for an entity. This may be a primary name, alternative name, synonym, acronym, or any other label used to refer to an entity.<br><br>Identifiers that look like CURIEs or database references, but which cannot be resolved using bioregistry or identifiers.org should be added as names.</td>
+<td>A string used as the name or label for an entity. This may be a primary name, alternative name, synonym, acronym, or any other label used to refer to an entity.<br><br>Identifiers that look like CURIEs or database references, but which cannot be resolved using <a href="https://bioregistry.io">Bioregistry</a> or <a href="https://identifiers.org">identifiers.org</a> should be added to the <code>Name</code> table.</td>
 <td>no</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../DataSourceUuid/">DataSourceUuid</a></li>
+<li>Range: <a href="../CdmDataSourceId/">CdmDataSourceId</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -456,13 +456,13 @@ Alias: source</p>
 <pre><code class="language-yaml">name: source
 description: The source for a specific piece of information; should be a CDM internal
   ID of a source in the DataSource table.
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 rank: 1000
 alias: source
 domain_of:
 - Identifier
 - Name
-range: data_source_uuid
+range: cdm_data_source_id
 
 </code></pre>
 

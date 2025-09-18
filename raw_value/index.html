@@ -334,11 +334,35 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Examples
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       Identifier and Mapping Information
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Identifier and Mapping Information">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#schema-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      Schema Source
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -380,7 +404,8 @@
 
 
 <h1 id="slot-raw_value">Slot: raw_value</h1>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/raw_value">kb_cdm:raw_value</a>
+<p><em>The value that was specified for an annotation in its raw form; e.g. "2 cm" or "2-4 cm"</em></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/linkml/raw_value">kb_cdm:raw_value</a>
 Alias: raw_value</p>
 <!-- no inheritance hierarchy -->
 
@@ -395,33 +420,43 @@ Alias: raw_value</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../Measurement/">Measurement</a></td>
-<td>A qualitative or quantitative observation of an attribute of an object or event against a standardized scale, to enable it to be compared with other objects or events.</td>
+<td><a href="../DateTimeValue/">DateTimeValue</a></td>
+<td>A date or date and time value.</td>
 <td>no</td>
+</tr>
+<tr>
+<td><a href="../QuantityRangeValue/">QuantityRangeValue</a></td>
+<td>A numerical range, e.g. 5-7 cm.</td>
+<td>yes</td>
 </tr>
 <tr>
 <td><a href="../QuantityValue/">QuantityValue</a></td>
-<td>A simple quantity, e.g. 2cm. May be used to describe a range using the minimum_value and maximum_value fields.</td>
-<td>no</td>
+<td>A simple quantity, e.g. 2 cm.</td>
+<td>yes</td>
 </tr>
 <tr>
 <td><a href="../Geolocation/">Geolocation</a></td>
-<td>A normalized value for a location on the earth's surface</td>
-<td>no</td>
+<td>A normalized value for a location on the earth's surface. Should be expressed in decimal degrees.</td>
+<td>yes</td>
 </tr>
 <tr>
-<td><a href="../TextValue/">TextValue</a></td>
-<td>A basic string value</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ProcessedMeasurement/">ProcessedMeasurement</a></td>
-<td>A measurement that requires additional processing to generate a result.</td>
+<td><a href="../ControlledVocabularyTermValue/">ControlledVocabularyTermValue</a></td>
+<td>A quality, described using a term from an ontology or schema with a stable persistent identifier.</td>
 <td>no</td>
 </tr>
 <tr>
 <td><a href="../AttributeValue/">AttributeValue</a></td>
-<td>A generic class for capturing tag-value information in a structured form.</td>
+<td>The value for any value of attribute for an entity. This object can hold both the un-normalized atomic value and the structured value.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../TextValue/">TextValue</a></td>
+<td>A basic string value.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ControlledTermValue/">ControlledTermValue</a></td>
+<td>A quality, described using a text string from a controlled vocabulary or enum.</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -430,7 +465,33 @@ Alias: raw_value</p>
 <ul>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
+<h2 id="examples">Examples</h2>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2 cm</td>
+</tr>
+<tr>
+<td>2 to 5m</td>
+</tr>
+<tr>
+<td>37-39 degrees celcius</td>
+</tr>
+<tr>
+<td>Regulation of glucose biosynthesis.</td>
+</tr>
+</tbody>
+</table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="schema-source">Schema Source</h3>
+<ul>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
+</ul>
 <h2 id="mappings">Mappings</h2>
 <table>
 <thead>
@@ -448,16 +509,30 @@ Alias: raw_value</p>
 <td>native</td>
 <td>kb_cdm:raw_value</td>
 </tr>
+<tr>
+<td>undefined</td>
+<td>nmdc:raw_value</td>
+</tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
 <pre><code class="language-yaml">name: raw_value
+description: The value that was specified for an annotation in its raw form; e.g.
+  &quot;2 cm&quot; or &quot;2-4 cm&quot;
+examples:
+- value: 2 cm
+- value: 2 to 5m
+- value: 37-39 degrees celcius
+- value: Regulation of glucose biosynthesis.
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+mappings:
+- nmdc:raw_value
+rank: 1000
 alias: raw_value
 domain_of:
 - AttributeValue
-- Geolocation
 range: string
 
 </code></pre>

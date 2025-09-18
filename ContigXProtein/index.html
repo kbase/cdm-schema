@@ -231,12 +231,12 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-contigxprotein">Class: ContigXProtein</h1>
 <p><em>Captures the relationship between a contig and a protein; equivalent to protein is ribosomal translation of (http://purl.obolibrary.org/obo/RO_0002512) contig.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/ContigXProtein">kb_cdm:ContigXProtein</a></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/linkml/ContigXProtein">kb_cdm:ContigXProtein</a></p>
 <div class="mermaid"> classDiagram
     class ContigXProtein
     click ContigXProtein href "../ContigXProtein/"
-      Table &lt;|-- ContigXProtein
-        click Table href "../Table/"
+      LinkerTable &lt;|-- ContigXProtein
+        click LinkerTable href "../LinkerTable/"
 
       ContigXProtein : contig_id
 
@@ -247,7 +247,10 @@
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><a href="../Table/">Table</a><ul>
+<li><a href="../LinkerTable/">LinkerTable</a><ul>
 <li><strong>ContigXProtein</strong></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -264,14 +267,14 @@
 <tbody>
 <tr>
 <td><a href="../contig_id/">contig_id</a></td>
-<td>1 <br/> <a href="../UUID/">UUID</a></td>
-<td>Internal (CDM) unique identifier for a contig.</td>
+<td>1 <br/> <a href="../CdmContigId/">CdmContigId</a></td>
+<td>Internal (CDM) unique identifier for a contig.<br/>From the Entity table: entity_id where entity_type == 'Contig'.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../protein_id/">protein_id</a></td>
-<td>1..* <br/> <a href="../UUID/">UUID</a></td>
-<td>Internal (CDM) unique identifier for a protein.</td>
+<td>1..* <br> <a href="../CdmProteinId/">CdmProteinId</a></br></td>
+<td>Internal (CDM) unique identifier for a protein.<br/>From the Entity table: entity_id where entity_type == 'Protein'.</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -279,7 +282,7 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -304,12 +307,12 @@
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
 <h3 id="direct">Direct</h3>
 <details>
-<pre><code class="language-yaml">name: Contig_X_Protein
+<pre><code class="language-yaml">name: Contig_x_Protein
 description: Captures the relationship between a contig and a protein; equivalent
   to protein is ribosomal translation of (http://purl.obolibrary.org/obo/RO_0002512)
   contig.
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
-is_a: Table
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+is_a: LinkerTable
 slots:
 - contig_id
 - protein_id
@@ -323,12 +326,12 @@ represents_relationship: true
 </details>
 <h3 id="induced">Induced</h3>
 <details>
-<pre><code class="language-yaml">name: Contig_X_Protein
+<pre><code class="language-yaml">name: Contig_x_Protein
 description: Captures the relationship between a contig and a protein; equivalent
   to protein is ribosomal translation of (http://purl.obolibrary.org/obo/RO_0002512)
   contig.
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
-is_a: Table
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+is_a: LinkerTable
 slot_usage:
   protein_id:
     name: protein_id
@@ -336,32 +339,40 @@ slot_usage:
 attributes:
   contig_id:
     name: contig_id
-    description: Internal (CDM) unique identifier for a contig.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+    description: 'Internal (CDM) unique identifier for a contig.
+
+      From the Entity table: entity_id where entity_type == ''Contig''.
+
+      '
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
     rank: 1000
     alias: contig_id
-    owner: Contig_X_Protein
+    owner: Contig_x_Protein
     domain_of:
-    - Contig_X_ContigCollection
-    - Contig_X_EncodedFeature
-    - Contig_X_Feature
-    - Contig_X_Protein
     - Contig
-    range: UUID
+    - Contig_x_ContigCollection
+    - Contig_x_EncodedFeature
+    - Contig_x_Feature
+    - Contig_x_Protein
+    range: cdm_contig_id
     required: true
   protein_id:
     name: protein_id
-    description: Internal (CDM) unique identifier for a protein.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+    description: 'Internal (CDM) unique identifier for a protein.
+
+      From the Entity table: entity_id where entity_type == ''Protein''.
+
+      '
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
     rank: 1000
     alias: protein_id
-    owner: Contig_X_Protein
+    owner: Contig_x_Protein
     domain_of:
-    - Contig_X_Protein
-    - ContigCollection_X_Protein
-    - Feature_X_Protein
     - Protein
-    range: UUID
+    - Contig_x_Protein
+    - ContigCollection_x_Protein
+    - Feature_x_Protein
+    range: cdm_protein_id
     required: true
     multivalued: true
 represents_relationship: true

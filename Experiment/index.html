@@ -230,8 +230,8 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="class-experiment">Class: Experiment</h1>
-<p><em>A discrete scientific procedure undertaken to make a discovery, test a hypothesis, or demonstrate a known fact.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/Experiment">kb_cdm:Experiment</a></p>
+<p><em>A discrete scientific procedure undertaken to make a discovery, test a hypothesis, or demonstrate a known fact. The protocol_id links to the workflow followed to perform the experiment.</em></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/linkml/Experiment">kb_cdm:Experiment</a></p>
 <div class="mermaid"> classDiagram
     class Experiment
     click Experiment href "../Experiment/"
@@ -245,6 +245,8 @@
       Experiment : experiment_id
 
       Experiment : name
+
+      Experiment : protocol_id
 
 
 </div>
@@ -268,14 +270,20 @@
 <tbody>
 <tr>
 <td><a href="../experiment_id/">experiment_id</a></td>
-<td>1 <br/> <a href="../UUID/">UUID</a></td>
+<td>1 <br/> <a href="../CdmId/">CdmId</a></td>
 <td>Internal (CDM) unique identifier for an experiment.</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../created_at/">created_at</a></td>
-<td>0..1 <br/> <a href="../Iso8601/">Iso8601</a></td>
-<td>The start time of the experiment.</td>
+<td><a href="../protocol_id/">protocol_id</a></td>
+<td>1 <br/> <a href="../CdmProtocolId/">CdmProtocolId</a></td>
+<td>Internal (CDM) unique identifier for a protocol.<br/>From the Entity table: entity_id where entity_type == 'Protocol'.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../name/">name</a></td>
+<td>0..1 <br> <a href="../String/">String</a></br></td>
+<td>Name or title of the experiment.</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -285,9 +293,9 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../name/">name</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Name or title of the experiment.</td>
+<td><a href="../created_at/">created_at</a></td>
+<td>0..1 <br/> <a href="../Iso8601/">Iso8601</a></td>
+<td>The start time of the experiment.</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -295,7 +303,7 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -322,50 +330,36 @@
 <details>
 <pre><code class="language-yaml">name: Experiment
 description: A discrete scientific procedure undertaken to make a discovery, test
-  a hypothesis, or demonstrate a known fact.
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+  a hypothesis, or demonstrate a known fact. The protocol_id links to the workflow
+  followed to perform the experiment.
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 is_a: Table
 slots:
 - experiment_id
+- protocol_id
+- name
+- description
 slot_usage:
   experiment_id:
     name: experiment_id
     identifier: true
+  description:
+    name: description
+    description: Brief explanation of what was done.
+  name:
+    name: name
+    description: Name or title of the experiment.
 attributes:
   created_at:
     name: created_at
     description: The start time of the experiment.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_protocol
     domain_of:
     - Event
     - Experiment
-    - Measurement
+    - MeasurementSet
+    - ProtocolExecution
     range: iso8601
-  description:
-    name: description
-    description: Brief explanation of what was done.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
-    domain_of:
-    - Cluster
-    - Event
-    - Experiment
-    - Project
-    - Protein
-    - Protocol
-    - Sample
-    - Identifier
-    - Name
-  name:
-    name: name
-    description: Name or title of the experiment.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
-    domain_of:
-    - Cluster
-    - Contributor
-    - DataSource
-    - Event
-    - Experiment
-    - Name
 
 </code></pre>
 </details>
@@ -373,71 +367,112 @@ attributes:
 <details>
 <pre><code class="language-yaml">name: Experiment
 description: A discrete scientific procedure undertaken to make a discovery, test
-  a hypothesis, or demonstrate a known fact.
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+  a hypothesis, or demonstrate a known fact. The protocol_id links to the workflow
+  followed to perform the experiment.
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 is_a: Table
 slot_usage:
   experiment_id:
     name: experiment_id
     identifier: true
+  description:
+    name: description
+    description: Brief explanation of what was done.
+  name:
+    name: name
+    description: Name or title of the experiment.
 attributes:
   created_at:
     name: created_at
     description: The start time of the experiment.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_protocol
     alias: created_at
     owner: Experiment
     domain_of:
     - Event
     - Experiment
-    - Measurement
+    - MeasurementSet
+    - ProtocolExecution
     range: iso8601
+  experiment_id:
+    name: experiment_id
+    description: Internal (CDM) unique identifier for an experiment.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    slot_uri: CDM:experiment_id
+    identifier: true
+    alias: experiment_id
+    owner: Experiment
+    domain_of:
+    - Experiment
+    - ExperimentCondition
+    range: cdm_id
+    required: true
+  protocol_id:
+    name: protocol_id
+    description: 'Internal (CDM) unique identifier for a protocol.
+
+      From the Entity table: entity_id where entity_type == ''Protocol''.
+
+      '
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    slot_uri: CDM:protocol_id
+    alias: protocol_id
+    owner: Experiment
+    domain_of:
+    - Cluster
+    - Feature
+    - Experiment
+    - OrderedProtocolStep
+    - Protocol
+    - ProtocolExecution
+    - ProtocolVariable
+    range: cdm_protocol_id
+    required: true
+  name:
+    name: name
+    description: Name or title of the experiment.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    slot_uri: schema:name
+    alias: name
+    owner: Experiment
+    domain_of:
+    - Cluster
+    - Event
+    - Name
+    - Contributor
+    - DataSource
+    - DataSourceNew
+    - License
+    - Experiment
+    - Parameter
+    - Protocol
+    - ProtocolExecution
+    - Variable
+    range: string
   description:
     name: description
     description: Brief explanation of what was done.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
     alias: description
     owner: Experiment
     domain_of:
     - Cluster
     - Event
-    - Experiment
-    - Project
-    - Protein
-    - Protocol
-    - Sample
     - Identifier
     - Name
-    range: string
-  name:
-    name: name
-    description: Name or title of the experiment.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
-    alias: name
-    owner: Experiment
-    domain_of:
-    - Cluster
-    - Contributor
-    - DataSource
-    - Event
+    - Protein
+    - Sample
+    - Project
     - Experiment
-    - Name
+    - Parameter
+    - Protocol
+    - ProtocolExecution
+    - Variable
     range: string
-  experiment_id:
-    name: experiment_id
-    description: Internal (CDM) unique identifier for an experiment.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
-    rank: 1000
-    identifier: true
-    alias: experiment_id
-    owner: Experiment
-    domain_of:
-    - Contributor_X_Role_X_Experiment
-    - Experiment_X_Project
-    - Experiment_X_Sample
-    - Experiment
-    range: UUID
-    required: true
 
 </code></pre>
 </details>

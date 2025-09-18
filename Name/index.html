@@ -232,9 +232,9 @@
 <h1 id="class-name">Class: Name</h1>
 <p><em>A string used as the name or label for an entity. This may be a primary name, alternative name, synonym, acronym, or any other label used to refer to an entity.</em></p>
 <p>__</p>
-<p><em>Identifiers that look like CURIEs or database references, but which cannot be resolved using bioregistry or identifiers.org should be added as names.</em></p>
+<p><em>Identifiers that look like CURIEs or database references, but which cannot be resolved using <a href="https://bioregistry.io">Bioregistry</a> or <a href="https://identifiers.org">identifiers.org</a> should be added to the <code>Name</code> table.</em></p>
 <p>__</p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/Name">kb_cdm:Name</a></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/linkml/Name">kb_cdm:Name</a></p>
 <div class="mermaid"> classDiagram
     class Name
     click Name href "../Name/"
@@ -271,7 +271,7 @@
 <tbody>
 <tr>
 <td><a href="../entity_id/">entity_id</a></td>
-<td>1 <br/> <a href="../UUID/">UUID</a></td>
+<td>1 <br/> <a href="../CdmId/">CdmId</a></td>
 <td>Internal (CDM) unique identifier for an entity.</td>
 <td>direct</td>
 </tr>
@@ -289,7 +289,7 @@
 </tr>
 <tr>
 <td><a href="../source/">source</a></td>
-<td>0..1 <br/> <a href="../DataSourceUuid/">DataSourceUuid</a></td>
+<td>0..1 <br/> <a href="../CdmDataSourceId/">CdmDataSourceId</a></td>
 <td>The source for a specific piece of information; should be a CDM internal ID of a source in the DataSource table.</td>
 <td>direct</td>
 </tr>
@@ -298,7 +298,7 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -330,10 +330,11 @@ description: 'A string used as the name or label for an entity. This may be a pr
 
 
   Identifiers that look like CURIEs or database references, but which cannot be resolved
-  using bioregistry or identifiers.org should be added as names.
+  using [Bioregistry](https://bioregistry.io) or [identifiers.org](https://identifiers.org)
+  should be added to the `Name` table.
 
   '
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 is_a: Table
 slots:
 - entity_id
@@ -366,10 +367,11 @@ description: 'A string used as the name or label for an entity. This may be a pr
 
 
   Identifiers that look like CURIEs or database references, but which cannot be resolved
-  using bioregistry or identifiers.org should be added as names.
+  using [Bioregistry](https://bioregistry.io) or [identifiers.org](https://identifiers.org)
+  should be added to the `Name` table.
 
   '
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 is_a: Table
 slot_usage:
   description:
@@ -389,20 +391,19 @@ attributes:
   entity_id:
     name: entity_id
     description: Internal (CDM) unique identifier for an entity.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
     rank: 1000
     alias: entity_id
     owner: Name
     domain_of:
-    - Association_X_SupportingObject
-    - Entity_X_Measurement
     - ClusterMember
-    - Sequence
+    - EntityMixin
     - Entity
     - Identifier
     - Name
-    - AttributeValue
-    range: UUID
+    - Sequence
+    - Association_x_SupportingObject
+    range: cdm_id
     required: true
   name:
     name: name
@@ -410,18 +411,24 @@ attributes:
     examples:
     - value: Heat-inducible transcription repressor HrcA
     - value: Uncharacterized protein 002R
-    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
     rank: 1000
     slot_uri: schema:name
     alias: name
     owner: Name
     domain_of:
     - Cluster
+    - Event
+    - Name
     - Contributor
     - DataSource
-    - Event
+    - DataSourceNew
+    - License
     - Experiment
-    - Name
+    - Parameter
+    - Protocol
+    - ProtocolExecution
+    - Variable
     range: string
     required: true
   description:
@@ -429,33 +436,36 @@ attributes:
     description: Brief description of the name and/or its relationship to the entity.
     examples:
     - value: UniProt recommended full name
-    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
     rank: 1000
     alias: description
     owner: Name
     domain_of:
     - Cluster
     - Event
-    - Experiment
-    - Project
-    - Protein
-    - Protocol
-    - Sample
     - Identifier
     - Name
+    - Protein
+    - Sample
+    - Project
+    - Experiment
+    - Parameter
+    - Protocol
+    - ProtocolExecution
+    - Variable
     range: string
   source:
     name: source
     description: The source for a specific piece of information; should be a CDM internal
       ID of a source in the DataSource table.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
     rank: 1000
     alias: source
     owner: Name
     domain_of:
     - Identifier
     - Name
-    range: data_source_uuid
+    range: cdm_data_source_id
 
 </code></pre>
 </details>

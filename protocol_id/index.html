@@ -396,7 +396,9 @@
 
 <h1 id="slot-protocol_id">Slot: protocol_id</h1>
 <p><em>Internal (CDM) unique identifier for a protocol.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/protocol_id">kb_cdm:protocol_id</a>
+<p><em>From the Entity table: entity_id where entity_type == 'Protocol'.</em></p>
+<p>__</p>
+<p>URI: <a href="CDM:protocol_id">CDM:protocol_id</a>
 Alias: protocol_id</p>
 <!-- no inheritance hierarchy -->
 
@@ -411,23 +413,18 @@ Alias: protocol_id</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../Measurement/">Measurement</a></td>
-<td>A qualitative or quantitative observation of an attribute of an object or event against a standardized scale, to enable it to be compared with other objects or events.</td>
-<td>yes</td>
+<td><a href="../OrderedProtocolStep/">OrderedProtocolStep</a></td>
+<td>A list of the steps in a protocol; the step_index indicates the order in which they should be executed.</td>
+<td>no</td>
 </tr>
 <tr>
-<td><a href="../ProtocolXProtocolParticipant/">ProtocolXProtocolParticipant</a></td>
-<td></td>
-<td>no</td>
+<td><a href="../Protocol/">Protocol</a></td>
+<td>A defined method or set of methods.</td>
+<td>yes</td>
 </tr>
 <tr>
 <td><a href="../Feature/">Feature</a></td>
 <td>A feature localized to an interval along a contig.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ProcessedMeasurement/">ProcessedMeasurement</a></td>
-<td>A measurement that requires additional processing to generate a result.</td>
 <td>no</td>
 </tr>
 <tr>
@@ -436,16 +433,26 @@ Alias: protocol_id</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Protocol/">Protocol</a></td>
-<td>Defined method or set of methods.</td>
-<td>yes</td>
+<td><a href="../ProtocolExecution/">ProtocolExecution</a></td>
+<td>An instance of executing a protocol. Used for</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Experiment/">Experiment</a></td>
+<td>A discrete scientific procedure undertaken to make a discovery, test a hypothesis, or demonstrate a known fact. The protocol_id links to the workflow followed to perform the experiment.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ProtocolVariable/">ProtocolVariable</a></td>
+<td>A variable that may or may not be set as part of an experiment.</td>
+<td>no</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../UUID/">UUID</a></p>
+<p>Range: <a href="../CdmProtocolId/">CdmProtocolId</a></p>
 </li>
 <li>
 <p>Required: True</p>
@@ -454,7 +461,7 @@ Alias: protocol_id</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -467,7 +474,7 @@ Alias: protocol_id</p>
 <tbody>
 <tr>
 <td>self</td>
-<td>kb_cdm:protocol_id</td>
+<td>CDM:protocol_id</td>
 </tr>
 <tr>
 <td>native</td>
@@ -479,17 +486,24 @@ Alias: protocol_id</p>
 <details>
 
 <pre><code class="language-yaml">name: protocol_id
-description: Internal (CDM) unique identifier for a protocol.
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+description: 'Internal (CDM) unique identifier for a protocol.
+
+  From the Entity table: entity_id where entity_type == ''Protocol''.
+
+  '
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 rank: 1000
+slot_uri: CDM:protocol_id
 alias: protocol_id
 domain_of:
-- Protocol_X_ProtocolParticipant
 - Cluster
 - Feature
+- Experiment
+- OrderedProtocolStep
 - Protocol
-- Measurement
-range: UUID
+- ProtocolExecution
+- ProtocolVariable
+range: cdm_protocol_id
 required: true
 
 </code></pre>

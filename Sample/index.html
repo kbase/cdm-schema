@@ -231,7 +231,7 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-sample">Class: Sample</h1>
 <p><em>A material entity that can be characterised by an experiment.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/Sample">kb_cdm:Sample</a></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/linkml/Sample">kb_cdm:Sample</a></p>
 <div class="mermaid"> classDiagram
     class Sample
     click Sample href "../Sample/"
@@ -266,13 +266,13 @@
 <tbody>
 <tr>
 <td><a href="../sample_id/">sample_id</a></td>
-<td>1 <br/> <a href="../UUID/">UUID</a></td>
-<td>Internal (CDM) unique identifier for a sample.</td>
+<td>1 <br/> <a href="../CdmSampleId/">CdmSampleId</a></td>
+<td>Internal (CDM) unique identifier for a sample.<br/>From the Entity table: entity_id where entity_type == 'Sample'.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../description/">description</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>0..1 <br> <a href="../String/">String</a></br></td>
 <td>Brief textual description of the sample.</td>
 <td>direct</td>
 </tr>
@@ -287,7 +287,7 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -314,7 +314,7 @@
 <details>
 <pre><code class="language-yaml">name: Sample
 description: A material entity that can be characterised by an experiment.
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 is_a: Table
 slots:
 - sample_id
@@ -326,22 +326,26 @@ attributes:
   description:
     name: description
     description: Brief textual description of the sample.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
     domain_of:
     - Cluster
     - Event
-    - Experiment
-    - Project
-    - Protein
-    - Protocol
-    - Sample
     - Identifier
     - Name
+    - Protein
+    - Sample
+    - Project
+    - Experiment
+    - Parameter
+    - Protocol
+    - ProtocolExecution
+    - Variable
   type:
     name: type
     description: The type of entity that the sample is. Vocab TBD.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
     domain_of:
+    - AttributeValue
     - EncodedFeature
     - Feature
     - Sample
@@ -353,7 +357,7 @@ attributes:
 <details>
 <pre><code class="language-yaml">name: Sample
 description: A material entity that can be characterised by an experiment.
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 is_a: Table
 slot_usage:
   sample_id:
@@ -363,27 +367,31 @@ attributes:
   description:
     name: description
     description: Brief textual description of the sample.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
     alias: description
     owner: Sample
     domain_of:
     - Cluster
     - Event
-    - Experiment
-    - Project
-    - Protein
-    - Protocol
-    - Sample
     - Identifier
     - Name
+    - Protein
+    - Sample
+    - Project
+    - Experiment
+    - Parameter
+    - Protocol
+    - ProtocolExecution
+    - Variable
     range: string
   type:
     name: type
     description: The type of entity that the sample is. Vocab TBD.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
     alias: type
     owner: Sample
     domain_of:
+    - AttributeValue
     - EncodedFeature
     - Feature
     - Sample
@@ -391,16 +399,19 @@ attributes:
     range: string
   sample_id:
     name: sample_id
-    description: Internal (CDM) unique identifier for a sample.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+    description: 'Internal (CDM) unique identifier for a sample.
+
+      From the Entity table: entity_id where entity_type == ''Sample''.
+
+      '
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
     rank: 1000
     identifier: true
     alias: sample_id
     owner: Sample
     domain_of:
-    - Experiment_X_Sample
     - Sample
-    range: UUID
+    range: cdm_sample_id
     required: true
 
 </code></pre>

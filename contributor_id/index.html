@@ -396,7 +396,9 @@
 
 <h1 id="slot-contributor_id">Slot: contributor_id</h1>
 <p><em>Internal (CDM) unique identifier for a contributor.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/contributor_id">kb_cdm:contributor_id</a>
+<p><em>From the Entity table: entity_id where entity_type == 'Contributor'.</em></p>
+<p>__</p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/linkml/contributor_id">kb_cdm:contributor_id</a>
 Alias: contributor_id</p>
 <!-- no inheritance hierarchy -->
 
@@ -411,26 +413,31 @@ Alias: contributor_id</p>
 </thead>
 <tbody>
 <tr>
+<td><a href="../ContributorAffiliations/">ContributorAffiliations</a></td>
+<td>Captures relationships between contributors where one contributor is part of another contributor, e.g. a member of a group or a group that is part of a larger organization.</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../ContributorToDataSource/">ContributorToDataSource</a></td>
+<td>Captures the people and/or organizations involved in producing a dataset; ideally the contributor_role field will capture how the contributor was involved.</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../ContributorXRoleXProject/">ContributorXRoleXProject</a></td>
-<td></td>
+<td>Describes the participation of a contributor in a project; ideally the contributor_role field will capture how the contributor was involved.</td>
 <td>no</td>
 </tr>
 <tr>
 <td><a href="../Contributor/">Contributor</a></td>
-<td>Represents a contributor to the resource.<br><br>Contributors must have a 'contributor_type', either 'Person' or 'Organization', and<br>one of the 'name' fields: either 'given_name' and 'family_name' (for a person), or 'name' (for an organization or a person).<br><br>The 'contributor_role' field takes values from the DataCite and CRediT contributor<br>roles vocabularies. For more information on these resources and choosing<br>appropriate roles, please see the following links:<br><br>DataCite contributor roles: https://support.datacite.org/docs/datacite-metadata-schema-v44-recommended-and-optional-properties#7a-contributortype<br><br>CRediT contributor role taxonomy: https://credit.niso.org</td>
+<td>Represents a contributor to a resource.<br><br>Contributors must have a 'contributor_type', either 'Person' or 'Organization', and one of the 'name' fields: either 'given_name' and 'family_name' (for a person), or 'name' (for an organization or a person).<br><br>The 'contributor_role' field takes values from the DataCite and CRediT contributor roles vocabularies. For more information on these resources and choosing appropriate roles, please see the following links:<br><br>DataCite contributor roles: https://support.datacite.org/docs/datacite-metadata-schema-v44-recommended-and-optional-properties#7a-contributortype<br><br>CRediT contributor role taxonomy: https://credit.niso.org</td>
 <td>yes</td>
-</tr>
-<tr>
-<td><a href="../ContributorXRoleXExperiment/">ContributorXRoleXExperiment</a></td>
-<td></td>
-<td>no</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../UUID/">UUID</a></p>
+<p>Range: <a href="../CdmContributorId/">CdmContributorId</a></p>
 </li>
 <li>
 <p>Required: True</p>
@@ -439,7 +446,7 @@ Alias: contributor_id</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -464,15 +471,20 @@ Alias: contributor_id</p>
 <details>
 
 <pre><code class="language-yaml">name: contributor_id
-description: Internal (CDM) unique identifier for a contributor.
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+description: 'Internal (CDM) unique identifier for a contributor.
+
+  From the Entity table: entity_id where entity_type == ''Contributor''.
+
+  '
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 rank: 1000
 alias: contributor_id
 domain_of:
-- Contributor_X_Role_X_Experiment
-- Contributor_X_Role_X_Project
 - Contributor
-range: UUID
+- ContributorAffiliations
+- Contributor_x_Role_x_Project
+- Contributor_to_DataSource
+range: cdm_contributor_id
 required: true
 
 </code></pre>

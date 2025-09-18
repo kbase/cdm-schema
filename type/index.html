@@ -340,6 +340,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Identifier and Mapping Information">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#schema-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      Schema Source
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -380,7 +395,8 @@
 
 
 <h1 id="slot-type">Slot: type</h1>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/type">kb_cdm:type</a>
+<p><em>The type of value being represented - e.g. QuantityValue, TextValue, DateTimeValue, ControlledVocabularyTermValue, etc.</em></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/linkml/type">kb_cdm:type</a>
 Alias: type</p>
 <!-- no inheritance hierarchy -->
 
@@ -395,8 +411,53 @@ Alias: type</p>
 </thead>
 <tbody>
 <tr>
+<td><a href="../DateTimeValue/">DateTimeValue</a></td>
+<td>A date or date and time value.</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../QuantityRangeValue/">QuantityRangeValue</a></td>
+<td>A numerical range, e.g. 5-7 cm.</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../EncodedFeature/">EncodedFeature</a></td>
+<td>An entity generated from a feature, such as a transcript.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../QuantityValue/">QuantityValue</a></td>
+<td>A simple quantity, e.g. 2 cm.</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../Geolocation/">Geolocation</a></td>
+<td>A normalized value for a location on the earth's surface. Should be expressed in decimal degrees.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ControlledVocabularyTermValue/">ControlledVocabularyTermValue</a></td>
+<td>A quality, described using a term from an ontology or schema with a stable persistent identifier.</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../AttributeValue/">AttributeValue</a></td>
+<td>The value for any value of attribute for an entity. This object can hold both the un-normalized atomic value and the structured value.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../TextValue/">TextValue</a></td>
+<td>A basic string value.</td>
+<td>yes</td>
+</tr>
+<tr>
 <td><a href="../Feature/">Feature</a></td>
 <td>A feature localized to an interval along a contig.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Sequence/">Sequence</a></td>
+<td>A sequence of nucleotides or amino acids.</td>
 <td>no</td>
 </tr>
 <tr>
@@ -405,22 +466,21 @@ Alias: type</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../EncodedFeature/">EncodedFeature</a></td>
-<td>An entity generated from a feature, such as a transcript.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Sequence/">Sequence</a></td>
-<td></td>
-<td>no</td>
+<td><a href="../ControlledTermValue/">ControlledTermValue</a></td>
+<td>A quality, described using a text string from a controlled vocabulary or enum.</td>
+<td>yes</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../String/">String</a></li>
+<li>Range: <a href="../AttributeValueType/">AttributeValueType</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="schema-source">Schema Source</h3>
+<ul>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
+</ul>
 <h2 id="mappings">Mappings</h2>
 <table>
 <thead>
@@ -444,13 +504,18 @@ Alias: type</p>
 <details>
 
 <pre><code class="language-yaml">name: type
+description: The type of value being represented - e.g. QuantityValue, TextValue,
+  DateTimeValue, ControlledVocabularyTermValue, etc.
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+rank: 1000
 alias: type
 domain_of:
+- AttributeValue
 - EncodedFeature
 - Feature
 - Sample
 - Sequence
-range: string
+range: AttributeValueType
 
 </code></pre>
 

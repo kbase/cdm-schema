@@ -396,7 +396,9 @@
 
 <h1 id="slot-protein_id">Slot: protein_id</h1>
 <p><em>Internal (CDM) unique identifier for a protein.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/protein_id">kb_cdm:protein_id</a>
+<p><em>From the Entity table: entity_id where entity_type == 'Protein'.</em></p>
+<p>__</p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/linkml/protein_id">kb_cdm:protein_id</a>
 Alias: protein_id</p>
 <!-- no inheritance hierarchy -->
 
@@ -416,13 +418,13 @@ Alias: protein_id</p>
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../FeatureXProtein/">FeatureXProtein</a></td>
-<td>Captures the relationship between a feature and a protein; equivalent to feature encodes protein.</td>
+<td><a href="../ContigCollectionXProtein/">ContigCollectionXProtein</a></td>
+<td>Captures the relationship between a contig collection and a protein; equivalent to protein is ribosomal translation of (http://purl.obolibrary.org/obo/RO_0002512) contig collection.</td>
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../ContigCollectionXProtein/">ContigCollectionXProtein</a></td>
-<td>Captures the relationship between a contig collection and a protein; equivalent to protein is ribosomal translation of (http://purl.obolibrary.org/obo/RO_0002512) contig collection.</td>
+<td><a href="../FeatureXProtein/">FeatureXProtein</a></td>
+<td>Captures the relationship between a feature and a protein; equivalent to feature encodes protein.</td>
 <td>yes</td>
 </tr>
 <tr>
@@ -435,7 +437,7 @@ Alias: protein_id</p>
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../UUID/">UUID</a></p>
+<p>Range: <a href="../CdmProteinId/">CdmProteinId</a></p>
 </li>
 <li>
 <p>Required: True</p>
@@ -444,7 +446,7 @@ Alias: protein_id</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -469,16 +471,20 @@ Alias: protein_id</p>
 <details>
 
 <pre><code class="language-yaml">name: protein_id
-description: Internal (CDM) unique identifier for a protein.
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+description: 'Internal (CDM) unique identifier for a protein.
+
+  From the Entity table: entity_id where entity_type == ''Protein''.
+
+  '
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 rank: 1000
 alias: protein_id
 domain_of:
-- Contig_X_Protein
-- ContigCollection_X_Protein
-- Feature_X_Protein
 - Protein
-range: UUID
+- Contig_x_Protein
+- ContigCollection_x_Protein
+- Feature_x_Protein
+range: cdm_protein_id
 required: true
 
 </code></pre>

@@ -231,12 +231,12 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-encodedfeaturexfeature">Class: EncodedFeatureXFeature</h1>
 <p><em>Captures the relationship between a feature and its transcription product.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/EncodedFeatureXFeature">kb_cdm:EncodedFeatureXFeature</a></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/linkml/EncodedFeatureXFeature">kb_cdm:EncodedFeatureXFeature</a></p>
 <div class="mermaid"> classDiagram
     class EncodedFeatureXFeature
     click EncodedFeatureXFeature href "../EncodedFeatureXFeature/"
-      Table &lt;|-- EncodedFeatureXFeature
-        click Table href "../Table/"
+      LinkerTable &lt;|-- EncodedFeatureXFeature
+        click LinkerTable href "../LinkerTable/"
 
       EncodedFeatureXFeature : encoded_feature_id
 
@@ -247,7 +247,10 @@
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><a href="../Table/">Table</a><ul>
+<li><a href="../LinkerTable/">LinkerTable</a><ul>
 <li><strong>EncodedFeatureXFeature</strong></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -264,14 +267,14 @@
 <tbody>
 <tr>
 <td><a href="../encoded_feature_id/">encoded_feature_id</a></td>
-<td>1 <br/> <a href="../UUID/">UUID</a></td>
-<td>Internal (CDM) unique identifier for an encoded feature.</td>
+<td>1 <br/> <a href="../CdmEncodedFeatureId/">CdmEncodedFeatureId</a></td>
+<td>Internal (CDM) unique identifier for an encoded feature.<br/>From the Entity table: entity_id where entity_type == 'EncodedFeature'.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../feature_id/">feature_id</a></td>
-<td>1 <br/> <a href="../UUID/">UUID</a></td>
-<td>Internal (CDM) unique identifier for a feature.</td>
+<td>1 <br> <a href="../CdmFeatureId/">CdmFeatureId</a></br></td>
+<td>Internal (CDM) unique identifier for a feature.<br/>From the Entity table: entity_id where entity_type == 'Feature'.</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -279,7 +282,7 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -304,10 +307,10 @@
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
 <h3 id="direct">Direct</h3>
 <details>
-<pre><code class="language-yaml">name: EncodedFeature_X_Feature
+<pre><code class="language-yaml">name: EncodedFeature_x_Feature
 description: Captures the relationship between a feature and its transcription product.
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
-is_a: Table
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+is_a: LinkerTable
 slots:
 - encoded_feature_id
 - feature_id
@@ -317,39 +320,47 @@ represents_relationship: true
 </details>
 <h3 id="induced">Induced</h3>
 <details>
-<pre><code class="language-yaml">name: EncodedFeature_X_Feature
+<pre><code class="language-yaml">name: EncodedFeature_x_Feature
 description: Captures the relationship between a feature and its transcription product.
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
-is_a: Table
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+is_a: LinkerTable
 attributes:
   encoded_feature_id:
     name: encoded_feature_id
-    description: Internal (CDM) unique identifier for an encoded feature.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+    description: 'Internal (CDM) unique identifier for an encoded feature.
+
+      From the Entity table: entity_id where entity_type == ''EncodedFeature''.
+
+      '
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
     rank: 1000
     alias: encoded_feature_id
-    owner: EncodedFeature_X_Feature
+    owner: EncodedFeature_x_Feature
     domain_of:
-    - Contig_X_EncodedFeature
-    - ContigCollection_X_EncodedFeature
-    - EncodedFeature_X_Feature
     - EncodedFeature
-    range: UUID
+    - Contig_x_EncodedFeature
+    - ContigCollection_x_EncodedFeature
+    - EncodedFeature_x_Feature
+    range: cdm_encoded_feature_id
     required: true
   feature_id:
     name: feature_id
-    description: Internal (CDM) unique identifier for a feature.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+    description: 'Internal (CDM) unique identifier for a feature.
+
+      From the Entity table: entity_id where entity_type == ''Feature''.
+
+      '
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
     rank: 1000
     alias: feature_id
-    owner: EncodedFeature_X_Feature
+    owner: EncodedFeature_x_Feature
     domain_of:
-    - Contig_X_Feature
-    - ContigCollection_X_Feature
-    - EncodedFeature_X_Feature
-    - Feature_X_Protein
     - Feature
-    range: UUID
+    - Contig_x_Feature
+    - ContigCollection_x_Feature
+    - EncodedFeature_x_Feature
+    - Feature_x_Protein
+    range: cdm_feature_id
     required: true
 represents_relationship: true
 

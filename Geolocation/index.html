@@ -230,17 +230,19 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="class-geolocation">Class: Geolocation</h1>
-<p><em>A normalized value for a location on the earth's surface</em></p>
-<p>URI: <a href="nmdc:GeolocationValue">nmdc:GeolocationValue</a></p>
+<p><em>A normalized value for a location on the earth's surface. Should be expressed in decimal degrees.</em></p>
+<p>URI: <a href="https://w3id.org/nmdc/GeolocationValue">nmdc:GeolocationValue</a></p>
 <div class="mermaid"> classDiagram
     class Geolocation
     click Geolocation href "../Geolocation/"
       AttributeValue &lt;|-- Geolocation
         click AttributeValue href "../AttributeValue/"
 
-      Geolocation : attribute_cv_term_id
+      Geolocation : attribute_cv_id
 
-      Geolocation : attribute_name
+      Geolocation : attribute_cv_label
+
+      Geolocation : attribute_string
 
       Geolocation : entity_id
 
@@ -250,15 +252,23 @@
 
       Geolocation : raw_value
 
+      Geolocation : type
+
+
+
+
+
+        Geolocation --&gt; "0..1" AttributeValueType : type
+        click AttributeValueType href "../AttributeValueType/"
+
+
+
 
 </div>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
-<li><a href="../Table/">Table</a><ul>
-<li><a href="../AttributeValue/">AttributeValue</a><ul>
+<li><a href="../AttributeValue/">AttributeValue</a> [ <a href="../AttributeMixin/">AttributeMixin</a> <a href="../EntityMixin/">EntityMixin</a>]<ul>
 <li><strong>Geolocation</strong></li>
-</ul>
-</li>
 </ul>
 </li>
 </ul>
@@ -275,46 +285,58 @@
 <tbody>
 <tr>
 <td><a href="../latitude/">latitude</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td>1 <br/> <a href="../DecimalDegree/">DecimalDegree</a></td>
+<td>The latitude portion of a geolocation.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../longitude/">longitude</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td>1 <br/> <a href="../DecimalDegree/">DecimalDegree</a></td>
+<td>The longitude portion of a geolocation.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../raw_value/">raw_value</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>The raw value for a geolocation should follow {latitude} {longitude}</td>
-<td>direct</td>
+<td>The raw value for a geolocation; should follow {latitude} {longitude}.</td>
+<td><a href="../AttributeValue/">AttributeValue</a></td>
+</tr>
+<tr>
+<td><a href="../type/">type</a></td>
+<td>0..1 <br/> <a href="../AttributeValueType/">AttributeValueType</a></td>
+<td>The type of value being represented - e.g. QuantityValue, TextValue, DateTimeValue, ControlledVocabularyTermValue, etc.</td>
+<td><a href="../AttributeValue/">AttributeValue</a></td>
+</tr>
+<tr>
+<td><a href="../attribute_cv_id/">attribute_cv_id</a></td>
+<td>0..1 <br/> <a href="../LocalCurie/">LocalCurie</a></td>
+<td>The attribute being represented. For attributes that are in a controlled vocabulary, ontology, or enumeration, this attribute should capture the term ID from the controlled vocabulary.</td>
+<td><a href="../AttributeMixin/">AttributeMixin</a></td>
+</tr>
+<tr>
+<td><a href="../attribute_cv_label/">attribute_cv_label</a></td>
+<td>0..1 <br/> <a href="../LocalCurieName/">LocalCurieName</a></td>
+<td>The attribute being represented. For attributes that are in a controlled vocabulary, ontology, or enumeration, this attribute should capture the term from the controlled vocabulary.</td>
+<td><a href="../AttributeMixin/">AttributeMixin</a></td>
+</tr>
+<tr>
+<td><a href="../attribute_string/">attribute_string</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>The attribute being represented, as a text string. This field should only be used if the attribute is not represented in a controlled vocabulary, ontology, or enumeration.</td>
+<td><a href="../AttributeMixin/">AttributeMixin</a></td>
 </tr>
 <tr>
 <td><a href="../entity_id/">entity_id</a></td>
-<td>1 <br/> <a href="../UUID/">UUID</a></td>
+<td>1 <br/> <a href="../CdmId/">CdmId</a></td>
 <td>The database entity (sample, feature, protein, etc.) to which the attribute-value annotation refers.</td>
-<td><a href="../AttributeValue/">AttributeValue</a></td>
-</tr>
-<tr>
-<td><a href="../attribute_name/">attribute_name</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
-<td>The attribute being captured in this annotation.</td>
-<td><a href="../AttributeValue/">AttributeValue</a></td>
-</tr>
-<tr>
-<td><a href="../attribute_cv_term_id/">attribute_cv_term_id</a></td>
-<td>0..1 <br/> <a href="../LocalCurie/">LocalCurie</a></td>
-<td>If the attribute is a term from a controlled vocabulary, the ID of the term.</td>
-<td><a href="../AttributeValue/">AttributeValue</a></td>
+<td><a href="../EntityMixin/">EntityMixin</a></td>
 </tr>
 </tbody>
 </table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -344,33 +366,25 @@
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: Geolocation
-description: A normalized value for a location on the earth's surface
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+description: A normalized value for a location on the earth's surface. Should be expressed
+  in decimal degrees.
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 mappings:
 - schema:GeoCoordinates
 is_a: AttributeValue
-attributes:
+slots:
+- latitude
+- longitude
+slot_usage:
   latitude:
     name: latitude
-    from_schema: http://kbase.github.io/cdm-schema/cdm_to_review
-    rank: 1000
-    domain_of:
-    - Geolocation
     required: true
   longitude:
     name: longitude
-    from_schema: http://kbase.github.io/cdm-schema/cdm_to_review
-    rank: 1000
-    domain_of:
-    - Geolocation
     required: true
   raw_value:
     name: raw_value
-    description: The raw value for a geolocation should follow {latitude} {longitude}
-    from_schema: http://kbase.github.io/cdm-schema/cdm_to_review
-    domain_of:
-    - AttributeValue
-    - Geolocation
+    description: The raw value for a geolocation; should follow {latitude} {longitude}.
 class_uri: nmdc:GeolocationValue
 
 </code></pre>
@@ -378,86 +392,140 @@ class_uri: nmdc:GeolocationValue
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: Geolocation
-description: A normalized value for a location on the earth's surface
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+description: A normalized value for a location on the earth's surface. Should be expressed
+  in decimal degrees.
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 mappings:
 - schema:GeoCoordinates
 is_a: AttributeValue
+slot_usage:
+  latitude:
+    name: latitude
+    required: true
+  longitude:
+    name: longitude
+    required: true
+  raw_value:
+    name: raw_value
+    description: The raw value for a geolocation; should follow {latitude} {longitude}.
 attributes:
   latitude:
     name: latitude
-    from_schema: http://kbase.github.io/cdm-schema/cdm_to_review
+    description: The latitude portion of a geolocation.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
     rank: 1000
     alias: latitude
     owner: Geolocation
     domain_of:
+    - EntityAttributeValue
     - Geolocation
-    range: string
+    range: decimal_degree
     required: true
   longitude:
     name: longitude
-    from_schema: http://kbase.github.io/cdm-schema/cdm_to_review
+    description: The longitude portion of a geolocation.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
     rank: 1000
     alias: longitude
     owner: Geolocation
     domain_of:
+    - EntityAttributeValue
     - Geolocation
-    range: string
+    range: decimal_degree
     required: true
   raw_value:
     name: raw_value
-    description: The raw value for a geolocation should follow {latitude} {longitude}
-    from_schema: http://kbase.github.io/cdm-schema/cdm_to_review
+    description: The raw value for a geolocation; should follow {latitude} {longitude}.
+    examples:
+    - value: 2 cm
+    - value: 2 to 5m
+    - value: 37-39 degrees celcius
+    - value: Regulation of glucose biosynthesis.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    mappings:
+    - nmdc:raw_value
+    rank: 1000
     alias: raw_value
     owner: Geolocation
     domain_of:
     - AttributeValue
-    - Geolocation
+    range: string
+  type:
+    name: type
+    description: The type of value being represented - e.g. QuantityValue, TextValue,
+      DateTimeValue, ControlledVocabularyTermValue, etc.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: type
+    owner: Geolocation
+    domain_of:
+    - AttributeValue
+    - EncodedFeature
+    - Feature
+    - Sample
+    - Sequence
+    range: AttributeValueType
+  attribute_cv_id:
+    name: attribute_cv_id
+    description: The attribute being represented. For attributes that are in a controlled
+      vocabulary, ontology, or enumeration, this attribute should capture the term
+      ID from the controlled vocabulary.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    aliases:
+    - attribute term ID
+    - attribute PID
+    rank: 1000
+    alias: attribute_cv_id
+    owner: Geolocation
+    domain_of:
+    - AttributeMixin
+    range: local_curie
+  attribute_cv_label:
+    name: attribute_cv_label
+    description: The attribute being represented. For attributes that are in a controlled
+      vocabulary, ontology, or enumeration, this attribute should capture the term
+      from the controlled vocabulary.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    aliases:
+    - attribute term name
+    rank: 1000
+    alias: attribute_cv_label
+    owner: Geolocation
+    domain_of:
+    - AttributeMixin
+    range: local_curie_name
+  attribute_string:
+    name: attribute_string
+    description: The attribute being represented, as a text string. This field should
+      only be used if the attribute is not represented in a controlled vocabulary,
+      ontology, or enumeration.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    aliases:
+    - attribute
+    - tag
+    rank: 1000
+    alias: attribute_string
+    owner: Geolocation
+    domain_of:
+    - AttributeMixin
     range: string
   entity_id:
     name: entity_id
     description: The database entity (sample, feature, protein, etc.) to which the
       attribute-value annotation refers.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
-    rank: 1000
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_attr_value
     alias: entity_id
     owner: Geolocation
     domain_of:
-    - Association_X_SupportingObject
-    - Entity_X_Measurement
     - ClusterMember
-    - Sequence
+    - EntityMixin
     - Entity
     - Identifier
     - Name
-    - AttributeValue
-    range: UUID
+    - Sequence
+    - Association_x_SupportingObject
+    range: cdm_id
     required: true
-  attribute_name:
-    name: attribute_name
-    description: The attribute being captured in this annotation.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_attr_value
-    aliases:
-    - type
-    - name
-    rank: 1000
-    alias: attribute_name
-    owner: Geolocation
-    domain_of:
-    - AttributeValue
-    range: string
-    required: true
-  attribute_cv_term_id:
-    name: attribute_cv_term_id
-    description: If the attribute is a term from a controlled vocabulary, the ID of
-      the term.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_attr_value
-    rank: 1000
-    alias: attribute_cv_term_id
-    owner: Geolocation
-    domain_of:
-    - AttributeValue
-    range: local_curie
 class_uri: nmdc:GeolocationValue
 
 </code></pre>

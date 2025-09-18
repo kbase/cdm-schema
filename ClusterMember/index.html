@@ -231,7 +231,7 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-clustermember">Class: ClusterMember</h1>
 <p><em>Relationship representing membership of a cluster. An optional score can be assigned to each cluster member.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/ClusterMember">kb_cdm:ClusterMember</a></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/linkml/ClusterMember">kb_cdm:ClusterMember</a></p>
 <div class="mermaid"> classDiagram
     class ClusterMember
     click ClusterMember href "../ClusterMember/"
@@ -270,13 +270,13 @@
 <tbody>
 <tr>
 <td><a href="../cluster_id/">cluster_id</a></td>
-<td>1 <br/> <a href="../UUID/">UUID</a></td>
-<td>Internal (CDM) unique identifier for a cluster.</td>
+<td>1 <br/> <a href="../CdmClusterId/">CdmClusterId</a></td>
+<td>Internal (CDM) unique identifier for a cluster.<br/>From the Entity table: entity_id where entity_type == 'Cluster'.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../entity_id/">entity_id</a></td>
-<td>1 <br/> <a href="../UUID/">UUID</a></td>
+<td>1 <br> <a href="../CdmId/">CdmId</a></br></td>
 <td>Internal (CDM) unique identifier for an entity.</td>
 <td>direct</td>
 </tr>
@@ -303,7 +303,7 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -331,7 +331,7 @@
 <pre><code class="language-yaml">name: ClusterMember
 description: Relationship representing membership of a cluster. An optional score
   can be assigned to each cluster member.
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 is_a: Table
 slots:
 - cluster_id
@@ -341,7 +341,7 @@ attributes:
     name: is_representative
     description: Whether or not this member is the representative for the cluster.
       If 'is_representative' is false, it is assumed that this is a cluster member.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_components
     rank: 1000
     ifabsent: 'false'
     domain_of:
@@ -350,7 +350,7 @@ attributes:
   is_seed:
     name: is_seed
     description: Whether or not this is the seed for this cluster.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_components
     rank: 1000
     ifabsent: 'false'
     domain_of:
@@ -360,7 +360,7 @@ attributes:
     name: score
     description: Output from the clustering protocol indicating how closely a member
       matches the representative.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_components
     rank: 1000
     domain_of:
     - ClusterMember
@@ -373,14 +373,14 @@ attributes:
 <pre><code class="language-yaml">name: ClusterMember
 description: Relationship representing membership of a cluster. An optional score
   can be assigned to each cluster member.
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 is_a: Table
 attributes:
   is_representative:
     name: is_representative
     description: Whether or not this member is the representative for the cluster.
       If 'is_representative' is false, it is assumed that this is a cluster member.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_components
     rank: 1000
     ifabsent: 'false'
     alias: is_representative
@@ -391,7 +391,7 @@ attributes:
   is_seed:
     name: is_seed
     description: Whether or not this is the seed for this cluster.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_components
     rank: 1000
     ifabsent: 'false'
     alias: is_seed
@@ -403,7 +403,7 @@ attributes:
     name: score
     description: Output from the clustering protocol indicating how closely a member
       matches the representative.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_components
     rank: 1000
     alias: score
     owner: ClusterMember
@@ -412,33 +412,36 @@ attributes:
     range: float
   cluster_id:
     name: cluster_id
-    description: Internal (CDM) unique identifier for a cluster.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+    description: 'Internal (CDM) unique identifier for a cluster.
+
+      From the Entity table: entity_id where entity_type == ''Cluster''.
+
+      '
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
     rank: 1000
     alias: cluster_id
     owner: ClusterMember
     domain_of:
     - Cluster
     - ClusterMember
-    range: UUID
+    range: cdm_cluster_id
     required: true
   entity_id:
     name: entity_id
     description: Internal (CDM) unique identifier for an entity.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
     rank: 1000
     alias: entity_id
     owner: ClusterMember
     domain_of:
-    - Association_X_SupportingObject
-    - Entity_X_Measurement
     - ClusterMember
-    - Sequence
+    - EntityMixin
     - Entity
     - Identifier
     - Name
-    - AttributeValue
-    range: UUID
+    - Sequence
+    - Association_x_SupportingObject
+    range: cdm_id
     required: true
 
 </code></pre>

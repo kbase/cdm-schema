@@ -334,6 +334,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#aliases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aliases
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       Identifier and Mapping Information
@@ -396,7 +405,7 @@
 
 <h1 id="slot-contig_bp">Slot: contig_bp</h1>
 <p><em>Total size in bp of all contigs</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/contig_bp">kb_cdm:contig_bp</a>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/linkml/contig_bp">kb_cdm:contig_bp</a>
 Alias: contig_bp</p>
 <!-- no inheritance hierarchy -->
 
@@ -421,10 +430,15 @@ Alias: contig_bp</p>
 <ul>
 <li>Range: <a href="../Integer/">Integer</a></li>
 </ul>
+<h2 id="aliases">Aliases</h2>
+<ul>
+<li>sequence length</li>
+<li>total sequence length</li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -450,7 +464,10 @@ Alias: contig_bp</p>
 
 <pre><code class="language-yaml">name: contig_bp
 description: Total size in bp of all contigs
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+aliases:
+- sequence length
+- total sequence length
 rank: 1000
 alias: contig_bp
 owner: ContigCollection

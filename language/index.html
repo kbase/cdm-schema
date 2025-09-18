@@ -414,7 +414,7 @@
 
 <h1 id="slot-language">Slot: language</h1>
 <p><em>the human language in which the value is encoded, e.g. 'en'</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/language">kb_cdm:language</a>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/linkml/language">kb_cdm:language</a>
 Alias: language</p>
 <!-- no inheritance hierarchy -->
 
@@ -429,13 +429,28 @@ Alias: language</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../TextValue/">TextValue</a></td>
-<td>A basic string value</td>
+<td><a href="../ResourceDescription/">ResourceDescription</a></td>
+<td>Textual information about the resource being represented.</td>
 <td>no</td>
 </tr>
 <tr>
 <td><a href="../Statements/">Statements</a></td>
-<td>Represents an RDF triple</td>
+<td>Represents an RDF triple, a statement in the form "<em>subject</em> <em>predicate</em> <em>object</em>" or "<em>subject</em> <em>predicate</em> <em>value</em>".<br><br>See <a href="https://incatools.github.io/semantic-sql/">Semantic SQL</a> for more information on the contents of this table and how it is populated.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../TextValue/">TextValue</a></td>
+<td>A basic string value.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../EntityAttributeValue/">EntityAttributeValue</a></td>
+<td>Class comprising all possible entity-attribute-value slots.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ResourceTitle/">ResourceTitle</a></td>
+<td>Represents the title or name of a resource, the type of that title, and the language used (if appropriate).<br><br>The <code>title</code> field is required; <code>title_type</code> is only necessary if the text is not the primary title.</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -455,7 +470,7 @@ Alias: language</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -485,12 +500,15 @@ todos:
 - use an enum (rather than a string)
 comments:
 - only used when value is populated
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 rank: 1000
 alias: language
 domain_of:
+- EntityAttributeValue
 - TextValue
 - Statements
+- ResourceDescription
+- ResourceTitle
 range: string
 
 </code></pre>

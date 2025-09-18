@@ -334,15 +334,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#aliases" class="md-nav__link">
-    <span class="md-ellipsis">
-      Aliases
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       Identifier and Mapping Information
@@ -404,8 +395,8 @@
 
 
 <h1 id="slot-quality">Slot: quality</h1>
-<p><em>The quality of the measurement, indicating the confidence that one can have in its correctness.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/quality">kb_cdm:quality</a>
+<p><em>A quality score for measurement.</em></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/linkml/quality">kb_cdm:quality</a>
 Alias: quality</p>
 <!-- no inheritance hierarchy -->
 
@@ -420,13 +411,8 @@ Alias: quality</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../Measurement/">Measurement</a></td>
-<td>A qualitative or quantitative observation of an attribute of an object or event against a standardized scale, to enable it to be compared with other objects or events.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ProcessedMeasurement/">ProcessedMeasurement</a></td>
-<td>A measurement that requires additional processing to generate a result.</td>
+<td><a href="../MeasurementSet/">MeasurementSet</a></td>
+<td>Grouping table to collate a set of protocol outputs by variable, quality, and timestamp.</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -435,14 +421,10 @@ Alias: quality</p>
 <ul>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
-<h2 id="aliases">Aliases</h2>
-<ul>
-<li>confidence</li>
-</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -467,16 +449,13 @@ Alias: quality</p>
 <details>
 
 <pre><code class="language-yaml">name: quality
-description: The quality of the measurement, indicating the confidence that one can
-  have in its correctness.
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
-aliases:
-- confidence
+description: A quality score for measurement.
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 rank: 1000
 alias: quality
-owner: Measurement
+owner: MeasurementSet
 domain_of:
-- Measurement
+- MeasurementSet
 range: string
 
 </code></pre>

@@ -173,6 +173,13 @@
 </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#aliases">
+<span class="md-ellipsis">
+      Aliases
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#identifier-and-mapping-information">
 <span class="md-ellipsis">
       Identifier and Mapping Information
@@ -230,45 +237,69 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="class-attributevalue">Class: AttributeValue</h1>
-<p><em>A generic class for capturing tag-value information in a structured form.</em></p>
+<p><em>The value for any value of attribute for an entity. This object can hold both the un-normalized atomic value and the structured value.</em></p>
 <ul>
 <li><strong>NOTE</strong>: this is an abstract class and should not be instantiated directly</li>
 </ul>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/AttributeValue">kb_cdm:AttributeValue</a></p>
+<p>URI: <a href="https://w3id.org/nmdc/AttributeValue">nmdc:AttributeValue</a></p>
 <div class="mermaid"> classDiagram
     class AttributeValue
     click AttributeValue href "../AttributeValue/"
-      Table &lt;|-- AttributeValue
-        click Table href "../Table/"
+      AttributeMixin &lt;|-- AttributeValue
+        click AttributeMixin href "../AttributeMixin/"
+      EntityMixin &lt;|-- AttributeValue
+        click EntityMixin href "../EntityMixin/"
 
 
       AttributeValue &lt;|-- QuantityValue
         click QuantityValue href "../QuantityValue/"
-      AttributeValue &lt;|-- TextValue
-        click TextValue href "../TextValue/"
+      AttributeValue &lt;|-- QuantityRangeValue
+        click QuantityRangeValue href "../QuantityRangeValue/"
+      AttributeValue &lt;|-- DateTimeValue
+        click DateTimeValue href "../DateTimeValue/"
       AttributeValue &lt;|-- Geolocation
         click Geolocation href "../Geolocation/"
+      AttributeValue &lt;|-- ControlledTermValue
+        click ControlledTermValue href "../ControlledTermValue/"
+      AttributeValue &lt;|-- ControlledVocabularyTermValue
+        click ControlledVocabularyTermValue href "../ControlledVocabularyTermValue/"
+      AttributeValue &lt;|-- TextValue
+        click TextValue href "../TextValue/"
 
 
-      AttributeValue : attribute_cv_term_id
+      AttributeValue : attribute_cv_id
 
-      AttributeValue : attribute_name
+      AttributeValue : attribute_cv_label
+
+      AttributeValue : attribute_string
 
       AttributeValue : entity_id
 
       AttributeValue : raw_value
 
+      AttributeValue : type
+
+
+
+
+
+        AttributeValue --&gt; "0..1" AttributeValueType : type
+        click AttributeValueType href "../AttributeValueType/"
+
+
+
 
 </div>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
-<li><a href="../Table/">Table</a><ul>
-<li><strong>AttributeValue</strong><ul>
-<li><a href="../QuantityValue/">QuantityValue</a></li>
-<li><a href="../TextValue/">TextValue</a></li>
+<li><strong>AttributeValue</strong> [ <a href="../AttributeMixin/">AttributeMixin</a> <a href="../EntityMixin/">EntityMixin</a>]<ul>
+<li><a href="../QuantityValue/">QuantityValue</a> [ <a href="../UnitMixin/">UnitMixin</a>]</li>
+<li><a href="../QuantityRangeValue/">QuantityRangeValue</a> [ <a href="../UnitMixin/">UnitMixin</a>]</li>
+<li><a href="../DateTimeValue/">DateTimeValue</a></li>
 <li><a href="../Geolocation/">Geolocation</a></li>
-</ul>
-</li>
+<li><a href="../ControlledTermValue/">ControlledTermValue</a></li>
+<li><a href="../ControlledVocabularyTermValue/">ControlledVocabularyTermValue</a></li>
+<li><a href="../TextValue/">TextValue</a></li>
 </ul>
 </li>
 </ul>
@@ -284,35 +315,51 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../entity_id/">entity_id</a></td>
-<td>1 <br/> <a href="../UUID/">UUID</a></td>
-<td>The database entity (sample, feature, protein, etc.) to which the attribute-value annotation refers.</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../attribute_name/">attribute_name</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
-<td>The attribute being captured in this annotation.</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../attribute_cv_term_id/">attribute_cv_term_id</a></td>
-<td>0..1 <br/> <a href="../LocalCurie/">LocalCurie</a></td>
-<td>If the attribute is a term from a controlled vocabulary, the ID of the term.</td>
-<td>direct</td>
-</tr>
-<tr>
 <td><a href="../raw_value/">raw_value</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Raw value from the source data. May or may not include units or other unstructured information.</td>
+<td>The value that was specified for an annotation in its raw form; e.g. "2 cm" or "2-4 cm"</td>
 <td>direct</td>
+</tr>
+<tr>
+<td><a href="../type/">type</a></td>
+<td>0..1 <br/> <a href="../AttributeValueType/">AttributeValueType</a></td>
+<td>The type of value being represented - e.g. QuantityValue, TextValue, DateTimeValue, ControlledVocabularyTermValue, etc.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../attribute_cv_id/">attribute_cv_id</a></td>
+<td>0..1 <br/> <a href="../LocalCurie/">LocalCurie</a></td>
+<td>The attribute being represented. For attributes that are in a controlled vocabulary, ontology, or enumeration, this attribute should capture the term ID from the controlled vocabulary.</td>
+<td><a href="../AttributeMixin/">AttributeMixin</a></td>
+</tr>
+<tr>
+<td><a href="../attribute_cv_label/">attribute_cv_label</a></td>
+<td>0..1 <br/> <a href="../LocalCurieName/">LocalCurieName</a></td>
+<td>The attribute being represented. For attributes that are in a controlled vocabulary, ontology, or enumeration, this attribute should capture the term from the controlled vocabulary.</td>
+<td><a href="../AttributeMixin/">AttributeMixin</a></td>
+</tr>
+<tr>
+<td><a href="../attribute_string/">attribute_string</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>The attribute being represented, as a text string. This field should only be used if the attribute is not represented in a controlled vocabulary, ontology, or enumeration.</td>
+<td><a href="../AttributeMixin/">AttributeMixin</a></td>
+</tr>
+<tr>
+<td><a href="../entity_id/">entity_id</a></td>
+<td>1 <br/> <a href="../CdmId/">CdmId</a></td>
+<td>The database entity (sample, feature, protein, etc.) to which the attribute-value annotation refers.</td>
+<td><a href="../EntityMixin/">EntityMixin</a></td>
 </tr>
 </tbody>
 </table>
+<h2 id="aliases">Aliases</h2>
+<ul>
+<li>EntityAttributeValue</li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -325,7 +372,7 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>kb_cdm:AttributeValue</td>
+<td>nmdc:AttributeValue</td>
 </tr>
 <tr>
 <td>native</td>
@@ -338,119 +385,130 @@
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: AttributeValue
-description: A generic class for capturing tag-value information in a structured form.
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
-is_a: Table
+description: The value for any value of attribute for an entity. This object can hold
+  both the un-normalized atomic value and the structured value.
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+aliases:
+- EntityAttributeValue
 abstract: true
+mixins:
+- AttributeMixin
+- EntityMixin
 slots:
-- entity_id
-slot_usage:
-  entity_id:
-    name: entity_id
-    description: The database entity (sample, feature, protein, etc.) to which the
-      attribute-value annotation refers.
-attributes:
-  attribute_name:
-    name: attribute_name
-    description: The attribute being captured in this annotation.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_attr_value
-    aliases:
-    - type
-    - name
-    rank: 1000
-    domain_of:
-    - AttributeValue
-    required: true
-  attribute_cv_term_id:
-    name: attribute_cv_term_id
-    description: If the attribute is a term from a controlled vocabulary, the ID of
-      the term.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_attr_value
-    rank: 1000
-    domain_of:
-    - AttributeValue
-    range: local_curie
-  raw_value:
-    name: raw_value
-    description: Raw value from the source data. May or may not include units or other
-      unstructured information.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_attr_value
-    rank: 1000
-    domain_of:
-    - AttributeValue
-    - Geolocation
+- raw_value
+- type
+class_uri: nmdc:AttributeValue
 
 </code></pre>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: AttributeValue
-description: A generic class for capturing tag-value information in a structured form.
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
-is_a: Table
+description: The value for any value of attribute for an entity. This object can hold
+  both the un-normalized atomic value and the structured value.
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+aliases:
+- EntityAttributeValue
 abstract: true
-slot_usage:
-  entity_id:
-    name: entity_id
-    description: The database entity (sample, feature, protein, etc.) to which the
-      attribute-value annotation refers.
+mixins:
+- AttributeMixin
+- EntityMixin
 attributes:
-  attribute_name:
-    name: attribute_name
-    description: The attribute being captured in this annotation.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_attr_value
-    aliases:
-    - type
-    - name
-    rank: 1000
-    alias: attribute_name
-    owner: AttributeValue
-    domain_of:
-    - AttributeValue
-    range: string
-    required: true
-  attribute_cv_term_id:
-    name: attribute_cv_term_id
-    description: If the attribute is a term from a controlled vocabulary, the ID of
-      the term.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_attr_value
-    rank: 1000
-    alias: attribute_cv_term_id
-    owner: AttributeValue
-    domain_of:
-    - AttributeValue
-    range: local_curie
   raw_value:
     name: raw_value
-    description: Raw value from the source data. May or may not include units or other
-      unstructured information.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_attr_value
+    description: The value that was specified for an annotation in its raw form; e.g.
+      "2 cm" or "2-4 cm"
+    examples:
+    - value: 2 cm
+    - value: 2 to 5m
+    - value: 37-39 degrees celcius
+    - value: Regulation of glucose biosynthesis.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    mappings:
+    - nmdc:raw_value
     rank: 1000
     alias: raw_value
     owner: AttributeValue
     domain_of:
     - AttributeValue
-    - Geolocation
+    range: string
+  type:
+    name: type
+    description: The type of value being represented - e.g. QuantityValue, TextValue,
+      DateTimeValue, ControlledVocabularyTermValue, etc.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: type
+    owner: AttributeValue
+    domain_of:
+    - AttributeValue
+    - EncodedFeature
+    - Feature
+    - Sample
+    - Sequence
+    range: AttributeValueType
+  attribute_cv_id:
+    name: attribute_cv_id
+    description: The attribute being represented. For attributes that are in a controlled
+      vocabulary, ontology, or enumeration, this attribute should capture the term
+      ID from the controlled vocabulary.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    aliases:
+    - attribute term ID
+    - attribute PID
+    rank: 1000
+    alias: attribute_cv_id
+    owner: AttributeValue
+    domain_of:
+    - AttributeMixin
+    range: local_curie
+  attribute_cv_label:
+    name: attribute_cv_label
+    description: The attribute being represented. For attributes that are in a controlled
+      vocabulary, ontology, or enumeration, this attribute should capture the term
+      from the controlled vocabulary.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    aliases:
+    - attribute term name
+    rank: 1000
+    alias: attribute_cv_label
+    owner: AttributeValue
+    domain_of:
+    - AttributeMixin
+    range: local_curie_name
+  attribute_string:
+    name: attribute_string
+    description: The attribute being represented, as a text string. This field should
+      only be used if the attribute is not represented in a controlled vocabulary,
+      ontology, or enumeration.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    aliases:
+    - attribute
+    - tag
+    rank: 1000
+    alias: attribute_string
+    owner: AttributeValue
+    domain_of:
+    - AttributeMixin
     range: string
   entity_id:
     name: entity_id
     description: The database entity (sample, feature, protein, etc.) to which the
       attribute-value annotation refers.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
-    rank: 1000
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_attr_value
     alias: entity_id
     owner: AttributeValue
     domain_of:
-    - Association_X_SupportingObject
-    - Entity_X_Measurement
     - ClusterMember
-    - Sequence
+    - EntityMixin
     - Entity
     - Identifier
     - Name
-    - AttributeValue
-    range: UUID
+    - Sequence
+    - Association_x_SupportingObject
+    range: cdm_id
     required: true
+class_uri: nmdc:AttributeValue
 
 </code></pre>
 </details>

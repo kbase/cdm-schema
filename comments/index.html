@@ -380,7 +380,7 @@
 
 
 <h1 id="slot-comments">Slot: comments</h1>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/comments">kb_cdm:comments</a>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/linkml/comments">kb_cdm:comments</a>
 Alias: comments</p>
 <!-- no inheritance hierarchy -->
 
@@ -400,8 +400,8 @@ Alias: comments</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../DataSource/">DataSource</a></td>
-<td>The source dataset from which data within the CDM was extracted. This might be an API query; a set of files downloaded from a website or uploaded by a user; a database dump; etc. A given data source should have either version information (e.g. UniProt's release number) or an access date to allow the original raw data dump to be recapitulated.</td>
+<td><a href="../DataSourceNew/">DataSourceNew</a></td>
+<td>The source dataset from which data within the CDM was extracted. This might be an API query; a set of files downloaded from a website or uploaded by a user; a database dump; etc. A given data source should have either version information (e.g. a release number, like those used by UniProt or RefSeq) or an access date to allow the original raw data dump to be recapitulated.</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -437,7 +437,7 @@ Alias: comments</p>
 alias: comments
 domain_of:
 - Association
-- DataSource
+- DataSourceNew
 range: string
 
 </code></pre>

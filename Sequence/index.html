@@ -230,7 +230,8 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="class-sequence">Class: Sequence</h1>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/Sequence">kb_cdm:Sequence</a></p>
+<p><em>A sequence of nucleotides or amino acids.</em></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/linkml/Sequence">kb_cdm:Sequence</a></p>
 <div class="mermaid"> classDiagram
     class Sequence
     click Sequence href "../Sequence/"
@@ -278,13 +279,13 @@
 <tbody>
 <tr>
 <td><a href="../sequence_id/">sequence_id</a></td>
-<td>1 <br/> <a href="../UUID/">UUID</a></td>
-<td>Internal (CDM) unique identifier for a sequence.</td>
+<td>1 <br/> <a href="../CdmSequenceId/">CdmSequenceId</a></td>
+<td>Internal (CDM) unique identifier for a sequence.<br/>From the Entity table: entity_id where entity_type == 'Sequence'.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../entity_id/">entity_id</a></td>
-<td>1 <br/> <a href="../UUID/">UUID</a></td>
+<td>1 <br> <a href="../CdmId/">CdmId</a></br></td>
 <td>The entity to which this sequence belongs.</td>
 <td>direct</td>
 </tr>
@@ -311,7 +312,7 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -337,7 +338,8 @@
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: Sequence
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+description: A sequence of nucleotides or amino acids.
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 is_a: Table
 slots:
 - sequence_id
@@ -350,8 +352,9 @@ attributes:
   type:
     name: type
     description: The type of the sequence, either "Nucleotide" or "Amino Acid".
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
     domain_of:
+    - AttributeValue
     - EncodedFeature
     - Feature
     - Sample
@@ -361,7 +364,7 @@ attributes:
     name: length
     description: The length of the sequence in base pairs (for nucleotide sequences)
       or amino acids (for amino acid sequences).
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
     domain_of:
     - Contig
     - Protein
@@ -370,7 +373,7 @@ attributes:
   checksum:
     name: checksum
     description: The checksum of the sequence, used to verify its integrity.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
     rank: 1000
     domain_of:
     - Sequence
@@ -381,7 +384,8 @@ attributes:
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: Sequence
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+description: A sequence of nucleotides or amino acids.
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 is_a: Table
 slot_usage:
   entity_id:
@@ -391,10 +395,11 @@ attributes:
   type:
     name: type
     description: The type of the sequence, either "Nucleotide" or "Amino Acid".
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
     alias: type
     owner: Sequence
     domain_of:
+    - AttributeValue
     - EncodedFeature
     - Feature
     - Sample
@@ -404,7 +409,7 @@ attributes:
     name: length
     description: The length of the sequence in base pairs (for nucleotide sequences)
       or amino acids (for amino acid sequences).
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
     alias: length
     owner: Sequence
     domain_of:
@@ -415,7 +420,7 @@ attributes:
   checksum:
     name: checksum
     description: The checksum of the sequence, used to verify its integrity.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
     rank: 1000
     alias: checksum
     owner: Sequence
@@ -424,32 +429,35 @@ attributes:
     range: string
   sequence_id:
     name: sequence_id
-    description: Internal (CDM) unique identifier for a sequence.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+    description: 'Internal (CDM) unique identifier for a sequence.
+
+      From the Entity table: entity_id where entity_type == ''Sequence''.
+
+      '
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
     rank: 1000
     alias: sequence_id
     owner: Sequence
     domain_of:
     - Sequence
-    range: UUID
+    range: cdm_sequence_id
     required: true
   entity_id:
     name: entity_id
     description: The entity to which this sequence belongs.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
     rank: 1000
     alias: entity_id
     owner: Sequence
     domain_of:
-    - Association_X_SupportingObject
-    - Entity_X_Measurement
     - ClusterMember
-    - Sequence
+    - EntityMixin
     - Entity
     - Identifier
     - Name
-    - AttributeValue
-    range: UUID
+    - Sequence
+    - Association_x_SupportingObject
+    range: cdm_id
     required: true
 
 </code></pre>

@@ -386,8 +386,8 @@
 
 
 <h1 id="enum-contributorrole">Enum: ContributorRole</h1>
-<p><em>The role of a contributor to a resource.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/ContributorRole">kb_cdm:ContributorRole</a></p>
+<p><em>The type of contribution made by a contributor.</em></p>
+<p>URI: <a href="roleName">roleName</a></p>
 <h2 id="permissible-values">Permissible Values</h2>
 <table>
 <thead>
@@ -399,9 +399,179 @@
 </thead>
 <tbody>
 <tr>
-<td>TODO</td>
-<td>None</td>
-<td></td>
+<td>contact_person</td>
+<td>DataCite:ContactPerson</td>
+<td>Person with knowledge of how to access, troubleshoot, or otherwise field issues related to the resource. May also be "Point of Contact" in organisation that controls access to the resource, if that organisation is different from Publisher, Distributor, Data Manager.</td>
+</tr>
+<tr>
+<td>data_collector</td>
+<td>DataCite:DataCollector</td>
+<td>Person/institution responsible for finding, gathering/collecting data under the guidelines of the author(s) or Principal Investigator (PI). May also use when crediting survey conductors, interviewers, event or condition observers, person responsible for monitoring key instrument data.</td>
+</tr>
+<tr>
+<td>data_curator</td>
+<td>DataCite:DataCurator</td>
+<td>Person tasked with reviewing, enhancing, cleaning, or standardizing metadata and the associated data submitted for storage, use, and maintenance within a data centre or repository. While the "DataManager" is concerned with digital maintenance, the DataCurator's role encompasses quality assurance focused on content and metadata. This includes checking whether the submitted dataset is complete, with all files and components as described by submitter, whether the metadata is standardized to appropriate systems and schema, whether specialized metadata is needed to add value and ensure access across disciplines, and determining how the metadata might map to search engines, database products, and automated feeds.</td>
+</tr>
+<tr>
+<td>data_manager</td>
+<td>DataCite:DataManager</td>
+<td>Person (or organisation with a staff of data managers, such as a data centre) responsible for maintaining the finished resource. The work done by this person or organisation ensures that the resource is periodically "refreshed" in terms of software/hardware support, is kept available or is protected from unauthorized access, is stored in accordance with industry standards, and is handled in accordance with the records management requirements applicable to it.</td>
+</tr>
+<tr>
+<td>distributor</td>
+<td>DataCite:Distributor</td>
+<td>Institution tasked with responsibility to generate/disseminate copies of the resource in either electronic or print form. Works stored in more than one archive/repository may credit each as a distributor.</td>
+</tr>
+<tr>
+<td>editor</td>
+<td>DataCite:Editor</td>
+<td>A person who oversees the details related to the publication format of the resource. N.b. if the Editor is to be credited in place of multiple creators, the Editor's name may be supplied as Creator, with "(Ed.)" appended to the name.</td>
+</tr>
+<tr>
+<td>hosting_institution</td>
+<td>DataCite:HostingInstitution</td>
+<td>Typically, the organisation allowing the resource to be available on the internet through the provision of its hardware/software/operating support. May also be used for an organisation that stores the data offline. Often a data centre (if that data centre is not the "publisher" of the resource).</td>
+</tr>
+<tr>
+<td>producer</td>
+<td>DataCite:Producer</td>
+<td>Typically a person or organisation responsible for the artistry and form of a media product. In the data industry, this may be a company "producing" DVDs that package data for future dissemination by a distributor.</td>
+</tr>
+<tr>
+<td>project_leader</td>
+<td>DataCite:ProjectLeader</td>
+<td>Person officially designated as head of project team or sub- project team instrumental in the work necessary to development of the resource. The Project Leader is not "removed" from the work that resulted in the resource; he or she remains intimately involved throughout the life of the particular project team.</td>
+</tr>
+<tr>
+<td>project_manager</td>
+<td>DataCite:ProjectManager</td>
+<td>Person officially designated as manager of a project. Project may consist of one or many project teams and sub-teams. The manager of a project normally has more administrative responsibility than actual work involvement.</td>
+</tr>
+<tr>
+<td>project_member</td>
+<td>DataCite:ProjectMember</td>
+<td>Person on the membership list of a designated project/project team. This vocabulary may or may not indicate the quality, quantity, or substance of the person's involvement.</td>
+</tr>
+<tr>
+<td>registration_agency</td>
+<td>DataCite:RegistrationAgency</td>
+<td>Institution/organisation officially appointed by a Registration Authority to handle specific tasks within a defined area of responsibility. DataCite is a Registration Agency for the International DOI Foundation (IDF). One of DataCite's tasks is to assign DOI prefixes to the allocating agents who then assign the full, specific character string to data clients, provide metadata back to the DataCite registry, etc.</td>
+</tr>
+<tr>
+<td>registration_authority</td>
+<td>DataCite:RegistrationAuthority</td>
+<td>A standards-setting body from which Registration Agencies obtain official recognition and guidance. The IDF serves as the Registration Authority for the International Standards Organisation (ISO) in the area/domain of Digital Object Identifiers.</td>
+</tr>
+<tr>
+<td>related_person</td>
+<td>DataCite:RelatedPerson</td>
+<td>A person without a specifically defined role in the development of the resource, but who is someone the author wishes to recognize. This person could be an author's intellectual mentor, a person providing intellectual leadership in the discipline or subject domain, etc.</td>
+</tr>
+<tr>
+<td>researcher</td>
+<td>DataCite:Researcher</td>
+<td>A person involved in analyzing data or the results of an experiment or formal study. May indicate an intern or assistant to one of the authors who helped with research but who was not so "key" as to be listed as an author. Should be a person, not an institution. Note that a person involved in the gathering of data would fall under the contributorType "DataCollector." The researcher may find additional data online and correlate it to the data collected for the experiment or study, for example.</td>
+</tr>
+<tr>
+<td>research_group</td>
+<td>DataCite:ResearchGroup</td>
+<td>Typically refers to a group of individuals with a lab, department, or division; the group has a particular, defined focus of activity. May operate at a narrower level of scope; may or may not hold less administrative responsibility than a project team.</td>
+</tr>
+<tr>
+<td>rights_holder</td>
+<td>DataCite:RightsHolder</td>
+<td>Person or institution owning or managing property rights, including intellectual property rights over the resource.</td>
+</tr>
+<tr>
+<td>sponsor</td>
+<td>DataCite:Sponsor</td>
+<td>Person or organisation that issued a contract or under the auspices of which a work has been written, printed, published, developed, etc. Includes organisations that provide in-kind support, through donation, provision of people or a facility or instrumentation necessary for the development of the resource, etc.</td>
+</tr>
+<tr>
+<td>supervisor</td>
+<td>DataCite:Supervisor</td>
+<td>Designated administrator over one or more groups/teams working to produce a resource or over one or more steps of a development process.</td>
+</tr>
+<tr>
+<td>work_package_leader</td>
+<td>DataCite:WorkPackageLeader</td>
+<td>A Work Package is a recognized data product, not all of which is included in publication. The package, instead, may include notes, discarded documents, etc. The Work Package Leader is responsible for ensuring the comprehensive contents, versioning, and availability of the Work Package during the development of the resource.</td>
+</tr>
+<tr>
+<td>other</td>
+<td>DataCite:Other</td>
+<td>Any person or institution making a significant contribution to the development and/or maintenance of the resource, but whose contribution does not "fit" other controlled vocabulary for contributorType. Could be a photographer, artist, or writer whose contribution helped to publicize the resource (as opposed to creating it), a reviewer of the resource, someone providing administrative services to the author (such as depositing updates into an online repository, analysing usage, etc.), or one of many other roles.</td>
+</tr>
+<tr>
+<td>conceptualization</td>
+<td>crcr:conceptualization</td>
+<td>Ideas; formulation or evolution of overarching research goals and aims.</td>
+</tr>
+<tr>
+<td>data_curation</td>
+<td>crcr:data-curation</td>
+<td>Management activities to annotate (produce metadata), scrub data and maintain research data (including software code, where it is necessary for interpreting the data itself) for initial use and later re-use.</td>
+</tr>
+<tr>
+<td>formal_analysis</td>
+<td>crcr:formal-analysis</td>
+<td>Application of statistical, mathematical, computational, or other formal techniques to analyze or synthesize study data.</td>
+</tr>
+<tr>
+<td>funding_acquisition</td>
+<td>crcr:funding-acquisition</td>
+<td>Acquisition of the financial support for the project leading to this publication.</td>
+</tr>
+<tr>
+<td>investigation</td>
+<td>crcr:investigation</td>
+<td>Conducting a research and investigation process, specifically performing the experiments, or data/evidence collection.</td>
+</tr>
+<tr>
+<td>methodology</td>
+<td>crcr:methodology</td>
+<td>Development or design of methodology; creation of models.</td>
+</tr>
+<tr>
+<td>project_administration</td>
+<td>crcr:project-administration</td>
+<td>Management and coordination responsibility for the research activity planning and execution.</td>
+</tr>
+<tr>
+<td>resources</td>
+<td>crcr:resources</td>
+<td>Provision of study materials, reagents, materials, patients, laboratory samples, animals, instrumentation, computing resources, or other analysis tools.</td>
+</tr>
+<tr>
+<td>software</td>
+<td>crcr:software</td>
+<td>Programming, software development; designing computer programs; implementation of the computer code and supporting algorithms; testing of existing code components.</td>
+</tr>
+<tr>
+<td>supervision</td>
+<td>crcr:supervision</td>
+<td>Oversight and leadership responsibility for the research activity planning and execution, including mentorship external to the core team.</td>
+</tr>
+<tr>
+<td>validation</td>
+<td>crcr:validation</td>
+<td>Verification, whether as a part of the activity or separate, of the overall replication/reproducibility of results/experiments and other research outputs.</td>
+</tr>
+<tr>
+<td>visualization</td>
+<td>crcr:visualization</td>
+<td>Preparation, creation and/or presentation of the published work, specifically visualization/data presentation.</td>
+</tr>
+<tr>
+<td>writing_original_draft</td>
+<td>crcr:writing-original-draft</td>
+<td>Preparation, creation and/or presentation of the published work, specifically writing the initial draft (including substantive transformation).</td>
+</tr>
+<tr>
+<td>writing_review_editing</td>
+<td>crcr:writing-review-editing</td>
+<td>Preparation, creation and/or presentation of the published work by those from the original research group, specifically critical review, commentary or revision -- including pre- or post-publication stages.</td>
 </tr>
 </tbody>
 </table>
@@ -423,18 +593,289 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
 </ul>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
 <pre><code class="language-yaml">name: ContributorRole
-description: The role of a contributor to a resource.
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+description: The type of contribution made by a contributor.
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 rank: 1000
+enum_uri: roleName
 permissible_values:
-  TODO:
-    text: TODO
+  contact_person:
+    text: contact_person
+    description: Person with knowledge of how to access, troubleshoot, or otherwise
+      field issues related to the resource. May also be &quot;Point of Contact&quot; in organisation
+      that controls access to the resource, if that organisation is different from
+      Publisher, Distributor, Data Manager.
+    meaning: DataCite:ContactPerson
+    title: contact person
+  data_collector:
+    text: data_collector
+    description: Person/institution responsible for finding, gathering/collecting
+      data under the guidelines of the author(s) or Principal Investigator (PI). May
+      also use when crediting survey conductors, interviewers, event or condition
+      observers, person responsible for monitoring key instrument data.
+    meaning: DataCite:DataCollector
+    title: data collector
+  data_curator:
+    text: data_curator
+    description: Person tasked with reviewing, enhancing, cleaning, or standardizing
+      metadata and the associated data submitted for storage, use, and maintenance
+      within a data centre or repository. While the &quot;DataManager&quot; is concerned with
+      digital maintenance, the DataCurator's role encompasses quality assurance focused
+      on content and metadata. This includes checking whether the submitted dataset
+      is complete, with all files and components as described by submitter, whether
+      the metadata is standardized to appropriate systems and schema, whether specialized
+      metadata is needed to add value and ensure access across disciplines, and determining
+      how the metadata might map to search engines, database products, and automated
+      feeds.
+    meaning: DataCite:DataCurator
+    title: data curator
+  data_manager:
+    text: data_manager
+    description: Person (or organisation with a staff of data managers, such as a
+      data centre) responsible for maintaining the finished resource. The work done
+      by this person or organisation ensures that the resource is periodically &quot;refreshed&quot;
+      in terms of software/hardware support, is kept available or is protected from
+      unauthorized access, is stored in accordance with industry standards, and is
+      handled in accordance with the records management requirements applicable to
+      it.
+    meaning: DataCite:DataManager
+    title: data manager
+  distributor:
+    text: distributor
+    description: Institution tasked with responsibility to generate/disseminate copies
+      of the resource in either electronic or print form. Works stored in more than
+      one archive/repository may credit each as a distributor.
+    meaning: DataCite:Distributor
+    title: distributor
+  editor:
+    text: editor
+    description: A person who oversees the details related to the publication format
+      of the resource. N.b. if the Editor is to be credited in place of multiple creators,
+      the Editor's name may be supplied as Creator, with &quot;(Ed.)&quot; appended to the name.
+    meaning: DataCite:Editor
+    title: editor
+  hosting_institution:
+    text: hosting_institution
+    description: Typically, the organisation allowing the resource to be available
+      on the internet through the provision of its hardware/software/operating support.
+      May also be used for an organisation that stores the data offline. Often a data
+      centre (if that data centre is not the &quot;publisher&quot; of the resource).
+    meaning: DataCite:HostingInstitution
+    title: hosting institution
+  producer:
+    text: producer
+    description: Typically a person or organisation responsible for the artistry and
+      form of a media product. In the data industry, this may be a company &quot;producing&quot;
+      DVDs that package data for future dissemination by a distributor.
+    meaning: DataCite:Producer
+    title: producer
+  project_leader:
+    text: project_leader
+    description: Person officially designated as head of project team or sub- project
+      team instrumental in the work necessary to development of the resource. The
+      Project Leader is not &quot;removed&quot; from the work that resulted in the resource;
+      he or she remains intimately involved throughout the life of the particular
+      project team.
+    meaning: DataCite:ProjectLeader
+    title: project leader
+  project_manager:
+    text: project_manager
+    description: Person officially designated as manager of a project. Project may
+      consist of one or many project teams and sub-teams. The manager of a project
+      normally has more administrative responsibility than actual work involvement.
+    meaning: DataCite:ProjectManager
+    title: project manager
+  project_member:
+    text: project_member
+    description: Person on the membership list of a designated project/project team.
+      This vocabulary may or may not indicate the quality, quantity, or substance
+      of the person's involvement.
+    meaning: DataCite:ProjectMember
+    title: project member
+  registration_agency:
+    text: registration_agency
+    description: Institution/organisation officially appointed by a Registration Authority
+      to handle specific tasks within a defined area of responsibility. DataCite is
+      a Registration Agency for the International DOI Foundation (IDF). One of DataCite's
+      tasks is to assign DOI prefixes to the allocating agents who then assign the
+      full, specific character string to data clients, provide metadata back to the
+      DataCite registry, etc.
+    meaning: DataCite:RegistrationAgency
+    title: registration agency
+  registration_authority:
+    text: registration_authority
+    description: A standards-setting body from which Registration Agencies obtain
+      official recognition and guidance. The IDF serves as the Registration Authority
+      for the International Standards Organisation (ISO) in the area/domain of Digital
+      Object Identifiers.
+    meaning: DataCite:RegistrationAuthority
+    title: registration authority
+  related_person:
+    text: related_person
+    description: A person without a specifically defined role in the development of
+      the resource, but who is someone the author wishes to recognize. This person
+      could be an author's intellectual mentor, a person providing intellectual leadership
+      in the discipline or subject domain, etc.
+    meaning: DataCite:RelatedPerson
+    title: related person
+  researcher:
+    text: researcher
+    description: A person involved in analyzing data or the results of an experiment
+      or formal study. May indicate an intern or assistant to one of the authors who
+      helped with research but who was not so &quot;key&quot; as to be listed as an author.
+      Should be a person, not an institution. Note that a person involved in the gathering
+      of data would fall under the contributorType &quot;DataCollector.&quot; The researcher
+      may find additional data online and correlate it to the data collected for the
+      experiment or study, for example.
+    meaning: DataCite:Researcher
+    title: researcher
+  research_group:
+    text: research_group
+    description: Typically refers to a group of individuals with a lab, department,
+      or division; the group has a particular, defined focus of activity. May operate
+      at a narrower level of scope; may or may not hold less administrative responsibility
+      than a project team.
+    meaning: DataCite:ResearchGroup
+    title: research group
+  rights_holder:
+    text: rights_holder
+    description: Person or institution owning or managing property rights, including
+      intellectual property rights over the resource.
+    meaning: DataCite:RightsHolder
+    title: rights holder
+  sponsor:
+    text: sponsor
+    description: Person or organisation that issued a contract or under the auspices
+      of which a work has been written, printed, published, developed, etc. Includes
+      organisations that provide in-kind support, through donation, provision of people
+      or a facility or instrumentation necessary for the development of the resource,
+      etc.
+    meaning: DataCite:Sponsor
+    title: sponsor
+  supervisor:
+    text: supervisor
+    description: Designated administrator over one or more groups/teams working to
+      produce a resource or over one or more steps of a development process.
+    meaning: DataCite:Supervisor
+    title: supervisor
+  work_package_leader:
+    text: work_package_leader
+    description: A Work Package is a recognized data product, not all of which is
+      included in publication. The package, instead, may include notes, discarded
+      documents, etc. The Work Package Leader is responsible for ensuring the comprehensive
+      contents, versioning, and availability of the Work Package during the development
+      of the resource.
+    meaning: DataCite:WorkPackageLeader
+    title: work package leader
+  other:
+    text: other
+    description: Any person or institution making a significant contribution to the
+      development and/or maintenance of the resource, but whose contribution does
+      not &quot;fit&quot; other controlled vocabulary for contributorType. Could be a photographer,
+      artist, or writer whose contribution helped to publicize the resource (as opposed
+      to creating it), a reviewer of the resource, someone providing administrative
+      services to the author (such as depositing updates into an online repository,
+      analysing usage, etc.), or one of many other roles.
+    meaning: DataCite:Other
+    title: other
+  conceptualization:
+    text: conceptualization
+    description: Ideas; formulation or evolution of overarching research goals and
+      aims.
+    meaning: crcr:conceptualization
+    title: conceptualization
+  data_curation:
+    text: data_curation
+    description: Management activities to annotate (produce metadata), scrub data
+      and maintain research data (including software code, where it is necessary for
+      interpreting the data itself) for initial use and later re-use.
+    meaning: crcr:data-curation
+    title: data curation
+  formal_analysis:
+    text: formal_analysis
+    description: Application of statistical, mathematical, computational, or other
+      formal techniques to analyze or synthesize study data.
+    meaning: crcr:formal-analysis
+    title: formal analysis
+  funding_acquisition:
+    text: funding_acquisition
+    description: Acquisition of the financial support for the project leading to this
+      publication.
+    meaning: crcr:funding-acquisition
+    title: funding acquisition
+  investigation:
+    text: investigation
+    description: Conducting a research and investigation process, specifically performing
+      the experiments, or data/evidence collection.
+    meaning: crcr:investigation
+    title: investigation
+  methodology:
+    text: methodology
+    description: Development or design of methodology; creation of models.
+    meaning: crcr:methodology
+    title: methodology
+  project_administration:
+    text: project_administration
+    description: Management and coordination responsibility for the research activity
+      planning and execution.
+    meaning: crcr:project-administration
+    title: project administration
+  resources:
+    text: resources
+    description: Provision of study materials, reagents, materials, patients, laboratory
+      samples, animals, instrumentation, computing resources, or other analysis tools.
+    meaning: crcr:resources
+    title: resources
+  software:
+    text: software
+    description: Programming, software development; designing computer programs; implementation
+      of the computer code and supporting algorithms; testing of existing code components.
+    meaning: crcr:software
+    title: software
+  supervision:
+    text: supervision
+    description: Oversight and leadership responsibility for the research activity
+      planning and execution, including mentorship external to the core team.
+    meaning: crcr:supervision
+    title: supervision
+  validation:
+    text: validation
+    description: Verification, whether as a part of the activity or separate, of the
+      overall replication/reproducibility of results/experiments and other research
+      outputs.
+    meaning: crcr:validation
+    title: validation
+  visualization:
+    text: visualization
+    description: Preparation, creation and/or presentation of the published work,
+      specifically visualization/data presentation.
+    meaning: crcr:visualization
+    title: visualization
+  writing_original_draft:
+    text: writing_original_draft
+    description: Preparation, creation and/or presentation of the published work,
+      specifically writing the initial draft (including substantive transformation).
+    meaning: crcr:writing-original-draft
+    title: writing, original draft
+  writing_review_editing:
+    text: writing_review_editing
+    description: Preparation, creation and/or presentation of the published work by
+      those from the original research group, specifically critical review, commentary
+      or revision -- including pre- or post-publication stages.
+    meaning: crcr:writing-review-editing
+    title: writing, review and/or editing
+reachable_from:
+  source_ontology: bioportal:DATACITE-VOCAB
+  source_nodes:
+  - DataCite:ContributorRole
+  relationship_types:
+  - rdfs:subClassOf
+  include_self: false
 
 </code></pre>
 

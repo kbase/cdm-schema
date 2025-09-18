@@ -1,0 +1,546 @@
+# yaml-language-server: $schema=https://linkml.io/linkml-model/linkml_model/jsonschema/meta.schema.json
+id: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
+
+name: cdm_bioentity
+description: CDM schema biological entities
+
+imports:
+  - linkml:types
+  - cdm_attr_value
+  - cdm_base
+  - cdm_ontology
+
+prefixes:
+  kb_cdm: http://kbase.github.io/cdm-schema/linkml/
+  linkml: https://w3id.org/linkml/
+  mixs: https://genomicsstandardsconsortium.github.io/mixs/
+  schema: http://schema.org/
+
+default_curi_maps:
+  - semweb_context
+default_prefix: kb_cdm
+default_range: string
+
+slots:
+  # slots used as identifiers
+  contig_id:
+    description: |
+      Internal (CDM) unique identifier for a contig.
+      From the Entity table: entity_id where entity_type == 'Contig'.
+    range: cdm_contig_id
+    required: true
+  contig_collection_id:
+    description: |
+      Internal (CDM) unique identifier for a contig collection.
+      From the Entity table: entity_id where entity_type == 'ContigCollection'.
+    range: cdm_contig_collection_id
+    required: true
+  encoded_feature_id:
+    description: |
+      Internal (CDM) unique identifier for an encoded feature.
+      From the Entity table: entity_id where entity_type == 'EncodedFeature'.
+    range: cdm_encoded_feature_id
+    required: true
+  feature_id:
+    description: |
+      Internal (CDM) unique identifier for a feature.
+      From the Entity table: entity_id where entity_type == 'Feature'.
+    range: cdm_feature_id
+    required: true
+  protein_id:
+    description: |
+      Internal (CDM) unique identifier for a protein.
+      From the Entity table: entity_id where entity_type == 'Protein'.
+    range: cdm_protein_id
+    required: true
+  sample_id:
+    description: |
+      Internal (CDM) unique identifier for a sample.
+      From the Entity table: entity_id where entity_type == 'Sample'.
+    range: cdm_sample_id
+    required: true
+  sequence_id:
+    description: |
+      Internal (CDM) unique identifier for a sequence.
+      From the Entity table: entity_id where entity_type == 'Sequence'.
+    range: cdm_sequence_id
+    required: true
+
+classes:
+
+  Contig:
+    is_a: Table
+    slots:
+    - contig_id
+    - hash
+    slot_usage:
+      contig_id:
+        identifier: true
+    attributes:
+      gc_content:
+        description: GC content of the contig, expressed as a percentage.
+        range: float
+      length:
+        description: Length of the contig in bp.
+        range: integer
+    description: A contig (derived from the word "contiguous") is a set of DNA segments or sequences that overlap in a way that provides a contiguous representation of a genomic region. A contig should not contain any gaps.
+
+  ContigCollection:
+    is_a: Table
+    aliases:
+      - genome
+      - biological subject
+      - assembly
+      - contig collection
+      - contig set
+    slots:
+    - contig_collection_id
+    - hash
+    slot_usage:
+      contig_collection_id:
+        identifier: true
+    attributes:
+      asm_score:
+        description: A composite score for comparing contig collection quality.
+        range: float
+      checkm_completeness:
+        description: Estimate of the completeness of a contig collection (MAG or genome),
+          estimated by CheckM tool. Ensure that percentage values are converted to floats.
+        range: float
+      checkm_contamination:
+        description: Estimate of the contamination of a contig collection (MAG or genome),
+          estimated by CheckM tool. Ensure that percentage values are converted to floats.
+        range: float
+      checkm_version:
+        description: Version of the CheckM tool used.
+        range: string
+      contig_bp:
+        aliases:
+        - sequence length
+        - total sequence length
+        description: Total size in bp of all contigs
+        range: integer
+      contig_collection_type:
+        description: The type of contig collection.
+        range: ContigCollectionType
+      contig_l50:
+        aliases:
+          - ctg_L50
+          - contig_L50
+        description: Given a set of contigs, the L50 is defined as the sequence length
+          of the shortest contig at 50% of the total contig collection length
+        range: integer
+      contig_l90:
+        aliases:
+          - ctg_L90
+          - contig_L90
+        description: The L90 statistic is less than or equal to the L50 statistic; it is
+          the length for which the collection of all contigs of that length or
+          longer contains at least 90% of the sum of the lengths of all contigs
+        range: integer
+      contig_n50:
+        aliases:
+          - ctg_N50
+          - contig_N50
+        description: Given a set of contigs, each with its own length, the N50 count is
+          defined as the smallest number_of_contigs whose length sum makes up
+          half of contig collection size
+        range: integer
+      contig_n90:
+        aliases:
+          - ctg_N90
+          - contig_N90
+        description: Given a set of contigs, each with its own length, the N90 count is
+          defined as the smallest number of contigs whose length sum makes up
+          90% of contig collection size
+        range: integer
+      contig_logsum:
+        aliases:
+          - ctg_logsum
+        description: The sum of the (length*log(length)) of all contigs, times some
+          constant.
+        range: float
+      contig_max:
+        aliases:
+          - ctg_max
+        description: Maximum contig length
+        range: integer
+      contig_powersum:
+        aliases:
+          - ctg_powersum
+          - ctg_powsum
+          - contig_powsum
+        description: Powersum of all contigs is the same as logsum except that it uses
+          the sum of (length*(length^P)) for some power P (default P=0.25)
+        range: float
+      gap_percent:
+        aliases:
+        - gap_pct
+        description: The gap size percentage of all scaffolds
+        range: float
+      gc_average:
+        aliases:
+        - gc_avg
+        description: The average GC content of the contig collection, expressed as a percentage
+        range: float
+      gc_std:
+        aliases:
+        - gc_stdev
+        description: The standard deviation of GC content across the contig collection
+        range: float
+      gtdb_taxon_id:
+        description: The GTDB taxon ID for this contig collection.
+        range: curie
+      n_chromosomes:
+        description: Total number of chromosomes
+        range: integer
+      n_contigs:
+        description: Total number of contigs
+        range: integer
+      n_scaffolds:
+        description: Total number of scaffolds
+        range: integer
+      ncbi_taxon_id:
+        description: The NCBI taxon ID for this contig collection.
+        range: curie
+      scaffold_l50:
+        aliases:
+          - scaf_L50
+          - scaffold_L50
+        description: Given a set of scaffolds, the L50 is defined as the sequence length
+          of the shortest scaffold at 50% of the total contig collection length
+        range: integer
+      scaffold_l90:
+        aliases:
+          - scaf_L90
+          - scaffold_L90
+        description: The L90 statistic is less than or equal to the L50 statistic; it is
+          the length for which the collection of all scaffolds of that length or
+          longer contains at least 90% of the sum of the lengths of all
+          scaffolds.
+        range: integer
+      scaffold_n50:
+        aliases:
+          - scaf_N50
+          - scaffold_N50
+        description: Given a set of scaffolds, each with its own length, the N50 count
+          is defined as the smallest number of scaffolds whose length sum makes
+          up half of contig collection size
+        range: integer
+      scaffold_n90:
+        aliases:
+          - scaf_N90
+          - scaffold_N90
+        description: Given a set of scaffolds, each with its own length, the N90 count
+          is defined as the smallest number of scaffolds whose length sum makes
+          up 90% of contig collection size
+        range: integer
+      scaffold_bp:
+        aliases:
+          - scaf_bp
+        description: Total size in bp of all scaffolds
+        range: integer
+      scaffold_logsum:
+        aliases:
+          - scaf_logsum
+        description: The sum of the (length*log(length)) of all scaffolds, times some
+          constant. Increase the contiguity, the score will increase
+        range: float
+      scaffold_maximum_length:
+        aliases:
+          - scaf_max
+          - scaffold_max
+        description: Maximum scaffold length
+        range: integer
+      scaffold_powersum:
+        aliases:
+          - scaf_powsum
+          - scaffold_powsum
+        description: Powersum of all scaffolds is the same as logsum except that it uses
+          the sum of (length*(length^P)) for some power P (default P=0.25).
+        range: float
+      scaffolds_n_over_50K:
+        aliases:
+          - scaf_n_gt50K
+          - scaffold_n_gt50K
+        description: The number of scaffolds longer than 50,000 base pairs.
+        range: integer
+      scaffolds_percent_over_50K:
+        aliases:
+          - scaf_pct_gt50K
+          - scaffold_pct_gt50K
+        description: The percentage of the total assembly length represented by
+          scaffolds longer than 50,000 base pairs
+        range: float
+      scaffolds_total_length_over_50k:
+        aliases:
+          - scaf_l_gt50k
+          - scaffold_l_gt50k
+        description: The total length of scaffolds longer than 50,000 base pairs
+        range: integer
+    description: A set of individual, overlapping contigs that represent the
+      complete sequenced genome of an organism.
+
+  EncodedFeature:
+    is_a: Table
+    slots:
+      - encoded_feature_id
+      - hash
+    slot_usage:
+      encoded_feature_id:
+        identifier: true
+    attributes:
+      has_stop_codon:
+        description: Captures whether or not the sequence includes stop coordinates.
+        range: boolean
+      type:
+        description: The type of the entity. Should be a term from the sequence ontology.
+        pattern: "^SO:\\d+$"
+    description: An entity generated from a feature, such as a transcript.
+
+  Feature:
+    is_a: Table
+    slots:
+      - feature_id
+      - hash
+    slot_usage:
+      feature_id:
+        identifier: true
+    attributes:
+      cds_phase:
+        description: For features of type CDS, the phase indicates where the next codon
+          begins relative to the 5' end (where the 5' end of the CDS is relative
+          to the strand of the CDS feature) of the current CDS feature.
+          cds_phase is required if the feature type is CDS.
+        range: CdsPhaseType
+      e_value:
+        description: The 'score' of the feature. The semantics of this field are
+          ill-defined. E-values should be used for sequence similarity features.
+        range: float
+      end:
+        description: The start and end coordinates of the feature are given in positive
+          1-based int coordinates, relative to the landmark given in column one.
+          Start is always less than or equal to end. For features that cross the
+          origin of a circular feature (e.g. most bacterial genomes, plasmids,
+          and some viral genomes), the requirement for start to be less than or
+          equal to end is satisfied by making end = the position of the end +
+          the length of the landmark feature. For zero-length features, such as
+          insertion sites, start equals end and the implied site is to the right
+          of the indicated base in the direction of the landmark.
+        range: integer
+      p_value:
+        description: The 'score' of the feature. The semantics of this field are
+          ill-defined. P-values should be used for ab initio gene prediction
+          features.
+        range: float
+      start:
+        description: The start and end coordinates of the feature are given in positive
+          1-based int coordinates, relative to the landmark given in column one.
+          Start is always less than or equal to end. For features that cross the
+          origin of a circular feature (e.g. most bacterial genomes, plasmids,
+          and some viral genomes), the requirement for start to be less than or
+          equal to end is satisfied by making end = the position of the end +
+          the length of the landmark feature. For zero-length features, such as
+          insertion sites, start equals end and the implied site is to the right
+          of the indicated base in the direction of the landmark.
+        range: integer
+      strand:
+        description: The strand of the feature.
+        range: StrandType
+      source_database:
+        description: ID of the data source from which this entity came.
+        # FIXME: should be an organisation from the ontology tables - ROR ID
+        range: cdm_contributor_id
+      protocol_id:
+        aliases:
+        - generated by
+        description: ID of the protocol used to generate the feature.
+        range: cdm_protocol_id
+      type:
+        aliases:
+          - feature type
+        description: The type of the feature; constrained to be a Sequence Ontology accession (i.e. SO:000nnnn). Must be sequence_feature
+          (SO:0000110) or an is_a child of it.
+        pattern: ^SO:\d+$
+        range: local_curie
+    comments:
+      - corresponds to an entry in GFF3
+    description: A feature localized to an interval along a contig.
+    see_also:
+      - https://github.com/The-Sequence-Ontology/Specifications/blob/master/gff3.md
+
+  Protein:
+    is_a: Table
+    slots:
+    - protein_id
+    - hash
+    slot_usage:
+      protein_id:
+        identifier: true
+    attributes:
+      description:
+        description: Brief text description of the entity.
+      evidence_for_existence:
+        description: The evidence that this protein exists. For example, the protein may have been isolated from a cell, or it may be predicted based on sequence features.
+        range: ProteinEvidenceForExistence
+      length:
+        range: integer
+        description: The length of the protein.
+      sequence:
+        description: The protein amino acid sequence.
+    description: Proteins are large, complex molecules made up of one or more long,
+      folded chains of amino acids, whose sequences are determined by the DNA
+      sequence of the protein-encoding gene.
+
+  Sample:
+    is_a: Table
+    slots:
+      - sample_id
+    slot_usage:
+      sample_id:
+        identifier: true
+    attributes:
+      description:
+        description: Brief textual description of the sample.
+      type:
+        description: The type of entity that the sample is. Vocab TBD.
+    description: A material entity that can be characterised by an experiment.
+
+  Sequence:
+    is_a: Table
+    slots:
+      - sequence_id
+      - entity_id
+    slot_usage:
+      entity_id:
+        description: The entity to which this sequence belongs.
+    attributes:
+      type:
+        description: The type of the sequence, either "Nucleotide" or "Amino Acid".
+        range: SequenceType
+      length:
+        description: The length of the sequence in base pairs (for nucleotide sequences) or amino acids (for amino acid sequences).
+        range: integer
+      checksum:
+        description: The checksum of the sequence, used to verify its integrity.
+        range: string
+    description: A sequence of nucleotides or amino acids.
+
+enums:
+  CdsPhaseType:
+    description: For features of type CDS (coding sequence), the phase indicates where the feature begins with reference to the reading frame. The phase is one of the integers 0, 1, or 2, indicating the number of bases that should be removed from the beginning of this feature to reach the first base of the next codon.
+    permissible_values:
+      0:
+        description: Zero bases from reading frame to feature start.
+      1:
+        description: One base from reading frame to feature start.
+      2:
+        description: Two bases from reading frame to feature start.
+
+  ContigCollectionType:
+    description: The type of the contig set; the type of the 'omics data set. Terms are taken from the Genomics Standards Consortium where possible. See the GSC checklists at  https://genomicsstandardsconsortium.github.io/mixs/ for the controlled vocabularies used.
+    permissible_values:
+      isolate:
+        description: |
+          Sequences assembled from DNA of isolated organism.
+          Bacteria/Archaea: https://genomicsstandardsconsortium.github.io/mixs/0010003/
+          Euk: https://genomicsstandardsconsortium.github.io/mixs/0010002/
+          Virus: https://genomicsstandardsconsortium.github.io/mixs/0010005/
+          Organelle: https://genomicsstandardsconsortium.github.io/mixs/0010006/
+          Plasmid: https://genomicsstandardsconsortium.github.io/mixs/0010004/
+      mag:
+        description: |
+          Sequences assembled from DNA of mixed community and binned. MAGs are likely to represent a single taxonomic origin. See checkm2 scores for quality assessment.
+          https://genomicsstandardsconsortium.github.io/mixs/0010011/
+        meaning: mixs:0010011
+        title: Metagenome-Assembled Genome
+      metagenome:
+        description: |
+          Sequences assembled from DNA of mixed community.
+          https://genomicsstandardsconsortium.github.io/mixs/0010007/
+        meaning: mixs:0010007
+      metatranscriptome:
+        description: |
+          Sequences assembled from RNA of mixed community. Currently not represented by GSC.
+      sag:
+        description: |
+          Sequences assembled from DNA of single cell.
+          https://genomicsstandardsconsortium.github.io/mixs/0010010/
+        meaning: mixs:0010010
+        title: Single Amplified Genome
+      virus:
+        description: |
+          Sequences assembled from uncultivated virus genome (DNA/RNA).
+          https://genomicsstandardsconsortium.github.io/mixs/0010012/
+        meaning: mixs:0010012
+      marker:
+        description: |
+          Sequences from targeted region of DNA; see protocol for information on targeted region.
+          specimen: https://genomicsstandardsconsortium.github.io/mixs/0010009/
+          survey: https://genomicsstandardsconsortium.github.io/mixs/0010008/
+
+  ProteinEvidenceForExistence:
+    description: The evidence for the existence of a biological entity. See
+      https://www.uniprot.org/help/protein_existence and
+      https://www.ncbi.nlm.nih.gov/genbank/evidence/.
+    permissible_values:
+      experimental_evidence_at_protein_level:
+        description: Indicates that there is clear experimental evidence for the
+          existence of the protein. The criteria include partial or complete
+          Edman sequencing, clear identification by mass spectrometry, X-ray or
+          NMR structure, good quality protein-protein interaction or detection
+          of the protein by antibodies.
+      experimental_evidence_at_transcript_level:
+        description: Indicates that the existence of a protein has not been strictly
+          proven but that expression data (such as existence of cDNA(s), RT-PCR
+          or Northern blots) indicate the existence of a transcript.
+      protein_inferred_by_homology:
+        description: Indicates that the existence of a protein is probable because clear
+          orthologs exist in closely related species.
+      protein_predicted:
+        description: Used for entries without evidence at protein, transcript, or
+          homology levels.
+      protein_uncertain:
+        description: Indicates that the existence of the protein is unsure.
+
+  RefSeqStatusType:
+    description: |
+      RefSeq status codes, taken from https://www.ncbi.nlm.nih.gov/genbank/evidence/.
+    permissible_values:
+      MODEL:
+        description: The RefSeq record is provided by the NCBI Genome Annotation pipeline and is not subject to individual review or revision between annotation runs.
+      INFERRED:
+        description: The RefSeq record has been predicted by genome sequence analysis, but it is not yet supported by experimental evidence. The record may be partially supported by homology data.
+      PREDICTED:
+        description: The RefSeq record has not yet been subject to individual review, and some aspect of the RefSeq record is predicted.
+      PROVISIONAL:
+        description: The RefSeq record has not yet been subject to individual review. The initial sequence-to-gene association has been established by outside collaborators or NCBI staff.
+      REVIEWED:
+        description: The RefSeq record has been reviewed by NCBI staff or by a collaborator. The NCBI review process includes assessing available sequence data and the literature. Some RefSeq records may incorporate expanded sequence and annotation information.
+      VALIDATED:
+        description: The RefSeq record has undergone an initial review to provide the preferred sequence standard. The record has not yet been subject to final review at which time additional functional information may be provided.
+      WGS:
+        description: The RefSeq record is provided to represent a collection of whole genome shotgun sequences. These records are not subject to individual review or revisions between genome updates.
+
+  SequenceType:
+    description: The type of sequence being represented.
+    permissible_values:
+      NucleicAcid:
+        description: A nucleic acid sequence, as found in an FNA file.
+      AminoAcid:
+        description: An amino acid sequence, as would be found in an FAA file.
+
+  StrandType:
+    description: The strand that a feature appears on relative to a landmark. Also encompasses unknown or irrelevant strandedness.
+    permissible_values:
+      negative:
+        description: Represented by "-" in a GFF file; the strand is negative wrt the
+          landmark.
+      positive:
+        description: Represented by "+" in a GFF file; the strand is positive with
+          relation to the landmark.
+      unknown:
+        description: Represented by "?" in a GFF file. The strandedness is relevant but
+          unknown.
+      unstranded:
+        description: Represented by "." in a GFF file; the feature is not stranded.

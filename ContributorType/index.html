@@ -387,7 +387,7 @@
 
 <h1 id="enum-contributortype">Enum: ContributorType</h1>
 <p><em>The type of contributor being represented.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/ContributorType">kb_cdm:ContributorType</a></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/linkml/ContributorType">kb_cdm:ContributorType</a></p>
 <h2 id="permissible-values">Permissible Values</h2>
 <table>
 <thead>
@@ -428,14 +428,14 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
 </ul>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
 <pre><code class="language-yaml">name: ContributorType
 description: The type of contributor being represented.
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 rank: 1000
 permissible_values:
   Person:
@@ -451,7 +451,7 @@ reachable_from:
   source_nodes:
   - DataCite:ResourceCreatorType
   relationship_types:
-  - RDFS:subClassOf
+  - rdfs:subClassOf
   include_self: false
 
 </code></pre>

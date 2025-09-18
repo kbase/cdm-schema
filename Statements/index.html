@@ -237,8 +237,11 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="class-statements">Class: Statements</h1>
-<p><em>Represents an RDF triple</em></p>
-<p>URI: <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement">rdf:Statement</a></p>
+<p><em>Represents an RDF triple, a statement in the form "_subject</em> <em>predicate</em> <em>object</em>" or "<em>subject</em> <em>predicate</em> <em>value</em>"._</p>
+<p>__</p>
+<p><em>See <a href="https://incatools.github.io/semantic-sql/">Semantic SQL</a> for more information on the contents of this table and how it is populated.</em></p>
+<p>__</p>
+<p>URI: <a href="rdf:Statement">rdf:Statement</a></p>
 <div class="mermaid"> classDiagram
     class Statements
     click Statements href "../Statements/"
@@ -279,32 +282,32 @@
 <tbody>
 <tr>
 <td><a href="../subject/">subject</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>0..1 <br/> <a href="../LocalCurie/">LocalCurie</a></td>
 <td>The subject of the statement</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../predicate/">predicate</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>0..1 <br/> <a href="../LocalCurie/">LocalCurie</a></td>
 <td>The predicate of the statement</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../object/">object</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>Note the range of this slot is always a node. If the triple represents a literal, instead value will be populated</td>
+<td>0..1 <br/> <a href="../LocalCurie/">LocalCurie</a></td>
+<td>Note the range of this slot is always a node. If the triple represents a literal, the "value" field will be populated instead.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../value/">value</a></td>
 <td>0..1 <br/> <a href="../LiteralAsStringType/">LiteralAsStringType</a></td>
-<td>Note the range of this slot is always a string. Only used the triple represents a literal assertion</td>
+<td>Note the range of this slot is always a string. Only used if the triple represents a literal assertion</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../datatype/">datatype</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>the rdf datatype of the value, for example, xsd:string</td>
+<td>the rdf datatype of the value, for example, xsd:string or xsd:float.</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -322,7 +325,7 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -348,8 +351,15 @@
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: Statements
-description: Represents an RDF triple
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+description: 'Represents an RDF triple, a statement in the form "_subject_ _predicate_
+  _object_" or "_subject_ _predicate_ _value_".
+
+
+  See [Semantic SQL](https://incatools.github.io/semantic-sql/) for more information
+  on the contents of this table and how it is populated.
+
+  '
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 aliases:
 - triple
 is_a: Table
@@ -360,6 +370,16 @@ slots:
 - value
 - datatype
 - language
+slot_usage:
+  subject:
+    name: subject
+    range: local_curie
+  object:
+    name: object
+    range: local_curie
+  predicate:
+    name: predicate
+    range: local_curie
 class_uri: rdf:Statement
 
 </code></pre>
@@ -367,18 +387,35 @@ class_uri: rdf:Statement
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: Statements
-description: Represents an RDF triple
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+description: 'Represents an RDF triple, a statement in the form "_subject_ _predicate_
+  _object_" or "_subject_ _predicate_ _value_".
+
+
+  See [Semantic SQL](https://incatools.github.io/semantic-sql/) for more information
+  on the contents of this table and how it is populated.
+
+  '
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 aliases:
 - triple
 is_a: Table
+slot_usage:
+  subject:
+    name: subject
+    range: local_curie
+  object:
+    name: object
+    range: local_curie
+  predicate:
+    name: predicate
+    range: local_curie
 attributes:
   subject:
     name: subject
     description: The subject of the statement
     todos:
     - set range appropriately for ontology and association use
-    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
     aliases:
     - about
     - source
@@ -392,13 +429,13 @@ attributes:
     - Association
     - Statements
     - EntailedEdge
-    range: uriorcurie
+    range: local_curie
   predicate:
     name: predicate
     description: The predicate of the statement
     todos:
     - set range appropriately for ontology and association use
-    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
     aliases:
     - relationship
     - relationship type
@@ -412,14 +449,14 @@ attributes:
     - Association
     - Statements
     - EntailedEdge
-    range: uriorcurie
+    range: local_curie
   object:
     name: object
     description: Note the range of this slot is always a node. If the triple represents
-      a literal, instead value will be populated
+      a literal, the "value" field will be populated instead.
     todos:
     - set range appropriately for ontology and association use
-    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
     aliases:
     - target
     - sink
@@ -433,12 +470,12 @@ attributes:
     - Association
     - Statements
     - EntailedEdge
-    range: uriorcurie
+    range: local_curie
   value:
     name: value
-    description: Note the range of this slot is always a string. Only used the triple
-      represents a literal assertion
-    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+    description: Note the range of this slot is always a string. Only used if the
+      triple represents a literal assertion
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
     close_mappings:
     - rdf:object
     rank: 1000
@@ -446,16 +483,18 @@ attributes:
     alias: value
     owner: Statements
     domain_of:
-    - QuantityValue
-    - TextValue
     - Statements
+    - ExperimentCondition
+    - Measurement
+    - ProtocolInput
+    - ProtocolOutput
     range: literal_as_string_type
   datatype:
     name: datatype
-    description: the rdf datatype of the value, for example, xsd:string
+    description: the rdf datatype of the value, for example, xsd:string or xsd:float.
     comments:
     - only used when value is populated
-    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
     rank: 1000
     alias: datatype
     owner: Statements
@@ -469,13 +508,16 @@ attributes:
     - use an enum (rather than a string)
     comments:
     - only used when value is populated
-    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
     rank: 1000
     alias: language
     owner: Statements
     domain_of:
+    - EntityAttributeValue
     - TextValue
     - Statements
+    - ResourceDescription
+    - ResourceTitle
     range: string
 class_uri: rdf:Statement
 

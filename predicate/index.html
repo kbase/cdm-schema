@@ -414,7 +414,7 @@
 
 <h1 id="slot-predicate">Slot: predicate</h1>
 <p><em>The predicate of the statement</em></p>
-<p>URI: <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate">rdf:predicate</a>
+<p>URI: <a href="rdf:predicate">rdf:predicate</a>
 Alias: predicate</p>
 <!-- no inheritance hierarchy -->
 
@@ -429,19 +429,19 @@ Alias: predicate</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../Association/">Association</a></td>
-<td>An association between an object--typically an entity such as a protein or a feature--and a classification system or ontology, such as the Gene Ontology, the Enzyme Classification, or TIGRFAMS domains.</td>
+<td><a href="../Statements/">Statements</a></td>
+<td>Represents an RDF triple, a statement in the form "<em>subject</em> <em>predicate</em> <em>object</em>" or "<em>subject</em> <em>predicate</em> <em>value</em>".<br><br>See <a href="https://incatools.github.io/semantic-sql/">Semantic SQL</a> for more information on the contents of this table and how it is populated.</td>
 <td>yes</td>
 </tr>
 <tr>
 <td><a href="../EntailedEdge/">EntailedEdge</a></td>
-<td>A relation graph edge that is inferred</td>
-<td>no</td>
+<td>A relation graph edge that is inferred. This table contains links between the nodes that appear as subjects in the <a href="Statements">Statements</a> table. The graph contains all possible links between nodes and is created using a reasoner such as <a href="https://github.com/balhoff/relation-graph">relation-graph</a> to materialise inferrred links.</td>
+<td>yes</td>
 </tr>
 <tr>
-<td><a href="../Statements/">Statements</a></td>
-<td>Represents an RDF triple</td>
-<td>no</td>
+<td><a href="../Association/">Association</a></td>
+<td>An association between an object--typically an entity such as a protein or a feature--and a classification system or ontology, such as the Gene Ontology, the Enzyme Classification, or TIGRFAMS domains.</td>
+<td>yes</td>
 </tr>
 </tbody>
 </table>
@@ -463,7 +463,7 @@ Alias: predicate</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -491,7 +491,7 @@ Alias: predicate</p>
 description: The predicate of the statement
 todos:
 - set range appropriately for ontology and association use
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 aliases:
 - relationship
 - relationship type

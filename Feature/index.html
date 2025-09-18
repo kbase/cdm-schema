@@ -173,13 +173,6 @@
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#usages">
-<span class="md-ellipsis">
-      Usages
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
 <a class="md-nav__link" href="#comments">
 <span class="md-ellipsis">
       Comments
@@ -252,7 +245,7 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-feature">Class: Feature</h1>
 <p><em>A feature localized to an interval along a contig.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/Feature">kb_cdm:Feature</a></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/linkml/Feature">kb_cdm:Feature</a></p>
 <div class="mermaid"> classDiagram
     class Feature
     click Feature href "../Feature/"
@@ -281,15 +274,6 @@
       Feature : p_value
 
       Feature : protocol_id
-
-
-
-
-
-        Feature --&gt; "0..1" Protocol : protocol_id
-        click Protocol href "../Protocol/"
-
-
 
       Feature : source_database
 
@@ -330,13 +314,13 @@
 <tbody>
 <tr>
 <td><a href="../feature_id/">feature_id</a></td>
-<td>1 <br/> <a href="../UUID/">UUID</a></td>
-<td>Internal (CDM) unique identifier for a feature.</td>
+<td>1 <br/> <a href="../CdmFeatureId/">CdmFeatureId</a></td>
+<td>Internal (CDM) unique identifier for a feature.<br/>From the Entity table: entity_id where entity_type == 'Feature'.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../hash/">hash</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>0..1 <br> <a href="../String/">String</a></br></td>
 <td>A hash value generated from one or more object attributes that serves to ensure the entity is unique.</td>
 <td>direct</td>
 </tr>
@@ -378,40 +362,21 @@
 </tr>
 <tr>
 <td><a href="../source_database/">source_database</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>0..1 <br/> <a href="../CdmContributorId/">CdmContributorId</a></td>
 <td>ID of the data source from which this entity came.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../protocol_id/">protocol_id</a></td>
-<td>0..1 <br/> <a href="../Protocol/">Protocol</a></td>
+<td>0..1 <br/> <a href="../CdmProtocolId/">CdmProtocolId</a></td>
 <td>ID of the protocol used to generate the feature.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../type/">type</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>The type of the feature; constrained to be either a term from the Sequence Ontology or an SO accession number. Must be sequence_feature (SO:0000110) or an is_a child of it.</td>
+<td>0..1 <br/> <a href="../LocalCurie/">LocalCurie</a></td>
+<td>The type of the feature; constrained to be a Sequence Ontology accession (i.e. SO:000nnnn). Must be sequence_feature (SO:0000110) or an is_a child of it.</td>
 <td>direct</td>
-</tr>
-</tbody>
-</table>
-<h2 id="usages">Usages</h2>
-<table>
-<thead>
-<tr>
-<th>used by</th>
-<th>used in</th>
-<th>type</th>
-<th>used</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../Association/">Association</a></td>
-<td><a href="../subject/">subject</a></td>
-<td>any_of[range]</td>
-<td><a href="./">Feature</a></td>
 </tr>
 </tbody>
 </table>
@@ -426,7 +391,7 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -455,7 +420,7 @@
 description: A feature localized to an interval along a contig.
 comments:
 - corresponds to an entry in GFF3
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 see_also:
 - https://github.com/The-Sequence-Ontology/Specifications/blob/master/gff3.md
 is_a: Table
@@ -473,7 +438,7 @@ attributes:
       begins relative to the 5' end (where the 5' end of the CDS is relative to the
       strand of the CDS feature) of the current CDS feature. cds_phase is required
       if the feature type is CDS.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
     rank: 1000
     domain_of:
     - Feature
@@ -482,7 +447,7 @@ attributes:
     name: e_value
     description: The 'score' of the feature. The semantics of this field are ill-defined.
       E-values should be used for sequence similarity features.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
     rank: 1000
     domain_of:
     - Feature
@@ -497,7 +462,7 @@ attributes:
       end = the position of the end + the length of the landmark feature. For zero-length
       features, such as insertion sites, start equals end and the implied site is
       to the right of the indicated base in the direction of the landmark.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
     rank: 1000
     domain_of:
     - Feature
@@ -506,7 +471,7 @@ attributes:
     name: p_value
     description: The 'score' of the feature. The semantics of this field are ill-defined.
       P-values should be used for ab initio gene prediction features.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
     rank: 1000
     domain_of:
     - Feature
@@ -521,7 +486,7 @@ attributes:
       end = the position of the end + the length of the landmark feature. For zero-length
       features, such as insertion sites, start equals end and the implied site is
       to the right of the indicated base in the direction of the landmark.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
     rank: 1000
     domain_of:
     - Feature
@@ -529,7 +494,7 @@ attributes:
   strand:
     name: strand
     description: The strand of the feature.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
     rank: 1000
     domain_of:
     - Feature
@@ -537,38 +502,41 @@ attributes:
   source_database:
     name: source_database
     description: ID of the data source from which this entity came.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
     rank: 1000
     domain_of:
     - Feature
-    range: uriorcurie
+    range: cdm_contributor_id
   protocol_id:
     name: protocol_id
     description: ID of the protocol used to generate the feature.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
     aliases:
     - generated by
     domain_of:
-    - Protocol_X_ProtocolParticipant
     - Cluster
     - Feature
+    - Experiment
+    - OrderedProtocolStep
     - Protocol
-    - Measurement
-    range: Protocol
+    - ProtocolExecution
+    - ProtocolVariable
+    range: cdm_protocol_id
   type:
     name: type
-    description: The type of the feature; constrained to be either a term from the
-      Sequence Ontology or an SO accession number. Must be sequence_feature (SO:0000110)
-      or an is_a child of it.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    description: The type of the feature; constrained to be a Sequence Ontology accession
+      (i.e. SO:000nnnn). Must be sequence_feature (SO:0000110) or an is_a child of
+      it.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
     aliases:
     - feature type
     domain_of:
+    - AttributeValue
     - EncodedFeature
     - Feature
     - Sample
     - Sequence
-    range: uriorcurie
+    range: local_curie
     pattern: ^SO:\d+$
 
 </code></pre>
@@ -579,7 +547,7 @@ attributes:
 description: A feature localized to an interval along a contig.
 comments:
 - corresponds to an entry in GFF3
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 see_also:
 - https://github.com/The-Sequence-Ontology/Specifications/blob/master/gff3.md
 is_a: Table
@@ -594,7 +562,7 @@ attributes:
       begins relative to the 5' end (where the 5' end of the CDS is relative to the
       strand of the CDS feature) of the current CDS feature. cds_phase is required
       if the feature type is CDS.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
     rank: 1000
     alias: cds_phase
     owner: Feature
@@ -605,7 +573,7 @@ attributes:
     name: e_value
     description: The 'score' of the feature. The semantics of this field are ill-defined.
       E-values should be used for sequence similarity features.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
     rank: 1000
     alias: e_value
     owner: Feature
@@ -622,7 +590,7 @@ attributes:
       end = the position of the end + the length of the landmark feature. For zero-length
       features, such as insertion sites, start equals end and the implied site is
       to the right of the indicated base in the direction of the landmark.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
     rank: 1000
     alias: end
     owner: Feature
@@ -633,7 +601,7 @@ attributes:
     name: p_value
     description: The 'score' of the feature. The semantics of this field are ill-defined.
       P-values should be used for ab initio gene prediction features.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
     rank: 1000
     alias: p_value
     owner: Feature
@@ -650,7 +618,7 @@ attributes:
       end = the position of the end + the length of the landmark feature. For zero-length
       features, such as insertion sites, start equals end and the implied site is
       to the right of the indicated base in the direction of the landmark.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
     rank: 1000
     alias: start
     owner: Feature
@@ -660,7 +628,7 @@ attributes:
   strand:
     name: strand
     description: The strand of the feature.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
     rank: 1000
     alias: strand
     owner: Feature
@@ -670,66 +638,73 @@ attributes:
   source_database:
     name: source_database
     description: ID of the data source from which this entity came.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
     rank: 1000
     alias: source_database
     owner: Feature
     domain_of:
     - Feature
-    range: uriorcurie
+    range: cdm_contributor_id
   protocol_id:
     name: protocol_id
     description: ID of the protocol used to generate the feature.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
     aliases:
     - generated by
     alias: protocol_id
     owner: Feature
     domain_of:
-    - Protocol_X_ProtocolParticipant
     - Cluster
     - Feature
+    - Experiment
+    - OrderedProtocolStep
     - Protocol
-    - Measurement
-    range: Protocol
+    - ProtocolExecution
+    - ProtocolVariable
+    range: cdm_protocol_id
   type:
     name: type
-    description: The type of the feature; constrained to be either a term from the
-      Sequence Ontology or an SO accession number. Must be sequence_feature (SO:0000110)
-      or an is_a child of it.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    description: The type of the feature; constrained to be a Sequence Ontology accession
+      (i.e. SO:000nnnn). Must be sequence_feature (SO:0000110) or an is_a child of
+      it.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_bioentity
     aliases:
     - feature type
     alias: type
     owner: Feature
     domain_of:
+    - AttributeValue
     - EncodedFeature
     - Feature
     - Sample
     - Sequence
-    range: uriorcurie
+    range: local_curie
     pattern: ^SO:\d+$
   feature_id:
     name: feature_id
-    description: Internal (CDM) unique identifier for a feature.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+    description: 'Internal (CDM) unique identifier for a feature.
+
+      From the Entity table: entity_id where entity_type == ''Feature''.
+
+      '
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
     rank: 1000
     identifier: true
     alias: feature_id
     owner: Feature
     domain_of:
-    - Contig_X_Feature
-    - ContigCollection_X_Feature
-    - EncodedFeature_X_Feature
-    - Feature_X_Protein
     - Feature
-    range: UUID
+    - Contig_x_Feature
+    - ContigCollection_x_Feature
+    - EncodedFeature_x_Feature
+    - Feature_x_Protein
+    range: cdm_feature_id
     required: true
   hash:
     name: hash
     description: A hash value generated from one or more object attributes that serves
       to ensure the entity is unique.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
     rank: 1000
     alias: hash
     owner: Feature

@@ -231,7 +231,7 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-event">Class: Event</h1>
 <p><em>Something that happened.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/Event">kb_cdm:Event</a></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/linkml/Event">kb_cdm:Event</a></p>
 <div class="mermaid"> classDiagram
     class Event
     click Event href "../Event/"
@@ -270,7 +270,7 @@
 <tbody>
 <tr>
 <td><a href="../event_id/">event_id</a></td>
-<td>1 <br/> <a href="../UUID/">UUID</a></td>
+<td>1 <br/> <a href="../CdmId/">CdmId</a></td>
 <td>Internal (CDM) unique identifier for an event.</td>
 <td>direct</td>
 </tr>
@@ -303,7 +303,7 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -330,7 +330,7 @@
 <details>
 <pre><code class="language-yaml">name: Event
 description: Something that happened.
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 is_a: Table
 slots:
 - event_id
@@ -342,44 +342,54 @@ attributes:
   created_at:
     name: created_at
     description: The time at which the event started or was created.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_components
     rank: 1000
     domain_of:
     - Event
     - Experiment
-    - Measurement
+    - MeasurementSet
+    - ProtocolExecution
     range: iso8601
   description:
     name: description
     description: Brief text description of what actually happened.
     todos:
     - Create controlled vocab for events?
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_components
     domain_of:
     - Cluster
     - Event
-    - Experiment
-    - Project
-    - Protein
-    - Protocol
-    - Sample
     - Identifier
     - Name
+    - Protein
+    - Sample
+    - Project
+    - Experiment
+    - Parameter
+    - Protocol
+    - ProtocolExecution
+    - Variable
   name:
     name: name
     description: Name or title for the event.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_components
     domain_of:
     - Cluster
+    - Event
+    - Name
     - Contributor
     - DataSource
-    - Event
+    - DataSourceNew
+    - License
     - Experiment
-    - Name
+    - Parameter
+    - Protocol
+    - ProtocolExecution
+    - Variable
   location:
     name: location
     description: The location for this event. May be described in terms of coordinates.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_components
     rank: 1000
     domain_of:
     - Event
@@ -390,7 +400,7 @@ attributes:
 <details>
 <pre><code class="language-yaml">name: Event
 description: Something that happened.
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 is_a: Table
 slot_usage:
   event_id:
@@ -400,52 +410,62 @@ attributes:
   created_at:
     name: created_at
     description: The time at which the event started or was created.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_components
     rank: 1000
     alias: created_at
     owner: Event
     domain_of:
     - Event
     - Experiment
-    - Measurement
+    - MeasurementSet
+    - ProtocolExecution
     range: iso8601
   description:
     name: description
     description: Brief text description of what actually happened.
     todos:
     - Create controlled vocab for events?
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_components
     alias: description
     owner: Event
     domain_of:
     - Cluster
     - Event
-    - Experiment
-    - Project
-    - Protein
-    - Protocol
-    - Sample
     - Identifier
     - Name
+    - Protein
+    - Sample
+    - Project
+    - Experiment
+    - Parameter
+    - Protocol
+    - ProtocolExecution
+    - Variable
     range: string
   name:
     name: name
     description: Name or title for the event.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_components
     alias: name
     owner: Event
     domain_of:
     - Cluster
+    - Event
+    - Name
     - Contributor
     - DataSource
-    - Event
+    - DataSourceNew
+    - License
     - Experiment
-    - Name
+    - Parameter
+    - Protocol
+    - ProtocolExecution
+    - Variable
     range: string
   location:
     name: location
     description: The location for this event. May be described in terms of coordinates.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_components
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_components
     rank: 1000
     alias: location
     owner: Event
@@ -455,14 +475,14 @@ attributes:
   event_id:
     name: event_id
     description: Internal (CDM) unique identifier for an event.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
     rank: 1000
     identifier: true
     alias: event_id
     owner: Event
     domain_of:
     - Event
-    range: UUID
+    range: cdm_id
     required: true
 
 </code></pre>

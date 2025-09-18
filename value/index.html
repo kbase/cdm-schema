@@ -395,8 +395,8 @@
 
 
 <h1 id="slot-value">Slot: value</h1>
-<p><em>Note the range of this slot is always a string. Only used the triple represents a literal assertion</em></p>
-<p>URI: <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#object">rdf:object</a>
+<p><em>Note the range of this slot is always a string. Only used if the triple represents a literal assertion</em></p>
+<p>URI: <a href="rdf:object">rdf:object</a>
 Alias: value</p>
 <!-- no inheritance hierarchy -->
 
@@ -411,28 +411,28 @@ Alias: value</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../Measurement/">Measurement</a></td>
-<td>A qualitative or quantitative observation of an attribute of an object or event against a standardized scale, to enable it to be compared with other objects or events.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../QuantityValue/">QuantityValue</a></td>
-<td>A simple quantity, e.g. 2cm. May be used to describe a range using the minimum_value and maximum_value fields.</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../Statements/">Statements</a></td>
-<td>Represents an RDF triple</td>
+<td>Represents an RDF triple, a statement in the form "<em>subject</em> <em>predicate</em> <em>object</em>" or "<em>subject</em> <em>predicate</em> <em>value</em>".<br><br>See <a href="https://incatools.github.io/semantic-sql/">Semantic SQL</a> for more information on the contents of this table and how it is populated.</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../TextValue/">TextValue</a></td>
-<td>A basic string value</td>
+<td><a href="../ExperimentCondition/">ExperimentCondition</a></td>
+<td>A measurement, reagent, or description of one aspect of the environment used in an experiment; examples include temperature; aerobic or anaerobic conditions; presence of a chemical in the environment. Used to describe the context, conditions, or set-up of an experiment.</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../ProcessedMeasurement/">ProcessedMeasurement</a></td>
-<td>A measurement that requires additional processing to generate a result.</td>
+<td><a href="../ProtocolInput/">ProtocolInput</a></td>
+<td>An input parameter for a protocol.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ProtocolOutput/">ProtocolOutput</a></td>
+<td>The output of a protocol.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Measurement/">Measurement</a></td>
+<td>The value of a specified variable_id under the specified conditions.</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -444,7 +444,7 @@ Alias: value</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -473,18 +473,20 @@ Alias: value</p>
 <details>
 
 <pre><code class="language-yaml">name: value
-description: Note the range of this slot is always a string. Only used the triple
+description: Note the range of this slot is always a string. Only used if the triple
   represents a literal assertion
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 close_mappings:
 - rdf:object
 rank: 1000
 slot_uri: rdf:object
 alias: value
 domain_of:
-- QuantityValue
-- TextValue
 - Statements
+- ExperimentCondition
+- Measurement
+- ProtocolInput
+- ProtocolOutput
 range: literal_as_string_type
 
 </code></pre>

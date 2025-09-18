@@ -396,7 +396,9 @@
 
 <h1 id="slot-sequence_id">Slot: sequence_id</h1>
 <p><em>Internal (CDM) unique identifier for a sequence.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/sequence_id">kb_cdm:sequence_id</a>
+<p><em>From the Entity table: entity_id where entity_type == 'Sequence'.</em></p>
+<p>__</p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/linkml/sequence_id">kb_cdm:sequence_id</a>
 Alias: sequence_id</p>
 <!-- no inheritance hierarchy -->
 
@@ -412,7 +414,7 @@ Alias: sequence_id</p>
 <tbody>
 <tr>
 <td><a href="../Sequence/">Sequence</a></td>
-<td></td>
+<td>A sequence of nucleotides or amino acids.</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -420,7 +422,7 @@ Alias: sequence_id</p>
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../UUID/">UUID</a></p>
+<p>Range: <a href="../CdmSequenceId/">CdmSequenceId</a></p>
 </li>
 <li>
 <p>Required: True</p>
@@ -429,7 +431,7 @@ Alias: sequence_id</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -454,13 +456,17 @@ Alias: sequence_id</p>
 <details>
 
 <pre><code class="language-yaml">name: sequence_id
-description: Internal (CDM) unique identifier for a sequence.
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+description: 'Internal (CDM) unique identifier for a sequence.
+
+  From the Entity table: entity_id where entity_type == ''Sequence''.
+
+  '
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 rank: 1000
 alias: sequence_id
 domain_of:
 - Sequence
-range: UUID
+range: cdm_sequence_id
 required: true
 
 </code></pre>

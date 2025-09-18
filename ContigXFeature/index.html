@@ -231,12 +231,12 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-contigxfeature">Class: ContigXFeature</h1>
 <p><em>Captures the relationship between a contig and a feature; equivalent to feature part-of contig.</em></p>
-<p>URI: <a href="http://kbase.github.io/cdm-schema/ContigXFeature">kb_cdm:ContigXFeature</a></p>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/linkml/ContigXFeature">kb_cdm:ContigXFeature</a></p>
 <div class="mermaid"> classDiagram
     class ContigXFeature
     click ContigXFeature href "../ContigXFeature/"
-      Table &lt;|-- ContigXFeature
-        click Table href "../Table/"
+      LinkerTable &lt;|-- ContigXFeature
+        click LinkerTable href "../LinkerTable/"
 
       ContigXFeature : contig_id
 
@@ -247,7 +247,10 @@
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><a href="../Table/">Table</a><ul>
+<li><a href="../LinkerTable/">LinkerTable</a><ul>
 <li><strong>ContigXFeature</strong></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -264,14 +267,14 @@
 <tbody>
 <tr>
 <td><a href="../contig_id/">contig_id</a></td>
-<td>1 <br/> <a href="../UUID/">UUID</a></td>
-<td>Internal (CDM) unique identifier for a contig.</td>
+<td>1 <br/> <a href="../CdmContigId/">CdmContigId</a></td>
+<td>Internal (CDM) unique identifier for a contig.<br/>From the Entity table: entity_id where entity_type == 'Contig'.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../feature_id/">feature_id</a></td>
-<td>1..* <br/> <a href="../UUID/">UUID</a></td>
-<td>Internal (CDM) unique identifier for a feature.</td>
+<td>1..* <br> <a href="../CdmFeatureId/">CdmFeatureId</a></br></td>
+<td>Internal (CDM) unique identifier for a feature.<br/>From the Entity table: entity_id where entity_type == 'Feature'.</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -279,7 +282,7 @@
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: http://kbase.github.io/cdm-schema/cdm_schema</li>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -304,11 +307,11 @@
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
 <h3 id="direct">Direct</h3>
 <details>
-<pre><code class="language-yaml">name: Contig_X_Feature
+<pre><code class="language-yaml">name: Contig_x_Feature
 description: Captures the relationship between a contig and a feature; equivalent
   to feature part-of contig.
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
-is_a: Table
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+is_a: LinkerTable
 slots:
 - contig_id
 - feature_id
@@ -322,11 +325,11 @@ represents_relationship: true
 </details>
 <h3 id="induced">Induced</h3>
 <details>
-<pre><code class="language-yaml">name: Contig_X_Feature
+<pre><code class="language-yaml">name: Contig_x_Feature
 description: Captures the relationship between a contig and a feature; equivalent
   to feature part-of contig.
-from_schema: http://kbase.github.io/cdm-schema/cdm_schema
-is_a: Table
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+is_a: LinkerTable
 slot_usage:
   feature_id:
     name: feature_id
@@ -334,33 +337,41 @@ slot_usage:
 attributes:
   contig_id:
     name: contig_id
-    description: Internal (CDM) unique identifier for a contig.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+    description: 'Internal (CDM) unique identifier for a contig.
+
+      From the Entity table: entity_id where entity_type == ''Contig''.
+
+      '
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
     rank: 1000
     alias: contig_id
-    owner: Contig_X_Feature
+    owner: Contig_x_Feature
     domain_of:
-    - Contig_X_ContigCollection
-    - Contig_X_EncodedFeature
-    - Contig_X_Feature
-    - Contig_X_Protein
     - Contig
-    range: UUID
+    - Contig_x_ContigCollection
+    - Contig_x_EncodedFeature
+    - Contig_x_Feature
+    - Contig_x_Protein
+    range: cdm_contig_id
     required: true
   feature_id:
     name: feature_id
-    description: Internal (CDM) unique identifier for a feature.
-    from_schema: http://kbase.github.io/cdm-schema/cdm_schema
+    description: 'Internal (CDM) unique identifier for a feature.
+
+      From the Entity table: entity_id where entity_type == ''Feature''.
+
+      '
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
     rank: 1000
     alias: feature_id
-    owner: Contig_X_Feature
+    owner: Contig_x_Feature
     domain_of:
-    - Contig_X_Feature
-    - ContigCollection_X_Feature
-    - EncodedFeature_X_Feature
-    - Feature_X_Protein
     - Feature
-    range: UUID
+    - Contig_x_Feature
+    - ContigCollection_x_Feature
+    - EncodedFeature_x_Feature
+    - Feature_x_Protein
+    range: cdm_feature_id
     required: true
     multivalued: true
 represents_relationship: true
