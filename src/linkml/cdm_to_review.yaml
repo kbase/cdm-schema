@@ -1,17 +1,18 @@
 # yaml-language-server: $schema=https://linkml.io/linkml-model/linkml_model/jsonschema/meta.schema.json
-id: http://kbase.github.io/cdm-schema/cdm_to_review
+id: http://kbase.github.io/cdm-schema/linkml/cdm_to_review
 
 name: cdm_to_review
 description: CDM schema elements to be reviewed
 
 imports:
   - linkml:types
-  - cdm_components
+  - cdm_attr_value
 
 prefixes:
-  kb_cdm: http://kbase.github.io/cdm-schema/
+  kb_cdm: http://kbase.github.io/cdm-schema/linkml/
   linkml: https://w3id.org/linkml/
   mixs: https://genomicsstandardsconsortium.github.io/mixs/
+  nmdc: https://w3id.org/nmdc/
   schema: http://schema.org/
 
 default_curi_maps:
@@ -19,24 +20,12 @@ default_curi_maps:
 default_prefix: kb_cdm
 default_range: string
 
+#classes:
 
-classes:
-  Geolocation:
-    class_uri: nmdc:GeolocationValue
-    is_a: AttributeValue
-    description: A normalized value for a location on the earth's surface
-    attributes:
-      latitude:
-        required: true
-      longitude:
-        required: true
-      raw_value:
-        description: The raw value for a geolocation should follow {latitude} {longitude}
-    mappings:
-      - schema:GeoCoordinates
-
-  # Location:
+    # Location:
+    #   description: position as expressed in 3 dimensional space, e.g. geolocation plus altitude/depth/elevation or position of a plate in a lab experiment
   #   attributes:
+  #     type: [Geolocation | 3D position | XYZ]
   #     latitude:
   #     longitude:
   #     altitude_value:

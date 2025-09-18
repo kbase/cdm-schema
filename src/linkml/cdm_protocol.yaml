@@ -1,0 +1,416 @@
+# yaml-language-server: $schema=https://linkml.io/linkml-model/linkml_model/jsonschema/meta.schema.json
+id: http://kbase.github.io/cdm-schema/linkml/cdm_protocol
+
+name: cdm_protocol
+description: CDM schema for protocols, experiments, algorithms and results.
+
+imports:
+  - linkml:types
+  - cdm_base
+
+prefixes:
+  kb_cdm: http://kbase.github.io/cdm-schema/linkml/
+  linkml: https://w3id.org/linkml/
+  mixs: https://genomicsstandardsconsortium.github.io/mixs/
+  schema: http://schema.org/
+
+default_curi_maps:
+  - semweb_context
+default_prefix: kb_cdm
+default_range: string
+
+slots:
+  # slots used as identifiers
+  experiment_condition_id:
+    description: Internal (CDM) unique identifier for an experiment condition.
+    range: cdm_id
+    required: true
+    slot_uri: CDM:experiment_condition_id
+  experiment_condition_set_id:
+    description: Internal (CDM) unique identifier for a set of experimental conditions.
+    range: cdm_id
+    required: true
+    slot_uri: CDM:experiment_condition_set_id
+  experiment_id:
+    description: Internal (CDM) unique identifier for an experiment.
+    range: cdm_id
+    required: true
+    slot_uri: CDM:experiment_id
+  measurement_id:
+    description: Internal (CDM) unique identifier for a measurement.
+    range: cdm_id
+    required: true
+    slot_uri: CDM:measurement_id
+  measurement_set_id:
+    description: Internal (CDM) unique identifier for a specified variable in a specified experiment.
+    range: cdm_id
+    required: true
+    slot_uri: CDM:measurement_set_id
+  parameter_id:
+    description: Internal (CDM) unique identifier for a parameter of a protocol.
+    range: cdm_id
+    required: true
+    slot_uri: CDM:parameter_id
+  protocol_id:
+    description: |
+      Internal (CDM) unique identifier for a protocol.
+      From the Entity table: entity_id where entity_type == 'Protocol'.
+    range: cdm_protocol_id
+    required: true
+    slot_uri: CDM:protocol_id
+  protocol_execution_id:
+    description: Internal CDM unique identifier for an execution of a protocol.
+    range: cdm_id
+    required: true
+    slot_uri: CDM:protocol_execution_id
+  protocol_input_id:
+    description: Internal CDM unique identifier for the value of an input parameter for a protocol.
+    range: cdm_id
+    required: true
+    slot_uri: CDM:protocol_input_id
+  protocol_input_set_id:
+    description: Internal CDM unique identifier for a set of input parameter values for a protocol.
+    range: cdm_id
+    required: true
+    slot_uri: CDM:protocol_input_set_id
+  protocol_output_id:
+    description: Internal CDM unique identifier for the value of an output of a protocol.
+    range: cdm_id
+    required: true
+    slot_uri: CDM:protocol_output_id
+  protocol_step_id:
+    description: Internal CDM unique identifier for a step in a protocol.
+    range: cdm_id
+    required: true
+    slot_uri: CDM:protocol_step_id
+  protocol_variable_id:
+    description: Internal CDM unique identifier for a variable in a protocol.
+    range: cdm_id
+    required: true
+    slot_uri: CDM:protocol_variable_id
+  variable_id:
+    description: Internal CDM unique identifier for a variable.
+    range: cdm_id
+    required: true
+    slot_uri: CDM:variable_id
+  variable_value_id:
+    description: Internal CDM unique identifier for a variable value.
+    range: cdm_id
+    required: true
+    slot_uri: CDM:variable_value_id
+
+
+
+classes:
+  # tables using keys from other tables
+  # ContributorToExperiment:
+  #   is_a: LinkerTable
+  #   description: Describes the participation of a contributor in an experiment; ideally the contributor_role field will capture how the contributor was involved.
+  #   slots:
+  #     - contributor_id
+  #     - experiment_id
+  #     - contributor_role
+  #   slot_usage:
+  #     contributor_role:
+  #       required: false
+
+  Experiment:
+    is_a: Table
+    slots:
+      - experiment_id
+      - protocol_id
+      - name
+      - description
+    slot_usage:
+      experiment_id:
+        identifier: true
+      description:
+        description: Brief explanation of what was done.
+      name:
+        description: Name or title of the experiment.
+    attributes:
+      created_at:
+        range: iso8601
+        description: The start time of the experiment.
+    description: A discrete scientific procedure undertaken to make a discovery, test a hypothesis, or demonstrate a known fact. The protocol_id links to the workflow followed to perform the experiment.
+
+  ExperimentCondition:
+    is_a: Table
+    aliases:
+    - condition
+    - environment condition
+    - environmental condition
+    - experiment condition
+    - experimental condition
+    - environment context
+    - environmental context
+    - experiment context
+    - experimental context
+    description: A measurement, reagent, or description of one aspect of the environment used in an experiment; examples include temperature; aerobic or anaerobic conditions; presence of a chemical in the environment. Used to describe the context, conditions, or set-up of an experiment.
+    slots:
+      - experiment_condition_id
+      - experiment_id
+      - variable_id
+    slot_usage:
+      experiment_condition_id:
+        identifier: true
+    attributes:
+      value:
+        description: A value; units should not be included.
+
+  ExperimentConditionSet:
+    is_a: Table
+    aliases:
+      - environment conditions
+      - environmental conditions
+      - experiment conditions
+      - experimental conditions
+    slots:
+    - experiment_condition_set_id
+    - experiment_condition_id
+    description: A unique combination of experimental conditions and entities that are used in a specific experiment. One experiment condition set is expected to comprise of multiple ExperimentConditions.
+    comments:
+    - Grouping table to collate unique sets of `experiment_condition_id`s.
+
+  Measurement:
+    is_a: Table
+    description: The value of a specified variable_id under the specified conditions.
+    aliases:
+      - computed measurement
+      - matrix entry
+      - observation
+      - result
+      - results
+    slots:
+      - measurement_id
+      - measurement_set_id
+      - experiment_condition_set_id
+    slot_usage:
+      measurement_id:
+        identifier: true
+    attributes:
+      value:
+        description: The value for a given measurement set (a specified variable in a specified experiment) in the environmental conditions specified by experiment_condition_set_id.
+
+  MeasurementSet:
+    is_a: Table
+    aliases:
+      - experiment variable measurement set
+    description: Grouping table to collate a set of protocol outputs by variable, quality, and timestamp.
+    slots:
+      - measurement_set_id
+      - variable_id
+    slot_usage:
+      measurement_set_id:
+        identifier: true
+    attributes:
+      quality:
+        description: A quality score for measurement.
+      created_at:
+        aliases:
+          - timestamp
+        description: Timestamp for the measurement.
+        range: iso8601
+    comments:
+    - Grouping table to collate a set of protocol outputs by variable, quality, and timestamp.
+
+  OrderedProtocolStep:
+    is_a: Table
+    slots:
+      - protocol_id
+      - protocol_step_id
+    attributes:
+      step_index:
+        description: The number of the step in an ordered progression.
+        range: integer
+        required: true
+    description: A list of the steps in a protocol; the step_index indicates the order in which they should be executed.
+
+  Parameter:
+    is_a: Table
+    slots:
+      - parameter_id
+      - name
+      - description
+    slot_usage:
+      parameter_id:
+        identifier: true
+        aliases:
+          - protocol_parameter_id
+    attributes:
+      value_type:
+        description: The type(s) of the value.
+        examples:
+          - value: boolean
+          - value: SomeSpecifiedEnum
+          - value: integer
+      required:
+        description: Whether or not this parameter must be supplied.
+        range: boolean
+      cardinality:
+        description: The cardinality of the parameter.
+        examples:
+          - value: 0 .. 1
+          - value: 1 .. n
+          - value: 0 .. 4
+      default:
+        description: The default value for the parameter if a value is not supplied.
+        examples:
+          - value: "false"
+          - value: "42"
+      parameter_type:
+        description: Whether the parameter applies to the protocol input or output.
+        range: ProtocolParameterType  # input | output
+        examples:
+          - value: "input"
+          - value: "output"
+    description: A parameter in a protocol. Currently specific to computational protocols.
+
+  Protocol:
+    is_a: Table
+    slots:
+      - protocol_id
+      - name
+    slot_usage:
+      protocol_id:
+        identifier: true
+    attributes:
+      description:
+        description: Brief text description of the protocol.
+      doi:
+        description: The DOI for a protocol.
+        range: curie
+      url:
+        description: The URL for a protocol.
+        range: uri
+      version:
+        description: The version of the protocol that has been used.
+    description: A defined method or set of methods.
+
+  ProtocolExecution:
+    is_a: Table
+    slots:
+      - protocol_execution_id
+      - protocol_id
+      - name
+      - description
+    slot_usage:
+      protocol_execution_id:
+        identifier: true
+    attributes:
+      created_at:
+        aliases:
+          - timestamp
+        description: when the protocol was executed
+        range: iso8601
+    description: An instance of executing a protocol. Used for
+
+  ProtocolInput:
+    is_a: Table
+    slots:
+      - parameter_id
+      - protocol_input_id
+      - protocol_execution_id
+    slot_usage:
+      protocol_input_id:
+        identifier: true
+    attributes:
+      value:
+        description: The value for a parameter of a protocol.
+        required: true
+    description: An input parameter for a protocol.
+
+  ProtocolInputSet:
+    is_a: Table
+    description: A set of input parameters for a protocol.
+    slots:
+      - protocol_input_id
+      - protocol_input_set_id
+    slot_usage:
+      protocol_input_set_id:
+        identifier: true
+
+  ProtocolOutput:
+    is_a: Table
+    slots:
+      - protocol_output_id
+      - protocol_input_set_id
+    slot_usage:
+      protocol_output_id:
+        identifier: true
+    attributes:
+      value:
+        description: An output from a protocol.
+        required: true
+    description: The output of a protocol.
+
+  ProtocolStep:
+    is_a: Table
+    description: A step in a protocol.
+    slots:
+      - protocol_step_id
+    slot_usage:
+      protocol_step_id:
+        identifier: true
+    attributes:
+      step:
+        description: Text description of a step in a protocol.
+        range: Any
+        any_of:
+          - range: string
+          - range: cdm_protocol_id
+
+  ProtocolVariable:
+    is_a: LinkerTable
+    slots:
+      - protocol_id
+      - variable_id
+    description: A variable that may or may not be set as part of an experiment.
+
+  Variable:
+    is_a: Table
+    slots:
+      - variable_id
+      - name
+      - description
+    slot_usage:
+      variable_id:
+        identifier: true
+    attributes:
+      name_cv_id:
+        description: If the `name` is from a controlled vocabulary (CV), the curie of the controlled vocabulary term.
+      unit:
+        description: The units used to measure the value of the variable, if applicable. Units should be expressed using the Unit Ontology or a term from UCUM.
+        required: false
+      value_type:
+        description: The type of the value of a variable. Should be a LinkML data type or one of the defined CDM data types.
+        required: true
+        range: VariableType
+    description:
+      A variable (input, output, environmental, etc.) that can be set or measured as part of a protocol.
+
+  VariableValue:
+    is_a: Table
+    slots:
+    - variable_value_id
+    - variable_id
+    slot_usage:
+      variable_value_id:
+        identifier: true
+    attributes:
+      value_type:
+        # TODO
+        range: string
+    description: The possible types for the value of a variable. Should be a LinkML data type or one of the defined CDM data types.
+
+enums:
+  ProtocolParameterType:
+    description: An input, an operation parameter or switch, or an output for a protocol.
+    permissible_values:
+      input:
+        description: An input for an algorithmic protocol. Operational parameters or switches should also be captured here.
+      output:
+        description: An output of an algorithmic protocol.
+
+  VariableType:
+    description: The type of the value of a variable. Should be a LinkML data type or one of the defined CDM data types.

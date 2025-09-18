@@ -8,6 +8,8 @@ KBase CDM schema in linkml format.
 
 ## Repository Structure
 
+Please note that the [Pyspark data structures](src/cdm_schema/kbase_cdm_pyspark.py) are the recommended way to create schema-compliant CDM classes.
+
 * [src/](src/) - source files
   * [cdm_schema](src/cdm_schema)
     * [kbase_cdm_pydantic.py](src/cdm_schema/kbase_cdm_pydantic.py) -- CDM schema as Pydantic classes
@@ -17,14 +19,11 @@ KBase CDM schema in linkml format.
 
 ## Developer Documentation
 
-<details>
 Use the `make` command to generate project artefacts:
 
 * `make gen-artefacts`: generate the Pydantic, python, and JSONschema versions of the schema
 
 * `make deploy`: deploys site
-
-</details>
 
 ## Credits
 

@@ -19,34 +19,58 @@ from schema_sanity_check import check_schema
 
 logger = logging.getLogger(__name__)
 
+STRING = "STRING"
+BOOL = "BOOLEAN"
+FLOAT = "FLOAT"
+INT = "INTEGER"
+DATE = "DATE"
+TS = "TIMESTAMP"
+
 # Map LinkML types to PySpark types
 TYPE_MAP = {
-    "boolean": BooleanType(),
-    "xsd:boolean": BooleanType(),
+    "boolean": BOOL,
+    "xsd:boolean": BOOL,
     # numerical
-    "decimal": FloatType(),
-    "double": FloatType(),
-    "float": FloatType(),
-    "integer": IntegerType(),
-    "long": FloatType(),
+    "decimal": FLOAT,
+    "double": FLOAT,
+    "float": FLOAT,
+    "integer": INT,
+    "long": FLOAT,
     # dates and times
-    "date": DateType(),
-    "dateTime": DateType(),
-    "time": TimestampType(),
-    "xsd:date": DateType(),
-    "xsd:dateTime": DateType(),
-    "xsd:time": TimestampType(),
-    "linkml:DateOrDatetime": DateType(),
+    "date": DATE,
+    "dateTime": DATE,
+    "time": TS,
+    "xsd:date": DATE,
+    "xsd:dateTime": DATE,
+    "xsd:time": TS,
+    "linkml:DateOrDatetime": DATE,
     # string-like
-    "anyURI": StringType(),
-    "language": StringType(),
-    "string": StringType(),
-    "shex:nonLiteral": StringType(),
-    "shex:iri": StringType(),
+    "anyURI": STRING,
+    "language": STRING,
+    "str": STRING,
+    "string": STRING,
+    "shex:nonLiteral": STRING,
+    "shex:iri": STRING,
+}
+
+remap = {
+    STRING: StringType(),
+    BOOL: BooleanType(),
+    FLOAT: FloatType(),
+    INT: IntegerType(),
+    DATE: DateType(),
+    TS: TimestampType(),
 }
 
 
-def resolve_slot_range_class_relational(sv: SchemaView, class_name: str) -> set[DataType]:
+class SchemaViewWithProcessed(SchemaView):
+    def __init__(self, *args, **kwargs) -> None:
+        self.PROCESSED = {}
+        self.RANGE_TO_TYPE = {}
+        super().__init__(*args, **kwargs)
+
+
+def resolve_slot_range_class_relational(sv: SchemaViewWithProcessed, class_name: str) -> set[str]:
     """Generate the appropriate slot range for a given class.
 
     :param sv: the schema, via SchemaView
@@ -66,19 +90,19 @@ def resolve_slot_range_class_relational(sv: SchemaView, class_name: str) -> set[
     if not class_id_slot.range:
         msg = f"Class {class_name} identifier {class_id_slot.name} has no range: defaulting to string"
         logger.warning(msg)
-        sv.PROCESSED[class_name] = StringType()
-        return {StringType()}
+        sv.RANGE_TO_TYPE[class_name] = STRING
+        return {STRING}
 
     if class_id_slot.range in sv.all_classes():
         msg = f"Class {class_id_slot.range} used as range for identifier slot of class {class_name}"
         logger.warning(msg)
-        sv.PROCESSED[class_name] = StringType()
-        return {StringType()}
+        sv.RANGE_TO_TYPE[class_name] = STRING
+        return {STRING}
 
     return resolve_slot_range(sv, class_name=class_name, slot_name=class_id_slot.name, slot_range=class_id_slot.range)
 
 
-def resolve_slot_range_type(sv: SchemaView, type_name: str) -> set[DataType]:
+def resolve_slot_range_type(sv: SchemaViewWithProcessed, type_name: str) -> set[str]:
     """Generate the appropriate slot range for a given type.
 
     :param sv: the schema, via SchemaView
@@ -94,14 +118,14 @@ def resolve_slot_range_type(sv: SchemaView, type_name: str) -> set[DataType]:
         msg = f"type {type_name} lacks base and uri fields"
         logger.warning(msg)
         # add it to the mapping
-        sv.PROCESSED[type_name] = StringType()
-        return {StringType()}
+        sv.RANGE_TO_TYPE[type_name] = STRING
+        return {STRING}
 
     type_uri = type_uri.removeprefix("xsd:")
-    return {TYPE_MAP.get(type_uri, StringType())}
+    return {TYPE_MAP.get(type_uri, STRING)}
 
 
-def resolve_slot_range(sv: SchemaView, class_name: str, slot_name: str, slot_range: str) -> set[DataType]:
+def resolve_slot_range(sv: SchemaViewWithProcessed, class_name: str, slot_name: str, slot_range: str) -> set[str]:
     """Generate the appropriate spark datatype for a given slot_range.
 
     :param sv: the schema, via SchemaView
@@ -115,8 +139,8 @@ def resolve_slot_range(sv: SchemaView, class_name: str, slot_name: str, slot_ran
     :return: set of spark datatype(s) to use
     :rtype: set[DataType]
     """
-    if slot_range in sv.PROCESSED:
-        return {sv.PROCESSED[slot_range]}
+    if slot_range in sv.RANGE_TO_TYPE:
+        return {sv.RANGE_TO_TYPE[slot_range]}
 
     if slot_range in sv.all_classes():
         return resolve_slot_range_class_relational(sv, slot_range)
@@ -126,20 +150,22 @@ def resolve_slot_range(sv: SchemaView, class_name: str, slot_name: str, slot_ran
 
     # resolve enums as strings for now
     if slot_range in sv.all_enums():
-        sv.PROCESSED[slot_range] = StringType()
-        return {StringType()}
+        sv.RANGE_TO_TYPE[slot_range] = STRING
+        return {STRING}
 
     if slot_range not in TYPE_MAP:
         msg = f"{class_name}.{slot_name} range {slot_range}: no type mapping found; using StringType()"
         logger.warning(msg)
         # add it to the mapping
-        sv.PROCESSED[slot_range] = StringType()
-        return {StringType()}
+        sv.RANGE_TO_TYPE[slot_range] = STRING
+        return {STRING}
 
     return {TYPE_MAP[slot_range]}
 
 
-def build_struct_for_class(sv: SchemaView, class_name: str) -> dict[str, tuple[str, DataType, bool]] | None:
+def build_struct_for_class(
+    sv: SchemaViewWithProcessed, class_name: str
+) -> dict[str, tuple[str, DataType, bool]] | None:
     """Generate the appropriate Spark schema for a class in a LinkML schema.
 
     :param sv: the schema, via SchemaView
@@ -184,7 +210,7 @@ def build_struct_for_class(sv: SchemaView, class_name: str) -> dict[str, tuple[s
         if len(slot_range_resolved) > 1:
             msg = f"WARNING: {class_name}.{slot.name}: more than one possible slot range: {', '.join(slot_range_resolved)}"
             logger.warning(msg)
-            slot_range_resolved = {StringType()}
+            slot_range_resolved = {STRING}
 
         if len(slot_range_resolved) == 0:
             msg = f"ERROR: {class_name}.{slot.name} slot_range_set length is 0"
@@ -204,7 +230,7 @@ def build_struct_for_class(sv: SchemaView, class_name: str) -> dict[str, tuple[s
 
 
 def generate_pyspark_from_sv(
-    sv: SchemaView, classes: list[str] | None = None
+    sv: SchemaViewWithProcessed, classes: list[str] | None = None
 ) -> dict[str, dict[str, tuple[DataType, bool]]]:
     """Generate pyspark tables from a LinkML schema.
 
@@ -215,7 +241,7 @@ def generate_pyspark_from_sv(
     :param classes: list of class names to parse; defaults to None
     :type classes: list[str] | None
     :return: dictionary containing annotations for each field in each class of the schema, excluding abstract classes and mixins
-    :rtype: ddict[str, dict[str, tuple[DataType, bool]]]
+    :rtype: dict[str, dict[str, tuple[DataType, bool]]]
     """
     spark_schemas = {}
 
@@ -227,10 +253,12 @@ def generate_pyspark_from_sv(
     return spark_schemas
 
 
-def write_output(sv: SchemaView, output_path: Path, spark_schemas: dict[str, dict[str, tuple[DataType, bool]]]) -> None:
+def write_output(
+    sv: SchemaViewWithProcessed, output_path: Path, spark_schemas: dict[str, dict[str, tuple[DataType, bool]]]
+) -> None:
     indent = " " * 4
     # extract all the types from the StructFields
-    all_types = {dt for table_fields in spark_schemas.values() for dt, _ in table_fields.values()}
+    all_types = {remap[dt] for table_fields in spark_schemas.values() for dt, _ in table_fields.values()}
     header_material = [
         f'"""Automated conversion of {sv.schema.name} to PySpark."""',
         "",
@@ -247,7 +275,7 @@ def write_output(sv: SchemaView, output_path: Path, spark_schemas: dict[str, dic
                     [
                         f'{indent}"{table_name}": StructType([',
                         *[
-                            f'{indent}{indent}StructField("{name}", {dtype}, nullable={nullable}),'
+                            f'{indent}{indent}StructField("{name}", {remap[dtype]}, nullable={nullable}),'
                             for name, (dtype, nullable) in table.items()
                         ],
                         f"{indent}" + "]),\n",
@@ -257,10 +285,6 @@ def write_output(sv: SchemaView, output_path: Path, spark_schemas: dict[str, dic
         f.write("}\n")
 
     print(f"PySpark schema written to {output_path}")
-
-
-class SchemaViewWithProcessed(SchemaView):
-    PROCESSED = {}
 
 
 if __name__ == "__main__":

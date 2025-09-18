@@ -1,14 +1,14 @@
 # yaml-language-server: $schema=https://linkml.io/linkml-model/linkml_model/jsonschema/meta.schema.json
-id: http://kbase.github.io/cdm-schema/cdm_ontology
+id: http://kbase.github.io/cdm-schema/linkml/cdm_ontology
 
 name: cdm_ontology
-description: Ontology representation, modelled on Semantic SQL, https://w3id.org/semsql/rdf
+description: Ontology representation, modelled on Semantic SQL, https://incatools.github.io/semantic-sql/.
 imports:
   - linkml:types
   - cdm_base
 
 prefixes:
-  kb_cdm: http://kbase.github.io/cdm-schema/
+  kb_cdm: http://kbase.github.io/cdm-schema/linkml/
   semsql: https://w3id.org/semsql/
   linkml: https://w3id.org/linkml/
   sh: http://www.w3.org/ns/shacl#
@@ -30,6 +30,7 @@ types:
     typeof: uriorcurie
   literal_as_string_type:
     typeof: string
+    description: A literal represented as a string.
 
 slots:
   id:
@@ -40,11 +41,11 @@ slots:
 
   # prefix table
   prefix:
-    description: A standardized prefix such as 'GO' or 'rdf' or 'FlyBase'
+    description: A standardized prefix such as 'GO' or 'rdf' or 'FlyBase'.
     slot_uri: sh:prefix
     range: ncname
   base:
-    description: The base URI a prefix will expand to
+    description: The base URI a prefix will expand to.
     slot_uri: sh:namespace
     range: uri
 
@@ -82,7 +83,7 @@ slots:
       - tail
       - object_id
     description: Note the range of this slot is always a node. If the triple represents
-      a literal, instead value will be populated
+      a literal, the "value" field will be populated instead.
     slot_uri: rdf:object
     # range: node
     todos:
@@ -92,13 +93,13 @@ slots:
   value:
     close_mappings:
     - rdf:object
-    description: Note the range of this slot is always a string. Only used the triple
+    description: Note the range of this slot is always a string. Only used if the triple
       represents a literal assertion
-    slot_uri: rdf:object
+    slot_uri: rdf:object  # may need to alter this to avoid mismappings
     range: literal_as_string_type
 
   datatype:
-    description: the rdf datatype of the value, for example, xsd:string
+    description: the rdf datatype of the value, for example, xsd:string or xsd:float.
     comments:
       - only used when value is populated
 
@@ -121,7 +122,10 @@ classes:
     is_a: Table
     aliases:
     - triple
-    description: Represents an RDF triple
+    description: |
+      Represents an RDF triple, a statement in the form "_subject_ _predicate_ _object_" or "_subject_ _predicate_ _value_".
+
+      See [Semantic SQL](https://incatools.github.io/semantic-sql/) for more information on the contents of this table and how it is populated.
     slots:
     - subject
     - predicate
@@ -130,9 +134,17 @@ classes:
     - datatype
     - language
     class_uri: rdf:Statement
+    slot_usage:
+      subject:
+        range: local_curie
+      object:
+        range: local_curie
+      predicate:
+        range: local_curie
   EntailedEdge:
     is_a: Table
-    description: A relation graph edge that is inferred
+    description: |
+      A relation graph edge that is inferred. This table contains links between the nodes that appear as subjects in the [Statements](Statements) table. The graph contains all possible links between nodes and is created using a reasoner such as [relation-graph](https://github.com/balhoff/relation-graph) to materialise inferrred links.
     comments:
     - '- It is common to populate this via a procedure external to the database, e.g
       balhoff/relation-graph'
@@ -142,3 +154,10 @@ classes:
     - subject
     - predicate
     - object
+    slot_usage:
+      subject:
+        range: local_curie
+      object:
+        range: local_curie
+      predicate:
+        range: local_curie
