@@ -1,0 +1,6 @@
+feature_id: PV:AA_WF_I-V_contig_3062_provirus_3_11663 # PV= provirus prophage is a kind of provirus.
+hash: "3c6e0b8a9c15224a8228b9a98ca1531d"
+start: 3
+end: 11663
+p_value: 0.9805 # virus_score?
+type: "SO:0001006" # currently no provirus term in SO, so this is for prophage. WRONG.
