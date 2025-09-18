@@ -1,21 +1,29 @@
 # yaml-language-server: $schema=https://linkml.io/linkml-model/linkml_model/jsonschema/meta.schema.json
-id: http://kbase.github.io/cdm-schema/cdm_types
+id: http://kbase.github.io/cdm-schema/linkml/cdm_types
 name: cdm_types
-description: Types used in the CDM schema.
+description: Types used in the CDM schema. Includes the linkml:Any class.
+
+imports:
+  - linkml:types
 
 prefixes:
-  kb_cdm: http://kbase.github.io/cdm-schema/
+  kb_cdm: http://kbase.github.io/cdm-schema/linkml/
   xsd: "http://www.w3.org/2001/XMLSchema#"
 
 default_prefix: kb_cdm
 
+classes:
+  Any:
+    class_uri: linkml:Any
+
 types:
-  UUID:
+  cdm_id:
     uri: xsd:string
     base: str
-    typeof: uriorcurie
-    description: A universally unique ID, generated using uuid4, with the prefix "CDM:".
+    typeof: curie
+    description: A universally unique ID, generated using uuid4, with the prefix "CDM:". Used internally in the CDM.
     # 8-4-4-4-12, x = [0-9a-f]
+    pattern: "^CDM:[a-zA-Z]{2,4}-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$"
 
   iso8601:
     uri: xsd:dateTime
@@ -30,14 +38,83 @@ types:
   local_curie:
     uri: xsd:string
     base: str
-    typeof: uriorcurie
-    description: A CURIE that exists as a subject in the `statements` table (i.e. `Statements.subject`). Should not be used for external identifiers.
+    typeof: curie
+    description: A CURIE that exists as a subject in the `statements` table (i.e. `statements.subject`). Should not be used for external identifiers.
     examples:
       - value: "GO:0008150"
       - value: "ECO:0000315"
 
-  data_source_uuid:
+  local_curie_name:
+    base: str
+    typeof: string
+    description: The term name for an ontology term; should appear as an object in the `statements` table with a relationship indicating that it is the name of an ontology term.
+    examples:
+      - value: "biological_process"
+      - value: "regulation of glucose biosynthesis"
+
+  cdm_association_id:
+    typeof: cdm_id
+    description: A CDM ID (cdm_id) that identifies an association in the CDM.
+    pattern: "^CDM:ascn-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$"
+
+  cdm_cluster_id:
+    typeof: cdm_id
+    description: A CDM ID (cdm_id) that identifies a cluster in the CDM.
+    pattern: "^CDM:clst-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$"
+
+  cdm_contig_id:
+    typeof: cdm_id
+    description: A CDM ID (cdm_id) that identifies a contig in the CDM.
+    pattern: "^CDM:cntg-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$"
+
+  cdm_contig_collection_id:
+    typeof: cdm_id
+    description: A CDM ID (cdm_id) that identifies a contig collection in the CDM.
+    pattern: "^CDM:ccol-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$"
+
+  cdm_contributor_id:
+    typeof: cdm_id
+    description: A CDM ID (cdm_id) that identifies a contributor in the CDM.
+    pattern: "^CDM:ctrb-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$"
+
+  cdm_data_source_id:
     uri: xsd:string
     base: str
-    typeof: UUID
-    description: A UUID that identifies a data source in the CDM.
+    typeof: cdm_id
+    description: A CDM ID (cdm_id) that identifies a data source in the CDM.
+    pattern: "^CDM:dsrc-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$"
+
+  cdm_encoded_feature_id:
+    typeof: cdm_id
+    description: A CDM ID (cdm_id) that identifies an encoded feature in the CDM.
+    pattern: "^CDM:rna-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$"
+
+  cdm_feature_id:
+    typeof: cdm_id
+    description: A CDM ID (cdm_id) that identifies a feature in the CDM.
+    pattern: "^CDM:feat-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$"
+
+  cdm_license_id:
+    typeof: cdm_id
+    description: A CDM ID (cdm_id) that identifies a license in the CDM.
+    pattern: "^CDM:lic-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$"
+
+  cdm_protein_id:
+    typeof: cdm_id
+    description: A CDM ID (cdm_id) that identifies a protein in the CDM.
+    pattern: "^CDM:prot-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$"
+
+  cdm_protocol_id:
+    typeof: cdm_id
+    description: A CDM ID (cdm_id) that identifies a protocol in the CDM.
+    pattern: "^CDM:prcl-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$"
+
+  cdm_sample_id:
+    typeof: cdm_id
+    description: A CDM ID (cdm_id) that identifies a sample in the CDM.
+    pattern: "^CDM:smpl-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$"
+
+  cdm_sequence_id:
+    typeof: cdm_id
+    description: A CDM ID (cdm_id) that identifies a sequence in the CDM.
+    pattern: "^CDM:sqnc-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$"
