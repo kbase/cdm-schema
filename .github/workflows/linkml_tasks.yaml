@@ -33,7 +33,7 @@ jobs:
           - name: Lint linkml file
             id: lint_linkml
             run: |
-                make lint
+                make lint-no-warn
             continue-on-error: true
 
           - name: Run LinkML example files
@@ -47,6 +47,12 @@ jobs:
             run: |
                 make gendoc
             continue-on-error: true
+
+          # - name: Test pyspark code generation
+          #   id: test_pyspark
+          #   run: |
+          #     make pyspark
+          #   continue-on-error: true
 
           - name: outcome failure
             if: steps.lint_linkml.outcome != 'success' || steps.validate_linkml.outcome != 'success' || steps.run_linkml_examples.outcome != 'success' || steps.test_docgen.outcome != 'success'

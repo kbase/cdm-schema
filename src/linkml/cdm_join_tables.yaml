@@ -1,0 +1,208 @@
+# yaml-language-server: $schema=https://linkml.io/linkml-model/linkml_model/jsonschema/meta.schema.json
+id: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+
+name: cdm_join_tables
+description: Join (linker) tables for the CDM schema
+
+imports:
+  - linkml:types
+  - cdm_components
+
+
+prefixes:
+  kb_cdm: http://kbase.github.io/cdm-schema/linkml/
+  linkml: https://w3id.org/linkml/
+  mixs: https://genomicsstandardsconsortium.github.io/mixs/
+  schema: http://schema.org/
+
+default_curi_maps:
+  - semweb_context
+default_prefix: kb_cdm
+default_range: string
+
+classes:
+
+  # "join" classes
+  # Association_x_Publication:
+  #   is_a: LinkerTable
+  #   represents_relationship: true
+  #   slots:
+  #     - association_id
+  #     - publication_id
+  #   slot_usage:
+  #     association_id:
+  #       multivalued: true
+  #     publication_id:
+  #       multivalued: true
+  #   description: Links associations to supporting literature.
+
+  Association_x_SupportingObject:
+    is_a: LinkerTable
+    represents_relationship: true
+    slots:
+      - association_id
+      - entity_id
+    slot_usage:
+      association_id:
+        multivalued: true
+      entity_id:
+        multivalued: true
+    description: Links associations to entities to capture supporting objects in an association. May be a biological entity, such as a protein or feature, or a URL to a resource (e.g. a publication) that supports the association. Where possible, CDM identifiers should be used.
+
+  Contig_x_ContigCollection:
+    is_a: LinkerTable
+    represents_relationship: true
+    slots:
+      - contig_id
+      - contig_collection_id
+    slot_usage:
+      contig_id:
+        multivalued: true
+    description: Captures the relationship between a contig and a contig collection; equivalent to contig part-of contig collection.
+
+  Contig_x_EncodedFeature:
+    is_a: LinkerTable
+    represents_relationship: true
+    slots:
+      - contig_id
+      - encoded_feature_id
+    slot_usage:
+      encoded_feature_id:
+        multivalued: true
+    description: Captures the relationship between a contig and an encoded feature.
+
+  Contig_x_Feature:
+    is_a: LinkerTable
+    represents_relationship: true
+    slots:
+      - contig_id
+      - feature_id
+    slot_usage:
+      feature_id:
+        multivalued: true
+    description: Captures the relationship between a contig and a feature; equivalent to feature part-of contig.
+
+  Contig_x_Protein:
+    is_a: LinkerTable
+    represents_relationship: true
+    slots:
+      - contig_id
+      - protein_id
+    slot_usage:
+      protein_id:
+        multivalued: true
+    description: Captures the relationship between a contig and a protein; equivalent to protein is ribosomal translation of (http://purl.obolibrary.org/obo/RO_0002512) contig.
+
+  ContigCollection_x_EncodedFeature:
+    is_a: LinkerTable
+    represents_relationship: true
+    slots:
+      - contig_collection_id
+      - encoded_feature_id
+    slot_usage:
+      encoded_feature_id:
+        multivalued: true
+    description: Captures the relationship between a contig collection and an encoded feature.
+
+  ContigCollection_x_Feature:
+    is_a: LinkerTable
+    represents_relationship: true
+    slots:
+      - contig_collection_id
+      - feature_id
+    slot_usage:
+      feature_id:
+        multivalued: true
+    description: Captures the relationship between a contig collection and a feature; equivalent to feature part-of contig collection.
+
+  ContigCollection_x_Protein:
+    is_a: LinkerTable
+    represents_relationship: true
+    slots:
+      - contig_collection_id
+      - protein_id
+    slot_usage:
+      protein_id:
+        multivalued: true
+    description: Captures the relationship between a contig collection and a protein; equivalent to protein is ribosomal translation of (http://purl.obolibrary.org/obo/RO_0002512) contig collection.
+
+  EncodedFeature_x_Feature:
+    is_a: LinkerTable
+    represents_relationship: true
+    slots:
+      - encoded_feature_id
+      - feature_id
+    description: Captures the relationship between a feature and its transcription product.
+
+  # Entity_x_Experiment:
+  #   is_a: LinkerTable
+  #   represents_relationship: true
+  #   slots:
+  #     - experiment_id
+  #     - entity_id
+  #   slot_usage:
+  #     entity_id:
+  #       multivalued: true
+  #     experiment_id:
+  #       multivalued: true
+  #   description: Represents the participation of an entity in an experiment.
+
+  # Entity_x_Measurement:
+  #   is_a: LinkerTable
+  #   represents_relationship: true
+  #   slots:
+  #     - entity_id
+  #     - measurement_id
+  #   slot_usage:
+  #     entity_id:
+  #       multivalued: true
+  #     measurement_id:
+  #       multivalued: true
+  #   description: Captures a measurement made on an entity.
+
+  # Experiment_x_Project:
+  #   is_a: LinkerTable
+  #   represents_relationship: true
+  #   slots:
+  #     - experiment_id
+  #     - project_id
+  #   slot_usage:
+  #     experiment_id:
+  #       multivalued: true
+  #   description: Captures the relationship between an experiment and the project that it is a part of.
+
+  Feature_x_Protein:
+    is_a: LinkerTable
+    represents_relationship: true
+    slots:
+      - feature_id
+      - protein_id
+    slot_usage:
+      protein_id:
+        multivalued: true
+    description: Captures the relationship between a feature and a protein; equivalent to feature encodes protein.
+
+  NamedEntity:
+    is_a: LinkerTable
+    description: Represents the link between an entity and its names.
+    represents_relationship: true
+    comments:
+      - Entity.entity_id one:many Name.entity_id
+      - one entity can have multiple names, and one name can be associated with multiple entities.
+
+  IdentifiedEntity:
+    is_a: LinkerTable
+    description: Represents the link between an entity and its identifiers.
+    represents_relationship: true
+    comments:
+      - Entity.entity_id one:many Identifier.entity_id
+      - one entity can have multiple identifiers, and one identifier can be associated with multiple entities.
+
+  # AttributeValueEntity:
+  #   is_a: LinkerTable
+  #   description: Represents the link between an entity and its attribute values.
+  #   represents_relationship: true
+  #   comments:
+  #     - Entity.entity_id <> QuantityValue.entity_id
+  #     - Entity.entity_id <> TextValue.entity_id
+  #     - one entity can have multiple attribute values, and one attribute value can be associated with multiple entities.
