@@ -6,9 +6,10 @@ description: CDM schema biological entities
 
 imports:
   - linkml:types
-  - cdm_attr_value
   - cdm_base
+  - cdm_credit
   - cdm_ontology
+  - cdm_protocol
 
 prefixes:
   kb_cdm: http://kbase.github.io/cdm-schema/linkml/

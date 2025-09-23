@@ -102,18 +102,6 @@ slots:
 
 
 classes:
-  # tables using keys from other tables
-  # ContributorToExperiment:
-  #   is_a: LinkerTable
-  #   description: Describes the participation of a contributor in an experiment; ideally the contributor_role field will capture how the contributor was involved.
-  #   slots:
-  #     - contributor_id
-  #     - experiment_id
-  #     - contributor_role
-  #   slot_usage:
-  #     contributor_role:
-  #       required: false
-
   Experiment:
     is_a: Table
     slots:

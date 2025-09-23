@@ -118,6 +118,9 @@ deploy: all mkd-gh-deploy
 # compile-sheets:
 # 	$(RUN) sheets2linkml --gsheet-id $(SHEET_ID) $(SHEET_TABS) > $(SHEET_MODULE_PATH).tmp && mv $(SHEET_MODULE_PATH).tmp $(SHEET_MODULE_PATH)
 
+gen-pyspark:
+	$(RUN) python linkml_to_pyspark.py
+
 # In future this will be done by conversion
 gen-examples:
 	cp -r $(SAMPLE_DATA_DIR)/* $(EXAMPLE_DIR)
@@ -213,8 +216,9 @@ $(DOC_DIR):
 
 gen-artefacts: $(PYTHON_DIR) $(JSONSCHEMA_DIR)  ## generate derived files: JSON Schema, Python, Pydantic, erdantic ERD.
 	$(RUN) gen-json-schema -v $(LINKML_SCHEMA_SOURCE_PATH) > $(JSONSCHEMA_DIR)/$(SCHEMA_BASE_NAME).schema.json
-	$(RUN) gen-python -v $(LINKML_SCHEMA_SOURCE_PATH) > $(PYTHON_DIR)/$(SCHEMA_BASE_NAME).py
-	$(RUN) gen-pydantic -v $(LINKML_SCHEMA_SOURCE_PATH) --meta AUTO > $(PYTHON_DIR)/$(SCHEMA_BASE_NAME)_pydantic.py
+# 	$(RUN) gen-python -v $(LINKML_SCHEMA_SOURCE_PATH) > $(PYTHON_DIR)/$(SCHEMA_BASE_NAME).py
+	$(RUN) gen-pydantic -v $(LINKML_SCHEMA_SOURCE_PATH) --meta auto > $(PYTHON_DIR)/$(SCHEMA_BASE_NAME)_pydantic.py
+	${RUN} python linkml_to_pyspark.py
 	$(RUN) ruff format $(PYTHON_DIR)
 # 	PYTHONPATH=$(PYTHON_DIR) $(RUN) erdantic $(SCHEMA_BASE_NAME)_pydantic.$(SCHEMA_ROOT) -o $(SRC_DIR)/$(SCHEMA_BASE_NAME)-schema.png
 

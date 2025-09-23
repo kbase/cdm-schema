@@ -118,7 +118,7 @@ classes:
     - prefix
     - base
     class_uri: sh:PrefixDeclaration
-  Statements:
+  Statement:
     is_a: Table
     aliases:
     - triple
@@ -144,7 +144,7 @@ classes:
   EntailedEdge:
     is_a: Table
     description: |
-      A relation graph edge that is inferred. This table contains links between the nodes that appear as subjects in the [Statements](Statements) table. The graph contains all possible links between nodes and is created using a reasoner such as [relation-graph](https://github.com/balhoff/relation-graph) to materialise inferrred links.
+      A relation graph edge that is inferred. This table contains links between the nodes that appear as subjects in the [Statement](Statement) table. The graph contains all possible links between nodes and is created using a reasoner such as [relation-graph](https://github.com/balhoff/relation-graph) to materialise inferrred links.
     comments:
     - '- It is common to populate this via a procedure external to the database, e.g
       balhoff/relation-graph'
