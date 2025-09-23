@@ -413,13 +413,8 @@ Alias: protein_id</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../ContigXProtein/">ContigXProtein</a></td>
-<td>Captures the relationship between a contig and a protein; equivalent to protein is ribosomal translation of (http://purl.obolibrary.org/obo/RO_0002512) contig.</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../ContigCollectionXProtein/">ContigCollectionXProtein</a></td>
-<td>Captures the relationship between a contig collection and a protein; equivalent to protein is ribosomal translation of (http://purl.obolibrary.org/obo/RO_0002512) contig collection.</td>
+<td><a href="../Protein/">Protein</a></td>
+<td>Proteins are large, complex molecules made up of one or more long, folded chains of amino acids, whose sequences are determined by the DNA sequence of the protein-encoding gene.</td>
 <td>yes</td>
 </tr>
 <tr>
@@ -428,8 +423,18 @@ Alias: protein_id</p>
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../Protein/">Protein</a></td>
-<td>Proteins are large, complex molecules made up of one or more long, folded chains of amino acids, whose sequences are determined by the DNA sequence of the protein-encoding gene.</td>
+<td><a href="../EncodedFeatureXProtein/">EncodedFeatureXProtein</a></td>
+<td>Captures the relationship between an encoded feature (RNA of some sort) and a protein.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ContigXProtein/">ContigXProtein</a></td>
+<td>Captures the relationship between a contig and a protein; equivalent to protein is ribosomal translation of (http://purl.obolibrary.org/obo/RO_0002512) contig.</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../ContigCollectionXProtein/">ContigCollectionXProtein</a></td>
+<td>Captures the relationship between a contig collection and a protein; equivalent to protein is ribosomal translation of (http://purl.obolibrary.org/obo/RO_0002512) contig collection.</td>
 <td>yes</td>
 </tr>
 </tbody>
@@ -483,6 +488,7 @@ domain_of:
 - Protein
 - Contig_x_Protein
 - ContigCollection_x_Protein
+- EncodedFeature_x_Protein
 - Feature_x_Protein
 range: cdm_protein_id
 required: true
@@ -547,7 +553,7 @@ required: true
       
         <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
       
-        <script src="../javascripts/tablesort.js"></script>
+        <script src="../js/tablesort.js"></script>
       
     
   </body>

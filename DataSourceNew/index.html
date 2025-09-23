@@ -173,6 +173,13 @@
 </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#usages">
+<span class="md-ellipsis">
+      Usages
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#identifier-and-mapping-information">
 <span class="md-ellipsis">
       Identifier and Mapping Information
@@ -355,6 +362,25 @@
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>The version of the resource. This must be an absolute version, not a relative version like 'latest'.</td>
 <td>direct</td>
+</tr>
+</tbody>
+</table>
+<h2 id="usages">Usages</h2>
+<table>
+<thead>
+<tr>
+<th>used by</th>
+<th>used in</th>
+<th>type</th>
+<th>used</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../Schema/">Schema</a></td>
+<td><a href="../data_sources/">data_sources</a></td>
+<td>range</td>
+<td><a href="./">DataSourceNew</a></td>
 </tr>
 </tbody>
 </table>
@@ -705,13 +731,13 @@ attributes:
     owner: DataSourceNew
     domain_of:
     - Entity
+    - Contributor_x_DataSource
     - DataSource
     - DataSourceNew
-    - Contributor_to_DataSource
-    - DataSourceDescription
-    - DataSourceTitle
-    - DataSourceLicense
-    - DataSourceFundingReference
+    - DataSource_x_Description
+    - DataSource_x_FundingReference
+    - DataSource_x_License
+    - DataSource_x_Title
     range: cdm_data_source_id
     required: true
   name:
@@ -779,7 +805,7 @@ any_of:
 <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
 <script src="../assets/javascripts/bundle.92b07e13.min.js"></script>
 <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
-<script src="../javascripts/tablesort.js"></script>
+<script src="../js/tablesort.js"></script>
 <script type="module">import mermaid from "https://unpkg.com/mermaid@10.9.0/dist/mermaid.esm.min.mjs";
 mermaid.initialize({});</script></body>
 </html>

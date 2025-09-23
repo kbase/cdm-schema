@@ -411,13 +411,13 @@ Alias: resource_title_id</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../ResourceTitle/">ResourceTitle</a></td>
-<td>Represents the title or name of a resource, the type of that title, and the language used (if appropriate).<br><br>The <code>title</code> field is required; <code>title_type</code> is only necessary if the text is not the primary title.</td>
+<td><a href="../DataSourceXTitle/">DataSourceXTitle</a></td>
+<td>Links a data source to a title.</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../DataSourceTitle/">DataSourceTitle</a></td>
-<td>Links a data source to a title.</td>
+<td><a href="../ResourceTitle/">ResourceTitle</a></td>
+<td>Represents the title or name of a resource, the type of that title, and the language used (if appropriate).<br><br>The <code>title</code> field is required; <code>title_type</code> is only necessary if the text is not the primary title.</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -464,7 +464,7 @@ from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 rank: 1000
 alias: resource_title_id
 domain_of:
-- DataSourceTitle
+- DataSource_x_Title
 - ResourceTitle
 range: cdm_id
 required: true
@@ -529,7 +529,7 @@ required: true
       
         <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
       
-        <script src="../javascripts/tablesort.js"></script>
+        <script src="../js/tablesort.js"></script>
       
     
   </body>

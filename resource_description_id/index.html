@@ -411,13 +411,13 @@ Alias: resource_description_id</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../DataSourceDescription/">DataSourceDescription</a></td>
-<td>Links a data source to a description (e.g. the abstract or a free text description).</td>
+<td><a href="../ResourceDescription/">ResourceDescription</a></td>
+<td>Textual information about the resource being represented.</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../ResourceDescription/">ResourceDescription</a></td>
-<td>Textual information about the resource being represented.</td>
+<td><a href="../DataSourceXDescription/">DataSourceXDescription</a></td>
+<td>Links a data source to a description (e.g. the abstract or a free text description).</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -464,7 +464,7 @@ from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 rank: 1000
 alias: resource_description_id
 domain_of:
-- DataSourceDescription
+- DataSource_x_Description
 - ResourceDescription
 range: cdm_id
 required: true
@@ -529,7 +529,7 @@ required: true
       
         <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
       
-        <script src="../javascripts/tablesort.js"></script>
+        <script src="../js/tablesort.js"></script>
       
     
   </body>

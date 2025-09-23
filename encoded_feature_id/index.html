@@ -413,13 +413,18 @@ Alias: encoded_feature_id</p>
 </thead>
 <tbody>
 <tr>
+<td><a href="../EncodedFeatureXFeature/">EncodedFeatureXFeature</a></td>
+<td>Captures the relationship between a feature and its transcription product.</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../EncodedFeature/">EncodedFeature</a></td>
 <td>An entity generated from a feature, such as a transcript.</td>
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../EncodedFeatureXFeature/">EncodedFeatureXFeature</a></td>
-<td>Captures the relationship between a feature and its transcription product.</td>
+<td><a href="../EncodedFeatureXProtein/">EncodedFeatureXProtein</a></td>
+<td>Captures the relationship between an encoded feature (RNA of some sort) and a protein.</td>
 <td>no</td>
 </tr>
 <tr>
@@ -484,6 +489,7 @@ domain_of:
 - Contig_x_EncodedFeature
 - ContigCollection_x_EncodedFeature
 - EncodedFeature_x_Feature
+- EncodedFeature_x_Protein
 range: cdm_encoded_feature_id
 required: true
 
@@ -547,7 +553,7 @@ required: true
       
         <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
       
-        <script src="../javascripts/tablesort.js"></script>
+        <script src="../js/tablesort.js"></script>
       
     
   </body>

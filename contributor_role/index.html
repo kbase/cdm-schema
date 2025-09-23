@@ -416,7 +416,7 @@ Alias: contributor_role</p>
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../ContributorToDataSource/">ContributorToDataSource</a></td>
+<td><a href="../ContributorXDataSource/">ContributorXDataSource</a></td>
 <td>Captures the people and/or organizations involved in producing a dataset; ideally the contributor_role field will capture how the contributor was involved.</td>
 <td>yes</td>
 </tr>
@@ -462,8 +462,8 @@ rank: 1000
 slot_uri: schema:Role
 alias: contributor_role
 domain_of:
+- Contributor_x_DataSource
 - Contributor_x_Role_x_Project
-- Contributor_to_DataSource
 range: ContributorRole
 
 </code></pre>
@@ -526,7 +526,7 @@ range: ContributorRole
       
         <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
       
-        <script src="../javascripts/tablesort.js"></script>
+        <script src="../js/tablesort.js"></script>
       
     
   </body>

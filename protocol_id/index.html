@@ -413,18 +413,18 @@ Alias: protocol_id</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../OrderedProtocolStep/">OrderedProtocolStep</a></td>
-<td>A list of the steps in a protocol; the step_index indicates the order in which they should be executed.</td>
+<td><a href="../ProtocolExecution/">ProtocolExecution</a></td>
+<td>An instance of executing a protocol. Used for</td>
 <td>no</td>
-</tr>
-<tr>
-<td><a href="../Protocol/">Protocol</a></td>
-<td>A defined method or set of methods.</td>
-<td>yes</td>
 </tr>
 <tr>
 <td><a href="../Feature/">Feature</a></td>
 <td>A feature localized to an interval along a contig.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../OrderedProtocolStep/">OrderedProtocolStep</a></td>
+<td>A list of the steps in a protocol; the step_index indicates the order in which they should be executed.</td>
 <td>no</td>
 </tr>
 <tr>
@@ -433,18 +433,18 @@ Alias: protocol_id</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../ProtocolExecution/">ProtocolExecution</a></td>
-<td>An instance of executing a protocol. Used for</td>
+<td><a href="../ProtocolVariable/">ProtocolVariable</a></td>
+<td>A variable that may or may not be set as part of an experiment.</td>
 <td>no</td>
+</tr>
+<tr>
+<td><a href="../Protocol/">Protocol</a></td>
+<td>A defined method or set of methods.</td>
+<td>yes</td>
 </tr>
 <tr>
 <td><a href="../Experiment/">Experiment</a></td>
 <td>A discrete scientific procedure undertaken to make a discovery, test a hypothesis, or demonstrate a known fact. The protocol_id links to the workflow followed to perform the experiment.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ProtocolVariable/">ProtocolVariable</a></td>
-<td>A variable that may or may not be set as part of an experiment.</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -497,12 +497,12 @@ slot_uri: CDM:protocol_id
 alias: protocol_id
 domain_of:
 - Cluster
-- Feature
 - Experiment
 - OrderedProtocolStep
 - Protocol
 - ProtocolExecution
 - ProtocolVariable
+- Feature
 range: cdm_protocol_id
 required: true
 
@@ -566,7 +566,7 @@ required: true
       
         <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
       
-        <script src="../javascripts/tablesort.js"></script>
+        <script src="../js/tablesort.js"></script>
       
     
   </body>

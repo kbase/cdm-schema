@@ -413,16 +413,6 @@ Alias: contributor_id</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../ContributorAffiliations/">ContributorAffiliations</a></td>
-<td>Captures relationships between contributors where one contributor is part of another contributor, e.g. a member of a group or a group that is part of a larger organization.</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../ContributorToDataSource/">ContributorToDataSource</a></td>
-<td>Captures the people and/or organizations involved in producing a dataset; ideally the contributor_role field will capture how the contributor was involved.</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../ContributorXRoleXProject/">ContributorXRoleXProject</a></td>
 <td>Describes the participation of a contributor in a project; ideally the contributor_role field will capture how the contributor was involved.</td>
 <td>no</td>
@@ -430,6 +420,16 @@ Alias: contributor_id</p>
 <tr>
 <td><a href="../Contributor/">Contributor</a></td>
 <td>Represents a contributor to a resource.<br><br>Contributors must have a 'contributor_type', either 'Person' or 'Organization', and one of the 'name' fields: either 'given_name' and 'family_name' (for a person), or 'name' (for an organization or a person).<br><br>The 'contributor_role' field takes values from the DataCite and CRediT contributor roles vocabularies. For more information on these resources and choosing appropriate roles, please see the following links:<br><br>DataCite contributor roles: https://support.datacite.org/docs/datacite-metadata-schema-v44-recommended-and-optional-properties#7a-contributortype<br><br>CRediT contributor role taxonomy: https://credit.niso.org</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../ContributorXDataSource/">ContributorXDataSource</a></td>
+<td>Captures the people and/or organizations involved in producing a dataset; ideally the contributor_role field will capture how the contributor was involved.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ContributorAffiliation/">ContributorAffiliation</a></td>
+<td>Captures relationships between contributors where one contributor is part of another contributor, e.g. a member of a group or a group that is part of a larger organization.</td>
 <td>yes</td>
 </tr>
 </tbody>
@@ -481,9 +481,9 @@ rank: 1000
 alias: contributor_id
 domain_of:
 - Contributor
-- ContributorAffiliations
+- ContributorAffiliation
+- Contributor_x_DataSource
 - Contributor_x_Role_x_Project
-- Contributor_to_DataSource
 range: cdm_contributor_id
 required: true
 
@@ -547,7 +547,7 @@ required: true
       
         <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
       
-        <script src="../javascripts/tablesort.js"></script>
+        <script src="../js/tablesort.js"></script>
       
     
   </body>

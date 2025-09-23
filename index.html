@@ -483,7 +483,7 @@
 <tbody>
 <tr>
 <td><a href="Any/">Any</a></td>
-<td></td>
+<td>Used as a range for slots that have more than one possible type.</td>
 </tr>
 <tr>
 <td><a href="AttributeMixin/">AttributeMixin</a></td>
@@ -530,16 +530,12 @@
 <td>A generic class for capturing attribute-value information about an entity in a structured form.</td>
 </tr>
 <tr>
-<td><a href="FundingReference/">FundingReference</a></td>
-<td>Represents a funding source for a resource, including the funding body and the grant awarded.<br><br>One (or more) of the fields <code>grant_id</code>, <code>grant_url</code>, or <code>funder.organization_name</code> is required; others are optional.<br><br>Recommended resources for organization identifiers include:<br>  - Research Organization Registry, http://ror.org<br>  - International Standard Name Identifier, https://isni.org<br>  - Crossref Funder Registry, https://www.crossref.org/services/funder-registry/ (to be subsumed into ROR)<br><br>Some organizations may have a digital object identifier (DOI).</td>
-</tr>
-<tr>
-<td><a href="ResourceDescription/">ResourceDescription</a></td>
-<td>Textual information about the resource being represented.</td>
+<td><a href="Schema/">Schema</a></td>
+<td>The root class for the CDM schema.</td>
 </tr>
 <tr>
 <td><a href="Table/">Table</a></td>
-<td>root class for all schema entities</td>
+<td>Abstract class representing a table in the CDM schema.</td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Association/">Association</a></td>
@@ -583,7 +579,7 @@
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="EntailedEdge/">EntailedEdge</a></td>
-<td>A relation graph edge that is inferred. This table contains links between the nodes that appear as subjects in the <a href="Statements">Statements</a> table. The graph contains all possible links between nodes and is created using a reasoner such as <a href="https://github.com/balhoff/relation-graph">relation-graph</a> to materialise inferrred links.</td>
+<td>A relation graph edge that is inferred. This table contains links between the nodes that appear as subjects in the <a href="Statement">Statement</a> table. The graph contains all possible links between nodes and is created using a reasoner such as <a href="https://github.com/balhoff/relation-graph">relation-graph</a> to materialise inferrred links.</td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Entity/">Entity</a></td>
@@ -610,6 +606,10 @@
 <td>A feature localized to an interval along a contig.</td>
 </tr>
 <tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="FundingReference/">FundingReference</a></td>
+<td>Represents a funding source for a resource, including the funding body and the grant awarded.<br><br>One (or more) of the fields <code>grant_id</code>, <code>grant_url</code>, or <code>funder.organization_name</code> is required; others are optional.<br><br>Recommended resources for organization identifiers include:<br>  - Research Organization Registry, http://ror.org<br>  - International Standard Name Identifier, https://isni.org<br>  - Crossref Funder Registry, https://www.crossref.org/services/funder-registry/ (to be subsumed into ROR)<br><br>Some organizations may have a digital object identifier (DOI).</td>
+</tr>
+<tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="GoldEnvironmentalContext/">GoldEnvironmentalContext</a></td>
 <td>Environmental context, described using JGI's five level system.</td>
 </tr>
@@ -623,7 +623,7 @@
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="LinkerTable/">LinkerTable</a></td>
-<td>tables for linking between tables</td>
+<td>Tables for linking between tables.</td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="AssociationXSupportingObject/">AssociationXSupportingObject</a></td>
@@ -658,27 +658,27 @@
 <td>Captures the relationship between a contig collection and a protein; equivalent to protein is ribosomal translation of (http://purl.obolibrary.org/obo/RO_0002512) contig collection.</td>
 </tr>
 <tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ContributorToDataSource/">ContributorToDataSource</a></td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ContributorXDataSource/">ContributorXDataSource</a></td>
 <td>Captures the people and/or organizations involved in producing a dataset; ideally the contributor_role field will capture how the contributor was involved.</td>
 </tr>
 <tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ContributorAffiliations/">ContributorAffiliations</a></td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ContributorAffiliation/">ContributorAffiliation</a></td>
 <td>Captures relationships between contributors where one contributor is part of another contributor, e.g. a member of a group or a group that is part of a larger organization.</td>
 </tr>
 <tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="DataSourceDescription/">DataSourceDescription</a></td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="DataSourceXDescription/">DataSourceXDescription</a></td>
 <td>Links a data source to a description (e.g. the abstract or a free text description).</td>
 </tr>
 <tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="DataSourceFundingReference/">DataSourceFundingReference</a></td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="DataSourceXFundingReference/">DataSourceXFundingReference</a></td>
 <td>Links a data source to a funding reference.</td>
 </tr>
 <tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="DataSourceLicense/">DataSourceLicense</a></td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="DataSourceXLicense/">DataSourceXLicense</a></td>
 <td>Links a data source to a license.</td>
 </tr>
 <tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="DataSourceTitle/">DataSourceTitle</a></td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="DataSourceXTitle/">DataSourceXTitle</a></td>
 <td>Links a data source to a title.</td>
 </tr>
 <tr>
@@ -686,16 +686,20 @@
 <td>Captures the relationship between a feature and its transcription product.</td>
 </tr>
 <tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="FeatureXProtein/">FeatureXProtein</a></td>
-<td>Captures the relationship between a feature and a protein; equivalent to feature encodes protein.</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="EncodedFeatureXProtein/">EncodedFeatureXProtein</a></td>
+<td>Captures the relationship between an encoded feature (RNA of some sort) and a protein.</td>
 </tr>
 <tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="IdentifiedEntity/">IdentifiedEntity</a></td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="EntityIdentifiers/">EntityIdentifiers</a></td>
 <td>Represents the link between an entity and its identifiers.</td>
 </tr>
 <tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="NamedEntity/">NamedEntity</a></td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="EntityNames/">EntityNames</a></td>
 <td>Represents the link between an entity and its names.</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="FeatureXProtein/">FeatureXProtein</a></td>
+<td>Captures the relationship between a feature and a protein; equivalent to feature encodes protein.</td>
 </tr>
 <tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ProtocolVariable/">ProtocolVariable</a></td>
@@ -766,6 +770,10 @@
 <td>A publication (e.g. journal article).</td>
 </tr>
 <tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ResourceDescription/">ResourceDescription</a></td>
+<td>Textual information about the resource being represented.</td>
+</tr>
+<tr>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="ResourceTitle/">ResourceTitle</a></td>
 <td>Represents the title or name of a resource, the type of that title, and the language used (if appropriate).<br><br>The <code>title</code> field is required; <code>title_type</code> is only necessary if the text is not the primary title.</td>
 </tr>
@@ -778,7 +786,7 @@
 <td>A sequence of nucleotides or amino acids.</td>
 </tr>
 <tr>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Statements/">Statements</a></td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="Statement/">Statement</a></td>
 <td>Represents an RDF triple, a statement in the form "<em>subject</em> <em>predicate</em> <em>object</em>" or "<em>subject</em> <em>predicate</em> <em>value</em>".<br><br>See <a href="https://incatools.github.io/semantic-sql/">Semantic SQL</a> for more information on the contents of this table and how it is populated.</td>
 </tr>
 <tr>
@@ -825,6 +833,14 @@
 <td>Internal (CDM) unique identifier for an association.</td>
 </tr>
 <tr>
+<td><a href="association_x_supporting_objects/">association_x_supporting_objects</a></td>
+<td>All association x supporting object records in the schema.</td>
+</tr>
+<tr>
+<td><a href="associations/">associations</a></td>
+<td>All associations in the schema.</td>
+</tr>
+<tr>
 <td><a href="attribute_cv_id/">attribute_cv_id</a></td>
 <td>The attribute being represented. For attributes that are in a controlled vocabulary, ontology, or enumeration, this attribute should capture the term ID from the controlled vocabulary.</td>
 </tr>
@@ -869,6 +885,14 @@
 <td>Internal (CDM) unique identifier for a cluster.<br>From the Entity table: entity_id where entity_type == 'Cluster'.</td>
 </tr>
 <tr>
+<td><a href="cluster_members/">cluster_members</a></td>
+<td>All cluster members in the schema.</td>
+</tr>
+<tr>
+<td><a href="clusters/">clusters</a></td>
+<td>All clusters in the schema.</td>
+</tr>
+<tr>
 <td><a href="comments/">comments</a></td>
 <td>Any comments about the association.</td>
 </tr>
@@ -883,6 +907,22 @@
 <tr>
 <td><a href="contig_collection_type/">contig_collection_type</a></td>
 <td>The type of contig collection.</td>
+</tr>
+<tr>
+<td><a href="contig_collection_x_encoded_features/">contig_collection_x_encoded_features</a></td>
+<td>All contig collection x encoded feature records in the schema.</td>
+</tr>
+<tr>
+<td><a href="contig_collection_x_features/">contig_collection_x_features</a></td>
+<td>All contig collection x feature records in the schema.</td>
+</tr>
+<tr>
+<td><a href="contig_collection_x_proteins/">contig_collection_x_proteins</a></td>
+<td>All contig collection x protein records in the schema.</td>
+</tr>
+<tr>
+<td><a href="contig_collections/">contig_collections</a></td>
+<td>All contig collections in the schema.</td>
 </tr>
 <tr>
 <td><a href="contig_id/">contig_id</a></td>
@@ -917,6 +957,30 @@
 <td>Powersum of all contigs is the same as logsum except that it uses the sum of (length*(length^P)) for some power P (default P=0.25)</td>
 </tr>
 <tr>
+<td><a href="contig_x_contig_collections/">contig_x_contig_collections</a></td>
+<td>All contig x contig collection records in the schema.</td>
+</tr>
+<tr>
+<td><a href="contig_x_encoded_features/">contig_x_encoded_features</a></td>
+<td>All contig x encoded feature records in the schema.</td>
+</tr>
+<tr>
+<td><a href="contig_x_features/">contig_x_features</a></td>
+<td>All contig x feature records in the schema.</td>
+</tr>
+<tr>
+<td><a href="contig_x_proteins/">contig_x_proteins</a></td>
+<td>All contig x protein records in the schema.</td>
+</tr>
+<tr>
+<td><a href="contigs/">contigs</a></td>
+<td>All contigs in the schema.</td>
+</tr>
+<tr>
+<td><a href="contributor_affiliations/">contributor_affiliations</a></td>
+<td>All contributor affiliations in the schema.</td>
+</tr>
+<tr>
 <td><a href="contributor_id/">contributor_id</a></td>
 <td>Internal (CDM) unique identifier for a contributor.<br>From the Entity table: entity_id where entity_type == 'Contributor'.</td>
 </tr>
@@ -927,6 +991,14 @@
 <tr>
 <td><a href="contributor_type/">contributor_type</a></td>
 <td>Must be either 'Person' or 'Organization'.</td>
+</tr>
+<tr>
+<td><a href="contributor_x_role_x_project/">contributor_x_role_x_project</a></td>
+<td>All contributor x role x project records in the schema.</td>
+</tr>
+<tr>
+<td><a href="contributors/">contributors</a></td>
+<td>All contributors in the schema.</td>
 </tr>
 <tr>
 <td><a href="created/">created</a></td>
@@ -951,6 +1023,26 @@
 <tr>
 <td><a href="data_source_updated/">data_source_updated</a></td>
 <td>Date/timestamp for when the entity was updated in the data source.</td>
+</tr>
+<tr>
+<td><a href="data_source_x_descriptions/">data_source_x_descriptions</a></td>
+<td>All data source descriptions in the schema.</td>
+</tr>
+<tr>
+<td><a href="data_source_x_funding_references/">data_source_x_funding_references</a></td>
+<td>All data source x funding reference records in the schema.</td>
+</tr>
+<tr>
+<td><a href="data_source_x_licenses/">data_source_x_licenses</a></td>
+<td>All data source x license records in the schema.</td>
+</tr>
+<tr>
+<td><a href="data_source_x_titles/">data_source_x_titles</a></td>
+<td>All data source x title records in the schema.</td>
+</tr>
+<tr>
+<td><a href="data_sources/">data_sources</a></td>
+<td>All data sources in the schema.</td>
 </tr>
 <tr>
 <td><a href="datatype/">datatype</a></td>
@@ -1017,12 +1109,44 @@
 <td>Internal (CDM) unique identifier for an encoded feature.<br>From the Entity table: entity_id where entity_type == 'EncodedFeature'.</td>
 </tr>
 <tr>
+<td><a href="encoded_feature_x_features/">encoded_feature_x_features</a></td>
+<td>All encoded feature x feature records in the schema.</td>
+</tr>
+<tr>
+<td><a href="encoded_feature_x_proteins/">encoded_feature_x_proteins</a></td>
+<td>All encoded feature x protein records in the schema.</td>
+</tr>
+<tr>
+<td><a href="encoded_features/">encoded_features</a></td>
+<td>All encoded features in the schema.</td>
+</tr>
+<tr>
 <td><a href="end/">end</a></td>
 <td>The start and end coordinates of the feature are given in positive 1-based int coordinates, relative to the landmark given in column one. Start is always less than or equal to end. For features that cross the origin of a circular feature (e.g. most bacterial genomes, plasmids, and some viral genomes), the requirement for start to be less than or equal to end is satisfied by making end = the position of the end + the length of the landmark feature. For zero-length features, such as insertion sites, start equals end and the implied site is to the right of the indicated base in the direction of the landmark.</td>
 </tr>
 <tr>
+<td><a href="entailed_edges/">entailed_edges</a></td>
+<td>All entailed edges in the schema.</td>
+</tr>
+<tr>
+<td><a href="entities/">entities</a></td>
+<td>All entities in the schema.</td>
+</tr>
+<tr>
+<td><a href="entity_attribute_values/">entity_attribute_values</a></td>
+<td>All entity attribute values in the schema.</td>
+</tr>
+<tr>
 <td><a href="entity_id/">entity_id</a></td>
 <td>Internal (CDM) unique identifier for an entity.</td>
+</tr>
+<tr>
+<td><a href="entity_identifiers/">entity_identifiers</a></td>
+<td>All identifier x entity records in the schema.</td>
+</tr>
+<tr>
+<td><a href="entity_names/">entity_names</a></td>
+<td>All name x entity records in the schema.</td>
 </tr>
 <tr>
 <td><a href="entity_type/">entity_type</a></td>
@@ -1045,6 +1169,10 @@
 <td>Internal (CDM) unique identifier for an event.</td>
 </tr>
 <tr>
+<td><a href="events/">events</a></td>
+<td>All events in the schema.</td>
+</tr>
+<tr>
 <td><a href="evidence_for_existence/">evidence_for_existence</a></td>
 <td>The evidence that this protein exists. For example, the protein may have been isolated from a cell, or it may be predicted based on sequence features.</td>
 </tr>
@@ -1061,8 +1189,20 @@
 <td>Internal (CDM) unique identifier for a set of experimental conditions.</td>
 </tr>
 <tr>
+<td><a href="experiment_condition_sets/">experiment_condition_sets</a></td>
+<td>All experiment condition sets in the schema.</td>
+</tr>
+<tr>
+<td><a href="experiment_conditions/">experiment_conditions</a></td>
+<td>All experiment conditions in the schema.</td>
+</tr>
+<tr>
 <td><a href="experiment_id/">experiment_id</a></td>
 <td>Internal (CDM) unique identifier for an experiment.</td>
+</tr>
+<tr>
+<td><a href="experiments/">experiments</a></td>
+<td>All experiments in the schema.</td>
 </tr>
 <tr>
 <td><a href="family_name/">family_name</a></td>
@@ -1073,12 +1213,24 @@
 <td>Internal (CDM) unique identifier for a feature.<br>From the Entity table: entity_id where entity_type == 'Feature'.</td>
 </tr>
 <tr>
+<td><a href="feature_x_proteins/">feature_x_proteins</a></td>
+<td>All feature x protein records in the schema.</td>
+</tr>
+<tr>
+<td><a href="features/">features</a></td>
+<td>All features in the schema.</td>
+</tr>
+<tr>
 <td><a href="funder/">funder</a></td>
 <td>The funder for the grant or award.</td>
 </tr>
 <tr>
 <td><a href="funding_reference_id/">funding_reference_id</a></td>
 <td>Internal (CDM) unique identifier for a specific source of funding -- e.g. a grant or award.<br>From the Entity table: entity_id where entity_type == 'FundingReference'.</td>
+</tr>
+<tr>
+<td><a href="funding_references/">funding_references</a></td>
+<td>All funding references in the schema.</td>
 </tr>
 <tr>
 <td><a href="gap_percent/">gap_percent</a></td>
@@ -1103,6 +1255,10 @@
 <tr>
 <td><a href="gold_environmental_context_id/">gold_environmental_context_id</a></td>
 <td>Internal (CDM) unique identifier for a GOLD environmental context.</td>
+</tr>
+<tr>
+<td><a href="gold_environmental_contexts/">gold_environmental_contexts</a></td>
+<td>All GOLD environmental contexts in the schema.</td>
 </tr>
 <tr>
 <td><a href="grant_id/">grant_id</a></td>
@@ -1137,6 +1293,10 @@
 <td>Fully-qualified URL or CURIE used as an identifier for an entity.</td>
 </tr>
 <tr>
+<td><a href="identifiers/">identifiers</a></td>
+<td>All identifiers in the schema.</td>
+</tr>
+<tr>
 <td><a href="is_representative/">is_representative</a></td>
 <td>Whether or not this member is the representative for the cluster. If 'is_representative' is false, it is assumed that this is a cluster member.</td>
 </tr>
@@ -1165,6 +1325,10 @@
 <td>Unique identifier for a license.</td>
 </tr>
 <tr>
+<td><a href="licenses/">licenses</a></td>
+<td>All licenses in the schema.</td>
+</tr>
+<tr>
 <td><a href="location/">location</a></td>
 <td>The location for this event. May be described in terms of coordinates.</td>
 </tr>
@@ -1185,12 +1349,24 @@
 <td>Internal (CDM) unique identifier for a specified variable in a specified experiment.</td>
 </tr>
 <tr>
+<td><a href="measurement_sets/">measurement_sets</a></td>
+<td>All measurement sets in the schema.</td>
+</tr>
+<tr>
+<td><a href="measurements/">measurements</a></td>
+<td>All measurements in the schema.</td>
+</tr>
+<tr>
 <td><a href="minimum_numeric_value/">minimum_numeric_value</a></td>
 <td>The minimum value part, expressed as number, of the quantity value when the value covers a range.</td>
 </tr>
 <tr>
 <td><a href="mixs_environmental_context_id/">mixs_environmental_context_id</a></td>
 <td>Internal (CDM) unique identifier for a mixs environmental context.</td>
+</tr>
+<tr>
+<td><a href="mixs_environmental_contexts/">mixs_environmental_contexts</a></td>
+<td>All MIxS environmental contexts in the schema.</td>
 </tr>
 <tr>
 <td><a href="n_chromosomes/">n_chromosomes</a></td>
@@ -1213,6 +1389,10 @@
 <td>If the <code>name</code> is from a controlled vocabulary (CV), the curie of the controlled vocabulary term.</td>
 </tr>
 <tr>
+<td><a href="names/">names</a></td>
+<td>All names in the schema.</td>
+</tr>
+<tr>
 <td><a href="ncbi_taxon_id/">ncbi_taxon_id</a></td>
 <td>The NCBI taxon ID for this contig collection.</td>
 </tr>
@@ -1229,6 +1409,10 @@
 <td>Note the range of this slot is always a node. If the triple represents a literal, the "value" field will be populated instead.</td>
 </tr>
 <tr>
+<td><a href="ordered_protocol_steps/">ordered_protocol_steps</a></td>
+<td>All ordered protocol steps in the schema.</td>
+</tr>
+<tr>
 <td><a href="p_value/">p_value</a></td>
 <td>The 'score' of the feature. The semantics of this field are ill-defined. P-values should be used for ab initio gene prediction features.</td>
 </tr>
@@ -1241,12 +1425,20 @@
 <td>Whether the parameter applies to the protocol input or output.</td>
 </tr>
 <tr>
+<td><a href="parameters/">parameters</a></td>
+<td>All parameters in the schema.</td>
+</tr>
+<tr>
 <td><a href="predicate/">predicate</a></td>
 <td>The predicate of the statement</td>
 </tr>
 <tr>
 <td><a href="prefix/">prefix</a></td>
 <td>A standardized prefix such as 'GO' or 'rdf' or 'FlyBase'.</td>
+</tr>
+<tr>
+<td><a href="prefixes/">prefixes</a></td>
+<td>The prefix mappings for the schema.</td>
 </tr>
 <tr>
 <td><a href="primary_knowledge_source/">primary_knowledge_source</a></td>
@@ -1257,12 +1449,24 @@
 <td>Internal (CDM) unique identifier for a project.<br>From the Entity table: entity_id where entity_type == 'Project'.</td>
 </tr>
 <tr>
+<td><a href="projects/">projects</a></td>
+<td>All projects in the schema.</td>
+</tr>
+<tr>
 <td><a href="protein_id/">protein_id</a></td>
 <td>Internal (CDM) unique identifier for a protein.<br>From the Entity table: entity_id where entity_type == 'Protein'.</td>
 </tr>
 <tr>
+<td><a href="proteins/">proteins</a></td>
+<td>All proteins in the schema.</td>
+</tr>
+<tr>
 <td><a href="protocol_execution_id/">protocol_execution_id</a></td>
 <td>Internal CDM unique identifier for an execution of a protocol.</td>
+</tr>
+<tr>
+<td><a href="protocol_executions/">protocol_executions</a></td>
+<td>All protocol executions in the schema.</td>
 </tr>
 <tr>
 <td><a href="protocol_id/">protocol_id</a></td>
@@ -1277,20 +1481,48 @@
 <td>Internal CDM unique identifier for a set of input parameter values for a protocol.</td>
 </tr>
 <tr>
+<td><a href="protocol_input_sets/">protocol_input_sets</a></td>
+<td>All protocol input sets in the schema.</td>
+</tr>
+<tr>
+<td><a href="protocol_inputs/">protocol_inputs</a></td>
+<td>All protocol inputs in the schema.</td>
+</tr>
+<tr>
 <td><a href="protocol_output_id/">protocol_output_id</a></td>
 <td>Internal CDM unique identifier for the value of an output of a protocol.</td>
+</tr>
+<tr>
+<td><a href="protocol_outputs/">protocol_outputs</a></td>
+<td>All protocol outputs in the schema.</td>
 </tr>
 <tr>
 <td><a href="protocol_step_id/">protocol_step_id</a></td>
 <td>Internal CDM unique identifier for a step in a protocol.</td>
 </tr>
 <tr>
+<td><a href="protocol_steps/">protocol_steps</a></td>
+<td>All protocol steps in the schema.</td>
+</tr>
+<tr>
 <td><a href="protocol_variable_id/">protocol_variable_id</a></td>
 <td>Internal CDM unique identifier for a variable in a protocol.</td>
 </tr>
 <tr>
+<td><a href="protocol_variables/">protocol_variables</a></td>
+<td>All protocol variables in the schema.</td>
+</tr>
+<tr>
+<td><a href="protocols/">protocols</a></td>
+<td>All protocols in the schema.</td>
+</tr>
+<tr>
 <td><a href="publication_id/">publication_id</a></td>
 <td>Unique identifier for a publication - e.g. PMID, DOI, URL, etc.</td>
+</tr>
+<tr>
+<td><a href="publications/">publications</a></td>
+<td>All publications in the schema.</td>
 </tr>
 <tr>
 <td><a href="publisher/">publisher</a></td>
@@ -1317,8 +1549,16 @@
 <td>Unique identifier for a description for a resource.</td>
 </tr>
 <tr>
+<td><a href="resource_descriptions/">resource_descriptions</a></td>
+<td>All resource descriptions in the schema.</td>
+</tr>
+<tr>
 <td><a href="resource_title_id/">resource_title_id</a></td>
 <td>Unique identifier for a title for a resource.</td>
+</tr>
+<tr>
+<td><a href="resource_titles/">resource_titles</a></td>
+<td>All resource titles in the schema.</td>
 </tr>
 <tr>
 <td><a href="resource_type/">resource_type</a></td>
@@ -1327,6 +1567,10 @@
 <tr>
 <td><a href="sample_id/">sample_id</a></td>
 <td>Internal (CDM) unique identifier for a sample.<br>From the Entity table: entity_id where entity_type == 'Sample'.</td>
+</tr>
+<tr>
+<td><a href="samples/">samples</a></td>
+<td>All samples in the schema.</td>
 </tr>
 <tr>
 <td><a href="scaffold_bp/">scaffold_bp</a></td>
@@ -1385,6 +1629,10 @@
 <td>Internal (CDM) unique identifier for a sequence.<br>From the Entity table: entity_id where entity_type == 'Sequence'.</td>
 </tr>
 <tr>
+<td><a href="sequences/">sequences</a></td>
+<td>All sequences in the schema.</td>
+</tr>
+<tr>
 <td><a href="source/">source</a></td>
 <td>The source for a specific piece of information; should be a CDM internal ID of a source in the DataSource table.</td>
 </tr>
@@ -1399,6 +1647,10 @@
 <tr>
 <td><a href="start/">start</a></td>
 <td>The start and end coordinates of the feature are given in positive 1-based int coordinates, relative to the landmark given in column one. Start is always less than or equal to end. For features that cross the origin of a circular feature (e.g. most bacterial genomes, plasmids, and some viral genomes), the requirement for start to be less than or equal to end is satisfied by making end = the position of the end + the length of the landmark feature. For zero-length features, such as insertion sites, start equals end and the implied site is to the right of the indicated base in the direction of the landmark.</td>
+</tr>
+<tr>
+<td><a href="statements/">statements</a></td>
+<td>All statements in the schema.</td>
 </tr>
 <tr>
 <td><a href="step/">step</a></td>
@@ -1479,6 +1731,14 @@
 <tr>
 <td><a href="variable_value_id/">variable_value_id</a></td>
 <td>Internal CDM unique identifier for a variable value.</td>
+</tr>
+<tr>
+<td><a href="variable_values/">variable_values</a></td>
+<td>All variable values in the schema.</td>
+</tr>
+<tr>
+<td><a href="variables/">variables</a></td>
+<td>All variables in the schema.</td>
 </tr>
 <tr>
 <td><a href="version/">version</a></td>
@@ -1808,7 +2068,7 @@
       
         <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
       
-        <script src="javascripts/tablesort.js"></script>
+        <script src="js/tablesort.js"></script>
       
     
   </body>

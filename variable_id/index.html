@@ -411,9 +411,9 @@ Alias: variable_id</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../Variable/">Variable</a></td>
-<td>A variable (input, output, environmental, etc.) that can be set or measured as part of a protocol.</td>
-<td>yes</td>
+<td><a href="../VariableValue/">VariableValue</a></td>
+<td>The possible types for the value of a variable. Should be a LinkML data type or one of the defined CDM data types.</td>
+<td>no</td>
 </tr>
 <tr>
 <td><a href="../MeasurementSet/">MeasurementSet</a></td>
@@ -426,13 +426,13 @@ Alias: variable_id</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../ProtocolVariable/">ProtocolVariable</a></td>
-<td>A variable that may or may not be set as part of an experiment.</td>
-<td>no</td>
+<td><a href="../Variable/">Variable</a></td>
+<td>A variable (input, output, environmental, etc.) that can be set or measured as part of a protocol.</td>
+<td>yes</td>
 </tr>
 <tr>
-<td><a href="../VariableValue/">VariableValue</a></td>
-<td>The possible types for the value of a variable. Should be a LinkML data type or one of the defined CDM data types.</td>
+<td><a href="../ProtocolVariable/">ProtocolVariable</a></td>
+<td>A variable that may or may not be set as part of an experiment.</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -548,7 +548,7 @@ required: true
       
         <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
       
-        <script src="../javascripts/tablesort.js"></script>
+        <script src="../js/tablesort.js"></script>
       
     
   </body>

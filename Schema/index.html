@@ -1,0 +1,2659 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://kbase.github.io/cdm-schema/Schema/" rel="canonical"/>
+<link href="../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.6.19" name="generator"/>
+<title>Class: Schema - cdm-schema</title>
+<link href="../assets/stylesheets/main.7e37652d.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="indigo" data-md-color-primary="indigo" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#class-schema">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--shadow" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="cdm-schema" class="md-header__button md-logo" data-md-component="logo" href=".." title="cdm-schema">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            cdm-schema
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Class: Schema
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="indigo" data-md-color-media="" data-md-color-primary="indigo" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="indigo" data-md-color-media="" data-md-color-primary="indigo" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/kbase/cdm-schema" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4" fill="currentColor"></path></svg>
+</div>
+<div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="cdm-schema" class="md-nav__button md-logo" data-md-component="logo" href=".." title="cdm-schema">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    cdm-schema
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/kbase/cdm-schema" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4" fill="currentColor"></path></svg>
+</div>
+<div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="..">
+<span class="md-ellipsis">
+    Index
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../pages/about/">
+<span class="md-ellipsis">
+    About
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#slots">
+<span class="md-ellipsis">
+      Slots
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#identifier-and-mapping-information">
+<span class="md-ellipsis">
+      Identifier and Mapping Information
+    </span>
+</a>
+<nav aria-label="Identifier and Mapping Information" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#schema-source">
+<span class="md-ellipsis">
+      Schema Source
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#mappings">
+<span class="md-ellipsis">
+      Mappings
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#linkml-source">
+<span class="md-ellipsis">
+      LinkML Source
+    </span>
+</a>
+<nav aria-label="LinkML Source" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#direct">
+<span class="md-ellipsis">
+      Direct
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#induced">
+<span class="md-ellipsis">
+      Induced
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="class-schema">Class: Schema</h1>
+<p><em>The root class for the CDM schema.</em></p>
+<ul>
+<li><strong>NOTE</strong>: this is an abstract class and should not be instantiated directly</li>
+</ul>
+<p>URI: <a href="http://kbase.github.io/cdm-schema/linkml/Schema">kb_cdm:Schema</a></p>
+<div class="mermaid"> classDiagram
+    class Schema
+    click Schema href "../Schema/"
+      Schema : association_x_supporting_objects
+
+
+
+
+
+        Schema --&gt; "*" AssociationXSupportingObject : association_x_supporting_objects
+        click AssociationXSupportingObject href "../AssociationXSupportingObject/"
+
+
+
+      Schema : associations
+
+
+
+
+
+        Schema --&gt; "*" Association : associations
+        click Association href "../Association/"
+
+
+
+      Schema : cluster_members
+
+
+
+
+
+        Schema --&gt; "*" ClusterMember : cluster_members
+        click ClusterMember href "../ClusterMember/"
+
+
+
+      Schema : clusters
+
+
+
+
+
+        Schema --&gt; "*" Cluster : clusters
+        click Cluster href "../Cluster/"
+
+
+
+      Schema : contig_collection_x_encoded_features
+
+
+
+
+
+        Schema --&gt; "*" ContigCollectionXEncodedFeature : contig_collection_x_encoded_features
+        click ContigCollectionXEncodedFeature href "../ContigCollectionXEncodedFeature/"
+
+
+
+      Schema : contig_collection_x_features
+
+
+
+
+
+        Schema --&gt; "*" ContigCollectionXFeature : contig_collection_x_features
+        click ContigCollectionXFeature href "../ContigCollectionXFeature/"
+
+
+
+      Schema : contig_collection_x_proteins
+
+
+
+
+
+        Schema --&gt; "*" ContigCollectionXProtein : contig_collection_x_proteins
+        click ContigCollectionXProtein href "../ContigCollectionXProtein/"
+
+
+
+      Schema : contig_collections
+
+
+
+
+
+        Schema --&gt; "*" ContigCollection : contig_collections
+        click ContigCollection href "../ContigCollection/"
+
+
+
+      Schema : contig_x_contig_collections
+
+
+
+
+
+        Schema --&gt; "*" ContigXContigCollection : contig_x_contig_collections
+        click ContigXContigCollection href "../ContigXContigCollection/"
+
+
+
+      Schema : contig_x_encoded_features
+
+
+
+
+
+        Schema --&gt; "*" ContigXEncodedFeature : contig_x_encoded_features
+        click ContigXEncodedFeature href "../ContigXEncodedFeature/"
+
+
+
+      Schema : contig_x_features
+
+
+
+
+
+        Schema --&gt; "*" ContigXFeature : contig_x_features
+        click ContigXFeature href "../ContigXFeature/"
+
+
+
+      Schema : contig_x_proteins
+
+
+
+
+
+        Schema --&gt; "*" ContigXProtein : contig_x_proteins
+        click ContigXProtein href "../ContigXProtein/"
+
+
+
+      Schema : contigs
+
+
+
+
+
+        Schema --&gt; "*" Contig : contigs
+        click Contig href "../Contig/"
+
+
+
+      Schema : contributor_affiliations
+
+
+
+
+
+        Schema --&gt; "*" ContributorAffiliation : contributor_affiliations
+        click ContributorAffiliation href "../ContributorAffiliation/"
+
+
+
+      Schema : contributor_x_role_x_project
+
+
+
+
+
+        Schema --&gt; "*" ContributorXRoleXProject : contributor_x_role_x_project
+        click ContributorXRoleXProject href "../ContributorXRoleXProject/"
+
+
+
+      Schema : contributors
+
+
+
+
+
+        Schema --&gt; "*" Contributor : contributors
+        click Contributor href "../Contributor/"
+
+
+
+      Schema : data_source_x_descriptions
+
+
+
+
+
+        Schema --&gt; "*" DataSourceXDescription : data_source_x_descriptions
+        click DataSourceXDescription href "../DataSourceXDescription/"
+
+
+
+      Schema : data_source_x_funding_references
+
+
+
+
+
+        Schema --&gt; "*" DataSourceXFundingReference : data_source_x_funding_references
+        click DataSourceXFundingReference href "../DataSourceXFundingReference/"
+
+
+
+      Schema : data_source_x_licenses
+
+
+
+
+
+        Schema --&gt; "*" DataSourceXLicense : data_source_x_licenses
+        click DataSourceXLicense href "../DataSourceXLicense/"
+
+
+
+      Schema : data_source_x_titles
+
+
+
+
+
+        Schema --&gt; "*" DataSourceXTitle : data_source_x_titles
+        click DataSourceXTitle href "../DataSourceXTitle/"
+
+
+
+      Schema : data_sources
+
+
+
+
+
+        Schema --&gt; "*" DataSourceNew : data_sources
+        click DataSourceNew href "../DataSourceNew/"
+
+
+
+      Schema : encoded_feature_x_features
+
+
+
+
+
+        Schema --&gt; "*" EncodedFeatureXFeature : encoded_feature_x_features
+        click EncodedFeatureXFeature href "../EncodedFeatureXFeature/"
+
+
+
+      Schema : encoded_feature_x_proteins
+
+
+
+
+
+        Schema --&gt; "*" EncodedFeatureXProtein : encoded_feature_x_proteins
+        click EncodedFeatureXProtein href "../EncodedFeatureXProtein/"
+
+
+
+      Schema : encoded_features
+
+
+
+
+
+        Schema --&gt; "*" EncodedFeature : encoded_features
+        click EncodedFeature href "../EncodedFeature/"
+
+
+
+      Schema : entailed_edges
+
+
+
+
+
+        Schema --&gt; "*" EntailedEdge : entailed_edges
+        click EntailedEdge href "../EntailedEdge/"
+
+
+
+      Schema : entities
+
+
+
+
+
+        Schema --&gt; "*" Entity : entities
+        click Entity href "../Entity/"
+
+
+
+      Schema : entity_attribute_values
+
+
+
+
+
+        Schema --&gt; "*" EntityAttributeValue : entity_attribute_values
+        click EntityAttributeValue href "../EntityAttributeValue/"
+
+
+
+      Schema : entity_identifiers
+
+
+
+
+
+        Schema --&gt; "*" EntityIdentifiers : entity_identifiers
+        click EntityIdentifiers href "../EntityIdentifiers/"
+
+
+
+      Schema : entity_names
+
+
+
+
+
+        Schema --&gt; "*" EntityNames : entity_names
+        click EntityNames href "../EntityNames/"
+
+
+
+      Schema : events
+
+
+
+
+
+        Schema --&gt; "*" Event : events
+        click Event href "../Event/"
+
+
+
+      Schema : experiment_condition_sets
+
+
+
+
+
+        Schema --&gt; "*" ExperimentConditionSet : experiment_condition_sets
+        click ExperimentConditionSet href "../ExperimentConditionSet/"
+
+
+
+      Schema : experiment_conditions
+
+
+
+
+
+        Schema --&gt; "*" ExperimentCondition : experiment_conditions
+        click ExperimentCondition href "../ExperimentCondition/"
+
+
+
+      Schema : experiments
+
+
+
+
+
+        Schema --&gt; "*" Experiment : experiments
+        click Experiment href "../Experiment/"
+
+
+
+      Schema : feature_x_proteins
+
+
+
+
+
+        Schema --&gt; "*" FeatureXProtein : feature_x_proteins
+        click FeatureXProtein href "../FeatureXProtein/"
+
+
+
+      Schema : features
+
+
+
+
+
+        Schema --&gt; "*" Feature : features
+        click Feature href "../Feature/"
+
+
+
+      Schema : funding_references
+
+
+
+
+
+        Schema --&gt; "*" FundingReference : funding_references
+        click FundingReference href "../FundingReference/"
+
+
+
+      Schema : gold_environmental_contexts
+
+
+
+
+
+        Schema --&gt; "*" GoldEnvironmentalContext : gold_environmental_contexts
+        click GoldEnvironmentalContext href "../GoldEnvironmentalContext/"
+
+
+
+      Schema : identifiers
+
+
+
+
+
+        Schema --&gt; "*" Identifier : identifiers
+        click Identifier href "../Identifier/"
+
+
+
+      Schema : licenses
+
+
+
+
+
+        Schema --&gt; "*" License : licenses
+        click License href "../License/"
+
+
+
+      Schema : measurement_sets
+
+
+
+
+
+        Schema --&gt; "*" MeasurementSet : measurement_sets
+        click MeasurementSet href "../MeasurementSet/"
+
+
+
+      Schema : measurements
+
+
+
+
+
+        Schema --&gt; "*" Measurement : measurements
+        click Measurement href "../Measurement/"
+
+
+
+      Schema : mixs_environmental_contexts
+
+
+
+
+
+        Schema --&gt; "*" MixsEnvironmentalContext : mixs_environmental_contexts
+        click MixsEnvironmentalContext href "../MixsEnvironmentalContext/"
+
+
+
+      Schema : names
+
+
+
+
+
+        Schema --&gt; "*" Name : names
+        click Name href "../Name/"
+
+
+
+      Schema : ordered_protocol_steps
+
+
+
+
+
+        Schema --&gt; "*" OrderedProtocolStep : ordered_protocol_steps
+        click OrderedProtocolStep href "../OrderedProtocolStep/"
+
+
+
+      Schema : parameters
+
+
+
+
+
+        Schema --&gt; "*" Parameter : parameters
+        click Parameter href "../Parameter/"
+
+
+
+      Schema : prefixes
+
+
+
+
+
+        Schema --&gt; "*" Prefix : prefixes
+        click Prefix href "../Prefix/"
+
+
+
+      Schema : projects
+
+
+
+
+
+        Schema --&gt; "*" Project : projects
+        click Project href "../Project/"
+
+
+
+      Schema : proteins
+
+
+
+
+
+        Schema --&gt; "*" Protein : proteins
+        click Protein href "../Protein/"
+
+
+
+      Schema : protocol_executions
+
+
+
+
+
+        Schema --&gt; "*" ProtocolExecution : protocol_executions
+        click ProtocolExecution href "../ProtocolExecution/"
+
+
+
+      Schema : protocol_input_sets
+
+
+
+
+
+        Schema --&gt; "*" ProtocolInputSet : protocol_input_sets
+        click ProtocolInputSet href "../ProtocolInputSet/"
+
+
+
+      Schema : protocol_inputs
+
+
+
+
+
+        Schema --&gt; "*" ProtocolInput : protocol_inputs
+        click ProtocolInput href "../ProtocolInput/"
+
+
+
+      Schema : protocol_outputs
+
+
+
+
+
+        Schema --&gt; "*" ProtocolOutput : protocol_outputs
+        click ProtocolOutput href "../ProtocolOutput/"
+
+
+
+      Schema : protocol_steps
+
+
+
+
+
+        Schema --&gt; "*" ProtocolStep : protocol_steps
+        click ProtocolStep href "../ProtocolStep/"
+
+
+
+      Schema : protocol_variables
+
+
+
+
+
+        Schema --&gt; "*" ProtocolVariable : protocol_variables
+        click ProtocolVariable href "../ProtocolVariable/"
+
+
+
+      Schema : protocols
+
+
+
+
+
+        Schema --&gt; "*" Protocol : protocols
+        click Protocol href "../Protocol/"
+
+
+
+      Schema : publications
+
+
+
+
+
+        Schema --&gt; "*" Publication : publications
+        click Publication href "../Publication/"
+
+
+
+      Schema : resource_descriptions
+
+
+
+
+
+        Schema --&gt; "*" ResourceDescription : resource_descriptions
+        click ResourceDescription href "../ResourceDescription/"
+
+
+
+      Schema : resource_titles
+
+
+
+
+
+        Schema --&gt; "*" ResourceTitle : resource_titles
+        click ResourceTitle href "../ResourceTitle/"
+
+
+
+      Schema : samples
+
+
+
+
+
+        Schema --&gt; "*" Sample : samples
+        click Sample href "../Sample/"
+
+
+
+      Schema : sequences
+
+
+
+
+
+        Schema --&gt; "*" Sequence : sequences
+        click Sequence href "../Sequence/"
+
+
+
+      Schema : statements
+
+
+
+
+
+        Schema --&gt; "*" Statement : statements
+        click Statement href "../Statement/"
+
+
+
+      Schema : variable_values
+
+
+
+
+
+        Schema --&gt; "*" VariableValue : variable_values
+        click VariableValue href "../VariableValue/"
+
+
+
+      Schema : variables
+
+
+
+
+
+        Schema --&gt; "*" Variable : variables
+        click Variable href "../Variable/"
+
+
+
+
+</div>
+<!-- no inheritance hierarchy -->
+<h2 id="slots">Slots</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Cardinality and Range</th>
+<th>Description</th>
+<th>Inheritance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../entities/">entities</a></td>
+<td>* <br/> <a href="../Entity/">Entity</a></td>
+<td>All entities in the schema.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../names/">names</a></td>
+<td>* <br/> <a href="../Name/">Name</a></td>
+<td>All names in the schema.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../identifiers/">identifiers</a></td>
+<td>* <br/> <a href="../Identifier/">Identifier</a></td>
+<td>All identifiers in the schema.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../entity_names/">entity_names</a></td>
+<td>* <br/> <a href="../EntityNames/">EntityNames</a></td>
+<td>All name x entity records in the schema.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../entity_identifiers/">entity_identifiers</a></td>
+<td>* <br/> <a href="../EntityIdentifiers/">EntityIdentifiers</a></td>
+<td>All identifier x entity records in the schema.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../entity_attribute_values/">entity_attribute_values</a></td>
+<td>* <br/> <a href="../EntityAttributeValue/">EntityAttributeValue</a></td>
+<td>All entity attribute values in the schema.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../associations/">associations</a></td>
+<td>* <br/> <a href="../Association/">Association</a></td>
+<td>All associations in the schema.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../clusters/">clusters</a></td>
+<td>* <br/> <a href="../Cluster/">Cluster</a></td>
+<td>All clusters in the schema.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../cluster_members/">cluster_members</a></td>
+<td>* <br/> <a href="../ClusterMember/">ClusterMember</a></td>
+<td>All cluster members in the schema.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../events/">events</a></td>
+<td>* <br/> <a href="../Event/">Event</a></td>
+<td>All events in the schema.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../gold_environmental_contexts/">gold_environmental_contexts</a></td>
+<td>* <br/> <a href="../GoldEnvironmentalContext/">GoldEnvironmentalContext</a></td>
+<td>All GOLD environmental contexts in the schema.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../mixs_environmental_contexts/">mixs_environmental_contexts</a></td>
+<td>* <br/> <a href="../MixsEnvironmentalContext/">MixsEnvironmentalContext</a></td>
+<td>All MIxS environmental contexts in the schema.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../contributors/">contributors</a></td>
+<td>* <br/> <a href="../Contributor/">Contributor</a></td>
+<td>All contributors in the schema.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../contributor_affiliations/">contributor_affiliations</a></td>
+<td>* <br/> <a href="../ContributorAffiliation/">ContributorAffiliation</a></td>
+<td>All contributor affiliations in the schema.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../contributor_x_role_x_project/">contributor_x_role_x_project</a></td>
+<td>* <br/> <a href="../ContributorXRoleXProject/">ContributorXRoleXProject</a></td>
+<td>All contributor x role x project records in the schema.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../data_sources/">data_sources</a></td>
+<td>* <br/> <a href="../DataSourceNew/">DataSourceNew</a></td>
+<td>All data sources in the schema.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../data_source_x_descriptions/">data_source_x_descriptions</a></td>
+<td>* <br/> <a href="../DataSourceXDescription/">DataSourceXDescription</a></td>
+<td>All data source descriptions in the schema.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../data_source_x_funding_references/">data_source_x_funding_references</a></td>
+<td>* <br/> <a href="../DataSourceXFundingReference/">DataSourceXFundingReference</a></td>
+<td>All data source x funding reference records in the schema.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../data_source_x_licenses/">data_source_x_licenses</a></td>
+<td>* <br/> <a href="../DataSourceXLicense/">DataSourceXLicense</a></td>
+<td>All data source x license records in the schema.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../data_source_x_titles/">data_source_x_titles</a></td>
+<td>* <br/> <a href="../DataSourceXTitle/">DataSourceXTitle</a></td>
+<td>All data source x title records in the schema.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../funding_references/">funding_references</a></td>
+<td>* <br/> <a href="../FundingReference/">FundingReference</a></td>
+<td>All funding references in the schema.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../licenses/">licenses</a></td>
+<td>* <br/> <a href="../License/">License</a></td>
+<td>All licenses in the schema.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../projects/">projects</a></td>
+<td>* <br/> <a href="../Project/">Project</a></td>
+<td>All projects in the schema.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../publications/">publications</a></td>
+<td>* <br/> <a href="../Publication/">Publication</a></td>
+<td>All publications in the schema.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../resource_descriptions/">resource_descriptions</a></td>
+<td>* <br/> <a href="../ResourceDescription/">ResourceDescription</a></td>
+<td>All resource descriptions in the schema.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../resource_titles/">resource_titles</a></td>
+<td>* <br/> <a href="../ResourceTitle/">ResourceTitle</a></td>
+<td>All resource titles in the schema.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../prefixes/">prefixes</a></td>
+<td>* <br/> <a href="../Prefix/">Prefix</a></td>
+<td>The prefix mappings for the schema.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../statements/">statements</a></td>
+<td>* <br/> <a href="../Statement/">Statement</a></td>
+<td>All statements in the schema.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../entailed_edges/">entailed_edges</a></td>
+<td>* <br/> <a href="../EntailedEdge/">EntailedEdge</a></td>
+<td>All entailed edges in the schema.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../contigs/">contigs</a></td>
+<td>* <br/> <a href="../Contig/">Contig</a></td>
+<td>All contigs in the schema.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../contig_collections/">contig_collections</a></td>
+<td>* <br/> <a href="../ContigCollection/">ContigCollection</a></td>
+<td>All contig collections in the schema.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../encoded_features/">encoded_features</a></td>
+<td>* <br/> <a href="../EncodedFeature/">EncodedFeature</a></td>
+<td>All encoded features in the schema.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../features/">features</a></td>
+<td>* <br/> <a href="../Feature/">Feature</a></td>
+<td>All features in the schema.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../proteins/">proteins</a></td>
+<td>* <br/> <a href="../Protein/">Protein</a></td>
+<td>All proteins in the schema.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../samples/">samples</a></td>
+<td>* <br/> <a href="../Sample/">Sample</a></td>
+<td>All samples in the schema.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../sequences/">sequences</a></td>
+<td>* <br/> <a href="../Sequence/">Sequence</a></td>
+<td>All sequences in the schema.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../experiments/">experiments</a></td>
+<td>* <br/> <a href="../Experiment/">Experiment</a></td>
+<td>All experiments in the schema.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../experiment_conditions/">experiment_conditions</a></td>
+<td>* <br/> <a href="../ExperimentCondition/">ExperimentCondition</a></td>
+<td>All experiment conditions in the schema.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../experiment_condition_sets/">experiment_condition_sets</a></td>
+<td>* <br/> <a href="../ExperimentConditionSet/">ExperimentConditionSet</a></td>
+<td>All experiment condition sets in the schema.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../measurements/">measurements</a></td>
+<td>* <br/> <a href="../Measurement/">Measurement</a></td>
+<td>All measurements in the schema.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../measurement_sets/">measurement_sets</a></td>
+<td>* <br/> <a href="../MeasurementSet/">MeasurementSet</a></td>
+<td>All measurement sets in the schema.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../ordered_protocol_steps/">ordered_protocol_steps</a></td>
+<td>* <br/> <a href="../OrderedProtocolStep/">OrderedProtocolStep</a></td>
+<td>All ordered protocol steps in the schema.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../parameters/">parameters</a></td>
+<td>* <br/> <a href="../Parameter/">Parameter</a></td>
+<td>All parameters in the schema.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../protocols/">protocols</a></td>
+<td>* <br/> <a href="../Protocol/">Protocol</a></td>
+<td>All protocols in the schema.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../protocol_executions/">protocol_executions</a></td>
+<td>* <br/> <a href="../ProtocolExecution/">ProtocolExecution</a></td>
+<td>All protocol executions in the schema.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../protocol_inputs/">protocol_inputs</a></td>
+<td>* <br/> <a href="../ProtocolInput/">ProtocolInput</a></td>
+<td>All protocol inputs in the schema.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../protocol_input_sets/">protocol_input_sets</a></td>
+<td>* <br/> <a href="../ProtocolInputSet/">ProtocolInputSet</a></td>
+<td>All protocol input sets in the schema.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../protocol_outputs/">protocol_outputs</a></td>
+<td>* <br/> <a href="../ProtocolOutput/">ProtocolOutput</a></td>
+<td>All protocol outputs in the schema.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../protocol_steps/">protocol_steps</a></td>
+<td>* <br/> <a href="../ProtocolStep/">ProtocolStep</a></td>
+<td>All protocol steps in the schema.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../protocol_variables/">protocol_variables</a></td>
+<td>* <br/> <a href="../ProtocolVariable/">ProtocolVariable</a></td>
+<td>All protocol variables in the schema.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../variables/">variables</a></td>
+<td>* <br/> <a href="../Variable/">Variable</a></td>
+<td>All variables in the schema.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../variable_values/">variable_values</a></td>
+<td>* <br/> <a href="../VariableValue/">VariableValue</a></td>
+<td>All variable values in the schema.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../association_x_supporting_objects/">association_x_supporting_objects</a></td>
+<td>* <br/> <a href="../AssociationXSupportingObject/">AssociationXSupportingObject</a></td>
+<td>All association x supporting object records in the schema.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../contig_x_contig_collections/">contig_x_contig_collections</a></td>
+<td>* <br/> <a href="../ContigXContigCollection/">ContigXContigCollection</a></td>
+<td>All contig x contig collection records in the schema.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../contig_x_encoded_features/">contig_x_encoded_features</a></td>
+<td>* <br/> <a href="../ContigXEncodedFeature/">ContigXEncodedFeature</a></td>
+<td>All contig x encoded feature records in the schema.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../contig_x_features/">contig_x_features</a></td>
+<td>* <br/> <a href="../ContigXFeature/">ContigXFeature</a></td>
+<td>All contig x feature records in the schema.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../contig_x_proteins/">contig_x_proteins</a></td>
+<td>* <br/> <a href="../ContigXProtein/">ContigXProtein</a></td>
+<td>All contig x protein records in the schema.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../contig_collection_x_encoded_features/">contig_collection_x_encoded_features</a></td>
+<td>* <br/> <a href="../ContigCollectionXEncodedFeature/">ContigCollectionXEncodedFeature</a></td>
+<td>All contig collection x encoded feature records in the schema.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../contig_collection_x_features/">contig_collection_x_features</a></td>
+<td>* <br/> <a href="../ContigCollectionXFeature/">ContigCollectionXFeature</a></td>
+<td>All contig collection x feature records in the schema.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../contig_collection_x_proteins/">contig_collection_x_proteins</a></td>
+<td>* <br/> <a href="../ContigCollectionXProtein/">ContigCollectionXProtein</a></td>
+<td>All contig collection x protein records in the schema.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../encoded_feature_x_features/">encoded_feature_x_features</a></td>
+<td>* <br/> <a href="../EncodedFeatureXFeature/">EncodedFeatureXFeature</a></td>
+<td>All encoded feature x feature records in the schema.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../encoded_feature_x_proteins/">encoded_feature_x_proteins</a></td>
+<td>* <br/> <a href="../EncodedFeatureXProtein/">EncodedFeatureXProtein</a></td>
+<td>All encoded feature x protein records in the schema.</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../feature_x_proteins/">feature_x_proteins</a></td>
+<td>* <br/> <a href="../FeatureXProtein/">FeatureXProtein</a></td>
+<td>All feature x protein records in the schema.</td>
+<td>direct</td>
+</tr>
+</tbody>
+</table>
+<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="schema-source">Schema Source</h3>
+<ul>
+<li>from schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema</li>
+</ul>
+<h2 id="mappings">Mappings</h2>
+<table>
+<thead>
+<tr>
+<th>Mapping Type</th>
+<th>Mapped Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>self</td>
+<td>kb_cdm:Schema</td>
+</tr>
+<tr>
+<td>native</td>
+<td>kb_cdm:Schema</td>
+</tr>
+</tbody>
+</table>
+<h2 id="linkml-source">LinkML Source</h2>
+<!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
+<h3 id="direct">Direct</h3>
+<details>
+<pre><code class="language-yaml">name: Schema
+description: The root class for the CDM schema.
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+abstract: true
+attributes:
+  entities:
+    name: entities
+    description: All entities in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: Entity
+    multivalued: true
+  names:
+    name: names
+    description: All names in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: Name
+    multivalued: true
+  identifiers:
+    name: identifiers
+    description: All identifiers in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: Identifier
+    multivalued: true
+  entity_names:
+    name: entity_names
+    description: All name x entity records in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: EntityNames
+    multivalued: true
+  entity_identifiers:
+    name: entity_identifiers
+    description: All identifier x entity records in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: EntityIdentifiers
+    multivalued: true
+  entity_attribute_values:
+    name: entity_attribute_values
+    description: All entity attribute values in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: EntityAttributeValue
+    multivalued: true
+  associations:
+    name: associations
+    description: All associations in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: Association
+    multivalued: true
+  clusters:
+    name: clusters
+    description: All clusters in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: Cluster
+    multivalued: true
+  cluster_members:
+    name: cluster_members
+    description: All cluster members in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: ClusterMember
+    multivalued: true
+  events:
+    name: events
+    description: All events in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: Event
+    multivalued: true
+  gold_environmental_contexts:
+    name: gold_environmental_contexts
+    description: All GOLD environmental contexts in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: GoldEnvironmentalContext
+    multivalued: true
+  mixs_environmental_contexts:
+    name: mixs_environmental_contexts
+    description: All MIxS environmental contexts in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: MixsEnvironmentalContext
+    multivalued: true
+  contributors:
+    name: contributors
+    description: All contributors in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: Contributor
+    multivalued: true
+  contributor_affiliations:
+    name: contributor_affiliations
+    description: All contributor affiliations in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: ContributorAffiliation
+    multivalued: true
+  contributor_x_role_x_project:
+    name: contributor_x_role_x_project
+    description: All contributor x role x project records in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: Contributor_x_Role_x_Project
+    multivalued: true
+  data_sources:
+    name: data_sources
+    description: All data sources in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: DataSourceNew
+    multivalued: true
+  data_source_x_descriptions:
+    name: data_source_x_descriptions
+    description: All data source descriptions in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: DataSource_x_Description
+    multivalued: true
+  data_source_x_funding_references:
+    name: data_source_x_funding_references
+    description: All data source x funding reference records in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: DataSource_x_FundingReference
+    multivalued: true
+  data_source_x_licenses:
+    name: data_source_x_licenses
+    description: All data source x license records in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: DataSource_x_License
+    multivalued: true
+  data_source_x_titles:
+    name: data_source_x_titles
+    description: All data source x title records in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: DataSource_x_Title
+    multivalued: true
+  funding_references:
+    name: funding_references
+    description: All funding references in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: FundingReference
+    multivalued: true
+  licenses:
+    name: licenses
+    description: All licenses in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: License
+    multivalued: true
+  projects:
+    name: projects
+    description: All projects in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: Project
+    multivalued: true
+  publications:
+    name: publications
+    description: All publications in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: Publication
+    multivalued: true
+  resource_descriptions:
+    name: resource_descriptions
+    description: All resource descriptions in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: ResourceDescription
+    multivalued: true
+  resource_titles:
+    name: resource_titles
+    description: All resource titles in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: ResourceTitle
+    multivalued: true
+  prefixes:
+    name: prefixes
+    description: The prefix mappings for the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: Prefix
+    multivalued: true
+  statements:
+    name: statements
+    description: All statements in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: Statement
+    multivalued: true
+  entailed_edges:
+    name: entailed_edges
+    description: All entailed edges in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: EntailedEdge
+    multivalued: true
+  contigs:
+    name: contigs
+    description: All contigs in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: Contig
+    multivalued: true
+  contig_collections:
+    name: contig_collections
+    description: All contig collections in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: ContigCollection
+    multivalued: true
+  encoded_features:
+    name: encoded_features
+    description: All encoded features in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: EncodedFeature
+    multivalued: true
+  features:
+    name: features
+    description: All features in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: Feature
+    multivalued: true
+  proteins:
+    name: proteins
+    description: All proteins in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: Protein
+    multivalued: true
+  samples:
+    name: samples
+    description: All samples in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: Sample
+    multivalued: true
+  sequences:
+    name: sequences
+    description: All sequences in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: Sequence
+    multivalued: true
+  experiments:
+    name: experiments
+    description: All experiments in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: Experiment
+    multivalued: true
+  experiment_conditions:
+    name: experiment_conditions
+    description: All experiment conditions in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: ExperimentCondition
+    multivalued: true
+  experiment_condition_sets:
+    name: experiment_condition_sets
+    description: All experiment condition sets in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: ExperimentConditionSet
+    multivalued: true
+  measurements:
+    name: measurements
+    description: All measurements in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: Measurement
+    multivalued: true
+  measurement_sets:
+    name: measurement_sets
+    description: All measurement sets in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: MeasurementSet
+    multivalued: true
+  ordered_protocol_steps:
+    name: ordered_protocol_steps
+    description: All ordered protocol steps in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: OrderedProtocolStep
+    multivalued: true
+  parameters:
+    name: parameters
+    description: All parameters in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: Parameter
+    multivalued: true
+  protocols:
+    name: protocols
+    description: All protocols in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: Protocol
+    multivalued: true
+  protocol_executions:
+    name: protocol_executions
+    description: All protocol executions in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: ProtocolExecution
+    multivalued: true
+  protocol_inputs:
+    name: protocol_inputs
+    description: All protocol inputs in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: ProtocolInput
+    multivalued: true
+  protocol_input_sets:
+    name: protocol_input_sets
+    description: All protocol input sets in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: ProtocolInputSet
+    multivalued: true
+  protocol_outputs:
+    name: protocol_outputs
+    description: All protocol outputs in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: ProtocolOutput
+    multivalued: true
+  protocol_steps:
+    name: protocol_steps
+    description: All protocol steps in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: ProtocolStep
+    multivalued: true
+  protocol_variables:
+    name: protocol_variables
+    description: All protocol variables in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: ProtocolVariable
+    multivalued: true
+  variables:
+    name: variables
+    description: All variables in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: Variable
+    multivalued: true
+  variable_values:
+    name: variable_values
+    description: All variable values in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: VariableValue
+    multivalued: true
+  association_x_supporting_objects:
+    name: association_x_supporting_objects
+    description: All association x supporting object records in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: Association_x_SupportingObject
+    multivalued: true
+  contig_x_contig_collections:
+    name: contig_x_contig_collections
+    description: All contig x contig collection records in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: Contig_x_ContigCollection
+    multivalued: true
+  contig_x_encoded_features:
+    name: contig_x_encoded_features
+    description: All contig x encoded feature records in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: Contig_x_EncodedFeature
+    multivalued: true
+  contig_x_features:
+    name: contig_x_features
+    description: All contig x feature records in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: Contig_x_Feature
+    multivalued: true
+  contig_x_proteins:
+    name: contig_x_proteins
+    description: All contig x protein records in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: Contig_x_Protein
+    multivalued: true
+  contig_collection_x_encoded_features:
+    name: contig_collection_x_encoded_features
+    description: All contig collection x encoded feature records in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: ContigCollection_x_EncodedFeature
+    multivalued: true
+  contig_collection_x_features:
+    name: contig_collection_x_features
+    description: All contig collection x feature records in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: ContigCollection_x_Feature
+    multivalued: true
+  contig_collection_x_proteins:
+    name: contig_collection_x_proteins
+    description: All contig collection x protein records in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: ContigCollection_x_Protein
+    multivalued: true
+  encoded_feature_x_features:
+    name: encoded_feature_x_features
+    description: All encoded feature x feature records in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: EncodedFeature_x_Feature
+    multivalued: true
+  encoded_feature_x_proteins:
+    name: encoded_feature_x_proteins
+    description: All encoded feature x protein records in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: EncodedFeature_x_Protein
+    multivalued: true
+  feature_x_proteins:
+    name: feature_x_proteins
+    description: All feature x protein records in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    domain_of:
+    - Schema
+    range: Feature_x_Protein
+    multivalued: true
+tree_root: true
+
+</code></pre>
+</details>
+<h3 id="induced">Induced</h3>
+<details>
+<pre><code class="language-yaml">name: Schema
+description: The root class for the CDM schema.
+from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+abstract: true
+attributes:
+  entities:
+    name: entities
+    description: All entities in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: entities
+    owner: Schema
+    domain_of:
+    - Schema
+    range: Entity
+    multivalued: true
+  names:
+    name: names
+    description: All names in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: names
+    owner: Schema
+    domain_of:
+    - Schema
+    range: Name
+    multivalued: true
+  identifiers:
+    name: identifiers
+    description: All identifiers in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: identifiers
+    owner: Schema
+    domain_of:
+    - Schema
+    range: Identifier
+    multivalued: true
+  entity_names:
+    name: entity_names
+    description: All name x entity records in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: entity_names
+    owner: Schema
+    domain_of:
+    - Schema
+    range: EntityNames
+    multivalued: true
+  entity_identifiers:
+    name: entity_identifiers
+    description: All identifier x entity records in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: entity_identifiers
+    owner: Schema
+    domain_of:
+    - Schema
+    range: EntityIdentifiers
+    multivalued: true
+  entity_attribute_values:
+    name: entity_attribute_values
+    description: All entity attribute values in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: entity_attribute_values
+    owner: Schema
+    domain_of:
+    - Schema
+    range: EntityAttributeValue
+    multivalued: true
+  associations:
+    name: associations
+    description: All associations in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: associations
+    owner: Schema
+    domain_of:
+    - Schema
+    range: Association
+    multivalued: true
+  clusters:
+    name: clusters
+    description: All clusters in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: clusters
+    owner: Schema
+    domain_of:
+    - Schema
+    range: Cluster
+    multivalued: true
+  cluster_members:
+    name: cluster_members
+    description: All cluster members in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: cluster_members
+    owner: Schema
+    domain_of:
+    - Schema
+    range: ClusterMember
+    multivalued: true
+  events:
+    name: events
+    description: All events in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: events
+    owner: Schema
+    domain_of:
+    - Schema
+    range: Event
+    multivalued: true
+  gold_environmental_contexts:
+    name: gold_environmental_contexts
+    description: All GOLD environmental contexts in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: gold_environmental_contexts
+    owner: Schema
+    domain_of:
+    - Schema
+    range: GoldEnvironmentalContext
+    multivalued: true
+  mixs_environmental_contexts:
+    name: mixs_environmental_contexts
+    description: All MIxS environmental contexts in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: mixs_environmental_contexts
+    owner: Schema
+    domain_of:
+    - Schema
+    range: MixsEnvironmentalContext
+    multivalued: true
+  contributors:
+    name: contributors
+    description: All contributors in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: contributors
+    owner: Schema
+    domain_of:
+    - Schema
+    range: Contributor
+    multivalued: true
+  contributor_affiliations:
+    name: contributor_affiliations
+    description: All contributor affiliations in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: contributor_affiliations
+    owner: Schema
+    domain_of:
+    - Schema
+    range: ContributorAffiliation
+    multivalued: true
+  contributor_x_role_x_project:
+    name: contributor_x_role_x_project
+    description: All contributor x role x project records in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: contributor_x_role_x_project
+    owner: Schema
+    domain_of:
+    - Schema
+    range: Contributor_x_Role_x_Project
+    multivalued: true
+  data_sources:
+    name: data_sources
+    description: All data sources in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: data_sources
+    owner: Schema
+    domain_of:
+    - Schema
+    range: DataSourceNew
+    multivalued: true
+  data_source_x_descriptions:
+    name: data_source_x_descriptions
+    description: All data source descriptions in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: data_source_x_descriptions
+    owner: Schema
+    domain_of:
+    - Schema
+    range: DataSource_x_Description
+    multivalued: true
+  data_source_x_funding_references:
+    name: data_source_x_funding_references
+    description: All data source x funding reference records in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: data_source_x_funding_references
+    owner: Schema
+    domain_of:
+    - Schema
+    range: DataSource_x_FundingReference
+    multivalued: true
+  data_source_x_licenses:
+    name: data_source_x_licenses
+    description: All data source x license records in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: data_source_x_licenses
+    owner: Schema
+    domain_of:
+    - Schema
+    range: DataSource_x_License
+    multivalued: true
+  data_source_x_titles:
+    name: data_source_x_titles
+    description: All data source x title records in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: data_source_x_titles
+    owner: Schema
+    domain_of:
+    - Schema
+    range: DataSource_x_Title
+    multivalued: true
+  funding_references:
+    name: funding_references
+    description: All funding references in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: funding_references
+    owner: Schema
+    domain_of:
+    - Schema
+    range: FundingReference
+    multivalued: true
+  licenses:
+    name: licenses
+    description: All licenses in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: licenses
+    owner: Schema
+    domain_of:
+    - Schema
+    range: License
+    multivalued: true
+  projects:
+    name: projects
+    description: All projects in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: projects
+    owner: Schema
+    domain_of:
+    - Schema
+    range: Project
+    multivalued: true
+  publications:
+    name: publications
+    description: All publications in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: publications
+    owner: Schema
+    domain_of:
+    - Schema
+    range: Publication
+    multivalued: true
+  resource_descriptions:
+    name: resource_descriptions
+    description: All resource descriptions in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: resource_descriptions
+    owner: Schema
+    domain_of:
+    - Schema
+    range: ResourceDescription
+    multivalued: true
+  resource_titles:
+    name: resource_titles
+    description: All resource titles in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: resource_titles
+    owner: Schema
+    domain_of:
+    - Schema
+    range: ResourceTitle
+    multivalued: true
+  prefixes:
+    name: prefixes
+    description: The prefix mappings for the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: prefixes
+    owner: Schema
+    domain_of:
+    - Schema
+    range: Prefix
+    multivalued: true
+  statements:
+    name: statements
+    description: All statements in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: statements
+    owner: Schema
+    domain_of:
+    - Schema
+    range: Statement
+    multivalued: true
+  entailed_edges:
+    name: entailed_edges
+    description: All entailed edges in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: entailed_edges
+    owner: Schema
+    domain_of:
+    - Schema
+    range: EntailedEdge
+    multivalued: true
+  contigs:
+    name: contigs
+    description: All contigs in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: contigs
+    owner: Schema
+    domain_of:
+    - Schema
+    range: Contig
+    multivalued: true
+  contig_collections:
+    name: contig_collections
+    description: All contig collections in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: contig_collections
+    owner: Schema
+    domain_of:
+    - Schema
+    range: ContigCollection
+    multivalued: true
+  encoded_features:
+    name: encoded_features
+    description: All encoded features in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: encoded_features
+    owner: Schema
+    domain_of:
+    - Schema
+    range: EncodedFeature
+    multivalued: true
+  features:
+    name: features
+    description: All features in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: features
+    owner: Schema
+    domain_of:
+    - Schema
+    range: Feature
+    multivalued: true
+  proteins:
+    name: proteins
+    description: All proteins in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: proteins
+    owner: Schema
+    domain_of:
+    - Schema
+    range: Protein
+    multivalued: true
+  samples:
+    name: samples
+    description: All samples in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: samples
+    owner: Schema
+    domain_of:
+    - Schema
+    range: Sample
+    multivalued: true
+  sequences:
+    name: sequences
+    description: All sequences in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: sequences
+    owner: Schema
+    domain_of:
+    - Schema
+    range: Sequence
+    multivalued: true
+  experiments:
+    name: experiments
+    description: All experiments in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: experiments
+    owner: Schema
+    domain_of:
+    - Schema
+    range: Experiment
+    multivalued: true
+  experiment_conditions:
+    name: experiment_conditions
+    description: All experiment conditions in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: experiment_conditions
+    owner: Schema
+    domain_of:
+    - Schema
+    range: ExperimentCondition
+    multivalued: true
+  experiment_condition_sets:
+    name: experiment_condition_sets
+    description: All experiment condition sets in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: experiment_condition_sets
+    owner: Schema
+    domain_of:
+    - Schema
+    range: ExperimentConditionSet
+    multivalued: true
+  measurements:
+    name: measurements
+    description: All measurements in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: measurements
+    owner: Schema
+    domain_of:
+    - Schema
+    range: Measurement
+    multivalued: true
+  measurement_sets:
+    name: measurement_sets
+    description: All measurement sets in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: measurement_sets
+    owner: Schema
+    domain_of:
+    - Schema
+    range: MeasurementSet
+    multivalued: true
+  ordered_protocol_steps:
+    name: ordered_protocol_steps
+    description: All ordered protocol steps in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: ordered_protocol_steps
+    owner: Schema
+    domain_of:
+    - Schema
+    range: OrderedProtocolStep
+    multivalued: true
+  parameters:
+    name: parameters
+    description: All parameters in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: parameters
+    owner: Schema
+    domain_of:
+    - Schema
+    range: Parameter
+    multivalued: true
+  protocols:
+    name: protocols
+    description: All protocols in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: protocols
+    owner: Schema
+    domain_of:
+    - Schema
+    range: Protocol
+    multivalued: true
+  protocol_executions:
+    name: protocol_executions
+    description: All protocol executions in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: protocol_executions
+    owner: Schema
+    domain_of:
+    - Schema
+    range: ProtocolExecution
+    multivalued: true
+  protocol_inputs:
+    name: protocol_inputs
+    description: All protocol inputs in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: protocol_inputs
+    owner: Schema
+    domain_of:
+    - Schema
+    range: ProtocolInput
+    multivalued: true
+  protocol_input_sets:
+    name: protocol_input_sets
+    description: All protocol input sets in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: protocol_input_sets
+    owner: Schema
+    domain_of:
+    - Schema
+    range: ProtocolInputSet
+    multivalued: true
+  protocol_outputs:
+    name: protocol_outputs
+    description: All protocol outputs in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: protocol_outputs
+    owner: Schema
+    domain_of:
+    - Schema
+    range: ProtocolOutput
+    multivalued: true
+  protocol_steps:
+    name: protocol_steps
+    description: All protocol steps in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: protocol_steps
+    owner: Schema
+    domain_of:
+    - Schema
+    range: ProtocolStep
+    multivalued: true
+  protocol_variables:
+    name: protocol_variables
+    description: All protocol variables in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: protocol_variables
+    owner: Schema
+    domain_of:
+    - Schema
+    range: ProtocolVariable
+    multivalued: true
+  variables:
+    name: variables
+    description: All variables in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: variables
+    owner: Schema
+    domain_of:
+    - Schema
+    range: Variable
+    multivalued: true
+  variable_values:
+    name: variable_values
+    description: All variable values in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: variable_values
+    owner: Schema
+    domain_of:
+    - Schema
+    range: VariableValue
+    multivalued: true
+  association_x_supporting_objects:
+    name: association_x_supporting_objects
+    description: All association x supporting object records in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: association_x_supporting_objects
+    owner: Schema
+    domain_of:
+    - Schema
+    range: Association_x_SupportingObject
+    multivalued: true
+  contig_x_contig_collections:
+    name: contig_x_contig_collections
+    description: All contig x contig collection records in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: contig_x_contig_collections
+    owner: Schema
+    domain_of:
+    - Schema
+    range: Contig_x_ContigCollection
+    multivalued: true
+  contig_x_encoded_features:
+    name: contig_x_encoded_features
+    description: All contig x encoded feature records in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: contig_x_encoded_features
+    owner: Schema
+    domain_of:
+    - Schema
+    range: Contig_x_EncodedFeature
+    multivalued: true
+  contig_x_features:
+    name: contig_x_features
+    description: All contig x feature records in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: contig_x_features
+    owner: Schema
+    domain_of:
+    - Schema
+    range: Contig_x_Feature
+    multivalued: true
+  contig_x_proteins:
+    name: contig_x_proteins
+    description: All contig x protein records in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: contig_x_proteins
+    owner: Schema
+    domain_of:
+    - Schema
+    range: Contig_x_Protein
+    multivalued: true
+  contig_collection_x_encoded_features:
+    name: contig_collection_x_encoded_features
+    description: All contig collection x encoded feature records in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: contig_collection_x_encoded_features
+    owner: Schema
+    domain_of:
+    - Schema
+    range: ContigCollection_x_EncodedFeature
+    multivalued: true
+  contig_collection_x_features:
+    name: contig_collection_x_features
+    description: All contig collection x feature records in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: contig_collection_x_features
+    owner: Schema
+    domain_of:
+    - Schema
+    range: ContigCollection_x_Feature
+    multivalued: true
+  contig_collection_x_proteins:
+    name: contig_collection_x_proteins
+    description: All contig collection x protein records in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: contig_collection_x_proteins
+    owner: Schema
+    domain_of:
+    - Schema
+    range: ContigCollection_x_Protein
+    multivalued: true
+  encoded_feature_x_features:
+    name: encoded_feature_x_features
+    description: All encoded feature x feature records in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: encoded_feature_x_features
+    owner: Schema
+    domain_of:
+    - Schema
+    range: EncodedFeature_x_Feature
+    multivalued: true
+  encoded_feature_x_proteins:
+    name: encoded_feature_x_proteins
+    description: All encoded feature x protein records in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: encoded_feature_x_proteins
+    owner: Schema
+    domain_of:
+    - Schema
+    range: EncodedFeature_x_Protein
+    multivalued: true
+  feature_x_proteins:
+    name: feature_x_proteins
+    description: All feature x protein records in the schema.
+    from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
+    rank: 1000
+    alias: feature_x_proteins
+    owner: Schema
+    domain_of:
+    - Schema
+    range: Feature_x_Protein
+    multivalued: true
+tree_root: true
+
+</code></pre>
+</details>
+</article>
+</div>
+<script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../assets/javascripts/bundle.92b07e13.min.js"></script>
+<script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+<script src="../js/tablesort.js"></script>
+<script type="module">import mermaid from "https://unpkg.com/mermaid@10.9.0/dist/mermaid.esm.min.mjs";
+mermaid.initialize({});</script></body>
+</html>

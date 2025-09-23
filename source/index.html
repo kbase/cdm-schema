@@ -411,13 +411,13 @@ Alias: source</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../Identifier/">Identifier</a></td>
-<td>A string used as a resolvable (external) identifier for an entity. This should be a CURIE in the form <code>&lt;database_prefix&gt;:&lt;local_identifier&gt;</code>. <a href="https://bioregistry.io">Bioregistry</a> is used as the canonical reference for CURIE database prefixes; please use the prefix exactly as written in the Bioregistry entry.<br><br>If the string cannot be resolved to an URL, it should be added to the <code>Name</code> table instead.<br><br>This table is used for capturing external IDs. The internal CDM identifier should be used in the *_id field (e.g. feature_id, protein_id, contig_collection_id).</td>
+<td><a href="../Name/">Name</a></td>
+<td>A string used as the name or label for an entity. This may be a primary name, alternative name, synonym, acronym, or any other label used to refer to an entity.<br><br>Identifiers that look like CURIEs or database references, but which cannot be resolved using <a href="https://bioregistry.io">Bioregistry</a> or <a href="https://identifiers.org">identifiers.org</a> should be added to the <code>Name</code> table.</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Name/">Name</a></td>
-<td>A string used as the name or label for an entity. This may be a primary name, alternative name, synonym, acronym, or any other label used to refer to an entity.<br><br>Identifiers that look like CURIEs or database references, but which cannot be resolved using <a href="https://bioregistry.io">Bioregistry</a> or <a href="https://identifiers.org">identifiers.org</a> should be added to the <code>Name</code> table.</td>
+<td><a href="../Identifier/">Identifier</a></td>
+<td>A string used as a resolvable (external) identifier for an entity. This should be a CURIE in the form <code>&lt;database_prefix&gt;:&lt;local_identifier&gt;</code>. <a href="https://bioregistry.io">Bioregistry</a> is used as the canonical reference for CURIE database prefixes; please use the prefix exactly as written in the Bioregistry entry.<br><br>If the string cannot be resolved to an URL, it should be added to the <code>Name</code> table instead.<br><br>This table is used for capturing external IDs. The internal CDM identifier should be used in the *_id field (e.g. feature_id, protein_id, contig_collection_id).</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -524,7 +524,7 @@ range: cdm_data_source_id
       
         <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
       
-        <script src="../javascripts/tablesort.js"></script>
+        <script src="../js/tablesort.js"></script>
       
     
   </body>

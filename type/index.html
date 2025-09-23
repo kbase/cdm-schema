@@ -416,9 +416,9 @@ Alias: type</p>
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../QuantityRangeValue/">QuantityRangeValue</a></td>
-<td>A numerical range, e.g. 5-7 cm.</td>
-<td>yes</td>
+<td><a href="../Feature/">Feature</a></td>
+<td>A feature localized to an interval along a contig.</td>
+<td>no</td>
 </tr>
 <tr>
 <td><a href="../EncodedFeature/">EncodedFeature</a></td>
@@ -426,13 +426,13 @@ Alias: type</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../QuantityValue/">QuantityValue</a></td>
-<td>A simple quantity, e.g. 2 cm.</td>
-<td>yes</td>
+<td><a href="../AttributeValue/">AttributeValue</a></td>
+<td>The value for any value of attribute for an entity. This object can hold both the un-normalized atomic value and the structured value.</td>
+<td>no</td>
 </tr>
 <tr>
-<td><a href="../Geolocation/">Geolocation</a></td>
-<td>A normalized value for a location on the earth's surface. Should be expressed in decimal degrees.</td>
+<td><a href="../Sequence/">Sequence</a></td>
+<td>A sequence of nucleotides or amino acids.</td>
 <td>no</td>
 </tr>
 <tr>
@@ -441,23 +441,13 @@ Alias: type</p>
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../AttributeValue/">AttributeValue</a></td>
-<td>The value for any value of attribute for an entity. This object can hold both the un-normalized atomic value and the structured value.</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../TextValue/">TextValue</a></td>
 <td>A basic string value.</td>
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../Feature/">Feature</a></td>
-<td>A feature localized to an interval along a contig.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Sequence/">Sequence</a></td>
-<td>A sequence of nucleotides or amino acids.</td>
+<td><a href="../Geolocation/">Geolocation</a></td>
+<td>A normalized value for a location on the earth's surface. Should be expressed in decimal degrees.</td>
 <td>no</td>
 </tr>
 <tr>
@@ -468,6 +458,16 @@ Alias: type</p>
 <tr>
 <td><a href="../ControlledTermValue/">ControlledTermValue</a></td>
 <td>A quality, described using a text string from a controlled vocabulary or enum.</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../QuantityValue/">QuantityValue</a></td>
+<td>A simple quantity, e.g. 2 cm.</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../QuantityRangeValue/">QuantityRangeValue</a></td>
+<td>A numerical range, e.g. 5-7 cm.</td>
 <td>yes</td>
 </tr>
 </tbody>
@@ -577,7 +577,7 @@ range: AttributeValueType
       
         <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
       
-        <script src="../javascripts/tablesort.js"></script>
+        <script src="../js/tablesort.js"></script>
       
     
   </body>

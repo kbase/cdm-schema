@@ -334,13 +334,13 @@ attributes:
     owner: DataSource
     domain_of:
     - Entity
+    - Contributor_x_DataSource
     - DataSource
     - DataSourceNew
-    - Contributor_to_DataSource
-    - DataSourceDescription
-    - DataSourceTitle
-    - DataSourceLicense
-    - DataSourceFundingReference
+    - DataSource_x_Description
+    - DataSource_x_FundingReference
+    - DataSource_x_License
+    - DataSource_x_Title
     range: cdm_data_source_id
     required: true
   name:
@@ -395,7 +395,7 @@ attributes:
 <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
 <script src="../assets/javascripts/bundle.92b07e13.min.js"></script>
 <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
-<script src="../javascripts/tablesort.js"></script>
+<script src="../js/tablesort.js"></script>
 <script type="module">import mermaid from "https://unpkg.com/mermaid@10.9.0/dist/mermaid.esm.min.mjs";
 mermaid.initialize({});</script></body>
 </html>

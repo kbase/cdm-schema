@@ -411,8 +411,13 @@ Alias: description</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../Variable/">Variable</a></td>
-<td>A variable (input, output, environmental, etc.) that can be set or measured as part of a protocol.</td>
+<td><a href="../Protein/">Protein</a></td>
+<td>Proteins are large, complex molecules made up of one or more long, folded chains of amino acids, whose sequences are determined by the DNA sequence of the protein-encoding gene.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ProtocolExecution/">ProtocolExecution</a></td>
+<td>An instance of executing a protocol. Used for</td>
 <td>no</td>
 </tr>
 <tr>
@@ -426,18 +431,13 @@ Alias: description</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Protein/">Protein</a></td>
-<td>Proteins are large, complex molecules made up of one or more long, folded chains of amino acids, whose sequences are determined by the DNA sequence of the protein-encoding gene.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Protocol/">Protocol</a></td>
-<td>A defined method or set of methods.</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../Parameter/">Parameter</a></td>
 <td>A parameter in a protocol. Currently specific to computational protocols.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Cluster/">Cluster</a></td>
+<td>Represents an individual execution of a clustering protocol. See the ClusterMember class for clustering results.</td>
 <td>no</td>
 </tr>
 <tr>
@@ -446,29 +446,29 @@ Alias: description</p>
 <td>yes</td>
 </tr>
 <tr>
+<td><a href="../Variable/">Variable</a></td>
+<td>A variable (input, output, environmental, etc.) that can be set or measured as part of a protocol.</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../Sample/">Sample</a></td>
 <td>A material entity that can be characterised by an experiment.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ProtocolExecution/">ProtocolExecution</a></td>
-<td>An instance of executing a protocol. Used for</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Experiment/">Experiment</a></td>
-<td>A discrete scientific procedure undertaken to make a discovery, test a hypothesis, or demonstrate a known fact. The protocol_id links to the workflow followed to perform the experiment.</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../Cluster/">Cluster</a></td>
-<td>Represents an individual execution of a clustering protocol. See the ClusterMember class for clustering results.</td>
 <td>no</td>
 </tr>
 <tr>
 <td><a href="../Project/">Project</a></td>
 <td>Administrative unit for collecting data related to a certain topic, location, data type, grant funding, and so on.</td>
 <td>no</td>
+</tr>
+<tr>
+<td><a href="../Protocol/">Protocol</a></td>
+<td>A defined method or set of methods.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Experiment/">Experiment</a></td>
+<td>A discrete scientific procedure undertaken to make a discovery, test a hypothesis, or demonstrate a known fact. The protocol_id links to the workflow followed to perform the experiment.</td>
+<td>yes</td>
 </tr>
 </tbody>
 </table>
@@ -513,14 +513,14 @@ domain_of:
 - Event
 - Identifier
 - Name
-- Protein
-- Sample
 - Project
 - Experiment
 - Parameter
 - Protocol
 - ProtocolExecution
 - Variable
+- Protein
+- Sample
 range: string
 
 </code></pre>
@@ -583,7 +583,7 @@ range: string
       
         <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
       
-        <script src="../javascripts/tablesort.js"></script>
+        <script src="../js/tablesort.js"></script>
       
     
   </body>

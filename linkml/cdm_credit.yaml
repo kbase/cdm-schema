@@ -158,7 +158,7 @@ classes:
           name:
             required: true
 
-  ContributorAffiliations:
+  ContributorAffiliation:
     is_a: LinkerTable
     represents_relationship: true
     class_uri: schema:affiliation
@@ -170,7 +170,7 @@ classes:
     attributes:
       affiliation_id:
         aliases:
-          - contributor_id
+          - affiliation_contributor_id
         description: The ID of the organization to which a contributor belongs. Should be the ID of another contributor.
         multivalued: true
   #   related_mappings:
@@ -200,6 +200,24 @@ classes:
   #   slot_usage:
   #     contributor_role:
   #       required: false
+
+  Contributor_x_DataSource:
+    is_a: LinkerTable
+    slots:
+    - contributor_id
+    - data_source_id
+    - contributor_role
+    slot_usage:
+      contributor_role:
+        required: false
+    description: Captures the people and/or organizations involved in producing a dataset; ideally the contributor_role field will capture how the contributor was involved.
+    narrow_mappings:
+      - DataCite:attributes.contributors
+      - DataCite:attributes.creators
+      - ORCID:contributors
+      - OSTI.ARTICLE:contributors
+      - OSTI.ARTICLE:authors
+      - JGI:organisms.pi
 
   Contributor_x_Role_x_Project:
     is_a: Table
@@ -334,53 +352,153 @@ classes:
     description: |
       The source dataset from which data within the CDM was extracted. This might be an API query; a set of files downloaded from a website or uploaded by a user; a database dump; etc. A given data source should have either version information (e.g. a release number, like those used by UniProt or RefSeq) or an access date to allow the original raw data dump to be recapitulated.
 
-  Contributor_to_DataSource:
-    is_a: LinkerTable
-    slots:
-    - contributor_id
-    - data_source_id
-    - contributor_role
-    slot_usage:
-      contributor_role:
-        required: false
-    description: Captures the people and/or organizations involved in producing a dataset; ideally the contributor_role field will capture how the contributor was involved.
-    narrow_mappings:
-      - DataCite:attributes.contributors
-      - DataCite:attributes.creators
-      - ORCID:contributors
-      - OSTI.ARTICLE:contributors
-      - OSTI.ARTICLE:authors
-      - JGI:organisms.pi
-
-  DataSourceDescription:
+  DataSource_x_Description:
     is_a: LinkerTable
     slots:
     - data_source_id
     - resource_description_id
     description: Links a data source to a description (e.g. the abstract or a free text description).
 
-  DataSourceTitle:
-    is_a: LinkerTable
-    slots:
-    - data_source_id
-    - resource_title_id
-    description: Links a data source to a title.
-
-  DataSourceLicense:
-    is_a: LinkerTable
-    slots:
-    - data_source_id
-    - license_id
-    description: Links a data source to a license.
-
-  DataSourceFundingReference:
+  DataSource_x_FundingReference:
     is_a: LinkerTable
     slots:
     - data_source_id
     - funding_reference_id
     description: Links a data source to a funding reference.
 
+  DataSource_x_License:
+    is_a: LinkerTable
+    slots:
+    - data_source_id
+    - license_id
+    description: Links a data source to a license.
+
+  DataSource_x_Title:
+    is_a: LinkerTable
+    slots:
+    - data_source_id
+    - resource_title_id
+    description: Links a data source to a title.
+
+  FundingReference:
+    is_a: Table
+    class_uri: schema:MonetaryGrant
+    description: |
+      Represents a funding source for a resource, including the funding body and the grant awarded.
+
+      One (or more) of the fields `grant_id`, `grant_url`, or `funder.organization_name` is required; others are optional.
+
+      Recommended resources for organization identifiers include:
+        - Research Organization Registry, http://ror.org
+        - International Standard Name Identifier, https://isni.org
+        - Crossref Funder Registry, https://www.crossref.org/services/funder-registry/ (to be subsumed into ROR)
+
+      Some organizations may have a digital object identifier (DOI).
+    slots:
+      - funding_reference_id
+    slot_usage:
+      funding_reference_id:
+        identifier: true
+    attributes:
+      funder:
+        slot_uri: schema:funder
+        description: The funder for the grant or award.
+        range: cdm_contributor_id
+      grant_id:
+        slot_uri: schema:identifier
+        description: Code for the grant, assigned by the funder.
+        examples:
+          - value: "1296"
+          - value: CBET-0756451
+          - value: DOI:10.46936/10.25585/60000745
+      grant_title:
+        slot_uri: schema:name
+        description: Title for the grant.
+        examples:
+          - value: Metagenomic analysis of the rhizosphere of three biofuel crops at the KBS intensive site
+      grant_url:
+        slot_uri: schema:url
+        description: URL for the grant.
+        range: uriorcurie
+        pattern: "^[a-zA-Z0-9.-_]+:\\S"
+        examples:
+          - value: https://genome.jgi.doe.gov/portal/Metanaintenssite/Metanaintenssite.info.html
+    any_of:
+      - slot_conditions:
+          grant_id:
+            required: true
+      - slot_conditions:
+          grant_url:
+            required: true
+      - slot_conditions:
+          funder:
+            required: true
+
+  License:
+    is_a: Table
+    description: License information for the resource.
+    slots:
+      - license_id
+    slot_usage:
+      license_id:
+        identifier: true
+    attributes:
+      id:
+        description: CURIE for the license.
+        range: curie
+      name:
+        description: String representing the license, from the SPDX license identifiers at https://spdx.org/licenses/.
+        examples:
+          - value: CC-BY-NC-ND-4.0
+          - value: Apache-2.0
+      url:
+        description: URL for the license.
+        range: uri
+        examples:
+          - value: https://jgi.doe.gov/user-programs/pmo-overview/policies/
+    any_of:
+      - slot_conditions:
+          id:
+            required: true
+      - slot_conditions:
+          url:
+            required: true
+
+  # TODO: how is this different from a data source or generic resource?
+  Project:
+    is_a: Table
+    aliases:
+      - proposal
+      - research proposal
+      - research study
+      - investigation
+      - project
+      - study
+      - umbrella project
+      - research initiative
+    slots:
+    - project_id
+    slot_usage:
+      project_id:
+        identifier: true
+    attributes:
+      description:
+        description: Brief text description of the project.
+    description: Administrative unit for collecting data related to a certain topic,
+      location, data type, grant funding, and so on.
+
+  # TODO: how is this different from a data source or generic resource?
+  Publication:
+    is_a: Table
+    slots:
+      - publication_id
+    slot_usage:
+      publication_id:
+        identifier: true
+    description: A publication (e.g. journal article).
+
   ResourceDescription:
+    is_a: Table
     description: Textual information about the resource being represented.
     slots:
       - resource_description_id
@@ -435,119 +553,6 @@ classes:
           - value: translated_title
           - value: other
 
-  FundingReference:
-    class_uri: schema:MonetaryGrant
-    description: |
-      Represents a funding source for a resource, including the funding body and the grant awarded.
-
-      One (or more) of the fields `grant_id`, `grant_url`, or `funder.organization_name` is required; others are optional.
-
-      Recommended resources for organization identifiers include:
-        - Research Organization Registry, http://ror.org
-        - International Standard Name Identifier, https://isni.org
-        - Crossref Funder Registry, https://www.crossref.org/services/funder-registry/ (to be subsumed into ROR)
-
-      Some organizations may have a digital object identifier (DOI).
-    slots:
-      - funding_reference_id
-    slot_usage:
-      funding_reference_id:
-        identifier: true
-    attributes:
-      funder:
-        slot_uri: schema:funder
-        description: The funder for the grant or award.
-        range: cdm_contributor_id
-      grant_id:
-        slot_uri: schema:identifier
-        description: Code for the grant, assigned by the funder.
-        examples:
-          - value: "1296"
-          - value: CBET-0756451
-          - value: DOI:10.46936/10.25585/60000745
-      grant_title:
-        slot_uri: schema:name
-        description: Title for the grant.
-        examples:
-          - value: Metagenomic analysis of the rhizosphere of three biofuel crops at the KBS intensive site
-      grant_url:
-        slot_uri: schema:url
-        description: URL for the grant.
-        range: uriorcurie
-        pattern: "^[a-zA-Z0-9.-_]+:\\S"
-        examples:
-          - value: https://genome.jgi.doe.gov/portal/Metanaintenssite/Metanaintenssite.info.html
-    any_of:
-      - slot_conditions:
-          grant_id:
-            required: true
-      - slot_conditions:
-          grant_url:
-            required: true
-      - slot_conditions:
-          funder:
-            required: true
-
-  License:
-    description: License information for the resource.
-    is_a: Table
-    slots:
-      - license_id
-    slot_usage:
-      license_id:
-        identifier: true
-    attributes:
-      id:
-        description: CURIE for the license.
-        range: curie
-      name:
-        description: String representing the license, from the SPDX license identifiers at https://spdx.org/licenses/.
-        examples:
-          - value: CC-BY-NC-ND-4.0
-          - value: Apache-2.0
-      url:
-        description: URL for the license.
-        range: uri
-        examples:
-          - value: https://jgi.doe.gov/user-programs/pmo-overview/policies/
-    any_of:
-      - slot_conditions:
-          id:
-            required: true
-      - slot_conditions:
-          url:
-            required: true
-
-  Project:
-    is_a: Table
-    aliases:
-      - proposal
-      - research proposal
-      - research study
-      - investigation
-      - project
-      - study
-      - umbrella project
-      - research initiative
-    slots:
-    - project_id
-    slot_usage:
-      project_id:
-        identifier: true
-    attributes:
-      description:
-        description: Brief text description of the project.
-    description: Administrative unit for collecting data related to a certain topic,
-      location, data type, grant funding, and so on.
-
-  Publication:
-    is_a: Table
-    slots:
-      - publication_id
-    slot_usage:
-      publication_id:
-        identifier: true
-    description: A publication (e.g. journal article).
 
 enums:
   ContributorRole:

@@ -366,7 +366,7 @@ slot_usage:
     required: true
   type:
     name: type
-    ifabsent: kb_cdm:ControlledTermValue
+    ifabsent: AttributeValueType("ControlledTermValue")
 class_uri: nmdc:ControlledTermValue
 
 </code></pre>
@@ -384,7 +384,7 @@ slot_usage:
     required: true
   type:
     name: type
-    ifabsent: kb_cdm:ControlledTermValue
+    ifabsent: AttributeValueType("ControlledTermValue")
 attributes:
   value_cv_label:
     name: value_cv_label
@@ -426,7 +426,7 @@ attributes:
       DateTimeValue, ControlledVocabularyTermValue, etc.
     from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
     rank: 1000
-    ifabsent: kb_cdm:ControlledTermValue
+    ifabsent: AttributeValueType("ControlledTermValue")
     alias: type
     owner: ControlledTermValue
     domain_of:
@@ -489,10 +489,10 @@ attributes:
     owner: ControlledTermValue
     domain_of:
     - ClusterMember
-    - EntityMixin
     - Entity
     - Identifier
     - Name
+    - EntityMixin
     - Sequence
     - Association_x_SupportingObject
     range: cdm_id
@@ -528,7 +528,7 @@ class_uri: nmdc:ControlledTermValue
 <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
 <script src="../assets/javascripts/bundle.92b07e13.min.js"></script>
 <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
-<script src="../javascripts/tablesort.js"></script>
+<script src="../js/tablesort.js"></script>
 <script type="module">import mermaid from "https://unpkg.com/mermaid@10.9.0/dist/mermaid.esm.min.mjs";
 mermaid.initialize({});</script></body>
 </html>

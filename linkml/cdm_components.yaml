@@ -83,7 +83,7 @@ classes:
       object:
         description: The object of an association. Should be an ontology term or database cross-reference.
         comments:
-        - kb_cdm:Statements.subject
+        - kb_cdm:Statement.subject
         range: local_curie
         required: true
     attributes:

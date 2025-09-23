@@ -412,14 +412,14 @@ Alias: license_id</p>
 </thead>
 <tbody>
 <tr>
+<td><a href="../DataSourceXLicense/">DataSourceXLicense</a></td>
+<td>Links a data source to a license.</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../License/">License</a></td>
 <td>License information for the resource.</td>
 <td>yes</td>
-</tr>
-<tr>
-<td><a href="../DataSourceLicense/">DataSourceLicense</a></td>
-<td>Links a data source to a license.</td>
-<td>no</td>
 </tr>
 </tbody>
 </table>
@@ -467,7 +467,7 @@ from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 rank: 1000
 alias: license_id
 domain_of:
-- DataSourceLicense
+- DataSource_x_License
 - License
 range: uriorcurie
 required: true
@@ -532,7 +532,7 @@ required: true
       
         <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
       
-        <script src="../javascripts/tablesort.js"></script>
+        <script src="../js/tablesort.js"></script>
       
     
   </body>

@@ -230,7 +230,7 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="class-linkertable">Class: LinkerTable</h1>
-<p><em>tables for linking between tables</em></p>
+<p><em>Tables for linking between tables.</em></p>
 <ul>
 <li><strong>NOTE</strong>: this is an abstract class and should not be instantiated directly</li>
 </ul>
@@ -242,18 +242,22 @@
         click Table href "../Table/"
 
 
-      LinkerTable &lt;|-- ContributorAffiliations
-        click ContributorAffiliations href "../ContributorAffiliations/"
-      LinkerTable &lt;|-- ContributorToDataSource
-        click ContributorToDataSource href "../ContributorToDataSource/"
-      LinkerTable &lt;|-- DataSourceDescription
-        click DataSourceDescription href "../DataSourceDescription/"
-      LinkerTable &lt;|-- DataSourceTitle
-        click DataSourceTitle href "../DataSourceTitle/"
-      LinkerTable &lt;|-- DataSourceLicense
-        click DataSourceLicense href "../DataSourceLicense/"
-      LinkerTable &lt;|-- DataSourceFundingReference
-        click DataSourceFundingReference href "../DataSourceFundingReference/"
+      LinkerTable &lt;|-- EntityNames
+        click EntityNames href "../EntityNames/"
+      LinkerTable &lt;|-- EntityIdentifiers
+        click EntityIdentifiers href "../EntityIdentifiers/"
+      LinkerTable &lt;|-- ContributorAffiliation
+        click ContributorAffiliation href "../ContributorAffiliation/"
+      LinkerTable &lt;|-- ContributorXDataSource
+        click ContributorXDataSource href "../ContributorXDataSource/"
+      LinkerTable &lt;|-- DataSourceXDescription
+        click DataSourceXDescription href "../DataSourceXDescription/"
+      LinkerTable &lt;|-- DataSourceXFundingReference
+        click DataSourceXFundingReference href "../DataSourceXFundingReference/"
+      LinkerTable &lt;|-- DataSourceXLicense
+        click DataSourceXLicense href "../DataSourceXLicense/"
+      LinkerTable &lt;|-- DataSourceXTitle
+        click DataSourceXTitle href "../DataSourceXTitle/"
       LinkerTable &lt;|-- ProtocolVariable
         click ProtocolVariable href "../ProtocolVariable/"
       LinkerTable &lt;|-- AssociationXSupportingObject
@@ -274,12 +278,10 @@
         click ContigCollectionXProtein href "../ContigCollectionXProtein/"
       LinkerTable &lt;|-- EncodedFeatureXFeature
         click EncodedFeatureXFeature href "../EncodedFeatureXFeature/"
+      LinkerTable &lt;|-- EncodedFeatureXProtein
+        click EncodedFeatureXProtein href "../EncodedFeatureXProtein/"
       LinkerTable &lt;|-- FeatureXProtein
         click FeatureXProtein href "../FeatureXProtein/"
-      LinkerTable &lt;|-- NamedEntity
-        click NamedEntity href "../NamedEntity/"
-      LinkerTable &lt;|-- IdentifiedEntity
-        click IdentifiedEntity href "../IdentifiedEntity/"
 
 
 
@@ -288,12 +290,14 @@
 <ul>
 <li><a href="../Table/">Table</a><ul>
 <li><strong>LinkerTable</strong><ul>
-<li><a href="../ContributorAffiliations/">ContributorAffiliations</a></li>
-<li><a href="../ContributorToDataSource/">ContributorToDataSource</a></li>
-<li><a href="../DataSourceDescription/">DataSourceDescription</a></li>
-<li><a href="../DataSourceTitle/">DataSourceTitle</a></li>
-<li><a href="../DataSourceLicense/">DataSourceLicense</a></li>
-<li><a href="../DataSourceFundingReference/">DataSourceFundingReference</a></li>
+<li><a href="../EntityNames/">EntityNames</a></li>
+<li><a href="../EntityIdentifiers/">EntityIdentifiers</a></li>
+<li><a href="../ContributorAffiliation/">ContributorAffiliation</a></li>
+<li><a href="../ContributorXDataSource/">ContributorXDataSource</a></li>
+<li><a href="../DataSourceXDescription/">DataSourceXDescription</a></li>
+<li><a href="../DataSourceXFundingReference/">DataSourceXFundingReference</a></li>
+<li><a href="../DataSourceXLicense/">DataSourceXLicense</a></li>
+<li><a href="../DataSourceXTitle/">DataSourceXTitle</a></li>
 <li><a href="../ProtocolVariable/">ProtocolVariable</a></li>
 <li><a href="../AssociationXSupportingObject/">AssociationXSupportingObject</a></li>
 <li><a href="../ContigXContigCollection/">ContigXContigCollection</a></li>
@@ -304,9 +308,8 @@
 <li><a href="../ContigCollectionXFeature/">ContigCollectionXFeature</a></li>
 <li><a href="../ContigCollectionXProtein/">ContigCollectionXProtein</a></li>
 <li><a href="../EncodedFeatureXFeature/">EncodedFeatureXFeature</a></li>
+<li><a href="../EncodedFeatureXProtein/">EncodedFeatureXProtein</a></li>
 <li><a href="../FeatureXProtein/">FeatureXProtein</a></li>
-<li><a href="../NamedEntity/">NamedEntity</a></li>
-<li><a href="../IdentifiedEntity/">IdentifiedEntity</a></li>
 </ul>
 </li>
 </ul>
@@ -360,7 +363,7 @@
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: LinkerTable
-description: tables for linking between tables
+description: Tables for linking between tables.
 from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 is_a: Table
 abstract: true
@@ -370,7 +373,7 @@ abstract: true
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: LinkerTable
-description: tables for linking between tables
+description: Tables for linking between tables.
 from_schema: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 is_a: Table
 abstract: true
@@ -404,7 +407,7 @@ abstract: true
 <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
 <script src="../assets/javascripts/bundle.92b07e13.min.js"></script>
 <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
-<script src="../javascripts/tablesort.js"></script>
+<script src="../js/tablesort.js"></script>
 <script type="module">import mermaid from "https://unpkg.com/mermaid@10.9.0/dist/mermaid.esm.min.mjs";
 mermaid.initialize({});</script></body>
 </html>

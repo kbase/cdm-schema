@@ -413,18 +413,13 @@ Alias: data_source_id</p>
 </thead>
 <tbody>
 <tr>
+<td><a href="../DataSourceXDescription/">DataSourceXDescription</a></td>
+<td>Links a data source to a description (e.g. the abstract or a free text description).</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../DataSource/">DataSource</a></td>
 <td>The source for a resource, dataset, association, etc.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../DataSourceLicense/">DataSourceLicense</a></td>
-<td>Links a data source to a license.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../DataSourceTitle/">DataSourceTitle</a></td>
-<td>Links a data source to a title.</td>
 <td>no</td>
 </tr>
 <tr>
@@ -433,7 +428,12 @@ Alias: data_source_id</p>
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../DataSourceFundingReference/">DataSourceFundingReference</a></td>
+<td><a href="../ContributorXDataSource/">ContributorXDataSource</a></td>
+<td>Captures the people and/or organizations involved in producing a dataset; ideally the contributor_role field will capture how the contributor was involved.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../DataSourceXFundingReference/">DataSourceXFundingReference</a></td>
 <td>Links a data source to a funding reference.</td>
 <td>no</td>
 </tr>
@@ -443,13 +443,13 @@ Alias: data_source_id</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../DataSourceDescription/">DataSourceDescription</a></td>
-<td>Links a data source to a description (e.g. the abstract or a free text description).</td>
+<td><a href="../DataSourceXTitle/">DataSourceXTitle</a></td>
+<td>Links a data source to a title.</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../ContributorToDataSource/">ContributorToDataSource</a></td>
-<td>Captures the people and/or organizations involved in producing a dataset; ideally the contributor_role field will capture how the contributor was involved.</td>
+<td><a href="../DataSourceXLicense/">DataSourceXLicense</a></td>
+<td>Links a data source to a license.</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -501,13 +501,13 @@ rank: 1000
 alias: data_source_id
 domain_of:
 - Entity
+- Contributor_x_DataSource
 - DataSource
 - DataSourceNew
-- Contributor_to_DataSource
-- DataSourceDescription
-- DataSourceTitle
-- DataSourceLicense
-- DataSourceFundingReference
+- DataSource_x_Description
+- DataSource_x_FundingReference
+- DataSource_x_License
+- DataSource_x_Title
 range: cdm_data_source_id
 required: true
 
@@ -571,7 +571,7 @@ required: true
       
         <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
       
-        <script src="../javascripts/tablesort.js"></script>
+        <script src="../js/tablesort.js"></script>
       
     
   </body>
