@@ -54,13 +54,12 @@ classes:
 
   Table:
     abstract: true
-    tree_root: true
-    description: root class for all schema entities
+    description: Abstract class representing a table in the CDM schema.
 
   LinkerTable:
     abstract: true
     is_a: Table
-    description: tables for linking between tables
+    description: Tables for linking between tables.
 
   # schema classes
   Entity:
@@ -149,6 +148,23 @@ classes:
       A string used as the name or label for an entity. This may be a primary name, alternative name, synonym, acronym, or any other label used to refer to an entity.
 
       Identifiers that look like CURIEs or database references, but which cannot be resolved using [Bioregistry](https://bioregistry.io) or [identifiers.org](https://identifiers.org) should be added to the `Name` table.
+
+  EntityNames:
+    is_a: LinkerTable
+    description: Represents the link between an entity and its names.
+    represents_relationship: true
+    comments:
+      - Entity.entity_id one:many Name.entity_id
+      - one entity can have multiple names, and one name can be associated with multiple entities.
+
+  EntityIdentifiers:
+    is_a: LinkerTable
+    description: Represents the link between an entity and its identifiers.
+    represents_relationship: true
+    comments:
+      - Entity.entity_id one:many Identifier.entity_id
+      - one entity can have multiple identifiers, and one identifier can be associated with multiple entities.
+
 
 enums:
   EntityType:

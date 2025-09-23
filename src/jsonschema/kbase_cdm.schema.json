@@ -1,11 +1,24 @@
 {
     "$defs": {
+        "Any": {
+            "additionalProperties": true,
+            "description": "",
+            "title": "Any",
+            "type": [
+                "null",
+                "boolean",
+                "object",
+                "number",
+                "string"
+            ]
+        },
         "Association": {
             "additionalProperties": false,
             "description": "An association between an object--typically an entity such as a protein or a feature--and a classification system or ontology, such as the Gene Ontology, the Enzyme Classification, or TIGRFAMS domains.",
             "properties": {
                 "aggregator_knowledge_source": {
-                    "description": "The knowledge source that aggregated the association. Should be a UUID from the DataSource table.",
+                    "description": "The knowledge source that aggregated the association. Should be a CDM ID from the Contributor or DataSource table.",
+                    "pattern": "^CDM:ctrb-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                     "type": [
                         "string",
                         "null"
@@ -21,6 +34,7 @@
                 },
                 "association_id": {
                     "description": "Internal (CDM) unique identifier for an association.",
+                    "pattern": "^CDM:ascn-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                     "type": "string"
                 },
                 "comments": {
@@ -31,7 +45,7 @@
                     ]
                 },
                 "evidence_type": {
-                    "description": "The type of evidence supporting the association. Should be a term from the Evidence and Conclusion Ontology (ECO).",
+                    "description": "The type of evidence supporting the association. Should be a term from the Evidence and Conclusion Ontology (ECO). Specific pieces of evidence that support the association should be added as supporting objects, in the AssociationSupportingObject table.",
                     "pattern": "^ECO:\\d+$",
                     "type": [
                         "string",
@@ -51,13 +65,12 @@
                 },
                 "predicate": {
                     "description": "The relationship between subject and object in an association. Should be a term from the Relation Ontology.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "pattern": "^RO:\\d+$",
+                    "type": "string"
                 },
                 "primary_knowledge_source": {
-                    "description": "The knowledge source that created the association. Should be a UUID from the DataSource table.",
+                    "description": "The knowledge source or contributor that created the association. Should be a CDM ID from the Contributor or DataSource table.",
+                    "pattern": "^CDM:ctrb-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                     "type": [
                         "string",
                         "null"
@@ -67,12 +80,19 @@
                     "$ref": "#/$defs/Any",
                     "anyOf": [
                         {
+                            "pattern": "^CDM:feat-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                             "type": "string"
                         },
                         {
+                            "pattern": "^CDM:rna-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                             "type": "string"
                         },
                         {
+                            "pattern": "^CDM:prot-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
+                            "type": "string"
+                        },
+                        {
+                            "pattern": "^CDM:ccol-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                             "type": "string"
                         }
                     ],
@@ -82,44 +102,20 @@
             "required": [
                 "association_id",
                 "subject",
-                "object"
+                "object",
+                "predicate"
             ],
             "title": "Association",
             "type": "object"
         },
-        "AssociationXPublication": {
-            "additionalProperties": false,
-            "description": "Links associations to supporting literature.",
-            "properties": {
-                "association_id": {
-                    "description": "Internal (CDM) unique identifier for an association.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "publication_id": {
-                    "description": "Unique identifier for a publication - e.g. PMID, DOI, URL, etc.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                }
-            },
-            "required": [
-                "association_id",
-                "publication_id"
-            ],
-            "title": "AssociationXPublication",
-            "type": "object"
-        },
         "AssociationXSupportingObject": {
             "additionalProperties": false,
-            "description": "Links associations to entities to capture supporting objects in an association. ay be a biological entity, such as a protein or feature, or a URL to a resource (e.g. a publication) that supports the association. Where possible, CDM identifiers should be used.",
+            "description": "Links associations to entities to capture supporting objects in an association. May be a biological entity, such as a protein or feature, or a URL to a resource (e.g. a publication) that supports the association. Where possible, CDM identifiers should be used.",
             "properties": {
                 "association_id": {
                     "description": "Internal (CDM) unique identifier for an association.",
                     "items": {
+                        "pattern": "^CDM:ascn-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                         "type": "string"
                     },
                     "type": "array"
@@ -127,6 +123,7 @@
                 "entity_id": {
                     "description": "Internal (CDM) unique identifier for an entity.",
                     "items": {
+                        "pattern": "^CDM:[a-zA-Z]{2,4}-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                         "type": "string"
                     },
                     "type": "array"
@@ -139,11 +136,19 @@
             "title": "AssociationXSupportingObject",
             "type": "object"
         },
-        "AttributeValueEntity": {
-            "additionalProperties": false,
-            "description": "Represents the link between an entity and its attribute values.",
-            "title": "AttributeValueEntity",
-            "type": "object"
+        "AttributeValueType": {
+            "description": "",
+            "enum": [
+                "DateTimeValue",
+                "QuantityValue",
+                "QuantityRangeValue",
+                "TextValue",
+                "ControlledTermValue",
+                "ControlledVocabularyTermValue",
+                "Geolocation"
+            ],
+            "title": "AttributeValueType",
+            "type": "string"
         },
         "CdsPhaseType": {
             "description": "For features of type CDS (coding sequence), the phase indicates where the feature begins with reference to the reading frame. The phase is one of the integers 0, 1, or 2, indicating the number of bases that should be removed from the beginning of this feature to reach the first base of the next codon.",
@@ -160,7 +165,8 @@
             "description": "Represents an individual execution of a clustering protocol. See the ClusterMember class for clustering results.",
             "properties": {
                 "cluster_id": {
-                    "description": "Internal (CDM) unique identifier for a cluster.",
+                    "description": "Internal (CDM) unique identifier for a cluster.\nFrom the Entity table: entity_id where entity_type == 'Cluster'.\n",
+                    "pattern": "^CDM:clst-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                     "type": "string"
                 },
                 "description": {
@@ -201,11 +207,13 @@
             "description": "Relationship representing membership of a cluster. An optional score can be assigned to each cluster member.",
             "properties": {
                 "cluster_id": {
-                    "description": "Internal (CDM) unique identifier for a cluster.",
+                    "description": "Internal (CDM) unique identifier for a cluster.\nFrom the Entity table: entity_id where entity_type == 'Cluster'.\n",
+                    "pattern": "^CDM:clst-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                     "type": "string"
                 },
                 "entity_id": {
                     "description": "Internal (CDM) unique identifier for an entity.",
+                    "pattern": "^CDM:[a-zA-Z]{2,4}-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                     "type": "string"
                 },
                 "is_representative": {
@@ -252,7 +260,8 @@
             "description": "A contig (derived from the word \"contiguous\") is a set of DNA segments or sequences that overlap in a way that provides a contiguous representation of a genomic region. A contig should not contain any gaps.",
             "properties": {
                 "contig_id": {
-                    "description": "Internal (CDM) unique identifier for a contig.",
+                    "description": "Internal (CDM) unique identifier for a contig.\nFrom the Entity table: entity_id where entity_type == 'Contig'.\n",
+                    "pattern": "^CDM:cntg-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                     "type": "string"
                 },
                 "gc_content": {
@@ -288,23 +297,30 @@
             "description": "A set of individual, overlapping contigs that represent the complete sequenced genome of an organism.",
             "properties": {
                 "asm_score": {
-                    "description": "A composite score for comparing contig collection quality",
+                    "description": "A composite score for comparing contig collection quality.",
                     "type": [
                         "number",
                         "null"
                     ]
                 },
-                "checkm2_completeness": {
-                    "description": "Estimate of the completeness of a contig collection (MAG or genome), estimated by CheckM2 tool",
+                "checkm_completeness": {
+                    "description": "Estimate of the completeness of a contig collection (MAG or genome), estimated by CheckM tool. Ensure that percentage values are converted to floats.",
                     "type": [
                         "number",
                         "null"
                     ]
                 },
-                "checkm2_contamination": {
-                    "description": "Estimate of the contamination of a contig collection (MAG or genome), estimated by CheckM2 tool",
+                "checkm_contamination": {
+                    "description": "Estimate of the contamination of a contig collection (MAG or genome), estimated by CheckM tool. Ensure that percentage values are converted to floats.",
                     "type": [
                         "number",
+                        "null"
+                    ]
+                },
+                "checkm_version": {
+                    "description": "Version of the CheckM tool used.",
+                    "type": [
+                        "string",
                         "null"
                     ]
                 },
@@ -316,70 +332,71 @@
                     ]
                 },
                 "contig_collection_id": {
-                    "description": "Internal (CDM) unique identifier for a contig collection.",
+                    "description": "Internal (CDM) unique identifier for a contig collection.\nFrom the Entity table: entity_id where entity_type == 'ContigCollection'.\n",
+                    "pattern": "^CDM:ccol-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                     "type": "string"
                 },
                 "contig_collection_type": {
                     "$ref": "#/$defs/ContigCollectionType",
                     "description": "The type of contig collection."
                 },
-                "ctg_L50": {
+                "contig_l50": {
                     "description": "Given a set of contigs, the L50 is defined as the sequence length of the shortest contig at 50% of the total contig collection length",
                     "type": [
                         "integer",
                         "null"
                     ]
                 },
-                "ctg_L90": {
+                "contig_l90": {
                     "description": "The L90 statistic is less than or equal to the L50 statistic; it is the length for which the collection of all contigs of that length or longer contains at least 90% of the sum of the lengths of all contigs",
                     "type": [
                         "integer",
                         "null"
                     ]
                 },
-                "ctg_N50": {
-                    "description": "Given a set of contigs, each with its own length, the N50 count is defined as the smallest number_of_contigs whose length sum makes up half of contig collection size",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
-                },
-                "ctg_N90": {
-                    "description": "Given a set of contigs, each with its own length, the N90 count is defined as the smallest number of contigs whose length sum makes up 90% of contig collection size",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
-                },
-                "ctg_logsum": {
+                "contig_logsum": {
                     "description": "The sum of the (length*log(length)) of all contigs, times some constant.",
                     "type": [
                         "number",
                         "null"
                     ]
                 },
-                "ctg_max": {
+                "contig_max": {
                     "description": "Maximum contig length",
                     "type": [
                         "integer",
                         "null"
                     ]
                 },
-                "ctg_powsum": {
+                "contig_n50": {
+                    "description": "Given a set of contigs, each with its own length, the N50 count is defined as the smallest number_of_contigs whose length sum makes up half of contig collection size",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "contig_n90": {
+                    "description": "Given a set of contigs, each with its own length, the N90 count is defined as the smallest number of contigs whose length sum makes up 90% of contig collection size",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "contig_powersum": {
                     "description": "Powersum of all contigs is the same as logsum except that it uses the sum of (length*(length^P)) for some power P (default P=0.25)",
                     "type": [
                         "number",
                         "null"
                     ]
                 },
-                "gap_pct": {
+                "gap_percent": {
                     "description": "The gap size percentage of all scaffolds",
                     "type": [
                         "number",
                         "null"
                     ]
                 },
-                "gc_avg": {
+                "gc_average": {
                     "description": "The average GC content of the contig collection, expressed as a percentage",
                     "type": [
                         "number",
@@ -393,10 +410,24 @@
                         "null"
                     ]
                 },
+                "gtdb_taxon_id": {
+                    "description": "The GTDB taxon ID for this contig collection.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "hash": {
                     "description": "A hash value generated from one or more object attributes that serves to ensure the entity is unique.",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "n_chromosomes": {
+                    "description": "Total number of chromosomes",
+                    "type": [
+                        "integer",
                         "null"
                     ]
                 },
@@ -414,80 +445,87 @@
                         "null"
                     ]
                 },
-                "scaf_L50": {
-                    "description": "Given a set of scaffolds, the L50 is defined as the sequence length of the shortest scaffold at 50% of the total contig collection length",
+                "ncbi_taxon_id": {
+                    "description": "The NCBI taxon ID for this contig collection.",
                     "type": [
-                        "integer",
+                        "string",
                         "null"
                     ]
                 },
-                "scaf_L90": {
-                    "description": "The L90 statistic is less than or equal to the L50 statistic; it is the length for which the collection of all scaffolds of that length or longer contains at least 90% of the sum of the lengths of all scaffolds.",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
-                },
-                "scaf_N50": {
-                    "description": "Given a set of scaffolds, each with its own length, the N50 count is defined as the smallest number of scaffolds whose length sum makes up half of contig collection size",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
-                },
-                "scaf_N90": {
-                    "description": "Given a set of scaffolds, each with its own length, the N90 count is defined as the smallest number of scaffolds whose length sum makes up 90% of contig collection size",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
-                },
-                "scaf_bp": {
+                "scaffold_bp": {
                     "description": "Total size in bp of all scaffolds",
                     "type": [
                         "integer",
                         "null"
                     ]
                 },
-                "scaf_l_gt50k": {
-                    "description": "The total length of scaffolds longer than 50,000 base pairs",
+                "scaffold_l50": {
+                    "description": "Given a set of scaffolds, the L50 is defined as the sequence length of the shortest scaffold at 50% of the total contig collection length",
                     "type": [
                         "integer",
                         "null"
                     ]
                 },
-                "scaf_logsum": {
+                "scaffold_l90": {
+                    "description": "The L90 statistic is less than or equal to the L50 statistic; it is the length for which the collection of all scaffolds of that length or longer contains at least 90% of the sum of the lengths of all scaffolds.",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "scaffold_logsum": {
                     "description": "The sum of the (length*log(length)) of all scaffolds, times some constant. Increase the contiguity, the score will increase",
                     "type": [
                         "number",
                         "null"
                     ]
                 },
-                "scaf_max": {
+                "scaffold_maximum_length": {
                     "description": "Maximum scaffold length",
                     "type": [
                         "integer",
                         "null"
                     ]
                 },
-                "scaf_n_gt50K": {
+                "scaffold_n50": {
+                    "description": "Given a set of scaffolds, each with its own length, the N50 count is defined as the smallest number of scaffolds whose length sum makes up half of contig collection size",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "scaffold_n90": {
+                    "description": "Given a set of scaffolds, each with its own length, the N90 count is defined as the smallest number of scaffolds whose length sum makes up 90% of contig collection size",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "scaffold_powersum": {
+                    "description": "Powersum of all scaffolds is the same as logsum except that it uses the sum of (length*(length^P)) for some power P (default P=0.25).",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "scaffolds_n_over_50K": {
                     "description": "The number of scaffolds longer than 50,000 base pairs.",
                     "type": [
                         "integer",
                         "null"
                     ]
                 },
-                "scaf_pct_gt50K": {
+                "scaffolds_percent_over_50K": {
                     "description": "The percentage of the total assembly length represented by scaffolds longer than 50,000 base pairs",
                     "type": [
                         "number",
                         "null"
                     ]
                 },
-                "scaf_powsum": {
-                    "description": "Powersum of all scaffolds is the same as logsum except that it uses the sum of (length*(length^P)) for some power P (default P=0.25).",
+                "scaffolds_total_length_over_50k": {
+                    "description": "The total length of scaffolds longer than 50,000 base pairs",
                     "type": [
-                        "number",
+                        "integer",
                         "null"
                     ]
                 }
@@ -517,12 +555,14 @@
             "description": "Captures the relationship between a contig collection and an encoded feature.",
             "properties": {
                 "contig_collection_id": {
-                    "description": "Internal (CDM) unique identifier for a contig collection.",
+                    "description": "Internal (CDM) unique identifier for a contig collection.\nFrom the Entity table: entity_id where entity_type == 'ContigCollection'.\n",
+                    "pattern": "^CDM:ccol-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                     "type": "string"
                 },
                 "encoded_feature_id": {
-                    "description": "Internal (CDM) unique identifier for an encoded feature.",
+                    "description": "Internal (CDM) unique identifier for an encoded feature.\nFrom the Entity table: entity_id where entity_type == 'EncodedFeature'.\n",
                     "items": {
+                        "pattern": "^CDM:rna-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                         "type": "string"
                     },
                     "type": "array"
@@ -540,12 +580,14 @@
             "description": "Captures the relationship between a contig collection and a feature; equivalent to feature part-of contig collection.",
             "properties": {
                 "contig_collection_id": {
-                    "description": "Internal (CDM) unique identifier for a contig collection.",
+                    "description": "Internal (CDM) unique identifier for a contig collection.\nFrom the Entity table: entity_id where entity_type == 'ContigCollection'.\n",
+                    "pattern": "^CDM:ccol-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                     "type": "string"
                 },
                 "feature_id": {
-                    "description": "Internal (CDM) unique identifier for a feature.",
+                    "description": "Internal (CDM) unique identifier for a feature.\nFrom the Entity table: entity_id where entity_type == 'Feature'.\n",
                     "items": {
+                        "pattern": "^CDM:feat-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                         "type": "string"
                     },
                     "type": "array"
@@ -563,12 +605,14 @@
             "description": "Captures the relationship between a contig collection and a protein; equivalent to protein is ribosomal translation of (http://purl.obolibrary.org/obo/RO_0002512) contig collection.",
             "properties": {
                 "contig_collection_id": {
-                    "description": "Internal (CDM) unique identifier for a contig collection.",
+                    "description": "Internal (CDM) unique identifier for a contig collection.\nFrom the Entity table: entity_id where entity_type == 'ContigCollection'.\n",
+                    "pattern": "^CDM:ccol-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                     "type": "string"
                 },
                 "protein_id": {
-                    "description": "Internal (CDM) unique identifier for a protein.",
+                    "description": "Internal (CDM) unique identifier for a protein.\nFrom the Entity table: entity_id where entity_type == 'Protein'.\n",
                     "items": {
+                        "pattern": "^CDM:prot-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                         "type": "string"
                     },
                     "type": "array"
@@ -586,12 +630,14 @@
             "description": "Captures the relationship between a contig and a contig collection; equivalent to contig part-of contig collection.",
             "properties": {
                 "contig_collection_id": {
-                    "description": "Internal (CDM) unique identifier for a contig collection.",
+                    "description": "Internal (CDM) unique identifier for a contig collection.\nFrom the Entity table: entity_id where entity_type == 'ContigCollection'.\n",
+                    "pattern": "^CDM:ccol-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                     "type": "string"
                 },
                 "contig_id": {
-                    "description": "Internal (CDM) unique identifier for a contig.",
+                    "description": "Internal (CDM) unique identifier for a contig.\nFrom the Entity table: entity_id where entity_type == 'Contig'.\n",
                     "items": {
+                        "pattern": "^CDM:cntg-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                         "type": "string"
                     },
                     "type": "array"
@@ -609,12 +655,14 @@
             "description": "Captures the relationship between a contig and an encoded feature.",
             "properties": {
                 "contig_id": {
-                    "description": "Internal (CDM) unique identifier for a contig.",
+                    "description": "Internal (CDM) unique identifier for a contig.\nFrom the Entity table: entity_id where entity_type == 'Contig'.\n",
+                    "pattern": "^CDM:cntg-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                     "type": "string"
                 },
                 "encoded_feature_id": {
-                    "description": "Internal (CDM) unique identifier for an encoded feature.",
+                    "description": "Internal (CDM) unique identifier for an encoded feature.\nFrom the Entity table: entity_id where entity_type == 'EncodedFeature'.\n",
                     "items": {
+                        "pattern": "^CDM:rna-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                         "type": "string"
                     },
                     "type": "array"
@@ -632,12 +680,14 @@
             "description": "Captures the relationship between a contig and a feature; equivalent to feature part-of contig.",
             "properties": {
                 "contig_id": {
-                    "description": "Internal (CDM) unique identifier for a contig.",
+                    "description": "Internal (CDM) unique identifier for a contig.\nFrom the Entity table: entity_id where entity_type == 'Contig'.\n",
+                    "pattern": "^CDM:cntg-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                     "type": "string"
                 },
                 "feature_id": {
-                    "description": "Internal (CDM) unique identifier for a feature.",
+                    "description": "Internal (CDM) unique identifier for a feature.\nFrom the Entity table: entity_id where entity_type == 'Feature'.\n",
                     "items": {
+                        "pattern": "^CDM:feat-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                         "type": "string"
                     },
                     "type": "array"
@@ -655,12 +705,14 @@
             "description": "Captures the relationship between a contig and a protein; equivalent to protein is ribosomal translation of (http://purl.obolibrary.org/obo/RO_0002512) contig.",
             "properties": {
                 "contig_id": {
-                    "description": "Internal (CDM) unique identifier for a contig.",
+                    "description": "Internal (CDM) unique identifier for a contig.\nFrom the Entity table: entity_id where entity_type == 'Contig'.\n",
+                    "pattern": "^CDM:cntg-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                     "type": "string"
                 },
                 "protein_id": {
-                    "description": "Internal (CDM) unique identifier for a protein.",
+                    "description": "Internal (CDM) unique identifier for a protein.\nFrom the Entity table: entity_id where entity_type == 'Protein'.\n",
                     "items": {
+                        "pattern": "^CDM:prot-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                         "type": "string"
                     },
                     "type": "array"
@@ -675,10 +727,11 @@
         },
         "Contributor": {
             "additionalProperties": false,
-            "description": "Represents a contributor to the resource.\n\nContributors must have a 'contributor_type', either 'Person' or 'Organization', and\none of the 'name' fields: either 'given_name' and 'family_name' (for a person), or 'name' (for an organization or a person).\n\nThe 'contributor_role' field takes values from the DataCite and CRediT contributor\nroles vocabularies. For more information on these resources and choosing\nappropriate roles, please see the following links:\n\nDataCite contributor roles: https://support.datacite.org/docs/datacite-metadata-schema-v44-recommended-and-optional-properties#7a-contributortype\n\nCRediT contributor role taxonomy: https://credit.niso.org",
+            "description": "Represents a contributor to a resource.\n\nContributors must have a 'contributor_type', either 'Person' or 'Organization', and one of the 'name' fields: either 'given_name' and 'family_name' (for a person), or 'name' (for an organization or a person).\n\nThe 'contributor_role' field takes values from the DataCite and CRediT contributor roles vocabularies. For more information on these resources and choosing appropriate roles, please see the following links:\n\nDataCite contributor roles: https://support.datacite.org/docs/datacite-metadata-schema-v44-recommended-and-optional-properties#7a-contributortype\n\nCRediT contributor role taxonomy: https://credit.niso.org",
             "properties": {
                 "contributor_id": {
-                    "description": "Internal (CDM) unique identifier for a contributor.",
+                    "description": "Internal (CDM) unique identifier for a contributor.\nFrom the Entity table: entity_id where entity_type == 'Contributor'.\n",
+                    "pattern": "^CDM:ctrb-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                     "type": "string"
                 },
                 "contributor_type": {
@@ -713,10 +766,73 @@
             "title": "Contributor",
             "type": "object"
         },
+        "ContributorAffiliation": {
+            "additionalProperties": false,
+            "description": "Captures relationships between contributors where one contributor is part of another contributor, e.g. a member of a group or a group that is part of a larger organization.",
+            "properties": {
+                "affiliation_id": {
+                    "description": "The ID of the organization to which a contributor belongs. Should be the ID of another contributor.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "contributor_id": {
+                    "description": "Internal (CDM) unique identifier for a contributor.\nFrom the Entity table: entity_id where entity_type == 'Contributor'.\n",
+                    "items": {
+                        "pattern": "^CDM:ctrb-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "contributor_id"
+            ],
+            "title": "ContributorAffiliation",
+            "type": "object"
+        },
         "ContributorRole": {
-            "description": "The role of a contributor to a resource.",
+            "description": "The type of contribution made by a contributor.",
             "enum": [
-                "TODO"
+                "contact_person",
+                "data_collector",
+                "data_curator",
+                "data_manager",
+                "distributor",
+                "editor",
+                "hosting_institution",
+                "producer",
+                "project_leader",
+                "project_manager",
+                "project_member",
+                "registration_agency",
+                "registration_authority",
+                "related_person",
+                "researcher",
+                "research_group",
+                "rights_holder",
+                "sponsor",
+                "supervisor",
+                "work_package_leader",
+                "other",
+                "conceptualization",
+                "data_curation",
+                "formal_analysis",
+                "funding_acquisition",
+                "investigation",
+                "methodology",
+                "project_administration",
+                "resources",
+                "software",
+                "supervision",
+                "validation",
+                "visualization",
+                "writing_original_draft",
+                "writing_review_editing"
             ],
             "title": "ContributorRole",
             "type": "string"
@@ -730,36 +846,39 @@
             "title": "ContributorType",
             "type": "string"
         },
-        "ContributorXRoleXExperiment": {
+        "ContributorXDataSource": {
             "additionalProperties": false,
-            "description": "",
+            "description": "Captures the people and/or organizations involved in producing a dataset; ideally the contributor_role field will capture how the contributor was involved.",
             "properties": {
                 "contributor_id": {
-                    "description": "Internal (CDM) unique identifier for a contributor.",
+                    "description": "Internal (CDM) unique identifier for a contributor.\nFrom the Entity table: entity_id where entity_type == 'Contributor'.\n",
+                    "pattern": "^CDM:ctrb-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                     "type": "string"
                 },
                 "contributor_role": {
                     "$ref": "#/$defs/ContributorRole",
                     "description": "Role(s) played by the contributor when working on the experiment. If more than one role was played, additional rows should be added to represent each role."
                 },
-                "experiment_id": {
-                    "description": "Internal (CDM) unique identifier for an experiment.",
+                "data_source_id": {
+                    "description": "Internal (CDM) unique identifier for a data source.\nFrom the Entity table: entity_id where entity_type == 'DataSource'.\n",
+                    "pattern": "^CDM:dsrc-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                     "type": "string"
                 }
             },
             "required": [
                 "contributor_id",
-                "experiment_id"
+                "data_source_id"
             ],
-            "title": "ContributorXRoleXExperiment",
+            "title": "ContributorXDataSource",
             "type": "object"
         },
         "ContributorXRoleXProject": {
             "additionalProperties": false,
-            "description": "",
+            "description": "Describes the participation of a contributor in a project; ideally the contributor_role field will capture how the contributor was involved.",
             "properties": {
                 "contributor_id": {
-                    "description": "Internal (CDM) unique identifier for a contributor.",
+                    "description": "Internal (CDM) unique identifier for a contributor.\nFrom the Entity table: entity_id where entity_type == 'Contributor'.\n",
+                    "pattern": "^CDM:ctrb-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                     "type": "string"
                 },
                 "contributor_role": {
@@ -767,7 +886,8 @@
                     "description": "Role(s) played by the contributor when working on the experiment. If more than one role was played, additional rows should be added to represent each role."
                 },
                 "project_id": {
-                    "description": "Internal (CDM) unique identifier for a project.",
+                    "description": "Internal (CDM) unique identifier for a project.\nFrom the Entity table: entity_id where entity_type == 'Project'.\n",
+                    "pattern": "^CDM:[a-zA-Z]{2,4}-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                     "type": "string"
                 }
             },
@@ -778,45 +898,132 @@
             "title": "ContributorXRoleXProject",
             "type": "object"
         },
-        "DataSource": {
+        "ControlledTermValue": {
             "additionalProperties": false,
-            "description": "The source dataset from which data within the CDM was extracted. This might be an API query; a set of files downloaded from a website or uploaded by a user; a database dump; etc. A given data source should have either version information (e.g. UniProt's release number) or an access date to allow the original raw data dump to be recapitulated.",
+            "description": "A quality, described using a text string from a controlled vocabulary or enum.",
             "properties": {
-                "comments": {
-                    "description": "Additional details about the dataset.",
+                "attribute_cv_id": {
+                    "description": "The attribute being represented. For attributes that are in a controlled vocabulary, ontology, or enumeration, this attribute should capture the term ID from the controlled vocabulary.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
-                "data_source_id": {
-                    "description": "Internal (CDM) unique identifier for a data source.",
+                "attribute_cv_label": {
+                    "description": "The attribute being represented. For attributes that are in a controlled vocabulary, ontology, or enumeration, this attribute should capture the term from the controlled vocabulary.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "attribute_string": {
+                    "description": "The attribute being represented, as a text string. This field should only be used if the attribute is not represented in a controlled vocabulary, ontology, or enumeration.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "entity_id": {
+                    "description": "The database entity (sample, feature, protein, etc.) to which the attribute-value annotation refers.",
+                    "pattern": "^CDM:[a-zA-Z]{2,4}-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                     "type": "string"
                 },
-                "date_accessed": {
-                    "description": "The date when the data was downloaded from the data source.",
-                    "pattern": "^\\d{4}-\\d{2}-\\d{2}(T\\d{2}:\\d{2}:\\d{2}(Z|[+-]\\d{2}:\\d{2})?)?$",
+                "raw_value": {
+                    "description": "The value that was specified for an annotation in its raw form; e.g. \"2 cm\" or \"2-4 cm\"",
                     "type": [
                         "string",
                         "null"
                     ]
+                },
+                "type": {
+                    "$ref": "#/$defs/AttributeValueType",
+                    "description": "The type of value being represented - e.g. QuantityValue, TextValue, DateTimeValue, ControlledVocabularyTermValue, etc."
+                },
+                "value_cv_label": {
+                    "description": "For values that are in a controlled vocabulary, ontology, or enumeration, this attribute should capture the term from the controlled vocabulary.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "value_cv_label",
+                "entity_id"
+            ],
+            "title": "ControlledTermValue",
+            "type": "object"
+        },
+        "ControlledVocabularyTermValue": {
+            "additionalProperties": false,
+            "description": "A quality, described using a term from an ontology or schema with a stable persistent identifier.",
+            "properties": {
+                "attribute_cv_id": {
+                    "description": "The attribute being represented. For attributes that are in a controlled vocabulary, ontology, or enumeration, this attribute should capture the term ID from the controlled vocabulary.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "attribute_cv_label": {
+                    "description": "The attribute being represented. For attributes that are in a controlled vocabulary, ontology, or enumeration, this attribute should capture the term from the controlled vocabulary.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "attribute_string": {
+                    "description": "The attribute being represented, as a text string. This field should only be used if the attribute is not represented in a controlled vocabulary, ontology, or enumeration.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "entity_id": {
+                    "description": "The database entity (sample, feature, protein, etc.) to which the attribute-value annotation refers.",
+                    "pattern": "^CDM:[a-zA-Z]{2,4}-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
+                    "type": "string"
+                },
+                "raw_value": {
+                    "description": "The value that was specified for an annotation in its raw form; e.g. \"2 cm\" or \"2-4 cm\"",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "$ref": "#/$defs/AttributeValueType",
+                    "description": "The type of value being represented - e.g. QuantityValue, TextValue, DateTimeValue, ControlledVocabularyTermValue, etc."
+                },
+                "value_cv_id": {
+                    "description": "For values that are in a controlled vocabulary (CV), this attribute should capture the controlled vocabulary ID for the value.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "value_cv_label": {
+                    "description": "For values that are in a controlled vocabulary, ontology, or enumeration, this attribute should capture the term from the controlled vocabulary.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "entity_id"
+            ],
+            "title": "ControlledVocabularyTermValue",
+            "type": "object"
+        },
+        "DataSource": {
+            "additionalProperties": false,
+            "description": "The source for a resource, dataset, association, etc.",
+            "properties": {
+                "data_source_id": {
+                    "description": "Internal (CDM) unique identifier for a data source.\nFrom the Entity table: entity_id where entity_type == 'DataSource'.\n",
+                    "pattern": "^CDM:dsrc-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
+                    "type": "string"
                 },
                 "name": {
-                    "description": "The name of the data source.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "url": {
-                    "description": "The URL from which the data was loaded.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "version": {
-                    "description": "For versioned data sources, the version of the dataset.",
+                    "description": "A string used as a name or title.",
                     "type": [
                         "string",
                         "null"
@@ -829,12 +1036,251 @@
             "title": "DataSource",
             "type": "object"
         },
+        "DataSourceNew": {
+            "additionalProperties": false,
+            "description": "The source dataset from which data within the CDM was extracted. This might be an API query; a set of files downloaded from a website or uploaded by a user; a database dump; etc. A given data source should have either version information (e.g. a release number, like those used by UniProt or RefSeq) or an access date to allow the original raw data dump to be recapitulated.",
+            "properties": {
+                "comments": {
+                    "description": "Freeform text providing extra information.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "data_source_id": {
+                    "description": "Internal (CDM) unique identifier for a data source.\nFrom the Entity table: entity_id where entity_type == 'DataSource'.\n",
+                    "pattern": "^CDM:dsrc-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
+                    "type": "string"
+                },
+                "date_accessed": {
+                    "description": "The date when the data was downloaded from the data source.",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}(T\\d{2}:\\d{2}:\\d{2}(Z|[+-]\\d{2}:\\d{2})?)?$",
+                    "type": "string"
+                },
+                "date_published": {
+                    "description": "The date when the data source was originally made public.",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}(T\\d{2}:\\d{2}:\\d{2}(Z|[+-]\\d{2}:\\d{2})?)?$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_updated": {
+                    "description": "The date when the data source was last updated.",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}(T\\d{2}:\\d{2}:\\d{2}(Z|[+-]\\d{2}:\\d{2})?)?$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "license": {
+                    "description": "Usage license for the resource. Use one of the SPDX license identifiers or provide a link to the license text if no SPDX ID is available.\n",
+                    "pattern": "^CDM:lic-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "name": {
+                    "description": "The name of the data source.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "publisher": {
+                    "description": "The publisher of the resource. For a dataset, this is the repository where it is stored.",
+                    "pattern": "^CDM:ctrb-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "resource_type": {
+                    "$ref": "#/$defs/ResourceType",
+                    "description": "The broad type of the source data for this object. 'dataset' is currently the only valid value supported by this schema."
+                },
+                "url": {
+                    "description": "The URL from which the data was loaded.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "version": {
+                    "description": "The version of the resource. This must be an absolute version, not a relative version like 'latest'.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "data_source_id",
+                "date_accessed",
+                "resource_type"
+            ],
+            "title": "DataSourceNew",
+            "type": "object"
+        },
+        "DataSourceXDescription": {
+            "additionalProperties": false,
+            "description": "Links a data source to a description (e.g. the abstract or a free text description).",
+            "properties": {
+                "data_source_id": {
+                    "description": "Internal (CDM) unique identifier for a data source.\nFrom the Entity table: entity_id where entity_type == 'DataSource'.\n",
+                    "pattern": "^CDM:dsrc-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
+                    "type": "string"
+                },
+                "resource_description_id": {
+                    "description": "Unique identifier for a description for a resource.",
+                    "pattern": "^CDM:[a-zA-Z]{2,4}-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "data_source_id",
+                "resource_description_id"
+            ],
+            "title": "DataSourceXDescription",
+            "type": "object"
+        },
+        "DataSourceXFundingReference": {
+            "additionalProperties": false,
+            "description": "Links a data source to a funding reference.",
+            "properties": {
+                "data_source_id": {
+                    "description": "Internal (CDM) unique identifier for a data source.\nFrom the Entity table: entity_id where entity_type == 'DataSource'.\n",
+                    "pattern": "^CDM:dsrc-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
+                    "type": "string"
+                },
+                "funding_reference_id": {
+                    "description": "Internal (CDM) unique identifier for a specific source of funding -- e.g. a grant or award.\nFrom the Entity table: entity_id where entity_type == 'FundingReference'.\n",
+                    "pattern": "^CDM:[a-zA-Z]{2,4}-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "data_source_id",
+                "funding_reference_id"
+            ],
+            "title": "DataSourceXFundingReference",
+            "type": "object"
+        },
+        "DataSourceXLicense": {
+            "additionalProperties": false,
+            "description": "Links a data source to a license.",
+            "properties": {
+                "data_source_id": {
+                    "description": "Internal (CDM) unique identifier for a data source.\nFrom the Entity table: entity_id where entity_type == 'DataSource'.\n",
+                    "pattern": "^CDM:dsrc-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
+                    "type": "string"
+                },
+                "license_id": {
+                    "description": "Unique identifier for a license.\n",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "data_source_id",
+                "license_id"
+            ],
+            "title": "DataSourceXLicense",
+            "type": "object"
+        },
+        "DataSourceXTitle": {
+            "additionalProperties": false,
+            "description": "Links a data source to a title.",
+            "properties": {
+                "data_source_id": {
+                    "description": "Internal (CDM) unique identifier for a data source.\nFrom the Entity table: entity_id where entity_type == 'DataSource'.\n",
+                    "pattern": "^CDM:dsrc-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
+                    "type": "string"
+                },
+                "resource_title_id": {
+                    "description": "Unique identifier for a title for a resource.",
+                    "pattern": "^CDM:[a-zA-Z]{2,4}-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "data_source_id",
+                "resource_title_id"
+            ],
+            "title": "DataSourceXTitle",
+            "type": "object"
+        },
+        "DateTimeValue": {
+            "additionalProperties": false,
+            "description": "A date or date and time value.",
+            "properties": {
+                "attribute_cv_id": {
+                    "description": "The attribute being represented. For attributes that are in a controlled vocabulary, ontology, or enumeration, this attribute should capture the term ID from the controlled vocabulary.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "attribute_cv_label": {
+                    "description": "The attribute being represented. For attributes that are in a controlled vocabulary, ontology, or enumeration, this attribute should capture the term from the controlled vocabulary.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "attribute_string": {
+                    "description": "The attribute being represented, as a text string. This field should only be used if the attribute is not represented in a controlled vocabulary, ontology, or enumeration.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "date_time": {
+                    "description": "A date or date and time, expressed in ISO 8601 format with timezone indicators where appropriate.  The date or date/time value, expressed in ISO 8601-compatible form. Dates should be expressed as YYYY-MM-DD; times should be expressed as HH:MM:SS with optional milliseconds and an indication of the timezone.",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}(T\\d{2}:\\d{2}:\\d{2}(Z|[+-]\\d{2}:\\d{2})?)?$",
+                    "type": "string"
+                },
+                "entity_id": {
+                    "description": "The database entity (sample, feature, protein, etc.) to which the attribute-value annotation refers.",
+                    "pattern": "^CDM:[a-zA-Z]{2,4}-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
+                    "type": "string"
+                },
+                "raw_value": {
+                    "description": "The value that was specified for an annotation in its raw form; e.g. \"2 cm\" or \"2-4 cm\"",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "$ref": "#/$defs/AttributeValueType",
+                    "description": "The type of value being represented - e.g. QuantityValue, TextValue, DateTimeValue, ControlledVocabularyTermValue, etc."
+                }
+            },
+            "required": [
+                "date_time",
+                "entity_id"
+            ],
+            "title": "DateTimeValue",
+            "type": "object"
+        },
+        "DescriptionType": {
+            "description": "The type of text being represented.",
+            "enum": [
+                "abstract",
+                "description",
+                "summary"
+            ],
+            "title": "DescriptionType",
+            "type": "string"
+        },
         "EncodedFeature": {
             "additionalProperties": false,
             "description": "An entity generated from a feature, such as a transcript.",
             "properties": {
                 "encoded_feature_id": {
-                    "description": "Internal (CDM) unique identifier for an encoded feature.",
+                    "description": "Internal (CDM) unique identifier for an encoded feature.\nFrom the Entity table: entity_id where entity_type == 'EncodedFeature'.\n",
+                    "pattern": "^CDM:rna-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                     "type": "string"
                 },
                 "has_stop_codon": {
@@ -871,11 +1317,13 @@
             "description": "Captures the relationship between a feature and its transcription product.",
             "properties": {
                 "encoded_feature_id": {
-                    "description": "Internal (CDM) unique identifier for an encoded feature.",
+                    "description": "Internal (CDM) unique identifier for an encoded feature.\nFrom the Entity table: entity_id where entity_type == 'EncodedFeature'.\n",
+                    "pattern": "^CDM:rna-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                     "type": "string"
                 },
                 "feature_id": {
-                    "description": "Internal (CDM) unique identifier for a feature.",
+                    "description": "Internal (CDM) unique identifier for a feature.\nFrom the Entity table: entity_id where entity_type == 'Feature'.\n",
+                    "pattern": "^CDM:feat-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                     "type": "string"
                 }
             },
@@ -886,12 +1334,34 @@
             "title": "EncodedFeatureXFeature",
             "type": "object"
         },
+        "EncodedFeatureXProtein": {
+            "additionalProperties": false,
+            "description": "Captures the relationship between an encoded feature (RNA of some sort) and a protein.",
+            "properties": {
+                "encoded_feature_id": {
+                    "description": "Internal (CDM) unique identifier for an encoded feature.\nFrom the Entity table: entity_id where entity_type == 'EncodedFeature'.\n",
+                    "pattern": "^CDM:rna-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
+                    "type": "string"
+                },
+                "protein_id": {
+                    "description": "Internal (CDM) unique identifier for a protein.\nFrom the Entity table: entity_id where entity_type == 'Protein'.\n",
+                    "pattern": "^CDM:prot-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "encoded_feature_id",
+                "protein_id"
+            ],
+            "title": "EncodedFeatureXProtein",
+            "type": "object"
+        },
         "EntailedEdge": {
             "additionalProperties": false,
-            "description": "A relation graph edge that is inferred",
+            "description": "A relation graph edge that is inferred. This table contains links between the nodes that appear as subjects in the [Statement](Statement) table. The graph contains all possible links between nodes and is created using a reasoner such as [relation-graph](https://github.com/balhoff/relation-graph) to materialise inferrred links.",
             "properties": {
                 "object": {
-                    "description": "Note the range of this slot is always a node. If the triple represents a literal, instead value will be populated",
+                    "description": "Note the range of this slot is always a node. If the triple represents a literal, the \"value\" field will be populated instead.",
                     "type": [
                         "string",
                         "null"
@@ -917,7 +1387,7 @@
         },
         "Entity": {
             "additionalProperties": false,
-            "description": "A database entity.",
+            "description": "An entity in the CDM.",
             "properties": {
                 "created": {
                     "description": "Date/timestamp for when the entity was created or added to the CDM.",
@@ -930,15 +1400,19 @@
                     "type": "string"
                 },
                 "data_source_entity_id": {
-                    "description": "The primary ID of the entity at the data source.",
+                    "description": "The primary, ideally unique, ID of the entity at the data source.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "data_source_id": {
-                    "description": "Internal (CDM) unique identifier for a data source.",
-                    "type": "string"
+                    "description": "The source from which the data came.",
+                    "pattern": "^CDM:[a-zA-Z]{2,4}-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "data_source_updated": {
                     "description": "Date/timestamp for when the entity was updated in the data source.",
@@ -950,6 +1424,7 @@
                 },
                 "entity_id": {
                     "description": "Internal (CDM) unique identifier for an entity.",
+                    "pattern": "^CDM:[a-zA-Z]{2,4}-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                     "type": "string"
                 },
                 "entity_type": {
@@ -964,13 +1439,24 @@
             },
             "required": [
                 "entity_id",
-                "data_source_id",
                 "entity_type",
                 "data_source_created",
                 "created",
                 "updated"
             ],
             "title": "Entity",
+            "type": "object"
+        },
+        "EntityIdentifiers": {
+            "additionalProperties": false,
+            "description": "Represents the link between an entity and its identifiers.",
+            "title": "EntityIdentifiers",
+            "type": "object"
+        },
+        "EntityNames": {
+            "additionalProperties": false,
+            "description": "Represents the link between an entity and its names.",
+            "title": "EntityNames",
             "type": "object"
         },
         "EntityType": {
@@ -983,39 +1469,12 @@
                 "Feature",
                 "Protein",
                 "Sample",
-                "Organization",
                 "Contributor",
                 "Project",
                 "Experiment"
             ],
             "title": "EntityType",
             "type": "string"
-        },
-        "EntityXMeasurement": {
-            "additionalProperties": false,
-            "description": "Captures a measurement made on an entity.",
-            "properties": {
-                "entity_id": {
-                    "description": "Internal (CDM) unique identifier for an entity.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "measurement_id": {
-                    "description": "Internal (CDM) unique identifier for a measurement.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                }
-            },
-            "required": [
-                "entity_id",
-                "measurement_id"
-            ],
-            "title": "EntityXMeasurement",
-            "type": "object"
         },
         "Event": {
             "additionalProperties": false,
@@ -1038,6 +1497,7 @@
                 },
                 "event_id": {
                     "description": "Internal (CDM) unique identifier for an event.",
+                    "pattern": "^CDM:[a-zA-Z]{2,4}-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                     "type": "string"
                 },
                 "location": {
@@ -1061,9 +1521,27 @@
             "title": "Event",
             "type": "object"
         },
+        "EventType": {
+            "description": "The type of date being represented.",
+            "enum": [
+                "accepted",
+                "available",
+                "copyrighted",
+                "collected",
+                "created",
+                "issued",
+                "submitted",
+                "updated",
+                "valid",
+                "withdrawn",
+                "other"
+            ],
+            "title": "EventType",
+            "type": "string"
+        },
         "Experiment": {
             "additionalProperties": false,
-            "description": "A discrete scientific procedure undertaken to make a discovery, test a hypothesis, or demonstrate a known fact.",
+            "description": "A discrete scientific procedure undertaken to make a discovery, test a hypothesis, or demonstrate a known fact. The protocol_id links to the workflow followed to perform the experiment.",
             "properties": {
                 "created_at": {
                     "description": "The start time of the experiment.",
@@ -1082,6 +1560,7 @@
                 },
                 "experiment_id": {
                     "description": "Internal (CDM) unique identifier for an experiment.",
+                    "pattern": "^CDM:[a-zA-Z]{2,4}-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                     "type": "string"
                 },
                 "name": {
@@ -1090,61 +1569,75 @@
                         "string",
                         "null"
                     ]
-                }
-            },
-            "required": [
-                "experiment_id"
-            ],
-            "title": "Experiment",
-            "type": "object"
-        },
-        "ExperimentXProject": {
-            "additionalProperties": false,
-            "description": "Captures the relationship between an experiment and the project that it is a part of.",
-            "properties": {
-                "experiment_id": {
-                    "description": "Internal (CDM) unique identifier for an experiment.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
                 },
-                "project_id": {
-                    "description": "Internal (CDM) unique identifier for a project.",
+                "protocol_id": {
+                    "description": "Internal (CDM) unique identifier for a protocol.\nFrom the Entity table: entity_id where entity_type == 'Protocol'.\n",
+                    "pattern": "^CDM:prcl-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                     "type": "string"
                 }
             },
             "required": [
                 "experiment_id",
-                "project_id"
+                "protocol_id"
             ],
-            "title": "ExperimentXProject",
+            "title": "Experiment",
             "type": "object"
         },
-        "ExperimentXSample": {
+        "ExperimentCondition": {
             "additionalProperties": false,
-            "description": "Represents the participation of a sample in an experiment.",
+            "description": "A measurement, reagent, or description of one aspect of the environment used in an experiment; examples include temperature; aerobic or anaerobic conditions; presence of a chemical in the environment. Used to describe the context, conditions, or set-up of an experiment.",
             "properties": {
+                "experiment_condition_id": {
+                    "description": "Internal (CDM) unique identifier for an experiment condition.",
+                    "pattern": "^CDM:[a-zA-Z]{2,4}-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
+                    "type": "string"
+                },
                 "experiment_id": {
                     "description": "Internal (CDM) unique identifier for an experiment.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
+                    "pattern": "^CDM:[a-zA-Z]{2,4}-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
+                    "type": "string"
                 },
-                "sample_id": {
-                    "description": "Internal (CDM) unique identifier for a sample.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
+                "value": {
+                    "description": "A value; units should not be included.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "variable_id": {
+                    "description": "Internal CDM unique identifier for a variable.",
+                    "pattern": "^CDM:[a-zA-Z]{2,4}-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
+                    "type": "string"
                 }
             },
             "required": [
+                "experiment_condition_id",
                 "experiment_id",
-                "sample_id"
+                "variable_id"
             ],
-            "title": "ExperimentXSample",
+            "title": "ExperimentCondition",
+            "type": "object"
+        },
+        "ExperimentConditionSet": {
+            "additionalProperties": false,
+            "description": "A unique combination of experimental conditions and entities that are used in a specific experiment. One experiment condition set is expected to comprise of multiple ExperimentConditions.",
+            "properties": {
+                "experiment_condition_id": {
+                    "description": "Internal (CDM) unique identifier for an experiment condition.",
+                    "pattern": "^CDM:[a-zA-Z]{2,4}-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
+                    "type": "string"
+                },
+                "experiment_condition_set_id": {
+                    "description": "Internal (CDM) unique identifier for a set of experimental conditions.",
+                    "pattern": "^CDM:[a-zA-Z]{2,4}-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "experiment_condition_set_id",
+                "experiment_condition_id"
+            ],
+            "title": "ExperimentConditionSet",
             "type": "object"
         },
         "Feature": {
@@ -1170,7 +1663,8 @@
                     ]
                 },
                 "feature_id": {
-                    "description": "Internal (CDM) unique identifier for a feature.",
+                    "description": "Internal (CDM) unique identifier for a feature.\nFrom the Entity table: entity_id where entity_type == 'Feature'.\n",
+                    "pattern": "^CDM:feat-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                     "type": "string"
                 },
                 "hash": {
@@ -1189,6 +1683,7 @@
                 },
                 "protocol_id": {
                     "description": "ID of the protocol used to generate the feature.",
+                    "pattern": "^CDM:prcl-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                     "type": [
                         "string",
                         "null"
@@ -1196,6 +1691,7 @@
                 },
                 "source_database": {
                     "description": "ID of the data source from which this entity came.",
+                    "pattern": "^CDM:ctrb-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                     "type": [
                         "string",
                         "null"
@@ -1213,7 +1709,7 @@
                     "description": "The strand of the feature."
                 },
                 "type": {
-                    "description": "The type of the feature; constrained to be either a term from the Sequence Ontology or an SO accession number. Must be sequence_feature (SO:0000110) or an is_a child of it.",
+                    "description": "The type of the feature; constrained to be a Sequence Ontology accession (i.e. SO:000nnnn). Must be sequence_feature (SO:0000110) or an is_a child of it.",
                     "pattern": "^SO:\\d+$",
                     "type": [
                         "string",
@@ -1232,12 +1728,14 @@
             "description": "Captures the relationship between a feature and a protein; equivalent to feature encodes protein.",
             "properties": {
                 "feature_id": {
-                    "description": "Internal (CDM) unique identifier for a feature.",
+                    "description": "Internal (CDM) unique identifier for a feature.\nFrom the Entity table: entity_id where entity_type == 'Feature'.\n",
+                    "pattern": "^CDM:feat-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                     "type": "string"
                 },
                 "protein_id": {
-                    "description": "Internal (CDM) unique identifier for a protein.",
+                    "description": "Internal (CDM) unique identifier for a protein.\nFrom the Entity table: entity_id where entity_type == 'Protein'.\n",
                     "items": {
+                        "pattern": "^CDM:prot-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                         "type": "string"
                     },
                     "type": "array"
@@ -1250,33 +1748,40 @@
             "title": "FeatureXProtein",
             "type": "object"
         },
-        "Geolocation": {
+        "FundingReference": {
             "additionalProperties": false,
-            "description": "A normalized value for a location on the earth's surface",
+            "description": "Represents a funding source for a resource, including the funding body and the grant awarded.\n\nOne (or more) of the fields `grant_id`, `grant_url`, or `funder.organization_name` is required; others are optional.\n\nRecommended resources for organization identifiers include:\n  - Research Organization Registry, http://ror.org\n  - International Standard Name Identifier, https://isni.org\n  - Crossref Funder Registry, https://www.crossref.org/services/funder-registry/ (to be subsumed into ROR)\n\nSome organizations may have a digital object identifier (DOI).",
             "properties": {
-                "attribute_cv_term_id": {
-                    "description": "If the attribute is a term from a controlled vocabulary, the ID of the term.",
+                "funder": {
+                    "description": "The funder for the grant or award.",
+                    "pattern": "^CDM:ctrb-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
-                "attribute_name": {
-                    "description": "The attribute being captured in this annotation.",
+                "funding_reference_id": {
+                    "description": "Internal (CDM) unique identifier for a specific source of funding -- e.g. a grant or award.\nFrom the Entity table: entity_id where entity_type == 'FundingReference'.\n",
+                    "pattern": "^CDM:[a-zA-Z]{2,4}-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                     "type": "string"
                 },
-                "entity_id": {
-                    "description": "The database entity (sample, feature, protein, etc.) to which the attribute-value annotation refers.",
-                    "type": "string"
+                "grant_id": {
+                    "description": "Code for the grant, assigned by the funder.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
-                "latitude": {
-                    "type": "string"
+                "grant_title": {
+                    "description": "Title for the grant.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
-                "longitude": {
-                    "type": "string"
-                },
-                "raw_value": {
-                    "description": "The raw value for a geolocation should follow {latitude} {longitude}",
+                "grant_url": {
+                    "description": "URL for the grant.",
+                    "pattern": "^[a-zA-Z0-9.-_]+:\\S",
                     "type": [
                         "string",
                         "null"
@@ -1284,10 +1789,65 @@
                 }
             },
             "required": [
+                "funding_reference_id"
+            ],
+            "title": "FundingReference",
+            "type": "object"
+        },
+        "Geolocation": {
+            "additionalProperties": false,
+            "description": "A normalized value for a location on the earth's surface. Should be expressed in decimal degrees.",
+            "properties": {
+                "attribute_cv_id": {
+                    "description": "The attribute being represented. For attributes that are in a controlled vocabulary, ontology, or enumeration, this attribute should capture the term ID from the controlled vocabulary.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "attribute_cv_label": {
+                    "description": "The attribute being represented. For attributes that are in a controlled vocabulary, ontology, or enumeration, this attribute should capture the term from the controlled vocabulary.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "attribute_string": {
+                    "description": "The attribute being represented, as a text string. This field should only be used if the attribute is not represented in a controlled vocabulary, ontology, or enumeration.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "entity_id": {
+                    "description": "The database entity (sample, feature, protein, etc.) to which the attribute-value annotation refers.",
+                    "pattern": "^CDM:[a-zA-Z]{2,4}-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
+                    "type": "string"
+                },
+                "latitude": {
+                    "description": "The latitude portion of a geolocation.",
+                    "type": "number"
+                },
+                "longitude": {
+                    "description": "The longitude portion of a geolocation.",
+                    "type": "number"
+                },
+                "raw_value": {
+                    "description": "The raw value for a geolocation; should follow {latitude} {longitude}.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "$ref": "#/$defs/AttributeValueType",
+                    "description": "The type of value being represented - e.g. QuantityValue, TextValue, DateTimeValue, ControlledVocabularyTermValue, etc."
+                }
+            },
+            "required": [
                 "latitude",
                 "longitude",
-                "entity_id",
-                "attribute_name"
+                "entity_id"
             ],
             "title": "Geolocation",
             "type": "object"
@@ -1326,6 +1886,7 @@
                 },
                 "gold_environmental_context_id": {
                     "description": "Internal (CDM) unique identifier for a GOLD environmental context.",
+                    "pattern": "^CDM:[a-zA-Z]{2,4}-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                     "type": "string"
                 },
                 "specific_ecosystem": {
@@ -1342,15 +1903,9 @@
             "title": "GoldEnvironmentalContext",
             "type": "object"
         },
-        "IdentifiedEntity": {
-            "additionalProperties": false,
-            "description": "Represents the link between an entity and its identifiers.",
-            "title": "IdentifiedEntity",
-            "type": "object"
-        },
         "Identifier": {
             "additionalProperties": false,
-            "description": "A string used as a resolvable (external) identifier for an entity. This should be a URI or CURIE. If the string cannot be resolved to an URL, it should be added as a 'name' instead.\n\nThis table is used for capturing external IDs. The internal CDM identifier should be used in the *_id field (e.g. feature_id, protein_id, contig_collection_id).",
+            "description": "A string used as a resolvable (external) identifier for an entity. This should be a CURIE in the form `<database_prefix>:<local_identifier>`. [Bioregistry](https://bioregistry.io) is used as the canonical reference for CURIE database prefixes; please use the prefix exactly as written in the Bioregistry entry.\n\nIf the string cannot be resolved to an URL, it should be added to the `Name` table instead.\n\nThis table is used for capturing external IDs. The internal CDM identifier should be used in the *_id field (e.g. feature_id, protein_id, contig_collection_id).",
             "properties": {
                 "description": {
                     "description": "Brief description of the identifier.",
@@ -1361,6 +1916,7 @@
                 },
                 "entity_id": {
                     "description": "Internal (CDM) unique identifier for an entity.",
+                    "pattern": "^CDM:[a-zA-Z]{2,4}-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                     "type": "string"
                 },
                 "identifier": {
@@ -1368,7 +1924,7 @@
                     "type": "string"
                 },
                 "relationship": {
-                    "description": "Relationship between this identifier and the entity in the `entity_id` field.",
+                    "description": "Relationship between this identifier and the entity in the `entity_id` field. If absent, it is assumed that the identifier represents the same entity in another data source.",
                     "type": [
                         "string",
                         "null"
@@ -1376,6 +1932,7 @@
                 },
                 "source": {
                     "description": "The source for a specific piece of information; should be a CDM internal ID of a source in the DataSource table.",
+                    "pattern": "^CDM:dsrc-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                     "type": [
                         "string",
                         "null"
@@ -1389,21 +1946,81 @@
             "title": "Identifier",
             "type": "object"
         },
-        "Measurement": {
+        "License": {
             "additionalProperties": false,
-            "description": "A qualitative or quantitative observation of an attribute of an object or event against a standardized scale, to enable it to be compared with other objects or events.",
+            "description": "License information for the resource.",
             "properties": {
-                "attribute_cv_term_id": {
-                    "description": "If the attribute is a term from a controlled vocabulary, the ID of the term.",
+                "id": {
+                    "description": "CURIE for the license.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
-                "attribute_name": {
-                    "description": "The attribute being captured in this annotation.",
+                "license_id": {
+                    "description": "Unique identifier for a license.\n",
                     "type": "string"
                 },
+                "name": {
+                    "description": "String representing the license, from the SPDX license identifiers at https://spdx.org/licenses/.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "url": {
+                    "description": "URL for the license.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "license_id"
+            ],
+            "title": "License",
+            "type": "object"
+        },
+        "Measurement": {
+            "additionalProperties": false,
+            "description": "The value of a specified variable_id under the specified conditions.",
+            "properties": {
+                "experiment_condition_set_id": {
+                    "description": "Internal (CDM) unique identifier for a set of experimental conditions.",
+                    "pattern": "^CDM:[a-zA-Z]{2,4}-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
+                    "type": "string"
+                },
+                "measurement_id": {
+                    "description": "Internal (CDM) unique identifier for a measurement.",
+                    "pattern": "^CDM:[a-zA-Z]{2,4}-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
+                    "type": "string"
+                },
+                "measurement_set_id": {
+                    "description": "Internal (CDM) unique identifier for a specified variable in a specified experiment.",
+                    "pattern": "^CDM:[a-zA-Z]{2,4}-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
+                    "type": "string"
+                },
+                "value": {
+                    "description": "The value for a given measurement set (a specified variable in a specified experiment) in the environmental conditions specified by experiment_condition_set_id.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "measurement_id",
+                "measurement_set_id",
+                "experiment_condition_set_id"
+            ],
+            "title": "Measurement",
+            "type": "object"
+        },
+        "MeasurementSet": {
+            "additionalProperties": false,
+            "description": "Grouping table to collate a set of protocol outputs by variable, quality, and timestamp.",
+            "properties": {
                 "created_at": {
                     "description": "Timestamp for the measurement.",
                     "pattern": "^\\d{4}-\\d{2}-\\d{2}(T\\d{2}:\\d{2}:\\d{2}(Z|[+-]\\d{2}:\\d{2})?)?$",
@@ -1412,68 +2029,29 @@
                         "null"
                     ]
                 },
-                "entity_id": {
-                    "description": "The database entity (sample, feature, protein, etc.) to which the attribute-value annotation refers.",
-                    "type": "string"
-                },
-                "maximum_value": {
-                    "description": "If the quantity describes a range, represents the upper bound of the range.",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
-                },
-                "measurement_id": {
-                    "description": "Internal (CDM) unique identifier for a measurement.",
-                    "type": "string"
-                },
-                "minimum_value": {
-                    "description": "If the quantity describes a range, represents the lower bound of the range.",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
-                },
-                "protocol_id": {
-                    "description": "The ID of the protocol used to generate the measurement.",
+                "measurement_set_id": {
+                    "description": "Internal (CDM) unique identifier for a specified variable in a specified experiment.",
+                    "pattern": "^CDM:[a-zA-Z]{2,4}-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                     "type": "string"
                 },
                 "quality": {
-                    "description": "The quality of the measurement, indicating the confidence that one can have in its correctness.",
+                    "description": "A quality score for measurement.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
-                "raw_value": {
-                    "description": "Raw value from the source data. May or may not include units or other unstructured information.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "unit": {
-                    "description": "The unit of the quantity. Should be a term from UCUM.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "value": {
-                    "description": "The numeric portion of the quantity.",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                "variable_id": {
+                    "description": "Internal CDM unique identifier for a variable.",
+                    "pattern": "^CDM:[a-zA-Z]{2,4}-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
+                    "type": "string"
                 }
             },
             "required": [
-                "measurement_id",
-                "protocol_id",
-                "entity_id",
-                "attribute_name"
+                "measurement_set_id",
+                "variable_id"
             ],
-            "title": "Measurement",
+            "title": "MeasurementSet",
             "type": "object"
         },
         "MixsEnvironmentalContext": {
@@ -1503,6 +2081,7 @@
                 },
                 "mixs_environmental_context_id": {
                     "description": "Internal (CDM) unique identifier for a mixs environmental context.",
+                    "pattern": "^CDM:[a-zA-Z]{2,4}-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                     "type": "string"
                 }
             },
@@ -1514,7 +2093,7 @@
         },
         "Name": {
             "additionalProperties": false,
-            "description": "A string used as the name or label for an entity. This may be a primary name, alternative name, synonym, acronym, or any other label used to refer to an entity.\n\nIdentifiers that look like CURIEs or database references, but which cannot be resolved using bioregistry or identifiers.org should be added as names.",
+            "description": "A string used as the name or label for an entity. This may be a primary name, alternative name, synonym, acronym, or any other label used to refer to an entity.\n\nIdentifiers that look like CURIEs or database references, but which cannot be resolved using [Bioregistry](https://bioregistry.io) or [identifiers.org](https://identifiers.org) should be added to the `Name` table.",
             "properties": {
                 "description": {
                     "description": "Brief description of the name and/or its relationship to the entity.",
@@ -1525,6 +2104,7 @@
                 },
                 "entity_id": {
                     "description": "Internal (CDM) unique identifier for an entity.",
+                    "pattern": "^CDM:[a-zA-Z]{2,4}-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                     "type": "string"
                 },
                 "name": {
@@ -1533,6 +2113,7 @@
                 },
                 "source": {
                     "description": "The source for a specific piece of information; should be a CDM internal ID of a source in the DataSource table.",
+                    "pattern": "^CDM:dsrc-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                     "type": [
                         "string",
                         "null"
@@ -1546,10 +2127,93 @@
             "title": "Name",
             "type": "object"
         },
-        "NamedEntity": {
+        "OrderedProtocolStep": {
             "additionalProperties": false,
-            "description": "Represents the link between an entity and its names.",
-            "title": "NamedEntity",
+            "description": "A list of the steps in a protocol; the step_index indicates the order in which they should be executed.",
+            "properties": {
+                "protocol_id": {
+                    "description": "Internal (CDM) unique identifier for a protocol.\nFrom the Entity table: entity_id where entity_type == 'Protocol'.\n",
+                    "pattern": "^CDM:prcl-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
+                    "type": "string"
+                },
+                "protocol_step_id": {
+                    "description": "Internal CDM unique identifier for a step in a protocol.",
+                    "pattern": "^CDM:[a-zA-Z]{2,4}-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
+                    "type": "string"
+                },
+                "step_index": {
+                    "description": "The number of the step in an ordered progression.",
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "protocol_id",
+                "protocol_step_id",
+                "step_index"
+            ],
+            "title": "OrderedProtocolStep",
+            "type": "object"
+        },
+        "Parameter": {
+            "additionalProperties": false,
+            "description": "A parameter in a protocol. Currently specific to computational protocols.",
+            "properties": {
+                "cardinality": {
+                    "description": "The cardinality of the parameter.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "default": {
+                    "description": "The default value for the parameter if a value is not supplied.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "Brief textual definition or description.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "name": {
+                    "description": "A string used as a name or title.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "parameter_id": {
+                    "description": "Internal (CDM) unique identifier for a parameter of a protocol.",
+                    "pattern": "^CDM:[a-zA-Z]{2,4}-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
+                    "type": "string"
+                },
+                "parameter_type": {
+                    "$ref": "#/$defs/ProtocolParameterType",
+                    "description": "Whether the parameter applies to the protocol input or output."
+                },
+                "required": {
+                    "description": "Whether or not this parameter must be supplied.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "value_type": {
+                    "description": "The type(s) of the value.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "parameter_id"
+            ],
+            "title": "Parameter",
             "type": "object"
         },
         "Prefix": {
@@ -1557,14 +2221,14 @@
             "description": "Maps CURIEs to URIs",
             "properties": {
                 "base": {
-                    "description": "The base URI a prefix will expand to",
+                    "description": "The base URI a prefix will expand to.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "prefix": {
-                    "description": "A standardized prefix such as 'GO' or 'rdf' or 'FlyBase'",
+                    "description": "A standardized prefix such as 'GO' or 'rdf' or 'FlyBase'.",
                     "type": [
                         "string",
                         "null"
@@ -1572,93 +2236,6 @@
                 }
             },
             "title": "Prefix",
-            "type": "object"
-        },
-        "ProcessedMeasurement": {
-            "additionalProperties": false,
-            "description": "A measurement that requires additional processing to generate a result.",
-            "properties": {
-                "attribute_cv_term_id": {
-                    "description": "If the attribute is a term from a controlled vocabulary, the ID of the term.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "attribute_name": {
-                    "description": "The attribute being captured in this annotation.",
-                    "type": "string"
-                },
-                "created_at": {
-                    "description": "Timestamp for the measurement.",
-                    "pattern": "^\\d{4}-\\d{2}-\\d{2}(T\\d{2}:\\d{2}:\\d{2}(Z|[+-]\\d{2}:\\d{2})?)?$",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "entity_id": {
-                    "description": "The database entity (sample, feature, protein, etc.) to which the attribute-value annotation refers.",
-                    "type": "string"
-                },
-                "maximum_value": {
-                    "description": "If the quantity describes a range, represents the upper bound of the range.",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
-                },
-                "measurement_id": {
-                    "description": "Internal (CDM) unique identifier for a measurement.",
-                    "type": "string"
-                },
-                "minimum_value": {
-                    "description": "If the quantity describes a range, represents the lower bound of the range.",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
-                },
-                "protocol_id": {
-                    "description": "The ID of the protocol used to generate the measurement.",
-                    "type": "string"
-                },
-                "quality": {
-                    "description": "The quality of the measurement, indicating the confidence that one can have in its correctness.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "raw_value": {
-                    "description": "Raw value from the source data. May or may not include units or other unstructured information.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "unit": {
-                    "description": "The unit of the quantity. Should be a term from UCUM.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "value": {
-                    "description": "The numeric portion of the quantity.",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
-                }
-            },
-            "required": [
-                "measurement_id",
-                "protocol_id",
-                "entity_id",
-                "attribute_name"
-            ],
-            "title": "ProcessedMeasurement",
             "type": "object"
         },
         "Project": {
@@ -1673,7 +2250,8 @@
                     ]
                 },
                 "project_id": {
-                    "description": "Internal (CDM) unique identifier for a project.",
+                    "description": "Internal (CDM) unique identifier for a project.\nFrom the Entity table: entity_id where entity_type == 'Project'.\n",
+                    "pattern": "^CDM:[a-zA-Z]{2,4}-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                     "type": "string"
                 }
             },
@@ -1713,7 +2291,8 @@
                     ]
                 },
                 "protein_id": {
-                    "description": "Internal (CDM) unique identifier for a protein.",
+                    "description": "Internal (CDM) unique identifier for a protein.\nFrom the Entity table: entity_id where entity_type == 'Protein'.\n",
+                    "pattern": "^CDM:prot-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                     "type": "string"
                 },
                 "sequence": {
@@ -1744,7 +2323,7 @@
         },
         "Protocol": {
             "additionalProperties": false,
-            "description": "Defined method or set of methods.",
+            "description": "A defined method or set of methods.",
             "properties": {
                 "description": {
                     "description": "Brief text description of the protocol.",
@@ -1760,8 +2339,16 @@
                         "null"
                     ]
                 },
+                "name": {
+                    "description": "A string used as a name or title.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "protocol_id": {
-                    "description": "Internal (CDM) unique identifier for a protocol.",
+                    "description": "Internal (CDM) unique identifier for a protocol.\nFrom the Entity table: entity_id where entity_type == 'Protocol'.\n",
+                    "pattern": "^CDM:prcl-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                     "type": "string"
                 },
                 "url": {
@@ -1785,46 +2372,192 @@
             "title": "Protocol",
             "type": "object"
         },
-        "ProtocolParticipant": {
+        "ProtocolExecution": {
             "additionalProperties": false,
-            "description": "Either an input or an output of a protocol.",
+            "description": "An instance of executing a protocol. Used for",
             "properties": {
-                "protocol_participant_id": {
-                    "description": "Internal (CDM) unique identifier.",
-                    "type": "string"
-                }
-            },
-            "required": [
-                "protocol_participant_id"
-            ],
-            "title": "ProtocolParticipant",
-            "type": "object"
-        },
-        "ProtocolXProtocolParticipant": {
-            "additionalProperties": false,
-            "description": "",
-            "properties": {
-                "participant_type": {
-                    "description": "The type of participant in the protocol.",
+                "created_at": {
+                    "description": "when the protocol was executed",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}(T\\d{2}:\\d{2}:\\d{2}(Z|[+-]\\d{2}:\\d{2})?)?$",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
-                "protocol_id": {
-                    "description": "Internal (CDM) unique identifier for a protocol.",
+                "description": {
+                    "description": "Brief textual definition or description.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "name": {
+                    "description": "A string used as a name or title.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "protocol_execution_id": {
+                    "description": "Internal CDM unique identifier for an execution of a protocol.",
+                    "pattern": "^CDM:[a-zA-Z]{2,4}-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                     "type": "string"
                 },
-                "protocol_participant_id": {
-                    "description": "The unique identifier for the protocol participant.",
+                "protocol_id": {
+                    "description": "Internal (CDM) unique identifier for a protocol.\nFrom the Entity table: entity_id where entity_type == 'Protocol'.\n",
+                    "pattern": "^CDM:prcl-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "protocol_execution_id",
+                "protocol_id"
+            ],
+            "title": "ProtocolExecution",
+            "type": "object"
+        },
+        "ProtocolInput": {
+            "additionalProperties": false,
+            "description": "An input parameter for a protocol.",
+            "properties": {
+                "parameter_id": {
+                    "description": "Internal (CDM) unique identifier for a parameter of a protocol.",
+                    "pattern": "^CDM:[a-zA-Z]{2,4}-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
+                    "type": "string"
+                },
+                "protocol_execution_id": {
+                    "description": "Internal CDM unique identifier for an execution of a protocol.",
+                    "pattern": "^CDM:[a-zA-Z]{2,4}-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
+                    "type": "string"
+                },
+                "protocol_input_id": {
+                    "description": "Internal CDM unique identifier for the value of an input parameter for a protocol.",
+                    "pattern": "^CDM:[a-zA-Z]{2,4}-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
+                    "type": "string"
+                },
+                "value": {
+                    "description": "The value for a parameter of a protocol.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "parameter_id",
+                "protocol_input_id",
+                "protocol_execution_id",
+                "value"
+            ],
+            "title": "ProtocolInput",
+            "type": "object"
+        },
+        "ProtocolInputSet": {
+            "additionalProperties": false,
+            "description": "A set of input parameters for a protocol.",
+            "properties": {
+                "protocol_input_id": {
+                    "description": "Internal CDM unique identifier for the value of an input parameter for a protocol.",
+                    "pattern": "^CDM:[a-zA-Z]{2,4}-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
+                    "type": "string"
+                },
+                "protocol_input_set_id": {
+                    "description": "Internal CDM unique identifier for a set of input parameter values for a protocol.",
+                    "pattern": "^CDM:[a-zA-Z]{2,4}-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "protocol_input_id",
+                "protocol_input_set_id"
+            ],
+            "title": "ProtocolInputSet",
+            "type": "object"
+        },
+        "ProtocolOutput": {
+            "additionalProperties": false,
+            "description": "The output of a protocol.",
+            "properties": {
+                "protocol_input_set_id": {
+                    "description": "Internal CDM unique identifier for a set of input parameter values for a protocol.",
+                    "pattern": "^CDM:[a-zA-Z]{2,4}-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
+                    "type": "string"
+                },
+                "protocol_output_id": {
+                    "description": "Internal CDM unique identifier for the value of an output of a protocol.",
+                    "pattern": "^CDM:[a-zA-Z]{2,4}-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
+                    "type": "string"
+                },
+                "value": {
+                    "description": "An output from a protocol.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "protocol_output_id",
+                "protocol_input_set_id",
+                "value"
+            ],
+            "title": "ProtocolOutput",
+            "type": "object"
+        },
+        "ProtocolParameterType": {
+            "description": "An input, an operation parameter or switch, or an output for a protocol.",
+            "enum": [
+                "input",
+                "output"
+            ],
+            "title": "ProtocolParameterType",
+            "type": "string"
+        },
+        "ProtocolStep": {
+            "additionalProperties": false,
+            "description": "A step in a protocol.",
+            "properties": {
+                "protocol_step_id": {
+                    "description": "Internal CDM unique identifier for a step in a protocol.",
+                    "pattern": "^CDM:[a-zA-Z]{2,4}-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
+                    "type": "string"
+                },
+                "step": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "pattern": "^CDM:prcl-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Text description of a step in a protocol."
+                }
+            },
+            "required": [
+                "protocol_step_id"
+            ],
+            "title": "ProtocolStep",
+            "type": "object"
+        },
+        "ProtocolVariable": {
+            "additionalProperties": false,
+            "description": "A variable that may or may not be set as part of an experiment.",
+            "properties": {
+                "protocol_id": {
+                    "description": "Internal (CDM) unique identifier for a protocol.\nFrom the Entity table: entity_id where entity_type == 'Protocol'.\n",
+                    "pattern": "^CDM:prcl-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
+                    "type": "string"
+                },
+                "variable_id": {
+                    "description": "Internal CDM unique identifier for a variable.",
+                    "pattern": "^CDM:[a-zA-Z]{2,4}-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                     "type": "string"
                 }
             },
             "required": [
                 "protocol_id",
-                "protocol_participant_id"
+                "variable_id"
             ],
-            "title": "ProtocolXProtocolParticipant",
+            "title": "ProtocolVariable",
             "type": "object"
         },
         "Publication": {
@@ -1833,6 +2566,7 @@
             "properties": {
                 "publication_id": {
                     "description": "Unique identifier for a publication - e.g. PMID, DOI, URL, etc.",
+                    "pattern": "^CDM:[a-zA-Z]{2,4}-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                     "type": "string"
                 }
             },
@@ -1842,64 +2576,155 @@
             "title": "Publication",
             "type": "object"
         },
-        "QuantityValue": {
+        "QuantityRangeValue": {
             "additionalProperties": false,
-            "description": "A simple quantity, e.g. 2cm. May be used to describe a range using the minimum_value and maximum_value fields.",
+            "description": "A numerical range, e.g. 5-7 cm.",
             "properties": {
-                "attribute_cv_term_id": {
-                    "description": "If the attribute is a term from a controlled vocabulary, the ID of the term.",
+                "attribute_cv_id": {
+                    "description": "The attribute being represented. For attributes that are in a controlled vocabulary, ontology, or enumeration, this attribute should capture the term ID from the controlled vocabulary.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
-                "attribute_name": {
-                    "description": "The attribute being captured in this annotation.",
-                    "type": "string"
+                "attribute_cv_label": {
+                    "description": "The attribute being represented. For attributes that are in a controlled vocabulary, ontology, or enumeration, this attribute should capture the term from the controlled vocabulary.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "attribute_string": {
+                    "description": "The attribute being represented, as a text string. This field should only be used if the attribute is not represented in a controlled vocabulary, ontology, or enumeration.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "entity_id": {
                     "description": "The database entity (sample, feature, protein, etc.) to which the attribute-value annotation refers.",
+                    "pattern": "^CDM:[a-zA-Z]{2,4}-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                     "type": "string"
                 },
-                "maximum_value": {
-                    "description": "If the quantity describes a range, represents the upper bound of the range.",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                "maximum_numeric_value": {
+                    "description": "The maximum value part, expressed as number, of the quantity value when the value covers a range.",
+                    "type": "number"
                 },
-                "minimum_value": {
-                    "description": "If the quantity describes a range, represents the lower bound of the range.",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                "minimum_numeric_value": {
+                    "description": "The minimum value part, expressed as number, of the quantity value when the value covers a range.",
+                    "type": "number"
                 },
                 "raw_value": {
-                    "description": "Raw value from the source data. May or may not include units or other unstructured information.",
+                    "description": "Unnormalized atomic string representation, suggested syntax {minimum_number}-{maximum_number} {unit}",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
-                "unit": {
-                    "description": "The unit of the quantity. Should be a term from UCUM.",
+                "type": {
+                    "$ref": "#/$defs/AttributeValueType",
+                    "description": "The type of value being represented - e.g. QuantityValue, TextValue, DateTimeValue, ControlledVocabularyTermValue, etc."
+                },
+                "unit_cv_id": {
+                    "description": "The unit of the quantity, expressed as a CURIE from the Unit Ontology.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
-                "value": {
-                    "description": "The numeric portion of the quantity.",
+                "unit_cv_label": {
+                    "description": "The unit of a quantity, expressed as the term name of a term from the Unit Ontology or UCUM.",
                     "type": [
-                        "number",
+                        "string",
+                        "null"
+                    ]
+                },
+                "unit_string": {
+                    "description": "Links a QuantityValue to a unit. Units should be taken from the UCUM unit collection or the Unit Ontology. This field should only be used if the unit is not present in one of those sources.",
+                    "type": [
+                        "string",
                         "null"
                     ]
                 }
             },
             "required": [
-                "entity_id",
-                "attribute_name"
+                "maximum_numeric_value",
+                "minimum_numeric_value",
+                "entity_id"
+            ],
+            "title": "QuantityRangeValue",
+            "type": "object"
+        },
+        "QuantityValue": {
+            "additionalProperties": false,
+            "description": "A simple quantity, e.g. 2 cm.",
+            "properties": {
+                "attribute_cv_id": {
+                    "description": "The attribute being represented. For attributes that are in a controlled vocabulary, ontology, or enumeration, this attribute should capture the term ID from the controlled vocabulary.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "attribute_cv_label": {
+                    "description": "The attribute being represented. For attributes that are in a controlled vocabulary, ontology, or enumeration, this attribute should capture the term from the controlled vocabulary.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "attribute_string": {
+                    "description": "The attribute being represented, as a text string. This field should only be used if the attribute is not represented in a controlled vocabulary, ontology, or enumeration.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "entity_id": {
+                    "description": "The database entity (sample, feature, protein, etc.) to which the attribute-value annotation refers.",
+                    "pattern": "^CDM:[a-zA-Z]{2,4}-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
+                    "type": "string"
+                },
+                "numeric_value": {
+                    "description": "The numerical part of a quantity value.",
+                    "type": "number"
+                },
+                "raw_value": {
+                    "description": "Unnormalized atomic string representation, suggested syntax {number} {unit}",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "$ref": "#/$defs/AttributeValueType",
+                    "description": "The type of value being represented - e.g. QuantityValue, TextValue, DateTimeValue, ControlledVocabularyTermValue, etc."
+                },
+                "unit_cv_id": {
+                    "description": "The unit of the quantity, expressed as a CURIE from the Unit Ontology.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "unit_cv_label": {
+                    "description": "The unit of a quantity, expressed as the term name of a term from the Unit Ontology or UCUM.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "unit_string": {
+                    "description": "Links a QuantityValue to a unit. Units should be taken from the UCUM unit collection or the Unit Ontology. This field should only be used if the unit is not present in one of those sources.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "numeric_value",
+                "entity_id"
             ],
             "title": "QuantityValue",
             "type": "object"
@@ -1918,6 +2743,150 @@
             "title": "RefSeqStatusType",
             "type": "string"
         },
+        "RelationshipType": {
+            "description": "The relationship between two entities. For example, when a PermanentID class is used to represent objects in the CreditMetadata field `related_identifiers`, the `relationship_type` field captures the relationship between the resource being registered (A) and this ID (B).",
+            "enum": [
+                "based_on_data",
+                "cites",
+                "compiles",
+                "continues",
+                "describes",
+                "documents",
+                "finances",
+                "has_comment",
+                "has_derivation",
+                "has_expression",
+                "has_format",
+                "has_manifestation",
+                "has_manuscript",
+                "has_metadata",
+                "has_part",
+                "has_preprint",
+                "has_related_material",
+                "has_reply",
+                "has_review",
+                "has_transformation",
+                "has_version",
+                "is_based_on",
+                "is_basis_for",
+                "is_cited_by",
+                "is_comment_on",
+                "is_compiled_by",
+                "is_continued_by",
+                "is_data_basis_for",
+                "is_derived_from",
+                "is_described_by",
+                "is_documented_by",
+                "is_expression_of",
+                "is_financed_by",
+                "is_format_of",
+                "is_identical_to",
+                "is_manifestation_of",
+                "is_manuscript_of",
+                "is_metadata_for",
+                "is_new_version_of",
+                "is_obsoleted_by",
+                "is_original_form_of",
+                "is_part_of",
+                "is_preprint_of",
+                "is_previous_version_of",
+                "is_published_in",
+                "is_referenced_by",
+                "is_related_material",
+                "is_replaced_by",
+                "is_reply_to",
+                "is_required_by",
+                "is_review_of",
+                "is_reviewed_by",
+                "is_same_as",
+                "is_source_of",
+                "is_supplement_to",
+                "is_supplemented_by",
+                "is_transformation_of",
+                "is_variant_form_of",
+                "is_version_of",
+                "obsoletes",
+                "references",
+                "replaces",
+                "requires",
+                "reviews",
+                "unknown"
+            ],
+            "title": "RelationshipType",
+            "type": "string"
+        },
+        "ResourceDescription": {
+            "additionalProperties": false,
+            "description": "Textual information about the resource being represented.",
+            "properties": {
+                "description_text": {
+                    "description": "The text content of the informational element.",
+                    "type": "string"
+                },
+                "description_type": {
+                    "$ref": "#/$defs/DescriptionType",
+                    "description": "The type of text being represented."
+                },
+                "language": {
+                    "description": "The language in which the description is written, using the appropriate IETF BCP-47 notation.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "resource_description_id": {
+                    "description": "Unique identifier for a description for a resource.",
+                    "pattern": "^CDM:[a-zA-Z]{2,4}-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "resource_description_id",
+                "description_text"
+            ],
+            "title": "ResourceDescription",
+            "type": "object"
+        },
+        "ResourceTitle": {
+            "additionalProperties": false,
+            "description": "Represents the title or name of a resource, the type of that title, and the language used (if appropriate).\n\nThe `title` field is required; `title_type` is only necessary if the text is not the primary title.",
+            "properties": {
+                "language": {
+                    "description": "The language in which the title is written, using the appropriate IETF BCP-47 notation.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "resource_title_id": {
+                    "description": "Unique identifier for a title for a resource.",
+                    "pattern": "^CDM:[a-zA-Z]{2,4}-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "A string used as a title for a resource.",
+                    "type": "string"
+                },
+                "title_type": {
+                    "$ref": "#/$defs/TitleType",
+                    "description": "A descriptor for the title for cases where the contents of the `title` field is not the primary name or title."
+                }
+            },
+            "required": [
+                "resource_title_id",
+                "title"
+            ],
+            "title": "ResourceTitle",
+            "type": "object"
+        },
+        "ResourceType": {
+            "description": "The type of resource being represented.",
+            "enum": [
+                "dataset"
+            ],
+            "title": "ResourceType",
+            "type": "string"
+        },
         "Sample": {
             "additionalProperties": false,
             "description": "A material entity that can be characterised by an experiment.",
@@ -1930,7 +2899,8 @@
                     ]
                 },
                 "sample_id": {
-                    "description": "Internal (CDM) unique identifier for a sample.",
+                    "description": "Internal (CDM) unique identifier for a sample.\nFrom the Entity table: entity_id where entity_type == 'Sample'.\n",
+                    "pattern": "^CDM:smpl-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                     "type": "string"
                 },
                 "type": {
@@ -1949,7 +2919,7 @@
         },
         "Sequence": {
             "additionalProperties": false,
-            "description": "",
+            "description": "A sequence of nucleotides or amino acids.",
             "properties": {
                 "checksum": {
                     "description": "The checksum of the sequence, used to verify its integrity.",
@@ -1960,6 +2930,7 @@
                 },
                 "entity_id": {
                     "description": "The entity to which this sequence belongs.",
+                    "pattern": "^CDM:[a-zA-Z]{2,4}-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                     "type": "string"
                 },
                 "length": {
@@ -1970,7 +2941,8 @@
                     ]
                 },
                 "sequence_id": {
-                    "description": "Internal (CDM) unique identifier for a sequence.",
+                    "description": "Internal (CDM) unique identifier for a sequence.\nFrom the Entity table: entity_id where entity_type == 'Sequence'.\n",
+                    "pattern": "^CDM:sqnc-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                     "type": "string"
                 },
                 "type": {
@@ -1994,12 +2966,12 @@
             "title": "SequenceType",
             "type": "string"
         },
-        "Statements": {
+        "Statement": {
             "additionalProperties": false,
-            "description": "Represents an RDF triple",
+            "description": "Represents an RDF triple, a statement in the form \"_subject_ _predicate_ _object_\" or \"_subject_ _predicate_ _value_\".\n\nSee [Semantic SQL](https://incatools.github.io/semantic-sql/) for more information on the contents of this table and how it is populated.",
             "properties": {
                 "datatype": {
-                    "description": "the rdf datatype of the value, for example, xsd:string",
+                    "description": "the rdf datatype of the value, for example, xsd:string or xsd:float.",
                     "type": [
                         "string",
                         "null"
@@ -2013,7 +2985,7 @@
                     ]
                 },
                 "object": {
-                    "description": "Note the range of this slot is always a node. If the triple represents a literal, instead value will be populated",
+                    "description": "Note the range of this slot is always a node. If the triple represents a literal, the \"value\" field will be populated instead.",
                     "type": [
                         "string",
                         "null"
@@ -2034,14 +3006,14 @@
                     ]
                 },
                 "value": {
-                    "description": "Note the range of this slot is always a string. Only used the triple represents a literal assertion",
+                    "description": "Note the range of this slot is always a string. Only used if the triple represents a literal assertion",
                     "type": [
                         "string",
                         "null"
                     ]
                 }
             },
-            "title": "Statements",
+            "title": "Statement",
             "type": "object"
         },
         "StrandType": {
@@ -2057,21 +3029,32 @@
         },
         "TextValue": {
             "additionalProperties": false,
-            "description": "A basic string value",
+            "description": "A basic string value.",
             "properties": {
-                "attribute_cv_term_id": {
-                    "description": "If the attribute is a term from a controlled vocabulary, the ID of the term.",
+                "attribute_cv_id": {
+                    "description": "The attribute being represented. For attributes that are in a controlled vocabulary, ontology, or enumeration, this attribute should capture the term ID from the controlled vocabulary.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
-                "attribute_name": {
-                    "description": "The attribute being captured in this annotation.",
-                    "type": "string"
+                "attribute_cv_label": {
+                    "description": "The attribute being represented. For attributes that are in a controlled vocabulary, ontology, or enumeration, this attribute should capture the term from the controlled vocabulary.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "attribute_string": {
+                    "description": "The attribute being represented, as a text string. This field should only be used if the attribute is not represented in a controlled vocabulary, ontology, or enumeration.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "entity_id": {
                     "description": "The database entity (sample, feature, protein, etc.) to which the attribute-value annotation refers.",
+                    "pattern": "^CDM:[a-zA-Z]{2,4}-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
                     "type": "string"
                 },
                 "language": {
@@ -2082,34 +3065,123 @@
                     ]
                 },
                 "raw_value": {
-                    "description": "Raw value from the source data. May or may not include units or other unstructured information.",
+                    "description": "The value that was specified for an annotation in its raw form; e.g. \"2 cm\" or \"2-4 cm\"",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
-                "value": {
-                    "description": "The value after undergoing normalisation or standardisation.",
+                "text_value": {
+                    "description": "The text value after undergoing normalisation or standardisation.",
                     "type": "string"
                 },
-                "value_cv_term_id": {
-                    "description": "If the term comes from the controlled vocabulary, the CURIE for the term. This will always be null if the text string is not from a controlled vocabulary.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                "type": {
+                    "$ref": "#/$defs/AttributeValueType",
+                    "description": "The type of value being represented - e.g. QuantityValue, TextValue, DateTimeValue, ControlledVocabularyTermValue, etc."
                 }
             },
             "required": [
-                "value",
-                "entity_id",
-                "attribute_name"
+                "text_value",
+                "entity_id"
             ],
             "title": "TextValue",
             "type": "object"
+        },
+        "TitleType": {
+            "description": "The type of title being represented.",
+            "enum": [
+                "subtitle",
+                "alternative_title",
+                "translated_title",
+                "other"
+            ],
+            "title": "TitleType",
+            "type": "string"
+        },
+        "Variable": {
+            "additionalProperties": false,
+            "description": "A variable (input, output, environmental, etc.) that can be set or measured as part of a protocol.",
+            "properties": {
+                "description": {
+                    "description": "Brief textual definition or description.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "name": {
+                    "description": "A string used as a name or title.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "name_cv_id": {
+                    "description": "If the `name` is from a controlled vocabulary (CV), the curie of the controlled vocabulary term.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "unit": {
+                    "description": "The units used to measure the value of the variable, if applicable. Units should be expressed using the Unit Ontology or a term from UCUM.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "value_type": {
+                    "$ref": "#/$defs/VariableType",
+                    "description": "The type of the value of a variable. Should be a LinkML data type or one of the defined CDM data types."
+                },
+                "variable_id": {
+                    "description": "Internal CDM unique identifier for a variable.",
+                    "pattern": "^CDM:[a-zA-Z]{2,4}-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "variable_id",
+                "value_type"
+            ],
+            "title": "Variable",
+            "type": "object"
+        },
+        "VariableType": {
+            "description": "The type of the value of a variable. Should be a LinkML data type or one of the defined CDM data types.",
+            "title": "VariableType",
+            "type": "string"
+        },
+        "VariableValue": {
+            "additionalProperties": false,
+            "description": "The possible types for the value of a variable. Should be a LinkML data type or one of the defined CDM data types.",
+            "properties": {
+                "value_type": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "variable_id": {
+                    "description": "Internal CDM unique identifier for a variable.",
+                    "pattern": "^CDM:[a-zA-Z]{2,4}-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
+                    "type": "string"
+                },
+                "variable_value_id": {
+                    "description": "Internal CDM unique identifier for a variable value.",
+                    "pattern": "^CDM:[a-zA-Z]{2,4}-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "variable_value_id",
+                "variable_id"
+            ],
+            "title": "VariableValue",
+            "type": "object"
         }
     },
-    "$id": "http://kbase.github.io/cdm-schema/cdm_schema",
+    "$id": "http://kbase.github.io/cdm-schema/linkml/cdm_schema",
     "$schema": "https://json-schema.org/draft/2019-09/schema",
     "additionalProperties": true,
     "metamodel_version": "1.7.0",
@@ -2117,3 +3189,4 @@
     "type": "object",
     "version": "0.0.1"
 }
+

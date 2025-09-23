@@ -126,6 +126,17 @@ classes:
         multivalued: true
     description: Captures the relationship between a contig collection and a protein; equivalent to protein is ribosomal translation of (http://purl.obolibrary.org/obo/RO_0002512) contig collection.
 
+  # ContributorToExperiment:
+  #   is_a: LinkerTable
+  #   description: Describes the participation of a contributor in an experiment; ideally the contributor_role field will capture how the contributor was involved.
+  #   slots:
+  #     - contributor_id
+  #     - experiment_id
+  #     - contributor_role
+  #   slot_usage:
+  #     contributor_role:
+  #       required: false
+
   EncodedFeature_x_Feature:
     is_a: LinkerTable
     represents_relationship: true
@@ -133,6 +144,15 @@ classes:
       - encoded_feature_id
       - feature_id
     description: Captures the relationship between a feature and its transcription product.
+
+
+  EncodedFeature_x_Protein:
+    is_a: LinkerTable
+    represents_relationship: true
+    slots:
+      - encoded_feature_id
+      - protein_id
+    description: Captures the relationship between an encoded feature (RNA of some sort) and a protein.
 
   # Entity_x_Experiment:
   #   is_a: LinkerTable
@@ -181,28 +201,3 @@ classes:
       protein_id:
         multivalued: true
     description: Captures the relationship between a feature and a protein; equivalent to feature encodes protein.
-
-  NamedEntity:
-    is_a: LinkerTable
-    description: Represents the link between an entity and its names.
-    represents_relationship: true
-    comments:
-      - Entity.entity_id one:many Name.entity_id
-      - one entity can have multiple names, and one name can be associated with multiple entities.
-
-  IdentifiedEntity:
-    is_a: LinkerTable
-    description: Represents the link between an entity and its identifiers.
-    represents_relationship: true
-    comments:
-      - Entity.entity_id one:many Identifier.entity_id
-      - one entity can have multiple identifiers, and one identifier can be associated with multiple entities.
-
-  # AttributeValueEntity:
-  #   is_a: LinkerTable
-  #   description: Represents the link between an entity and its attribute values.
-  #   represents_relationship: true
-  #   comments:
-  #     - Entity.entity_id <> QuantityValue.entity_id
-  #     - Entity.entity_id <> TextValue.entity_id
-  #     - one entity can have multiple attribute values, and one attribute value can be associated with multiple entities.
