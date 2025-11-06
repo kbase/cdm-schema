@@ -15,3 +15,280 @@ imports:
 
 default_prefix: kb_cdm
 default_range: string
+
+classes:
+  Schema:
+    abstract: true
+    description: The root class for the CDM schema.
+    tree_root: true
+    attributes:
+      # cdm_base
+      entities:
+        description: All entities in the schema.
+        range: Entity
+        multivalued: true
+      names:
+        description: All names in the schema.
+        range: Name
+        multivalued: true
+      identifiers:
+        description: All identifiers in the schema.
+        range: Identifier
+        multivalued: true
+      entity_names:
+        description: All name x entity records in the schema.
+        range: EntityNames
+        multivalued: true
+      entity_identifiers:
+        description: All identifier x entity records in the schema.
+        range: EntityIdentifiers
+        multivalued: true
+
+      # cdm_attr_value
+      entity_attribute_values:
+        description: All entity attribute values in the schema.
+        range: EntityAttributeValue
+        multivalued: true
+
+      # cdm_components
+      associations:
+        description: All associations in the schema.
+        range: Association
+        multivalued: true
+      clusters:
+        description: All clusters in the schema.
+        range: Cluster
+        multivalued: true
+      cluster_members:
+        description: All cluster members in the schema.
+        range: ClusterMember
+        multivalued: true
+      events:
+        description: All events in the schema.
+        range: Event
+        multivalued: true
+      gold_environmental_contexts:
+        description: All GOLD environmental contexts in the schema.
+        range: GoldEnvironmentalContext
+        multivalued: true
+      mixs_environmental_contexts:
+        description: All MIxS environmental contexts in the schema.
+        range: MixsEnvironmentalContext
+        multivalued: true
+
+      # cdm_credit
+      contributors:
+        description: All contributors in the schema.
+        range: Contributor
+        multivalued: true
+      contributor_affiliations:
+        description: All contributor affiliations in the schema.
+        range: ContributorAffiliation
+        multivalued: true
+      contributor_x_role_x_project:
+        description: All contributor x role x project records in the schema.
+        range: Contributor_x_Role_x_Project
+        multivalued: true
+      data_sources:
+        description: All data sources in the schema.
+        range: DataSourceNew
+        multivalued: true
+
+      data_source_x_descriptions:
+        description: All data source descriptions in the schema.
+        range: DataSource_x_Description
+        multivalued: true
+      data_source_x_funding_references:
+        description: All data source x funding reference records in the schema.
+        range: DataSource_x_FundingReference
+        multivalued: true
+      data_source_x_licenses:
+        description: All data source x license records in the schema.
+        range: DataSource_x_License
+        multivalued: true
+      data_source_x_titles:
+        description: All data source x title records in the schema.
+        range: DataSource_x_Title
+        multivalued: true
+
+      funding_references:
+        description: All funding references in the schema.
+        range: FundingReference
+        multivalued: true
+      licenses:
+        description: All licenses in the schema.
+        range: License
+        multivalued: true
+      projects:
+        description: All projects in the schema.
+        range: Project
+        multivalued: true
+      publications:
+        description: All publications in the schema.
+        range: Publication
+        multivalued: true
+      resource_descriptions:
+        description: All resource descriptions in the schema.
+        range: ResourceDescription
+        multivalued: true
+      resource_titles:
+        description: All resource titles in the schema.
+        range: ResourceTitle
+        multivalued: true
+
+
+      # cdm_ontology
+      prefixes:
+        description: The prefix mappings for the schema.
+        range: Prefix
+        multivalued: true
+      statements:
+        description: All statements in the schema.
+        range: Statement
+        multivalued: true
+      entailed_edges:
+        description: All entailed edges in the schema.
+        range: EntailedEdge
+        multivalued: true
+
+      # cdm_bioentity
+      contigs:
+        description: All contigs in the schema.
+        range: Contig
+        multivalued: true
+      contig_collections:
+        description: All contig collections in the schema.
+        range: ContigCollection
+        multivalued: true
+      encoded_features:
+        description: All encoded features in the schema.
+        range: EncodedFeature
+        multivalued: true
+      features:
+        description: All features in the schema.
+        range: Feature
+        multivalued: true
+      proteins:
+        description: All proteins in the schema.
+        range: Protein
+        multivalued: true
+      samples:
+        description: All samples in the schema.
+        range: Sample
+        multivalued: true
+      sequences:
+        description: All sequences in the schema.
+        range: Sequence
+        multivalued: true
+
+      # cdm_protocol
+      experiments:
+        description: All experiments in the schema.
+        range: Experiment
+        multivalued: true
+      experiment_conditions:
+        description: All experiment conditions in the schema.
+        range: ExperimentCondition
+        multivalued: true
+      experiment_condition_sets:
+        description: All experiment condition sets in the schema.
+        range: ExperimentConditionSet
+        multivalued: true
+      measurements:
+        description: All measurements in the schema.
+        range: Measurement
+        multivalued: true
+      measurement_sets:
+        description: All measurement sets in the schema.
+        range: MeasurementSet
+        multivalued: true
+      ordered_protocol_steps:
+        description: All ordered protocol steps in the schema.
+        range: OrderedProtocolStep
+        multivalued: true
+      parameters:
+        description: All parameters in the schema.
+        range: Parameter
+        multivalued: true
+      protocols:
+        description: All protocols in the schema.
+        range: Protocol
+        multivalued: true
+      protocol_executions:
+        description: All protocol executions in the schema.
+        range: ProtocolExecution
+        multivalued: true
+      protocol_inputs:
+        description: All protocol inputs in the schema.
+        range: ProtocolInput
+        multivalued: true
+      protocol_input_sets:
+        description: All protocol input sets in the schema.
+        range: ProtocolInputSet
+        multivalued: true
+      protocol_outputs:
+        description: All protocol outputs in the schema.
+        range: ProtocolOutput
+        multivalued: true
+      protocol_steps:
+        description: All protocol steps in the schema.
+        range: ProtocolStep
+        multivalued: true
+      protocol_variables:
+        description: All protocol variables in the schema.
+        range: ProtocolVariable
+        multivalued: true
+      variables:
+        description: All variables in the schema.
+        range: Variable
+        multivalued: true
+      variable_values:
+        description: All variable values in the schema.
+        range: VariableValue
+        multivalued: true
+
+      # cdm_join_tables
+      association_x_supporting_objects:
+        description: All association x supporting object records in the schema.
+        range: Association_x_SupportingObject
+        multivalued: true
+      contig_x_contig_collections:
+        description: All contig x contig collection records in the schema.
+        range: Contig_x_ContigCollection
+        multivalued: true
+      contig_x_encoded_features:
+        description: All contig x encoded feature records in the schema.
+        range: Contig_x_EncodedFeature
+        multivalued: true
+      contig_x_features:
+        description: All contig x feature records in the schema.
+        range: Contig_x_Feature
+        multivalued: true
+      contig_x_proteins:
+        description: All contig x protein records in the schema.
+        range: Contig_x_Protein
+        multivalued: true
+      contig_collection_x_encoded_features:
+        description: All contig collection x encoded feature records in the schema.
+        range: ContigCollection_x_EncodedFeature
+        multivalued: true
+      contig_collection_x_features:
+        description: All contig collection x feature records in the schema.
+        range: ContigCollection_x_Feature
+        multivalued: true
+      contig_collection_x_proteins:
+        description: All contig collection x protein records in the schema.
+        range: ContigCollection_x_Protein
+        multivalued: true
+      encoded_feature_x_features:
+        description: All encoded feature x feature records in the schema.
+        range: EncodedFeature_x_Feature
+        multivalued: true
+      encoded_feature_x_proteins:
+        description: All encoded feature x protein records in the schema.
+        range: EncodedFeature_x_Protein
+        multivalued: true
+      feature_x_proteins:
+        description: All feature x protein records in the schema.
+        range: Feature_x_Protein
+        multivalued: true

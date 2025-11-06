@@ -14,14 +14,13 @@ Please note that the [Pyspark data structures](src/cdm_schema/kbase_cdm_pyspark.
   * [cdm_schema](src/cdm_schema)
     * [kbase_cdm_pydantic.py](src/cdm_schema/kbase_cdm_pydantic.py) -- CDM schema as Pydantic classes
     * [kbase_cdm_pyspark.py](src/cdm_schema/kbase_cdm_pyspark.py) -- the schema as PySpark data structures
-    * [kbase_cdm.py](src/cdm_schema/kbase_cdm.py) -- plain old python classes
   * [linkml](src/linkml) -- LinkML schema source files
 
 ## Developer Documentation
 
 Use the `make` command to generate project artefacts:
 
-* `make gen-artefacts`: generate the Pydantic, python, and JSONschema versions of the schema
+* `make gen-artefacts`: generate the Pydantic, pyspark, and JSONschema versions of the schema
 
 * `make deploy`: deploys site
 

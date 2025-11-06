@@ -269,7 +269,7 @@ def write_output(
 
     with output_path.open("w") as f:
         f.write("\n".join(header_material))
-        for table_name, table in spark_schemas.items():
+        for table_name, table in sorted(spark_schemas.items()):
             f.write(
                 "\n".join(
                     [

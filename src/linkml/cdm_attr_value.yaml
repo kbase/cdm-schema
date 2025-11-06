@@ -6,7 +6,6 @@ description: CDM schema attribute/value classes
 
 imports:
   - linkml:types
-  - cdm_types
   - cdm_base
 
 prefixes:
@@ -225,7 +224,7 @@ classes:
       raw_value:
         description: Unnormalized atomic string representation, suggested syntax {number} {unit}
       type:
-        ifabsent: kb_cdm:QuantityValue
+        ifabsent: AttributeValueType("QuantityValue")
     mappings:
       - schema:QuantityValue
 
@@ -245,7 +244,7 @@ classes:
       raw_value:
         description: Unnormalized atomic string representation, suggested syntax {minimum_number}-{maximum_number} {unit}
       type:
-        ifabsent: kb_cdm:QuantityRangeValue
+        ifabsent: AttributeValueType("QuantityRangeValue")
     mappings:
       - schema:QuantityRangeValue
 
@@ -259,7 +258,7 @@ classes:
       date_time:
         required: true
       type:
-        ifabsent: kb_cdm:DateTimeValue
+        ifabsent: AttributeValueType("DateTimeValue")
 
   Geolocation:
     class_uri: nmdc:GeolocationValue
@@ -288,7 +287,7 @@ classes:
       value_cv_label:
         required: true
       type:
-        ifabsent: kb_cdm:ControlledTermValue
+        ifabsent: AttributeValueType("ControlledTermValue")
 
   ControlledVocabularyTermValue:
     class_uri: nmdc:ControlledIdentifiedTermValue
@@ -299,7 +298,7 @@ classes:
     - value_cv_id
     slot_usage:
       type:
-        ifabsent: kb_cdm:ControlledVocabularyTermValue
+        ifabsent: AttributeValueType("ControlledVocabularyTermValue")
     any_of:
       - slot_conditions:
           value_cv_id:
@@ -320,7 +319,7 @@ classes:
         required: true
         description: The text value after undergoing normalisation or standardisation.
       type:
-        ifabsent: kb_cdm:TextValue
+        ifabsent: AttributeValueType("TextValue")
     attributes:
       language:
         description: Language of the text value.
