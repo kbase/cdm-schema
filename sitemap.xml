@@ -2,1494 +2,1494 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://kbase.github.io/cdm-schema/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Any/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Association/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/AssociationXSupportingObject/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/AttributeMixin/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/AttributeValue/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/AttributeValueType/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Boolean/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/CdmAssociationId/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/CdmClusterId/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/CdmContigCollectionId/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/CdmContigId/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/CdmContributorId/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/CdmDataSourceId/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/CdmEncodedFeatureId/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/CdmFeatureId/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/CdmId/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/CdmLicenseId/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/CdmProteinId/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/CdmProtocolId/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/CdmSampleId/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/CdmSequenceId/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/CdsPhaseType/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Cluster/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/ClusterMember/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/ClusterType/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Contig/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/ContigCollection/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/ContigCollectionType/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/ContigCollectionXEncodedFeature/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/ContigCollectionXFeature/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/ContigCollectionXProtein/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/ContigXContigCollection/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/ContigXEncodedFeature/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/ContigXFeature/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/ContigXProtein/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Contributor/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/ContributorAffiliation/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/ContributorRole/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/ContributorType/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/ContributorXDataSource/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/ContributorXRoleXProject/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/ControlledTermValue/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/ControlledVocabularyTermValue/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Curie/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/DataSource/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/DataSourceNew/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/DataSourceXDescription/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/DataSourceXFundingReference/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/DataSourceXLicense/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/DataSourceXTitle/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Date/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/DateOrDatetime/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/DateTimeValue/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Datetime/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Decimal/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/DecimalDegree/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/DescriptionType/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Double/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/EncodedFeature/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/EncodedFeatureXFeature/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/EncodedFeatureXProtein/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/EntailedEdge/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Entity/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/EntityAttributeValue/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/EntityIdentifiers/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/EntityMixin/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/EntityNames/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/EntityType/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Event/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/EventType/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Experiment/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/ExperimentCondition/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/ExperimentConditionSet/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Feature/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/FeatureXProtein/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Float/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/FundingReference/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Geolocation/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/GoldEnvironmentalContext/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Identifier/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Integer/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Iso8601/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Jsonpath/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Jsonpointer/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/License/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/LinkerTable/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/LiteralAsStringType/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/LocalCurie/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/LocalCurieName/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Measurement/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/MeasurementSet/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/MixsEnvironmentalContext/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Name/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Ncname/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/NodeIdType/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Nodeidentifier/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Objectidentifier/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/OrderedProtocolStep/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Parameter/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Prefix/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Project/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Protein/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/ProteinEvidenceForExistence/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Protocol/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/ProtocolExecution/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/ProtocolInput/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/ProtocolInputSet/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/ProtocolOutput/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/ProtocolParameterType/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/ProtocolStep/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/ProtocolVariable/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Publication/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/QuantityRangeValue/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/QuantityValue/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/RefSeqStatusType/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/RelationshipType/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/ResourceDescription/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/ResourceTitle/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/ResourceType/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Sample/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Schema/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Sequence/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/SequenceType/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Sparqlpath/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Statement/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/StrandType/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/String/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Table/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/TextValue/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Time/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/TitleType/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/UnitMixin/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Uri/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Uriorcurie/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/Variable/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/VariableType/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/VariableValue/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/affiliation_id/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/aggregator_knowledge_source/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/annotation_date/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/asm_score/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/association_id/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/association_x_supporting_objects/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/associations/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/attribute_cv_id/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/attribute_cv_label/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/attribute_string/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/base/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/cardinality/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/cdm_schema/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/cds_phase/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/checkm_completeness/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/checkm_contamination/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/checkm_version/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/checksum/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/cluster_id/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/cluster_members/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/clusters/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/comments/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/contig_bp/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/contig_collection_id/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/contig_collection_type/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/contig_collection_x_encoded_features/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/contig_collection_x_features/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/contig_collection_x_proteins/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/contig_collections/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/contig_id/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/contig_l50/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/contig_l90/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/contig_logsum/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/contig_max/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/contig_n50/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/contig_n90/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/contig_powersum/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/contig_x_contig_collections/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/contig_x_encoded_features/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/contig_x_features/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/contig_x_proteins/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/contigs/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/contributor_affiliations/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/contributor_id/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/contributor_role/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/contributor_type/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/contributor_x_role_x_project/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/contributors/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/created/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/created_at/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/data_source_created/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/data_source_entity_id/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/data_source_id/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/data_source_updated/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/data_source_x_descriptions/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/data_source_x_funding_references/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/data_source_x_licenses/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/data_source_x_titles/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/data_sources/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/datatype/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/date_accessed/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/date_published/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/date_time/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/date_updated/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/default/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/description/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/description_text/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/description_type/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/doi/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/e_value/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/ecosystem/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/ecosystem_category/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/ecosystem_subtype/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/ecosystem_type/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/encoded_feature_id/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/encoded_feature_x_features/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/encoded_feature_x_proteins/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/encoded_features/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/end/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/entailed_edges/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/entities/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/entity_attribute_values/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/entity_id/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/entity_identifiers/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/entity_names/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/entity_type/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/env_broad_scale/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/env_local_scale/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/env_medium/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/event_id/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/events/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/evidence_for_existence/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/evidence_type/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/experiment_condition_id/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/experiment_condition_set_id/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/experiment_condition_sets/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/experiment_conditions/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/experiment_id/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/experiments/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/family_name/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/feature_id/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/feature_x_proteins/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/features/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/funder/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/funding_reference_id/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/funding_references/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/gap_percent/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/gc_average/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/gc_content/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/gc_std/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/given_name/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/gold_environmental_context_id/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/gold_environmental_contexts/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/grant_id/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/grant_title/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/grant_url/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/gtdb_taxon_id/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/has_stop_codon/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/hash/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/id/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/identifier/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/identifiers/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/is_representative/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/is_seed/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/language/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/latitude/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/length/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/license/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/license_id/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/licenses/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/location/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/longitude/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/maximum_numeric_value/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/measurement_id/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/measurement_set_id/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/measurement_sets/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/measurements/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/minimum_numeric_value/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/mixs_environmental_context_id/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/mixs_environmental_contexts/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/n_chromosomes/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/n_contigs/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/n_scaffolds/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/name/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/name_cv_id/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/names/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/ncbi_taxon_id/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/negated/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/numeric_value/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/object/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/ordered_protocol_steps/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/p_value/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/parameter_id/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/parameter_type/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/parameters/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/predicate/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/prefix/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/prefixes/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/primary_knowledge_source/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/project_id/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/projects/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/protein_id/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/proteins/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/protocol_execution_id/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/protocol_executions/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/protocol_id/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/protocol_input_id/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/protocol_input_set_id/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/protocol_input_sets/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/protocol_inputs/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/protocol_output_id/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/protocol_outputs/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/protocol_step_id/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/protocol_steps/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/protocol_variable_id/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/protocol_variables/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/protocols/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/publication_id/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/publications/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/publisher/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/quality/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/raw_value/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/relationship/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/required/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/resource_description_id/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/resource_descriptions/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/resource_title_id/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/resource_titles/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/resource_type/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/sample_id/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/samples/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/scaffold_bp/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/scaffold_l50/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/scaffold_l90/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/scaffold_logsum/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/scaffold_maximum_length/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/scaffold_n50/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/scaffold_n90/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/scaffold_powersum/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/scaffolds_n_over_50K/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/scaffolds_percent_over_50K/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/scaffolds_total_length_over_50k/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/score/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/sequence/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/sequence_id/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/sequences/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/source/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/source_database/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/specific_ecosystem/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/start/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/statements/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/step/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/step_index/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/strand/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/subject/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/text_value/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/title/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/title_type/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/type/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/unit/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/unit_cv_id/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/unit_cv_label/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/unit_string/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/updated/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/url/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/value/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/value_cv_id/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/value_cv_label/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/value_type/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/variable_id/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/variable_value_id/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/variable_values/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/variables/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/version/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
     <url>
          <loc>https://kbase.github.io/cdm-schema/pages/about/</loc>
-         <lastmod>2025-09-23</lastmod>
+         <lastmod>2025-11-06</lastmod>
     </url>
 </urlset>
