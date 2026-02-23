@@ -99,7 +99,12 @@ def resolve_slot_range_class_relational(sv: SchemaViewWithProcessed, class_name:
         sv.RANGE_TO_TYPE[class_name] = STRING
         return {STRING}
 
-    return resolve_slot_range(sv, class_name=class_name, slot_name=class_id_slot.name, slot_range=class_id_slot.range)
+    return resolve_slot_range(
+        sv,
+        class_name=class_name,
+        slot_name=class_id_slot.name,
+        slot_range=class_id_slot.range,
+    )
 
 
 def resolve_slot_range_type(sv: SchemaViewWithProcessed, type_name: str) -> set[str]:
@@ -254,15 +259,29 @@ def generate_pyspark_from_sv(
 
 
 def write_output(
-    sv: SchemaViewWithProcessed, output_path: Path, spark_schemas: dict[str, dict[str, tuple[DataType, bool]]]
+    sv: SchemaViewWithProcessed,
+    output_path: Path,
+    spark_schemas: dict[str, dict[str, tuple[DataType, bool]]],
 ) -> None:
     indent = " " * 4
     # extract all the types from the StructFields
-    all_types = {remap[dt] for table_fields in spark_schemas.values() for dt, _ in table_fields.values()}
+    all_types = {remap.get(dt) for table_fields in spark_schemas.values() for dt, _ in table_fields.values()}
     header_material = [
-        f'"""Automated conversion of {sv.schema.name} to PySpark."""',
+        f'"""Automated conversion of {sv.schema.name} to PySpark.',
+        "",
+        f"{sv.schema.name} version: {sv.schema.version}",
+        '"""',
+        "",
+        "import re",
         "",
         f"from pyspark.sql.types import {', '.join(sorted(['StructField', 'StructType', *[type(t).__name__ for t in all_types]]))}",
+        "",
+        "",
+        "def convert_to_snake_case(name: str) -> str:",
+        '    """Convert a string to snake case."""',
+        '    name = re.sub(r"(?<=[a-z])(?=[A-Z])|[^a-zA-Z]", " ", name).strip().replace(" ", "_")',
+        '    return "".join(name.lower())',
+        "",
         "",
         "schema = {\n",
     ]
@@ -283,6 +302,8 @@ def write_output(
                 )
             )
         f.write("}\n")
+        # generate lowercase versions
+        f.write("\nschema_lc = {convert_to_snake_case(table_name): schema[table_name] for table_name in schema}\n\n")
 
     print(f"PySpark schema written to {output_path}")
 
