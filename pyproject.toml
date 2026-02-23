@@ -1,6 +1,6 @@
 [project]
 name = "cdm-schema"
-version = "0.1.0"
+version = "0.1.1"
 description = "CDM Schema repo"
 readme = "README.md"
 requires-python = ">=3.13"

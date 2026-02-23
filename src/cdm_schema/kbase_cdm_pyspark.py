@@ -1,6 +1,18 @@
-"""Automated conversion of cdm_schema to PySpark."""
+"""Automated conversion of cdm_schema to PySpark.
+
+cdm_schema version: 0.1.1
+"""
+
+import re
 
 from pyspark.sql.types import BooleanType, DateType, FloatType, IntegerType, StringType, StructField, StructType
+
+
+def convert_to_snake_case(name: str) -> str:
+    """Convert a string to snake case."""
+    name = re.sub(r"(?<=[a-z])(?=[A-Z])|[^a-zA-Z]", " ", name).strip().replace(" ", "_")
+    return "".join(name.lower())
+
 
 schema = {
     "Association": StructType(
@@ -608,3 +620,5 @@ schema = {
         ]
     ),
 }
+
+schema_lc = {convert_to_snake_case(table_name): schema[table_name] for table_name in schema}

@@ -3187,6 +3187,6 @@
     "metamodel_version": "1.7.0",
     "title": "cdm_schema",
     "type": "object",
-    "version": "0.0.1"
+    "version": "0.1.1"
 }
 
