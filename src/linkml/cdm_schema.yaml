@@ -3,7 +3,7 @@ id: http://kbase.github.io/cdm-schema/linkml/cdm_schema
 
 name: cdm_schema
 description: Schema for KBase CDM
-version: 0.0.1
+version: 0.1.1
 
 prefixes:
   kb_cdm: http://kbase.github.io/cdm-schema/linkml/
