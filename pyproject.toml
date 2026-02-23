@@ -11,22 +11,23 @@ authors = [
 dependencies = [
     "linkml>=1.9.6",
     "linkml-runtime>=1.9.5",
-    "mkdocs-material>=9.7.0",
+    "mkdocs-material>=9.7.1",
     "mkdocs-mermaid2-plugin>=1.2.3",
-    "pyspark>=4.0.1",
-    "ruff>=0.14.8",
+    "pyspark>=4.1.1",
+    "ruff>=0.15.1",
 ]
-
-# [project.scripts]
-# cdm-schema = "cdm_schema:main"
 
 [build-system]
 requires = ["uv_build>=0.7.15,<0.10"]
 build-backend = "uv_build"
 
-
 [tool.ruff]
-lint.select = [
+# Assume Python 3.13.
+target-version = "py313"
+line-length = 120
+
+[tool.ruff.lint]
+select = [
     # core
     "F", # Pyflakes
     "E", # pycodestyle errors
@@ -94,7 +95,7 @@ lint.select = [
 # E501: line length
 # W503: line break after binary operator
 # PGH003: use type: ignore without specific arguments
-lint.ignore = [
+ignore = [
     "E203",
     "E501",
     "S101",
@@ -103,11 +104,11 @@ lint.ignore = [
 ]
 
 # Allow autofix for all enabled rules (when `--fix`) is provided.
-lint.fixable = ["ALL"]
-lint.unfixable = []
+fixable = ["ALL"]
+unfixable = []
 
 # Exclude a variety of commonly ignored directories.
-lint.exclude = [
+exclude = [
     "__pypackages__",
     "_build",
     ".bzr",
@@ -137,9 +138,5 @@ lint.exclude = [
     "venv",
 ]
 
-# Assume Python 3.13.
-target-version = "py313"
-line-length = 120
-
-[lint.pydocstyle]
+[tool.ruff.lint.pydocstyle]
 convention = "google"
