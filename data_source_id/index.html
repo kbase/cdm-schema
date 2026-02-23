@@ -17,7 +17,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
@@ -25,7 +25,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -438,24 +438,9 @@ Alias: data_source_id</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../DataSourceXTitle/">DataSourceXTitle</a></td>
-<td>Links a data source to a title.</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../DataSource/">DataSource</a></td>
 <td>The source for a resource, dataset, association, etc.</td>
 <td>no</td>
-</tr>
-<tr>
-<td><a href="../DataSourceXFundingReference/">DataSourceXFundingReference</a></td>
-<td>Links a data source to a funding reference.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../DataSourceNew/">DataSourceNew</a></td>
-<td>The source dataset from which data within the CDM was extracted. This might be an API query; a set of files downloaded from a website or uploaded by a user; a database dump; etc. A given data source should have either version information (e.g. a release number, like those used by UniProt or RefSeq) or an access date to allow the original raw data dump to be recapitulated.</td>
-<td>yes</td>
 </tr>
 <tr>
 <td><a href="../Entity/">Entity</a></td>
@@ -468,13 +453,28 @@ Alias: data_source_id</p>
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../ContributorXDataSource/">ContributorXDataSource</a></td>
+<td>Captures the people and/or organizations involved in producing a dataset; ideally the contributor_role field will capture how the contributor was involved.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../DataSourceXTitle/">DataSourceXTitle</a></td>
+<td>Links a data source to a title.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../DataSourceNew/">DataSourceNew</a></td>
+<td>The source dataset from which data within the CDM was extracted. This might be an API query; a set of files downloaded from a website or uploaded by a user; a database dump; etc. A given data source should have either version information (e.g. a release number, like those used by UniProt or RefSeq) or an access date to allow the original raw data dump to be recapitulated.</td>
+<td>yes</td>
+</tr>
+<tr>
 <td><a href="../DataSourceXDescription/">DataSourceXDescription</a></td>
 <td>Links a data source to a description (e.g. the abstract or a free text description).</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../ContributorXDataSource/">ContributorXDataSource</a></td>
-<td>Captures the people and/or organizations involved in producing a dataset; ideally the contributor_role field will capture how the contributor was involved.</td>
+<td><a href="../DataSourceXFundingReference/">DataSourceXFundingReference</a></td>
+<td>Links a data source to a funding reference.</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -590,10 +590,10 @@ required: true
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
       
