@@ -438,21 +438,6 @@ Alias: protocol_id</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../Protocol/">Protocol</a></td>
-<td>A defined method or set of methods.</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../OrderedProtocolStep/">OrderedProtocolStep</a></td>
-<td>A list of the steps in a protocol; the step_index indicates the order in which they should be executed.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ProtocolVariable/">ProtocolVariable</a></td>
-<td>A variable that may or may not be set as part of an experiment.</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../Feature/">Feature</a></td>
 <td>A feature localized to an interval along a contig.</td>
 <td>no</td>
@@ -463,13 +448,28 @@ Alias: protocol_id</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Experiment/">Experiment</a></td>
-<td>A discrete scientific procedure undertaken to make a discovery, test a hypothesis, or demonstrate a known fact. The protocol_id links to the workflow followed to perform the experiment.</td>
+<td><a href="../Protocol/">Protocol</a></td>
+<td>A defined method or set of methods.</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../ProtocolVariable/">ProtocolVariable</a></td>
+<td>A variable that may or may not be set as part of an experiment.</td>
 <td>no</td>
 </tr>
 <tr>
 <td><a href="../Cluster/">Cluster</a></td>
 <td>Represents an individual execution of a clustering protocol. See the ClusterMember class for clustering results.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../OrderedProtocolStep/">OrderedProtocolStep</a></td>
+<td>A list of the steps in a protocol; the step_index indicates the order in which they should be executed.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Experiment/">Experiment</a></td>
+<td>A discrete scientific procedure undertaken to make a discovery, test a hypothesis, or demonstrate a known fact. The protocol_id links to the workflow followed to perform the experiment.</td>
 <td>no</td>
 </tr>
 </tbody>
