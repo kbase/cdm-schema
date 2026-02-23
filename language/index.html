@@ -458,13 +458,8 @@ Alias: language</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../EntityAttributeValue/">EntityAttributeValue</a></td>
-<td>Class comprising all possible entity-attribute-value slots.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ResourceTitle/">ResourceTitle</a></td>
-<td>Represents the title or name of a resource, the type of that title, and the language used (if appropriate).<br><br>The <code>title</code> field is required; <code>title_type</code> is only necessary if the text is not the primary title.</td>
+<td><a href="../Statement/">Statement</a></td>
+<td>Represents an RDF triple, a statement in the form "<em>subject</em> <em>predicate</em> <em>object</em>" or "<em>subject</em> <em>predicate</em> <em>value</em>".<br><br>See <a href="https://incatools.github.io/semantic-sql/">Semantic SQL</a> for more information on the contents of this table and how it is populated.</td>
 <td>no</td>
 </tr>
 <tr>
@@ -473,13 +468,18 @@ Alias: language</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Statement/">Statement</a></td>
-<td>Represents an RDF triple, a statement in the form "<em>subject</em> <em>predicate</em> <em>object</em>" or "<em>subject</em> <em>predicate</em> <em>value</em>".<br><br>See <a href="https://incatools.github.io/semantic-sql/">Semantic SQL</a> for more information on the contents of this table and how it is populated.</td>
+<td><a href="../ResourceTitle/">ResourceTitle</a></td>
+<td>Represents the title or name of a resource, the type of that title, and the language used (if appropriate).<br><br>The <code>title</code> field is required; <code>title_type</code> is only necessary if the text is not the primary title.</td>
 <td>no</td>
 </tr>
 <tr>
 <td><a href="../ResourceDescription/">ResourceDescription</a></td>
 <td>Textual information about the resource being represented.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../EntityAttributeValue/">EntityAttributeValue</a></td>
+<td>Class comprising all possible entity-attribute-value slots.</td>
 <td>no</td>
 </tr>
 </tbody>

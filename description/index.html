@@ -436,53 +436,13 @@ Alias: description</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../Project/">Project</a></td>
-<td>Administrative unit for collecting data related to a certain topic, location, data type, grant funding, and so on.</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../Experiment/">Experiment</a></td>
 <td>A discrete scientific procedure undertaken to make a discovery, test a hypothesis, or demonstrate a known fact. The protocol_id links to the workflow followed to perform the experiment.</td>
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../Parameter/">Parameter</a></td>
-<td>A parameter in a protocol. Currently specific to computational protocols.</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../Variable/">Variable</a></td>
 <td>A variable (input, output, environmental, etc.) that can be set or measured as part of a protocol.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ProtocolExecution/">ProtocolExecution</a></td>
-<td>An instance of executing a protocol. Used for</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Event/">Event</a></td>
-<td>Something that happened.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Cluster/">Cluster</a></td>
-<td>Represents an individual execution of a clustering protocol. See the ClusterMember class for clustering results.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Identifier/">Identifier</a></td>
-<td>A string used as a resolvable (external) identifier for an entity. This should be a CURIE in the form <code>&lt;database_prefix&gt;:&lt;local_identifier&gt;</code>. <a href="https://bioregistry.io">Bioregistry</a> is used as the canonical reference for CURIE database prefixes; please use the prefix exactly as written in the Bioregistry entry.<br><br>If the string cannot be resolved to an URL, it should be added to the <code>Name</code> table instead.<br><br>This table is used for capturing external IDs. The internal CDM identifier should be used in the *_id field (e.g. feature_id, protein_id, contig_collection_id).</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../Protocol/">Protocol</a></td>
-<td>A defined method or set of methods.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Sample/">Sample</a></td>
-<td>A material entity that can be characterised by an experiment.</td>
 <td>no</td>
 </tr>
 <tr>
@@ -491,9 +451,49 @@ Alias: description</p>
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../Cluster/">Cluster</a></td>
+<td>Represents an individual execution of a clustering protocol. See the ClusterMember class for clustering results.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ProtocolExecution/">ProtocolExecution</a></td>
+<td>An instance of executing a protocol. Used for</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../Name/">Name</a></td>
 <td>A string used as the name or label for an entity. This may be a primary name, alternative name, synonym, acronym, or any other label used to refer to an entity.<br><br>Identifiers that look like CURIEs or database references, but which cannot be resolved using <a href="https://bioregistry.io">Bioregistry</a> or <a href="https://identifiers.org">identifiers.org</a> should be added to the <code>Name</code> table.</td>
 <td>yes</td>
+</tr>
+<tr>
+<td><a href="../Protocol/">Protocol</a></td>
+<td>A defined method or set of methods.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Identifier/">Identifier</a></td>
+<td>A string used as a resolvable (external) identifier for an entity. This should be a CURIE in the form <code>&lt;database_prefix&gt;:&lt;local_identifier&gt;</code>. <a href="https://bioregistry.io">Bioregistry</a> is used as the canonical reference for CURIE database prefixes; please use the prefix exactly as written in the Bioregistry entry.<br><br>If the string cannot be resolved to an URL, it should be added to the <code>Name</code> table instead.<br><br>This table is used for capturing external IDs. The internal CDM identifier should be used in the *_id field (e.g. feature_id, protein_id, contig_collection_id).</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../Project/">Project</a></td>
+<td>Administrative unit for collecting data related to a certain topic, location, data type, grant funding, and so on.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Parameter/">Parameter</a></td>
+<td>A parameter in a protocol. Currently specific to computational protocols.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Event/">Event</a></td>
+<td>Something that happened.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Sample/">Sample</a></td>
+<td>A material entity that can be characterised by an experiment.</td>
+<td>no</td>
 </tr>
 </tbody>
 </table>

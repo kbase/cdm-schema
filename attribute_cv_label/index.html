@@ -447,13 +447,18 @@ Alias: attribute_cv_label</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../EntityAttributeValue/">EntityAttributeValue</a></td>
-<td>Class comprising all possible entity-attribute-value slots.</td>
+<td><a href="../AttributeValue/">AttributeValue</a></td>
+<td>The value for any value of attribute for an entity. This object can hold both the un-normalized atomic value and the structured value.</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../AttributeMixin/">AttributeMixin</a></td>
-<td>The attribute in an attribute-value pair. One of <code>attribute_cv_id</code>, <code>attribute_cv_label</code>, and <code>attribute_string</code> is required.</td>
+<td><a href="../TextValue/">TextValue</a></td>
+<td>A basic string value.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../QuantityRangeValue/">QuantityRangeValue</a></td>
+<td>A numerical range, e.g. 5-7 cm.</td>
 <td>no</td>
 </tr>
 <tr>
@@ -467,8 +472,8 @@ Alias: attribute_cv_label</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../AttributeValue/">AttributeValue</a></td>
-<td>The value for any value of attribute for an entity. This object can hold both the un-normalized atomic value and the structured value.</td>
+<td><a href="../EntityAttributeValue/">EntityAttributeValue</a></td>
+<td>Class comprising all possible entity-attribute-value slots.</td>
 <td>no</td>
 </tr>
 <tr>
@@ -477,23 +482,18 @@ Alias: attribute_cv_label</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../QuantityRangeValue/">QuantityRangeValue</a></td>
-<td>A numerical range, e.g. 5-7 cm.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ControlledVocabularyTermValue/">ControlledVocabularyTermValue</a></td>
-<td>A quality, described using a term from an ontology or schema with a stable persistent identifier.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../TextValue/">TextValue</a></td>
-<td>A basic string value.</td>
+<td><a href="../AttributeMixin/">AttributeMixin</a></td>
+<td>The attribute in an attribute-value pair. One of <code>attribute_cv_id</code>, <code>attribute_cv_label</code>, and <code>attribute_string</code> is required.</td>
 <td>no</td>
 </tr>
 <tr>
 <td><a href="../QuantityValue/">QuantityValue</a></td>
 <td>A simple quantity, e.g. 2 cm.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ControlledVocabularyTermValue/">ControlledVocabularyTermValue</a></td>
+<td>A quality, described using a term from an ontology or schema with a stable persistent identifier.</td>
 <td>no</td>
 </tr>
 </tbody>

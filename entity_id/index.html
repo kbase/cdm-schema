@@ -436,16 +436,6 @@ Alias: entity_id</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../EntityAttributeValue/">EntityAttributeValue</a></td>
-<td>Class comprising all possible entity-attribute-value slots.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Sequence/">Sequence</a></td>
-<td>A sequence of nucleotides or amino acids.</td>
-<td>yes</td>
-</tr>
-<tr>
 <td><a href="../AssociationXSupportingObject/">AssociationXSupportingObject</a></td>
 <td>Links associations to entities to capture supporting objects in an association. May be a biological entity, such as a protein or feature, or a URL to a resource (e.g. a publication) that supports the association. Where possible, CDM identifiers should be used.</td>
 <td>yes</td>
@@ -453,6 +443,41 @@ Alias: entity_id</p>
 <tr>
 <td><a href="../EntityMixin/">EntityMixin</a></td>
 <td>A generic class for capturing attribute-value information about an entity in a structured form.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../AttributeValue/">AttributeValue</a></td>
+<td>The value for any value of attribute for an entity. This object can hold both the un-normalized atomic value and the structured value.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../TextValue/">TextValue</a></td>
+<td>A basic string value.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../QuantityRangeValue/">QuantityRangeValue</a></td>
+<td>A numerical range, e.g. 5-7 cm.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Name/">Name</a></td>
+<td>A string used as the name or label for an entity. This may be a primary name, alternative name, synonym, acronym, or any other label used to refer to an entity.<br><br>Identifiers that look like CURIEs or database references, but which cannot be resolved using <a href="https://bioregistry.io">Bioregistry</a> or <a href="https://identifiers.org">identifiers.org</a> should be added to the <code>Name</code> table.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Entity/">Entity</a></td>
+<td>An entity in the CDM.</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../Sequence/">Sequence</a></td>
+<td>A sequence of nucleotides or amino acids.</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../Identifier/">Identifier</a></td>
+<td>A string used as a resolvable (external) identifier for an entity. This should be a CURIE in the form <code>&lt;database_prefix&gt;:&lt;local_identifier&gt;</code>. <a href="https://bioregistry.io">Bioregistry</a> is used as the canonical reference for CURIE database prefixes; please use the prefix exactly as written in the Bioregistry entry.<br><br>If the string cannot be resolved to an URL, it should be added to the <code>Name</code> table instead.<br><br>This table is used for capturing external IDs. The internal CDM identifier should be used in the *_id field (e.g. feature_id, protein_id, contig_collection_id).</td>
 <td>no</td>
 </tr>
 <tr>
@@ -466,23 +491,13 @@ Alias: entity_id</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../AttributeValue/">AttributeValue</a></td>
-<td>The value for any value of attribute for an entity. This object can hold both the un-normalized atomic value and the structured value.</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../ClusterMember/">ClusterMember</a></td>
 <td>Relationship representing membership of a cluster. An optional score can be assigned to each cluster member.</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Identifier/">Identifier</a></td>
-<td>A string used as a resolvable (external) identifier for an entity. This should be a CURIE in the form <code>&lt;database_prefix&gt;:&lt;local_identifier&gt;</code>. <a href="https://bioregistry.io">Bioregistry</a> is used as the canonical reference for CURIE database prefixes; please use the prefix exactly as written in the Bioregistry entry.<br><br>If the string cannot be resolved to an URL, it should be added to the <code>Name</code> table instead.<br><br>This table is used for capturing external IDs. The internal CDM identifier should be used in the *_id field (e.g. feature_id, protein_id, contig_collection_id).</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../QuantityRangeValue/">QuantityRangeValue</a></td>
-<td>A numerical range, e.g. 5-7 cm.</td>
+<td><a href="../EntityAttributeValue/">EntityAttributeValue</a></td>
+<td>Class comprising all possible entity-attribute-value slots.</td>
 <td>no</td>
 </tr>
 <tr>
@@ -491,28 +506,13 @@ Alias: entity_id</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../ControlledVocabularyTermValue/">ControlledVocabularyTermValue</a></td>
-<td>A quality, described using a term from an ontology or schema with a stable persistent identifier.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Entity/">Entity</a></td>
-<td>An entity in the CDM.</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../TextValue/">TextValue</a></td>
-<td>A basic string value.</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../QuantityValue/">QuantityValue</a></td>
 <td>A simple quantity, e.g. 2 cm.</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Name/">Name</a></td>
-<td>A string used as the name or label for an entity. This may be a primary name, alternative name, synonym, acronym, or any other label used to refer to an entity.<br><br>Identifiers that look like CURIEs or database references, but which cannot be resolved using <a href="https://bioregistry.io">Bioregistry</a> or <a href="https://identifiers.org">identifiers.org</a> should be added to the <code>Name</code> table.</td>
+<td><a href="../ControlledVocabularyTermValue/">ControlledVocabularyTermValue</a></td>
+<td>A quality, described using a term from an ontology or schema with a stable persistent identifier.</td>
 <td>no</td>
 </tr>
 </tbody>
