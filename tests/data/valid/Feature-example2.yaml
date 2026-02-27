@@ -1,0 +1,6 @@
+feature_id: SP:AA_WF_I-V_contig_20285 # SP= someplasmid
+hash: "7d793037a0760186574b0282f2f435e7"
+start: 1
+end: 40484
+type: "SO:0000155"
+p_value: 0.9953 # plasmid_score

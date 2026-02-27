@@ -1,0 +1,44 @@
+seq_name	length	topology	n_genes	genetic_code	plasmid_score	fdr	n_hallmarks	marker_enrichment	conjugation_genes	amr_genes
+AA_WF_I-V_contig_20285	6313	No terminal repeats	5	11	0.9956	NA	0	4.6079	NA	NA
+AA_WF_I-V_contig_165867	1322	No terminal repeats	2	11	0.9956	NA	2	3.2077	MOBQ	NA
+AA_WF_I-V_contig_163871	1333	No terminal repeats	2	11	0.9955	NA	2	3.0908	NA	NA
+AA_WF_I-V_contig_2765	40484	No terminal repeats	45	11	0.9953	NA	12	34.9604	T_virB2;T_virB11;MOBP1;T_virB5;T_virB10;T_virB9;T_virB8;virb4	NA
+AA_WF_I-V_contig_22984	5691	No terminal repeats	4	11	0.9952	NA	1	4.889	NA	NA
+AA_WF_I-V_contig_20770	6179	No terminal repeats	5	11	0.9952	NA	0	5.9478	NA	NA
+AA_WF_I-V_contig_72789	2361	No terminal repeats	6	11	0.995	NA	3	5.6278	MOBQ	NA
+AA_WF_I-V_contig_32632	4304	No terminal repeats	6	11	0.995	NA	1	9.0599	MOBP1	NA
+AA_WF_I-V_contig_9167	12808	No terminal repeats	11	11	0.9949	NA	0	8.693	NA	NA
+AA_WF_I-V_contig_21980	5903	No terminal repeats	8	11	0.9948	NA	1	12.73	NA	NA
+AA_WF_I-V_contig_46174	3309	No terminal repeats	3	11	0.9947	NA	1	3.6934	NA	NA
+AA_WF_I-V_contig_62445	2645	No terminal repeats	3	11	0.9946	NA	0	4.3487	NA	NA
+AA_WF_I-V_contig_4297	26024	No terminal repeats	23	11	0.9946	NA	14	21.2045	F_traG;F_traH;F_traF;F_trbC;F_trbC;F_traU;F_traW;F_traV;F_traK;F_traE;F_traL	NA
+AA_WF_I-V_contig_114914	1704	No terminal repeats	2	11	0.9945	NA	2	2.1114	NA	NA
+AA_WF_I-V_contig_3457	32153	No terminal repeats	33	11	0.9945	NA	2	14.7417	NA	NA
+AA_WF_I-V_contig_351593	796	No terminal repeats	2	11	0.9944	NA	2	3.2261	MOBQ	NA
+AA_WF_I-V_contig_22126	5873	No terminal repeats	6	11	0.9943	NA	0	4.4871	NA	NA
+AA_WF_I-V_contig_15225	8075	No terminal repeats	10	11	0.9943	NA	0	6.9264	NA	NA
+AA_WF_I-V_contig_63052	2625	No terminal repeats	4	11	0.9942	NA	0	4.3181	NA	NA
+AA_WF_I-V_contig_23035	5681	No terminal repeats	11	11	0.9941	NA	0	0.855	NA	NA
+AA_WF_I-V_contig_38397	3800	No terminal repeats	5	11	0.994	NA	2	5.2557	MOBP1	NA
+AA_WF_I-V_contig_95329	1946	No terminal repeats	3	11	0.994	NA	2	4.4089	virb4	NA
+AA_WF_I-V_contig_182228	1240	No terminal repeats	2	11	0.994	NA	2	2.9387	MOBP1	NA
+AA_WF_I-V_contig_12924	9375	No terminal repeats	14	11	0.9939	NA	3	11.7303	virb4;T_virB3;T_virB2	NA
+AA_WF_I-V_contig_31591	4411	No terminal repeats	6	11	0.9938	NA	2	4.112	I_traI;I_traK	NA
+AA_WF_I-V_contig_18820	6724	No terminal repeats	7	11	0.9938	NA	1	5.4064	NA	NA
+AA_WF_I-V_contig_39353	3734	No terminal repeats	2	11	0.9938	NA	0	2.9763	NA	NA
+AA_WF_I-V_contig_3108	35777	No terminal repeats	35	11	0.9937	NA	15	25.5812	F_traG;F_traH;F_traF;F_traN;F_trbC;F_traU;F_traW;F_traV;F_traK;F_traE;F_traL	NF012174
+AA_WF_I-V_contig_155267	1383	No terminal repeats	3	11	0.9936	NA	2	3.4366	I_traP;I_traQ	NA
+AA_WF_I-V_contig_57102	2821	No terminal repeats	3	11	0.9936	NA	0	4.6092	NA	NA
+AA_WF_I-V_contig_1487	73787	DTR	67	11	0.9936	NA	5	21.4529	MOBF	NA
+AA_WF_I-V_contig_517	180142	DTR	202	11	0.9936	NA	14	74.5763	T_virB2;T_virB3;virb4;T_virB6;T_virB8;T_virB9;T_virB10;MOBP1;MOBP1	NF012178;NF033105
+AA_WF_I-V_contig_88773	2047	No terminal repeats	4	11	0.9935	NA	1	4.8714	T_virB1	NA
+
+# att/value pairs of use: topology
+# att/value pairs of use:n_genes
+# att/value pairs of use: genetic_code
+# att/value pairs of use:plasmid_score
+# att/value pairs of use:fdr
+# attr/value pairs of use: n_hallmarks
+# att/value pairs of use: marker_enrichment
+# att/value pairs of use:conjugation_genes
+# att/value pairs of use:amr_genes

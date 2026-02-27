@@ -1,0 +1,28 @@
+seq_name	length	topology	coordinates	n_genes	genetic_code	virus_score	fdr	n_hallmarks	marker_enrichment	taxonomy
+AA_WF_I-V_contig_10560	11284	No terminal repeats	NA	8	11	0.9837	NA	4	13.6837	Viruses;Duplodnaviria;Heunggongvirae;Uroviricota;Caudoviricetes;;Autographiviridae
+AA_WF_I-V_contig_18546	6810	No terminal repeats	NA	5	11	0.9831	NA	1	7.8586	Viruses;Duplodnaviria;Heunggongvirae;Uroviricota;Caudoviricetes;;
+AA_WF_I-V_contig_14483	8433	No terminal repeats	NA	7	11	0.9822	NA	1	9.5757	Viruses;Duplodnaviria;Heunggongvirae;Uroviricota;Caudoviricetes;;
+AA_WF_I-V_contig_19370	6561	No terminal repeats	NA	10	11	0.9821	NA	1	10.7279	Viruses;Duplodnaviria;Heunggongvirae;Uroviricota;Caudoviricetes;;
+AA_WF_I-V_contig_4559	24602	No terminal repeats	NA	21	11	0.9819	NA	8	25.5093	Viruses;Duplodnaviria;Heunggongvirae;Uroviricota;Caudoviricetes;;Autographiviridae
+AA_WF_I-V_contig_23972	5496	No terminal repeats	NA	8	11	0.9819	NA	2	9.9477	Viruses;Duplodnaviria;Heunggongvirae;Uroviricota;Caudoviricetes;;
+AA_WF_I-V_contig_27267	4960	No terminal repeats	NA	9	11	0.9812	NA	3	14.2375	Viruses;Duplodnaviria;Heunggongvirae;Uroviricota;Caudoviricetes;;
+AA_WF_I-V_contig_40677	3640	No terminal repeats	NA	6	11	0.9811	NA	1	7.8946	Viruses;Duplodnaviria;Heunggongvirae;Uroviricota;Caudoviricetes;;
+AA_WF_I-V_contig_2760	40546	No terminal repeats	NA	75	11	0.9808	NA	5	52.012	Viruses;Duplodnaviria;Heunggongvirae;Uroviricota;Caudoviricetes;;
+AA_WF_I-V_contig_7019	16346	No terminal repeats	NA	17	11	0.9808	NA	3	17.042	Viruses;Duplodnaviria;Heunggongvirae;Uroviricota;Caudoviricetes;;Autographiviridae
+AA_WF_I-V_contig_16924	7381	No terminal repeats	NA	5	11	0.9807	NA	1	8.3873	Viruses;Duplodnaviria;Heunggongvirae;Uroviricota;Caudoviricetes;;
+AA_WF_I-V_contig_24076	5475	No terminal repeats	NA	11	11	0.9806	NA	1	14.4464	Viruses;Duplodnaviria;Heunggongvirae;Uroviricota;Caudoviricetes;;
+AA_WF_I-V_contig_3062|provirus_3_11663	11661	Provirus	3-11663	12	11	0.9805	NA	4	17.3246	Viruses;Duplodnaviria;Heunggongvirae;Uroviricota;Caudoviricetes;;
+
+
+# ContigCollection table has NCBITaxon as a slot, value is: NCBITaxon:10239,
+# ContigCollection has loads of properties, the only required atm is id.  reccommended is cds_phase:
+# RefSeq, etc. reusable id, but if not, can make up a hash.
+# For this example, we need a ContigCollection_X_Feature object here to related contigcollection to feature
+# key/value pairs: 17.3246 geNomad score
+# key/value pairs: Viruses;Duplodnaviria;Heunggongvirae;Uroviricota;Caudoviricetes;
+# Simon says most of the time is a NCBITaxon because geNomad uses that for classification, but can get out of sync
+# better to capture what we have.
+# ContigCollection also has a required "type" slot: https://kbase.github.io/cdm-schema/ContigCollectionType/
+# KBase has a type here because they/we can make an arbitrary (or not) collection of contigs.  this type field helps
+# to group contig collections by how they were generated. (e.g. metagenome means the collection of contigs came out of a
+# sequencing project that was metagenomic, etc.).
