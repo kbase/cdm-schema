@@ -44,6 +44,8 @@ slots:
   source:
     description: The source for a specific piece of information; should be a CDM internal ID of a source in the DataSource table.
     range: cdm_data_source_id
+  source_file:
+    description: Path to a file in the local file system from which data was parsed.
 
 classes:
 
@@ -165,6 +167,13 @@ classes:
       - Entity.entity_id one:many Identifier.entity_id
       - one entity can have multiple identifiers, and one identifier can be associated with multiple entities.
 
+  Entity_x_SourceFile:
+    is_a: Table
+    description: Captures information about the source file for a given entity.
+    slots:
+    - entity_id
+    - data_source_id
+    - source_file
 
 enums:
   EntityType:

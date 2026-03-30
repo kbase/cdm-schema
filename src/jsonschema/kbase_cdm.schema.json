@@ -1476,6 +1476,35 @@
             "title": "EntityType",
             "type": "string"
         },
+        "EntityXSourceFile": {
+            "additionalProperties": false,
+            "description": "Captures information about the source file for a given entity.",
+            "properties": {
+                "data_source_id": {
+                    "description": "Internal (CDM) unique identifier for a data source.\nFrom the Entity table: entity_id where entity_type == 'DataSource'.\n",
+                    "pattern": "^CDM:dsrc-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
+                    "type": "string"
+                },
+                "entity_id": {
+                    "description": "Internal (CDM) unique identifier for an entity.",
+                    "pattern": "^CDM:[a-zA-Z]{2,4}-[0-9a-f]{8}([0-9a-f]{4}){3}-[0-9a-f]{12}$",
+                    "type": "string"
+                },
+                "source_file": {
+                    "description": "Path to a file in the local file system from which data was parsed.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "entity_id",
+                "data_source_id"
+            ],
+            "title": "EntityXSourceFile",
+            "type": "object"
+        },
         "Event": {
             "additionalProperties": false,
             "description": "Something that happened.",
@@ -3187,6 +3216,6 @@
     "metamodel_version": "1.7.0",
     "title": "cdm_schema",
     "type": "object",
-    "version": "0.1.1"
+    "version": "0.1.2"
 }
 
