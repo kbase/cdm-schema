@@ -19,8 +19,8 @@ from pydantic import (
 )
 
 
-metamodel_version = "None"
-version = "0.1.1"
+metamodel_version = "1.7.0"
+version = "0.1.2"
 
 
 class ConfiguredBaseModel(BaseModel):
@@ -34,19 +34,6 @@ class ConfiguredBaseModel(BaseModel):
         use_enum_values=True,
         strict=False,
     )
-
-    @model_serializer(mode="wrap", when_used="unless-none")
-    def treat_empty_lists_as_none(
-        self, handler: SerializerFunctionWrapHandler, info: SerializationInfo
-    ) -> dict[str, Any]:
-        if info.exclude_none:
-            _instance = self.model_copy()
-            for field, field_info in type(_instance).model_fields.items():
-                if getattr(_instance, field) == [] and not (field_info.is_required()):
-                    setattr(_instance, field, None)
-        else:
-            _instance = self
-        return handler(_instance, info)
 
 
 class LinkMLMeta(RootModel):
@@ -1126,6 +1113,7 @@ From the Entity table: entity_id where entity_type == 'Cluster'.
                     "Entity",
                     "Identifier",
                     "Name",
+                    "Entity_x_SourceFile",
                     "EntityMixin",
                     "Sequence",
                     "Association_x_SupportingObject",
@@ -1467,6 +1455,7 @@ class Entity(Table):
                     "Entity",
                     "Identifier",
                     "Name",
+                    "Entity_x_SourceFile",
                     "EntityMixin",
                     "Sequence",
                     "Association_x_SupportingObject",
@@ -1486,6 +1475,7 @@ class Entity(Table):
             "linkml_meta": {
                 "domain_of": [
                     "Entity",
+                    "Entity_x_SourceFile",
                     "Contributor_x_DataSource",
                     "DataSource",
                     "DataSourceNew",
@@ -1557,6 +1547,7 @@ class Identifier(Table):
                     "Entity",
                     "Identifier",
                     "Name",
+                    "Entity_x_SourceFile",
                     "EntityMixin",
                     "Sequence",
                     "Association_x_SupportingObject",
@@ -1650,6 +1641,7 @@ class Name(Table):
                     "Entity",
                     "Identifier",
                     "Name",
+                    "Entity_x_SourceFile",
                     "EntityMixin",
                     "Sequence",
                     "Association_x_SupportingObject",
@@ -1753,6 +1745,59 @@ class EntityIdentifiers(LinkerTable):
     pass
 
 
+class EntityXSourceFile(Table):
+    """
+    Captures information about the source file for a given entity.
+    """
+
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({"from_schema": "http://kbase.github.io/cdm-schema/linkml/cdm_base"})
+
+    entity_id: str = Field(
+        default=...,
+        description="""Internal (CDM) unique identifier for an entity.""",
+        json_schema_extra={
+            "linkml_meta": {
+                "domain_of": [
+                    "ClusterMember",
+                    "Entity",
+                    "Identifier",
+                    "Name",
+                    "Entity_x_SourceFile",
+                    "EntityMixin",
+                    "Sequence",
+                    "Association_x_SupportingObject",
+                ]
+            }
+        },
+    )
+    data_source_id: str = Field(
+        default=...,
+        description="""Internal (CDM) unique identifier for a data source.
+From the Entity table: entity_id where entity_type == 'DataSource'.
+""",
+        json_schema_extra={
+            "linkml_meta": {
+                "domain_of": [
+                    "Entity",
+                    "Entity_x_SourceFile",
+                    "Contributor_x_DataSource",
+                    "DataSource",
+                    "DataSourceNew",
+                    "DataSource_x_Description",
+                    "DataSource_x_FundingReference",
+                    "DataSource_x_License",
+                    "DataSource_x_Title",
+                ]
+            }
+        },
+    )
+    source_file: Optional[str] = Field(
+        default=None,
+        description="""Path to a file in the local file system from which data was parsed.""",
+        json_schema_extra={"linkml_meta": {"domain_of": ["Entity_x_SourceFile"]}},
+    )
+
+
 class AttributeMixin(ConfiguredBaseModel):
     """
     The attribute in an attribute-value pair. One of `attribute_cv_id`, `attribute_cv_label`, and `attribute_string` is required.
@@ -1808,6 +1853,7 @@ class EntityMixin(ConfiguredBaseModel):
                     "Entity",
                     "Identifier",
                     "Name",
+                    "Entity_x_SourceFile",
                     "EntityMixin",
                     "Sequence",
                     "Association_x_SupportingObject",
@@ -1914,6 +1960,7 @@ class AttributeValue(EntityMixin, AttributeMixin):
                     "Entity",
                     "Identifier",
                     "Name",
+                    "Entity_x_SourceFile",
                     "EntityMixin",
                     "Sequence",
                     "Association_x_SupportingObject",
@@ -2055,6 +2102,7 @@ class EntityAttributeValue(UnitMixin, EntityMixin, AttributeMixin):
                     "Entity",
                     "Identifier",
                     "Name",
+                    "Entity_x_SourceFile",
                     "EntityMixin",
                     "Sequence",
                     "Association_x_SupportingObject",
@@ -2191,6 +2239,7 @@ class QuantityValue(AttributeValue, UnitMixin):
                     "Entity",
                     "Identifier",
                     "Name",
+                    "Entity_x_SourceFile",
                     "EntityMixin",
                     "Sequence",
                     "Association_x_SupportingObject",
@@ -2319,6 +2368,7 @@ class QuantityRangeValue(AttributeValue, UnitMixin):
                     "Entity",
                     "Identifier",
                     "Name",
+                    "Entity_x_SourceFile",
                     "EntityMixin",
                     "Sequence",
                     "Association_x_SupportingObject",
@@ -2408,6 +2458,7 @@ class DateTimeValue(AttributeValue):
                     "Entity",
                     "Identifier",
                     "Name",
+                    "Entity_x_SourceFile",
                     "EntityMixin",
                     "Sequence",
                     "Association_x_SupportingObject",
@@ -2498,6 +2549,7 @@ class Geolocation(AttributeValue):
                     "Entity",
                     "Identifier",
                     "Name",
+                    "Entity_x_SourceFile",
                     "EntityMixin",
                     "Sequence",
                     "Association_x_SupportingObject",
@@ -2586,6 +2638,7 @@ class ControlledTermValue(AttributeValue):
                     "Entity",
                     "Identifier",
                     "Name",
+                    "Entity_x_SourceFile",
                     "EntityMixin",
                     "Sequence",
                     "Association_x_SupportingObject",
@@ -2685,6 +2738,7 @@ class ControlledVocabularyTermValue(AttributeValue):
                     "Entity",
                     "Identifier",
                     "Name",
+                    "Entity_x_SourceFile",
                     "EntityMixin",
                     "Sequence",
                     "Association_x_SupportingObject",
@@ -2786,6 +2840,7 @@ class TextValue(AttributeValue):
                     "Entity",
                     "Identifier",
                     "Name",
+                    "Entity_x_SourceFile",
                     "EntityMixin",
                     "Sequence",
                     "Association_x_SupportingObject",
@@ -2948,7 +3003,7 @@ From the Entity table: entity_id where entity_type == 'Contributor'.
         },
     )
     affiliation_id: Optional[list[str]] = Field(
-        default=[],
+        default=None,
         description="""The ID of the organization to which a contributor belongs. Should be the ID of another contributor.""",
         json_schema_extra={
             "linkml_meta": {"aliases": ["affiliation_contributor_id"], "domain_of": ["ContributorAffiliation"]}
@@ -3001,6 +3056,7 @@ From the Entity table: entity_id where entity_type == 'DataSource'.
             "linkml_meta": {
                 "domain_of": [
                     "Entity",
+                    "Entity_x_SourceFile",
                     "Contributor_x_DataSource",
                     "DataSource",
                     "DataSourceNew",
@@ -3089,6 +3145,7 @@ From the Entity table: entity_id where entity_type == 'DataSource'.
             "linkml_meta": {
                 "domain_of": [
                     "Entity",
+                    "Entity_x_SourceFile",
                     "Contributor_x_DataSource",
                     "DataSource",
                     "DataSourceNew",
@@ -3158,6 +3215,7 @@ From the Entity table: entity_id where entity_type == 'DataSource'.
             "linkml_meta": {
                 "domain_of": [
                     "Entity",
+                    "Entity_x_SourceFile",
                     "Contributor_x_DataSource",
                     "DataSource",
                     "DataSourceNew",
@@ -3297,6 +3355,7 @@ From the Entity table: entity_id where entity_type == 'DataSource'.
             "linkml_meta": {
                 "domain_of": [
                     "Entity",
+                    "Entity_x_SourceFile",
                     "Contributor_x_DataSource",
                     "DataSource",
                     "DataSourceNew",
@@ -3333,6 +3392,7 @@ From the Entity table: entity_id where entity_type == 'DataSource'.
             "linkml_meta": {
                 "domain_of": [
                     "Entity",
+                    "Entity_x_SourceFile",
                     "Contributor_x_DataSource",
                     "DataSource",
                     "DataSourceNew",
@@ -3371,6 +3431,7 @@ From the Entity table: entity_id where entity_type == 'DataSource'.
             "linkml_meta": {
                 "domain_of": [
                     "Entity",
+                    "Entity_x_SourceFile",
                     "Contributor_x_DataSource",
                     "DataSource",
                     "DataSourceNew",
@@ -3408,6 +3469,7 @@ From the Entity table: entity_id where entity_type == 'DataSource'.
             "linkml_meta": {
                 "domain_of": [
                     "Entity",
+                    "Entity_x_SourceFile",
                     "Contributor_x_DataSource",
                     "DataSource",
                     "DataSourceNew",
@@ -5467,6 +5529,7 @@ From the Entity table: entity_id where entity_type == 'Sequence'.
                     "Entity",
                     "Identifier",
                     "Name",
+                    "Entity_x_SourceFile",
                     "EntityMixin",
                     "Sequence",
                     "Association_x_SupportingObject",
@@ -5524,6 +5587,7 @@ class AssociationXSupportingObject(LinkerTable):
                     "Entity",
                     "Identifier",
                     "Name",
+                    "Entity_x_SourceFile",
                     "EntityMixin",
                     "Sequence",
                     "Association_x_SupportingObject",
@@ -6025,317 +6089,317 @@ class Schema(ConfiguredBaseModel):
     )
 
     entities: Optional[list[str]] = Field(
-        default=[],
+        default=None,
         description="""All entities in the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
     names: Optional[list[Name]] = Field(
-        default=[],
+        default=None,
         description="""All names in the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
     identifiers: Optional[list[Identifier]] = Field(
-        default=[],
+        default=None,
         description="""All identifiers in the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
     entity_names: Optional[list[EntityNames]] = Field(
-        default=[],
+        default=None,
         description="""All name x entity records in the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
     entity_identifiers: Optional[list[EntityIdentifiers]] = Field(
-        default=[],
+        default=None,
         description="""All identifier x entity records in the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
     entity_attribute_values: Optional[list[EntityAttributeValue]] = Field(
-        default=[],
+        default=None,
         description="""All entity attribute values in the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
     associations: Optional[list[str]] = Field(
-        default=[],
+        default=None,
         description="""All associations in the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
     clusters: Optional[list[str]] = Field(
-        default=[],
+        default=None,
         description="""All clusters in the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
     cluster_members: Optional[list[ClusterMember]] = Field(
-        default=[],
+        default=None,
         description="""All cluster members in the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
     events: Optional[list[str]] = Field(
-        default=[],
+        default=None,
         description="""All events in the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
     gold_environmental_contexts: Optional[list[str]] = Field(
-        default=[],
+        default=None,
         description="""All GOLD environmental contexts in the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
     mixs_environmental_contexts: Optional[list[str]] = Field(
-        default=[],
+        default=None,
         description="""All MIxS environmental contexts in the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
     contributors: Optional[list[str]] = Field(
-        default=[],
+        default=None,
         description="""All contributors in the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
     contributor_affiliations: Optional[list[ContributorAffiliation]] = Field(
-        default=[],
+        default=None,
         description="""All contributor affiliations in the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
     contributor_x_role_x_project: Optional[list[ContributorXRoleXProject]] = Field(
-        default=[],
+        default=None,
         description="""All contributor x role x project records in the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
     data_sources: Optional[list[str]] = Field(
-        default=[],
+        default=None,
         description="""All data sources in the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
     data_source_x_descriptions: Optional[list[DataSourceXDescription]] = Field(
-        default=[],
+        default=None,
         description="""All data source descriptions in the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
     data_source_x_funding_references: Optional[list[DataSourceXFundingReference]] = Field(
-        default=[],
+        default=None,
         description="""All data source x funding reference records in the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
     data_source_x_licenses: Optional[list[DataSourceXLicense]] = Field(
-        default=[],
+        default=None,
         description="""All data source x license records in the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
     data_source_x_titles: Optional[list[DataSourceXTitle]] = Field(
-        default=[],
+        default=None,
         description="""All data source x title records in the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
     funding_references: Optional[list[str]] = Field(
-        default=[],
+        default=None,
         description="""All funding references in the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
     licenses: Optional[list[str]] = Field(
-        default=[],
+        default=None,
         description="""All licenses in the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
     projects: Optional[list[str]] = Field(
-        default=[],
+        default=None,
         description="""All projects in the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
     publications: Optional[list[str]] = Field(
-        default=[],
+        default=None,
         description="""All publications in the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
     resource_descriptions: Optional[list[ResourceDescription]] = Field(
-        default=[],
+        default=None,
         description="""All resource descriptions in the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
     resource_titles: Optional[list[ResourceTitle]] = Field(
-        default=[],
+        default=None,
         description="""All resource titles in the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
     prefixes: Optional[list[Prefix]] = Field(
-        default=[],
+        default=None,
         description="""The prefix mappings for the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
     statements: Optional[list[Statement]] = Field(
-        default=[],
+        default=None,
         description="""All statements in the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
     entailed_edges: Optional[list[EntailedEdge]] = Field(
-        default=[],
+        default=None,
         description="""All entailed edges in the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
     contigs: Optional[list[str]] = Field(
-        default=[],
+        default=None,
         description="""All contigs in the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
     contig_collections: Optional[list[str]] = Field(
-        default=[],
+        default=None,
         description="""All contig collections in the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
     encoded_features: Optional[list[str]] = Field(
-        default=[],
+        default=None,
         description="""All encoded features in the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
     features: Optional[list[str]] = Field(
-        default=[],
+        default=None,
         description="""All features in the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
     proteins: Optional[list[str]] = Field(
-        default=[],
+        default=None,
         description="""All proteins in the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
     samples: Optional[list[str]] = Field(
-        default=[],
+        default=None,
         description="""All samples in the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
     sequences: Optional[list[Sequence]] = Field(
-        default=[],
+        default=None,
         description="""All sequences in the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
     experiments: Optional[list[str]] = Field(
-        default=[],
+        default=None,
         description="""All experiments in the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
     experiment_conditions: Optional[list[str]] = Field(
-        default=[],
+        default=None,
         description="""All experiment conditions in the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
     experiment_condition_sets: Optional[list[ExperimentConditionSet]] = Field(
-        default=[],
+        default=None,
         description="""All experiment condition sets in the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
     measurements: Optional[list[str]] = Field(
-        default=[],
+        default=None,
         description="""All measurements in the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
     measurement_sets: Optional[list[str]] = Field(
-        default=[],
+        default=None,
         description="""All measurement sets in the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
     ordered_protocol_steps: Optional[list[OrderedProtocolStep]] = Field(
-        default=[],
+        default=None,
         description="""All ordered protocol steps in the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
     parameters: Optional[list[str]] = Field(
-        default=[],
+        default=None,
         description="""All parameters in the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
     protocols: Optional[list[str]] = Field(
-        default=[],
+        default=None,
         description="""All protocols in the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
     protocol_executions: Optional[list[str]] = Field(
-        default=[],
+        default=None,
         description="""All protocol executions in the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
     protocol_inputs: Optional[list[str]] = Field(
-        default=[],
+        default=None,
         description="""All protocol inputs in the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
     protocol_input_sets: Optional[list[str]] = Field(
-        default=[],
+        default=None,
         description="""All protocol input sets in the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
     protocol_outputs: Optional[list[str]] = Field(
-        default=[],
+        default=None,
         description="""All protocol outputs in the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
     protocol_steps: Optional[list[str]] = Field(
-        default=[],
+        default=None,
         description="""All protocol steps in the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
     protocol_variables: Optional[list[ProtocolVariable]] = Field(
-        default=[],
+        default=None,
         description="""All protocol variables in the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
     variables: Optional[list[str]] = Field(
-        default=[],
+        default=None,
         description="""All variables in the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
     variable_values: Optional[list[str]] = Field(
-        default=[],
+        default=None,
         description="""All variable values in the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
     association_x_supporting_objects: Optional[list[AssociationXSupportingObject]] = Field(
-        default=[],
+        default=None,
         description="""All association x supporting object records in the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
     contig_x_contig_collections: Optional[list[ContigXContigCollection]] = Field(
-        default=[],
+        default=None,
         description="""All contig x contig collection records in the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
     contig_x_encoded_features: Optional[list[ContigXEncodedFeature]] = Field(
-        default=[],
+        default=None,
         description="""All contig x encoded feature records in the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
     contig_x_features: Optional[list[ContigXFeature]] = Field(
-        default=[],
+        default=None,
         description="""All contig x feature records in the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
     contig_x_proteins: Optional[list[ContigXProtein]] = Field(
-        default=[],
+        default=None,
         description="""All contig x protein records in the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
     contig_collection_x_encoded_features: Optional[list[ContigCollectionXEncodedFeature]] = Field(
-        default=[],
+        default=None,
         description="""All contig collection x encoded feature records in the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
     contig_collection_x_features: Optional[list[ContigCollectionXFeature]] = Field(
-        default=[],
+        default=None,
         description="""All contig collection x feature records in the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
     contig_collection_x_proteins: Optional[list[ContigCollectionXProtein]] = Field(
-        default=[],
+        default=None,
         description="""All contig collection x protein records in the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
     encoded_feature_x_features: Optional[list[EncodedFeatureXFeature]] = Field(
-        default=[],
+        default=None,
         description="""All encoded feature x feature records in the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
     encoded_feature_x_proteins: Optional[list[EncodedFeatureXProtein]] = Field(
-        default=[],
+        default=None,
         description="""All encoded feature x protein records in the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
     feature_x_proteins: Optional[list[FeatureXProtein]] = Field(
-        default=[],
+        default=None,
         description="""All feature x protein records in the schema.""",
         json_schema_extra={"linkml_meta": {"domain_of": ["Schema"]}},
     )
@@ -6356,6 +6420,7 @@ Identifier.model_rebuild()
 Name.model_rebuild()
 EntityNames.model_rebuild()
 EntityIdentifiers.model_rebuild()
+EntityXSourceFile.model_rebuild()
 AttributeMixin.model_rebuild()
 EntityMixin.model_rebuild()
 UnitMixin.model_rebuild()

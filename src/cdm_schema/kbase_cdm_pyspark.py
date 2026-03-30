@@ -1,6 +1,6 @@
 """Automated conversion of cdm_schema to PySpark.
 
-cdm_schema version: 0.1.1
+cdm_schema version: 0.1.2
 """
 
 import re
@@ -286,6 +286,13 @@ schema = {
             StructField("data_source_updated", DateType(), nullable=True),
             StructField("created", DateType(), nullable=False),
             StructField("updated", DateType(), nullable=False),
+        ]
+    ),
+    "Entity_x_SourceFile": StructType(
+        [
+            StructField("entity_id", StringType(), nullable=False),
+            StructField("data_source_id", StringType(), nullable=False),
+            StructField("source_file", StringType(), nullable=True),
         ]
     ),
     "Event": StructType(

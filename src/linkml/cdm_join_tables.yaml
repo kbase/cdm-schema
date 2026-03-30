@@ -145,7 +145,6 @@ classes:
       - feature_id
     description: Captures the relationship between a feature and its transcription product.
 
-
   EncodedFeature_x_Protein:
     is_a: LinkerTable
     represents_relationship: true
