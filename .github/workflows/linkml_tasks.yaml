@@ -36,17 +36,11 @@ jobs:
                 make lint-no-warn
             continue-on-error: true
 
-          # - name: Validate sample data against the schema
-          #   id: test_sample_data
-          #   run: |
-          #       make test-sample-data
-          #   continue-on-error: true
-
-          # - name: Validate sample data against JSONschema
-          #   id: test_sample_data_jsonschema
-          #   run: |
-          #       make test-sample-data-jsonschema
-          #   continue-on-error: true
+          - name: Run LinkML example files
+            id: run_linkml_examples
+            run: |
+              make test-examples
+            continue-on-error: true
 
           - name: Test documentation generation
             id: test_docgen
@@ -61,19 +55,20 @@ jobs:
           #   continue-on-error: true
 
           - name: outcome failure
-            if: steps.lint_linkml.outcome != 'success' || steps.validate_linkml.outcome != 'success' || steps.test_docgen.outcome != 'success'
+            if: steps.lint_linkml.outcome != 'success' || steps.validate_linkml.outcome != 'success' || steps.run_linkml_examples.outcome != 'success' || steps.test_docgen.outcome != 'success'
             # steps.test_sample_data.outcome != 'success' || steps.test_sample_data_jsonschema.outcome != 'success'
 
             run: |
                 echo "linkml linting: ${{ steps.lint_linkml.outcome }}"
                 echo "linkml schema validation: ${{ steps.validate_linkml.outcome }}"
+                echo "linkml example runs: ${{ steps.run_linkml_examples.outcome }}"
                 echo "documentation generator: ${{ steps.test_docgen.outcome }}"
                 exit 1
             # echo "sample data validation: ${{ steps.test_sample_data.outcome }}"
             # echo "sample data JSON Schema validation: ${{ steps.test_sample_data_jsonschema.outcome }}"
 
           - name: outcome success
-            if: steps.lint_linkml.outcome == 'success' && steps.validate_linkml.outcome == 'success' && steps.test_docgen.outcome == 'success'
+            if: steps.lint_linkml.outcome == 'success' && steps.validate_linkml.outcome == 'success' && steps.linkml_run_examples.outcome == 'success' && steps.test_docgen.outcome == 'success'
             run: |
                 echo All tests passed successfully!
                 exit 0
